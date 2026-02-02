@@ -1,0 +1,8 @@
+{
+  "sfx.milady_slash":
+  {
+    "category":"master",
+    "subtitle":"sfx.slash",
+    "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false}]
+  }
+}
