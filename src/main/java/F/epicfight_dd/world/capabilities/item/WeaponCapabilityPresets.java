@@ -24,7 +24,7 @@ public class WeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> MILADY = (item) ->
             WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.LONGSWORD) // will use milady category later
-            .styleProvider((playerpatch) -> CapabilityItem.Styles.ONE_HAND)
+            .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
             .collider(ColliderPreset.LONGSWORD)
             .swingSound(EpicFightSounds.WHOOSH_SHARP.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -36,8 +36,9 @@ public class WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_3,
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_4,
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_5,
-                   MiladyMoveset.MILADY_AIR_SLASH,
-                    MiladyMoveset.milady_onehanded_dash)
+                    MiladyMoveset.milady_onehanded_dash,
+                   MiladyMoveset.MILADY_AIR_SLASH
+                   )
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
