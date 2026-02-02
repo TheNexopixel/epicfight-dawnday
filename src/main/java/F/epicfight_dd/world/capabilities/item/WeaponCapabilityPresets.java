@@ -36,7 +36,7 @@ public class WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_3,
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_4,
                     MiladyMoveset.MILADY_ONE_HANDED_AUTO_5,
-                    Animations.LONGSWORD_AIR_SLASH,
+                   MiladyMoveset.MILADY_AIR_SLASH,
                     MiladyMoveset.milady_onehanded_dash)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)

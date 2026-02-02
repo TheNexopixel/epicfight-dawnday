@@ -19,6 +19,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_4;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_5;
     public static AnimationAccessor<DashAttackAnimation> milady_onehanded_dash;
+    public static AnimationAccessor<AirSlashAnimation> MILADY_AIR_SLASH;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -55,6 +56,9 @@ public class MiladyMoveset {
                     new DashAttackAnimation(0.12F, 0.3F, 0.38F, 0.48F, 0.54F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+            MILADY_AIR_SLASH = builder.nextAccessor("biped/combat/milady_onehanded_airslash" , ac ->
+                    new AirSlashAnimation(  0.12F, 0.38F, 0.48F, 3.54F,null, biped.get().toolR, ac , biped));
 
 
         }
