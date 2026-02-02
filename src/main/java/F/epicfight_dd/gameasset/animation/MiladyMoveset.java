@@ -53,7 +53,7 @@ public class MiladyMoveset {
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-            //the method changes if there has to be more than one phase
+            //the method changes if there has to be more than one phases
             MILADY_ONE_HANDED_AUTO_5 = builder.nextAccessor("biped/combat/milady_onehanded_auto5", (accessor) ->
                     new BasicAttackAnimation(0.12F, accessor, biped,
                             new AttackAnimation.Phase(0.0f, 0.1f, 0.2f, 0.4f, 0.5f, 0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
