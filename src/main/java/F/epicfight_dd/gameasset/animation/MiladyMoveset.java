@@ -64,12 +64,12 @@ public class MiladyMoveset {
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             milady_onehanded_dash = builder.nextAccessor("biped/combat/milady_onehanded_dash", (accessor) ->
-                    new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 0.4F, null, biped.get().toolR, accessor, biped)
+                    new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 0.8F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             MILADY_AIR_SLASH = builder.nextAccessor("biped/combat/milady_onehanded_airslash" , ac ->
-                    new AirSlashAnimation(  0.12F, 0.1f ,0.3f, 0.4f,null, biped.get().toolR, ac , biped));
+                    new AirSlashAnimation(  0.12F, 0.1f ,0.3f, 0.8f,null, biped.get().toolR, ac , biped));
 
 
         }
