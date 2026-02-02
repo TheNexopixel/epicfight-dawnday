@@ -13,7 +13,7 @@ provider = "NULL"
 	target_outline_color = 0.0
 	#Allowed Values: NONE, CROSSHAIR, HIGHLIGHT, CROSSHAIR_AND_HIGHLIGHT
 	mine_block_guide_option = "CROSSHAIR"
-	enable_target_entity_guide = true
+	enable_target_entity_guide = false
 	blood_effects = true
 	#Range: 0 ~ 30
 	max_hit_projectiles = 30

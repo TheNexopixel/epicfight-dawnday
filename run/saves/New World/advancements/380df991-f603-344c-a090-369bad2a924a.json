@@ -1,43 +1,107 @@
 {
   "minecraft:recipes/decorations/crafting_table": {
     "criteria": {
-      "unlock_right_away": "2026-02-01 09:29:16 +0100"
+      "unlock_right_away": "2026-02-02 20:10:54 +0100"
     },
     "done": true
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:plains": "2026-02-01 09:29:19 +0100"
+      "minecraft:plains": "2026-02-02 20:10:55 +0100"
     },
     "done": false
   },
-  "minecraft:husbandry/root": {
+  "minecraft:adventure/root": {
     "criteria": {
-      "consumed_item": "2026-02-01 09:29:27 +0100"
+      "killed_something": "2026-02-02 20:11:26 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/misc/iron_nugget_from_smelting": {
+  "minecraft:adventure/kill_all_mobs": {
     "criteria": {
-      "has_iron_sword": "2026-02-01 09:29:30 +0100"
+      "minecraft:skeleton": "2026-02-02 21:14:39 +0100",
+      "minecraft:spider": "2026-02-02 21:14:18 +0100",
+      "minecraft:creeper": "2026-02-02 21:15:42 +0100",
+      "minecraft:slime": "2026-02-02 20:11:26 +0100",
+      "minecraft:zombie": "2026-02-02 21:12:50 +0100"
+    },
+    "done": false
+  },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "minecraft:slime": "2026-02-02 20:11:26 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/misc/iron_nugget_from_blasting": {
+  "minecraft:recipes/redstone/sticky_piston": {
     "criteria": {
-      "has_iron_sword": "2026-02-01 09:29:30 +0100"
+      "has_slime_ball": "2026-02-02 20:11:39 +0100"
     },
     "done": true
   },
-  "minecraft:story/shiny_gear": {
+  "minecraft:recipes/redstone/slime_block": {
     "criteria": {
-      "diamond_chestplate": "2026-02-01 17:10:54 +0100"
+      "has_slime_ball": "2026-02-02 20:11:39 +0100"
     },
     "done": true
   },
-  "minecraft:story/iron_tools": {
+  "minecraft:recipes/tools/lead": {
     "criteria": {
-      "iron_pickaxe": "2026-02-01 17:10:57 +0100"
+      "has_slime_ball": "2026-02-02 20:11:39 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/bow": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/fishing_rod": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/white_wool_from_string": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/tripwire_hook": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/crossbow": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/candle": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/firework_rocket_simple": {
+    "criteria": {
+      "has_gunpowder": "2026-02-02 21:15:43 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/tnt": {
+    "criteria": {
+      "has_gunpowder": "2026-02-02 21:15:43 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/loom": {
+    "criteria": {
+      "has_string": "2026-02-02 21:14:18 +0100"
     },
     "done": true
   },

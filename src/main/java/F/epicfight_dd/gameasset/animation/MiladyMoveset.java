@@ -39,17 +39,17 @@ public class MiladyMoveset {
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             MILADY_ONE_HANDED_AUTO_2 = builder.nextAccessor("biped/combat/milady_onehanded_auto2", (accessor) ->
-                    new BasicAttackAnimation(0.12F, 0.3F, 0.31F, 0.7F, 0.84F, null, biped.get().toolR, accessor, biped)
+                    new BasicAttackAnimation(0.12F, 0.3F, 0.31F, 0.7F, 0.88F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             MILADY_ONE_HANDED_AUTO_3 = builder.nextAccessor("biped/combat/milady_onehanded_auto3", (accessor) ->
-                    new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.48F, 0.54F, null, biped.get().toolR, accessor, biped)
+                    new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.48F, 0.74F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             MILADY_ONE_HANDED_AUTO_4 = builder.nextAccessor("biped/combat/milady_onehanded_auto4", (accessor) ->
-                    new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.41F, 0.5F, null, biped.get().toolR, accessor, biped)
+                    new BasicAttackAnimation(0.12F, 0.1F, 0.2F, 0.41F, 0.7F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -58,13 +58,13 @@ public class MiladyMoveset {
                     new BasicAttackAnimation(0.12F, accessor, biped,
                             new AttackAnimation.Phase(0.0f, 0.1f, 0.2f, 0.4f, 0.5f, 0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
 
-                            new AttackAnimation.Phase(0.481f, 0.5f, 0.6f, 1.0f, 1.2f,1.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                            new AttackAnimation.Phase(0.481f, 0.5f, 0.6f, 1.0f, 1.3f,1.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
 
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
             milady_onehanded_dash = builder.nextAccessor("biped/combat/milady_onehanded_dash", (accessor) ->
-                    new DashAttackAnimation(0.12F, 0.1f, 0.3f, 0.4f, 0.54F, null, biped.get().toolR, accessor, biped)
+                    new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 0.4F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
