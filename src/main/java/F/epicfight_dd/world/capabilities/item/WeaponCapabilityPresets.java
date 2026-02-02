@@ -1,33 +1,50 @@
 package F.epicfight_dd.world.capabilities.item;
 
-import F.epicfight_dd.world.item.MiladyMoveset;
+import F.epicfight_dd.Epicfight_dd;
+import F.epicfight_dd.gameasset.animation.MiladyMoveset;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
+import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.gameasset.ColliderPreset;
+import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 import java.util.function.Function;
 
-public class WeaponCapabilityPresets {
-    public static final Function<Item, CapabilityItem.Builder> milday = (item) -> {
-        WeaponCapability.Builder builder = WeaponCapability.builder()
-                .category(RapierWeaponCategories.milday) // Updated to use custom category
-                .styleProvider((playerpatch) -> CapabilityItem.Styles.OCHS)
-                .collider(RapierColliderPreset.RAPIER)
-                .swingSound(RapierSounds.RAPIER_STAB.get())
-                .hitSound(RapierSounds.RAPIER_HIT.get())
-                .canBePlacedOffhand(true)
-                .newStyleCombo(CapabilityItem.Styles.OCHS, MiladyMoveset.milady_onehanded_auto1, MiladyMoveset.milady_onehanded_auto2, MiladyMoveset.milady_onehanded_auto3, MiladyMoveset.milady_onehanded_auto4,MiladyMoveset.milady_onehanded_auto5,MiladyMoveset.milady_onehanded_dash)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, MiladyMoveset.milady_onehanded_walk)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, MiladyMoveset.BIPED_WALK_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.CHASE, MiladyMoveset.BIPED_WALK_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, MiladyMoveset.BIPED_RUN_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.JUMP, MiladyMoveset.BIPED_HOLD_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.KNEEL, MiladyMoveset.BIPED_SNEAK_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.SNEAK, MiladyMoveset.BIPED_SNEAK_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.SWIM, MiladyMoveset.BIPED_HOLD_RAPIER)
-                .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, MiladyMoveset.RAPIER_GUARD);
 
-        return builder;
-    };
+@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
+public class WeaponCapabilityPresets {
+    public static final Function<Item, CapabilityItem.Builder> MILADY = (item) ->
+            WeaponCapability.builder()
+            .category(CapabilityItem.WeaponCategories.LONGSWORD) // will use milady category later
+            .styleProvider((playerpatch) -> CapabilityItem.Styles.ONE_HAND)
+            .collider(ColliderPreset.LONGSWORD)
+            .swingSound(EpicFightSounds.WHOOSH_SHARP.get())
+            .hitSound(EpicFightSounds.BLADE_HIT.get())
+            .canBePlacedOffhand(true)
+            .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_1,
+                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_2,
+                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_3,
+                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_4,
+                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_5,
+                    MiladyMoveset.milady_onehanded_dash)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, Animations.BIPED_HOLD_LONGSWORD)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
+
+
+
+    @SubscribeEvent // register Weapon Moveset
+    public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+    }
+
+
 }
