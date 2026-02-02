@@ -2,6 +2,7 @@ package F.epicfight_dd.world.capabilities.item;
 
 import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.gameasset.animation.MiladyMoveset;
+import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,7 +27,7 @@ public class WeaponCapabilityPresets {
             .category(CapabilityItem.WeaponCategories.LONGSWORD) // will use milady category later
             .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
             .collider(ColliderPreset.LONGSWORD)
-            .swingSound(EpicFightSounds.WHOOSH_SHARP.get())
+            .swingSound(dawnDaySounds.Milady_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
