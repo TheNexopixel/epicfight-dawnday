@@ -26,7 +26,7 @@ public class WeaponCapabilityPresets {
             WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.LONGSWORD) // will use milady category later
             .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
-            .collider(ColliderPreset.LONGSWORD)
+            .collider(ColliderPreset.SPEAR)
             .swingSound(dawnDaySounds.Milady_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
@@ -50,7 +50,27 @@ public class WeaponCapabilityPresets {
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "diamond_light_greatsword"), DIAMOND_LIGHT_GREATSWORD);
     }
 
-
+    public static final Function<Item, CapabilityItem.Builder> DIAMOND_LIGHT_GREATSWORD = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.LONGSWORD)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(ColliderPreset.SPEAR)
+                    .swingSound(dawnDaySounds.Milady_slash.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO1,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO2,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO3,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO4,
+                            MiladyMoveset.MILADY_TWOHANDED_DASH,
+                            MiladyMoveset.MILADY_TWOHANDED_AIRSLASH
+                    )
+                                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
+                                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
+                                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 }

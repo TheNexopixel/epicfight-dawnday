@@ -1,180 +1,107 @@
-[02Feb.2026 21:11:20.313] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\Richard Martschoke\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412]
-[02Feb.2026 21:11:20.317] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.16 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[02Feb.2026 21:11:20.407] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
-[02Feb.2026 21:11:20.461] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
-[02Feb.2026 21:11:20.584] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
-[02Feb.2026 21:11:20.644] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Richard%20Martschoke/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[02Feb.2026 21:11:20.681] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3050/PCIe/SSE2 GL version 4.6.0 NVIDIA 576.80, NVIDIA Corporation
-[02Feb.2026 21:11:20.894] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[02Feb.2026 21:11:20.896] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[02Feb.2026 21:11:20.899] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[02Feb.2026 21:11:20.901] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
-[02Feb.2026 21:11:20.982] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[02Feb.2026 21:11:22.142] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[02Feb.2026 21:11:22.143] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Richard Martschoke\.gradle\caches\forge_gradle\assets, --assetIndex, 5]
-[02Feb.2026 21:11:22.453] [main/INFO] [mixin/]: Remapping refMap mixins.epicfight.refmap.json using B:\Programme\Meine Programme._\epicfight-dawnday\build\createSrgToMcp\output.srg
-[02Feb.2026 21:11:22.665] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomModelPart (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomModelPart)
-[02Feb.2026 21:11:22.666] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomModelPart was not found mixins.epicfight.json:skinlayers.MixinCustomModelPart
-[02Feb.2026 21:11:22.668] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomizableCube (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomizableCube)
-[02Feb.2026 21:11:22.668] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomizableCube was not found mixins.epicfight.json:skinlayers.MixinCustomizableCubeWrapper$SkinLayer3DMixinCustomModelCube
-[02Feb.2026 21:11:22.670] [main/WARN] [mixin/]: Error loading class: de/teamlapen/vampirism/client/renderer/entity/layers/VampirePlayerHeadLayer (java.lang.ClassNotFoundException: de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer)
-[02Feb.2026 21:11:22.670] [main/WARN] [mixin/]: @Mixin target de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer was not found mixins.epicfight.json:teamlapen.MixinVampirePlayerHeadLayer
-[02Feb.2026 21:11:22.672] [main/WARN] [mixin/]: Error loading class: de/teamlapen/werewolves/client/render/layer/HumanWerewolfLayer (java.lang.ClassNotFoundException: de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer)
-[02Feb.2026 21:11:22.673] [main/WARN] [mixin/]: @Mixin target de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer was not found mixins.epicfight.json:teamlapen.MixinHumanWerewolfLayer
-[02Feb.2026 21:11:24.906] [pool-4-thread-1/WARN] [mixin/]: @Final field nextHeadUpdate:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
-[02Feb.2026 21:11:24.907] [pool-4-thread-1/WARN] [mixin/]: @Final field idleHeadUpdates:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
-[02Feb.2026 21:11:26.008] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 95 milliseconds
-[02Feb.2026 21:11:26.327] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
-[02Feb.2026 21:11:26.327] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
-[02Feb.2026 21:11:26.328] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
-[02Feb.2026 21:11:26.328] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
-[02Feb.2026 21:11:27.354] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Richard%20Martschoke/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[02Feb.2026 21:11:27.355] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Richard%20Martschoke/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[02Feb.2026 21:11:27.368] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[02Feb.2026 21:11:27.372] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[02Feb.2026 21:11:27.464] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
-[02Feb.2026 21:11:27.662] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
-[02Feb.2026 21:11:27.665] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
-[02Feb.2026 21:11:28.260] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.player.Player from class yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch
-[02Feb.2026 21:11:28.272] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.272] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.272] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.273] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
-[02Feb.2026 21:11:28.308] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\assets', ignoring
-[02Feb.2026 21:11:28.308] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\data', ignoring
-[02Feb.2026 21:11:28.308] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\pack.mcmeta', ignoring
-[02Feb.2026 21:11:28.607] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [epicfight_dd]
-[02Feb.2026 21:11:28.860] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
-[02Feb.2026 21:11:28.889] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
-[02Feb.2026 21:11:28.966] [Worker-Main-12/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
-[02Feb.2026 21:11:28.982] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: supported
-[02Feb.2026 21:11:28.993] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server status: Initialize
-[02Feb.2026 21:11:29.082] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server status: failed because of offline mode
-[02Feb.2026 21:11:29.121] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
-[02Feb.2026 21:11:29.128] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: supported
-[02Feb.2026 21:11:29.136] [Worker-Main-13/INFO] [com.mojang.text2speech.Narrator/]: HELLO FROM COMMON SETUP
-[02Feb.2026 21:11:29.145] [Worker-Main-13/INFO] [com.mojang.text2speech.Narrator/]: DIRT BLOCK >> minecraft:dirt
-[02Feb.2026 21:11:29.146] [Worker-Main-13/INFO] [com.mojang.text2speech.Narrator/]: DIRT BLOCK >> minecraft:dirt
-[02Feb.2026 21:11:29.146] [Worker-Main-13/INFO] [com.mojang.text2speech.Narrator/]: The magic number is... 42
-[02Feb.2026 21:11:29.146] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[02Feb.2026 21:11:29.147] [Worker-Main-13/INFO] [com.mojang.text2speech.Narrator/]: ITEM >> iron_ingot
-[02Feb.2026 21:11:29.252] [Worker-Main-14/INFO] [com.mojang.text2speech.Narrator/]: MINECRAFT NAME >> Dev
-[02Feb.2026 21:11:29.278] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] OpenGL Version: 4.6.0 NVIDIA 576.80
-[02Feb.2026 21:11:29.278] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] Compute Shader: Supported
-[02Feb.2026 21:11:29.513] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.4.0 Target: 47.4.10
-[02Feb.2026 21:11:29.705] [Worker-Main-10/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'epicfight_dd:blockstates/example_block.json' missing model for variant: 'epicfight_dd:example_block#'
-[02Feb.2026 21:11:29.715] [Worker-Main-10/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'epicfight_dd:example_block#inventory' referenced from: epicfight_dd:example_block#inventory: java.io.FileNotFoundException: epicfight_dd:models/item/example_block.json
-[02Feb.2026 21:11:29.715] [Worker-Main-10/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'epicfight_dd:example_item#inventory' referenced from: epicfight_dd:example_item#inventory: java.io.FileNotFoundException: epicfight_dd:models/item/example_item.json
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:combo_counter, epicfight:basic_attack_active] for epicfight:basic_attack
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:guard
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:last_active, epicfight:parry_motion_counter, epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:parrying
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:impact_guard
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:stacks, epicfight:resisting_damage_type] for epicfight:adaptive_skin
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record] for epicfight:adrenaline_fiend
-[02Feb.2026 21:11:30.985] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:entity_id, epicfight:stacks] for epicfight:bonebreaker
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:entity_id] for epicfight:vengeance
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall, epicfight:fall_distance] for epicfight:meteor_slam
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:stacks] for epicfight:revelation
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall] for epicfight:demolition_leap
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall, epicfight:jump_count, epicfight:jump_key_pressed_last_tick] for epicfight:phantom_ascent
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:last_hit_count] for epicfight:grasping_spire
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu_passive
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:combo_counter] for epicfight:blade_rush
-[02Feb.2026 21:11:30.986] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:thrown_trident_entity_id] for epicfight:everlasting_allegiance
-[02Feb.2026 21:11:31.038] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[02Feb.2026 21:11:31.039] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[02Feb.2026 21:11:31.066] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Lautsprecher (Realtek(R) Audio)
-[02Feb.2026 21:11:31.067] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[02Feb.2026 21:11:31.177] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[02Feb.2026 21:11:31.184] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[02Feb.2026 21:11:31.186] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[02Feb.2026 21:11:31.186] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[02Feb.2026 21:11:31.187] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[02Feb.2026 21:11:31.188] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[02Feb.2026 21:11:31.189] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[02Feb.2026 21:11:31.189] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[02Feb.2026 21:11:31.190] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[02Feb.2026 21:11:31.264] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
-[02Feb.2026 21:11:31.266] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
-[02Feb.2026 21:11:31.277] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
-[02Feb.2026 21:11:31.312] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[02Feb.2026 21:11:31.360] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x0 minecraft:textures/atlas/particles.png-atlas
-[02Feb.2026 21:11:31.364] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[02Feb.2026 21:11:31.364] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[02Feb.2026 21:11:32.312] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
-[02Feb.2026 21:11:35.435] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:combo_counter, epicfight:basic_attack_active] for epicfight:basic_attack
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:guard
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:last_active, epicfight:parry_motion_counter, epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:parrying
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:impact_guard
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:stacks, epicfight:resisting_damage_type] for epicfight:adaptive_skin
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:tick_record] for epicfight:adrenaline_fiend
-[02Feb.2026 21:11:35.769] [Render thread/INFO] [epicfight/]: Data keys [epicfight:entity_id, epicfight:stacks] for epicfight:bonebreaker
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:tick_record, epicfight:entity_id] for epicfight:vengeance
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall, epicfight:fall_distance] for epicfight:meteor_slam
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:stacks] for epicfight:revelation
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall] for epicfight:demolition_leap
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall, epicfight:jump_count, epicfight:jump_key_pressed_last_tick] for epicfight:phantom_ascent
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:last_hit_count] for epicfight:grasping_spire
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu_passive
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:combo_counter] for epicfight:blade_rush
-[02Feb.2026 21:11:35.770] [Render thread/INFO] [epicfight/]: Data keys [epicfight:thrown_trident_entity_id] for epicfight:everlasting_allegiance
-[02Feb.2026 21:11:36.730] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[02Feb.2026 21:11:36.803] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1271 advancements
-[02Feb.2026 21:11:37.159] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
-[02Feb.2026 21:11:37.160] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[02Feb.2026 21:11:37.378] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[02Feb.2026 21:11:38.779] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[02Feb.2026 21:11:38.779] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[02Feb.2026 21:11:38.779] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[02Feb.2026 21:11:38.890] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[02Feb.2026 21:11:39.399] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 69%
-[02Feb.2026 21:11:39.550] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[02Feb.2026 21:11:39.559] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 2172 ms
-[02Feb.2026 21:11:39.656] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
-[02Feb.2026 21:11:39.658] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[02Feb.2026 21:11:39.737] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
-[02Feb.2026 21:11:40.133] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[02Feb.2026 21:11:40.201] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:a2c48758] logged in with entity id 118 at (46.62548847887549, -60.0, -47.42373959486526)
-[02Feb.2026 21:11:40.274] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[02Feb.2026 21:11:40.939] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 36 advancements
-[02Feb.2026 21:11:41.441] [ForkJoinPool.commonPool-worker-1/ERROR] [epicfight/]: Error code from Epic Fight web server: <html>
-<head><title>502 Bad Gateway</title></head>
-<body>
-<center><h1>502 Bad Gateway</h1></center>
-</body>
-</html>
-
-[02Feb.2026 21:11:41.475] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[02Feb.2026 21:11:41.485] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[02Feb.2026 21:11:42.981] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[02Feb.2026 21:11:42.983] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[02Feb.2026 21:12:02.452] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[02Feb.2026 21:12:02.455] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[02Feb.2026 21:12:02.463] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[02Feb.2026 21:12:02.464] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[02Feb.2026 21:12:41.952] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[02Feb.2026 21:12:41.955] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[02Feb.2026 21:12:41.962] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[02Feb.2026 21:12:41.962] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[02Feb.2026 21:12:50.313] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 36 advancements
-[02Feb.2026 21:14:18.312] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 36 advancements
-[02Feb.2026 21:14:18.810] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 43 advancements
-[02Feb.2026 21:14:34.603] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [Debug]: Hitboxes: shown
-[02Feb.2026 21:14:36.140] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [Debug]: Hitboxes: hidden
-[02Feb.2026 21:14:39.413] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 43 advancements
-[02Feb.2026 21:15:42.259] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 43 advancements
-[02Feb.2026 21:15:43.564] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 45 advancements
-[02Feb.2026 21:15:47.052] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[02Feb.2026 21:15:47.055] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[02Feb.2026 21:15:47.061] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[02Feb.2026 21:15:47.061] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[02Feb.2026 21:16:04.191] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
-[02Feb.2026 21:16:04.195] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: supported
+[03Feb.2026 23:10:20.599] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\Richard Martschoke\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412]
+[03Feb.2026 23:10:20.603] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.16 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[03Feb.2026 23:10:20.692] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[03Feb.2026 23:10:20.746] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[03Feb.2026 23:10:20.867] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[03Feb.2026 23:10:20.917] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Richard%20Martschoke/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[03Feb.2026 23:10:20.957] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3050/PCIe/SSE2 GL version 4.6.0 NVIDIA 576.80, NVIDIA Corporation
+[03Feb.2026 23:10:21.149] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[03Feb.2026 23:10:21.152] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[03Feb.2026 23:10:21.154] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[03Feb.2026 23:10:21.156] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Richard Martschoke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[03Feb.2026 23:10:21.216] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[03Feb.2026 23:10:22.210] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[03Feb.2026 23:10:22.212] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Richard Martschoke\.gradle\caches\forge_gradle\assets, --assetIndex, 5]
+[03Feb.2026 23:10:22.499] [main/INFO] [mixin/]: Remapping refMap mixins.epicfight.refmap.json using B:\Programme\Meine Programme._\epicfight-dawnday\build\createSrgToMcp\output.srg
+[03Feb.2026 23:10:22.686] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomModelPart (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomModelPart)
+[03Feb.2026 23:10:22.686] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomModelPart was not found mixins.epicfight.json:skinlayers.MixinCustomModelPart
+[03Feb.2026 23:10:22.687] [main/WARN] [mixin/]: Error loading class: dev/tr7zw/skinlayers/versionless/render/CustomizableCube (java.lang.ClassNotFoundException: dev.tr7zw.skinlayers.versionless.render.CustomizableCube)
+[03Feb.2026 23:10:22.688] [main/WARN] [mixin/]: @Mixin target dev.tr7zw.skinlayers.versionless.render.CustomizableCube was not found mixins.epicfight.json:skinlayers.MixinCustomizableCubeWrapper$SkinLayer3DMixinCustomModelCube
+[03Feb.2026 23:10:22.689] [main/WARN] [mixin/]: Error loading class: de/teamlapen/vampirism/client/renderer/entity/layers/VampirePlayerHeadLayer (java.lang.ClassNotFoundException: de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer)
+[03Feb.2026 23:10:22.689] [main/WARN] [mixin/]: @Mixin target de.teamlapen.vampirism.client.renderer.entity.layers.VampirePlayerHeadLayer was not found mixins.epicfight.json:teamlapen.MixinVampirePlayerHeadLayer
+[03Feb.2026 23:10:22.691] [main/WARN] [mixin/]: Error loading class: de/teamlapen/werewolves/client/render/layer/HumanWerewolfLayer (java.lang.ClassNotFoundException: de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer)
+[03Feb.2026 23:10:22.691] [main/WARN] [mixin/]: @Mixin target de.teamlapen.werewolves.client.render.layer.HumanWerewolfLayer was not found mixins.epicfight.json:teamlapen.MixinHumanWerewolfLayer
+[03Feb.2026 23:10:24.858] [pool-4-thread-1/WARN] [mixin/]: @Final field nextHeadUpdate:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[03Feb.2026 23:10:24.858] [pool-4-thread-1/WARN] [mixin/]: @Final field idleHeadUpdates:[I in mixins.epicfight.json:common.MixinWitherBoss should be final
+[03Feb.2026 23:10:25.838] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 82 milliseconds
+[03Feb.2026 23:10:26.153] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[03Feb.2026 23:10:26.153] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[03Feb.2026 23:10:26.153] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[03Feb.2026 23:10:26.154] [pool-4-thread-1/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.LivingEntity from class yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch
+[03Feb.2026 23:10:27.229] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Richard%20Martschoke/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[03Feb.2026 23:10:27.230] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Richard%20Martschoke/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[03Feb.2026 23:10:27.243] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[03Feb.2026 23:10:27.247] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[03Feb.2026 23:10:27.343] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[03Feb.2026 23:10:27.540] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[03Feb.2026 23:10:27.541] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[03Feb.2026 23:10:28.163] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.player.Player from class yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch
+[03Feb.2026 23:10:28.180] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.180] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.180] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.180] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.180] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.181] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.181] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.181] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.181] [Render thread/WARN] [net.minecraft.network.syncher.SynchedEntityData/]: defineId called for: class net.minecraft.world.entity.boss.wither.WitherBoss from class yesman.epicfight.world.capabilities.entitypatch.boss.WitherPatch
+[03Feb.2026 23:10:28.226] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\assets', ignoring
+[03Feb.2026 23:10:28.226] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\data', ignoring
+[03Feb.2026 23:10:28.226] [Render thread/INFO] [net.minecraft.server.packs.repository.FolderRepositorySource/]: Found non-pack entry '.\resourcepacks\pack.mcmeta', ignoring
+[03Feb.2026 23:10:28.531] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [epicfight_dd]
+[03Feb.2026 23:10:28.805] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
+[03Feb.2026 23:10:28.840] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
+[03Feb.2026 23:10:28.915] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server connection helper: supported
+[03Feb.2026 23:10:28.918] [Worker-Main-7/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
+[03Feb.2026 23:10:28.935] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server status: Initialize
+[03Feb.2026 23:10:29.065] [modloading-worker-0/INFO] [epicfight/]: Epic Fight web server status: failed because of offline mode
+[03Feb.2026 23:10:29.093] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: Initialize
+[03Feb.2026 23:10:29.101] [Thread-3/INFO] [epicfight/]: Epic Fight web server connection helper: supported
+[03Feb.2026 23:10:29.111] [Worker-Main-3/INFO] [com.mojang.text2speech.Narrator/]: HELLO FROM COMMON SETUP
+[03Feb.2026 23:10:29.111] [Worker-Main-3/INFO] [com.mojang.text2speech.Narrator/]: DIRT BLOCK >> minecraft:dirt
+[03Feb.2026 23:10:29.111] [Worker-Main-3/INFO] [com.mojang.text2speech.Narrator/]: DIRT BLOCK >> minecraft:dirt
+[03Feb.2026 23:10:29.112] [Worker-Main-3/INFO] [com.mojang.text2speech.Narrator/]: The magic number is... 42
+[03Feb.2026 23:10:29.112] [Worker-Main-3/INFO] [com.mojang.text2speech.Narrator/]: ITEM >> iron_ingot
+[03Feb.2026 23:10:29.117] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[03Feb.2026 23:10:29.204] [Worker-Main-2/INFO] [com.mojang.text2speech.Narrator/]: MINECRAFT NAME >> Dev
+[03Feb.2026 23:10:29.234] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] OpenGL Version: 4.6.0 NVIDIA 576.80
+[03Feb.2026 23:10:29.234] [Render thread/WARN] [epicfight/]: [Computer Shader Acceleration] Compute Shader: Supported
+[03Feb.2026 23:10:29.505] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.4.0 Target: 47.4.10
+[03Feb.2026 23:10:30.853] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:basic_attack_active, epicfight:combo_counter] for epicfight:basic_attack
+[03Feb.2026 23:10:30.853] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:guard
+[03Feb.2026 23:10:30.853] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:parry_motion_counter, epicfight:penalty_restore_counter, epicfight:penalty, epicfight:last_active] for epicfight:parrying
+[03Feb.2026 23:10:30.853] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:penalty_restore_counter, epicfight:penalty] for epicfight:impact_guard
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:stacks, epicfight:resisting_damage_type, epicfight:tick_record] for epicfight:adaptive_skin
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:tick_record] for epicfight:adrenaline_fiend
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:entity_id, epicfight:stacks] for epicfight:bonebreaker
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:entity_id, epicfight:tick_record] for epicfight:vengeance
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:fall_distance, epicfight:slam_protect_next_fall] for epicfight:meteor_slam
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:stacks] for epicfight:revelation
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:slam_protect_next_fall] for epicfight:demolition_leap
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:jump_key_pressed_last_tick, epicfight:slam_protect_next_fall, epicfight:jump_count] for epicfight:phantom_ascent
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:last_hit_count] for epicfight:grasping_spire
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu_passive
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:sheath] for epicfight:battojutsu
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:combo_counter] for epicfight:blade_rush
+[03Feb.2026 23:10:30.854] [modloading-worker-0/INFO] [epicfight/]: Data keys [epicfight:thrown_trident_entity_id] for epicfight:everlasting_allegiance
+[03Feb.2026 23:10:30.904] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[03Feb.2026 23:10:30.904] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[03Feb.2026 23:10:30.930] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Lautsprecher (Realtek(R) Audio)
+[03Feb.2026 23:10:30.931] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[03Feb.2026 23:10:31.020] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[03Feb.2026 23:10:31.029] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[03Feb.2026 23:10:31.030] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[03Feb.2026 23:10:31.030] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[03Feb.2026 23:10:31.031] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[03Feb.2026 23:10:31.035] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[03Feb.2026 23:10:31.036] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[03Feb.2026 23:10:31.036] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[03Feb.2026 23:10:31.037] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[03Feb.2026 23:10:31.127] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[03Feb.2026 23:10:31.130] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[03Feb.2026 23:10:31.141] [Render thread/ERROR] [epicfight/]: Can't load layer file minecraft:animated_layers/player/waveycapes.json for entity.minecraft.player: dev.tr7zw.waveycapes.renderlayers.CustomCapeRenderLayer (This is develop-only message and neglectable if the resource is not belong to you)
+[03Feb.2026 23:10:31.175] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[03Feb.2026 23:10:31.221] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x0 minecraft:textures/atlas/particles.png-atlas
+[03Feb.2026 23:10:31.226] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[03Feb.2026 23:10:31.226] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[03Feb.2026 23:10:32.032] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0

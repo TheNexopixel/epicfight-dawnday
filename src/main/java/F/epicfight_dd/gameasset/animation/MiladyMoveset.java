@@ -13,6 +13,8 @@ public class MiladyMoveset {
 
     public static AnimationAccessor<StaticAnimation> MILADY_WALK;
     public static AnimationAccessor<StaticAnimation> MILADY_IS_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_DUAL_IS_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_IS_IDLE;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_2;
@@ -21,6 +23,15 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_5;
     public static AnimationAccessor<DashAttackAnimation> milady_onehanded_dash;
     public static AnimationAccessor<AirSlashAnimation> MILADY_AIR_SLASH;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> MILADY_TWOHANDED_DASH;
+    public static AnimationAccessor<AirSlashAnimation> MILADY_TWOHANDED_AIRSLASH;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_DUAL_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_DUAL_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_DUAL_AUTO3;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -29,6 +40,12 @@ public class MiladyMoveset {
                 new StaticAnimation(0.12F,true,ac, biped));
 
         MILADY_IS_IDLE = builder.nextAccessor("biped/living/milady_onehanded_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        MILADY_DUAL_IS_IDLE = builder.nextAccessor("biped/living/milady_dual_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        MILADY_TWOHANDED_IS_IDLE = builder.nextAccessor("biped/living/milady_twohanded_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
 
@@ -71,7 +88,50 @@ public class MiladyMoveset {
             MILADY_AIR_SLASH = builder.nextAccessor("biped/combat/milady_onehanded_airslash" , ac ->
                     new AirSlashAnimation(  0.12F, 0.1f ,0.3f, 0.8f,null, biped.get().toolR, ac , biped));
 
+        MILADY_TWOHANDED_AUTO1 = builder.nextAccessor("biped/combat/milady_twohanded_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
+        MILADY_TWOHANDED_AUTO2 = builder.nextAccessor("biped/combat/milady_twohanded_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_TWOHANDED_AUTO3 = builder.nextAccessor("biped/combat/milady_twohanded_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_TWOHANDED_AUTO4 = builder.nextAccessor("biped/combat/milady_twohanded_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_TWOHANDED_DASH = builder.nextAccessor("biped/combat/milady_twohanded_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_TWOHANDED_AIRSLASH = builder.nextAccessor("biped/combat/milady_twohanded_airslash", (ac) ->
+                new AirSlashAnimation(  0.12F, 0.1f ,0.3f, 0.8f,null, biped.get().toolR, ac , biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_DUAL_AUTO1 = builder.nextAccessor("biped/combat/milady_dual_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_DUAL_AUTO2 = builder.nextAccessor("biped/combat/milady_dual_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_DUAL_AUTO3 = builder.nextAccessor("biped/combat/milady_dual_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
         }
     }
 

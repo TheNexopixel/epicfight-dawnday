@@ -15,5 +15,8 @@ public class MiladyItems {
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new miladyItem(Tiers.IRON));
 
+    public static final RegistryObject<Item> light_great_sword =
+            ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND));
+
 
 }
