@@ -52,8 +52,6 @@ public class MiladyMoveset {
         MILADY_TWOHANDED_IS_IDLE = builder.nextAccessor("biped/living/milady_twohanded_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
-
-
             MILADY_ONE_HANDED_AUTO_1 = builder.nextAccessor("biped/combat/milady_onehanded_auto1", (accessor) ->
                     new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)

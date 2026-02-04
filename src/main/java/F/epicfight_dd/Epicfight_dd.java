@@ -1,21 +1,11 @@
 package F.epicfight_dd;
 
 import F.epicfight_dd.gameasset.DawnDayRegisters;
-import F.epicfight_dd.world.item.MiladyItems;
+import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,9 +13,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
@@ -44,6 +33,8 @@ public class Epicfight_dd {
         //register every deferred register in the list with the mod eventbus
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(modEventBus));
 
+        WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -56,6 +47,7 @@ public class Epicfight_dd {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));

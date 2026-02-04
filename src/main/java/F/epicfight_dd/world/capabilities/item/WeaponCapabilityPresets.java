@@ -4,6 +4,7 @@ import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.gameasset.animation.MiladyMoveset;
 import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,14 +25,14 @@ public class WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> MILADY = (item) ->
             WeaponCapability.builder()
-            .category(CapabilityItem.WeaponCategories.LONGSWORD) // will use milady category later
-            .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
-            .collider(ColliderPreset.TACHI)
+            .category(EpicFightDD_WeaponCategories.MILADY)
+            .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+            .collider(ColliderPreset.GREATSWORD)
             .swingSound(dawnDaySounds.Milady_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
-            .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.SHARP_STAB)
+            .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO2,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
@@ -39,20 +40,22 @@ public class WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_1
                    )
-            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
-            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
-            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> DIAMOND_LIGHT_GREATSWORD = (item) ->
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.LONGSWORD)
-                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .collider(ColliderPreset.SPEAR)
                     .swingSound(dawnDaySounds.Milady_slash.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
-                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             MiladyMoveset.MILADY_ONE_HANDED_AUTO_1,
                             MiladyMoveset.MILADY_ONE_HANDED_AUTO_2,
                             MiladyMoveset.MILADY_ONE_HANDED_AUTO_3,
@@ -61,10 +64,19 @@ public class WeaponCapabilityPresets {
                             MiladyMoveset.milady_onehanded_dash,
                             MiladyMoveset.MILADY_AIR_SLASH
                     )
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.MILADY_DUAL_AUTO1,
+                            MiladyMoveset.MILADY_DUAL_AUTO2,
+                            MiladyMoveset.MILADY_DUAL_AUTO3,
+                            Animations.SWORD_DUAL_DASH,
+                            Animations.SWORD_DUAL_AIR_SLASH)
+
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
+
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);

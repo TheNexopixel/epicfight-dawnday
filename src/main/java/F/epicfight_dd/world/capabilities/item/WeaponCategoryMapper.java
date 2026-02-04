@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class WeaponCategoryMapper {
 
-//    private static final Map<MiladyWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
+//    private static final Map<EpicFightDD_WeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 //    static {
-//        categoryMap.put(MiladyWeaponCategories.MiladyWeaponCategories.milady, CapabilityItem.WeaponCategories.SWORD);
+//        categoryMap.put(EpicFightDD_WeaponCategories.EpicFightDD_WeaponCategories.milady, CapabilityItem.WeaponCategories.SWORD);
 //    }
 
 }

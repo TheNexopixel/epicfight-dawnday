@@ -2,12 +2,12 @@ package F.epicfight_dd.world.capabilities.item;
 
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
-public enum MiladyWeaponCategories implements WeaponCategory{
-        milady;
+public enum EpicFightDD_WeaponCategories implements WeaponCategory{
+        MILADY;
 
         final int id;
 
-    MiladyWeaponCategories() {
+    EpicFightDD_WeaponCategories() {
         this.id = WeaponCategory.ENUM_MANAGER.assign(this);
     }
 
