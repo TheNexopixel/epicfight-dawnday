@@ -72,4 +72,9 @@ public class WeaponCapabilityPresets {
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
+    @SubscribeEvent // register Weapon Moveset
+    public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "diamond_light_greatsword"), DIAMOND_LIGHT_GREATSWORD);
+    }
 }
