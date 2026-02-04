@@ -15,7 +15,7 @@ public enum EpicFightDD_WeaponCategories implements WeaponCategory{
 
     @Override
     public int universalOrdinal() {
-        return 0;
+        return this.id;
     }
 }
 
