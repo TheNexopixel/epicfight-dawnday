@@ -1,9 +1,9 @@
 {
   "trail": {
-    "color": [251, 35, 203],
-    "begin_pos": [0.0, 0.0, -0.1],
-    "end_pos": [0.0, 0.1, -2.8],
-    "lifetime": 2,
+    "color": [200, 200, 200],
+    "begin_pos": [0.0, 0.0, 0.0],
+    "end_pos": [0.0, 0.0, -3.0],
+    "lifetime": 3,
     "interpolations": 4,
     "texture_path": "epicfight:textures/particle/swing_trail.png",
     "particle_type": "epicfight:swing_trail"
