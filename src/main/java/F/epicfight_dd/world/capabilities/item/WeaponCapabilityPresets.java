@@ -32,15 +32,14 @@ public class WeaponCapabilityPresets {
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
-                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_1,
-                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_2,
-                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_3,
-                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_4,
-                    MiladyMoveset.MILADY_ONE_HANDED_AUTO_5,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO1,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO2,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO3,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.milady_onehanded_dash,
-                   MiladyMoveset.MILADY_AIR_SLASH
+                   MiladyMoveset.MILADY_ONE_HANDED_AUTO_1
                    )
-            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
