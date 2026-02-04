@@ -18,7 +18,7 @@ provider = "NULL"
 	#Range: 0 ~ 30
 	max_hit_projectiles = 30
 	first_person_model = false
-	enable_player_vanilla_model = false
+	enable_player_vanilla_model = true
 	enable_cosmetics = true
 	use_compute_shader = false
 	enable_pov_action = false

@@ -68,11 +68,13 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_DUAL_AUTO1,
                             MiladyMoveset.MILADY_DUAL_AUTO2,
                             MiladyMoveset.MILADY_DUAL_AUTO3,
-                            Animations.SWORD_DUAL_DASH,
+                            MiladyMoveset.MILADY_DUAL_DASH,
                             Animations.SWORD_DUAL_AIR_SLASH)
                     .canBePlacedOffhand(true)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_DUAL_IS_IDLE)
+                                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_DUAL_IS_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
+                                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 
