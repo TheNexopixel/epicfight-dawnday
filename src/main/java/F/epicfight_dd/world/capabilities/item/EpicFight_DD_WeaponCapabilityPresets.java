@@ -69,7 +69,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_DUAL_AUTO2,
                             MiladyMoveset.MILADY_DUAL_AUTO3,
                             MiladyMoveset.MILADY_DUAL_DASH,
-                            Animations.SWORD_DUAL_AIR_SLASH)
+                            MiladyMoveset.MILADY_DUAL_AIRSLASH)
                     .canBePlacedOffhand(true)
                                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_DUAL_IS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
