@@ -134,7 +134,7 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.2f, 0.5f, 0.7f, 0.8f, 0.48f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
-                        new AttackAnimation.Phase(0.01f, 0.2f, 0.5f, 1.1f, 0.8f,0.489f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        new AttackAnimation.Phase(0.0f, 0.2f, 0.5f, 0.7f, 0.8f,0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -143,7 +143,7 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.2f, 0.4f, 0.5f, 0.48f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
-                        new AttackAnimation.Phase(0.481f, 0.5f, 0.7f, 0.9f, 1.0f,1.2f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
+                        new AttackAnimation.Phase(0.481f, 0.5f, 0.6f, 0.8f, 0.9f,1.2f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
 
                         new AttackAnimation.Phase(1.201f, 0.5f, 0.7f, 0.9f, 1.0f, 1.21f, InteractionHand.OFF_HAND, biped.get().toolL,null))
 
