@@ -18,5 +18,11 @@ public class MiladyItems {
     public static final RegistryObject<Item> light_great_sword =
             ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND));
 
+    public static final RegistryObject<Item> pole_axe =
+            ITEMS.register("pole_axe",() -> new pole_axe_item(Tiers.NETHERITE));
+
+    public static final RegistryObject<Item> war_sickle =
+            ITEMS.register("war_sickle",() -> new war_sickle_item(Tiers.NETHERITE));
+
 
 }

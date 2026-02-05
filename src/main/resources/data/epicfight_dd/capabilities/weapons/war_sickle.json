@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":34.0,
+      "impact":5.3,
+      "max_strikes":8
+    }
+  },
+  "type":"epicfight_dd:war_sickle"
+}
