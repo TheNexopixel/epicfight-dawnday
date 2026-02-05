@@ -4,5 +4,14 @@
 /gradle/
 /run/
 /run-data/
-/run/
-/build/
+
+/run/config/
+/run/crash-reports/
+/run/defaultconfigs/
+/run/logs/
+/run/mods/
+/run/resourcepacks/
+/run/saves/
+/run/options.txt
+/run/usercache.json
+/run/usernamecache.json

@@ -2,6 +2,7 @@ package F.epicfight_dd.world.capabilities.item;
 
 import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.gameasset.animation.MiladyMoveset;
+import F.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -39,10 +40,10 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
-                   MiladyMoveset.MILADY_ONE_HANDED_AUTO_1
-                   )
+                   MiladyMoveset.MILADY_ONE_HANDED_AUTO_1)
             .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
             .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.COMMON, LivingMotions.DEATH , QoLMiscAnimations.EXPRESSIVE_DEATH)
             .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 

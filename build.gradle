@@ -13,8 +13,18 @@ repositories {
 
 dependencies {
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7554560")
+
+    //perf
+    runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")
+    runtimeOnly fg.deobf("curse.maven:ferritecore-429235:4810975")
+    runtimeOnly fg.deobf("curse.maven:canary-665658:5089991")
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
+mixin{
+    config "mixins.epicfight_dd.json"
+}
 
 group = mod_group_id
 version = mod_version

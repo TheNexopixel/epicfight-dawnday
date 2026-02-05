@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "F.epicfight_dd.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "LivingEntityPatchDeathMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+
+}

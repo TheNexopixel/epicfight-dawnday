@@ -144,9 +144,8 @@ public class MiladyMoveset {
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.5f, 0.7f, 0.48f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
                         new AttackAnimation.Phase(0.481f, 0.6f, 0.7f, 1.1f, 1.2f,1.3f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
-
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+                        .addStateRemoveOld(EntityState.CAN_BASIC_ATTACK, false));
 
         MILADY_DUAL_AUTO2 = builder.nextAccessor("biped/combat/milady_dual_auto2", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
