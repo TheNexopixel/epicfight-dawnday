@@ -32,9 +32,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
             .category(EpicFightDD_WeaponCategories.MILADY)
                     .styleProvider((pp) ->
-                    pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFight_DD_WeaponCapabilityPresets.MILADY ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
-            .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFight_DD_WeaponCapabilityPresets.MILADY)
-            .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.MILADY ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFight_DD_WeaponCapabilityPresets.MILADY)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
             .collider(MiladyCollider.LIGHT_GREATSWORD)
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -42,6 +42,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO2,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
@@ -81,7 +82,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     )
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_DUAL_AUTO1,
-                            MiladyMoveset.MILADY_DUAL_AUTO2,
                             MiladyMoveset.MILADY_DUAL_AUTO3,
                             MiladyMoveset.MILADY_DUAL_AUTO4,
                             MiladyMoveset.MILADY_DUAL_AUTO5,
