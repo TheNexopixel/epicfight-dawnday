@@ -16,6 +16,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_1;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
 
     public static AnimationManager.AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
 
@@ -31,8 +32,9 @@ public class QoLMiscAnimations {
 
                     if (source == null) return 0;
 
-                    if (source.is(DamageTypes.GENERIC ) || source.is(DamageTypes.FALL)  || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)) return 4;
+                    if (source.is(DamageTypes.GENERIC ) || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)) return 4;
                     if (source.is(DamageTypes.WITHER)) return 2;
+                    if (source.is(DamageTypes.FALL)) return 5;
                     if (source.is(DamageTypes.ARROW)) return 3;
                     if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.PLAYER_EXPLOSION) || source.is(DamageTypes.MOB_ATTACK)) return 1;
 
@@ -42,7 +44,8 @@ public class QoLMiscAnimations {
                         GENERIC_DEATH_2,         // 1
                         WITHERING_DEMISE,        // 2
                         SHOT_DEAD,               // 3
-                        GENERIC_DEATH_1          // 4
+                        GENERIC_DEATH_1,          // 4
+                        FALL_DEATH
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -60,6 +63,9 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         SHOT_DEAD = builder.nextAccessor("biped/living/death_arrow", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        FALL_DEATH = builder.nextAccessor("biped/living/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
 
