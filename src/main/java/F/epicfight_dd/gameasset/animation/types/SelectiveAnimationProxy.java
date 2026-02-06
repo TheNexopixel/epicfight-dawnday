@@ -11,13 +11,13 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import java.util.List;
 import java.util.function.Function;
 
-public class SelectiveDeathAnimation extends StaticAnimation {
+public class SelectiveAnimationProxy extends StaticAnimation {
     private final Function<LivingEntityPatch<?>, Integer> selector;
     private final List<AssetAccessor<? extends StaticAnimation>> animationsInEachState;
 
     @SafeVarargs
-    public SelectiveDeathAnimation(Function<LivingEntityPatch<?>, Integer> selector,
-                                   AnimationManager.AnimationAccessor<? extends SelectiveDeathAnimation> accessor,
+    public SelectiveAnimationProxy(Function<LivingEntityPatch<?>, Integer> selector,
+                                   AnimationManager.AnimationAccessor<? extends SelectiveAnimationProxy> accessor,
                                    AssetAccessor<? extends StaticAnimation>... selectOptions) {
         super(0.15F, false, accessor, null);
         this.selector = selector;

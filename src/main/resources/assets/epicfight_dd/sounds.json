@@ -3,6 +3,21 @@
   {
     "category":"master",
     "subtitle":"sfx.slash",
-    "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false}]
+    "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false},{"name":"epicfight_dd:sfx/milady_light_slash", "stream":false}]
+  },
+
+
+  "sfx.milady_heavy_slash":
+  {
+    "category":"master",
+    "subtitle":"sfx.heavy_slash",
+    "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
+  },
+
+  "sfx.milady_dual_slash":
+  {
+    "category":"master",
+    "subtitle":"sfx.dual_slash",
+    "sounds":[{"name":"epicfight_dd:sfx/milady_dual_slash", "stream":false}]
   }
 }

@@ -4,7 +4,6 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum EpicFightDD_WeaponCategories implements WeaponCategory{
         MILADY;
-
         final int id;
 
     EpicFightDD_WeaponCategories() {
@@ -17,6 +16,8 @@ public enum EpicFightDD_WeaponCategories implements WeaponCategory{
     public int universalOrdinal() {
         return this.id;
     }
+
+
 }
 
 

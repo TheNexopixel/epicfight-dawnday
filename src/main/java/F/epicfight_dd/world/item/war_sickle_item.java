@@ -7,6 +7,7 @@ public class war_sickle_item extends WeaponItem
 {
     public war_sickle_item(Tier materialIn) {
         super(materialIn, 3, -2.0F, new Properties().stacksTo(1));
-
     }
+
+
 }

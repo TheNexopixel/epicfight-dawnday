@@ -13,4 +13,6 @@ public class ModBusEvent {
     public static void registerAnimation(AnimationManager.AnimationRegistryEvent event) {
         event.newBuilder(Epicfight_dd.MODID, AnimationBuildNexus::buildAnimations);
     }
+
+
 }

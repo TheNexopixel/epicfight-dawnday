@@ -1,0 +1,60 @@
+package F.epicfight_dd.skill.skill_compats;
+
+import F.epicfight_dd.Epicfight_dd;
+import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import yesman.epicfight.api.forgeevent.SkillBuildEvent;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.gameasset.EpicFightSkills;
+import yesman.epicfight.skill.guard.GuardSkill;
+
+import java.util.List;
+
+@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class DefaultEpicFightSkillCompat {
+
+    private DefaultEpicFightSkillCompat() {
+    }
+
+    @SubscribeEvent
+    public static void onGuardSkillcreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
+        if (event.getRegistryName().equals(EpicFightSkills.GUARD.getRegistryName())) {
+            GuardSkill.Builder builder = event.getSkillBuilder();
+
+            builder.addGuardMotion(
+                    EpicFightDD_WeaponCategories.MILADY,
+                    (i, p) -> Animations.LONGSWORD_GUARD_HIT
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.MILADY,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void onParrySkillcreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
+        if (event.getRegistryName().equals(EpicFightSkills.PARRYING.getRegistryName())) {
+            GuardSkill.Builder builder = event.getSkillBuilder();
+
+            builder.addGuardMotion(
+                            EpicFightDD_WeaponCategories.MILADY,
+                            (i, p) -> Animations.LONGSWORD_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.MILADY,
+                            (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.MILADY,
+                            (i, p) -> List.of(
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT2,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT3
+                            ));
+        }
+
+    }
+
+    //TODO:ADD ICON CREATION COMP
+
+
+}

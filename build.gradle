@@ -23,6 +23,7 @@ dependencies {
 }
 
 mixin{
+    add sourceSets.main, "mixins.epicfight_dd.refmap.json"
     config "mixins.epicfight_dd.json"
 }
 
