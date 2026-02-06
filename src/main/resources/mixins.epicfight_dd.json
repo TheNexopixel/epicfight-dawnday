@@ -10,8 +10,6 @@
   "client": [],
   "injectors": {
     "defaultRequire": 1
-  },
-  "verbose": true
-
+  }
 
 }

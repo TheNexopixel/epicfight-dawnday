@@ -2,11 +2,11 @@ package F.epicfight_dd.skill.skill_compats;
 
 import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.gameasset.Animations;
-import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
 
 import java.util.List;
@@ -14,12 +14,10 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DefaultEpicFightSkillCompat {
 
-    private DefaultEpicFightSkillCompat() {
-    }
 
     @SubscribeEvent
     public static void onGuardSkillcreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
-        if (event.getRegistryName().equals(EpicFightSkills.GUARD.getRegistryName())) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","guard"))) {
             GuardSkill.Builder builder = event.getSkillBuilder();
 
             builder.addGuardMotion(
@@ -35,7 +33,7 @@ public class DefaultEpicFightSkillCompat {
 
     @SubscribeEvent
     public static void onParrySkillcreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
-        if (event.getRegistryName().equals(EpicFightSkills.PARRYING.getRegistryName())) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","parrying"))) {
             GuardSkill.Builder builder = event.getSkillBuilder();
 
             builder.addGuardMotion(

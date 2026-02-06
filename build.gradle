@@ -23,8 +23,8 @@ dependencies {
 }
 
 mixin{
-    add sourceSets.main, "mixins.epicfight_dd.refmap.json"
-    config "mixins.epicfight_dd.json"
+    add sourceSets.main, 'mixins.epicfight_dd.refmap.json'
+    config 'mixins.epicfight_dd.json'
 }
 
 group = mod_group_id

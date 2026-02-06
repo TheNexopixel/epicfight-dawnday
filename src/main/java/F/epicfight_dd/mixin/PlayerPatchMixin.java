@@ -19,24 +19,24 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 public abstract class PlayerPatchMixin {
 
 
-    @ModifyArgs(method = "initAnimator",
-    at = @At(value = "INVOKE", target = "Lyesman/epicfight/api/animation/Animator;addLivingAnimation(Lyesman/epicfight/api/animation/LivingMotion;Lyesman/epicfight/api/asset/AssetAccessor;)V")
-    ,remap = false)
-    public void redirectDeathMotion(Args args){
-     LivingMotion motion = args.get(0);
-
-     if(motion == LivingMotions.DEATH){
-         args.set(1,  (AssetAccessor<? extends StaticAnimation>) QoLMiscAnimations.EXPRESSIVE_DEATH);
-     }
-
-    }
-
-//    @Inject(method = "initAnimator", at = @At("TAIL"), remap = false)
-//    private void replaceDeathAnimation(Animator animator, CallbackInfo ci) {
-//        animator.addLivingAnimation(
-//                LivingMotions.DEATH,
-//                (AssetAccessor<? extends StaticAnimation>) QoLMiscAnimations.EXPRESSIVE_DEATH
-//        );
+//    @ModifyArgs(method = "initAnimator",
+//    at = @At(value = "INVOKE", target = "Lyesman/epicfight/api/animation/Animator;addLivingAnimation(Lyesman/epicfight/api/animation/LivingMotion;Lyesman/epicfight/api/asset/AssetAccessor;)V")
+//    ,remap = false)
+//    public void redirectDeathMotion(Args args){
+//     LivingMotion motion = args.get(0);
+//
+//     if(motion == LivingMotions.DEATH){
+//         args.set(1,  (AssetAccessor<? extends StaticAnimation>) QoLMiscAnimations.EXPRESSIVE_DEATH);
+//     }
+//
 //    }
+
+    @Inject(method = "initAnimator", at = @At("TAIL"), remap = false)
+    private void replaceDeathAnimation(Animator animator, CallbackInfo ci) {
+        animator.addLivingAnimation(
+                LivingMotions.DEATH,
+                (AssetAccessor<? extends StaticAnimation>) QoLMiscAnimations.EXPRESSIVE_DEATH
+        );
+    }
 
 }

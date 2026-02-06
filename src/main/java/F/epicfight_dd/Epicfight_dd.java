@@ -1,7 +1,6 @@
 package F.epicfight_dd;
 
 import F.epicfight_dd.gameasset.DawnDayRegisters;
-import F.epicfight_dd.gameasset.animation.keys.CustomSynchedVariableKeys_EFDD;
 import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
@@ -35,7 +34,7 @@ public class Epicfight_dd {
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(modEventBus));
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
-        CustomSynchedVariableKeys_EFDD.SYNCHED_ANIMATION_VARIABLE_KEYS.register(modEventBus);
+       // CustomSynchedVariableKeys_EFDD.SYNCHED_ANIMATION_VARIABLE_KEYS.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in
