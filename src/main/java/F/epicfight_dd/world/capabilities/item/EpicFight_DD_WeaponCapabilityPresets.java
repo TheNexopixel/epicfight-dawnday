@@ -81,6 +81,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     )
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_DUAL_AUTO1,
+                            MiladyMoveset.MILADY_DUAL_AUTO2,
                             MiladyMoveset.MILADY_DUAL_AUTO3,
                             MiladyMoveset.MILADY_DUAL_AUTO4,
                             MiladyMoveset.MILADY_DUAL_AUTO5,
