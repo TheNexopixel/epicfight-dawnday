@@ -1,7 +1,7 @@
 {
     "trail_effects": [
       {
-        "start_time": 0.5,
+        "start_time": 0.55,
         "end_time": 0.85,
         "lifetime": 3,
         "interpolations": 6,
@@ -9,7 +9,7 @@
         "item_skin_hand": "main_hand"
       },
       {
-        "start_time": 0.5,
+        "start_time": 0.55,
         "end_time": 0.85,
         "lifetime": 3,
         "interpolations": 6,
