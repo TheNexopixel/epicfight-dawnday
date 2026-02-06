@@ -50,8 +50,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_SPECIAL_AUTO1,
                             MiladyMoveset.MILADY_SPECIAL_AUTO2,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO3,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO4
+                            MiladyMoveset.MILADY_SPECIAL_AUTO3,
+                            MiladyMoveset.MILADY_SPECIAL_DASH,
+                            MiladyMoveset.MILADY_DUAL_AIRSLASH
                             )
 
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
