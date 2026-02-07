@@ -21,6 +21,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.diamond_light_greatsword.get());
                 output.accept(DawnDayItems.iron_light_greatsword.get());
                 output.accept(DawnDayItems.war_sickle.get());
+                output.accept(DawnDayItems.backhand_blade.get());
 
             })
             .build()
