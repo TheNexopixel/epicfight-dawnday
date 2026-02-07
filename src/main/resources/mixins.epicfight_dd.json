@@ -1,8 +1,8 @@
 {
   "required": true,
+  "package": "F.epicfight_dd.mixin",
   "refmap" : "mixins.epicfight_dd.refmap.json",
   "minVersion": "0.8",
-  "package": "F.epicfight_dd.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "PlayerPatchMixin"

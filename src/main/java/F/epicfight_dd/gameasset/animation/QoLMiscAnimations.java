@@ -44,8 +44,8 @@ public class QoLMiscAnimations {
                         GENERIC_DEATH_2,         // 1
                         WITHERING_DEMISE,        // 2
                         SHOT_DEAD,               // 3
-                        GENERIC_DEATH_1,          // 4
-                        FALL_DEATH
+                        GENERIC_DEATH_1,         // 4
+                        FALL_DEATH               // 5
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
