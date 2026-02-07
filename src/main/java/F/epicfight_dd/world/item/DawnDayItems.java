@@ -15,8 +15,11 @@ public class DawnDayItems {
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new miladyItem(Tiers.IRON));
 
-    public static final RegistryObject<Item> light_great_sword =
-            ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND));
+    public static final RegistryObject<Item> diamond_light_greatsword =
+            ITEMS.register("diamond_light_greatsword",() -> new diamond_light_greatsword_Item(Tiers.DIAMOND));
+
+    public static final RegistryObject<Item> iron_light_greatsword =
+            ITEMS.register("iron_light_greatsword",() -> new iron_light_greatsword_Item(Tiers.IRON));
 
     public static final RegistryObject<Item> war_sickle =
             ITEMS.register("war_sickle",() -> new war_sickle_item(Tiers.NETHERITE));

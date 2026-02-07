@@ -18,7 +18,8 @@ public class DawnDayCreativeTab {
             .title(Component.translatable("creativetab.dawn_day_tab"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
-                output.accept(DawnDayItems.light_great_sword.get());
+                output.accept(DawnDayItems.diamond_light_greatsword.get());
+                output.accept(DawnDayItems.iron_light_greatsword.get());
                 output.accept(DawnDayItems.war_sickle.get());
 
             })

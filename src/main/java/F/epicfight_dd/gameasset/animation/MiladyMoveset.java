@@ -16,6 +16,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> MILADY_DUAL_IS_IDLE;
     public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_IS_IDLE;
     public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_WALK;
+    public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_WALK;
     public static AnimationAccessor<StaticAnimation> POLE_AXE_IDLE;
     public static AnimationAccessor<StaticAnimation> WAR_SICKLE_IDLE;
     public static AnimationAccessor<StaticAnimation> HEAVY_AXE_IDLE;
@@ -73,6 +74,9 @@ public class MiladyMoveset {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
 
         MILADY_WALK = builder.nextAccessor("biped/living/milady_onehanded_walk", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        MILADY_SPECIAL_WALK = builder.nextAccessor("biped/living/milady_special_walk", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
         MILADY_TWOHANDED_WALK = builder.nextAccessor("biped/living/milady_twohanded_walk", ac ->
