@@ -22,6 +22,8 @@ public class MiladyCollider {
         public static final Collider LIGHT_GREATSWORD = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"milady"),new MultiOBBCollider(6, 0.3D, 0.3D, 1.23D, 0D, 0.0D, -1.6D));
     public static final Collider WAR_SICKLE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"war_sickle"),new MultiOBBCollider(6, 0.5D, 0.5D, 1.0D, 0D, 0.0D, -2.0D));
 
+    public static final Collider BACKHAND_BLADE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"backhand_blade"),new MultiOBBCollider(6, 0.4D, 0.4D, 1.1D, 0D, 0.0D, 1.3D));
+
 }
 
 
