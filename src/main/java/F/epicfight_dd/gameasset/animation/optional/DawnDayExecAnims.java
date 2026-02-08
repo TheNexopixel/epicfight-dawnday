@@ -27,6 +27,9 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> EXECUTION_KNEE_STOMP;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> EXECUTED_FIST_FULL;
 
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT;
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> MILADY_EXECUTION;
+
     @SuppressWarnings("RedundantCast")
     public static void build(AnimationManager.AnimationBuilder builder) {
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
@@ -37,14 +40,14 @@ public class DawnDayExecAnims {
                 (getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
 
         EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) -> (ExecutionHitAnimation) (new ExecutionHitAnimation((0.27F + 0.225F), accessor, Armatures.BIPED))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
-        );
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED));
 
     }
 
     @SuppressWarnings("RedundantArrayCreation")
     private static ExecutionAttackAnimation getExecutionAttackAnimation(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider, AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION) {
         return (new ExecutionAttackAnimation(0.01F, accessor,
+
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.76F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get()),
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 3.16F, 3.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
