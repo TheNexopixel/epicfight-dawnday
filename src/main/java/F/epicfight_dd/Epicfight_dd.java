@@ -1,6 +1,7 @@
 package F.epicfight_dd;
 
 import F.epicfight_dd.gameasset.DawnDayRegisters;
+import F.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
@@ -8,12 +9,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.shelmarow.combat_evolution.CombatEvolution;
+import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
@@ -45,6 +49,13 @@ public class Epicfight_dd {
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
+        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
+            ICompatModule.loadCompatModule(context, CombatEvoCompat.class);
+        }
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

@@ -14,6 +14,8 @@ repositories {
 dependencies {
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7584041")
 
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7554699")
+
     //perf
     runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")
     runtimeOnly fg.deobf("curse.maven:ferritecore-429235:4810975")

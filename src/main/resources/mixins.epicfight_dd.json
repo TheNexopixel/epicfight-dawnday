@@ -1,10 +1,12 @@
 {
   "required": true,
   "package": "F.epicfight_dd.mixin",
-  "refmap" : "mixins.epicfight_dd.refmap.json",
+  "refmap": "mixins.epicfight_dd.refmap.json",
   "minVersion": "0.8",
+  "plugin" : "F.epicfight_dd.mixin.DawnDayMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ExecutionHandlerMixin",
     "PlayerPatchMixin"
   ],
   "client": [],

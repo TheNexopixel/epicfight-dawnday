@@ -1,5 +1,8 @@
 package F.epicfight_dd.gameasset.animation;
 
+import F.epicfight_dd.gameasset.animation.optional.DawnDayExecAnims;
+import net.minecraftforge.fml.ModList;
+import net.shelmarow.combat_evolution.CombatEvolution;
 import yesman.epicfight.api.animation.AnimationManager;
 
 
@@ -10,6 +13,11 @@ public class AnimationBuildNexus {
 
         MiladyMoveset.build(builder); // use this builder from this and put it there
         QoLMiscAnimations.animBuild(builder);
+
+        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
+            DawnDayExecAnims.build(builder);
+        }
+
 
     }
 
