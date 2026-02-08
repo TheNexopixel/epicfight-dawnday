@@ -37,13 +37,39 @@ public class DawnDayExecAnims {
         AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTED = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.8333333F;
 
         EXECUTION_KNEE_STOMP = builder.nextAccessor("biped/execution/unarmed/stompee", (accessor) ->
-                (getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
+                (getBluntExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
 
         EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) ->
                 (ExecutionHitAnimation) (new ExecutionHitAnimation(0.25f, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
 
         );
+
+        MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
+                getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
+
+        MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
+                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.0f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+
+        );
+
+
+    }
+
+    @SuppressWarnings("RedundantArrayCreation")
+    private static ExecutionAttackAnimation getBluntExecutionAttackAnimation(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider, AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.76F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get()),
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 3.16F, 3.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(new float[]{15.0F, 0.08F})))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
+                .addEvents(new AnimationEvent[]{AnimationEvent.InTimeEvent.create(0.6F,
+                        (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 9, false, false)), AnimationEvent.Side.BOTH)});
 
     }
 
@@ -52,7 +78,7 @@ public class DawnDayExecAnims {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.76F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
-                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get()),
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 3.16F, 3.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(new float[]{15.0F, 0.08F})))

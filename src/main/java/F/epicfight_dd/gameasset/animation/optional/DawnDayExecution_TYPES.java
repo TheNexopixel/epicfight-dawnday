@@ -17,6 +17,12 @@ public class DawnDayExecution_TYPES {
             new Vec3(0.201, 0.0, 1.90), -90.1f, 80
     );
 
+    public static final Type MILADY = new Type(
+            DawnDayExecAnims.MILADY_EXECUTION,
+            DawnDayExecAnims.MILADY_EXECUTION_HIT,
+            new Vec3(1.35, 0.0F, 0.0F), -30.0F, 100
+    );
+
 
 
 
