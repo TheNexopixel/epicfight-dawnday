@@ -9,4 +9,6 @@ public class backhand_blade_item extends WeaponItem
         super(materialIn, 3, -1.5F, new Properties().stacksTo(1));
 
     }
+
+
 }
