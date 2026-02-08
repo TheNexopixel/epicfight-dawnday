@@ -36,8 +36,10 @@ public class DawnDayExecAnims {
         EXECUTION_KNEE_STOMP = builder.nextAccessor("biped/execution/unarmed/stompee", (accessor) ->
                 (getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
 
-        EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) -> (ExecutionHitAnimation) (new ExecutionHitAnimation((0.27F + 0.225F), accessor, Armatures.BIPED))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+        EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) ->
+                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.25f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+
         );
 
     }

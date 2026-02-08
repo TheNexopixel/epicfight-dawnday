@@ -98,7 +98,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> WAR_SICKLE = (item) ->
             WeaponCapability.builder()
-                    .category(EpicFightDD_WeaponCategories.MILADY)
+                    .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(MiladyCollider.WAR_SICKLE)
                     .swingSound(dawnDaySounds.Milady_heavy_slash.get())
@@ -123,7 +123,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> BACKHAND_BLADE = (item) ->
             WeaponCapability.builder()
-                    .category(EpicFightDD_WeaponCategories.MILADY)
+                    .category(CapabilityItem.WeaponCategories.TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(MiladyCollider.BACKHAND_BLADE)
                     .swingSound(dawnDaySounds.Milady_dual_slash.get())
