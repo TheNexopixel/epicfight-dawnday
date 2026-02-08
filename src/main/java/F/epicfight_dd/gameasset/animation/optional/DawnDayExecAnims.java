@@ -40,15 +40,15 @@ public class DawnDayExecAnims {
                 (getBluntExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
 
         EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) ->
-                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.25f, accessor, Armatures.BIPED))
-                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.02f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
 
         );
 
         MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
                 getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
 
-        MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
+        MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution_hit", (accessor) ->
                 (ExecutionHitAnimation) (new ExecutionHitAnimation(0.0f, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
 
