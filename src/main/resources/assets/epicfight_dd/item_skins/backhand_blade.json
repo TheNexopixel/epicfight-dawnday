@@ -1,7 +1,7 @@
 {
   "trail": {
     "color": [200, 200, 200],
-    "begin_pos": [0.0, 0.0, 0.5],
+    "begin_pos": [0.0, 0.1, 0.4],
     "end_pos": [0.0, 0.5, 2.1],
     "lifetime": 3,
     "interpolations": 5,

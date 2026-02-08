@@ -186,10 +186,9 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.4f, 0.49f, 0.5f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
-                        new AttackAnimation.Phase(0.51f, 0.6f, 0.7f, 1.2f, 1.1f,1.71f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        new AttackAnimation.Phase(0.51f, 0.6f, 0.7f, 1.2f, 1.2f,1.2f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
-                        .addStateRemoveOld(EntityState.CAN_BASIC_ATTACK, false));
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         MILADY_DUAL_AUTO2 = builder.nextAccessor("biped/combat/milady_dual_auto2", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
@@ -234,10 +233,9 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.2f, 0.46f, 0.45f, 0.46f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
-                        new AttackAnimation.Phase(0.47f, 0.48f, 0.5f, 0.85f, 0.8f,1.25f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        new AttackAnimation.Phase(0.47f, 0.48f, 0.5f, 0.85f, 0.8f,0.9f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
-                        .addStateRemoveOld(EntityState.CAN_BASIC_ATTACK, true));
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         MILADY_SPECIAL_AUTO2 = builder.nextAccessor("biped/combat/milady_special_auto2", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
