@@ -5,6 +5,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.gameasset.Animations;
@@ -17,8 +18,8 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SONICBOOM;
     public static AnimationManager.AnimationAccessor<ActionAnimation> EXPLOSION_DEATH;
-
     public static AnimationManager.AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
 
 
@@ -39,16 +40,18 @@ public class QoLMiscAnimations {
                     if (source.is(DamageTypes.ARROW)) return 3;
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
                     if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)) return 1;
+                    if (source.is(DamageTypes.SONIC_BOOM)) return 7;
 
                     return 0; //  fallback
                 }, ac,
                         Animations.BIPED_DEATH,  // 0 index
-                        GENERIC_DEATH_2,         // 1
+                        GENERIC_DEATH_1,         // 1
                         WITHERING_DEMISE,        // 2
                         SHOT_DEAD,               // 3
-                        GENERIC_DEATH_1,         // 4
+                        GENERIC_DEATH_2,         // 4
                         FALL_DEATH,              // 5
-                        EXPLOSION_DEATH          // 6
+                        EXPLOSION_DEATH,         // 6
+                        DEATH_SONICBOOM          // 7
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -57,6 +60,9 @@ public class QoLMiscAnimations {
 
 
         GENERIC_DEATH_1 = builder.nextAccessor("biped/living/death_generic1", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        DEATH_SONICBOOM = builder.nextAccessor("biped/living/death_sonicboom", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_2 = builder.nextAccessor("biped/living/death_generic2", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)

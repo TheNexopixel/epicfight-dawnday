@@ -49,6 +49,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_SPECIAL_AUTO1,
                             MiladyMoveset.MILADY_SPECIAL_AUTO2,
                             MiladyMoveset.MILADY_SPECIAL_AUTO3,
+                            MiladyMoveset.MILADY_SPECIAL_AUTO4,
                             MiladyMoveset.MILADY_SPECIAL_DASH,
                             MiladyMoveset.MILADY_DUAL_AIRSLASH
                             )

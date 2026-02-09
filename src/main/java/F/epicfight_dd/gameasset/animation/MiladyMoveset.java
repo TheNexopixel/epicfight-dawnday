@@ -49,6 +49,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> MILADY_SPECIAL_DASH;
 
     public static AnimationAccessor<BasicAttackAnimation> POLE_AXE_AUTO1;
@@ -250,6 +251,16 @@ public class MiladyMoveset {
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.12f, 0.4f, 0.4f, 0.41f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
                         new AttackAnimation.Phase(0.42f, 0.43f, 0.45f, 0.8f, 0.9f,1.21f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MILADY_SPECIAL_AUTO4 = builder.nextAccessor("biped/combat/milady_special_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.26f, 0.5f, 0.4f, 0.51f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
+
+                        new AttackAnimation.Phase(0.52f, 0.53f, 0.7f, 1.0f, 0.9f,1.01f, InteractionHand.OFF_HAND, biped.get().toolL,null),
+
+                        new AttackAnimation.Phase(1.02f, 1.03f, 1.04f, 1.25f, 1.2f, 1.25f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 

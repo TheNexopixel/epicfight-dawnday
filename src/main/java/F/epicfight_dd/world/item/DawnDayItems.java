@@ -17,7 +17,7 @@ public class DawnDayItems {
             ITEMS.register("milady",() -> new miladyItem(Tiers.NETHERITE));
 
     public static final RegistryObject<Item> backhand_blade =
-            ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,1.5f,
+            ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-1.5f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(1261)));
 
