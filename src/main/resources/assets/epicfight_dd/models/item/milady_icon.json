@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:seperate_transforms",
+  "base": {
+    "parent:": "epicfight_dd:item/milady"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "epicfight_dd:item/milady_icon"
+    },
+    "ground": {
+      "parent": "epicfight_dd:item/milady_icon"
+    }
+  }
+}
