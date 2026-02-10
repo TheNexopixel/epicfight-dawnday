@@ -1,15 +1,18 @@
 {
   "parent": "minecraft:item/handheld",
-  "loader": "forge:seperate_transforms",
+  "loader": "forge:separate_transforms",
   "base": {
-    "parent:": "epicfight_dd:item/milady"
+    "parent": "epicfight_dd:item/milady",
+    "textures": {
+      "layer0": "epicfight_dd:item/milady_texture"
+    }
   },
   "perspectives": {
     "gui": {
-      "parent": "epicfight_dd:item/milady_icon"
-    },
-    "ground": {
-      "parent": "epicfight_dd:item/milady_icon"
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "epicfight_dd:item/milady_icon"
+      }
     }
   }
 }

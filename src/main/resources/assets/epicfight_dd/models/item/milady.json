@@ -1,12 +1,4 @@
-{	"parent": "epicfight_dd:item/milady_icon",
-	"overrides" : [
-		{
-			"predicate": {
-				"minecraft:using_item": 1
-			},
-			"model" : "epicfight_dd:item/milady_icon"
-		}
-	],
+{
 	"format_version": "1.9.0",
 	"texture_size": [32, 32],
 	"textures": {
