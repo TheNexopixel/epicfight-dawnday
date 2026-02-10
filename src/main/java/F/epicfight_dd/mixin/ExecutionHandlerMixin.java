@@ -13,6 +13,7 @@ import yesman.epicfight.world.item.EpicFightItems;
 
 @Mixin(value = ExecutionHandler.class,remap = false)
 public abstract class ExecutionHandlerMixin {
+
     @Inject(method = "isHoldingWeapon", at = @At("HEAD"), cancellable = true)
     private static void allowExecuteByFist(Player player, CallbackInfoReturnable<Boolean> cir) {
         CapabilityItem capabilityItem = EpicFightCapabilities.getItemStackCapability(player.getItemInHand(InteractionHand.MAIN_HAND));

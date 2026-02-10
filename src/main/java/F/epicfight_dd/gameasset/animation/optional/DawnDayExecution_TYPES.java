@@ -8,9 +8,8 @@ public class DawnDayExecution_TYPES {
 
 
 
-
-
-    // FLIP X AND Z if attacker / victim goes in opposite directions than supposed to be
+    // FLIP X AND Z if attacker / victim goes in opposite directions and too forward than supposed to be
+    // and possibly flip rot
     public static final Type KNEE_STOMP = new Type(
             DawnDayExecAnims.EXECUTION_KNEE_STOMP,
             DawnDayExecAnims.EXECUTED_FIST_FULL,
@@ -18,10 +17,12 @@ public class DawnDayExecution_TYPES {
     );
 
     public static final Type MILADY = new Type(
-            DawnDayExecAnims.MILADY_EXECUTION,
-            DawnDayExecAnims.MILADY_EXECUTION_HIT,
+            DawnDayExecAnims.MILADY_EXECUTION_SEL,
+            DawnDayExecAnims.MILADY_EXECUTION_SEL_HIT,
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
     );
+
+
 
 
 

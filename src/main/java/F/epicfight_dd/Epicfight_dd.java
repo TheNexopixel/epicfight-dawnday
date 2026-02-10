@@ -3,7 +3,6 @@ package F.epicfight_dd;
 import F.epicfight_dd.gameasset.DawnDayRegisters;
 import F.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,14 +30,13 @@ public class Epicfight_dd {
 
 
     public Epicfight_dd(FMLJavaModLoadingContext context) {
-        IEventBus modEventBus = context.getModEventBus();
-        modEventBus.addListener(this::commonSetup);
+        IEventBus bus = context.getModEventBus();
+        bus.addListener(this::commonSetup);
 
         //register every deferred register in the list with the mod eventbus
-        DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(modEventBus));
+        DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
-       // CustomSynchedVariableKeys_EFDD.SYNCHED_ANIMATION_VARIABLE_KEYS.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in
@@ -82,8 +80,8 @@ public class Epicfight_dd {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+
         }
     }
 }

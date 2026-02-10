@@ -17,16 +17,14 @@ public class CombatEvoCompat implements ICompatModule {
       event.RegisterExecutionByCategory(EpicFightDD_WeaponCategories.MILADY,
               DawnDayExecution_TYPES.MILADY);
 
-      //System.out.println("EXECUTION TYPES SUCESSFULLY REGISTERED");
+      //System.out.println("EXECUTION TYPES SUCCESSFULLY REGISTERED");
 
   }
 
 
     @Override
     public void onModEventBus(IEventBus iEventBus) {
-
     iEventBus.addListener(CombatEvoCompat::registerExecution);
-
     }
 
     @Override
@@ -41,6 +39,7 @@ public class CombatEvoCompat implements ICompatModule {
 
     @Override
     public void onForgeEventBusClient(IEventBus iEventBus) {
-
     }
+
+
 }

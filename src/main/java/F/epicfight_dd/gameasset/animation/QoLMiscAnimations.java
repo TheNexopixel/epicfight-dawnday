@@ -5,11 +5,11 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import yesman.epicfight.api.animation.AnimationManager;
-import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
+import yesman.epicfight.world.damagesource.EpicFightDamageTypes;
 
 public class QoLMiscAnimations {
 
@@ -40,7 +40,7 @@ public class QoLMiscAnimations {
                     if (source.is(DamageTypes.ARROW)) return 3;
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
                     if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)) return 1;
-                    if (source.is(DamageTypes.SONIC_BOOM)) return 7;
+                    if (source.is(DamageTypes.SONIC_BOOM) || source.is(EpicFightDamageTypes.WITHER_BEAM)) return 7;
 
                     return 0; //  fallback
                 }, ac,
