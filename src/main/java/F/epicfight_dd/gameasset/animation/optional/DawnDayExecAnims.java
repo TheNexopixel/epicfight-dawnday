@@ -64,7 +64,7 @@ public class DawnDayExecAnims {
                 getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
 
         MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution_hit", (accessor) ->
-                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.02f, accessor, Armatures.BIPED))
+                (ExecutionHitAnimation) (new ExecutionHitAnimation(-0.3f, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
 
         );
