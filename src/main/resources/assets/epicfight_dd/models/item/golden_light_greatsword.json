@@ -1,22 +1,22 @@
 {
   "loader": "forge:separate_transforms",
   "base": {
-    "parent": "epicfight_dd:item/iron_light_greatsword_3d"
-    },
+    "parent": "epicfight_dd:item/golden_light_greatsword_3d"
+  },
   "gui_light": "front",
-  "parent": "epicfight_dd:item/iron_light_greatsword_gui",
+  "parent": "epicfight_dd:item/golden_light_greatsword_gui",
   "perspectives": {
     "gui": {
       "parent": "item/generated",
       "textures": {
-        "layer0": "epicfight_dd:item/iron_light_greatsword_icon"
+        "layer0": "epicfight_dd:item/golden_light_greatsword_icon"
       },
       "gui_light": "front"
     },
     "ground": {
       "parent": "item/generated",
       "textures": {
-        "layer0": "epicfight_dd:item/iron_light_greatsword_icon"
+        "layer0": "epicfight_dd:item/golden_light_greatsword_icon"
       }
     }
   }

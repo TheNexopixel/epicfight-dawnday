@@ -9,7 +9,7 @@
         "item_skin_hand": "off_hand"
       },
       {
-        "start_time": 0.3,
+        "start_time": 0.6,
         "end_time": 0.9,
         "lifetime": 3,
         "interpolations": 6,

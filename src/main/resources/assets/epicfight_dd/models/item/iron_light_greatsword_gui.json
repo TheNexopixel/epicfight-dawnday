@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "epicfight_dd:item/iron_light_greatsword_icon"
+  }
+}

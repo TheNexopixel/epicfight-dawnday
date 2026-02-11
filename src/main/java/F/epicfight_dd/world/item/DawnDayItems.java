@@ -14,7 +14,7 @@ public class DawnDayItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, Epicfight_dd.MODID);
 
     public static final RegistryObject<Item> milady =
-            ITEMS.register("milady",() -> new miladyItem(Tiers.NETHERITE));
+            ITEMS.register("milady",() -> new miladyItem(Tiers.IRON));
 
     public static final RegistryObject<Item> backhand_blade =
             ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-1.5f,
@@ -23,6 +23,9 @@ public class DawnDayItems {
 
     public static final RegistryObject<Item> diamond_light_greatsword =
             ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND, 4,-1.5f,1942));
+
+    public static final RegistryObject<Item> golden_light_greatsword =
+            ITEMS.register("golden_light_greatsword",() -> new light_greatsword_Item(Tiers.GOLD, 4,-1.5f,600));
 
     public static final RegistryObject<Item> iron_light_greatsword =
             ITEMS.register("iron_light_greatsword",() -> new light_greatsword_Item(Tiers.IRON, 3, -2.0f,961));

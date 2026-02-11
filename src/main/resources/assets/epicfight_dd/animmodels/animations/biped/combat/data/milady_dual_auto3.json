@@ -1,7 +1,7 @@
 {
     "trail_effects": [
       {
-        "start_time": 0.0,
+        "start_time": 0.1,
         "end_time": 0.3,
         "lifetime": 3,
         "interpolations": 6,
