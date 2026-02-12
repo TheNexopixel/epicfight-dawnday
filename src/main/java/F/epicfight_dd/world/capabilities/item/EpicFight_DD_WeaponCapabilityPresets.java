@@ -5,6 +5,7 @@ import F.epicfight_dd.gameasset.animation.MiladyCollider;
 import F.epicfight_dd.gameasset.animation.MiladyMoveset;
 import F.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import F.epicfight_dd.gameasset.dawnDaySounds;
+import F.epicfight_dd.skill.DawnDaySkills;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
@@ -37,6 +38,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip-> DawnDaySkills.GENTLE_NUDGE)
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO2,

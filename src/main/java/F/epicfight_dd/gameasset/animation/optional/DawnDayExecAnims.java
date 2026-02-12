@@ -41,7 +41,7 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<SelectiveExecutionAttackProxy> MILADY_EXECUTION_SEL;
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
-    @SuppressWarnings("RedundantCast")
+
     public static void build(AnimationManager.AnimationBuilder builder) {
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
         MultiCollider<OBBCollider> executionCollider2 = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, 1.5F);
@@ -52,7 +52,7 @@ public class DawnDayExecAnims {
                 (getBluntExecutionAttackAnimation(accessor, executionCollider2, CONSTANT_EXECUTION)));
 
         EXECUTED_FIST_FULL = builder.nextAccessor("biped/execution/unarmed/stomped", (accessor) ->
-                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.067f, accessor, Armatures.BIPED))
+                new ExecutionHitAnimation(0.067f, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
 
         );
@@ -64,13 +64,13 @@ public class DawnDayExecAnims {
                 getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
 
         MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution_hit", (accessor) ->
-                (ExecutionHitAnimation) (new ExecutionHitAnimation(-0.3f, accessor, Armatures.BIPED))
+                (new ExecutionHitAnimation(-0.3f, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
 
         );
 
         MILADY_EXECUTION_HIT_SPECIAL = builder.nextAccessor("biped/execution/milady/milady_special_execution_hit", (accessor) ->
-                (ExecutionHitAnimation) (new ExecutionHitAnimation(0.3f, accessor, Armatures.BIPED))
+                new ExecutionHitAnimation(0.3f, accessor, Armatures.BIPED)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
 
 

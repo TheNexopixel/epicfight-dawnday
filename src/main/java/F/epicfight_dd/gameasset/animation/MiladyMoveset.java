@@ -1,12 +1,18 @@
 package F.epicfight_dd.gameasset.animation;
 
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
+import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.types.*;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
+import yesman.epicfight.gameasset.ColliderPreset;
+import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
+import yesman.epicfight.world.effect.EpicFightMobEffects;
 
 
 public class MiladyMoveset {
@@ -30,6 +36,8 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_5;
     public static AnimationAccessor<DashAttackAnimation> milady_onehanded_dash;
     public static AnimationAccessor<AirSlashAnimation> MILADY_AIR_SLASH;
+
+    public static AnimationAccessor<AttackAnimation> MILADY_KNUCKLE_INNATE;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO2;
@@ -153,6 +161,19 @@ public class MiladyMoveset {
 
             MILADY_AIR_SLASH = builder.nextAccessor("biped/combat/milady_onehanded_airslash" , ac ->
                     new AirSlashAnimation(  0.12F, 0.1f ,0.3f, 0.8f,null, biped.get().toolR, ac , biped));
+
+            MILADY_KNUCKLE_INNATE = builder.nextAccessor("biped/skill/milady/milady_special_knuckle_strike", ac->
+                   new AttackAnimation(0.1f,0.2f,0.5f,0.6f,20f,InteractionHand.MAIN_HAND, ColliderPreset.HEAD,biped.get().elbowR,ac,biped)
+                           .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                           .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
+                           .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                           .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
+                           .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                                   (e,s,p)->
+                                           e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
+                           ))
+            );
+
 
         MILADY_TWOHANDED_AUTO1 = builder.nextAccessor("biped/combat/milady_twohanded_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
