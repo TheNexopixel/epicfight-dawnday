@@ -86,11 +86,10 @@ public class DawnDayExecAnims {
                 MILADY_EXECUTION,
                 MILADY_EXECUTION_DUAL
         ));
-
+        //TODO:TEST IF CRASH ON DEDICATED SERVER
         MILADY_EXECUTION_SEL_HIT = builder.nextAccessor("biped/execproxy/ems_h",ac -> new SelectiveExecutionHitAnimation( patch ->  {
 
             boolean oppsdualwielding = patch.getOriginal().getTags().contains("dualWieldExecAnim");
-
 
                     return oppsdualwielding ? 1 : 0;
 
