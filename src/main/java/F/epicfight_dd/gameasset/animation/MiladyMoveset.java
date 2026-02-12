@@ -38,6 +38,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<AirSlashAnimation> MILADY_AIR_SLASH;
 
     public static AnimationAccessor<AttackAnimation> MILADY_KNUCKLE_INNATE;
+    public static AnimationAccessor<AttackAnimation> MILADY_IMPAILING_THRUST;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO2;

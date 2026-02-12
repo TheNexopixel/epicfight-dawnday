@@ -45,7 +45,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
-                   MiladyMoveset.MILADY_SPECIAL_AUTO1
+                   MiladyMoveset.MILADY_TWOHANDED_AIRSLASH
             )
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_SPECIAL_AUTO1,
@@ -71,6 +71,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .styleProvider((pp) ->
                             pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .collider(MiladyCollider.LIGHT_GREATSWORD)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.IMPAILING_THRUST)
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD)
                     .swingSound(dawnDaySounds.Milady_light_slash.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
