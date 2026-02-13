@@ -45,7 +45,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
-                   MiladyMoveset.MILADY_TWOHANDED_AIRSLASH
+                   MiladyMoveset.MILADY_SPECIAL_AUTO1
             )
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_SPECIAL_AUTO1,
@@ -148,12 +148,35 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> HALBEARD = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.SPEAR)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(MiladyCollider.HALBERD)
+                    .swingSound(dawnDaySounds.Milady_heavy_slash.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.SPEARING_STRIKE)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.HALBERD_AUTO1,
+                            MiladyMoveset.HALBERD_AUTO2,
+                            MiladyMoveset.HALBERD_AUTO3,
+                            MiladyMoveset.HALBERD_AUTO4,
+                            MiladyMoveset.HALBEARD_DASH,
+                            MiladyMoveset.MILADY_AIR_SLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.HALBEARD_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+
 
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "halberd"), HALBEARD);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "backhand_blade"), BACKHAND_BLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "diamond_light_greatsword"), LIGHT_GREATSWORD);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "iron_light_greatsword"), LIGHT_GREATSWORD);

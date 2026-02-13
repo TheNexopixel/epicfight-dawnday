@@ -1,5 +1,6 @@
 package F.epicfight_dd.gameasset.animation;
 
+import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -7,11 +8,14 @@ import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.types.*;
+import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
+import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
 
 
@@ -28,6 +32,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> HEAVY_AXE_IDLE;
     public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_IDLE;
     public static AnimationAccessor<StaticAnimation> BACKHAND_IDLE;
+    public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_2;
@@ -39,6 +44,7 @@ public class MiladyMoveset {
 
     public static AnimationAccessor<AttackAnimation> MILADY_KNUCKLE_INNATE;
     public static AnimationAccessor<AttackAnimation> MILADY_IMPAILING_THRUST;
+    public static AnimationAccessor<AttackAnimation> SPEARING_STRIKE;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO2;
@@ -87,6 +93,12 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO4;
 
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> HALBEARD_DASH;
+
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
 
@@ -123,6 +135,9 @@ public class MiladyMoveset {
         HEAVY_AXE_IDLE = builder.nextAccessor("biped/living/heavy_axe_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
+        HALBEARD_IDLE = builder.nextAccessor("biped/living/halbeard_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
 
 
             MILADY_ONE_HANDED_AUTO_1 = builder.nextAccessor("biped/combat/milady_onehanded_auto1", (accessor) ->
@@ -150,7 +165,9 @@ public class MiladyMoveset {
                     new BasicAttackAnimation(0.12F, accessor, biped,
                             new AttackAnimation.Phase(0.0f, 0.1f, 0.2f, 0.4f, 0.5f, 0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null),
 
-                            new AttackAnimation.Phase(0.481f, 0.5f, 0.6f, 1.0f, 1.3f,1.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                            new AttackAnimation.Phase(0.481f, 0.5f, 0.6f, 1.0f, 1.3f,1.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                    .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.23)))
 
                             .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                             .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -166,6 +183,7 @@ public class MiladyMoveset {
             MILADY_KNUCKLE_INNATE = builder.nextAccessor("biped/skill/milady/milady_special_knuckle_strike", ac->
                    new AttackAnimation(0.1f,0.2f,0.5f,0.6f,20f,InteractionHand.MAIN_HAND, ColliderPreset.HEAD,biped.get().elbowR,ac,biped)
                            .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                           .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
                            .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
                            .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                            .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
@@ -174,7 +192,31 @@ public class MiladyMoveset {
                                            e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
                            ))
             );
+        MILADY_IMPAILING_THRUST = builder.nextAccessor("biped/skill/milady/milady_impailing_thrust", ac->
+                new AttackAnimation(0.1f,0.2f,0.5f,0.6f,20f,InteractionHand.MAIN_HAND, MiladyCollider.LIGHT_GREATSWORD,biped.get().toolR,ac,biped)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
+                        .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                                (e,s,p)->
+                                        e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
+                                ))
+        );
+        SPEARING_STRIKE = builder.nextAccessor("biped/skill/spearing_strike", ac->
+                new AttackAnimation(0.1f,0.2f,0.5f,0.6f,20f,InteractionHand.MAIN_HAND, MiladyCollider.HALBERD,biped.get().toolR,ac,biped)
 
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_dual_slash.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
+                        .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                                (e,s,p)->
+                                        e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
+                        ))
+        );
 
         MILADY_TWOHANDED_AUTO1 = builder.nextAccessor("biped/combat/milady_twohanded_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
@@ -219,6 +261,7 @@ public class MiladyMoveset {
                         new AttackAnimation.Phase(0.0f, 0.2f, 0.4f, 0.6f, 0.7f, 0.8f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
                         new AttackAnimation.Phase(0.481f, 0.2f, 0.4f, 0.6f, 0.9f,0.91f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_dual_slash.get())
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -242,6 +285,11 @@ public class MiladyMoveset {
 
         MILADY_DUAL_AUTO5 = builder.nextAccessor("biped/combat/milady_dual_auto5", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.2F, 0.3F, 0.4F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_dual_slash.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.15))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_dual_slash.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -283,15 +331,26 @@ public class MiladyMoveset {
 
                         new AttackAnimation.Phase(0.52f, 0.53f, 0.7f, 1.0f, 0.9f,1.01f, InteractionHand.OFF_HAND, biped.get().toolL,null),
 
-                        new AttackAnimation.Phase(1.02f, 1.03f, 1.04f, 1.25f, 1.1f, 1.25f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        new AttackAnimation.Phase(1.02f, 1.03f, 1.04f, 1.25f, 1.1f, 1.25f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_dual_slash.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get()))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         MILADY_SPECIAL_AUTO5 = builder.nextAccessor("biped/combat/milady_special_auto5", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.5f, 0.5f, 0.51f, InteractionHand.OFF_HAND, biped.get().toolL,null),
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.5f, 0.5f, 0.51f, InteractionHand.OFF_HAND, biped.get().toolL,null)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_light_slash.get()),
 
-                        new AttackAnimation.Phase(0.52f, 0.53f, 0.55f, 0.9158f, 1.0f,1.21f, InteractionHand.MAIN_HAND, biped.get().toolR,null))
+                        new AttackAnimation.Phase(0.52f, 0.53f, 0.55f, 0.9158f, 1.0f,1.21f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_heavy_slash.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(5))
+                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get()))
+
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -407,6 +466,32 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO1 = builder.nextAccessor("biped/combat/halbeard_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO2 = builder.nextAccessor("biped/combat/halbeard_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO3 = builder.nextAccessor("biped/combat/halbeard_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO4 = builder.nextAccessor("biped/combat/halbeard_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBEARD_DASH = builder.nextAccessor("biped/combat/halbeard_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
 
         }
     }

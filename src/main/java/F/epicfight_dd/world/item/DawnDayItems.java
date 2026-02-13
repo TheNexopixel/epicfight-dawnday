@@ -33,5 +33,11 @@ public class DawnDayItems {
     public static final RegistryObject<Item> war_sickle =
             ITEMS.register("war_sickle",() -> new war_sickle_item(Tiers.NETHERITE));
 
+    public static final RegistryObject<Item> diamond_halberd =
+            ITEMS.register("diamond_halberd",() -> new halbeardItem(Tiers.DIAMOND));
+
+    public static final RegistryObject<Item> iron_halberd =
+            ITEMS.register("iron_halberd",() -> new halbeardItem(Tiers.IRON));
+
 
 }

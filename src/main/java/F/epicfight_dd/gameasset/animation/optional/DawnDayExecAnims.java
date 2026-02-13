@@ -93,7 +93,7 @@ public class DawnDayExecAnims {
 
                     return oppsdualwielding ? 1 : 0;
 
-        }, 0.0f, ac, Armatures.BIPED,
+        }, 0.2f, ac, Armatures.BIPED,
                 MILADY_EXECUTION_HIT,
                 MILADY_EXECUTION_HIT_SPECIAL
         )
