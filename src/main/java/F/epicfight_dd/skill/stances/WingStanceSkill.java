@@ -30,7 +30,7 @@ public class WingStanceSkill extends Skill {
 
         listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID, (event) -> {
 
-            boolean move_1 = (event.getPlayerPatch().isInAir());
+            boolean move_1 = (event.getPlayerPatch().getOriginal().isSprinting());
             boolean innate = event.getSkillContainer().getSkill().getCategory() == SkillCategories.WEAPON_INNATE;
 
             if (!(data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))) {

@@ -64,7 +64,7 @@ public class WingStanceAnims {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
-        WINGSTANCE_SKILL2 = builder.nextAccessor("biped/biped/skill/wingstance/wingstance_skill2", (accessor) ->
+        WINGSTANCE_SKILL2 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill2", (accessor) ->
                 new AttackAnimation(0.12F, 0.6F, 0.6F, 0.9F, 6.2F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));

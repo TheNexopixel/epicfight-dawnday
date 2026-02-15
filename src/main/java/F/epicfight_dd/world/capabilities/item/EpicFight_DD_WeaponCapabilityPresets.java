@@ -40,7 +40,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                                 }
                                 else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
                                         playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))){
-                                    return CapabilityItem.Styles.OCHS;
+                                    return CapabilityItem.Styles.SHEATH;
                                 }
                                 return CapabilityItem.Styles.ONE_HAND;
                             }
@@ -73,7 +73,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_DUAL_AIRSLASH
                             )
 
-                    .newStyleCombo(CapabilityItem.Styles.OCHS,
+                    .newStyleCombo(CapabilityItem.Styles.SHEATH,
                             MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                             MiladyMoveset.MILADY_TWOHANDED_AUTO2,
                             MiladyMoveset.MILADY_TWOHANDED_AUTO3,
@@ -81,10 +81,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_TWOHANDED_DASH,
                             MiladyMoveset.MILADY_SPECIAL_AUTO1
                             )
-
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
-                    //ADD WALK MODIFIER HERE
 
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, MiladyMoveset.MILADY_ONEHANDED_RUN)
@@ -94,7 +90,12 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.COMMON, LivingMotions.DEATH , QoLMiscAnimations.EXPRESSIVE_DEATH)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+
+                    .livingMotionModifier(CapabilityItem.Styles.SHEATH, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.SHEATH, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
+
+            ;
 
     public static final Function<Item, CapabilityItem.Builder> LIGHT_GREATSWORD = (item) ->
             WeaponCapability.builder()
