@@ -35,14 +35,15 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
             .category(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
                     .styleProvider((pp) ->
-                            {if( pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD){
+                            {
+                                if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD){
                                     return CapabilityItem.Styles.TWO_HAND;
                                 }
                                 else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
                                         playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))){
                                     return CapabilityItem.Styles.SHEATH;
-                                }
-                                return CapabilityItem.Styles.ONE_HAND;
+                                } else { return CapabilityItem.Styles.ONE_HAND;}
+
                             }
 
                             )
