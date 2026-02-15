@@ -15,6 +15,7 @@ public class QoLMiscAnimations {
 
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_2;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_1;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_3;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
@@ -36,8 +37,9 @@ public class QoLMiscAnimations {
 
                     if (source.is(DamageTypes.GENERIC ) || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)) return 4;
                     if (source.is(DamageTypes.WITHER)) return 2;
-                    if (source.is(DamageTypes.FALL)) return 5;
-                    if (source.is(DamageTypes.ARROW)) return 3;
+                    if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL)) return 5;
+                    if (source.is(DamageTypes.DRY_OUT) || source.is(DamageTypes.MAGIC) || source.is(DamageTypes.LIGHTNING_BOLT) || source.is(DamageTypes.DRAGON_BREATH)) return 8;
+                    if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE)) return 3;
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
                     if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)) return 1;
                     if (source.is(DamageTypes.SONIC_BOOM) || source.is(EpicFightDamageTypes.WITHER_BEAM)) return 7;
@@ -51,7 +53,8 @@ public class QoLMiscAnimations {
                         GENERIC_DEATH_2,         // 4
                         FALL_DEATH,              // 5
                         EXPLOSION_DEATH,         // 6
-                        DEATH_SONICBOOM          // 7
+                        DEATH_SONICBOOM,         // 7
+                        GENERIC_DEATH_3          // 8
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -66,6 +69,9 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_2 = builder.nextAccessor("biped/living/death_generic2", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        GENERIC_DEATH_3 = builder.nextAccessor("biped/living/death_generic3", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         WITHERING_DEMISE = builder.nextAccessor("biped/living/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)

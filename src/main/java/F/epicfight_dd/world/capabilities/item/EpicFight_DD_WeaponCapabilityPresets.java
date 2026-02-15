@@ -123,7 +123,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.WAR_SICKLE_AUTO5,
                             MiladyMoveset.WAR_SICKLE_AUTO6,
                             MiladyMoveset.POLE_AXE_DASH,
-                            MiladyMoveset.POLE_AXE_AIRSLASH
+                            MiladyMoveset.MILADY_AIR_SLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.WAR_SICKLE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
