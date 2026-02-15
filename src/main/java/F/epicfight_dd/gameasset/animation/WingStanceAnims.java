@@ -43,16 +43,16 @@ public class WingStanceAnims {
 
         WINGSTANCE_SKILL1 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill1", (accessor) ->
                 new AttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.2f, 0.7f, 0.9f, 0.9f, 0.91f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                        new AttackAnimation.Phase(0.0f, 0.2f, 0.35f, 0.6f, 0.6f, 0.61f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_light_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE),
 
-                        new AttackAnimation.Phase(0.91f, 0.92f, 1.05f, 1.18f, 1.18f,1.19f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                        new AttackAnimation.Phase(0.61f, 0.67f, 0.68f, 1.0f, 1.0f,1.01f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_heavy_slash.get())
-                                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
-                        new AttackAnimation.Phase(1.19f, 1.55f, 1.65f, 1.9f, 2.9f, 20f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                        new AttackAnimation.Phase(1.01f, 1.1f, 1.15f, 1.35f, 2.9f, 20f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(5))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
@@ -61,13 +61,23 @@ public class WingStanceAnims {
                 )
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL,true)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
         WINGSTANCE_SKILL2 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill2", (accessor) ->
-                new AttackAnimation(0.12F, 0.6F, 0.6F, 0.9F, 6.2F, null, biped.get().toolR, accessor, biped)
+                new AttackAnimation(0.12F, 0.6F, 0.65F, 1.4F, 6.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.piercing_fang.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(15))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+
+
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL,true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
 
 
