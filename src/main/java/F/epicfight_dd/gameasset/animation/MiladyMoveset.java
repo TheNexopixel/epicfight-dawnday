@@ -35,17 +35,9 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> BACKHAND_IDLE;
     public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
 
-    public static AnimationAccessor<StaticAnimation> WINGSTANCE_IDLE;
-    public static AnimationAccessor<StaticAnimation> WINGSTANCE_WALK;
-    public static AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL1;
-    public static AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL2;
 
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
-
-    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_GUARD;
-    public static AnimationAccessor<StaticAnimation> MILADY_DUAL_GUARD;
-
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_2;
@@ -115,43 +107,6 @@ public class MiladyMoveset {
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
-
-        WINGSTANCE_IDLE = builder.nextAccessor("biped/skill/wingstance/wingstance_idle", ac ->
-                new StaticAnimation(0.12F,true,ac, biped));
-
-        WINGSTANCE_WALK = builder.nextAccessor("biped/skill/wingstance/wingstance_walk", ac ->
-                new StaticAnimation(0.12F,true,ac, biped));
-
-        WINGSTANCE_SKILL1 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill1", (accessor) ->
-                new AttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.2f, 0.7f, 0.9f, 0.9f, 0.91f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_light_slash.get())
-                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLADE),
-
-                        new AttackAnimation.Phase(0.91f, 0.92f, 1.05f, 1.18f, 1.18f,1.19f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_heavy_slash.get())
-                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get()),
-                        new AttackAnimation.Phase(1.19f, 1.55f, 1.65f, 1.9f, 2.9f, 20f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(5))
-                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
-                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
-                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLADE)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.adder(5))
-                )
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0F)
-                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false));
-
-        WINGSTANCE_SKILL2 = builder.nextAccessor("biped/biped/skill/wingstance/wingstance_skill2", (accessor) ->
-                new AttackAnimation(0.12F, 0.6F, 0.6F, 0.9F, 6.2F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-
-
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
