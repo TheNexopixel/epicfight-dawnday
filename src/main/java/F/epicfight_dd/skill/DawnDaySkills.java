@@ -6,6 +6,7 @@ import F.epicfight_dd.gameasset.animation.MiladyMoveset;
 import java.util.Set;
 
 import F.epicfight_dd.gameasset.dawnDaySounds;
+import F.epicfight_dd.skill.stances.WingStanceSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -28,9 +29,10 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill GENTLE_NUDGE;
-public static Skill PIERCING_FANG;
+    public static Skill PIERCING_FANG;
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
+    public static Skill WINGSTANCE;
 
 
     @SubscribeEvent
@@ -92,6 +94,11 @@ public static Skill PIERCING_FANG;
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         FURIOUS_CUT = furiousCut;
+
+        WINGSTANCE = modRegistry.build("wingstance",
+                WingStanceSkill::new, WingStanceSkill.createBuilder()
+                        .setCategory(SkillCategories.WEAPON_PASSIVE)
+                );
 
     }
 

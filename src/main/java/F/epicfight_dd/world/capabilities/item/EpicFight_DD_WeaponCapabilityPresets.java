@@ -4,8 +4,10 @@ import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.gameasset.animation.MiladyCollider;
 import F.epicfight_dd.gameasset.animation.MiladyMoveset;
 import F.epicfight_dd.gameasset.animation.QoLMiscAnimations;
+import F.epicfight_dd.gameasset.animation.WingStanceAnims;
 import F.epicfight_dd.gameasset.dawnDaySounds;
 import F.epicfight_dd.skill.DawnDaySkills;
+import F.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
@@ -16,7 +18,9 @@ import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
@@ -31,14 +35,26 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
             .category(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
                     .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                            {if( pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD){
+                                    return CapabilityItem.Styles.TWO_HAND;
+                                }
+                                else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
+                                        playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))){
+                                    return CapabilityItem.Styles.OCHS;
+                                }
+                                return CapabilityItem.Styles.ONE_HAND;
+                            }
+
+                            )
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
             .collider(MiladyCollider.LIGHT_GREATSWORD)
+                    .passiveSkill(DawnDaySkills.WINGSTANCE)
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip-> DawnDaySkills.GENTLE_NUDGE)
+                    .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.)
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO2,
@@ -57,6 +73,16 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_DUAL_AIRSLASH
                             )
 
+                    .newStyleCombo(CapabilityItem.Styles.OCHS,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO1,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO2,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO3,
+                            MiladyMoveset.MILADY_TWOHANDED_AUTO4,
+                            MiladyMoveset.MILADY_TWOHANDED_DASH,
+                            MiladyMoveset.MILADY_SPECIAL_AUTO1
+                            )
+
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, MiladyMoveset.MILADY_ONEHANDED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_SPECIAL_IDLE)

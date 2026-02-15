@@ -13,6 +13,7 @@ public class AnimationBuildNexus {
 
         MiladyMoveset.build(builder); // use this builder from this and put it there
         QoLMiscAnimations.animBuild(builder);
+        WingStanceAnims.build(builder);
 
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
             DawnDayExecAnims.build(builder);

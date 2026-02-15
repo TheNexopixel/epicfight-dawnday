@@ -1,7 +1,5 @@
 package F.epicfight_dd.skill.stances;
 
-import yesman.epicfight.api.animation.AnimationPlayer;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
@@ -23,11 +21,22 @@ public class WingStanceSkill extends Skill {
 
        var listener = container.getExecutor().getEventListener();
 
-       listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT,EVENT_UUID,(event)->{
+       var data_manager = container.getDataManager();
 
-           boolean move_1 = (container.getExecutor().getOriginal().isCrouching());
+       listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID,(event)->{
+
+           boolean move_1 = (event.getPlayerPatch().getOriginal().isCrouching());
+
 
        });
+
+    }
+
+    @Override
+    public void onRemoved(SkillContainer container) {
+        super.onRemoved(container);
+
+        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.SKILL_CAST_EVENT,EVENT_UUID);
 
     }
 
