@@ -54,7 +54,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip-> DawnDaySkills.GENTLE_NUDGE)
-                    .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.PIERCING_FANG)
+                   // .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.FURIOUS_CUT)
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO2,
@@ -82,7 +82,10 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.MILADY_SPECIAL_AUTO1
                             )
 
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WINGSTANCE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
+                    //ADD WALK MODIFIER HERE
+
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, MiladyMoveset.MILADY_ONEHANDED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_SPECIAL_IDLE)

@@ -5,6 +5,8 @@ import F.epicfight_dd.Epicfight_dd;
 import F.epicfight_dd.skill.DawnDaySkills;
 import F.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +27,22 @@ public class KeyMapHandler {
                 if(localPlayerPatch != null && localPlayerPatch.isEpicFightMode()
                   && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).hasSkill(DawnDaySkills.WINGSTANCE)
                 ) {
-                    localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
+
+                   if(localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == false){
+                       localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
+                       localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE);
+                       for (int i = 1; i <= 5; i++) {
+                           localPlayerPatch.getOriginal().level().addParticle(
+                                   ParticleTypes.END_ROD,
+                                   1,1,1,0,0,0
+                           );
+                       }
+
+                   } else {
+                       localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), false);
+                       localPlayerPatch.getOriginal().playSound(SoundEvents.ANVIL_DESTROY);
+
+                   }
                 }
             }
         }

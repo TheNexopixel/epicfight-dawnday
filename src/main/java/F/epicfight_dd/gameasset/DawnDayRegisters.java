@@ -1,5 +1,6 @@
 package F.epicfight_dd.gameasset;
 
+import F.epicfight_dd.skill.SkillDataKeyZ;
 import F.epicfight_dd.world.item.DawnDayCreativeTab;
 import F.epicfight_dd.world.item.DawnDayItems;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,7 +13,8 @@ public class DawnDayRegisters {
             List.of(
                     dawnDaySounds.SOUNDS,
                     DawnDayItems.ITEMS,
-                    DawnDayCreativeTab.CREATIVE_MODE_TABS
+                    DawnDayCreativeTab.CREATIVE_MODE_TABS,
+                    SkillDataKeyZ.DATA_KEYS
             );
 
 }
