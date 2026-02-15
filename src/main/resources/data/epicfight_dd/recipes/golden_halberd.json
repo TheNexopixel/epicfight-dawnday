@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DD ",
+    "DS ",
+    "D S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:golden_halberd",
+    "count": 1
+  }
+}
+

@@ -1,13 +1,22 @@
 {
-  "creativetab.dawn_day_tab" : "EpicFight Dawnday",
+  "creativetab.dawn_day_tab" : "Epic Fight Dawn Day",
   "item.epicfight_dd.milady" : "Milady",
   "item.epicfight_dd.diamond_light_greatsword" : "Diamond Light Greatsword",
   "item.epicfight_dd.iron_light_greatsword" : "Iron Light Greatsword",
+  "item.epicfight_dd.netherite_light_greatsword" : "Netherite Light Greatsword",
   "item.epicfight_dd.golden_light_greatsword": "Golden Light Greatsword",
-  "item.epicfight_dd.war_sickle" : "War Sickle",
-  "item.epicfight_dd.backhand_blade" : "Backhand Blade",
+  "item.epicfight_dd.war_sickle" : "War Sickle (W(n)IP)",
+  "item.epicfight_dd.backhand_blade" : "Backhand Blade (W(n)IP)",
   "item.epicfight_dd.diamond_halberd": "Diamond Halberd",
-  "item.epicfight_dd.iron_halberd": "Iron Halberd"
-
-
+  "item.epicfight_dd.netherite_halberd": "Netherite Halberd",
+  "item.epicfight_dd.iron_halberd": "Iron Halberd",
+  "item.epicfight_dd.golden_halberd": "Golden Halberd",
+  "skill.epicfight_dd.spearing_strike": "Spearing Strike",
+  "skill.epicfight_dd.spearing_strike.tooltip": "Destroy your Enemies beneath you!",
+  "skill.epicfight_dd.piercing_fang": "Piercing Fang",
+  "skill.epicfight_dd.piercing_fang.tooltip": "A Skill used by the Bloody Finger hunter Yura.",
+  "skill.epicfight_dd.furious_cut": "Furious Cut",
+  "skill.epicfight_dd.furious_cut.tooltip": "Leave no opponent standing.",
+  "skill.epicfight_dd.gentle_nudge": "Gentle Nudge",
+  "skill.epicfight_dd.gentle_nudge.tooltip": "Legends say that the name of this skill was invented by a being who had the power to change the laws of the world."
 }

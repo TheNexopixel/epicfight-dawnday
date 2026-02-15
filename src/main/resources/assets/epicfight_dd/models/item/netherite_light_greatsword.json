@@ -1,0 +1,30 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "epicfight_dd:item/light_greatsword",
+    "textures": {
+      "layer0": "epicfight_dd:item/netherite_light_greatsword"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "epicfight_dd:item/light_greatsword",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_light_greatsword_gui"
+      }
+    },
+    "fixed": {
+      "parent": "epicfight_dd:item/light_greatsword",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_light_greatsword_gui"
+      }
+    },
+    "ground": {
+      "parent": "epicfight_dd:item/light_greatsword",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_light_greatsword_gui"
+      }
+    }
+  }
+}

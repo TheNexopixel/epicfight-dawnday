@@ -15,6 +15,9 @@ public class dawnDaySounds {
     public static final RegistryObject<SoundEvent> Milady_light_slash = registerSound("sfx.milady_slash");
     public static final RegistryObject<SoundEvent> Milady_heavy_slash = registerSound("sfx.milady_heavy_slash");
     public static final RegistryObject<SoundEvent> Milady_dual_slash = registerSound("sfx.milady_dual_slash");
+    public static final RegistryObject<SoundEvent> piercing_fang = registerSound("sfx.piercing_fang");
+    public static final RegistryObject<SoundEvent> milady_light_sweep = registerSound("sfx.milady_extra_light");
+
 
 
 

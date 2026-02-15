@@ -21,9 +21,9 @@ public class DefaultEpicFightSkillCompat {
             GuardSkill.Builder builder = event.getSkillBuilder();
 
             builder.addGuardMotion(
-                    EpicFightDD_WeaponCategories.MILADY,
+                    EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.LONGSWORD_GUARD_HIT
-            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.MILADY,
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
 
@@ -37,11 +37,11 @@ public class DefaultEpicFightSkillCompat {
             GuardSkill.Builder builder = event.getSkillBuilder();
 
             builder.addGuardMotion(
-                            EpicFightDD_WeaponCategories.MILADY,
+                            EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> Animations.LONGSWORD_GUARD_HIT
-                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.MILADY,
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
-                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.MILADY,
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> List.of(
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT2,

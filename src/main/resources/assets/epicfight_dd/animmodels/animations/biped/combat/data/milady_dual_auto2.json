@@ -2,7 +2,7 @@
     "trail_effects": [
       {
         "start_time": 0.55,
-        "end_time": 0.85,
+        "end_time": 0.65,
         "lifetime": 3,
         "interpolations": 6,
         "joint": "Tool_R",
@@ -10,7 +10,7 @@
       },
       {
         "start_time": 0.55,
-        "end_time": 0.85,
+        "end_time": 0.65,
         "lifetime": 3,
         "interpolations": 6,
         "joint": "Tool_L",

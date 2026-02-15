@@ -2,7 +2,7 @@
     "trail_effects": [
       {
         "start_time": 0.3,
-        "end_time": 1.1,
+        "end_time": 0.9,
         "lifetime": 6,
         "begin_pos": [0.0, 0.28, -1.4],
         "end_pos": [0.0, 0.28, -2.5],

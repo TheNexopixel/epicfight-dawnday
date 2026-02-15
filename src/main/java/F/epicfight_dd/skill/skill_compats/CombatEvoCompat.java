@@ -14,7 +14,7 @@ public class CombatEvoCompat implements ICompatModule {
       event.RegisterExecutionByItem(EpicFightMod.identifier("glove"),
               DawnDayExecution_TYPES.KNEE_STOMP);
 
-      event.RegisterExecutionByCategory(EpicFightDD_WeaponCategories.MILADY,
+      event.RegisterExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
               DawnDayExecution_TYPES.MILADY);
 
       //System.out.println("EXECUTION TYPES SUCCESSFULLY REGISTERED");

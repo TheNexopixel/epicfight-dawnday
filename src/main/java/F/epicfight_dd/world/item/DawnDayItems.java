@@ -21,6 +21,9 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(1261)));
 
+    public static final RegistryObject<Item> netherite_light_greatsword =
+            ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-1.5f,2442));
+
     public static final RegistryObject<Item> diamond_light_greatsword =
             ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND, 4,-1.5f,1942));
 
@@ -36,8 +39,14 @@ public class DawnDayItems {
     public static final RegistryObject<Item> diamond_halberd =
             ITEMS.register("diamond_halberd",() -> new halbeardItem(Tiers.DIAMOND));
 
+    public static final RegistryObject<Item> golden_halberd =
+            ITEMS.register("golden_halberd",() -> new halbeardItem(Tiers.GOLD));
+
     public static final RegistryObject<Item> iron_halberd =
             ITEMS.register("iron_halberd",() -> new halbeardItem(Tiers.IRON));
+
+    public static final RegistryObject<Item> netherite_halberd =
+            ITEMS.register("netherite_halberd",() -> new halbeardItem(Tiers.NETHERITE));
 
 
 }

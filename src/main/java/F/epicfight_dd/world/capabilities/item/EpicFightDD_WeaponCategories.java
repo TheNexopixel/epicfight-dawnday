@@ -3,7 +3,7 @@ package F.epicfight_dd.world.capabilities.item;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum EpicFightDD_WeaponCategories implements WeaponCategory{
-        MILADY;
+    LIGHT_GREATSWORD;
         final int id;
 
     EpicFightDD_WeaponCategories() {

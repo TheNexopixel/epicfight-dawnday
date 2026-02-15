@@ -77,7 +77,7 @@ public class DawnDayExecAnims {
         );
 
         MILADY_EXECUTION_SEL = builder.nextAccessor("biped/execproxy/ems",ac -> new SelectiveExecutionAttackProxy( patch ->{
-               boolean dualWieldingMilady = EpicFightCapabilities.getItemStackCapability(patch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.MILADY;
+               boolean dualWieldingMilady = EpicFightCapabilities.getItemStackCapability(patch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD;
 
                LivingEntityPatch<?> target = EpicFightCapabilities.getEntityPatch(patch.getTarget(),LivingEntityPatch.class);
 
@@ -125,11 +125,11 @@ public class DawnDayExecAnims {
     private static ExecutionAttackAnimation getExecutionAttackAnimation(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider, AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION) {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
-                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.76F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
-                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
-                (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 3.16F, 3.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(true, 0.0F, 0.0F, 0.82F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(3.5F)),
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 10.16F, 10.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(new float[]{15.0F, 0.08F})))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
                 .addEvents(new AnimationEvent[]{AnimationEvent.InTimeEvent.create(0.6F,

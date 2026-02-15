@@ -5,8 +5,6 @@
     "subtitle":"sfx.slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false},{"name":"epicfight_dd:sfx/milady_light_slash", "stream":false}]
   },
-
-
   "sfx.milady_heavy_slash":
   {
     "category":"master",
@@ -14,10 +12,27 @@
     "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
   },
 
-  "sfx.milady_dual_slash":
+  "sfx.milady_dual_slash": {
+    "category": "master",
+    "subtitle": "sfx.dual_slash",
+    "sounds": [
+      {
+        "name": "epicfight_dd:sfx/milady_dual_slash",
+        "stream": false
+      }
+    ]
+  },
+
+    "sfx.milady_extra_light":
+    {
+      "category":"master",
+      "subtitle":"sfx.light_sweep",
+      "sounds":[{"name":"epicfight_dd:sfx/milady_extra_light", "stream":false}]
+  },
+  "sfx.piercing_fang":
   {
     "category":"master",
-    "subtitle":"sfx.dual_slash",
-    "sounds":[{"name":"epicfight_dd:sfx/milady_dual_slash", "stream":false}]
+    "subtitle":"sfx.piercing_fang",
+    "sounds":[{"name":"epicfight_dd:sfx/piercing_fang", "stream":false}]
   }
 }

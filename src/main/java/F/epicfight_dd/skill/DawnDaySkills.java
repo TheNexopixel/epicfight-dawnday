@@ -5,6 +5,7 @@ import F.epicfight_dd.gameasset.animation.MiladyMoveset;
 
 import java.util.Set;
 
+import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -27,8 +28,9 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill GENTLE_NUDGE;
-    public static Skill IMPAILING_THRUST;
+public static Skill PIERCING_FANG;
     public static Skill SPEARING_STRIKE;
+    public static Skill FURIOUS_CUT;
 
 
     @SubscribeEvent
@@ -49,19 +51,20 @@ public class DawnDaySkills {
                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
                GENTLE_NUDGE = gentlenudge;
 
-        WeaponInnateSkill impailingthrust = modRegistry.build("impailing_thrust",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.MILADY_IMPAILING_THRUST)
+        WeaponInnateSkill piercingfang = modRegistry.build("piercing_fang",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.PIERCING_FANG)
                 .setCategory(SkillCategories.WEAPON_INNATE));
-        impailingthrust.newProperty()
+        piercingfang.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.piercing_fang.get())
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
-                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
-        IMPAILING_THRUST = impailingthrust;
+        PIERCING_FANG = piercingfang;
 
         WeaponInnateSkill spearingstrike = modRegistry.build("spearing_strike",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(MiladyMoveset.SPEARING_STRIKE)
@@ -76,6 +79,19 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         SPEARING_STRIKE = spearingstrike;
+
+        WeaponInnateSkill furiousCut = modRegistry.build("furious_cut",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.FURIOUS_CUT)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        furiousCut.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        FURIOUS_CUT = furiousCut;
 
     }
 
