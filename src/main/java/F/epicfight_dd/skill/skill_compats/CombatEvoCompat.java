@@ -27,6 +27,7 @@ public class CombatEvoCompat implements ICompatModule {
     iEventBus.addListener(CombatEvoCompat::registerExecution);
     }
 
+
     @Override
     public void onForgeEventBus(IEventBus iEventBus) {
 

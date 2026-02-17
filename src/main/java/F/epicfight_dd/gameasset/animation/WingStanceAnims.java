@@ -4,9 +4,7 @@ import F.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationProperty;
-import yesman.epicfight.api.animation.types.AttackAnimation;
-import yesman.epicfight.api.animation.types.MovementAnimation;
-import yesman.epicfight.api.animation.types.StaticAnimation;
+import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
@@ -21,6 +19,8 @@ public class WingStanceAnims {
     public static AnimationManager.AnimationAccessor<StaticAnimation> WING_STANCE_IDLE;
 
     public static AnimationManager.AnimationAccessor<MovementAnimation> WINGSTANCE_WALK;
+
+    public static AnimationManager.AnimationAccessor<ActionAnimation> WINGSTANCE_TRANSITION;
 
     public static AnimationManager.AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL1;
     public static AnimationManager.AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL2;
@@ -78,6 +78,15 @@ public class WingStanceAnims {
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL,true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
+
+
+        WINGSTANCE_TRANSITION = builder.nextAccessor("biped/skill/wingstance/wingstance_transition", accessor ->
+                new ActionAnimation(0.2f,accessor,biped)
+                        .addState(EntityState.TURNING_LOCKED,false)
+                        .addState(EntityState.MOVEMENT_LOCKED,false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.STOP_MOVEMENT,false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
+
 
 
 

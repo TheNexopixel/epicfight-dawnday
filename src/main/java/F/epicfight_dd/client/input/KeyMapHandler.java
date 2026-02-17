@@ -2,6 +2,7 @@ package F.epicfight_dd.client.input;
 
 
 import F.epicfight_dd.Epicfight_dd;
+import F.epicfight_dd.gameasset.animation.WingStanceAnims;
 import F.epicfight_dd.skill.DawnDaySkills;
 import F.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.Minecraft;
@@ -32,11 +33,12 @@ public class KeyMapHandler {
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
                        localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE);
                        for (int i = 1; i <= 5; i++) {
-                           localPlayerPatch.getOriginal().level().addParticle(
+                           mc.player.level().addParticle(
                                    ParticleTypes.END_ROD,
-                                   1,1,1,0,0,0
+                                   mc.player.getX(),mc.player.getY() + 0.85,mc.player.getZ(),0.23,0.420,0.25
                            );
                        }
+                      localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION,0.0f);
 
                    } else {
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), false);

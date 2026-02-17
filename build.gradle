@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
     id 'org.spongepowered.mixin' version '0.7.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 repositories {
     maven {
@@ -14,7 +15,7 @@ repositories {
 dependencies {
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7617763")
 
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7554699")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7634287")
 
     //perf
     runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")

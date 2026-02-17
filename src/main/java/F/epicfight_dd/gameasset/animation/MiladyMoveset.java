@@ -8,6 +8,9 @@ import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.types.*;
+import yesman.epicfight.api.animation.types.grappling.GrapplingAttackAnimation;
+import yesman.epicfight.api.animation.types.grappling.GrapplingHitAnimation;
+import yesman.epicfight.api.animation.types.grappling.GrapplingTryAnimation;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
@@ -110,6 +113,11 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
+
+    public static AnimationAccessor<GrapplingTryAnimation> IM_GONNA_KEBAB_YOUUUU;
+    public static AnimationAccessor<GrapplingHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
+    public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
+    public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -564,6 +572,29 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
+
+        IM_GONNA_KEBAB_YOUUUU = builder.nextAccessor("biped/skill/grab/grab_try",ac->
+                new GrapplingTryAnimation(0.01f,0.2f,0.28f,0.52f,12f,
+                        InteractionHand.OFF_HAND,
+                        ColliderPreset.HEADBUTT_RAVAGER,biped.get().handL,
+                        ac,
+                        MiladyMoveset.PLS_NOOOO_DONT_KEBAB_MEEE,
+                        MiladyMoveset.GET_KEBABed_MuAHAHAHA,
+                        MiladyMoveset.TCH_I_MISSED,biped));
+
+        GET_KEBABed_MuAHAHAHA = builder.nextAccessor("biped/skill/grab/grab",ac-> new GrapplingAttackAnimation(
+                1.9f, 20f,ac,biped
+        ));
+
+        PLS_NOOOO_DONT_KEBAB_MEEE = builder.nextAccessor("biped/skill/grab/grab_hit", ac->
+                new GrapplingHitAnimation(0.0f,"biped/skill/grab/grab_hit",biped));
+
+       TCH_I_MISSED = builder.nextAccessor("biped/skill/grab/grab_fail", accessor->
+               new ActionAnimation(
+               0.2f,accessor,biped
+       ));
+
         }
+
     }
 

@@ -4,10 +4,8 @@ import F.epicfight_dd.gameasset.animation.WingStanceAnims;
 import F.epicfight_dd.skill.SkillDataKeyZ;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
-import yesman.epicfight.skill.Skill;
-import yesman.epicfight.skill.SkillBuilder;
-import yesman.epicfight.skill.SkillCategories;
-import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.*;
+
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.UUID;
@@ -33,25 +31,32 @@ public class WingStanceSkill extends Skill {
             boolean move_1 = (event.getPlayerPatch().getOriginal().isSprinting());
             boolean innate = event.getSkillContainer().getSkill().getCategory() == SkillCategories.WEAPON_INNATE;
 
+
+            int innateStackCount = (int) container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getResource();
+            Skill innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getSkill();
+
             if (!(data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))) {
                 return;
             }
 
-            if (move_1 && innate) {
+            if (move_1 && innate && innateStackCount >= 1) {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
 
+
+                    container.getExecutor().consumeForSkill(innateSkill ,Resource.WEAPON_CHARGE, innateStackCount -1);
                     event.setCanceled(true);
 
                 }
-            } else if (innate) {
+            } else if (innate && innateStackCount >= 1) {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
 
+                    container.getExecutor().consumeForSkill(innateSkill ,Resource.WEAPON_CHARGE, innateStackCount -1);
                     event.setCanceled(true);
 
                 }
