@@ -34,10 +34,16 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_IDLE;
     public static AnimationAccessor<StaticAnimation> BACKHAND_IDLE;
     public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
+    public static AnimationAccessor<StaticAnimation> BATTLESTAFF_IDLE;
 
 
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
+
+    public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO3;
+
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_2;
@@ -103,7 +109,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> HALBEARD_DASH;
+    public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -146,6 +152,28 @@ public class MiladyMoveset {
 
         HALBEARD_IDLE = builder.nextAccessor("biped/living/halbeard_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
+
+        BATTLESTAFF_IDLE = builder.nextAccessor("biped/living/battlestaff_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+
+
+        BATTLESTAFF_AUTO1 = builder.nextAccessor("biped/combat/battlestaff_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.1F, 0.15F, 0.42F, 0.42F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        BATTLESTAFF_AUTO2 = builder.nextAccessor("biped/combat/battlestaff_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.05F, 0.1F, 0.2F, 0.25F, MiladyCollider.BATTLESTAFF_FRONT, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        BATTLESTAFF_AUTO3 = builder.nextAccessor("biped/combat/battlestaff_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
 
@@ -530,7 +558,7 @@ public class MiladyMoveset {
 
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        HALBEARD_DASH = builder.nextAccessor("biped/combat/halbeard_dash", (accessor) ->
+        HALBERD_DASH = builder.nextAccessor("biped/combat/halbeard_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 1.2F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));

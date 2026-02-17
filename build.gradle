@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7584041")
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:7617763")
 
     implementation fg.deobf("curse.maven:combat-evolution-1377795:7554699")
 

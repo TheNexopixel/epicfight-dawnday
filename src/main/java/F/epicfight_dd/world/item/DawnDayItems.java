@@ -1,6 +1,7 @@
 package F.epicfight_dd.world.item;
 
 import F.epicfight_dd.Epicfight_dd;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
@@ -19,7 +20,13 @@ public class DawnDayItems {
     public static final RegistryObject<Item> backhand_blade =
             ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-1.5f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(1261)));
+                            .defaultDurability(1261))
+                    );
+
+    public static final RegistryObject<Item> iron_battlestaff =
+            ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(680)));
 
     public static final RegistryObject<Item> netherite_light_greatsword =
             ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-1.5f,2442));
