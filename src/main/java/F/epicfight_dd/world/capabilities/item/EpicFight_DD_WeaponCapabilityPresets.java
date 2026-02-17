@@ -55,15 +55,16 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip-> DawnDaySkills.GENTLE_NUDGE)
-                   // .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.FURIOUS_CUT)
+                    .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.FURIOUS_CUT)
+
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO2,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
-                   MiladyMoveset.MILADY_SPECIAL_AUTO1
-            )
+                   MiladyMoveset.MILADY_SPECIAL_AUTO1)
+
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.MILADY_SPECIAL_AUTO1,
                             MiladyMoveset.MILADY_SPECIAL_AUTO2,

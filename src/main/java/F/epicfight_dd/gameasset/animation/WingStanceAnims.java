@@ -20,7 +20,7 @@ public class WingStanceAnims {
 
     public static AnimationManager.AnimationAccessor<MovementAnimation> WINGSTANCE_WALK;
 
-    public static AnimationManager.AnimationAccessor<ActionAnimation> WINGSTANCE_TRANSITION;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> WINGSTANCE_TRANSITION;
 
     public static AnimationManager.AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL1;
     public static AnimationManager.AnimationAccessor<AttackAnimation> WINGSTANCE_SKILL2;
@@ -81,11 +81,7 @@ public class WingStanceAnims {
 
 
         WINGSTANCE_TRANSITION = builder.nextAccessor("biped/skill/wingstance/wingstance_transition", accessor ->
-                new ActionAnimation(0.2f,accessor,biped)
-                        .addState(EntityState.TURNING_LOCKED,false)
-                        .addState(EntityState.MOVEMENT_LOCKED,false)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.STOP_MOVEMENT,false)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
+                new StaticAnimation(false,accessor,biped));
 
 
 

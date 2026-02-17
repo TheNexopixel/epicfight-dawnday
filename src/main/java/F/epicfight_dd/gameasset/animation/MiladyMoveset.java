@@ -1,16 +1,18 @@
 package F.epicfight_dd.gameasset.animation;
 
 import F.epicfight_dd.gameasset.dawnDaySounds;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
+import yesman.epicfight.api.animation.property.MoveCoordFunctions;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.animation.types.grappling.GrapplingAttackAnimation;
-import yesman.epicfight.api.animation.types.grappling.GrapplingHitAnimation;
 import yesman.epicfight.api.animation.types.grappling.GrapplingTryAnimation;
+import yesman.epicfight.api.utils.TimePairList;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
@@ -19,8 +21,11 @@ import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
+
+import java.util.Set;
 
 
 public class MiladyMoveset {
@@ -114,10 +119,10 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
 
-    public static AnimationAccessor<GrapplingTryAnimation> IM_GONNA_KEBAB_YOUUUU;
-    public static AnimationAccessor<GrapplingHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
-    public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
+    public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
+    public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
+    public static AnimationAccessor<GrapplingTryAnimation> IM_GONNA_KEBAB_YOUUUU;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -572,29 +577,33 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
+        GET_KEBABed_MuAHAHAHA = builder.nextAccessor("biped/skill/grab/grab_execute",ac-> new GrapplingAttackAnimation(
+                0.52f, 0.85f,ac,biped)
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.EXECUTION, DamageTypeTags.BYPASSES_ARMOR))
+              //  .addProperty(ActionAnimationProperty.COORD_UPDATE_TIME, TimePairList.create(0.0F, 0.5F))
+        );
 
-        IM_GONNA_KEBAB_YOUUUU = builder.nextAccessor("biped/skill/grab/grab_try",ac->
-                new GrapplingTryAnimation(0.01f,0.2f,0.28f,0.52f,12f,
-                        InteractionHand.OFF_HAND,
-                        ColliderPreset.HEADBUTT_RAVAGER,biped.get().handL,
+        PLS_NOOOO_DONT_KEBAB_MEEE = builder.nextAccessor("biped/skill/grab/grab_hit", ac->
+                new LongHitAnimation(0.01f,ac,biped));
+
+       TCH_I_MISSED = builder.nextAccessor("biped/skill/grab/grab_fail", accessor->
+               new ActionAnimation(0.0f,0.85f,accessor,biped));
+
+       IM_GONNA_KEBAB_YOUUUU = builder.nextAccessor("biped/skill/grab/grab_try",ac->
+                new GrapplingTryAnimation(0.1f,0.001f,0.01f,0.02f,0.01f,
+                        InteractionHand.MAIN_HAND,
+                        ColliderPreset.HEADBUTT_RAVAGER,biped.get().leftHandJoint(),
                         ac,
                         MiladyMoveset.PLS_NOOOO_DONT_KEBAB_MEEE,
                         MiladyMoveset.GET_KEBABed_MuAHAHAHA,
-                        MiladyMoveset.TCH_I_MISSED,biped));
+                        MiladyMoveset.TCH_I_MISSED,
+                        biped)
+                       // .addProperty(ActionAnimationProperty.COORD_START_KEYFRAME_INDEX, 1)
+                        .addProperty(ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE)
+       );
 
-        GET_KEBABed_MuAHAHAHA = builder.nextAccessor("biped/skill/grab/grab",ac-> new GrapplingAttackAnimation(
-                1.9f, 20f,ac,biped
-        ));
 
-        PLS_NOOOO_DONT_KEBAB_MEEE = builder.nextAccessor("biped/skill/grab/grab_hit", ac->
-                new GrapplingHitAnimation(0.0f,"biped/skill/grab/grab_hit",biped));
-
-       TCH_I_MISSED = builder.nextAccessor("biped/skill/grab/grab_fail", accessor->
-               new ActionAnimation(
-               0.2f,accessor,biped
-       ));
-
-        }
+    }
 
     }
 
