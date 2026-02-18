@@ -590,7 +590,11 @@ public class MiladyMoveset {
                new ActionAnimation(0.0f,0.85f,accessor,biped));
 
        IM_GONNA_KEBAB_YOUUUU = builder.nextAccessor("biped/skill/grab/grab_try",ac->
-                new GrapplingTryAnimation(0.1f,0.001f,0.01f,0.02f,0.01f,
+                new GrapplingTryAnimation(0.05f,
+                        0.1f,
+                        0.18f,
+                        0.28f,
+                        0.3667f,
                         InteractionHand.MAIN_HAND,
                         ColliderPreset.HEADBUTT_RAVAGER,biped.get().leftHandJoint(),
                         ac,
@@ -599,7 +603,7 @@ public class MiladyMoveset {
                         MiladyMoveset.TCH_I_MISSED,
                         biped)
                        // .addProperty(ActionAnimationProperty.COORD_START_KEYFRAME_INDEX, 1)
-                        .addProperty(ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE)
+                       // .addProperty(ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE)
        );
 
 

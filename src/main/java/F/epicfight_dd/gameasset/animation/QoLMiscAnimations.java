@@ -1,9 +1,12 @@
 package F.epicfight_dd.gameasset.animation;
 
 import F.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
+import com.tacz.guns.GunMod;
+import com.tacz.guns.init.ModDamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
@@ -35,11 +38,20 @@ public class QoLMiscAnimations {
 
                     if (source == null) return 0;
 
+                    boolean deathByTacZBullet = ModList.get().isLoaded(GunMod.MOD_ID) &&
+                            (       source.is(ModDamageTypes.BULLET) ||
+                                    source.is(ModDamageTypes.BULLET_VOID) ||
+                                    source.is(ModDamageTypes.BULLETS_TAG) ||
+                                    source.is(ModDamageTypes.BULLET_IGNORE_ARMOR) ||
+                                    source.is(ModDamageTypes.BULLET_VOID_IGNORE_ARMOR)
+                            );
+
+
                     if (source.is(DamageTypes.GENERIC ) || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)) return 4;
                     if (source.is(DamageTypes.WITHER)) return 2;
                     if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL)) return 5;
                     if (source.is(DamageTypes.DRY_OUT) || source.is(DamageTypes.MAGIC) || source.is(DamageTypes.LIGHTNING_BOLT) || source.is(DamageTypes.DRAGON_BREATH)) return 8;
-                    if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE)) return 3;
+                    if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE) || deathByTacZBullet) return 3;
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
                     if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)) return 1;
                     if (source.is(DamageTypes.SONIC_BOOM) || source.is(EpicFightDamageTypes.WITHER_BEAM)) return 7;
