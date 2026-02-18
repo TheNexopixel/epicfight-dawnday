@@ -3,7 +3,7 @@
     "color": [216, 216, 216],
     "begin_pos": [0.01, 0.01, -0.5],
     "end_pos": [0.01, 0.01, -2.53],
-    "lifetime": 5,
+    "lifetime": 4,
     "interpolations": 8,
     "texture_path": "epicfight:textures/particle/swing_trail.png",
     "particle_type": "epicfight:swing_trail"
