@@ -1,0 +1,30 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "epicfight_dd:item/battlestaff",
+    "textures": {
+      "layer0": "epicfight_dd:item/golden_battlestaff"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/golden_battlestaff_gui"
+      }
+    },
+    "fixed": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/golden_battlestaff_gui"
+      }
+    },
+    "ground": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/golden_battlestaff_gui"
+      }
+    }
+  }
+}

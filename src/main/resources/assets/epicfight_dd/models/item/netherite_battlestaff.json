@@ -1,0 +1,30 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "epicfight_dd:item/battlestaff",
+    "textures": {
+      "layer0": "epicfight_dd:item/netherite_battlestaff"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_battlestaff_gui"
+      }
+    },
+    "fixed": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_battlestaff"
+      }
+    },
+    "ground": {
+      "parent": "epicfight_dd:item/battlestaff",
+      "textures": {
+        "layer0": "epicfight_dd:item/netherite_battlestaff"
+      }
+    }
+  }
+}

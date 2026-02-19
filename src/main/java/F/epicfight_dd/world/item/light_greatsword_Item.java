@@ -10,7 +10,7 @@ import yesman.epicfight.world.item.WeaponItem;
 public class light_greatsword_Item extends WeaponItem
 {
     public light_greatsword_Item(Tier materialIn, int damageIn, float speed, int durability) {
-        super(materialIn, 3, -2.0F,
+        super(materialIn, 3, -2.2F,
                 new Properties().stacksTo(1)
                         .defaultDurability(durability)
 

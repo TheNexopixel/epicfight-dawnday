@@ -19,5 +19,11 @@
   "skill.epicfight_dd.furious_cut.tooltip": "Leave no opponent standing.",
   "skill.epicfight_dd.gentle_nudge": "Gentle Nudge",
   "skill.epicfight_dd.gentle_nudge.tooltip": "Legends say that the name of this skill was invented by a being who had the power to change the laws of the world.",
-  "key.epicfight_dd.switch_stance": "Switch Stances"
+  "key.epicfight_dd.switch_stance": "Wingstance",
+  "item.epicfight_dd.iron_battlestaff": "Iron Battlestaff",
+  "item.epicfight_dd.golden_battlestaff": "Golden Battlestaff",
+  "item.epicfight_dd.diamond_battlestaff": "Diamond Battlestaff",
+  "item.epicfight_dd.netherite_battlestaff": "Netherite Battlestaff",
+  "skill.epicfight_dd.skull_rupture": "Skull Rupture",
+  "skill.epicfight_dd.skull_rupture.tooltip": "This skill is only intended for particularly strong arms. Difficult for you."
 }

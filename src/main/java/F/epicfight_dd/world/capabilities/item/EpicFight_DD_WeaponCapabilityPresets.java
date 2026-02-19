@@ -215,14 +215,14 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.SKULL_RUPTURE)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.BATTLESTAFF_AUTO1,
                             MiladyMoveset.BATTLESTAFF_AUTO2,
                             MiladyMoveset.BATTLESTAFF_AUTO3,
-                            MiladyMoveset.HALBERD_AUTO4,
-                            MiladyMoveset.HALBERD_DASH,
-                            MiladyMoveset.MILADY_AIR_SLASH
+                            MiladyMoveset.BATTLESTAFF_AUTO4,
+                            MiladyMoveset.BATTLESTAFF_DASH,
+                            MiladyMoveset.MILADY_DUAL_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)

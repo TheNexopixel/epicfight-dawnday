@@ -33,6 +33,7 @@ public class DawnDaySkills {
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
     public static Skill WINGSTANCE;
+    public static Skill SKULL_RUPTURE;
 
 
     @SubscribeEvent
@@ -52,6 +53,21 @@ public class DawnDaySkills {
                        .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
                GENTLE_NUDGE = gentlenudge;
+
+
+        WeaponInnateSkill skullrupture = modRegistry.build("skull_rupture",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.SKULL_RUPTURE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        skullrupture.newProperty()
+                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        SKULL_RUPTURE = skullrupture;
 
         WeaponInnateSkill piercingfang = modRegistry.build("piercing_fang",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(MiladyMoveset.PIERCING_FANG)

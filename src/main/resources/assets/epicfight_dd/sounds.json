@@ -34,5 +34,11 @@
     "category":"master",
     "subtitle":"sfx.piercing_fang",
     "sounds":[{"name":"epicfight_dd:sfx/piercing_fang", "stream":false}]
+  },
+  "sfx.battlestaff_swing":
+  {
+    "category":"master",
+    "subtitle":"sfx.battlestaff_swing",
+    "sounds":[{"name":"epicfight_dd:sfx/battlestaff_swing", "stream":false}]
   }
 }

@@ -28,6 +28,21 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(680)));
 
+    public static final RegistryObject<Item> golden_battlestaff =
+            ITEMS.register("golden_battlestaff",() -> new SwordItem(Tiers.GOLD,3,-2.4f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(380)));
+
+    public static final RegistryObject<Item> diamond_battlestaff =
+            ITEMS.register("diamond_battlestaff",() -> new SwordItem(Tiers.DIAMOND,3,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(1680)));
+
+    public static final RegistryObject<Item> netherite_battlestaff =
+            ITEMS.register("netherite_battlestaff",() -> new SwordItem(Tiers.NETHERITE,3,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(2680)));
+
     public static final RegistryObject<Item> netherite_light_greatsword =
             ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-1.5f,2442));
 

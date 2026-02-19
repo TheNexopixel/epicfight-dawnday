@@ -3,9 +3,9 @@
       {
         "start_time": 0.05,
         "end_time": 0.8,
-        "lifetime": 3,
-        "begin_pos": [-0.3, 0.3, -1.2],
-        "end_pos": [-0.3, 0.3, -1.75],
+        "lifetime": 6,
+        "begin_pos": [0.3, -0.3, 1.35],
+        "end_pos": [0.3, -0.3, 1.8],
         "interpolations": 9,
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"

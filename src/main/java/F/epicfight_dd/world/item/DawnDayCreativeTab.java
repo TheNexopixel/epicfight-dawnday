@@ -26,7 +26,10 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.diamond_halberd.get());
                 output.accept(DawnDayItems.iron_halberd.get());
                 output.accept(DawnDayItems.golden_halberd.get());
+                output.accept(DawnDayItems.netherite_battlestaff.get());
+                output.accept(DawnDayItems.diamond_battlestaff.get());
                 output.accept(DawnDayItems.iron_battlestaff.get());
+                output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.war_sickle.get());
                 output.accept(DawnDayItems.backhand_blade.get());
 
