@@ -2,13 +2,19 @@ package F.epicfight_dd.skill.stances;
 
 import F.epicfight_dd.gameasset.animation.WingStanceAnims;
 import F.epicfight_dd.skill.SkillDataKeyZ;
+import F.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.skill.*;
 
+import yesman.epicfight.skill.identity.RevelationSkill;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.UUID;
+
 
 public class WingStanceSkill extends Skill {
 
@@ -26,20 +32,25 @@ public class WingStanceSkill extends Skill {
 
         var data_manager = container.getDataManager();
 
+
         listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID, (event) -> {
 
-            boolean move_1 = (event.getPlayerPatch().getOriginal().isSprinting());
+            boolean sprintSpecial = (event.getPlayerPatch().getOriginal().isSprinting());
             boolean innate = event.getSkillContainer().getSkill().getCategory() == SkillCategories.WEAPON_INNATE;
 
 
             int innateStackCount = (int) container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getResource();
             Skill innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getSkill();
+            boolean canActivate = innateStackCount >= 1 || container.getExecutor().getOriginal().isCreative();
+            boolean isInWingStance= false;
 
-            if (!(data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))) {
-                return;
+            if (data_manager != null && data_manager.hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())) {
+                isInWingStance = data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get());
             }
 
-            if (move_1 && innate && innateStackCount >= 1) {
+            if (!isInWingStance) {return;}
+
+            if (sprintSpecial && innate && canActivate) {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
@@ -50,7 +61,7 @@ public class WingStanceSkill extends Skill {
                     event.setCanceled(true);
 
                 }
-            } else if (innate && innateStackCount >= 1) {
+            } else if (innate && canActivate) {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
@@ -71,7 +82,7 @@ public class WingStanceSkill extends Skill {
     public void onRemoved(SkillContainer container) {
         super.onRemoved(container);
 
-        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.SKILL_CAST_EVENT,EVENT_UUID);
+        container.getExecutor().getEventListener().removeListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID);
 
     }
 

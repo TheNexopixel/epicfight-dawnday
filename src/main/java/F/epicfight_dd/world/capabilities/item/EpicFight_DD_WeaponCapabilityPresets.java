@@ -28,34 +28,36 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 import java.util.function.Function;
 
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EpicFight_DD_WeaponCapabilityPresets {
 
-    public static final Function<Item, CapabilityItem.Builder> MILADY = (item) ->
+    public static final Function<Item, CapabilityItem.Builder> MILADY = (item) -> (CapabilityItem.Builder)
             WeaponCapability.builder()
             .category(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
-                    .styleProvider((pp) ->
-                            {
-                                if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD){
-                                    return CapabilityItem.Styles.TWO_HAND;
-                                }
-                                else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
-                                        playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))){
-                                    return CapabilityItem.Styles.SHEATH;
-                                } else { return CapabilityItem.Styles.ONE_HAND;}
+            .styleProvider((pp) ->
+                    {
+                        if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD) {
+                            return CapabilityItem.Styles.TWO_HAND;
+                        } else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
+                                playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))) {
+                            return CapabilityItem.Styles.OCHS;
+                        } else {
+                            return CapabilityItem.Styles.ONE_HAND;
+                        }
 
-                            }
+                    }
 
-                            )
-                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
+            )
+            .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
             .collider(MiladyCollider.LIGHT_GREATSWORD)
-                    .passiveSkill(DawnDaySkills.WINGSTANCE)
+            .passiveSkill(DawnDaySkills.WINGSTANCE)
+
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip-> DawnDaySkills.GENTLE_NUDGE)
-                    .innateSkill(CapabilityItem.Styles.OCHS, ip-> DawnDaySkills.FURIOUS_CUT)
+            .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.FURIOUS_CUT)
+            .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
+            .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.FURIOUS_CUT)
 
             .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO1,
@@ -63,41 +65,41 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     MiladyMoveset.MILADY_TWOHANDED_AUTO3,
                     MiladyMoveset.MILADY_TWOHANDED_AUTO4,
                     MiladyMoveset.MILADY_TWOHANDED_DASH,
-                   MiladyMoveset.MILADY_SPECIAL_AUTO1)
+                    MiladyMoveset.MILADY_SPECIAL_AUTO1)
 
-                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO1,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO2,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO3,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO4,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO5,
-                            MiladyMoveset.MILADY_SPECIAL_DASH,
-                            MiladyMoveset.MILADY_DUAL_AIRSLASH
-                            )
+            .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO1,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO2,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO3,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO4,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO5,
+                    MiladyMoveset.MILADY_SPECIAL_DASH,
+                    MiladyMoveset.MILADY_DUAL_AIRSLASH
+            )
 
-                    .newStyleCombo(CapabilityItem.Styles.SHEATH,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO1,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO2,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO3,
-                            MiladyMoveset.MILADY_TWOHANDED_AUTO4,
-                            MiladyMoveset.MILADY_TWOHANDED_DASH,
-                            MiladyMoveset.MILADY_SPECIAL_AUTO1
-                            )
+            .newStyleCombo(CapabilityItem.Styles.OCHS,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO1,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO2,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO3,
+                    MiladyMoveset.MILADY_TWOHANDED_AUTO4,
+                    MiladyMoveset.MILADY_TWOHANDED_DASH,
+                    MiladyMoveset.MILADY_SPECIAL_AUTO1
+            )
 
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, MiladyMoveset.MILADY_ONEHANDED_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_SPECIAL_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_SPECIAL_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.COMMON, LivingMotions.DEATH , QoLMiscAnimations.EXPRESSIVE_DEATH)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_TWOHANDED_IS_IDLE)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, MiladyMoveset.MILADY_ONEHANDED_RUN)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_SPECIAL_IDLE)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_SPECIAL_WALK)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_TWOHANDED_WALK)
+            .livingMotionModifier(CapabilityItem.Styles.COMMON, LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+            .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
+            .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
 
-                    .livingMotionModifier(CapabilityItem.Styles.SHEATH, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.SHEATH, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
+            .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
+            .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
+            .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
 
-            ;
 
     public static final Function<Item, CapabilityItem.Builder> LIGHT_GREATSWORD = (item) ->
             WeaponCapability.builder()
@@ -207,7 +209,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
-    public static final Function<Item, CapabilityItem.Builder> BATTLESTAFF = (item) ->
+    public static final Function<Item, CapabilityItem.Builder> BATTLE_STAFF = (item) ->
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
@@ -230,13 +232,12 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
 
-
     @SubscribeEvent // register Weapon Moveset
-    public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event){
+    public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "halberd"), HALBERD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff"), BATTLESTAFF);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff"), BATTLE_STAFF);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "backhand_blade"), BACKHAND_BLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "light_greatsword"), LIGHT_GREATSWORD);
     }
