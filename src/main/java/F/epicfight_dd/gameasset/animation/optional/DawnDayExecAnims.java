@@ -76,6 +76,9 @@ public class DawnDayExecAnims {
 
         );
 
+
+        //unused after Combat evolution author added style based execution.
+        // kept here for future reference if anyone decides to use this animation type
         MILADY_EXECUTION_SEL = builder.nextAccessor("biped/execproxy/ems",ac -> new SelectiveExecutionAttackProxy( patch ->{
                boolean dualWieldingMilady = EpicFightCapabilities.getItemStackCapability(patch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD;
 

@@ -81,7 +81,10 @@ public class WingStanceAnims {
 
 
         WINGSTANCE_TRANSITION = builder.nextAccessor("biped/skill/wingstance/wingstance_transition", accessor ->
-                new StaticAnimation(false,accessor,biped));
+                new StaticAnimation(false,accessor,biped)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER,(s,r,p,f,k)-> 0.69f)
+
+        );
 
 
 
