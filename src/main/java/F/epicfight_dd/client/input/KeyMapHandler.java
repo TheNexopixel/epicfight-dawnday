@@ -26,17 +26,21 @@ public class KeyMapHandler {
             if(DawnKeymappings.SWITCH_STANCE.consumeClick()) {
                 LocalPlayerPatch localPlayerPatch = EpicFightCapabilities.getLocalPlayerPatch(mc.player);
                 if(localPlayerPatch != null && localPlayerPatch.isEpicFightMode()
-                  && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).hasSkill(DawnDaySkills.WINGSTANCE)
-                ) {
+                  && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())){
 
                    if(localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == false){
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
-                       localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE);
+                       localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE,150f,0.85f);
                        for (int i = 1; i <= 5; i++) {
                            mc.player.level().addParticle(
                                    ParticleTypes.END_ROD,
-                                   mc.player.getX(),mc.player.getY() + 0.85,mc.player.getZ(),0.23,0.420,0.25
+                                   mc.player.getX(),mc.player.getY() + 0.85,mc.player.getZ(),0.23,0.020,0.25
                            );
+                           mc.player.level().addParticle(
+                                   ParticleTypes.END_ROD,
+                                   mc.player.getX(),mc.player.getY() + 0.25,mc.player.getZ(),0.03,0.020,0.0
+                           );
+
                        }
                       localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION,0.0f);
 
