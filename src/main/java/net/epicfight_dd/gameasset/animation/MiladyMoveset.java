@@ -195,7 +195,6 @@ public class MiladyMoveset {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.2f, 0.2f, 0.5f, 0.59f, 0.62f, InteractionHand.MAIN_HAND, biped.get().toolR, MiladyCollider.BATTLESTAFF_FRONT)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.15F))
-                                .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.battlestaff_swing.get())
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get()),
 
