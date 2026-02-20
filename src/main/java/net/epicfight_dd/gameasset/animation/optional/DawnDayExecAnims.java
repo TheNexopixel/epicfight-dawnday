@@ -38,6 +38,9 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> MILADY_EXECUTION;
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> MILADY_EXECUTION_DUAL;
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> BATTLESTAFF_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> BATTLESTAFF_EXECUTED;
+
     public static AnimationManager.AnimationAccessor<SelectiveExecutionAttackProxy> MILADY_EXECUTION_SEL;
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
@@ -57,11 +60,20 @@ public class DawnDayExecAnims {
 
         );
 
+        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor) ->
+                (getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
+
+        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor) ->
+                new ExecutionHitAnimation(0.067f, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
+
+        );
+
         MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
-                getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
+                getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));
 
         MILADY_EXECUTION_DUAL = builder.nextAccessor("biped/execution/milady/milady_special_execution", (accessor) ->
-                getExecutionAttackAnimation(accessor,executionCollider,CONSTANT_EXECUTION));
+                getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));
 
         MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution_hit", (accessor) ->
                 (new ExecutionHitAnimation(-0.3f, accessor, Armatures.BIPED))
@@ -79,31 +91,29 @@ public class DawnDayExecAnims {
 
         //unused after Combat evolution author added style based execution.
         // kept here for future reference if anyone decides to use this animation type
-        MILADY_EXECUTION_SEL = builder.nextAccessor("biped/execproxy/ems",ac -> new SelectiveExecutionAttackProxy( patch ->{
-               boolean dualWieldingMilady = EpicFightCapabilities.getItemStackCapability(patch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD;
+        MILADY_EXECUTION_SEL = builder.nextAccessor("biped/execproxy/ems", ac -> new SelectiveExecutionAttackProxy(patch -> {
+            boolean dualWieldingMilady = EpicFightCapabilities.getItemStackCapability(patch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD;
 
-               LivingEntityPatch<?> target = EpicFightCapabilities.getEntityPatch(patch.getTarget(),LivingEntityPatch.class);
+            LivingEntityPatch<?> target = EpicFightCapabilities.getEntityPatch(patch.getTarget(), LivingEntityPatch.class);
 
-               return dualWieldingMilady  ? 1 : 0;
-                }, ac,
+            return dualWieldingMilady ? 1 : 0;
+        }, ac,
                 MILADY_EXECUTION,
                 MILADY_EXECUTION_DUAL
         ));
         //TODO:TEST IF CRASH ON DEDICATED SERVER
-        MILADY_EXECUTION_SEL_HIT = builder.nextAccessor("biped/execproxy/ems_h",ac -> new SelectiveExecutionHitAnimation( patch ->  {
+        MILADY_EXECUTION_SEL_HIT = builder.nextAccessor("biped/execproxy/ems_h", ac -> new SelectiveExecutionHitAnimation(patch -> {
 
-            boolean oppsdualwielding = patch.getOriginal().getTags().contains("dualWieldExecAnim");
+                    boolean oppsdualwielding = patch.getOriginal().getTags().contains("dualWieldExecAnim");
 
                     return oppsdualwielding ? 1 : 0;
 
-        }, 0.2f, ac, Armatures.BIPED,
-                MILADY_EXECUTION_HIT,
-                MILADY_EXECUTION_HIT_SPECIAL
-        )
+                }, 0.2f, ac, Armatures.BIPED,
+                        MILADY_EXECUTION_HIT,
+                        MILADY_EXECUTION_HIT_SPECIAL
+                )
 
         );
-
-
 
 
     }
@@ -130,7 +140,7 @@ public class DawnDayExecAnims {
 
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(true, 0.0F, 0.0F, 0.82F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(3.5F)),
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5F)),
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 10.16F, 10.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))
@@ -138,8 +148,22 @@ public class DawnDayExecAnims {
                 .addEvents(new AnimationEvent[]{AnimationEvent.InTimeEvent.create(0.6F,
                         (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 9, false, false)), AnimationEvent.Side.BOTH)});
 
+
     }
+    @SuppressWarnings("RedundantArrayCreation")
+    private static ExecutionAttackAnimation getExecutionAttackAnimation(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider, AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, 0.82F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5F)),
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 1.16F, 1.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
+                .addEvents(new AnimationEvent[]{AnimationEvent.InTimeEvent.create(0.6F,
+                        (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 9, false, false)), AnimationEvent.Side.BOTH)});
 
 
-
+    }
 }

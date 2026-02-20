@@ -224,7 +224,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BATTLESTAFF_AUTO3,
                             MiladyMoveset.BATTLESTAFF_AUTO4,
                             MiladyMoveset.BATTLESTAFF_DASH,
-                            MiladyMoveset.MILADY_DUAL_AIRSLASH
+                            MiladyMoveset.POLE_AXE_AUTO1
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)

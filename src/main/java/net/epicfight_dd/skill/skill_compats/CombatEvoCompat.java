@@ -30,6 +30,9 @@ public class CombatEvoCompat implements ICompatModule {
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);
 
+      event.registerExecutionByCategory(CapabilityItem.WeaponCategories.SPEAR, CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.BATTLESTAFF);
+
 
       //System.out.println("EXECUTION TYPES SUCCESSFULLY REGISTERED");
 

@@ -22,6 +22,12 @@ public class DawnDayExecution_TYPES {
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
     );
 
+    public static final Type BATTLESTAFF = new Type(
+            DawnDayExecAnims.BATTLESTAFF_EXECUTE,
+            DawnDayExecAnims.BATTLESTAFF_EXECUTED,
+            new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
+    );
+
     public static final Type MILADY_DUAL = new Type(
             DawnDayExecAnims.MILADY_EXECUTION_DUAL,
             DawnDayExecAnims.MILADY_EXECUTION_HIT_SPECIAL,
