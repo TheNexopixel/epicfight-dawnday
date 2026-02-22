@@ -60,14 +60,6 @@ public class DawnDayExecAnims {
 
         );
 
-        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor) ->
-                (getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION)));
-
-        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor) ->
-                new ExecutionHitAnimation(0.067f, accessor, Armatures.BIPED)
-                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
-
-        );
 
         MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
                 getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));
@@ -116,11 +108,11 @@ public class DawnDayExecAnims {
         );
 
         //random values, apply correct values yourself - #Sid, delete this coment when done
-        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battletaff_execute", (accessor)->
-        get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.2f,0.3f,0.1f,0.5f));
+        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor)->
+        get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.75f,0.80f,1.45f,1.45f));
 
 
-        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battletaff_executed", (accessor)->
+        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor)->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
 
@@ -171,20 +163,17 @@ public class DawnDayExecAnims {
                                                                  float preDelay2,
                                                                  float contact2
 
-
+// Thats for Battlestaff
     ) {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
-                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
-                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5F)),
-                (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, preDelay2, contact2, 9.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 0.73F, 1.23F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F)),
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 9.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))
-                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
-                .addEvents(new AnimationEvent[]{AnimationEvent.InTimeEvent.create(0.6F,
-                        (livingEntityPatch, assetAccessor, animationParameters) -> livingEntityPatch.getOriginal().addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 9, false, false)), AnimationEvent.Side.BOTH)});
-
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())}))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }
 }
