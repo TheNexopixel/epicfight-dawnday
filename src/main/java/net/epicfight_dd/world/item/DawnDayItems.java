@@ -2,6 +2,7 @@ package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.Epicfight_dd;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +22,11 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(1261))
                     );
+    public static final RegistryObject<Item> herb_sickle =
+            ITEMS.register("herb_sickle",() -> new SwordItem(Tiers.DIAMOND,3,-1.5f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2500)));
 
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,

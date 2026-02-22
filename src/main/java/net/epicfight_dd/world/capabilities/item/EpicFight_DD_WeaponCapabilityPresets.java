@@ -16,8 +16,10 @@ import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
+import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -215,6 +217,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(MiladyCollider.BATTLESTAFF_FRONT)
                     .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.SKULL_RUPTURE)
@@ -231,10 +234,34 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> HERB_SICKLE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(ColliderPreset.SWORD)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.QUICK_RUSH)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            MiladyMoveset.SICKLE_AUTO1,
+                            MiladyMoveset.SICKLE_AUTO2,
+                            MiladyMoveset.SICKLE_AUTO3,
+                            MiladyMoveset.SICKLE_AUTO4,
+                            MiladyMoveset.SICKLE_DASH,
+                            MiladyMoveset.SICKLE_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.SICKLE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "herb_sickle"), HERB_SICKLE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "halberd"), HALBERD);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff"), BATTLE_STAFF);

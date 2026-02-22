@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
@@ -35,6 +36,7 @@ public class DawnDaySkills {
     public static Skill FURIOUS_CUT;
     public static Skill WINGSTANCE;
     public static Skill SKULL_RUPTURE;
+    public static Skill QUICK_RUSH;
 
 
     @SubscribeEvent
@@ -108,10 +110,22 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG);
+        FURIOUS_CUT = furiousCut;
+
+        WeaponInnateSkill quickrush = modRegistry.build("quick_rush",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.QUICK_RUSH)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        quickrush.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.8F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
-        FURIOUS_CUT = furiousCut;
+        QUICK_RUSH = quickrush;
 
         WINGSTANCE = modRegistry.build("wingstance",
                 WingStanceSkill::new, WingStanceSkill.createBuilder()

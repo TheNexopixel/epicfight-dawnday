@@ -25,5 +25,8 @@
   "item.epicfight_dd.diamond_battlestaff": "Diamond Battlestaff",
   "item.epicfight_dd.netherite_battlestaff": "Netherite Battlestaff",
   "skill.epicfight_dd.skull_rupture": "Skull Rupture",
-  "skill.epicfight_dd.skull_rupture.tooltip": "This skill is only intended for particularly strong arms. Difficult for you."
+  "skill.epicfight_dd.skull_rupture.tooltip": "This skill is only intended for particularly strong arms. Difficult for you.",
+  "item.epicfight_dd.herb_sickle": "Sickle",
+  "skill.epicfight_dd.quick_rush": "Quick Rush",
+  "skill.epicfight_dd.quick_rush.tooltip": "Skill prized by the crafty and fleet of foot."
 }

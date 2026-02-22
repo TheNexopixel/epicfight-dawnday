@@ -1,0 +1,6 @@
+{
+  "parent": "epicfight_dd:item/herb_sickle_template",
+  "textures": {
+    "layer0": "epicfight_dd:item/herb_sickle"
+  }
+}
