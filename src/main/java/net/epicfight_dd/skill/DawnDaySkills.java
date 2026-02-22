@@ -7,6 +7,7 @@ import java.util.Set;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
+import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -55,7 +56,8 @@ public class DawnDaySkills {
                GENTLE_NUDGE = gentlenudge;
 
 
-        WeaponInnateSkill skullrupture = modRegistry.build("skull_rupture",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+        WeaponInnateSkill skullrupture = modRegistry.build("skull_rupture",
+                SkullRuptureSkill::new, SkullRuptureSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(MiladyMoveset.SKULL_RUPTURE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         skullrupture.newProperty()

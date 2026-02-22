@@ -42,6 +42,7 @@ public class KeyMapHandler {
                            );
 
                        }
+
                       localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION,0.0f);
 
                    } else {

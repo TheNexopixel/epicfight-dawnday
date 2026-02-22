@@ -28,6 +28,7 @@ public class WingStanceSkill extends Skill {
         var data_manager = container.getDataManager();
 
 
+
         listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID, (event) -> {
 
             boolean sprintSpecial = (event.getPlayerPatch().getOriginal().isSprinting());

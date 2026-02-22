@@ -3,6 +3,7 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -82,6 +83,7 @@ public class WingStanceAnims {
 
         WINGSTANCE_TRANSITION = builder.nextAccessor("biped/skill/wingstance/wingstance_transition", accessor ->
                 new StaticAnimation(false,accessor,biped)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.RESET_LIVING_MOTION, LivingMotions.ALL)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER,(s,r,p,f,k)-> 0.69f)
 
         );
