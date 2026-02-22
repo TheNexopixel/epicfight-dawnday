@@ -44,19 +44,20 @@ public class SkullRuptureSkill extends SimpleWeaponInnateSkill {
 
                 if (isInExecution) {
                     if (targetPatch != null) {
-                        targetPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
-                        serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
+                     //   targetPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
+                     //   serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
                         try {
                             targetPatch.getEventListener().addEventListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, PP_UUID, (evt) -> {
                                 if (evt.isParried()) {
-                                    serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
-                                    evt.getPlayerPatch().getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
+                                //    serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
+                                //    evt.getPlayerPatch().getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
                                     serverPlayerPatch.applyStun(StunType.NEUTRALIZE, 1.5f);
-                                    MinecraftServer server = evt.getPlayerPatch().getOriginal().server;
-                                    int curr_tick_cnt = server.getTickCount();
-                                    server.tell(new TickTask(curr_tick_cnt + 20, () ->
-                                            targetPatch.getEventListener().removeListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, PP_UUID)));
+
                                 }
+                                MinecraftServer server = evt.getPlayerPatch().getOriginal().server;
+                                int curr_tick_cnt = server.getTickCount();
+                                server.tell(new TickTask(curr_tick_cnt + 20, () ->
+                                        targetPatch.getEventListener().removeListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, PP_UUID)));
 
                             });
                         } catch (Exception e) {
