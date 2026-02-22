@@ -52,7 +52,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             )
             .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
             .collider(MiladyCollider.LIGHT_GREATSWORD)
-            //.passiveSkill(DawnDaySkills.WINGSTANCE)
+            .passiveSkill(DawnDaySkills.WINGSTANCE)
 
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
