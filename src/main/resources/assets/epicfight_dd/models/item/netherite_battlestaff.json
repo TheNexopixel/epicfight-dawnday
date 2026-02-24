@@ -17,13 +17,13 @@
     "fixed": {
       "parent": "epicfight_dd:item/battlestaff",
       "textures": {
-        "layer0": "epicfight_dd:item/netherite_battlestaff"
+        "layer0": "epicfight_dd:item/netherite_battlestaff_gui"
       }
     },
     "ground": {
       "parent": "epicfight_dd:item/battlestaff",
       "textures": {
-        "layer0": "epicfight_dd:item/netherite_battlestaff"
+        "layer0": "epicfight_dd:item/netherite_battlestaff_gui"
       }
     }
   }

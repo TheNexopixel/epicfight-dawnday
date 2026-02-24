@@ -18,6 +18,8 @@ public class dawnDaySounds {
     public static final RegistryObject<SoundEvent> piercing_fang = registerSound("sfx.piercing_fang");
     public static final RegistryObject<SoundEvent> milady_light_sweep = registerSound("sfx.milady_extra_light");
     public static final RegistryObject<SoundEvent> battlestaff_swing = registerSound("sfx.battlestaff_swing");
+    public static final RegistryObject<SoundEvent> guard_break = registerSound("sfx.guard_break");
+    public static final RegistryObject<SoundEvent> poise_break = registerSound("sfx.poise_break");
 
 
 

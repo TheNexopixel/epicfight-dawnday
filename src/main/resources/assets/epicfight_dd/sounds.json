@@ -40,5 +40,17 @@
     "category":"master",
     "subtitle":"sfx.battlestaff_swing",
     "sounds":[{"name":"epicfight_dd:sfx/battlestaff_swing", "stream":false}]
+  },
+  "sfx.poise_break":
+  {
+    "category":"master",
+    "subtitle":"sfx.poise_break",
+    "sounds":[{"name":"epicfight_dd:sfx/poise_break", "stream":false}]
+  },
+  "sfx.guard_break":
+  {
+    "category":"master",
+    "subtitle":"sfx.guard_break",
+    "sounds":[{"name":"epicfight_dd:sfx/guard_break", "stream":false}]
   }
 }
