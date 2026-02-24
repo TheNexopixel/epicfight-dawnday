@@ -773,6 +773,7 @@ public class MiladyMoveset {
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.8F)))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE,true));
 
         SICKLE_DUAL_AUTO2 = builder.nextAccessor("biped/combat/sickle_dual_auto2", (accessor) ->
