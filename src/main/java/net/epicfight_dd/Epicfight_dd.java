@@ -1,7 +1,9 @@
 package net.epicfight_dd;
 
+import com.hm.efn.EFN;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
+import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +45,10 @@ public class Epicfight_dd {
 
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
             ICompatModule.loadCompatModule(context, CombatEvoCompat.class);
+        }
+
+        if(ModList.get().isLoaded(EFN.MODID)){
+            ICompatModule.loadCompatModule(context, NightfallCompat.class);
         }
 
 

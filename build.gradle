@@ -17,6 +17,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:combat-evolution-1377795:7647549")
     compileOnly fg.deobf("curse.maven:timeless-and-classics-zero-1028108:7401617")
+    compileOnly fg.deobf("curse.maven:epicfight-nightfall-1307848:7670480")
 
     //perf
     runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")

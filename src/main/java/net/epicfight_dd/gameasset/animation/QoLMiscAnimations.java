@@ -3,15 +3,20 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
+import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
+import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypes;
 
 public class QoLMiscAnimations {
@@ -87,13 +92,82 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         WITHERING_DEMISE = builder.nextAccessor("biped/living/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(AnimationProperty.StaticAnimationProperty.TICK_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e,s,p)->{
+                            LivingEntity entity = e.getOriginal();
+                            if (entity.tickCount % 2 != 0) return; //return if not every 2 tick
+
+                            if (!entity.level().isClientSide) return;
+
+                            var random = entity.getRandom();
+
+                            int particleCount = 10 + random.nextInt(16); // 10–25
+                            double sphereRadius = 0.66;
+
+                            for (int i = 0; i < particleCount; i++) {
+                                double theta = random.nextDouble() * 2 * Math.PI;
+                                double phi = Math.acos(2 * random.nextDouble() - 1);
+
+                                double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
+                                double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta);
+                                double zOffset = sphereRadius * Math.cos(phi);
+
+                                double vxOffset = xOffset * 0.2;
+                                double vyOffset = yOffset * 0.2;
+                                double vzOffset = zOffset * 0.2;
+
+                                Particle particle = Minecraft.getInstance().particleEngine.createParticle(
+                                        ParticleTypes.LARGE_SMOKE,
+                                        entity.getX() + xOffset,
+                                        entity.getY() + yOffset + 0.6,
+                                        entity.getZ() + zOffset,
+                                        vxOffset, vyOffset, vzOffset
+                                );
+
+                                if (particle != null) {
+                                    particle.scale(1.1F);
+                                    particle.setLifetime(15);
+                                }
+                            }
+
+                        }, AnimationEvent.Side.CLIENT
+                ))
+
+        );
 
         EXPLOSION_DEATH = builder.nextAccessor("biped/living/death_explosion", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         SHOT_DEAD = builder.nextAccessor("biped/living/death_arrow", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e,s,p)->{
+
+                            LivingEntity entity = e.getOriginal();
+
+                            // Random count between 10–25
+                            int particleCount = 10 + entity.getRandom().nextInt(16);
+
+                            for (int i = 0; i < particleCount; i++) {
+                                double offsetX = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+                                double offsetY = entity.getRandom().nextDouble() * entity.getBbHeight();
+                                double offsetZ = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                entity.level().addParticle(
+                                        EpicFightParticles.BLOOD.get(),
+                                        entity.getX() + offsetX,
+                                        entity.getY() + offsetY,
+                                        entity.getZ() + offsetZ,
+                                        0.0D, 0.02D, 0.0D
+                                );
+                            }
+
+                        }, AnimationEvent.Side.CLIENT
+                ))
+
+
+        );
 
         FALL_DEATH = builder.nextAccessor("biped/living/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
