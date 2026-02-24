@@ -14,6 +14,7 @@ import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
+import yesman.epicfight.api.animation.types.LongHitAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.particle.EpicFightParticles;
@@ -30,6 +31,8 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SONICBOOM;
     public static AnimationManager.AnimationAccessor<ActionAnimation> EXPLOSION_DEATH;
     public static AnimationManager.AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
+
+    public static AnimationManager.AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
 
 
 
@@ -96,7 +99,7 @@ public class QoLMiscAnimations {
                 .addEvents(AnimationProperty.StaticAnimationProperty.TICK_EVENTS, AnimationEvent.SimpleEvent.create(
                         (e,s,p)->{
                             LivingEntity entity = e.getOriginal();
-                            if (entity.tickCount % 2 != 0) return; //return if not every 2 tick
+                            if (entity.tickCount % 5 != 0) return; //return if not every 5 tick
 
                             if (!entity.level().isClientSide) return;
 
@@ -147,7 +150,7 @@ public class QoLMiscAnimations {
                             LivingEntity entity = e.getOriginal();
 
                             // Random count between 10–25
-                            int particleCount = 10 + entity.getRandom().nextInt(16);
+                            int particleCount = 15 + entity.getRandom().nextInt(19);
 
                             for (int i = 0; i < particleCount; i++) {
                                 double offsetX = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
@@ -171,6 +174,13 @@ public class QoLMiscAnimations {
 
         FALL_DEATH = builder.nextAccessor("biped/living/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+
+        BATTLE$TAFF_PARRIED = builder.nextAccessor("biped/living/battlestaff_parried", ac->
+                new LongHitAnimation( 0.1f, ac, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
+        );
 
 
     }

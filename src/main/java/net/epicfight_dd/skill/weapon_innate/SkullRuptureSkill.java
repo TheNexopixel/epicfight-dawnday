@@ -1,11 +1,15 @@
 package net.epicfight_dd.skill.weapon_innate;
 
 import net.epicfight_dd.gameasset.animation.MiladyMoveset;
+import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
+import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.skill.DawnDaySkills;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import yesman.epicfight.api.animation.AnimationPlayer;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
@@ -51,7 +55,16 @@ public class SkullRuptureSkill extends SimpleWeaponInnateSkill {
                                 if (evt.isParried()) {
                                 //    serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
                                 //    evt.getPlayerPatch().getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
-                                    serverPlayerPatch.applyStun(StunType.NEUTRALIZE, 1.5f);
+                                    serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.BATTLE$TAFF_PARRIED,0.1f);
+
+                                    serverPlayerPatch.getOriginal().level().playSound(
+                                            null,
+                                            serverPlayerPatch.getOriginal().getOnPos(),
+                                            dawnDaySounds.guard_break.get()
+                                            , SoundSource.PLAYERS,
+                                            100f,
+                                            1f
+                                            );
 
                                 }
                                 MinecraftServer server = evt.getPlayerPatch().getOriginal().server;
