@@ -14,6 +14,7 @@ import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
+import yesman.epicfight.api.animation.types.KnockdownAnimation;
 import yesman.epicfight.api.animation.types.LongHitAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
@@ -33,6 +34,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
 
     public static AnimationManager.AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
+    public static AnimationManager.AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN;
 
 
 
@@ -178,6 +180,11 @@ public class QoLMiscAnimations {
 
         BATTLE$TAFF_PARRIED = builder.nextAccessor("biped/living/battlestaff_parried", ac->
                 new LongHitAnimation( 0.1f, ac, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
+        );
+        DAWNDAY_KNOCKDOWN = builder.nextAccessor("biped/living/knockdown", ac->
+                new KnockdownAnimation( 0.1f, ac, Armatures.BIPED)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );

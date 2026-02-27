@@ -43,6 +43,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> BATTLESTAFF_IDLE;
     public static AnimationAccessor<StaticAnimation> SICKLE_IDLE;
     public static AnimationAccessor<StaticAnimation> SICKLE_DUAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> STEELAXE_IDLE;
 
 
 
@@ -63,6 +64,11 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO3;
+
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO4;
 
 
 
@@ -144,6 +150,9 @@ public class MiladyMoveset {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        STEELAXE_IDLE = builder.nextAccessor("biped/living/steelaxe_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
         SICKLE_DUAL_IDLE = builder.nextAccessor("biped/living/sickle_dual_idle", ac ->
@@ -788,6 +797,24 @@ public class MiladyMoveset {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.4f))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_dual_slash.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        STEELAXE_AUTO1 = builder.nextAccessor("biped/combat/steelaxe_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        STEELAXE_AUTO2 = builder.nextAccessor("biped/combat/steelaxe_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        STEELAXE_AUTO3 = builder.nextAccessor("biped/combat/steelaxe_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
     }

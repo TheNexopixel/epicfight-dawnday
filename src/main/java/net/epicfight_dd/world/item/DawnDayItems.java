@@ -28,6 +28,12 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2500)));
 
+    public static final RegistryObject<Item> steelaxe =
+            ITEMS.register("steelaxe",() -> new SwordItem(Tiers.NETHERITE,3,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2500)));
+
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
                     new Item.Properties().stacksTo(1)
