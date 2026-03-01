@@ -283,6 +283,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.STEELAXE_AUTO1,
                             MiladyMoveset.STEELAXE_AUTO2,
                             MiladyMoveset.STEELAXE_AUTO3,
+                            MiladyMoveset.STEELAXE_AUTO4,
                             MiladyMoveset.HALBERD_DASH,
                             MiladyMoveset.POLE_AXE_AUTO3)
 
@@ -292,10 +293,45 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> KNIFE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.DAGGER)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.DAGGER ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.DAGGER)
+                    .collider(ColliderPreset.DAGGER)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.IMPAILING_THRUST)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            MiladyMoveset.KNIFE_ONEHANDED_AUTO1,
+                            MiladyMoveset.KNIFE_ONEHANDED_AUTO2,
+                            MiladyMoveset.KNIFE_ONEHANDED_AUTO3,
+                            MiladyMoveset.KNIFE_ONEHANDED_AUTO4,
+                            MiladyMoveset.SICKLE_DASH,
+                            MiladyMoveset.SICKLE_AIRSLASH)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.SICKLE_DUAL_AUTO1,
+                            MiladyMoveset.SICKLE_DUAL_AUTO2,
+                            MiladyMoveset.SICKLE_DUAL_AUTO3,
+                            MiladyMoveset.MILADY_DUAL_DASH,
+                            MiladyMoveset.SICKLE_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.KNIFE_ONEHANDED_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.KNIFE_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "knife"), KNIFE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "steelaxe"), STEEL_AXE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "herb_sickle"), HERB_SICKLE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);

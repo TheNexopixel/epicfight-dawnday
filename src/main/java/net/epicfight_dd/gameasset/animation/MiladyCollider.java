@@ -26,6 +26,10 @@ public class MiladyCollider {
     public static final Collider BACKHAND_BLADE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"backhand_blade"),new MultiOBBCollider(6, 0.4D, 0.4D, 1.1D, 0D, 0.0D, 1.3D));
     public static final Collider BATTLESTAFF_FRONT = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"battlestaff_front"),new MultiOBBCollider(6, 0.2D, 0.35D, 1.8D, 0D, 0.15D, -0.3D));
     public static final Collider BATTLESTAFF_BACK = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"battlestaff_back"),new MultiOBBCollider(6, 0.2D, 0.35D, -0.8D, 0D, 0.15D, 1.5D));
+    public static final Collider WHIRLWIND1 = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"whirlwind1"),new MultiOBBCollider(1, 2.5D, 1.0D, 2.5D, 0D, 1.5D, 0.0D));
+    public static final Collider WHIRLWIND2 = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"whirlwind2"),new MultiOBBCollider(1, 4.0D, 1.2D, 4.0D, 0D, 1.5D, 0.0D));
+
+
 
 }
 

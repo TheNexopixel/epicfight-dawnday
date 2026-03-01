@@ -37,6 +37,8 @@ public class DawnDaySkills {
     public static Skill WINGSTANCE;
     public static Skill SKULL_RUPTURE;
     public static Skill QUICK_RUSH;
+    public static Skill WHIRLWIND;
+    public static Skill IMPAILING_THRUST;
 
 
     @SubscribeEvent
@@ -88,13 +90,24 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         PIERCING_FANG = piercingfang;
 
+        WeaponInnateSkill impailingthrust = modRegistry.build("impailing_thrust",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.IMPAILING_THRUST)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        impailingthrust.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(30.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        IMPAILING_THRUST = impailingthrust;
+
         WeaponInnateSkill spearingstrike = modRegistry.build("spearing_strike",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(MiladyMoveset.SPEARING_STRIKE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         spearingstrike.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(3.0f))
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
@@ -107,10 +120,8 @@ public class DawnDaySkills {
                 .setCategory(SkillCategories.WEAPON_INNATE));
         furiousCut.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
-                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
-                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG);
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(30.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F));
         FURIOUS_CUT = furiousCut;
 
         WeaponInnateSkill quickrush = modRegistry.build("quick_rush",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
@@ -131,6 +142,17 @@ public class DawnDaySkills {
                 WingStanceSkill::new, WingStanceSkill.createBuilder()
                         .setCategory(SkillCategories.WEAPON_PASSIVE)
                 );
+
+        WeaponInnateSkill whirlwind = modRegistry.build("whirlwind",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.WHIRLWIND)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        whirlwind.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
+                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.8F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT);
+        WHIRLWIND = whirlwind;
 
     }
 
