@@ -1,11 +1,7 @@
 package net.epicfight_dd.skill.weapon_innate;
 
-import net.epicfight_dd.gameasset.animation.MiladyMoveset;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.gameasset.dawnDaySounds;
-import net.epicfight_dd.skill.DawnDaySkills;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,7 +11,6 @@ import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
-import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.UUID;
@@ -48,13 +43,9 @@ public class SkullRuptureSkill extends SimpleWeaponInnateSkill {
 
                 if (isInExecution) {
                     if (targetPatch != null) {
-                     //   targetPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
-                     //   serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("RuptureImminent"));
                         try {
                             targetPatch.getEventListener().addEventListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, PP_UUID, (evt) -> {
                                 if (evt.isParried()) {
-                                //    serverPlayerPatch.getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
-                                //    evt.getPlayerPatch().getOriginal().sendSystemMessage(Component.literal("Rupture parried").withStyle(ChatFormatting.DARK_GRAY), true);
                                     serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.BATTLE$TAFF_PARRIED,0.1f);
 
                                     serverPlayerPatch.getOriginal().level().playSound(
@@ -67,12 +58,14 @@ public class SkullRuptureSkill extends SimpleWeaponInnateSkill {
                                             );
 
                                 }
+
                                 MinecraftServer server = evt.getPlayerPatch().getOriginal().server;
                                 int curr_tick_cnt = server.getTickCount();
                                 server.tell(new TickTask(curr_tick_cnt + 20, () ->
                                         targetPatch.getEventListener().removeListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, PP_UUID)));
 
                             });
+
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }

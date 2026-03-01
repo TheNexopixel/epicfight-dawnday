@@ -183,6 +183,7 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );
+
         DAWNDAY_KNOCKDOWN = builder.nextAccessor("biped/living/knockdown", ac->
                 new KnockdownAnimation( 0.1f, ac, Armatures.BIPED)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)

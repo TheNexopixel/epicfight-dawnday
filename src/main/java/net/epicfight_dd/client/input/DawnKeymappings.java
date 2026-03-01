@@ -3,7 +3,6 @@ package net.epicfight_dd.client.input;
 import net.epicfight_dd.Epicfight_dd;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,7 +17,7 @@ public class DawnKeymappings {
 
     public static final KeyMapping SWITCH_STANCE =
             new CombatKeyMapping(
-                    Component.translatable("key.epicfight_dd.switch_stance").toString(),
+                    "WingStance Mode",
                     InputConstants.KEY_F,
                     EpicFightInputCategories.COMBAT
             );

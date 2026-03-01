@@ -14,6 +14,13 @@ public class SkillDataKeyZ {
 
     private SkillDataKeyZ(){}
 
+ /*
+ヽ(｀Д´)ﾉ
+ヽ(｀Д´)ﾉ
+ヽ(｀Д´)ﾉ
+ヽ(｀Д´)ﾉ
+  */
+
     public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID,"skill_data_keys"), Epicfight_dd.MODID);
 
     public static final RegistryObject<SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = DATA_KEYS.register("special_stance_active", () -> SkillDataKey.createSkillDataKey(PacketBufferCodec.BOOLEAN, false,true, WingStanceSkill.class));
