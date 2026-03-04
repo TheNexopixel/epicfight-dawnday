@@ -320,7 +320,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.KNIFE_DUAL_AUTO2,
                             MiladyMoveset.SICKLE_DUAL_AUTO3,
                             MiladyMoveset.KNIFE_DUAL_DASH,
-                            MiladyMoveset.SICKLE_AIRSLASH
+                            MiladyMoveset.KNIFE_DUAL_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.KNIFE_ONEHANDED_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.KNIFE_DUAL_IDLE)
