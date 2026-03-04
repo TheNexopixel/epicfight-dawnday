@@ -170,7 +170,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> BACKHAND_BLADE = (item) ->
             WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.TACHI)
+                    .category(CapabilityItem.WeaponCategories.DAGGER)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(MiladyCollider.BACKHAND_BLADE)
                     .swingSound(dawnDaySounds.Milady_dual_slash.get())
@@ -227,6 +227,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BATTLESTAFF_AUTO2,
                             MiladyMoveset.BATTLESTAFF_AUTO3,
                             MiladyMoveset.BATTLESTAFF_AUTO4,
+                            MiladyMoveset.BATTLESTAFF_AUTO5,
                             MiladyMoveset.BATTLESTAFF_DASH,
                             MiladyMoveset.POLE_AXE_AUTO1
                     )
@@ -247,7 +248,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.QUICK_RUSH)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.DANCING_EDGE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             MiladyMoveset.SICKLE_AUTO1,
                             MiladyMoveset.SICKLE_AUTO2,
@@ -300,7 +301,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.DAGGER ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.DAGGER)
                     .collider(ColliderPreset.DAGGER)
-                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .swingSound(dawnDaySounds.milady_light_sweep.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
@@ -315,10 +316,10 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.SICKLE_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            MiladyMoveset.SICKLE_DUAL_AUTO1,
-                            MiladyMoveset.SICKLE_DUAL_AUTO2,
+                            MiladyMoveset.KNIFE_DUAL_AUTO1,
+                            MiladyMoveset.KNIFE_DUAL_AUTO2,
                             MiladyMoveset.SICKLE_DUAL_AUTO3,
-                            MiladyMoveset.MILADY_DUAL_DASH,
+                            MiladyMoveset.KNIFE_DUAL_DASH,
                             MiladyMoveset.SICKLE_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.KNIFE_ONEHANDED_IDLE)
