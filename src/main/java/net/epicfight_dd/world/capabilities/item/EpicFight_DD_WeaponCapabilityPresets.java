@@ -176,17 +176,17 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .swingSound(dawnDaySounds.Milady_dual_slash.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.SHARP_STAB)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SPINNING_SHADOW)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             MiladyMoveset.BACKHAND_AUTO1,
                             MiladyMoveset.BACKHAND_AUTO2,
                             MiladyMoveset.BACKHAND_AUTO3,
                             MiladyMoveset.BACKHAND_AUTO4,
-                            MiladyMoveset.HEAVY_AXE_DASH,
-                            MiladyMoveset.MILADY_SPECIAL_DASH
+                            MiladyMoveset.BACKHAND_DASH,
+                            MiladyMoveset.BACKHAND_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.BACKHAND_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 

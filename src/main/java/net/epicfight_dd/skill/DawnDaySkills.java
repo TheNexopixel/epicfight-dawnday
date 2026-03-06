@@ -39,6 +39,7 @@ public class DawnDaySkills {
     public static Skill QUICK_RUSH;
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
+    public static Skill SPINNING_SHADOW;
 
 
     @SubscribeEvent
@@ -156,6 +157,18 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT);
 
         WHIRLWIND = whirlwind;
+
+        WeaponInnateSkill spinshadow = modRegistry.build("spinning_shadow",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.SPINNING_SHADOW)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        spinshadow.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(55.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.8F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+
+        SPINNING_SHADOW = spinshadow;
 
     }
 
