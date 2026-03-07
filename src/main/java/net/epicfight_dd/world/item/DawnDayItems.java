@@ -14,8 +14,6 @@ public class DawnDayItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Epicfight_dd.MODID);
 
-    public static final RegistryObject<Item> milady =
-            ITEMS.register("milady",() -> new miladyItem(Tiers.IRON));
 
     public static final RegistryObject<Item> backhand_blade =
             ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-1.5f,
@@ -29,6 +27,12 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2500)));
 
+    public static final RegistryObject<Item> saber =
+            ITEMS.register("saber",() -> new SwordItem(Tiers.DIAMOND,1,-2.0f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2500)));
+
     public static final RegistryObject<Item> steelaxe =
             ITEMS.register("steelaxe",() -> new SwordItem(Tiers.NETHERITE,4,-2.2f,
                     new Item.Properties().stacksTo(1)
@@ -36,25 +40,25 @@ public class DawnDayItems {
                             .defaultDurability(2500)));
 
     public static final RegistryObject<Item> iron_knife =
-            ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,2,-1.8f,
+            ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,0,-1.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(860)));
 
     public static final RegistryObject<Item> diamond_knife =
-            ITEMS.register("diamond_knife",() -> new SwordItem(Tiers.DIAMOND,3,-1.8f,
+            ITEMS.register("diamond_knife",() -> new SwordItem(Tiers.DIAMOND,1,-1.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(1360)));
 
     public static final RegistryObject<Item> netherite_knife =
-            ITEMS.register("netherite_knife",() -> new SwordItem(Tiers.NETHERITE,3,-1.8f,
+            ITEMS.register("netherite_knife",() -> new SwordItem(Tiers.NETHERITE,2,-1.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(2360)));
 
     public static final RegistryObject<Item> golden_knife =
-            ITEMS.register("golden_knife",() -> new SwordItem(Tiers.GOLD,3,-1.7f,
+            ITEMS.register("golden_knife",() -> new SwordItem(Tiers.GOLD,2,-1.7f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(360)));
@@ -79,8 +83,13 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(2680)));
 
+    public static final RegistryObject<Item> milady =
+            ITEMS.register("milady",() -> new SwordItem(Tiers.NETHERITE,1,-2.0f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(3680)));
+
     public static final RegistryObject<Item> netherite_light_greatsword =
-            ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-1.5f,2442));
+            ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-2.0f,2442));
 
     public static final RegistryObject<Item> diamond_light_greatsword =
             ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND, 4,-1.5f,1942));
@@ -89,7 +98,7 @@ public class DawnDayItems {
             ITEMS.register("golden_light_greatsword",() -> new light_greatsword_Item(Tiers.GOLD, 4,-1.5f,600));
 
     public static final RegistryObject<Item> iron_light_greatsword =
-            ITEMS.register("iron_light_greatsword",() -> new light_greatsword_Item(Tiers.IRON, 3, -2.0f,961));
+            ITEMS.register("iron_light_greatsword",() -> new light_greatsword_Item(Tiers.IRON, 3, -1.5f,961));
 
     public static final RegistryObject<Item> war_sickle =
             ITEMS.register("war_sickle",() -> new war_sickle_item(Tiers.NETHERITE));

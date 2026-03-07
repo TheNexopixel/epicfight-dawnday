@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":14.0,
+      "armor_negation":15.0,
       "impact":1.2,
-      "max_strikes":8
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:backhand_blade"

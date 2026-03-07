@@ -35,6 +35,7 @@ public class QoLMiscAnimations {
 
     public static AnimationManager.AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
     public static AnimationManager.AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN;
+    public static AnimationManager.AnimationAccessor<KnockdownAnimation> BREAKDOWN;
 
 
 
@@ -185,6 +186,12 @@ public class QoLMiscAnimations {
         );
 
         DAWNDAY_KNOCKDOWN = builder.nextAccessor("biped/living/knockdown", ac->
+                new KnockdownAnimation( 0.1f, ac, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
+        );
+
+        BREAKDOWN = builder.nextAccessor("biped/living/breakdown", ac->
                 new KnockdownAnimation( 0.1f, ac, Armatures.BIPED)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)

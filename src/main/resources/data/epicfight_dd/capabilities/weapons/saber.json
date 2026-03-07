@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "impact":1.0,
+      "impact":2.0,
       "max_strikes":8
     }
   },
-  "type":"epicfight_dd:halberd"
+  "type":"epicfight_dd:saber"
 }

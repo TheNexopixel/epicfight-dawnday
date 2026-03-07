@@ -1,0 +1,16 @@
+{
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/saber.obj",
+		"textures": {
+			"tex1": "epicfight_dd:item/saber"
+		},
+
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, 0],
+			"translation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0]
+		}
+	}
+}
