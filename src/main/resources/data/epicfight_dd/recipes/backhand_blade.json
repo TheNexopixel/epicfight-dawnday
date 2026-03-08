@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  A",
+    "AD ",
+    "SA "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:copper_ingot"
+    },
+  "A": {
+    "item": "minecraft:iron_ingot"
+  }
+  },
+
+  "result": {
+    "item": "epicfight_dd:backhand_blade",
+    "count": 1
+  }
+}
+

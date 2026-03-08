@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " AD",
+    "ASA",
+    "DA "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "A": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+
+  "result": {
+    "item": "epicfight_dd:war_sickle",
+    "count": 1
+  }
+}
+

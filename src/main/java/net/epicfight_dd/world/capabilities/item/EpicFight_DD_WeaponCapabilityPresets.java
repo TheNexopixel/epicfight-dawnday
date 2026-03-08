@@ -183,7 +183,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BACKHAND_AUTO3,
                             MiladyMoveset.BACKHAND_AUTO4,
                             MiladyMoveset.BACKHAND_DASH,
-                            MiladyMoveset.BACKHAND_AIRSLASH
+                            MiladyMoveset.KNIFE_DUAL_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.BACKHAND_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
