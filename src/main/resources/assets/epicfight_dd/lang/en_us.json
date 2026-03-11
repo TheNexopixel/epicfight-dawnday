@@ -37,5 +37,7 @@
   "skill.epicfight_dd.impailing_thrust": "Impailing Thrust",
   "skill.epicfight_dd.impailing_thrust.tooltip": "A skill that lets piercing armaments overcome enemy shields. Build power, then lunge forward for a long thrust that pierces an enemy's guard.",
   "skill.epicfight_dd.whirlwind":"Whirlwind",
-  "skill.epicfight_dd.whirlwind.tooltip":"An extremely realistic skill that destroys everything in its path."
+  "skill.epicfight_dd.whirlwind.tooltip":"An extremely realistic skill that destroys everything in its path.",
+  "skill.epicfight_dd.spinning_shadow":"Spinning Shadow",
+  "skill.epicfight_dd.spinning_shadow.tooltip":"This skill pierces part of the armour and knocks enemies down."
 }

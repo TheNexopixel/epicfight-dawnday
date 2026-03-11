@@ -1,5 +1,6 @@
 {
 		"loader": "forge:obj",
+		"gui_light": "front",
 		"flip_v": true,
 		"model": "epicfight_dd:models/obj/saber.obj",
 		"textures": {

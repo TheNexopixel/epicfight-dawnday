@@ -536,6 +536,7 @@ public class MiladyMoveset {
         WHIRLWIND = builder.nextAccessor("biped/skill/whirlwind", (accessor) ->
                 new AttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.2f, 0.2f, 0.3f, 5.31f, 0.32f, InteractionHand.MAIN_HAND, biped.get().rootJoint,MiladyCollider.WHIRLWIND1)
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                                 .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH.get())
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.1f)),
                         new AttackAnimation.Phase(0.33f, 0.34f, 0.35f, 0.36f, 5.38f,0.39f, InteractionHand.OFF_HAND, biped.get().rootJoint,MiladyCollider.WHIRLWIND1)
@@ -574,11 +575,14 @@ public class MiladyMoveset {
                         new AttackAnimation.Phase(1.40f, 1.44f, 1.45f, 1.46f, 5.48f,1.49f, InteractionHand.MAIN_HAND, biped.get().rootJoint,MiladyCollider.WHIRLWIND1)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3f))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH.get()),
+                        new AttackAnimation.Phase(1.50f, 1.54f, 1.55f, 1.56f, 5.58f,1.59f, InteractionHand.MAIN_HAND, biped.get().rootJoint,MiladyCollider.WHIRLWIND1)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.4f))
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH.get()),
 
 
                         new AttackAnimation.Phase(1.89f, 1.95f, 2.15f, 2.2f, 5.9f, 20f, InteractionHand.MAIN_HAND, biped.get().rootJoint,MiladyCollider.WHIRLWIND2)
                                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(2.4f))
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(2.5f))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
                                 .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLADE)
                 )
@@ -605,7 +609,9 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         MILADY_TWOHANDED_AUTO4 = builder.nextAccessor("biped/combat/milady_twohanded_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.3F, 0.55F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2f))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
