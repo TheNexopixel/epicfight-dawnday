@@ -15,7 +15,8 @@ repositories {
 dependencies {
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:7633232")
 
-    implementation fg.deobf("curse.maven:combat-evolution-1377795:7705542")
+    implementation fg.deobf("curse.maven:combat-evolution-1377795:7765635")
+    implementation fg.deobf("curse.maven:wom-918614:7517612")
     compileOnly fg.deobf("curse.maven:timeless-and-classics-zero-1028108:7401617")
     compileOnly fg.deobf("curse.maven:epicfight-nightfall-1307848:7670480")
 

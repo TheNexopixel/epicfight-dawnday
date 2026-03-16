@@ -31,6 +31,8 @@ public class MiladyCollider {
     public static final Collider MILADY_DASH = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"milady_dash"),new MultiOBBCollider(4, 1.3D, 0.6D, 1.8D, 0D, 0.0D, -1.6D));
     public static final Collider KNIFE_DASH = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"knife_dash"),new MultiOBBCollider(4, 0.5D, 0.7D, 0.8D, 0D, 0.0D, -0.8D));
     public static final Collider BACKHAND_INNATE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"backhand_innate"),new MultiOBBCollider(1, 1.8D, 1.0D, 2.1D, 0D, 1.5D, -0.4D));
+    public static final Collider EVIL_TACHI = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"evil_tachi"),new MultiOBBCollider(3, 0.3D, 0.3D, 1.6D, 0D, 0.0D, -1.6D));
+    public static final Collider EVIL_TACHI_BACK = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"evil_tachi_back"),new MultiOBBCollider(3, 0.35D, 0.35D, 0.6D, 0D, 0.0D, 0.7D));
 
 
 

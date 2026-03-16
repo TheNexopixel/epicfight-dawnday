@@ -1,5 +1,6 @@
 package net.epicfight_dd.world.capabilities.item;
 
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.MiladyCollider;
 import net.epicfight_dd.gameasset.animation.MiladyMoveset;
@@ -8,11 +9,15 @@ import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.minecraft.client.Camera;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
@@ -20,7 +25,6 @@ import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -29,6 +33,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCapability;
 
 
 import java.util.function.Function;
+
 
 
 @Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -332,7 +337,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(ColliderPreset.LONGSWORD)
+                    .collider(MiladyCollider.LIGHT_GREATSWORD)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -352,10 +357,35 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI = (item) ->
+            WeaponCapability.builder()
+                    .category( CapabilityItem.WeaponCategories.TACHI)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(MiladyCollider.EVIL_TACHI)
+
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.EVIL_ODACHI_AUTO1,
+                            MiladyMoveset.EVIL_ODACHI_AUTO2,
+                            MiladyMoveset.EVIL_ODACHI_AUTO3,
+                            MiladyMoveset.EVIL_ODACHI_AUTO4,
+                            MiladyMoveset.EVIL_ODACHI_DASH,
+                            MiladyMoveset.EVIL_ODACHI_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.EVIL_ODACHI_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "knife"), KNIFE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "steelaxe"), STEEL_AXE);

@@ -1,9 +1,11 @@
 package net.epicfight_dd.gameasset.animation;
 
+import com.mojang.blaze3d.shaders.Effect;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
+import reascer.wom.world.damagesources.WOMStuntypes;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -48,6 +50,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> KNIFE_ONEHANDED_IDLE;
     public static AnimationAccessor<StaticAnimation> KNIFE_DUAL_IDLE;
     public static AnimationAccessor<StaticAnimation> SABER_IDLE;
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_IDLE;
 
 
 
@@ -166,6 +169,13 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
 
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> EVIL_ODACHI_DASH;
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AIRSLASH;
+
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
     public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
@@ -176,6 +186,9 @@ public class MiladyMoveset {
 
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        EVIL_ODACHI_IDLE = builder.nextAccessor("biped/living/evil_odachi_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
         TPOSE = builder.nextAccessor("biped/living/rest_pose", ac ->
@@ -1128,6 +1141,76 @@ public class MiladyMoveset {
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.73)))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_AUTO1 = builder.nextAccessor("biped/combat/evil_odachi_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.45f, 1.8f, 0.46f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLADE),
+
+                        new AttackAnimation.Phase(0.46f, 0.47f, 0.68f, 0.9f, 1.6f,1.0f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        ,
+                        new AttackAnimation.Phase(1.02f, 1.2f, 1.3f, 1.50f, 1.6f,1.7f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_AUTO2 = builder.nextAccessor("biped/combat/evil_odachi_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.0f, 0.25f, 0.4f, 0.6F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_AUTO3 = builder.nextAccessor("biped/combat/evil_odachi_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.0f, 0.58f, 0.8f, 1.0F, MiladyCollider.EVIL_TACHI_BACK, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.70))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_AUTO4 = builder.nextAccessor("biped/combat/evil_odachi_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.0f, 0.4f, 0.9f, 1.1F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.30))
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.EVISCERATE.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_DASH = builder.nextAccessor("biped/combat/evil_odachi_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.0f, 0.25f, 0.4f, 0.6F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_ODACHI_AIRSLASH = builder.nextAccessor("biped/combat/evil_odachi_airslash", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.20f, 0.35f, 1.2f, 0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.50)),
+
+                        new AttackAnimation.Phase(0.48f, 0.5f, 0.60f, 0.85f, 1.2f, 2.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.80))
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
     }
 
