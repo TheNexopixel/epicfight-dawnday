@@ -1,9 +1,15 @@
 package net.epicfight_dd.gameasset.animation;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.HitResult;
+import org.joml.Vector3f;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -11,6 +17,7 @@ import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.animation.types.grappling.GrapplingAttackAnimation;
 import yesman.epicfight.api.animation.types.grappling.GrapplingTryAnimation;
+import yesman.epicfight.api.utils.math.OpenMatrix4f;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
@@ -19,10 +26,12 @@ import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
 
+import java.util.Random;
 import java.util.Set;
 
 
@@ -1241,9 +1250,94 @@ public class MiladyMoveset {
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.0F, (entitypatch, animation, params) -> {
-                                    entitypatch.playSound(EpicFightSounds.BUZZ.get(), 0.0F, 0.0F);
-                                    AnimationEvent.Side.BOTH}))
+                                AnimationEvent.InTimeEvent.create(0.1F, (entitypatch, self, params) -> {
+                                    LivingEntity entity =  entitypatch.getOriginal();
+
+                                    if (entitypatch instanceof PlayerPatch) {
+                                        entity.level().playSound(
+                                                (Player) entity,
+                                                entity,
+                                                 EpicFightSounds.LASER_BLAST.get(),
+                                                SoundSource.PLAYERS,
+                                                100, 0.7F
+                                        );
+                                    }
+
+
+                                    OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(
+                                            entitypatch.getAnimator().getPose(-0.5F),
+                                            (Armatures.BIPED.get()).toolR
+                                    );
+                                    OpenMatrix4f tipMatrix = entitypatch.getArmature().getBoundTransformFor(
+                                            entitypatch.getAnimator().getPose(-0.5F),
+                                            (Armatures.BIPED.get()).toolR
+                                    );
+
+                                    // Offset along blade
+                                    originMatrix.translate(new Vec3f(0.0F, -0.6F, -0.3F));
+                                    tipMatrix.translate(new Vec3f(0.0F, -0.8F, -0.3F));
+
+                                    // Correct for entity yaw rotation
+                                    OpenMatrix4f yawCorrection = new OpenMatrix4f().rotate(
+                                            (float) -Math.toRadians(entity.yBodyRot + 180.0F),
+                                            new Vec3f(0.0F, 1.0F, 0.0F)
+                                    );
+                                    OpenMatrix4f.mul(yawCorrection, originMatrix, originMatrix);
+                                    OpenMatrix4f.mul(yawCorrection, tipMatrix, tipMatrix);
+
+                                    // World position of origin
+                                    double worldX = originMatrix.m30 + entity.getX();
+                                    double worldY = originMatrix.m31 + entity.getY();
+                                    double worldZ = originMatrix.m32 + entity.getZ();
+
+                                    // wither particle ring like in wom bro
+                                    int particleCount = 40;
+                                    double radius = 0.2D;
+                                    double spread = 0.01D;
+                                    Random rand = new Random();
+
+                                    for (int i = 0; i < particleCount; i++) {
+                                        double theta = Math.PI * 2 * rand.nextDouble();
+                                        double phi = (rand.nextDouble() - 0.5D) * Math.PI * spread / radius;
+
+                                        double x = radius * Math.cos(phi) * Math.cos(theta);
+                                        double y = radius * Math.cos(phi) * Math.sin(theta);
+                                        double z = radius * Math.sin(phi);
+
+                                        Vec3f spreadDir = new Vec3f((float) x, (float) y, (float) z);
+
+                                        OpenMatrix4f spreadRotation = new OpenMatrix4f().rotate(
+                                                (float) -Math.toRadians(entity.yHeadRot),
+                                                new Vec3f(0.0F, 1.0F, 0.0F)
+                                        );
+                                        spreadRotation.rotate(
+                                                (originMatrix.m11 + 0.07F) * 1.5F,
+                                                new Vec3f(1.0F, 0.0F, 0.0F)
+                                        );
+                                        OpenMatrix4f.transform3v(spreadRotation, spreadDir, spreadDir);
+
+                                        // wither particles
+                                        entity.level().addParticle(
+                                                new DustParticleOptions(new Vector3f(0.0F, 0.0F, 0.0F), 1.5F),
+                                                worldX, worldY, worldZ,
+                                                (double)(tipMatrix.m30 - originMatrix.m30 + spreadDir.x),
+                                                (double)(tipMatrix.m31 - originMatrix.m31 + spreadDir.y),
+                                                (double)(tipMatrix.m32 - originMatrix.m32 + spreadDir.z)
+                                        );
+                                    }
+
+                                    // laser beam raycast
+                                    HitResult ray = entity.pick(20.0D, 0.7F, true);
+
+                                    entity.level().addParticle(
+                                             EpicFightParticles.LASER.get(),
+                                            worldX, worldY, worldZ,
+                                            ray.getLocation().x,
+                                            ray.getLocation().y,
+                                            ray.getLocation().z
+                                    );
+
+                                }, AnimationEvent.Side.CLIENT))
                         .addEvents(
                                 StaticAnimationProperty.ON_BEGIN_EVENTS,
                                 AnimationEvent.SimpleEvent.create(
