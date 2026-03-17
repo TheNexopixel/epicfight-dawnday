@@ -40,6 +40,7 @@ public class DawnDaySkills {
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
     public static Skill SPINNING_SHADOW;
+    public static Skill EVIL_BEAAAAMMMM;
 
 
     @SubscribeEvent
@@ -169,6 +170,18 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         SPINNING_SHADOW = spinshadow;
+
+        WeaponInnateSkill evilbeam = modRegistry.build("spinning_shadow",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.EVIL_ODACHI_BEAAAMMMM)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        evilbeam.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(40.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(3.5F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+
+        EVIL_BEAAAAMMMM = evilbeam;
 
     }
 

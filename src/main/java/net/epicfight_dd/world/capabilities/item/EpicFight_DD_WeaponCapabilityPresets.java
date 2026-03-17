@@ -1,6 +1,5 @@
 package net.epicfight_dd.world.capabilities.item;
 
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.MiladyCollider;
 import net.epicfight_dd.gameasset.animation.MiladyMoveset;
@@ -9,15 +8,11 @@ import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
-import net.minecraft.client.Camera;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
@@ -366,7 +361,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.EVIL_BEAAAAMMMM)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.EVIL_ODACHI_AUTO1,
                             MiladyMoveset.EVIL_ODACHI_AUTO2,
