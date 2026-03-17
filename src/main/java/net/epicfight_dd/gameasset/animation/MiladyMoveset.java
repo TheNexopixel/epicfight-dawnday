@@ -1,11 +1,9 @@
 package net.epicfight_dd.gameasset.animation;
 
-import com.mojang.blaze3d.shaders.Effect;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
-import reascer.wom.world.damagesources.WOMStuntypes;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -1242,12 +1240,17 @@ public class MiladyMoveset {
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
-                        .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.0F, (entitypatch, animation, params) -> {
+                                    entitypatch.playSound(EpicFightSounds.BUZZ.get(), 0.0F, 0.0F);
+                                    AnimationEvent.Side.BOTH}))
+                        .addEvents(
+                                StaticAnimationProperty.ON_BEGIN_EVENTS,
+                                AnimationEvent.SimpleEvent.create(
                                 (e,s,p)->
                                         e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),4,2)), AnimationEvent.Side.SERVER
-                        ))
-        );
+                                )));
     }
 
-    }
+    };
 

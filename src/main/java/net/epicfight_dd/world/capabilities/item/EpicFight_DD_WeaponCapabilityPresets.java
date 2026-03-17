@@ -340,7 +340,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WINGSTANCE)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             MiladyMoveset.SABER_AUTO1,
-                            MiladyMoveset.STEELAXE_AUTO2,
+                            MiladyMoveset.SABER_AUTO2,
                             MiladyMoveset.STEELAXE_AUTO3,
                             MiladyMoveset.STEELAXE_AUTO4,
                             MiladyMoveset.HALBERD_DASH,
