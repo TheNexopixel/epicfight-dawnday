@@ -4,6 +4,7 @@ import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotions;
+import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -12,6 +13,7 @@ import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
 public class WingStanceAnims {
@@ -85,6 +87,16 @@ public class WingStanceAnims {
                 new StaticAnimation(false,accessor,biped)
                         .addProperty(AnimationProperty.StaticAnimationProperty.RESET_LIVING_MOTION, LivingMotions.ALL)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER,(s,r,p,f,k)-> 0.69f)
+                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(
+                                (e,s,p)->{
+                                    if(e instanceof ServerPlayerPatch serverPlayerPatch){
+                                        //possible try to fix wingstance?
+                                        //if not work try setting it to true or removing the boolean
+                                        serverPlayerPatch.modifyLivingMotionByCurrentItem(false);
+                                    }
+
+                                }, AnimationEvent.Side.BOTH
+                        ))
 
         );
 
