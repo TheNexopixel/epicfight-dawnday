@@ -2,6 +2,7 @@ package net.epicfight_dd;
 
 import com.hm.efn.EFN;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
+import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
@@ -12,6 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.shelmarow.combat_evolution.CombatEvolution;
 import yesman.epicfight.compat.ICompatModule;
@@ -51,7 +53,14 @@ public class Epicfight_dd {
             ICompatModule.loadCompatModule(context, NightfallCompat.class);
         }
 
+        bus.addListener(this::commonSetup);
 
+
+    }
+
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(DDNetworkHandler::register);
     }
 
 

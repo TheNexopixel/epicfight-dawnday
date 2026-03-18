@@ -28,7 +28,6 @@ public class WingStanceSkill extends Skill {
         var data_manager = container.getDataManager();
 
 
-
         listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID, (event) -> {
 
             boolean sprintSpecial = (event.getPlayerPatch().getOriginal().isSprinting());
@@ -38,13 +37,15 @@ public class WingStanceSkill extends Skill {
             int innateStackCount = (int) container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getResource();
             Skill innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getSkill();
             boolean canActivate = innateStackCount >= 1 || container.getExecutor().getOriginal().isCreative();
-            boolean isInWingStance= false;
+            boolean isInWingStance = false;
 
             if (data_manager != null && data_manager.hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())) {
                 isInWingStance = data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get());
             }
 
-            if (!isInWingStance) {return;}
+            if (!isInWingStance) {
+                return;
+            }
 
             if (sprintSpecial && innate && canActivate) {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
@@ -53,7 +54,7 @@ public class WingStanceSkill extends Skill {
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
 
 
-                    container.getExecutor().consumeForSkill(innateSkill ,Resource.WEAPON_CHARGE, innateStackCount -1);
+                    container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE, innateStackCount - 1);
                     event.setCanceled(true);
 
                 }
@@ -63,7 +64,7 @@ public class WingStanceSkill extends Skill {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
 
-                    container.getExecutor().consumeForSkill(innateSkill ,Resource.WEAPON_CHARGE, innateStackCount -1);
+                    container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE, innateStackCount - 1);
                     event.setCanceled(true);
 
                 }

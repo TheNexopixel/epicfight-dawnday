@@ -87,16 +87,7 @@ public class WingStanceAnims {
                 new StaticAnimation(false,accessor,biped)
                         .addProperty(AnimationProperty.StaticAnimationProperty.RESET_LIVING_MOTION, LivingMotions.ALL)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER,(s,r,p,f,k)-> 0.69f)
-                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e,s,p)->{
-                                    if(e instanceof ServerPlayerPatch serverPlayerPatch){
-                                        //possible try to fix wingstance?
-                                        //if not work try setting it to true or removing the boolean
-                                        serverPlayerPatch.modifyLivingMotionByCurrentItem(false);
-                                    }
 
-                                }, AnimationEvent.Side.BOTH
-                        ))
 
         );
 

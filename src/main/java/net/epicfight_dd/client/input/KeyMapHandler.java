@@ -3,6 +3,8 @@ package net.epicfight_dd.client.input;
 
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.WingStanceAnims;
+import net.epicfight_dd.network.ChangeLivingModifierPacket;
+import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.Minecraft;
@@ -45,9 +47,17 @@ public class KeyMapHandler {
 
                       localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION,0.0f);
 
+                       ChangeLivingModifierPacket modifierPacket = new ChangeLivingModifierPacket(false);
+                       DDNetworkHandler.INSTANCE.sendToServer(modifierPacket);
+
+
                    } else {
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), false);
                        localPlayerPatch.getOriginal().playSound(SoundEvents.ANVIL_DESTROY);
+
+                       ChangeLivingModifierPacket modifierPacket = new ChangeLivingModifierPacket(true);
+                       DDNetworkHandler.INSTANCE.sendToServer(modifierPacket);
+
 
                    }
                 }

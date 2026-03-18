@@ -1275,8 +1275,8 @@ public class MiladyMoveset {
                                     }
 
                                     OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(
-                                            entitypatch.getAnimator().getPose(0.1F),
-                                            Armatures.BIPED.get().toolR
+                                            entitypatch.getAnimator().getPose(-0.5F),
+                                            Armatures.BIPED.get().rootJoint
                                     );
 
                                     originMatrix.translate(new Vec3f(0.0F, 0.0F, 0.3F));
