@@ -181,6 +181,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO4_OLD;
     public static AnimationAccessor<DashAttackAnimation> EVIL_ODACHI_DASH;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AIRSLASH;
 
@@ -1153,14 +1154,18 @@ public class MiladyMoveset {
         EVIL_ODACHI_AUTO1 = builder.nextAccessor("biped/combat/evil_odachi_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.3f, 0.45f, 1.8f, 0.46f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.6))
                                 .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLADE),
 
                         new AttackAnimation.Phase(0.46f, 0.47f, 0.68f, 0.9f, 1.6f,1.0f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder( 40))
                                 .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                                 .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                         ,
                         new AttackAnimation.Phase(1.02f, 1.2f, 1.3f, 1.50f, 1.6f,1.7f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.6))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
                 )
 
@@ -1223,6 +1228,15 @@ public class MiladyMoveset {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
+        EVIL_ODACHI_AUTO4_OLD = builder.nextAccessor("biped/combat/evil_odachi_auto4_old", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.0f, 0.25f, 0.4f, 0.6F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
         EVIL_ODACHI_AIRSLASH = builder.nextAccessor("biped/combat/evil_odachi_airslash", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.1f, 0.20f, 0.35f, 1.2f, 0.48f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
@@ -1240,7 +1254,7 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_BEAAAMMMM = builder.nextAccessor("biped/skill/evil_beam", ac->
-                new AttackAnimation(0.1f,0.2f,0.55f,0.9f,0.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_SPECIAL,biped.get().toolR,ac,biped)
+                new AttackAnimation(0.1f,0.2f,0.65f,0.9f,0.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.LASER_BLAST.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
@@ -1250,16 +1264,16 @@ public class MiladyMoveset {
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
-                                AnimationEvent.InTimeEvent.create(0.1F, (entitypatch, self, params) -> {
+                                AnimationEvent.InTimeEvent.create(0.66F, (entitypatch, self, params) -> {
                                     LivingEntity entity =  entitypatch.getOriginal();
 
                                     if (entitypatch instanceof PlayerPatch) {
                                         entity.level().playSound(
                                                 (Player) entity,
                                                 entity,
-                                                 EpicFightSounds.LASER_BLAST.get(),
+                                                 EpicFightSounds.BUZZ.get(),
                                                 SoundSource.PLAYERS,
-                                                100, 0.7F
+                                                100, 1.0F
                                         );
                                     }
 
@@ -1274,8 +1288,8 @@ public class MiladyMoveset {
                                     );
 
                                     // Offset along blade
-                                    originMatrix.translate(new Vec3f(0.0F, -0.6F, -0.3F));
-                                    tipMatrix.translate(new Vec3f(0.0F, -0.8F, -0.3F));
+                                    originMatrix.translate(new Vec3f(0.0F, 0.0F, 0.3F));
+                                    tipMatrix.translate(new Vec3f(0.0F, 0.1F, 0.3F));
 
                                     // Correct for entity yaw rotation
                                     OpenMatrix4f yawCorrection = new OpenMatrix4f().rotate(
@@ -1292,7 +1306,7 @@ public class MiladyMoveset {
 
                                     // wither particle ring like in wom bro
                                     int particleCount = 40;
-                                    double radius = 0.2D;
+                                    double radius = 0.3D;
                                     double spread = 0.01D;
                                     Random rand = new Random();
 
