@@ -58,9 +58,6 @@ public class MiladyMoveset {
     public static AnimationAccessor<StaticAnimation> SABER_IDLE;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_IDLE;
 
-
-
-
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
 
     public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO1;
@@ -1277,38 +1274,29 @@ public class MiladyMoveset {
                                         );
                                     }
 
-                                    // Get weapon bone transforms
                                     OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(
-                                            entitypatch.getAnimator().getPose(-0.5F),
-                                            Armatures.BIPED.get().toolR
-                                    );
-                                    OpenMatrix4f tipMatrix = entitypatch.getArmature().getBoundTransformFor(
-                                            entitypatch.getAnimator().getPose(-0.5F),
+                                            entitypatch.getAnimator().getPose(0.1F),
                                             Armatures.BIPED.get().toolR
                                     );
 
-                                    // Offset along blade
                                     originMatrix.translate(new Vec3f(0.0F, 0.0F, 0.3F));
-                                    tipMatrix.translate(new Vec3f(0.0F, 0.1F, 0.3F));
 
                                     OpenMatrix4f yawCorrection = new OpenMatrix4f().rotate(
                                             (float) -Math.toRadians(entity.yBodyRot + 180.0F),
                                             new Vec3f(0.0F, 1.0F, 0.0F)
                                     );
                                     OpenMatrix4f.mul(yawCorrection, originMatrix, originMatrix);
-                                    OpenMatrix4f.mul(yawCorrection, tipMatrix, tipMatrix);
 
-                                    // World position of beam origin
+
                                     double worldX = originMatrix.m30 + entity.getX();
                                     double worldY = originMatrix.m31 + entity.getY();
                                     double worldZ = originMatrix.m32 + entity.getZ();
 
-                                    // Derive beam direction from the bone itself rather than headYrot to avoid issue
-                                    float boneForwardX = tipMatrix.m30 - originMatrix.m30;
-                                    float boneForwardY = tipMatrix.m31 - originMatrix.m31;
-                                    float boneForwardZ = tipMatrix.m32 - originMatrix.m32;
+                                    float boneForwardX = originMatrix.m20;
+                                    float boneForwardY = originMatrix.m21;
+                                    float boneForwardZ = originMatrix.m22;
 
-                                    // Normalize bone forward direction
+
                                     float length = (float) Math.sqrt(boneForwardX * boneForwardX + boneForwardY * boneForwardY + boneForwardZ * boneForwardZ);
                                     if (length > 0.0F) {
                                         boneForwardX /= length;
@@ -1316,18 +1304,12 @@ public class MiladyMoveset {
                                         boneForwardZ /= length;
                                     }
 
-                                    // Beam range
                                     float beamRange = 20.0F;
-
-                                    // wither particles(looks issue fixed?)
                                     int particleCount = 40;
-                                    double radius = 0.3D;
-                                    double spread = 0.01D;
                                     Random rand = new Random();
 
                                     for (int i = 0; i < particleCount; i++) {
                                         double theta = Math.PI * 2 * rand.nextDouble();
-                                        double phi = (rand.nextDouble() - 0.5D) * Math.PI * spread / radius;
 
                                         Vec3f boneRight   = new Vec3f(originMatrix.m00, originMatrix.m01, originMatrix.m02);
                                         Vec3f boneUp      = new Vec3f(originMatrix.m10, originMatrix.m11, originMatrix.m12);
@@ -1349,10 +1331,8 @@ public class MiladyMoveset {
                                         );
                                     }
 
-                                    //raycast had problem
-                                    // fire laser straight along bone forward direction
                                     entity.level().addParticle(
-                                             EpicFightParticles.LASER.get(),
+                                            EpicFightParticles.LASER.get(),
                                             worldX, worldY, worldZ,
                                             worldX + boneForwardX * beamRange,
                                             worldY + boneForwardY * beamRange,
@@ -1369,5 +1349,5 @@ public class MiladyMoveset {
                                 )));
     }
 
-    };
+    }
 
