@@ -1252,57 +1252,77 @@ public class MiladyMoveset {
         EVIL_ODACHI_BEAAAMMMM = builder.nextAccessor("biped/skill/evil_beam", ac->
                 new AttackAnimation(0.1f,0.2f,0.65f,0.9f,0.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_SPECIAL,biped.get().toolR,ac,biped)
 
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.BUZZ.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addState(EntityState.TURNING_LOCKED,false)
+                        .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
+
+                                //BUZZ
+                                AnimationEvent.InTimeEvent.create(0.55f, (e,s,p)->
+                                        e.getOriginal().level().playSound(
+                                                (Player) e.getOriginal(),
+                                                e.getOriginal(),
+                                                EpicFightSounds.BUZZ.get(),
+                                                SoundSource.PLAYERS,
+                                                100, 0.7F
+                                        )
+
+                                        , AnimationEvent.Side.CLIENT),
+
+
+                                //BEAM + LASER SOUND
                                 AnimationEvent.InTimeEvent.create(0.66F, (entitypatch, self, params) -> {
-                                    LivingEntity entity =  entitypatch.getOriginal();
+                                    LivingEntity entity = entitypatch.getOriginal();
 
                                     if (entitypatch instanceof PlayerPatch) {
                                         entity.level().playSound(
                                                 (Player) entity,
                                                 entity,
-                                                 EpicFightSounds.LASER_BLAST.get(),
+                                                EpicFightSounds.LASER_BLAST.get(),
                                                 SoundSource.PLAYERS,
                                                 100, 0.7F
                                         );
                                     }
 
+                                    // Bone matrix only for world spawn position of particle
                                     OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(
                                             entitypatch.getAnimator().getPose(-0.5F),
-                                            Armatures.BIPED.get().rootJoint
+                                            Armatures.BIPED.get().toolR
                                     );
 
                                     originMatrix.translate(new Vec3f(0.0F, 0.0F, 0.3F));
 
                                     OpenMatrix4f yawCorrection = new OpenMatrix4f().rotate(
-                                            (float) -Math.toRadians(entity.yBodyRot + 180.0F),
+                                            (float) -Math.toRadians(entitypatch.getYRot() + 180.0F),
                                             new Vec3f(0.0F, 1.0F, 0.0F)
                                     );
                                     OpenMatrix4f.mul(yawCorrection, originMatrix, originMatrix);
-
 
                                     double worldX = originMatrix.m30 + entity.getX();
                                     double worldY = originMatrix.m31 + entity.getY();
                                     double worldZ = originMatrix.m32 + entity.getZ();
 
-                                    float boneForwardX = originMatrix.m20;
-                                    float boneForwardY = originMatrix.m21;
-                                    float boneForwardZ = originMatrix.m22;
+                                    //get direction from yBodyRot
+                                    float yawRad = (float) Math.toRadians(entity.yBodyRot);
+                                    float boneForwardX = (float) -Math.sin(yawRad);
+                                    float boneForwardY =  0.0F;
+                                    float boneForwardZ = (float) Math.cos(yawRad);
 
 
-                                    float length = (float) Math.sqrt(boneForwardX * boneForwardX + boneForwardY * boneForwardY + boneForwardZ * boneForwardZ);
-                                    if (length > 0.0F) {
-                                        boneForwardX /= length;
-                                        boneForwardY /= length;
-                                        boneForwardZ /= length;
-                                    }
+                                    float rightX = (float) Math.cos(yawRad);
+                                    float rightY =  0.0F;
+                                    float rightZ = (float) Math.sin(yawRad);
+
+                                    float upX = 0.0F;
+                                    float upY = 1.0F;
+                                    float upZ = 0.0F;
 
                                     float beamRange = 20.0F;
                                     int particleCount = 40;
@@ -1311,24 +1331,21 @@ public class MiladyMoveset {
                                     for (int i = 0; i < particleCount; i++) {
                                         double theta = Math.PI * 2 * rand.nextDouble();
 
-                                        Vec3f boneRight   = new Vec3f(originMatrix.m00, originMatrix.m01, originMatrix.m02);
-                                        Vec3f boneUp      = new Vec3f(originMatrix.m10, originMatrix.m11, originMatrix.m12);
-                                        Vec3f boneForward = new Vec3f(boneForwardX, boneForwardY, boneForwardZ);
+                                        float radialX = (float)(rightX * Math.cos(theta) + upX * Math.sin(theta));
+                                        float radialY = (float)(rightY * Math.cos(theta) + upY * Math.sin(theta));
+                                        float radialZ = (float)(rightZ * Math.cos(theta) + upZ * Math.sin(theta));
 
-                                        float radialX = (float)(boneRight.x * Math.cos(theta) + boneUp.x * Math.sin(theta));
-                                        float radialY = (float)(boneRight.y * Math.cos(theta) + boneUp.y * Math.sin(theta));
-                                        float radialZ = (float)(boneRight.z * Math.cos(theta) + boneUp.z * Math.sin(theta));
-
-                                        float speed = 0.05F;
+                                        float speed = 0.15F;
                                         float forwardDrift = 0.02F;
 
                                         entity.level().addParticle(
                                                 new DustParticleOptions(new Vector3f(0.0F, 0.0F, 0.0F), 1.5F),
                                                 worldX, worldY, worldZ,
-                                                radialX * speed + boneForward.x * forwardDrift,
-                                                radialY * speed + boneForward.y * forwardDrift,
-                                                radialZ * speed + boneForward.z * forwardDrift
+                                                radialX * speed + boneForwardX * forwardDrift,
+                                                radialY * speed + boneForwardY * forwardDrift,
+                                                radialZ * speed + boneForwardZ * forwardDrift
                                         );
+
                                     }
 
                                     entity.level().addParticle(
@@ -1349,5 +1366,5 @@ public class MiladyMoveset {
                                 )));
     }
 
-    }
+}
 

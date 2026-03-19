@@ -32,15 +32,20 @@ public class KeyMapHandler {
 
                    if(localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == false){
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
+
                        localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE,150f,0.85f);
+
+                       localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_ACTIVATE,150f,0.25f);
+
+
                        for (int i = 1; i <= 5; i++) {
                            mc.player.level().addParticle(
                                    ParticleTypes.END_ROD,
-                                   mc.player.getX(),mc.player.getY() + 0.85,mc.player.getZ(),0.23,0.020,0.25
+                                   mc.player.getX() - Math.min(0.25, mc.player.getRandomX(0.01)),mc.player.getY(), mc.player.getZ() + mc.player.getRandomZ(-0.01f), Math.min(mc.player.getRandom().nextFloat(), 0.6f), Math.min(mc.player.getRandom().nextFloat(), 0.2f) , Math.min(mc.player.getRandom().nextFloat(), 1.6f)
                            );
                            mc.player.level().addParticle(
                                    ParticleTypes.END_ROD,
-                                   mc.player.getX(),mc.player.getY() + 0.25,mc.player.getZ(),0.03,0.020,0.0
+                                   mc.player.getX() + Math.min(0.25, mc.player.getRandomX(0.01)),mc.player.getY(), mc.player.getZ() + mc.player.getRandomZ(0.01f),0.03, 0.020, 0.0
                            );
 
                        }
@@ -53,7 +58,7 @@ public class KeyMapHandler {
 
                    } else {
                        localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), false);
-                       localPlayerPatch.getOriginal().playSound(SoundEvents.ANVIL_DESTROY);
+                       localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_DEACTIVATE, 70f,1.0f);
 
                        ChangeLivingModifierPacket modifierPacket = new ChangeLivingModifierPacket(true);
                        DDNetworkHandler.INSTANCE.sendToServer(modifierPacket);
