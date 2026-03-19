@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.joml.Vector3f;
+import reascer.wom.animation.attacks.EnderBlasterLazerAnimation;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -32,7 +33,6 @@ import yesman.epicfight.world.effect.EpicFightMobEffects;
 
 import java.util.Random;
 import java.util.Set;
-
 
 public class MiladyMoveset {
 
@@ -1250,11 +1250,12 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_BEAAAMMMM = builder.nextAccessor("biped/skill/evil_beam", ac->
-                new AttackAnimation(0.1f,0.2f,0.65f,0.9f,0.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_SPECIAL,biped.get().toolR,ac,biped)
+                new AttackAnimation(0.1f,0.658f,0.659f,0.9f,3.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(14.69420f))
                         .addState(EntityState.TURNING_LOCKED,false)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
