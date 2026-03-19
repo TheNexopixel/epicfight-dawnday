@@ -1,12 +1,10 @@
 package net.epicfight_dd.skill.weapon_innate;
 
-import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
