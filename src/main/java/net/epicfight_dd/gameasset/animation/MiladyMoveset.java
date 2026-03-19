@@ -1253,10 +1253,12 @@ public class MiladyMoveset {
                 new AttackAnimation(0.1f,0.658f,0.659f,0.9f,3.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 2.70))
                         .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(14.69420f))
-                        .addState(EntityState.TURNING_LOCKED,false)
+                        .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
@@ -1266,13 +1268,13 @@ public class MiladyMoveset {
                         .addEvents(
 
                                 //BUZZ
-                                AnimationEvent.InTimeEvent.create(0.55f, (e,s,p)->
+                                AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
                                         e.getOriginal().level().playSound(
                                                 (Player) e.getOriginal(),
                                                 e.getOriginal(),
                                                 EpicFightSounds.BUZZ.get(),
                                                 SoundSource.PLAYERS,
-                                                100, 0.7F
+                                                100, 0.9F
                                         )
 
                                         , AnimationEvent.Side.CLIENT),
@@ -1288,7 +1290,7 @@ public class MiladyMoveset {
                                                 entity,
                                                 EpicFightSounds.LASER_BLAST.get(),
                                                 SoundSource.PLAYERS,
-                                                100, 0.7F
+                                                100, 0.9F
                                         );
                                     }
 
