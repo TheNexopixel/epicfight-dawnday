@@ -7,6 +7,7 @@ import java.util.Set;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
+import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
 import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -117,7 +118,7 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         SPEARING_STRIKE = spearingstrike;
 
-        WeaponInnateSkill furiousCut = modRegistry.build("furious_cut",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+        WeaponInnateSkill furiousCut = modRegistry.build("furious_cut", FuriousCutSkill::new, FuriousCutSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(MiladyMoveset.FURIOUS_CUT)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         furiousCut.newProperty()
