@@ -7,7 +7,7 @@ import yesman.epicfight.world.item.WeaponItem;
 public class war_sickle_item extends WeaponItem
 {
     public war_sickle_item(Tier materialIn) {
-        super(materialIn, 3, -2.0F, new Properties().stacksTo(1) .rarity(Rarity.RARE));
+        super(materialIn, 3, -2.7F, new Properties().stacksTo(1) .rarity(Rarity.RARE));
     }
 
 

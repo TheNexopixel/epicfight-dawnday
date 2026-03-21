@@ -16,7 +16,7 @@ public class DawnDayItems {
 
 
     public static final RegistryObject<Item> backhand_blade =
-            ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-2.5f,
+            ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2561))
@@ -40,7 +40,7 @@ public class DawnDayItems {
                             .defaultDurability(2500)));
 
     public static final RegistryObject<Item> iron_knife =
-            ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,0,-2.2f,
+            ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,1,-2.2f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(860)));
@@ -86,6 +86,7 @@ public class DawnDayItems {
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new SwordItem(Tiers.NETHERITE,1,-2.4f,
                     new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.EPIC)
                             .defaultDurability(3680)));
 
     public static final RegistryObject<Item> netherite_light_greatsword =

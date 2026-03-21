@@ -39,5 +39,7 @@
   "skill.epicfight_dd.whirlwind":"Whirlwind",
   "skill.epicfight_dd.whirlwind.tooltip":"An extremely realistic skill that destroys everything in its path.",
   "skill.epicfight_dd.spinning_shadow":"Spinning Shadow",
-  "skill.epicfight_dd.spinning_shadow.tooltip":"This skill pierces part of the armour and knocks enemies down."
+  "skill.epicfight_dd.spinning_shadow.tooltip":"This skill pierces part of the armour and knocks enemies down.",
+  "skill.epicfight_dd.evil_beam":"Evil Beam",
+  "skill.epicfight_dd.evil_beam.tooltip":"Unleash a beam of demonic energy on your attackers!"
 }
