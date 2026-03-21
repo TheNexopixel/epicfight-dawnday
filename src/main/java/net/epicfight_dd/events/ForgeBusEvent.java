@@ -33,18 +33,18 @@ public class ForgeBusEvent {
                 ServerPlayerPatch serverPlayerPatch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
 
                 if (serverPlayerPatch != null) {
-                    serverPlayerPatch.playAnimationInstantly(QoLMiscAnimations.DAWNDAY_KNOCKDOWN);
+                    serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN, 0.0f);
                 }
+
             }
         }
 
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void overrideDeathAnim(LivingDeathEvent event) {
         if (ModList.get().isLoaded("epicfightx")) {
-            if (event.getResult().equals(Event.Result.ALLOW) && event.getEntity() instanceof ServerPlayer serverPlayer) {
-                serverPlayer.sendSystemMessage(Component.literal("DeathDetected"));
+            if (!event.isCanceled() && event.getEntity() instanceof ServerPlayer serverPlayer) {
                 ServerPlayerPatch serverPlayerPatch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
                 if (serverPlayerPatch != null) {
                     if (!serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).checkType(SelectiveAnimationProxy.class)
