@@ -173,6 +173,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
 
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_WALK;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO3;
@@ -254,6 +255,9 @@ public class MiladyMoveset {
                 new StaticAnimation(0.12F,true,ac, biped));
 
         BATTLESTAFF_IDLE = builder.nextAccessor("biped/living/battlestaff_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        EVIL_ODACHI_WALK = builder.nextAccessor("biped/living/evil_odachi_walk", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
 
         SABER_AUTO1 = builder.nextAccessor("biped/combat/saber_auto1", (accessor) ->
@@ -1211,7 +1215,7 @@ public class MiladyMoveset {
                                         .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.EVISCERATE.get())
 
                         )
-                                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                                 .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
                                 .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -1225,7 +1229,7 @@ public class MiladyMoveset {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_AUTO4_OLD = builder.nextAccessor("biped/combat/evil_odachi_auto4_old", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.0f, 0.25f, 0.4f, 0.6F, null, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.0f, 0.55f, 0.9f, 1.2F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
                         .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
@@ -1253,10 +1257,12 @@ public class MiladyMoveset {
                 new AttackAnimation(0.1f,0.658f,0.659f,0.9f,3.8f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 2.70))
                         .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(14.69420f))
-                        .addState(EntityState.TURNING_LOCKED,false)
+                        .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true) // remove if fault
@@ -1266,13 +1272,13 @@ public class MiladyMoveset {
                         .addEvents(
 
                                 //BUZZ
-                                AnimationEvent.InTimeEvent.create(0.55f, (e,s,p)->
+                                AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
                                         e.getOriginal().level().playSound(
                                                 (Player) e.getOriginal(),
                                                 e.getOriginal(),
                                                 EpicFightSounds.BUZZ.get(),
                                                 SoundSource.PLAYERS,
-                                                100, 0.7F
+                                                100, 0.9F
                                         )
 
                                         , AnimationEvent.Side.CLIENT),
@@ -1288,7 +1294,7 @@ public class MiladyMoveset {
                                                 entity,
                                                 EpicFightSounds.LASER_BLAST.get(),
                                                 SoundSource.PLAYERS,
-                                                100, 0.7F
+                                                100, 0.9F
                                         );
                                     }
 
