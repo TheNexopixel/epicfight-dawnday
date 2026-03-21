@@ -4,10 +4,9 @@ import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -26,19 +25,22 @@ public class ForgeBusEvent {
 
        event.getStunnedEntityPatch().getOriginal().sendSystemMessage(Component.literal("Stunned, Stuntype: " + event.getStunType().toString()));
 
-       if(event.getStunnedEntityPatch().getOriginal() instanceof ServerPlayer serverPlayer){
-
+       if(event.getStunnedEntityPatch() instanceof ServerPlayerPatch serverPlayerPatch){
             if(event.getStunType().equals(StunType.KNOCKDOWN)){
-
-                ServerPlayerPatch serverPlayerPatch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
-
-                if (serverPlayerPatch != null) {
-                    serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN, 0.0f);
-                }
-
+                serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN, 0.0f);
             }
         }
 
+    }
+
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+            ServerPlayerPatch patch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
+            if (patch != null) {
+                patch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
+            }
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)
@@ -50,7 +52,7 @@ public class ForgeBusEvent {
                     if (!serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).checkType(SelectiveAnimationProxy.class)
                             && !serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).equals(QoLMiscAnimations.EXPRESSIVE_DEATH)
                     ) {
-                        serverPlayerPatch.getAnimator().getLivingAnimations().replace(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
+                        serverPlayerPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
                     }
                 }
             }
