@@ -3,6 +3,8 @@ package net.epicfight_dd.events;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -22,29 +24,37 @@ public class ForgeBusEvent {
     @SubscribeEvent
     public static void overrideKnockDownStun(EntityStunEvent event){
 
-        if(event.getStunnedEntityPatch() instanceof ServerPlayerPatch serverPlayerPatch){
+       event.getStunnedEntityPatch().getOriginal().sendSystemMessage(Component.literal("Stunned, Stuntype: " + event.getStunType().toString()));
+
+       if(event.getStunnedEntityPatch().getOriginal() instanceof ServerPlayer serverPlayer){
+
             if(event.getStunType().equals(StunType.KNOCKDOWN)){
-                serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN,0.01f);
+
+                ServerPlayerPatch serverPlayerPatch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
+
+                if (serverPlayerPatch != null) {
+                    serverPlayerPatch.playAnimationInstantly(QoLMiscAnimations.DAWNDAY_KNOCKDOWN);
+                }
             }
         }
 
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    @SubscribeEvent
     public static void overrideDeathAnim(LivingDeathEvent event) {
         if (ModList.get().isLoaded("epicfightx")) {
             if (event.getResult().equals(Event.Result.ALLOW) && event.getEntity() instanceof ServerPlayer serverPlayer) {
+                serverPlayer.sendSystemMessage(Component.literal("DeathDetected"));
                 ServerPlayerPatch serverPlayerPatch = EpicFightCapabilities.getServerPlayerPatch(serverPlayer);
                 if (serverPlayerPatch != null) {
                     if (!serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).checkType(SelectiveAnimationProxy.class)
-                            && serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).equals(QoLMiscAnimations.EXPRESSIVE_DEATH)
+                            && !serverPlayerPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).equals(QoLMiscAnimations.EXPRESSIVE_DEATH)
                     ) {
                         serverPlayerPatch.getAnimator().getLivingAnimations().replace(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
                     }
                 }
             }
         }
-
     }
 
 }
