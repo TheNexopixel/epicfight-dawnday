@@ -9,6 +9,7 @@ import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
 import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -72,7 +73,7 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.6F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(20.5F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
@@ -177,8 +178,12 @@ public class DawnDaySkills {
                 .setCategory(SkillCategories.WEAPON_INNATE));
         evilbeam.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
-                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(40.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(3.5F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.FINISHER))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(DamageTypeTags.IS_PROJECTILE))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(55.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(15.5F))
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 

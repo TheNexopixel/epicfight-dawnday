@@ -26,6 +26,7 @@ import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
@@ -1249,8 +1250,6 @@ public class MiladyMoveset {
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
                         .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 2.70))
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(14.69420f))
                         .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
