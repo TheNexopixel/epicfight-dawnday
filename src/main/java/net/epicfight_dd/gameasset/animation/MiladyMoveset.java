@@ -1,6 +1,8 @@
 package net.epicfight_dd.gameasset.animation;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -26,7 +28,6 @@ import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
-import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
@@ -1250,6 +1251,7 @@ public class MiladyMoveset {
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
                         .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
                         .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
@@ -1343,13 +1345,26 @@ public class MiladyMoveset {
 
                                     }
 
-                                    entity.level().addParticle(
-                                            EpicFightParticles.LASER.get(),
-                                            worldX, worldY, worldZ,
-                                            worldX + boneForwardX * beamRange,
-                                            worldY + boneForwardY * beamRange,
-                                            worldZ + boneForwardZ * beamRange
-                                    );
+                                  Particle particle = Minecraft.getInstance().particleEngine.createParticle(
+                                          EpicFightParticles.LASER.get(), worldX, worldY, worldZ,
+                                          worldX + boneForwardX * beamRange,
+                                          worldY + boneForwardY * beamRange,
+                                          worldZ + boneForwardZ * beamRange
+                                  );
+
+                                    if (particle != null) {
+                                        particle.setColor(
+                                                5,0,0
+                                        );
+                                    }
+
+//                                    entity.level().addParticle(
+//                                            EpicFightParticles.LASER.get(),
+//                                            worldX, worldY, worldZ,
+//                                            worldX + boneForwardX * beamRange,
+//                                            worldY + boneForwardY * beamRange,
+//                                            worldZ + boneForwardZ * beamRange
+//                                    );
 
                                 }, AnimationEvent.Side.CLIENT))
 
