@@ -356,12 +356,26 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
+    public static HitParticleType randomSlashHitParticleTYPE(){
+        int randomInt = (int)(Math.random() * (double)4.0F);
+        HitParticleType RandomHitParticle;
+        switch (randomInt) {
+            case 0 -> RandomHitParticle = WOMParticles.SHARPCUT_SLASH.get();
+            case 1 -> RandomHitParticle = WOMParticles.SHARPCUT_LEFT_SLASH.get();
+            case 2 -> RandomHitParticle = WOMParticles.SHARPCUT_RIGHT_SLASH.get();
+            case 3 -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_UP_RIGHT_SLASH.get();
+            default -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_DOWN_LEFT_SLASH.get();
+        }
+        return RandomHitParticle;
+    }
+
+
     public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI = (item) ->
             WeaponCapability.builder()
                     .category( CapabilityItem.WeaponCategories.TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(MiladyCollider.EVIL_TACHI)
-
+                    .hitParticle(randomSlashHitParticleTYPE())
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
@@ -398,5 +412,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "backhand_blade"), BACKHAND_BLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "light_greatsword"), LIGHT_GREATSWORD);
     }
+
+
+
 
 }

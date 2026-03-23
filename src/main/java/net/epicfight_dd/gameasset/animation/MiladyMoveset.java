@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.joml.Vector3f;
+import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -1346,17 +1347,13 @@ public class MiladyMoveset {
                                     }
 
                                   Particle particle = Minecraft.getInstance().particleEngine.createParticle(
-                                          EpicFightParticles.LASER.get(), worldX, worldY, worldZ,
+                                          WOMParticles.BLACK_RAY.get(), worldX, worldY, worldZ,
                                           worldX + boneForwardX * beamRange,
                                           worldY + boneForwardY * beamRange,
                                           worldZ + boneForwardZ * beamRange
                                   );
 
-                                    if (particle != null) {
-                                        particle.setColor(
-                                                5,0,0
-                                        );
-                                    }
+
 
 //                                    entity.level().addParticle(
 //                                            EpicFightParticles.LASER.get(),
