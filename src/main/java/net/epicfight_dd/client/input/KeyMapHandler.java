@@ -7,9 +7,12 @@ import net.epicfight_dd.network.ChangeLivingModifierPacket;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,43 +23,63 @@ import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerP
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID,bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+import java.util.Random;
+
+@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class KeyMapHandler {
 
     @SubscribeEvent
     public static void onKeyInput(TickEvent.ClientTickEvent event) {
         Minecraft mc = Minecraft.getInstance();
         if (event.phase == TickEvent.Phase.END && mc.player != null) {
-            if(DawnKeymappings.SWITCH_STANCE.consumeClick()) {
+            if (DawnKeymappings.SWITCH_STANCE.consumeClick()) {
                 LocalPlayerPatch localPlayerPatch = EpicFightCapabilities.getLocalPlayerPatch(mc.player);
-                if(localPlayerPatch != null && localPlayerPatch.isEpicFightMode()
-                  && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())){
+                if (localPlayerPatch != null && localPlayerPatch.isEpicFightMode()
+                        && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())) {
 
                     AnimationPlayer animationPlayer = localPlayerPatch.getAnimator().getPlayerFor(null);
 
-                    if (animationPlayer != null && !(animationPlayer.getAnimation().checkType(AttackAnimation.class))){
-
-                        if(localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == false){
-                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(),true);
-
-                            localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE,150f,0.85f);
-
-                            localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_ACTIVATE,150f,0.25f);
+                    ItemStack offhand = localPlayerPatch.getValidItemInHand(InteractionHand.OFF_HAND);
+                    boolean isHoldingMiladyOffhand = offhand == DawnDayItems.milady.get().getDefaultInstance();
 
 
-                            for (int i = 1; i <= 5; i++) {
+                    if (    animationPlayer != null
+                            && !(animationPlayer.getAnimation().checkType(AttackAnimation.class))
+                            && !isHoldingMiladyOffhand) {
+
+                        if (localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == false) {
+                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), true);
+
+                            localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE, 150f, 0.85f);
+
+                            localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_ACTIVATE, 150f, 0.25f);
+
+
+                            Random rand = (Random) mc.player.getRandom();
+
+                            for (int i = 0; i < 20; i++) {
+
+                                double angle = (2 * Math.PI / 5) * i;
+                                double radius = 0.3;
+
+                                double offsetX = Math.cos(angle) * radius;
+                                double offsetZ = Math.sin(angle) * radius;
+
+
+                                double velX = offsetX * 0.05;
+                                double velY = 0.03 + rand.nextFloat() * 0.02;
+                                double velZ = offsetZ * 0.05;
+
                                 mc.player.level().addParticle(
                                         ParticleTypes.END_ROD,
-                                        mc.player.getX() - Math.min(0.25, mc.player.getRandomX(0.01)),mc.player.getY(), mc.player.getZ() + mc.player.getRandomZ(-0.01f), Math.min(mc.player.getRandom().nextFloat(), 0.6f), Math.min(mc.player.getRandom().nextFloat(), 0.2f) , Math.min(mc.player.getRandom().nextFloat(), 1.6f)
+                                        mc.player.getX() + offsetX,
+                                        mc.player.getY() + 0.1,
+                                        mc.player.getZ() + offsetZ,
+                                        velX, velY, velZ
                                 );
-                                mc.player.level().addParticle(
-                                        ParticleTypes.END_ROD,
-                                        mc.player.getX() + Math.min(0.25, mc.player.getRandomX(0.01)),mc.player.getY(), mc.player.getZ() + mc.player.getRandomZ(0.01f),0.03, 0.020, 0.0
-                                );
-
                             }
 
-                           localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION,0.0f);
+                            localPlayerPatch.playAnimationSynchronized(WingStanceAnims.WINGSTANCE_TRANSITION, 0.0f);
 
                             ChangeLivingModifierPacket modifierPacket = new ChangeLivingModifierPacket(false);
                             DDNetworkHandler.INSTANCE.sendToServer(modifierPacket);
@@ -64,7 +87,7 @@ public class KeyMapHandler {
 
                         } else {
                             localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE).getDataManager().setDataSync(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get(), false);
-                            localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_DEACTIVATE, 70f,1.0f);
+                            localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_DEACTIVATE, 70f, 1.0f);
 
                             ChangeLivingModifierPacket modifierPacket = new ChangeLivingModifierPacket(true);
                             DDNetworkHandler.INSTANCE.sendToServer(modifierPacket);
@@ -76,7 +99,6 @@ public class KeyMapHandler {
             }
         }
     }
-
 
 
 }

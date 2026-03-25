@@ -11,6 +11,7 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 import java.util.UUID;
 
 
+
 public class WingStanceSkill extends Skill {
 
     public WingStanceSkill(SkillBuilder<? extends Skill> builder) {
@@ -34,7 +35,7 @@ public class WingStanceSkill extends Skill {
             boolean innate = event.getSkillContainer().getSkill().getCategory() == SkillCategories.WEAPON_INNATE;
 
 
-            int innateStackCount = (int) container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getResource();
+            int innateStackCount = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getStack();
             Skill innateSkill = container.getExecutor().getSkill(SkillSlots.WEAPON_INNATE).getSkill();
             boolean canActivate = innateStackCount >= 1 || container.getExecutor().getOriginal().isCreative();
             boolean isInWingStance = false;
@@ -54,7 +55,9 @@ public class WingStanceSkill extends Skill {
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
 
 
-                    container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE, innateStackCount - 1);
+                    if (!container.getExecutor().getOriginal().isCreative()) {
+                        container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                    }
                     event.setCanceled(true);
 
                 }
@@ -64,7 +67,9 @@ public class WingStanceSkill extends Skill {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
 
-                    container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE, innateStackCount - 1);
+                    if (!container.getExecutor().getOriginal().isCreative()) {
+                        container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                    }
                     event.setCanceled(true);
 
                 }
