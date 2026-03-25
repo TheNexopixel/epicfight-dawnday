@@ -1,6 +1,8 @@
 package net.epicfight_dd.skill.stances;
 
 import net.epicfight_dd.gameasset.animation.WingStanceAnims;
+import net.epicfight_dd.network.DDNetworkHandler;
+import net.epicfight_dd.network.ServerBoundSkillResourceConsumePacket;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
@@ -53,11 +55,11 @@ public class WingStanceSkill extends Skill {
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
-
-
-                    if (!container.getExecutor().getOriginal().isCreative()) {
-                        container.getServerExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                    if (!event.getPlayerPatch().getOriginal().isCreative()) {
+                        ServerBoundSkillResourceConsumePacket packet = new ServerBoundSkillResourceConsumePacket(1);
+                        DDNetworkHandler.INSTANCE.sendToServer(packet);
                     }
+
                     event.setCanceled(true);
 
                 }
@@ -67,9 +69,11 @@ public class WingStanceSkill extends Skill {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
 
-                    if (!container.getExecutor().getOriginal().isCreative()) {
-                        container.getServerExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                    if (!event.getPlayerPatch().getOriginal().isCreative()) {
+                        ServerBoundSkillResourceConsumePacket packet = new ServerBoundSkillResourceConsumePacket(1);
+                        DDNetworkHandler.INSTANCE.sendToServer(packet);
                     }
+
                     event.setCanceled(true);
 
                 }

@@ -29,5 +29,13 @@ public class DDNetworkHandler {
                 .decoder(ChangeLivingModifierPacket::new)
                 .consumerMainThread(ChangeLivingModifierPacket::handle)
                 .add();
+
+        INSTANCE.messageBuilder(ServerBoundSkillResourceConsumePacket.class, id())
+                .encoder(ServerBoundSkillResourceConsumePacket::encode)
+                .decoder(ServerBoundSkillResourceConsumePacket::new)
+                .consumerMainThread(ServerBoundSkillResourceConsumePacket::handle)
+                .add();
+
+
     }
 }
