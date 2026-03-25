@@ -11,6 +11,7 @@ import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,8 +23,6 @@ import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
-
-import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class KeyMapHandler {
@@ -55,7 +54,7 @@ public class KeyMapHandler {
                             localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_ACTIVATE, 150f, 0.25f);
 
 
-                            Random rand = (Random) mc.player.getRandom();
+                            RandomSource rand =  mc.player.getRandom();
 
                             for (int i = 0; i < 20; i++) {
 

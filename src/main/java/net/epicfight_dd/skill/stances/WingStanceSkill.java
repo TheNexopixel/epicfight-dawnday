@@ -56,7 +56,7 @@ public class WingStanceSkill extends Skill {
 
 
                     if (!container.getExecutor().getOriginal().isCreative()) {
-                        container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                        container.getServerExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
                     }
                     event.setCanceled(true);
 
@@ -68,7 +68,7 @@ public class WingStanceSkill extends Skill {
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
 
                     if (!container.getExecutor().getOriginal().isCreative()) {
-                        container.getExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
+                        container.getServerExecutor().consumeForSkill(innateSkill, Resource.WEAPON_CHARGE,  1);
                     }
                     event.setCanceled(true);
 
