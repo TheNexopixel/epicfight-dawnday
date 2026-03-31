@@ -3,8 +3,8 @@
   {
     "common":
     {
-      "impact":1.0,
-      "max_strikes":8
+      "impact":1.5,
+      "max_strikes":4
     }
   },
   "type":"epicfight_dd:halberd"

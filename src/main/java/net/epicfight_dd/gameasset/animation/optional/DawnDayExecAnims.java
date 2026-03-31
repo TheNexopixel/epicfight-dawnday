@@ -108,7 +108,6 @@ public class DawnDayExecAnims {
 
         );
 
-        //random values, apply correct values yourself - #Sid, delete this coment when done
         BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor)->
         get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.8f,0.85f,1.42f,1.45f));
 

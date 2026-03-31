@@ -3,8 +3,8 @@
   {
     "common":
     {
-      "impact":3.0,
-      "max_strikes":4
+      "impact":2.5,
+      "max_strikes":6
     }
   },
   "type":"epicfight_dd:steelaxe"

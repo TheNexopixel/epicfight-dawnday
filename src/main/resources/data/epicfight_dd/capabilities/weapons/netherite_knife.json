@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":12.0,
-      "impact":2.0,
-      "max_strikes": 2
+      "armor_negation":18.0,
+      "impact":0.9,
+      "max_strikes": 4
     }
   },
   "type":"epicfight_dd:knife"

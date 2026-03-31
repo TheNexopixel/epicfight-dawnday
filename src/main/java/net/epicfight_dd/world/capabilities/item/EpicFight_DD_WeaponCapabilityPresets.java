@@ -57,7 +57,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             )
             .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.LIGHT_GREATSWORD)
             .collider(MiladyCollider.LIGHT_GREATSWORD)
-                //    .passiveSkill(DawnDaySkills.WINGSTANCE)
+                   .passiveSkill(DawnDaySkills.WINGSTANCE)
 
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -86,12 +86,12 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             )
 
             .newStyleCombo(CapabilityItem.Styles.OCHS,
-                    MiladyMoveset.MILADY_TWOHANDED_AUTO1,
-                    MiladyMoveset.MILADY_TWOHANDED_AUTO2,
-                    MiladyMoveset.MILADY_TWOHANDED_AUTO3,
-                    MiladyMoveset.MILADY_TWOHANDED_AUTO4,
-                    MiladyMoveset.MILADY_TWOHANDED_DASH,
-                    MiladyMoveset.MILADY_SPECIAL_AUTO1
+                    WingStanceAnims.WINGSTANCE_ATTACK_1,
+                    WingStanceAnims.WINGSTANCE_ATTACK_2,
+                    WingStanceAnims.WINGSTANCE_ATTACK_3,
+                    WingStanceAnims.WINGSTANCE_ATTACK_5,
+                    WingStanceAnims.WINGSTANCE_DASH,
+                    WingStanceAnims.WINGSTANCE_AIRSLASH
             )
 
             .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, MiladyMoveset.MILADY_IS_IDLE)
@@ -106,7 +106,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
             .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WingStanceAnims.WING_STANCE_IDLE)
             .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, WingStanceAnims.WINGSTANCE_WALK)
-            .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, WingStanceAnims.WINGSTANCE_RUN)
+            .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_GUARD);
 
 
     public static final Function<Item, CapabilityItem.Builder> LIGHT_GREATSWORD = (item) ->
@@ -272,7 +273,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.SICKLE_DUAL_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> STEEL_AXE = (item) ->
             WeaponCapability.builder()

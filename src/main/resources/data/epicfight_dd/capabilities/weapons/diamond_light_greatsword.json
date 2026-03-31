@@ -3,8 +3,8 @@
   {
     "common":
     {
-      "impact":2.5,
-      "max_strikes":8
+      "impact":1.2,
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:light_greatsword"

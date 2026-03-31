@@ -3,7 +3,6 @@
       {
         "start_time": 0.5,
         "end_time": 1.0,
-        "lifetime": 7,
         "joint": "Tool_R",
         "texture_path": "epicfight:textures/particle/katana_trail.png",
         "particle_type": "epicfight:katana_trail",

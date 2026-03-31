@@ -3,8 +3,8 @@
   {
     "common":
     {
-      "impact":2.0,
-      "max_strikes":8
+      "impact":1.3,
+      "max_strikes":7
     }
   },
   "type":"epicfight_dd:milady"

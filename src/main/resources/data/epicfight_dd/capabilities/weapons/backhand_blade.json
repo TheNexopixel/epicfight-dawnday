@@ -5,7 +5,7 @@
     {
       "armor_negation":33.0,
       "impact":1.2,
-      "max_strikes":5
+      "max_strikes":3
     }
   },
   "type":"epicfight_dd:backhand_blade"

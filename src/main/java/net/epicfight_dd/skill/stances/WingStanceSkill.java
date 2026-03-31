@@ -34,6 +34,7 @@ public class WingStanceSkill extends Skill {
         listener.addEventListener(PlayerEventListener.EventType.SKILL_CAST_EVENT, EVENT_UUID, (event) -> {
 
             boolean sprintSpecial = (event.getPlayerPatch().getOriginal().isSprinting());
+            boolean crouchspecial = (event.getPlayerPatch().getOriginal().isCrouching());
             boolean innate = event.getSkillContainer().getSkill().getCategory() == SkillCategories.WEAPON_INNATE;
 
 
@@ -46,42 +47,50 @@ public class WingStanceSkill extends Skill {
                 isInWingStance = data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get());
             }
 
-            if (!isInWingStance) {
-                return;
-            }
+            if (!isInWingStance) return;
+            if (!(innate && canActivate)) return;
 
-            if (sprintSpecial && innate && canActivate) {
-                if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
+            if (crouchspecial) {
+                if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(),
+                        ClientEngine.getInstance().controlEngine).isExecutable()) {
+
+                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_CROUCH_ATTACK, 0.0f);
+
+                    if (!event.getPlayerPatch().getOriginal().isCreative()) {
+                        DDNetworkHandler.INSTANCE.sendToServer(new ServerBoundSkillResourceConsumePacket(1));
+                    }
+
+                    event.setCanceled(true);
+                    return;
+                }
+            }
+            if (sprintSpecial) {
+                if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(),
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
                     event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
+
                     if (!event.getPlayerPatch().getOriginal().isCreative()) {
-                        ServerBoundSkillResourceConsumePacket packet = new ServerBoundSkillResourceConsumePacket(1);
-                        DDNetworkHandler.INSTANCE.sendToServer(packet);
+                        DDNetworkHandler.INSTANCE.sendToServer(new ServerBoundSkillResourceConsumePacket(1));
                     }
 
                     event.setCanceled(true);
-
-                }
-            } else if (innate && canActivate) {
-                if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(), // check if player tries to activate skill
-                        ClientEngine.getInstance().controlEngine).isExecutable()) {
-
-                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
-
-                    if (!event.getPlayerPatch().getOriginal().isCreative()) {
-                        ServerBoundSkillResourceConsumePacket packet = new ServerBoundSkillResourceConsumePacket(1);
-                        DDNetworkHandler.INSTANCE.sendToServer(packet);
-                    }
-
-                    event.setCanceled(true);
-
+                    return;
                 }
             }
+            if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(),
+                    ClientEngine.getInstance().controlEngine).isExecutable()) {
 
+                event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL1, 0.0f);
+
+                if (!event.getPlayerPatch().getOriginal().isCreative()) {
+                    DDNetworkHandler.INSTANCE.sendToServer(new ServerBoundSkillResourceConsumePacket(1));
+                }
+
+                event.setCanceled(true);
+            }
 
         });
-
     }
 
     @Override

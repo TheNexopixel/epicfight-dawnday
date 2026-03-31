@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":15.0,
+      "armor_negation":20.0,
       "impact":2.0,
-      "max_strikes":8
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:battlestaff"

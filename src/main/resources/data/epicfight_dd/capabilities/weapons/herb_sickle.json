@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":15.0,
-      "impact":0.2,
-      "max_strikes":8
+      "armor_negation":15.5,
+      "impact":0.5,
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:herb_sickle"

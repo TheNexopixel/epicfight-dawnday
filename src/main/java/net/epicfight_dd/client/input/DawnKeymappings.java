@@ -18,7 +18,7 @@ public class DawnKeymappings {
     public static final KeyMapping SWITCH_STANCE =
             new CombatKeyMapping(
                     "WingStance Mode",
-                    InputConstants.KEY_F,
+                    InputConstants.KEY_Y,
                     EpicFightInputCategories.COMBAT
             );
 

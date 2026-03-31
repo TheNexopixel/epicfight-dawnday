@@ -4,8 +4,8 @@
     "common":
     {
       "armor_negation":10.0,
-      "impact":1.5,
-      "max_strikes":8
+      "impact":2.0,
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:halberd"

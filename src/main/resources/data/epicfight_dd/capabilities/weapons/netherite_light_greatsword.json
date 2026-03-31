@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":10.0,
-      "impact":3.0,
-      "max_strikes":8
+      "armor_negation":15.0,
+      "impact":1.5,
+      "max_strikes":6
     }
   },
   "type":"epicfight_dd:light_greatsword"
