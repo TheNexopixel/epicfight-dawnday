@@ -1,7 +1,10 @@
 package net.epicfight_dd.skill.skill_compats;
 
+import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecution_TYPES;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.epicfight_dd.world.item.DawnDayItems;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,7 +14,7 @@ import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.item.GloveItem;
 
-public class CombatEvoCompat implements ICompatModule {
+public class  CombatEvoCompat implements ICompatModule {
 
   public static void registerExecution(RegisterCustomExecutionEvent event){
 
@@ -30,7 +33,16 @@ public class CombatEvoCompat implements ICompatModule {
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);
 
-      event.registerExecutionByCategory(CapabilityItem.WeaponCategories.SPEAR, CapabilityItem.Styles.TWO_HAND,
+      event.registerExecutionByItem(DawnDayItems.diamond_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.BATTLESTAFF);
+
+      event.registerExecutionByItem(DawnDayItems.golden_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.BATTLESTAFF);
+
+      event.registerExecutionByItem(DawnDayItems.iron_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.BATTLESTAFF);
+
+      event.registerExecutionByItem(DawnDayItems.netherite_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
 
 
