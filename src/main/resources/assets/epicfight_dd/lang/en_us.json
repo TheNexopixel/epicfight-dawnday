@@ -19,14 +19,14 @@
   "skill.epicfight_dd.spearing_strike": "Spearing Strike",
   "skill.epicfight_dd.spearing_strike.tooltip": "Destroy your Enemies beneath you!",
   "skill.epicfight_dd.piercing_fang": "Piercing Fang",
-  "skill.epicfight_dd.piercing_fang.tooltip": "A Skill used by the Bloody Finger hunter Yura. (Milady only) Press Z for Wingstance.",
-
+  "skill.epicfight_dd.piercing_fang.tooltip": "A Skill used by the Bloody Finger hunter Yura. (Milady only) Press Z for Wingstance. Sneak + Innate for special Attackmove. Sprint + Innate for special Attackmove.",
   "skill.epicfight_dd.furious_cut": "Furious Cut",
   "skill.epicfight_dd.furious_cut.tooltip": "Leave no opponent standing.",
   "skill.epicfight_dd.gentle_nudge": "Gentle Nudge",
   "skill.epicfight_dd.gentle_nudge.tooltip": "Legends say that the name of this skill was invented by a being who had the power to change the laws of the world.",
   "key.epicfight_dd.switch_stance": "Wingstance",
   "item.epicfight_dd.iron_battlestaff": "Iron Battlestaff",
+  "item.epicfight_dd.wooden_battlestaff": "Big Stick",
   "item.epicfight_dd.golden_battlestaff": "Golden Battlestaff",
   "item.epicfight_dd.diamond_battlestaff": "Diamond Battlestaff",
   "item.epicfight_dd.netherite_battlestaff": "Netherite Battlestaff",
@@ -42,5 +42,8 @@
   "skill.epicfight_dd.spinning_shadow":"Spinning Shadow",
   "skill.epicfight_dd.spinning_shadow.tooltip":"This skill pierces part of the armour and knocks enemies down.",
   "skill.epicfight_dd.evil_beam":"Evil Beam",
-  "skill.epicfight_dd.evil_beam.tooltip":"Unleash a beam of demonic energy on your attackers!"
+  "skill.epicfight_dd.evil_beam.tooltip":"Unleash a beam of demonic energy on your attackers!",
+  "item.epicfight_dd.nailbat":"Spiked Bat",
+  "skill.epicfight_dd.brutal_dash":"Brutal Dash",
+  "skill.epicfight_dd.brutal_dash.tooltip":"Take a quick step forward to stagger your opponents with your heavy weapon!"
 }

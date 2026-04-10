@@ -20,6 +20,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.milady.get());
                 output.accept(DawnDayItems.herb_sickle.get());
                 output.accept(DawnDayItems.backhand_blade.get());
+                output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.steelaxe.get());
                 output.accept(DawnDayItems.war_sickle.get());
                 output.accept(DawnDayItems.netherite_light_greatsword.get());
@@ -38,6 +39,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.diamond_battlestaff.get());
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
+                output.accept(DawnDayItems.wooden_battlestaff.get());
 
             })
             .build()

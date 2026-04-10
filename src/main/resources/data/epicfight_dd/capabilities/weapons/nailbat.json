@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":15.0,
+      "impact":4.5,
+      "max_strikes":6
+    }
+  },
+  "type":"epicfight_dd:nailbat"
+}

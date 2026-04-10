@@ -54,7 +54,7 @@ public class WingStanceSkill extends Skill {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(),
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
-                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_CROUCH_ATTACK, 0.0f);
+                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
 
                     if (!event.getPlayerPatch().getOriginal().isCreative()) {
                         DDNetworkHandler.INSTANCE.sendToServer(new ServerBoundSkillResourceConsumePacket(1));
@@ -68,7 +68,7 @@ public class WingStanceSkill extends Skill {
                 if (container.sendCastRequest((LocalPlayerPatch) container.getExecutor(),
                         ClientEngine.getInstance().controlEngine).isExecutable()) {
 
-                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_SKILL2, 0.0f);
+                    event.getPlayerPatch().playAnimationSynchronized(WingStanceAnims.WINGSTANCE_CROUCH_ATTACK, 0.0f);
 
                     if (!event.getPlayerPatch().getOriginal().isCreative()) {
                         DDNetworkHandler.INSTANCE.sendToServer(new ServerBoundSkillResourceConsumePacket(1));

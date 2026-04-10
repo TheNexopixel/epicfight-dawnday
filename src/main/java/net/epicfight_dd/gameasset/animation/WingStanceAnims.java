@@ -157,7 +157,6 @@ public class WingStanceAnims {
                         new AttackAnimation.Phase(0.681f, 0.9f, 1.00f, 1.28f, 1.4f,1.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_light_slash.get())
-                                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.13)))
 
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
@@ -184,7 +183,6 @@ public class WingStanceAnims {
                 new BasicAttackAnimation(0.12F, 0.2f, 0.23f, 0.58f, 0.8F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier( 1.30f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 5))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 

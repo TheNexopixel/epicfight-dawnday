@@ -41,5 +41,9 @@
   "skill.epicfight_dd.spinning_shadow":"Wirbelnder Schatten",
   "skill.epicfight_dd.spinning_shadow.tooltip":"Diese Fähigkeit durchdringt einen Teil der Rüstung und stößt Gegner zu Boden.",
   "skill.epicfight_dd.evil_beam":"Böser Strahl",
-  "skill.epicfight_dd.evil_beam.tooltip":"Entfessle einen Strahl dämonischer Energie auf deine Angreifer!"
+  "skill.epicfight_dd.evil_beam.tooltip":"Entfessle einen Strahl dämonischer Energie auf deine Angreifer!",
+  "item.epicfight_dd.nailbat":"Stachelknüppel",
+  "skill.epicfight_dd.brutal_dash":"Brutaler Stoß",
+  "skill.epicfight_dd.brutal_dash.tooltip":"Mache einen kurzen Satz nach vorne, um deine Gegner mit der schweren Waffe ins Taumeln zu bringen!",
+  "item.epicfight_dd.wooden_battlestaff": "Fetter Stock"
 }

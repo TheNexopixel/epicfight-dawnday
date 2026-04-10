@@ -45,6 +45,9 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.netherite_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
 
+      event.registerExecutionByItem(DawnDayItems.wooden_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.BATTLESTAFF);
+
 
       //System.out.println("EXECUTION TYPES SUCCESSFULLY REGISTERED");
 

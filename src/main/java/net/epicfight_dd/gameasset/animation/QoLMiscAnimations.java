@@ -21,11 +21,15 @@ import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypes;
 
+import java.util.Random;
+
 public class QoLMiscAnimations {
 
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_2;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_1;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_3;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_4;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_5;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
@@ -36,6 +40,21 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
     public static AnimationManager.AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN;
     public static AnimationManager.AnimationAccessor<KnockdownAnimation> BREAKDOWN;
+
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_ULTIMATE;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_WAVE;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_THROW_HIT;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_TROW;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_STANDUP2;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_STANDUP1;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_HIT;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PULL_HIT;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PULL;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_EXECUTED;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE_HIT;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE;
 
 
 
@@ -49,6 +68,7 @@ public class QoLMiscAnimations {
 
                     if (source == null) return 0;
 
+
                     boolean deathByTacZBullet = ModList.get().isLoaded(GunMod.MOD_ID) &&
                             (       source.is(ModDamageTypes.BULLET) ||
                                     source.is(ModDamageTypes.BULLET_VOID) ||
@@ -56,18 +76,21 @@ public class QoLMiscAnimations {
                                     source.is(ModDamageTypes.BULLET_IGNORE_ARMOR) ||
                                     source.is(ModDamageTypes.BULLET_VOID_IGNORE_ARMOR)
                             );
+                    Random random = new Random();
 
-
-                    if (source.is(DamageTypes.GENERIC ) || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)) return 4;
                     if (source.is(DamageTypes.WITHER)) return 2;
-                    if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL) || source.is(DamageTypes.FALLING_STALACTITE)) return 5;
-                    if (source.is(DamageTypes.DRY_OUT) || source.is(DamageTypes.MAGIC) || source.is(DamageTypes.LIGHTNING_BOLT) || source.is(DamageTypes.DRAGON_BREATH) || source.is(DamageTypes.HOT_FLOOR)) return 8;
+
+                    if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL) || source.is(DamageTypes.FALLING_BLOCK)|| source.is(DamageTypes.FALLING_STALACTITE) || source.is(DamageTypes.STALAGMITE)) return 5;
+
                     if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE) || deathByTacZBullet) return 3;
+
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
-                    if (source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)) return 1;
+
                     if (source.is(DamageTypes.SONIC_BOOM) || source.is(EpicFightDamageTypes.WITHER_BEAM)) return 7;
 
-                    return 0; //  fallback
+
+                    int[] genericDeaths = {1, 4, 8, 9, 10};
+                    return genericDeaths[random.nextInt(genericDeaths.length)]; //  fallback
                 }, ac,
                         Animations.BIPED_DEATH,  // 0 index
                         GENERIC_DEATH_1,         // 1
@@ -77,7 +100,9 @@ public class QoLMiscAnimations {
                         FALL_DEATH,              // 5
                         EXPLOSION_DEATH,         // 6
                         DEATH_SONICBOOM,         // 7
-                        GENERIC_DEATH_3          // 8
+                        GENERIC_DEATH_3,         // 8
+                        GENERIC_DEATH_4,         // 9
+                        GENERIC_DEATH_5          // 10
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -95,6 +120,12 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_3 = builder.nextAccessor("biped/living/death_generic3", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        GENERIC_DEATH_4 = builder.nextAccessor("biped/living/death_generic4", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        GENERIC_DEATH_5 = builder.nextAccessor("biped/living/death_generic5", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         WITHERING_DEMISE = builder.nextAccessor("biped/living/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
@@ -196,6 +227,23 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );
+        // Just Animations I have done some time ago. I wanted to see how they look like ingame
+
+        FORCE_CHOKE = builder.nextAccessor("biped/force/force_choke", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_ULTIMATE = builder.nextAccessor("biped/force/force_ultimate", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_EXECUTE = builder.nextAccessor("biped/force/force_execute", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PUSH_STANDUP2 = builder.nextAccessor("biped/force/force_push_standup2", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PULL = builder.nextAccessor("biped/force/force_pull", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PUSH = builder.nextAccessor("biped/force/force_push", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_EXECUTED = builder.nextAccessor("biped/force/force_executed", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_CHOKE_HIT = builder.nextAccessor("biped/force/force_choke_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PULL_HIT = builder.nextAccessor("biped/force/force_pull_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PUSH_HIT = builder.nextAccessor("biped/force/force_push_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_PUSH_STANDUP1 = builder.nextAccessor("biped/force/force_push_standup1", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_TROW = builder.nextAccessor("biped/force/force_throw", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_THROW_HIT = builder.nextAccessor("biped/force/force_throw_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+        FORCE_WAVE = builder.nextAccessor("biped/force/force_wave", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
+
 
 
     }

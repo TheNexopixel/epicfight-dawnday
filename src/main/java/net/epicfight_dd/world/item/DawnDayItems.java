@@ -63,15 +63,20 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON)
                             .defaultDurability(360)));
 
+    public static final RegistryObject<Item> wooden_battlestaff =
+            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,2,-2.2f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(450)));
+
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(680)));
+                            .defaultDurability(980)));
 
     public static final RegistryObject<Item> golden_battlestaff =
             ITEMS.register("golden_battlestaff",() -> new SwordItem(Tiers.GOLD,3,-2.2f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(380)));
+                            .defaultDurability(680)));
 
     public static final RegistryObject<Item> diamond_battlestaff =
             ITEMS.register("diamond_battlestaff",() -> new SwordItem(Tiers.DIAMOND,3,-2.5f,
@@ -82,6 +87,12 @@ public class DawnDayItems {
             ITEMS.register("netherite_battlestaff",() -> new SwordItem(Tiers.NETHERITE,3,-2.5f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(2680)));
+
+    public static final RegistryObject<Item> spiked_bat =
+            ITEMS.register("nailbat",() -> new SwordItem(Tiers.DIAMOND,5,-2.6f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2080)));
 
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new SwordItem(Tiers.NETHERITE,1,-2.4f,
