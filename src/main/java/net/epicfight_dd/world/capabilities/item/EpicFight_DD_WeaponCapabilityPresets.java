@@ -412,7 +412,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BAT_AUTO2,
                             MiladyMoveset.BAT_AUTO3,
                             Animations.GREATSWORD_DASH,
-                            MiladyMoveset.MILADY_AIR_SLASH)
+                            MiladyMoveset.BAT_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.BAT_IDLE)

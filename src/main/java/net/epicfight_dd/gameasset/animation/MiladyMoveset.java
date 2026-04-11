@@ -69,6 +69,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO3;
+    public static AnimationAccessor<AirSlashAnimation> BAT_AIRSLASH;
 
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO2;
@@ -316,6 +317,13 @@ public class MiladyMoveset {
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        BAT_AIRSLASH = builder.nextAccessor("biped/combat/nailbat_airslash" , ac ->
+                new AirSlashAnimation(  0.12F, 0.25f ,0.52f, 0.9f,MiladyCollider.BAT_LONGER, biped.get().toolR, ac , biped)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
 
 
 
