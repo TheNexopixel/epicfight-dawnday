@@ -66,7 +66,7 @@ public class KeyMapHandler {
 
 
                                 double velX = offsetX * 0.05;
-                                double velY = 0.03 + rand.nextFloat() * 0.02;
+                                double velY = 0.09 + rand.nextFloat() * 0.2;
                                 double velZ = offsetZ * 0.05;
 
                                 mc.player.level().addParticle(

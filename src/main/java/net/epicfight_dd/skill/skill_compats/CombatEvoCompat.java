@@ -1,10 +1,8 @@
 package net.epicfight_dd.skill.skill_compats;
 
-import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecution_TYPES;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,10 +19,10 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(EpicFightMod.identifier("glove"), CapabilityItem.Styles.COMMON,
               (item, livingentitypatch) -> {
                   Item item1 = livingentitypatch.getAdvancedHoldingItemStack(InteractionHand.OFF_HAND).getItem();
+                    return DawnDayExecution_TYPES.KNEE_STOMP;
+//                  if (item1 instanceof GloveItem) {
 
-                  if (item1 instanceof GloveItem) {
-                      return DawnDayExecution_TYPES.KNEE_STOMP;
-                  } else return null;
+//                  } else return null;
               });
 
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,

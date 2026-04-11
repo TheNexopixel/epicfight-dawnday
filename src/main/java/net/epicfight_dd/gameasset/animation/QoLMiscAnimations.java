@@ -31,6 +31,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_4;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_5;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> SAD_DEATH;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SONICBOOM;
@@ -66,7 +67,7 @@ public class QoLMiscAnimations {
                     LivingEntity entity = patch.getOriginal();
                     DamageSource source = entity.getLastDamageSource();
 
-                    if (source == null) return 0;
+                    if (source == null) return 0; //  fallback
 
 
                     boolean deathByTacZBullet = ModList.get().isLoaded(GunMod.MOD_ID) &&
@@ -88,9 +89,11 @@ public class QoLMiscAnimations {
 
                     if (source.is(DamageTypes.SONIC_BOOM) || source.is(EpicFightDamageTypes.WITHER_BEAM)) return 7;
 
+                    if(source.is(DamageTypes.STARVE) || source.is(DamageTypes.DRY_OUT)) return 11;
+
 
                     int[] genericDeaths = {1, 4, 8, 9, 10};
-                    return genericDeaths[random.nextInt(genericDeaths.length)]; //  fallback
+                    return genericDeaths[random.nextInt(genericDeaths.length)];
                 }, ac,
                         Animations.BIPED_DEATH,  // 0 index
                         GENERIC_DEATH_1,         // 1
@@ -102,7 +105,8 @@ public class QoLMiscAnimations {
                         DEATH_SONICBOOM,         // 7
                         GENERIC_DEATH_3,         // 8
                         GENERIC_DEATH_4,         // 9
-                        GENERIC_DEATH_5          // 10
+                        GENERIC_DEATH_5,         // 10
+                        SAD_DEATH                // 11
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -126,6 +130,9 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_5 = builder.nextAccessor("biped/living/death_generic5", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        SAD_DEATH = builder.nextAccessor("biped/living/sad_death", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         WITHERING_DEMISE = builder.nextAccessor("biped/living/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
@@ -207,7 +214,8 @@ public class QoLMiscAnimations {
         );
 
         FALL_DEATH = builder.nextAccessor("biped/living/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+        );
 
 
         BATTLE$TAFF_PARRIED = builder.nextAccessor("biped/living/battlestaff_parried", ac->
