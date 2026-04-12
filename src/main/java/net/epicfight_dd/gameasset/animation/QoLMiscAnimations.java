@@ -32,6 +32,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_5;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_6;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_7;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_8;
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_MAGIC;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SAD_DEATH;
@@ -80,7 +81,7 @@ public class QoLMiscAnimations {
                                     source.is(ModDamageTypes.BULLET_IGNORE_ARMOR) ||
                                     source.is(ModDamageTypes.BULLET_VOID_IGNORE_ARMOR)
                             );
-                    Random random = new Random();
+                    Random randomgeneric = new Random();
 
                     if (source.is(DamageTypes.WITHER)) return 2;
 
@@ -97,8 +98,8 @@ public class QoLMiscAnimations {
                     if(source.is(DamageTypes.STARVE) || source.is(DamageTypes.DRY_OUT) || source.is(DamageTypes.FREEZE)) return 14;
 
 
-                    int[] genericDeaths = {1, 4, 8, 9, 10,11,12};
-                    return genericDeaths[random.nextInt(genericDeaths.length)];
+                    int[] genericDeaths = {1, 4, 8, 9, 10,11,12,15};
+                    return genericDeaths[randomgeneric.nextInt(genericDeaths.length)];
                 }, ac,
                         Animations.BIPED_DEATH,  // 0 index
                         GENERIC_DEATH_1,         // 1
@@ -114,7 +115,8 @@ public class QoLMiscAnimations {
                         GENERIC_DEATH_6,         // 11
                         GENERIC_DEATH_7,         // 12
                         DEATH_MAGIC,             // 13
-                        SAD_DEATH                // 14
+                        SAD_DEATH,               // 14
+                        GENERIC_DEATH_8          // 15
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -144,6 +146,9 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_7 = builder.nextAccessor("biped/living/death_generic7", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        GENERIC_DEATH_8 = builder.nextAccessor("biped/living/death_generic8", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         DEATH_MAGIC = builder.nextAccessor("biped/living/death_magic", ac -> new ActionAnimation(0.0f,7.5f,ac, Armatures.BIPED)
