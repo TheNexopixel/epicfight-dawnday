@@ -64,9 +64,9 @@ public class DawnDayItems {
                             .defaultDurability(360)));
 
     public static final RegistryObject<Item> wooden_battlestaff =
-            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,2,-2.2f,
+            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,6,-2.2f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(450)));
+                            .defaultDurability(1450)));
 
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,

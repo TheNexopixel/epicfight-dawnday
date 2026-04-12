@@ -234,7 +234,31 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BATTLESTAFF_AUTO4,
                             MiladyMoveset.BATTLESTAFF_AUTO5,
                             MiladyMoveset.BATTLESTAFF_DASH,
-                            MiladyMoveset.POLE_AXE_AUTO1
+                            MiladyMoveset.BATTLESTAFF_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.BATTLESTAFF_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+
+    public static final Function<Item, CapabilityItem.Builder> BATTLE_STAFF_WOOD = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.SPEAR)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(MiladyCollider.BATTLESTAFF_FRONT)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLUNT.get())
+                    .hitSound(EpicFightSounds.BLUNT_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GROUNDSLAM)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            MiladyMoveset.BATTLESTAFF_AUTO1,
+                            MiladyMoveset.BATTLESTAFF_AUTO2,
+                            MiladyMoveset.BATTLESTAFF_AUTO3,
+                            MiladyMoveset.BATTLESTAFF_AUTO4,
+                            MiladyMoveset.BATTLESTAFF_AUTO5,
+                            MiladyMoveset.BATTLESTAFF_DASH,
+                            MiladyMoveset.BATTLESTAFF_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.MILADY_WALK)
@@ -411,7 +435,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             MiladyMoveset.BAT_AUTO1,
                             MiladyMoveset.BAT_AUTO2,
                             MiladyMoveset.BAT_AUTO3,
-                            Animations.GREATSWORD_DASH,
+                            MiladyMoveset.BAT_DASH,
                             MiladyMoveset.BAT_AIRSLASH)
 
 
@@ -435,6 +459,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "halberd"), HALBERD);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff"), BATTLE_STAFF);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff_wood"), BATTLE_STAFF_WOOD);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "backhand_blade"), BACKHAND_BLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "light_greatsword"), LIGHT_GREATSWORD);
     }

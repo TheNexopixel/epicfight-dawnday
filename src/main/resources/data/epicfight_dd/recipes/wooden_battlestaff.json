@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  D",
+    " S ",
+    "D  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:wooden_battlestaff",
+    "count": 1
+  }
+}
+

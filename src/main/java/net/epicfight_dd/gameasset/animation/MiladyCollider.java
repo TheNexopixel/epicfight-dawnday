@@ -39,6 +39,10 @@ public class MiladyCollider {
     public static final Collider BAT = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"bat"),new MultiOBBCollider(4, 0.4D, 0.4D, 1.13D, 0D, 0.0D, -1.23D));
     public static final Collider BAT_BACK = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"bat_back"),new MultiOBBCollider(1, 0.55D, 0.55D, 0.7D, 0D, 0.0D, 0.6D));
     public static final Collider BAT_LONGER = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"bat_lng"),new MultiOBBCollider(4, 0.4D, 0.4D, 1.53D, 0D, 0.0D, -1.43D));
+    public static final Collider GROUNDSLAM = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"groundslam"),new MultiOBBCollider(1, 4.5D, 1.0D, 4.5D, 0D, 0.5D, 0.0D));
+    public static final Collider BATTLESTAFF_FULL = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"battlestaff_full"),new MultiOBBCollider(2, 0.3D, 0.4D, 2.0D, 0D, 0.0D, 0.0D));
+
+
 
 
 

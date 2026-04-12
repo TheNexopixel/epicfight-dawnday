@@ -43,6 +43,7 @@ public class DawnDaySkills {
     public static Skill SPINNING_SHADOW;
     public static Skill EVIL_BEAAAAMMMM;
     public static Skill BRUTAL_DASH;
+    public static Skill GROUNDSLAM;
 
 
     @SubscribeEvent
@@ -62,6 +63,16 @@ public class DawnDaySkills {
                        .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
                GENTLE_NUDGE = gentlenudge;
+
+        WeaponInnateSkill groundslam = modRegistry.build("groundslam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(MiladyMoveset.GROUNDSLAM)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        groundslam.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(10.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(40.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        GROUNDSLAM = groundslam;
 
 
         WeaponInnateSkill skullrupture = modRegistry.build("skull_rupture",
