@@ -3,7 +3,10 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
@@ -193,6 +196,7 @@ public class MiladyMoveset {
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> EVIL_ODACHI_DASH;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_COUNTER;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
@@ -1375,6 +1379,36 @@ public class MiladyMoveset {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
+        EVIL_ODACHI_COUNTER = builder.nextAccessor("biped/skill/evil_odachi_counter", ac->
+                new AttackAnimation(0.1f,0.058f,0.60f,0.61f,0.9f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_COUNTER,biped.get().rootJoint,ac,biped)
+
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_AMBIENT)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_HURT)
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
+                        .addState(EntityState.TURNING_LOCKED,true)
+                        .addState(EntityState.LOCKON_ROTATE,true)
+                        .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
+                        .addEvents(
+
+                                //BUZZ
+                                AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
+                                                e.getOriginal().level().playSound(
+                                                        (Player) e.getOriginal(),
+                                                        e.getOriginal(),
+                                                        EpicFightSounds.BUZZ.get(),
+                                                        SoundSource.PLAYERS,
+                                                        100, 1.1F
+                                                )
+
+                                        , AnimationEvent.Side.CLIENT)));
+
+
+
 
         EVIL_ODACHI_BEAAAMMMM = builder.nextAccessor("biped/skill/evil_beam", ac->
                 new AttackAnimation(0.1f,0.658f,0.728f,0.9f,3.2f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
@@ -1393,6 +1427,7 @@ public class MiladyMoveset {
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
 
+
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
                                         e.getOriginal().level().playSound(
@@ -1402,6 +1437,7 @@ public class MiladyMoveset {
                                                 SoundSource.PLAYERS,
                                                 100, 0.9F
                                         )
+
 
                                         , AnimationEvent.Side.CLIENT),
 

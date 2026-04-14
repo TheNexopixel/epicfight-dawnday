@@ -124,40 +124,40 @@ public class QoLMiscAnimations {
 
 
 
-        GENERIC_DEATH_1 = builder.nextAccessor("biped/living/death_generic1", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_1 = builder.nextAccessor("biped/deathanims/death_generic1", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        DEATH_SONICBOOM = builder.nextAccessor("biped/living/death_sonicboom", ac -> new ActionAnimation(0.0f,4.5f,ac, Armatures.BIPED)
+        DEATH_SONICBOOM = builder.nextAccessor("biped/deathanims/death_sonicboom", ac -> new ActionAnimation(0.0f,4.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_2 = builder.nextAccessor("biped/living/death_generic2", ac -> new ActionAnimation(0.0f,5.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_2 = builder.nextAccessor("biped/deathanims/death_generic2", ac -> new ActionAnimation(0.0f,5.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_3 = builder.nextAccessor("biped/living/death_generic3", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_3 = builder.nextAccessor("biped/deathanims/death_generic3", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_4 = builder.nextAccessor("biped/living/death_generic4", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_4 = builder.nextAccessor("biped/deathanims/death_generic4", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_5 = builder.nextAccessor("biped/living/death_generic5", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_5 = builder.nextAccessor("biped/deathanims/death_generic5", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_6 = builder.nextAccessor("biped/living/death_generic6", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_6 = builder.nextAccessor("biped/deathanims/death_generic6", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_7 = builder.nextAccessor("biped/living/death_generic7", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_7 = builder.nextAccessor("biped/deathanims/death_generic7", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        GENERIC_DEATH_8 = builder.nextAccessor("biped/living/death_generic8", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        GENERIC_DEATH_8 = builder.nextAccessor("biped/deathanims/death_generic8", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        DEATH_MAGIC = builder.nextAccessor("biped/living/death_magic", ac -> new ActionAnimation(0.0f,7.5f,ac, Armatures.BIPED)
+        DEATH_MAGIC = builder.nextAccessor("biped/deathanims/death_magic", ac -> new ActionAnimation(0.0f,7.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        SAD_DEATH = builder.nextAccessor("biped/living/death_starving", ac -> new ActionAnimation(0.0f,2.5f,ac, Armatures.BIPED)
+        SAD_DEATH = builder.nextAccessor("biped/deathanims/death_starving", ac -> new ActionAnimation(0.0f,2.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        WITHERING_DEMISE = builder.nextAccessor("biped/living/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        WITHERING_DEMISE = builder.nextAccessor("biped/deathanims/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
                 .addEvents(AnimationProperty.StaticAnimationProperty.TICK_EVENTS, AnimationEvent.SimpleEvent.create(
                         (e,s,p)->{
@@ -202,10 +202,10 @@ public class QoLMiscAnimations {
 
         );
 
-        EXPLOSION_DEATH = builder.nextAccessor("biped/living/death_explosion", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        EXPLOSION_DEATH = builder.nextAccessor("biped/deathanims/death_explosion", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
-        SHOT_DEAD = builder.nextAccessor("biped/living/death_arrow", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        SHOT_DEAD = builder.nextAccessor("biped/deathanims/death_arrow", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
                 .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
                         (e,s,p)->{
@@ -235,7 +235,7 @@ public class QoLMiscAnimations {
 
         );
 
-        FALL_DEATH = builder.nextAccessor("biped/living/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+        FALL_DEATH = builder.nextAccessor("biped/deathanims/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
 

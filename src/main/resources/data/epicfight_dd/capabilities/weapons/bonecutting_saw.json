@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":2.8,
+      "armor_negation":15.0,
+      "max_strikes":4
+    }
+  },
+  "type":"epicfight_dd:bonecutting_saw"
+}

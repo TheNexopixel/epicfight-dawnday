@@ -18,7 +18,9 @@ public class DawnDayCreativeTab {
             .title(Component.translatable("creativetab.dawn_day_tab"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
+                output.accept(DawnDayItems.bonecutting_saw.get());
                 output.accept(DawnDayItems.herb_sickle.get());
+                output.accept(DawnDayItems.saber.get());
                 output.accept(DawnDayItems.backhand_blade.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.steelaxe.get());

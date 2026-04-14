@@ -4,16 +4,16 @@
 	"base": {
 		"loader": "forge:obj",
 		"flip_v": true,
-		"model": "epicfight_dd:models/obj/saber.obj",
+		"model": "epicfight_dd:models/obj/bonecutting_saw.obj",
 		"textures": {
-			"text2ure.png": "epicfight_dd:item/saber"
+			"bonecutting_saw.png": "epicfight_dd:item/bonecutting_saw"
 		},
 
 		"display": {
 			"thirdperson_righthand": {
 				"rotation": [0, -90, 0],
-				"translation": [-6, 2.0, 6.0],
-				"scale": [0.7, 0.7, 0.7]
+				"translation": [-11.0, 12.0, 8.5],
+				"scale": [1.4, 1.4, 1.4]
 			},
 			"firstperson_righthand": {
 				"rotation": [0, 0, 0],
@@ -27,14 +27,14 @@
 		"gui": {
 			"parent": "item/generated",
 			"textures": {
-				"layer0": "epicfight_dd:item/saber_gui"
+				"layer0": "epicfight_dd:item/bonecutting_saw_gui"
 			},
 			"gui_light": "front"
 		},
 		"ground": {
 			"parent": "item/generated",
 			"textures": {
-				"layer0": "epicfight_dd:item/saber_gui"
+				"layer0": "epicfight_dd:item/bonecutting_saw_gui"
 			},
 			"gui_light": "front"
 		}

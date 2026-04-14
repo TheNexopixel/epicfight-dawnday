@@ -100,6 +100,12 @@ public class DawnDayItems {
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680)));
 
+    public static final RegistryObject<Item> bonecutting_saw =
+            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,2,-2.4f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.EPIC)
+                            .defaultDurability(3680)));
+
     public static final RegistryObject<Item> netherite_light_greatsword =
             ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-2.0f,2442));
 
