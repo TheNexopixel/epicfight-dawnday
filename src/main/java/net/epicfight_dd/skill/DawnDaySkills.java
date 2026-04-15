@@ -1,12 +1,16 @@
 package net.epicfight_dd.skill;
 
 import net.epicfight_dd.Epicfight_dd;
-import net.epicfight_dd.gameasset.animation.MiladyMoveset;
+import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
 
+import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.network.DDNetworkHandler;
+import net.epicfight_dd.network.ServerBoundSkillResourceConsumePacket;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
+import net.epicfight_dd.skill.weapon_innate.EvilOdachi_Battojutso;
 import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
 import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,10 +19,13 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.client.ClientEngine;
+import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
@@ -51,7 +58,7 @@ public class DawnDaySkills {
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
 
        WeaponInnateSkill gentlenudge = modRegistry.build("gentle_nudge",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.MILADY_KNUCKLE_INNATE)
+                .setAnimations(DawnDayAnimations.MILADY_KNUCKLE_INNATE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
                gentlenudge.newProperty()
                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
@@ -65,7 +72,7 @@ public class DawnDaySkills {
                GENTLE_NUDGE = gentlenudge;
 
         WeaponInnateSkill groundslam = modRegistry.build("groundslam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.GROUNDSLAM)
+                .setAnimations(DawnDayAnimations.GROUNDSLAM)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         groundslam.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(10.0F))
@@ -77,7 +84,7 @@ public class DawnDaySkills {
 
         WeaponInnateSkill skullrupture = modRegistry.build("skull_rupture",
                 SkullRuptureSkill::new, SkullRuptureSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.SKULL_RUPTURE)
+                .setAnimations(DawnDayAnimations.SKULL_RUPTURE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         skullrupture.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
@@ -91,7 +98,7 @@ public class DawnDaySkills {
         SKULL_RUPTURE = skullrupture;
 
         WeaponInnateSkill piercingfang = modRegistry.build("piercing_fang",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.PIERCING_FANG)
+                .setAnimations(DawnDayAnimations.PIERCING_FANG)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         piercingfang.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
@@ -106,7 +113,7 @@ public class DawnDaySkills {
         PIERCING_FANG = piercingfang;
 
         WeaponInnateSkill impailingthrust = modRegistry.build("impailing_thrust",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.IMPAILING_THRUST)
+                .setAnimations(DawnDayAnimations.IMPAILING_THRUST)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         impailingthrust.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
@@ -117,7 +124,7 @@ public class DawnDaySkills {
         IMPAILING_THRUST = impailingthrust;
 
         WeaponInnateSkill spearingstrike = modRegistry.build("spearing_strike",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.SPEARING_STRIKE)
+                .setAnimations(DawnDayAnimations.SPEARING_STRIKE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         spearingstrike.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
@@ -131,7 +138,7 @@ public class DawnDaySkills {
         SPEARING_STRIKE = spearingstrike;
 
         WeaponInnateSkill furiousCut = modRegistry.build("furious_cut", FuriousCutSkill::new, FuriousCutSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.FURIOUS_CUT)
+                .setAnimations(DawnDayAnimations.FURIOUS_CUT)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         furiousCut.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
@@ -140,7 +147,7 @@ public class DawnDaySkills {
         FURIOUS_CUT = furiousCut;
 
         WeaponInnateSkill quickrush = modRegistry.build("quick_rush",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.QUICK_RUSH)
+                .setAnimations(DawnDayAnimations.QUICK_RUSH)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         quickrush.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
@@ -159,7 +166,7 @@ public class DawnDaySkills {
                 );
 
         WeaponInnateSkill whirlwind = modRegistry.build("whirlwind",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.WHIRLWIND)
+                .setAnimations(DawnDayAnimations.WHIRLWIND)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         whirlwind.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
@@ -173,7 +180,7 @@ public class DawnDaySkills {
         WHIRLWIND = whirlwind;
 
         WeaponInnateSkill spinshadow = modRegistry.build("spinning_shadow",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.SPINNING_SHADOW)
+                .setAnimations(DawnDayAnimations.SPINNING_SHADOW)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         spinshadow.newProperty()
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
@@ -185,7 +192,7 @@ public class DawnDaySkills {
         SPINNING_SHADOW = spinshadow;
 
         WeaponInnateSkill evilbeam = modRegistry.build("evil_beam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.EVIL_ODACHI_BEAAAMMMM)
+                .setAnimations(DawnDayAnimations.EVIL_ODACHI_BEAAAMMMM)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         evilbeam.newProperty()
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
@@ -199,7 +206,7 @@ public class DawnDaySkills {
         EVIL_BEAAAAMMMM = evilbeam;
 
         WeaponInnateSkill brutaldash = modRegistry.build("brutal_dash",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(MiladyMoveset.BRUTAL_DASH)
+                .setAnimations(DawnDayAnimations.BRUTAL_DASH)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         brutaldash.newProperty()
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.05F))

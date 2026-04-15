@@ -11,7 +11,7 @@ public class AnimationBuildNexus {
 
     public static void buildAnimations(AnimationManager.AnimationBuilder builder) {
 
-        MiladyMoveset.build(builder); // use this builder from this and put it there
+        DawnDayAnimations.build(builder); // use this builder from this and put it there
         QoLMiscAnimations.animBuild(builder);
         WingStanceAnims.build(builder);
 

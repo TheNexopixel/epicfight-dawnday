@@ -1,6 +1,6 @@
 package net.epicfight_dd.skill.skill_compats;
 
-import net.epicfight_dd.gameasset.animation.MiladyMoveset;
+import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.Event;
@@ -11,7 +11,6 @@ import reascer.wom.gameasset.WOMSkills;
 import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.compat.ICompatModule;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -68,11 +67,11 @@ public class WoMCompat implements ICompatModule {
 
         //Normal
         guardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                MiladyMoveset.EVIL_ODACHI_GUARD_HIT);
+                DawnDayAnimations.EVIL_ODACHI_GUARD_HIT);
         guardBreakMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                MiladyMoveset.EVIL_ODACHI_NEUTRALIZED);
+                DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
-                MiladyMoveset.EVIL_ODACHI_COUNTER);
+                DawnDayAnimations.EVIL_ODACHI_COUNTER);
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
         temp = GuardSkill.class.getDeclaredField("guardMotions");

@@ -4,16 +4,13 @@ import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotions;
-import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
 public class WingStanceAnims {
@@ -127,7 +124,7 @@ public class WingStanceAnims {
 
         WINGSTANCE_CROUCH_ATTACK = builder.nextAccessor("biped/skill/wingstance/wingstance_crouch_attack", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.05f, 0.18f, 0.30f, 1.4f, 0.38f, InteractionHand.MAIN_HAND, biped.get().legR,MiladyCollider.EVIL_TACHI_SPECIAL)
+                        new AttackAnimation.Phase(0.0f, 0.05f, 0.18f, 0.30f, 1.4f, 0.38f, InteractionHand.MAIN_HAND, biped.get().legR, DawnDayCollider.EVIL_TACHI_SPECIAL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
