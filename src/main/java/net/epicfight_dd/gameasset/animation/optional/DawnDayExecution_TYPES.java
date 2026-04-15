@@ -27,6 +27,11 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.BATTLESTAFF_EXECUTED,
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
     );
+    public static final Type EVIL_TACHI = new Type(
+            DawnDayExecAnims.EVIL_TACHI_EXECUTE,
+            DawnDayExecAnims.EVIL_TACHI_EXECUTED,
+            new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
+    );
 
     public static final Type MILADY_DUAL = new Type(
             DawnDayExecAnims.MILADY_EXECUTION_DUAL,

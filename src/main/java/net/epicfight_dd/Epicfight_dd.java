@@ -5,17 +5,21 @@ import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
+import net.epicfight_dd.skill.skill_compats.WoMCompat;
+import net.epicfight_dd.skill.skill_compats.evil_tachi_skillcompats;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.shelmarow.combat_evolution.CombatEvolution;
+import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
@@ -27,12 +31,13 @@ public class Epicfight_dd {
 
 
 
+
     public Epicfight_dd(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
 
-
         //register every deferred register in the list with the mod eventbus
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
+        bus.addListener(evil_tachi_skillcompats::forceGuard);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
 
@@ -40,13 +45,17 @@ public class Epicfight_dd {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 
 
 
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
             ICompatModule.loadCompatModule(context, CombatEvoCompat.class);
+        }
+        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
+            ICompatModule.loadCompatModule(context, WoMCompat.class);
+            bus.addListener(WoMCompat::buildSkillEvent);
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.addListener(WoMCompat::regIcon));
         }
 
         if(ModList.get().isLoaded(EFN.MODID)){

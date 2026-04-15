@@ -398,7 +398,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI = (item) ->
             WeaponCapability.builder()
-                    .category( CapabilityItem.WeaponCategories.TACHI)
+                    .category(EpicFightDD_WeaponCategories.EVIL_TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(MiladyCollider.EVIL_TACHI)
                     .hitParticle(randomSlashHitParticleTYPE())
@@ -419,7 +419,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, MiladyMoveset.EVIL_ODACHI_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, MiladyMoveset.EVIL_ODACHI_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, MiladyMoveset.EVIL_ODACHI_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, MiladyMoveset.EVIL_ODACHI_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> BAT = (item) ->
             WeaponCapability.builder()
@@ -449,7 +449,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .category(CapabilityItem.WeaponCategories.GREATSWORD)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(MiladyCollider.BAT_LONGER)
-                    .swingSound(EpicFightSounds.WHOOSH_ROD.get())
+                    .swingSound(EpicFightSounds.WHOOSH_BIG.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)

@@ -3,9 +3,7 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -18,9 +16,11 @@ import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
+import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.animation.types.grappling.GrapplingAttackAnimation;
+import yesman.epicfight.api.animation.types.grappling.GrapplingHitAnimation;
 import yesman.epicfight.api.animation.types.grappling.GrapplingTryAnimation;
 import yesman.epicfight.api.utils.math.OpenMatrix4f;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -190,6 +190,11 @@ public class MiladyMoveset {
 
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_WALK;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_RUN;
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_GUARD;
+    public static AnimationAccessor<GuardAnimation> EVIL_ODACHI_PARRY1;
+    public static AnimationAccessor<GuardAnimation> EVIL_ODACHI_PARRY2;
+    public static AnimationAccessor<GuardAnimation> EVIL_ODACHI_GUARD_HIT;
+    public static AnimationAccessor<LongHitAnimation> EVIL_ODACHI_NEUTRALIZED;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AUTO3;
@@ -197,6 +202,8 @@ public class MiladyMoveset {
     public static AnimationAccessor<DashAttackAnimation> EVIL_ODACHI_DASH;
     public static AnimationAccessor<BasicAttackAnimation> EVIL_ODACHI_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_COUNTER;
+    public static AnimationAccessor<ActionAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
+    public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_OVERHEADSLASH_RELEASE;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
@@ -209,6 +216,18 @@ public class MiladyMoveset {
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
+
+        EVIL_ODACHI_GUARD_HIT = builder.nextAccessor("biped/living/evil_odachi_guard_hit", ac ->
+                new GuardAnimation(0.12F,ac, biped));
+
+        EVIL_ODACHI_PARRY1 = builder.nextAccessor("biped/living/evil_odachi_parry1", ac ->
+                new GuardAnimation(0.12F,ac, biped));
+
+        EVIL_ODACHI_PARRY2 = builder.nextAccessor("biped/living/evil_odachi_parry2", ac ->
+                new GuardAnimation(0.12F,ac, biped));
+
+        EVIL_ODACHI_NEUTRALIZED = builder.nextAccessor("biped/living/evil_odachi_neutralize", ac ->
+                new LongHitAnimation(0.12F,ac, biped));
 
         BAT_IDLE = builder.nextAccessor("biped/living/nailbat_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
@@ -281,6 +300,9 @@ public class MiladyMoveset {
 
         EVIL_ODACHI_WALK = builder.nextAccessor("biped/living/evil_odachi_walk", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
+
+        EVIL_ODACHI_GUARD = builder.nextAccessor("biped/living/evil_odachi_guard", ac ->
+                new StaticAnimation(0.25F,true,ac, biped));
 
         SABER_AUTO1 = builder.nextAccessor("biped/combat/saber_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.21F, 0.2F, 0.30F, 0.53F, null, biped.get().toolR, accessor, biped)
@@ -1379,12 +1401,69 @@ public class MiladyMoveset {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
+        EVIL_ODACHI_OVERHEADSLASH_CHARGE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_charge", ac->
+                new ActionAnimation( 0.1f, ac, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
+                        .addEvents(
+
+                                // SFX
+                                AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
+                                                e.getOriginal().level().playSound(
+                                                        (Player) e.getOriginal(),
+                                                        e.getOriginal(),
+                                                        SoundEvents.WITHER_AMBIENT,
+                                                        SoundSource.PLAYERS,
+                                                        100, 1.0F
+                                                )
+
+                                        , AnimationEvent.Side.CLIENT))
+        );
+        EVIL_ODACHI_OVERHEADSLASH_RELEASE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_release", ac->
+                new AttackAnimation(0.1f,0.058f,0.2f,0.28f,0.5f,InteractionHand.MAIN_HAND, MiladyCollider.WHIRLWIND2,biped.get().rootJoint,ac,biped)
+
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_HURT)
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 7))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier( 1.30f))
+                        .addProperty(AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
+                        .addState(EntityState.TURNING_LOCKED,true)
+                        .addState(EntityState.LOCKON_ROTATE,true)
+                        .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
+                        .addEvents(
+
+                                //BUZZ
+                                AnimationEvent.InTimeEvent.create(0.21f, (e,s,p)->
+                                                e.getOriginal().level().playSound(
+                                                        (Player) e.getOriginal(),
+                                                        e.getOriginal(),
+                                                        SoundEvents.WITHER_BREAK_BLOCK,
+                                                        SoundSource.PLAYERS,
+                                                        100, 1.1F
+                                                )
+
+                                        , AnimationEvent.Side.CLIENT)
+                        )
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.21F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(-0.0F, 0.25F, -1.0F), Armatures.BIPED.get().rootJoint, 5.5D, 11.3F))
+        );
+
         EVIL_ODACHI_COUNTER = builder.nextAccessor("biped/skill/evil_odachi_counter", ac->
                 new AttackAnimation(0.1f,0.058f,0.60f,0.61f,0.9f,InteractionHand.MAIN_HAND, MiladyCollider.EVIL_TACHI_COUNTER,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_AMBIENT)
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_HURT)
-                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 8))
+                        .addProperty(AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
                         .addState(EntityState.TURNING_LOCKED,true)
@@ -1394,6 +1473,7 @@ public class MiladyMoveset {
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
+
 
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->
@@ -1405,7 +1485,8 @@ public class MiladyMoveset {
                                                         100, 1.1F
                                                 )
 
-                                        , AnimationEvent.Side.CLIENT)));
+                                        , AnimationEvent.Side.CLIENT))
+        );
 
 
 
@@ -1490,7 +1571,7 @@ public class MiladyMoveset {
                                     float upZ = 0.0F;
 
                                     float beamRange = 20.0F;
-                                    int particleCount = 40;
+                                    int particleCount = 80;
                                     Random rand = new Random();
 
                                     for (int i = 0; i < particleCount; i++) {
@@ -1500,8 +1581,8 @@ public class MiladyMoveset {
                                         float radialY = (float)(rightY * Math.cos(theta) + upY * Math.sin(theta));
                                         float radialZ = (float)(rightZ * Math.cos(theta) + upZ * Math.sin(theta));
 
-                                        float speed = 0.15F;
-                                        float forwardDrift = 0.02F;
+                                        float speed = 0.80F;
+                                        float forwardDrift = 0.09F;
 
                                         entity.level().addParticle(
                                                 new DustParticleOptions(new Vector3f(0.0F, 0.0F, 0.0F), 1.5F),
