@@ -8,15 +8,16 @@ import net.epicfight_dd.skill.SkillDataKeyZ;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.skill.*;
+import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.UUID;
 
-public class EvilOdachi_Battojutso extends Skill {
+public class EvilOdachi_Battojutso extends SimpleWeaponInnateSkill {
     private static final UUID EVENT_UUID = UUID.fromString("123e4567-e89b-12d3-a456-426614174000");
 
-    public EvilOdachi_Battojutso(SkillBuilder<? extends Skill> builder) {
-        super(builder);
+    public EvilOdachi_Battojutso(SkillBuilder<? extends SimpleWeaponInnateSkill> builder) {
+        super((Builder) builder);
     }
     @Override
     public void onInitiate(SkillContainer container) {

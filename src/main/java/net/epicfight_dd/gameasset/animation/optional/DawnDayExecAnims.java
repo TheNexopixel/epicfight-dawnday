@@ -10,10 +10,12 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
 import org.joml.Vector3f;
@@ -37,8 +39,12 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.damagesource.ExtraDamageInstance;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import static net.epicfight_dd.api.animation.JointTrack.getJointWithTranslation;
 
 public class DawnDayExecAnims {
 
@@ -150,48 +156,65 @@ public class DawnDayExecAnims {
                         .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(1,8))
-                        .addEvents(AnimationProperty.StaticAnimationProperty.TICK_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e,s,p)->{
-                                    LivingEntity entity = e.getOriginal();
-                                    if (entity.tickCount % 3 != 0) return; //return if not every 5 tick
+                        .addEvents(
+                                AnimationEvent.InPeriodEvent.create(0.27f,7.9f, (e,s,p)->{
+                                            var entity = e.getOriginal();
+                                            int numParticles = 3;
+                                            for (int i = 0; i < numParticles; i++) {
+                                                if (entity == null) return;
 
-                                    if (!entity.level().isClientSide) return;
+                                                RandomSource random = RandomSource.create();
+                                                float L = -0.1F;
+                                                float R = 0.1F;
+                                                double xOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                double yOffset = (random.nextDouble() - random.nextDouble()) * 0.3D;
+                                                double zOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                Vec3 basePos = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, -1F, -0.3F), Armatures.BIPED.get().rootJoint);
+                                                List<Vec3> positions = new ArrayList<>();
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handR));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legR));
+                                                for (Vec3 pos : positions) {
+                                                    if (pos != null) {
+                                                        Vec3 ovalPos = pos.add(xOffset, yOffset, zOffset);
+                                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, ovalPos.x, ovalPos.y, ovalPos.z, entity.getDeltaMovement().x, 0.052F, entity.getDeltaMovement().z);
+                                                        if (particle != null) {
+                                                            particle.setLifetime(7);
+                                                        }
+                                                    }
+                                                    if (basePos != null) {
+                                                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y, basePos.z, entity.getDeltaMovement().x, 0.02F, entity.getDeltaMovement().z);
+                                                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y + 0.26F, basePos.z, entity.getDeltaMovement().x, 0.012F, entity.getDeltaMovement().z);
+                                                        if (particle1 != null) {
+                                                            particle1.scale(0.92F);
+                                                            particle1.setLifetime(13);
+                                                        }
+                                                        if (particle2 != null) {
+                                                            particle2.scale(0.96F);
+                                                            particle2.setLifetime(3);
+                                                        }
+                                                    }
 
-                                    var random = entity.getRandom();
+                                                    e.getOriginal().level().addParticle(
+                                                            ParticleTypes.SMOKE,
+                                                            entity.getX(),
+                                                            entity.getY(),
+                                                            entity.getZ(),
+                                                            0.0, 0.0, -0.1);}
 
-                                    int particleCount = 18 + random.nextInt(20);
-                                    double sphereRadius = 0.06;
-
-                                    for (int i = 0; i < particleCount; i++) {
-                                        double theta = random.nextDouble() * 2 * Math.PI;
-                                        double phi = Math.acos(2 * random.nextDouble() - 1);
-
-                                        double xOffset = sphereRadius * Math.sin(phi) * Math.cos(theta);
-                                        double yOffset = sphereRadius * Math.sin(phi) * Math.sin(theta);
-                                        double zOffset = sphereRadius * Math.cos(phi);
-
-                                        double vxOffset = xOffset * -0.125;
-                                        double vyOffset = yOffset * -0.3;
-                                        double vzOffset = zOffset * -0.125;
-
-                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(
-                                                ParticleTypes.SMOKE,
-                                                entity.getX() + xOffset,
-                                                entity.getY() + yOffset,
-                                                entity.getZ() + zOffset,
-                                                vxOffset, vyOffset, vzOffset
-                                        );
-                                        if (particle != null) {
-                                            particle.scale(1.0F);
-                                            particle.setLifetime(28);
+                                            }
                                         }
 
-                                    }
-
-                                }, AnimationEvent.Side.CLIENT
+                                        , AnimationEvent.Side.CLIENT))
 
 
-                        ))
+
+
                         .addEvents(
                                 AnimationEvent.InTimeEvent.create(0.2f, (e,s,p)->
                                                         e.getOriginal().level().playSound(
@@ -305,7 +328,7 @@ public class DawnDayExecAnims {
                                     }
 
                                     Particle particle = Minecraft.getInstance().particleEngine.createParticle(
-                                            WOMParticles.BLACK_LASER.get(), worldX, worldY, worldZ,
+                                            WOMParticles.BLACK_RAY.get(), worldX, worldY, worldZ,
                                             worldX + boneForwardX * beamRange,
                                             worldY + boneForwardY * beamRange,
                                             worldZ + boneForwardZ * beamRange

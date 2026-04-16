@@ -242,7 +242,70 @@ public class DawnDayAnimations {
                 new GuardAnimation(0.12F,ac, biped));
 
         EVIL_ODACHI_NEUTRALIZED = builder.nextAccessor("biped/living/evil_odachi_neutralize", ac ->
-                new LongHitAnimation(0.12F,ac, biped));
+                new LongHitAnimation(0.12F,ac, biped)
+                        .addEvents(
+
+
+                                //BUZZ
+                                AnimationEvent.InTimeEvent.create(0.01f, (e,s,p)->
+                                                e.getOriginal().level().playSound(
+                                                        (Player) e.getOriginal(),
+                                                        e.getOriginal(),
+                                                        dawnDaySounds.guard_break.get(),
+                                                        SoundSource.PLAYERS,
+                                                        100, 1.0F
+                                                )
+
+                                        , AnimationEvent.Side.CLIENT))
+                        .addEvents(
+                                AnimationEvent.InPeriodEvent.create(0.07f,0.1f, (e,s,p)->{
+                                            var entity = e.getOriginal();
+                                            int numParticles = 5;
+                                            for (int i = 0; i < numParticles; i++) {
+                                                if (entity == null) return;
+                                                float L = -0.1F;
+                                                float R = 0.1F;
+                                                double xOffset = 0;
+                                                double yOffset = 0;
+                                                double zOffset = 0;
+                                                Vec3 basePos = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, -1F, -0.3F), Armatures.BIPED.get().handR);
+                                                List<Vec3> positions = new ArrayList<>();
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handR));
+                                                for (Vec3 pos : positions) {
+                                                    if (pos != null) {
+                                                        Vec3 ovalPos = pos.add(xOffset, yOffset, zOffset);
+                                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, ovalPos.x, ovalPos.y, ovalPos.z, entity.getDeltaMovement().x, 0.052F, entity.getDeltaMovement().z);
+                                                        if (particle != null) {
+                                                            particle.setLifetime(7);
+                                                        }
+                                                    }
+                                                    if (basePos != null) {
+                                                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y, basePos.z, entity.getDeltaMovement().x, 0.02F, entity.getDeltaMovement().z);
+                                                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y + 0.26F, basePos.z, entity.getDeltaMovement().x, 0.012F, entity.getDeltaMovement().z);
+                                                        if (particle1 != null) {
+                                                            particle1.scale(0.92F);
+                                                            particle1.setLifetime(13);
+                                                        }
+                                                        if (particle2 != null) {
+                                                            particle2.scale(0.96F);
+                                                            particle2.setLifetime(3);
+                                                        }
+                                                    }
+
+                                                    e.getOriginal().level().addParticle(
+                                                            ParticleTypes.SMOKE,
+                                                            entity.getX(),
+                                                            entity.getY(),
+                                                            entity.getZ(),
+                                                            0.0, 0.0, -0.1);}
+
+                                            }
+                                        }
+
+                                        , AnimationEvent.Side.CLIENT))
+
+
+        );
 
         BAT_IDLE = builder.nextAccessor("biped/living/nailbat_idle", ac ->
                 new StaticAnimation(0.12F,true,ac, biped));
@@ -332,7 +395,7 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BAT_AUTO1 = builder.nextAccessor("biped/combat/nailbat_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.49F, 0.76F, 0.73F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.21F, 0.49F, 0.76F, 0.87F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.0F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -1507,7 +1570,7 @@ public class DawnDayAnimations {
                         new AttackAnimation(0.1f,0.2f,0.34f,0.81f,0.9f,InteractionHand.MAIN_HAND, DawnDayCollider.BACKHAND_INNATE,biped.get().rootJoint,ac,biped)
 
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_SHOOT)
-                                .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_HURT)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.FIREWORK_ROCKET_BLAST)
                                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 8))
                                 .addProperty(AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
@@ -1532,7 +1595,7 @@ public class DawnDayAnimations {
 
 
 
-                                                , AnimationEvent.Side.BOTH)
+                                                , AnimationEvent.Side.CLIENT)
                                 )
                                 .addEvents(
                                         AnimationEvent.InPeriodEvent.create(0.27f,0.9f, (e,s,p)->{
@@ -1588,7 +1651,7 @@ public class DawnDayAnimations {
                                                 }
                                         }
 
-                                        , AnimationEvent.Side.BOTH))
+                                        , AnimationEvent.Side.CLIENT))
 
         );
 
