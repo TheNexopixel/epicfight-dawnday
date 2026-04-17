@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+@SuppressWarnings("unchecked")
 public class WoMCompat implements ICompatModule {
     public static void registerGuard(Event event) {
     }
@@ -60,7 +61,7 @@ public class WoMCompat implements ICompatModule {
         regGuarded = true;
     }
 
-    public static void regGuard() throws NoSuchFieldException, IllegalAccessException {
+    public static void regGuard() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException {
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardMotions = new HashMap<>();
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreakMotions = new HashMap<>();
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advancedGuardMotions = new HashMap<>();

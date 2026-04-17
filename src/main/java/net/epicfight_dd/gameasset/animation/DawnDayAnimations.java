@@ -3,10 +3,8 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -16,6 +14,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fml.ModList;
 import org.joml.Vector3f;
 import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -40,7 +39,6 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
-import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -214,7 +212,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<AirSlashAnimation> EVIL_ODACHI_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_COUNTER;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_BATTOJUTSO;
-    public static AnimationAccessor<ActionAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_OVERHEADSLASH_RELEASE;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
@@ -1480,8 +1478,13 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_OVERHEADSLASH_CHARGE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_charge", ac->
-                new ActionAnimation( 0.1f, ac, Armatures.BIPED)
-                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                new StaticAnimation( 0.1f,false, ac, Armatures.BIPED)
+                        .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
+                        .addConditionalState(0, EntityState.UPDATE_LIVING_MOTION, false)
+                        .addConditionalState(1, EntityState.UPDATE_LIVING_MOTION, true)
+                        .newTimePair(0.0F, Float.MAX_VALUE).addStateRemoveOld(EntityState.CAN_SWITCH_HAND_ITEM, false)
+                        .addProperty(StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(StaticAnimationProperty.POSE_MODIFIER, null)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
 
@@ -1757,13 +1760,14 @@ public class DawnDayAnimations {
 
                                     }
 
-                                  Particle particle = Minecraft.getInstance().particleEngine.createParticle(
-                                          WOMParticles.BLACK_LASER.get(), worldX, worldY, worldZ,
-                                          worldX + boneForwardX * beamRange,
-                                          worldY + boneForwardY * beamRange,
-                                          worldZ + boneForwardZ * beamRange
-                                  );
-
+                                    if (ModList.get().isLoaded("wom")) {
+                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(
+                                                WOMParticles.BLACK_LASER.get(), worldX, worldY, worldZ,
+                                                worldX + boneForwardX * beamRange,
+                                                worldY + boneForwardY * beamRange,
+                                                worldZ + boneForwardZ * beamRange
+                                        );
+                                    }
 
 
 //                                    entity.level().addParticle(
@@ -1783,6 +1787,8 @@ public class DawnDayAnimations {
                                         e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),4,2)), AnimationEvent.Side.SERVER
                                 )));
     }
+
+
 
 }
 
