@@ -415,6 +415,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.EVIL_ODACHI_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.EVIL_ODACHI_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, DawnDayAnimations.EVIL_ODACHI_KNEEL)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, DawnDayAnimations.EVIL_ODACHI_SNEAK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.EVIL_ODACHI_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.WITHERING_DEMISE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.JUMP, DawnDayAnimations.EVIL_ODACHI_JUMP)

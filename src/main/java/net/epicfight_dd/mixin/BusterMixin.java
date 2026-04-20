@@ -12,7 +12,8 @@ import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
-@Mixin(DreadFullBusterSkill.class)
+
+@Mixin(value = DreadFullBusterSkill.class, remap = false)
 public class BusterMixin {
 
     @Inject(method = "getWindupAnimation", at = @At("HEAD"), cancellable = true)

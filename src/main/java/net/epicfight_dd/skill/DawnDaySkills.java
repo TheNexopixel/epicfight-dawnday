@@ -191,7 +191,7 @@ public class DawnDaySkills {
 
         SPINNING_SHADOW = spinshadow;
 
-        WeaponInnateSkill evilbeam = modRegistry.build("evil_beam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+        WeaponInnateSkill evilbeam = modRegistry.build("evil_beam",EvilOdachi_Battojutso::new,EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.EVIL_ODACHI_BEAAAMMMM)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         evilbeam.newProperty()

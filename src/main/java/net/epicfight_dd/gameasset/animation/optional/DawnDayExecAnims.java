@@ -144,7 +144,6 @@ public class DawnDayExecAnims {
         get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.8f,0.85f,1.42f,1.45f));
         /*
         Todolist for Evil Execution
-        - add Witherlike Particles to Hitted Enemies
         - add Particles to first hit
         - try wing particles for big ray
          */
@@ -155,9 +154,9 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
                         .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(1,8))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(1,6.1F))
                         .addEvents(
-                                AnimationEvent.InPeriodEvent.create(0.27f,7.9f, (e,s,p)->{
+                                AnimationEvent.InPeriodEvent.create(0.27f,6.1f, (e,s,p)->{
                                             var entity = e.getOriginal();
                                             int numParticles = 3;
                                             for (int i = 0; i < numParticles; i++) {
@@ -227,7 +226,7 @@ public class DawnDayExecAnims {
 
 
                                                 , AnimationEvent.Side.CLIENT),
-                                AnimationEvent.InTimeEvent.create(7.9f, (e,s,p)->
+                                AnimationEvent.InTimeEvent.create(6.2f, (e,s,p)->
                                                 e.getOriginal().level().playSound(
                                                         (Player) e.getOriginal(),
                                                         e.getOriginal(),
@@ -371,7 +370,7 @@ public class DawnDayExecAnims {
 
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(true, 0.0F, 0.0F, 0.82F, 0.93F, 0.93F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5F)),
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(5.3F)),
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 0.93F, 0.0F, 10.16F, 10.36F, 5.0F, 5.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.3F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())}))

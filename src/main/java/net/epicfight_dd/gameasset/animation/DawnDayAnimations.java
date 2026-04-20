@@ -16,7 +16,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.joml.Vector3f;
+import reascer.wom.gameasset.WOMSkills;
 import reascer.wom.particle.WOMParticles;
+import reascer.wom.world.damagesources.WOMDamageType;
+import reascer.wom.world.damagesources.WOMStuntypes;
 import reascer.wom.world.damagesources.WOMDamageType;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
@@ -200,6 +203,8 @@ public class DawnDayAnimations {
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_WALK;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_RUN;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_JUMP;
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_KNEEL;
+    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_SNEAK;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_GUARD;
     public static AnimationAccessor<GuardAnimation> EVIL_ODACHI_PARRY1;
     public static AnimationAccessor<GuardAnimation> EVIL_ODACHI_PARRY2;
@@ -213,7 +218,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<AirSlashAnimation> EVIL_ODACHI_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_COUNTER;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_BATTOJUTSO;
-    public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
+    public static AnimationAccessor<ActionAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_OVERHEADSLASH_RELEASE;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
@@ -230,6 +235,12 @@ public class DawnDayAnimations {
 
         EVIL_ODACHI_JUMP = builder.nextAccessor("biped/living/evil_odachi_jump", ac ->
                 new StaticAnimation(0.12F,false,ac, biped));
+
+        EVIL_ODACHI_KNEEL = builder.nextAccessor("biped/living/evil_odachi_kneel", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        EVIL_ODACHI_SNEAK = builder.nextAccessor("biped/living/evil_odachi_sneak", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
 
         EVIL_ODACHI_GUARD_HIT = builder.nextAccessor("biped/living/evil_odachi_guard_hit", ac ->
                 new GuardAnimation(0.12F,ac, biped));
@@ -597,7 +608,7 @@ public class DawnDayAnimations {
         );
 
             MILADY_KNUCKLE_INNATE = builder.nextAccessor("biped/skill/milady/milady_special_knuckle_strike", ac->
-                   new AttackAnimation(0.1f,0.2f,0.5f,0.6f,20f,InteractionHand.MAIN_HAND, ColliderPreset.HEAD,biped.get().elbowR,ac,biped)
+                   new AttackAnimation(0.1f,0.2f,0.5f,0.6f,1.0f,InteractionHand.MAIN_HAND, ColliderPreset.HEAD,biped.get().elbowR,ac,biped)
                            .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
                            .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
                            .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false) // remove if fault
@@ -605,7 +616,7 @@ public class DawnDayAnimations {
                            .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                            .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
                                    (e,s,p)->
-                                           e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
+                                           e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),25,60)), AnimationEvent.Side.SERVER
                            ))
             );
         PIERCING_FANG = builder.nextAccessor("biped/skill/piercing_fang", ac->
@@ -1456,15 +1467,15 @@ public class DawnDayAnimations {
 
                         )
                                 .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
-                                .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                                .addProperty(AttackAnimationProperty.MOVE_VERTICAL,true)
+                                .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F,1.7F))
                                 .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_DASH = builder.nextAccessor("biped/combat/evil_odachi_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, 0.0f, 0.25f, 0.4f, 0.6F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.90))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.70))
                         .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
-                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
-                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.SHORT)
                         .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -1479,13 +1490,12 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         EVIL_ODACHI_OVERHEADSLASH_CHARGE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_charge", ac->
-                new StaticAnimation( 0.1f,false, ac, Armatures.BIPED)
+                new ActionAnimation( 0.1f, ac, Armatures.BIPED)
                         .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
                         .addConditionalState(0, EntityState.UPDATE_LIVING_MOTION, false)
                         .addConditionalState(1, EntityState.UPDATE_LIVING_MOTION, true)
                         .newTimePair(0.0F, Float.MAX_VALUE).addStateRemoveOld(EntityState.CAN_SWITCH_HAND_ITEM, false)
                         .addProperty(StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
-                        .addProperty(StaticAnimationProperty.POSE_MODIFIER, null)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
                         .addEvents(
 
@@ -1507,8 +1517,8 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_HURT)
                         .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 7))
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier( 1.30f))
                         .addProperty(AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.FALL)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
                         .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE, WOMDamageType.BLACKOUT))
                         .addState(EntityState.TURNING_LOCKED,true)
@@ -1571,11 +1581,13 @@ public class DawnDayAnimations {
         );
 
         EVIL_ODACHI_BATTOJUTSO = builder.nextAccessor("biped/skill/evil_odachi_battojutso", ac->
-                        new AttackAnimation(0.1f,0.2f,0.34f,0.81f,0.9f,InteractionHand.MAIN_HAND, DawnDayCollider.BACKHAND_INNATE,biped.get().rootJoint,ac,biped)
+                        new AttackAnimation(0.1f,0.2f,0.20f,0.71f,0.8f,InteractionHand.MAIN_HAND, DawnDayCollider.BACKHAND_INNATE,biped.get().rootJoint,ac,biped)
 
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_SHOOT)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.FIREWORK_ROCKET_BLAST)
                                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 8))
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder( 15))
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier( 1.65f))
                                 .addProperty(AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                                 .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
@@ -1586,7 +1598,7 @@ public class DawnDayAnimations {
                                 .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                                 .addProperty(AttackAnimationProperty.CANCELABLE_MOVE,false)
                                 .addEvents(
-                                        AnimationEvent.InTimeEvent.create(0.3f, (e,s,p)->{
+                                        AnimationEvent.InTimeEvent.create(0.15f, (e,s,p)->{
                                                 var entity = e.getOriginal();
                                                         e.getOriginal().level().addParticle(
                                                                         ParticleTypes.FLASH,
@@ -1602,7 +1614,7 @@ public class DawnDayAnimations {
                                                 , AnimationEvent.Side.CLIENT)
                                 )
                                 .addEvents(
-                                        AnimationEvent.InPeriodEvent.create(0.27f,0.9f, (e,s,p)->{
+                                        AnimationEvent.InPeriodEvent.create(0.12f,0.8f, (e,s,p)->{
                                                     var entity = e.getOriginal();
                                                     int numParticles = 3;
                                             for (int i = 0; i < numParticles; i++) {
@@ -1661,7 +1673,7 @@ public class DawnDayAnimations {
 
 
         EVIL_ODACHI_BEAAAMMMM = builder.nextAccessor("biped/skill/evil_beam", ac->
-                new AttackAnimation(0.1f,0.658f,0.728f,0.9f,3.2f,InteractionHand.MAIN_HAND, DawnDayCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
+                new AttackAnimation(0.1f,0.658f,0.728f,0.9f,1.2f,InteractionHand.MAIN_HAND, DawnDayCollider.EVIL_TACHI_RAY,biped.get().rootJoint,ac,biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
