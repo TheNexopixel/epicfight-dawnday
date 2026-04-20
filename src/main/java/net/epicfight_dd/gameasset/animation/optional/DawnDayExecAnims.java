@@ -415,12 +415,12 @@ public class DawnDayExecAnims {
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.23F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,SoundEvents.WITHER_HURT)
-                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.9F)),
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.075F)),
 
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(4.0F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(8.325F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,WOMParticles.ANTITHEUS_PUNCH_HIT)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,SoundEvents.WITHER_HURT)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,SoundEvents.WITHER_DEATH)
 
         }))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
