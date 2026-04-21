@@ -364,20 +364,22 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WINGSTANCE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.QUICK_RUSH)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.SABER_AUTO1,
                             DawnDayAnimations.SABER_AUTO2,
-                            DawnDayAnimations.STEELAXE_AUTO3,
-                            DawnDayAnimations.STEELAXE_AUTO4,
-                            DawnDayAnimations.HALBERD_DASH,
-                            DawnDayAnimations.POLE_AXE_AUTO3)
+                            DawnDayAnimations.SABER_AUTO3,
+                            DawnDayAnimations.SABER_AUTO4,
+                            DawnDayAnimations.SABER_AUTO5,
+                            DawnDayAnimations.SABER_AUTO6,
+                            DawnDayAnimations.SABER_DASH,
+                            DawnDayAnimations.SABER_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.SABER_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
 
     public static HitParticleType randomSlashHitParticleTYPE(){
         int randomInt = (int)(Math.random() * (double)4.0F);

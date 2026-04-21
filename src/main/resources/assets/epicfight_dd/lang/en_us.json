@@ -45,5 +45,6 @@
   "skill.epicfight_dd.evil_beam.tooltip":"Unleash a beam of demonic energy on your attackers!",
   "item.epicfight_dd.nailbat":"Spiked Bat",
   "skill.epicfight_dd.brutal_dash":"Brutal Dash",
-  "skill.epicfight_dd.brutal_dash.tooltip":"Take a quick step forward to stagger your opponents with your heavy weapon!"
+  "skill.epicfight_dd.brutal_dash.tooltip":"Take a quick step forward to stagger your opponents with your heavy weapon!",
+  "item.epicfight_dd.saber":"Saber"
 }
