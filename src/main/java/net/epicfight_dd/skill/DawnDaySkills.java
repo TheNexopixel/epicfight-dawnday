@@ -51,6 +51,7 @@ public class DawnDaySkills {
     public static Skill EVIL_BEAAAAMMMM;
     public static Skill BRUTAL_DASH;
     public static Skill GROUNDSLAM;
+    public static Skill WILD_STRIKES;
 
 
     @SubscribeEvent
@@ -221,6 +222,17 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         BRUTAL_DASH = brutaldash;
+
+        WeaponInnateSkill wildstrikes = modRegistry.build("wild_strikes",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.WILD_STRIKES)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        wildstrikes.newProperty()
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+
+        WILD_STRIKES = wildstrikes;
 
     }
 

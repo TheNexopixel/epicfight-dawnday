@@ -28,7 +28,7 @@ public class DawnDayItems {
                             .defaultDurability(2500)));
 
     public static final RegistryObject<Item> saber =
-            ITEMS.register("saber",() -> new SwordItem(Tiers.DIAMOND,3,-2.0f,
+            ITEMS.register("saber",() -> new SwordItem(Tiers.DIAMOND,2,-2.0f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2500)));
@@ -64,7 +64,7 @@ public class DawnDayItems {
                             .defaultDurability(360)));
 
     public static final RegistryObject<Item> wooden_battlestaff =
-            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,6,-2.2f,
+            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,5,-2.2f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(1450)));
 
@@ -89,7 +89,7 @@ public class DawnDayItems {
                             .defaultDurability(2680)));
 
     public static final RegistryObject<Item> spiked_bat =
-            ITEMS.register("nailbat",() -> new SwordItem(Tiers.DIAMOND,5,-2.6f,
+            ITEMS.register("nailbat",() -> new SwordItem(Tiers.DIAMOND,4,-2.6f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2080)));

@@ -46,5 +46,7 @@
   "item.epicfight_dd.nailbat": "Stachelknüppel",
   "skill.epicfight_dd.brutal_dash": "Brutaler Stoß",
   "skill.epicfight_dd.brutal_dash.tooltip": "Mache einen kurzen Satz nach vorne, um deine Gegner mit der schweren Waffe ins Taumeln zu bringen!",
-  "item.epicfight_dd.saber": "Saber"
+  "item.epicfight_dd.saber": "Saber",
+  "skill.epicfight_dd.wild_strikes": "Wilde Schläge",
+  "skill.epicfight_dd.wild_strikes.tooltip": "Führe ein paar schnelle Angriffe aus und besiege deinen Gegner mit dem letztem Schlag!"
 }

@@ -46,5 +46,7 @@
   "item.epicfight_dd.nailbat":"Spiked Bat",
   "skill.epicfight_dd.brutal_dash":"Brutal Dash",
   "skill.epicfight_dd.brutal_dash.tooltip":"Take a quick step forward to stagger your opponents with your heavy weapon!",
-  "item.epicfight_dd.saber":"Saber"
+  "item.epicfight_dd.saber":"Saber",
+  "skill.epicfight_dd.wild_strikes":"Wild Strikes",
+  "skill.epicfight_dd.wild_strikes.tooltip":"Land a few quick attacks and finish off your opponent with the final strike"
 }

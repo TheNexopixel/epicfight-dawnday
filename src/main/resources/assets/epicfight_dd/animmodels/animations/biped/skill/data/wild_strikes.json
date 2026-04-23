@@ -1,0 +1,35 @@
+{
+    "trail_effects": [
+      {
+        "start_time": 0.05,
+        "end_time": 0.3,
+        "lifetime": 6,
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.6,
+        "end_time": 0.7,
+        "lifetime": 6,
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 1.05,
+        "end_time": 1.3,
+        "lifetime": 6,
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 1.6,
+        "end_time": 1.7,
+        "lifetime": 20,
+        "end_pos": [0.0, 0.2, -6.8],
+        "joint": "Tool_R",
+        "texture_path": "epicfight:textures/particle/katana_trail.png",
+        "particle_type": "epicfight:katana_trail",
+        "item_skin_hand": "main_hand"
+      }
+    ]
+}
