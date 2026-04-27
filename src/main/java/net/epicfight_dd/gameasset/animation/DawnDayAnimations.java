@@ -90,6 +90,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> BAT_DASH;
     public static AnimationAccessor<AirSlashAnimation> BAT_AIRSLASH;
 
@@ -491,6 +492,14 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(20f))
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.6F)))
 
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        BAT_AUTO4 = builder.nextAccessor("biped/combat/nailbat_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.26F, 0.48F, 0.78F, 0.99F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.8F))
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 

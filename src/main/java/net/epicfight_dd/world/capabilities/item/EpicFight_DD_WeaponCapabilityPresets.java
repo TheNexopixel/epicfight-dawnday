@@ -438,6 +438,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.BAT_AUTO1,
                             DawnDayAnimations.BAT_AUTO2,
                             DawnDayAnimations.BAT_AUTO3,
+                            DawnDayAnimations.BAT_AUTO4,
                             DawnDayAnimations.BAT_DASH,
                             DawnDayAnimations.BAT_AIRSLASH)
 
