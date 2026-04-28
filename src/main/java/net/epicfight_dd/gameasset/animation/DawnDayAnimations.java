@@ -510,7 +510,7 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
         BAT_DASH = builder.nextAccessor("biped/combat/nailbat_dash", (accessor) ->
-                new DashAttackAnimation(0.12F, 0.21F, 0.22F, 0.42F, 0.63F, null, biped.get().toolR, accessor, biped)
+                new DashAttackAnimation(0.12F, 0.21F, 0.28F, 0.48F, 0.63F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
