@@ -3,9 +3,9 @@
   {
     "common":
     {
-      "armor_negation":15.0,
-      "impact":4.5,
-      "max_strikes":6
+      "armor_negation":10.0,
+      "impact":2.5,
+      "max_strikes":5
     }
   },
   "type":"epicfight_dd:nailbat"

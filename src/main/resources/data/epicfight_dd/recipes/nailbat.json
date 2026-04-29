@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " ND",
-    "NDN",
+    "NEN",
     "SN "
   ],
   "key": {
@@ -14,6 +14,9 @@
     },
     "N": {
       "item": "minecraft:iron_nugget"
+    },
+    "E": {
+      "item": "minecraft:netherite_ingot"
     }
   },
   "result": {

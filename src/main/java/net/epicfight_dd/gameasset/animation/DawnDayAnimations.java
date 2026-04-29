@@ -480,25 +480,27 @@ public class DawnDayAnimations {
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.20f, 0.4f, 0.6f, 1.9f, 0.70f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT.get())
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.4F)),
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3F)),
 
 
                         new AttackAnimation.Phase(0.71f, 0.8f, 1.0f, 1.25f, 1.9f,1.26f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT.get())
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.0F)),
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.8F)),
 
                         new AttackAnimation.Phase(1.27f, 1.3f, 1.57f, 1.82f, 2.2f,3.51f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.BAT_LONGER)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(20f))
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.6F)))
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.5F)))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BAT_AUTO4 = builder.nextAccessor("biped/combat/nailbat_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.26F, 0.48F, 0.78F, 0.99F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.26F, 0.55F, 0.83F, 2.39F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.8F))
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(15f))
                         .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder(2))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
@@ -510,10 +512,18 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
         BAT_DASH = builder.nextAccessor("biped/combat/nailbat_dash", (accessor) ->
-                new DashAttackAnimation(0.12F, 0.21F, 0.28F, 0.48F, 0.63F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2F))
+                new DashAttackAnimation(0.12F, 0.21F, 0.33F, 0.50F, 0.63F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.1F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.34F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(-0.0F, 0.25F, -1.0F), Armatures.BIPED.get().rootJoint, 0.5D, 2.5F))
+
+        );
 
 
         BATTLESTAFF_AUTO1 = builder.nextAccessor("biped/combat/battlestaff_auto1", (accessor) ->
