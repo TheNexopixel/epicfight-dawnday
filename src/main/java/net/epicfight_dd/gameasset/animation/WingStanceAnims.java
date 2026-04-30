@@ -80,7 +80,7 @@ public class WingStanceAnims {
                 new AttackAnimation(0.12F, 0.6F, 0.65F, 1.12F, 1.8F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.piercing_fang.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(33.33f))
-                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.6f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.9f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
                         .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
@@ -132,7 +132,7 @@ public class WingStanceAnims {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 5))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLUNT)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.1f)),
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.setter(1f)),
 
                         new AttackAnimation.Phase(0.481f, 0.9f, 1.18f, 1.45f, 1.4f,20.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())

@@ -89,7 +89,7 @@ public class DawnDayExecAnims {
 
 
         MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor)->
-                milady(accessor,executionCollider,CONSTANT_EXECUTION,0.1f,0.2f,1.57f,1.58f));
+                milady(accessor,executionCollider,CONSTANT_EXECUTION,0.22f,0.23f,1.77f,1.78f));
 
         MILADY_EXECUTION_DUAL = builder.nextAccessor("biped/execution/milady/milady_special_execution", (accessor) ->
                 getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));

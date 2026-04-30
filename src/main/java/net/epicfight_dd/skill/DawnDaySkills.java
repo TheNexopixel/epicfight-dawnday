@@ -206,7 +206,7 @@ public class DawnDaySkills {
 
         EVIL_BEAAAAMMMM = evilbeam;
 
-        WeaponInnateSkill brutaldash = modRegistry.build("brutal_dash",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+        WeaponInnateSkill brutaldash = modRegistry.build("brutal_dash",SkullRuptureSkill::new,SkullRuptureSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.BRUTAL_DASH)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         brutaldash.newProperty()
