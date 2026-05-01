@@ -471,13 +471,53 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> HOLLOW_LONGSWORD = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.LONGSWORD)
+                    .styleProvider((pp) -> CapabilityItem.Styles.OCHS)
+                    .collider(DawnDayCollider.BAT)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD ? CapabilityItem.Styles.OCHS : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> EpicFightSkills.SHARP_STAB)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
+                    .newStyleCombo(CapabilityItem.Styles.OCHS,
+                            DawnDayAnimations.HOLLOW_OCHS_AUTO1,
+                            DawnDayAnimations.HOLLOW_OCHS_AUTO2,
+                            DawnDayAnimations.HOLLOW_OCHS_AUTO3,
+                            DawnDayAnimations.BAT_DASH,
+                            DawnDayAnimations.BAT_AIRSLASH)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+
+                            DawnDayAnimations.SABER_AUTO1,
+                            DawnDayAnimations.SABER_AUTO2,
+                            DawnDayAnimations.SABER_AUTO3,
+                            DawnDayAnimations.BAT_DASH,
+                            DawnDayAnimations.BAT_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
+            ;
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         if (ModList.get().isLoaded("wom")) {
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
+            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
         }
+
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "bonecutting_saw"), BONECUTTING_SAW);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nailbat"), BAT);

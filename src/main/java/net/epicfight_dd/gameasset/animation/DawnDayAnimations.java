@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.joml.Vector3f;
 import reascer.wom.gameasset.WOMSkills;
+import reascer.wom.gameasset.colliders.WOMMobColliders;
 import reascer.wom.particle.WOMParticles;
 import reascer.wom.world.damagesources.WOMDamageType;
 import reascer.wom.world.damagesources.WOMStuntypes;
@@ -229,6 +230,11 @@ public class DawnDayAnimations {
     public static AnimationAccessor<ActionAnimation> EVIL_ODACHI_OVERHEADSLASH_CHARGE;
     public static AnimationAccessor<AttackAnimation> EVIL_ODACHI_OVERHEADSLASH_RELEASE;
 
+    public static AnimationAccessor<StaticAnimation> HOLLOW_OCHS_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO3;
+
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
     public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
@@ -236,6 +242,35 @@ public class DawnDayAnimations {
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
+
+        HOLLOW_OCHS_IDLE = builder.nextAccessor("biped/living/hollow_ochs_idle", ac ->
+                new StaticAnimation(0.12F,true,ac, biped));
+
+        HOLLOW_OCHS_AUTO1 = builder.nextAccessor("biped/combat/hollow_ochs_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.57F, 0.7F, 0.83F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.3F))
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(10F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HOLLOW_OCHS_AUTO2 = builder.nextAccessor("biped/combat/hollow_ochs_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.51F, 0.4F, 0.5F, 0.83F, DawnDayCollider.SHIELD, biped.get().toolL, accessor, biped)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLUNT)
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder(5F))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.4F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HOLLOW_OCHS_AUTO3 = builder.nextAccessor("biped/combat/hollow_ochs_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.37F, 0.45F, 0.83F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2F))
+                        .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(20F))
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
