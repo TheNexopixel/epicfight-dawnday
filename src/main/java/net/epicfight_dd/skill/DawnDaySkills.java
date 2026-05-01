@@ -16,7 +16,9 @@ import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
+import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.client.ClientEngine;
@@ -52,6 +54,7 @@ public class DawnDaySkills {
     public static Skill BRUTAL_DASH;
     public static Skill GROUNDSLAM;
     public static Skill WILD_STRIKES;
+    public static Skill RAAAHHH;
 
 
     @SubscribeEvent

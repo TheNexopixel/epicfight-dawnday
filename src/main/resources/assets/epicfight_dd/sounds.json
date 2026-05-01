@@ -52,5 +52,13 @@
     "category":"master",
     "subtitle":"sfx.guard_break",
     "sounds":[{"name":"epicfight_dd:sfx/guard_break", "stream":false}]
+  },
+  "sfx.skeleton_banging":
+  {
+    "category":"master",
+    "subtitle":"RAAHHHHHH",
+    "sounds":[{"name":"epicfight_dd:sfx/skeleton_banging", "stream":false}]
   }
+
+
 }

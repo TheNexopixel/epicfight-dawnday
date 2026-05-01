@@ -234,6 +234,8 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO4;
+    public static AnimationAccessor<ActionAnimation> RAAAHHHHH;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
@@ -250,17 +252,18 @@ public class DawnDayAnimations {
                 new BasicAttackAnimation(0.12F, 0.21F, 0.57F, 0.7F, 0.83F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.3F))
                         .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(10F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         HOLLOW_OCHS_AUTO2 = builder.nextAccessor("biped/combat/hollow_ochs_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.51F, 0.4F, 0.5F, 0.83F, DawnDayCollider.SHIELD, biped.get().toolL, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.51F, 0.4F, 0.5F, 0.63F, DawnDayCollider.SHIELD, biped.get().toolL, accessor, biped)
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLUNT)
                         .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder(5F))
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.4F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         HOLLOW_OCHS_AUTO3 = builder.nextAccessor("biped/combat/hollow_ochs_auto3", (accessor) ->
@@ -268,9 +271,59 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2F))
                         .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                         .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(20F))
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.15F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HOLLOW_OCHS_AUTO4 = builder.nextAccessor("biped/combat/hollow_ochs_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.10f, 0.35f, 0.55f, 1.3f, 0.56f, InteractionHand.MAIN_HAND, biped.get().toolL, DawnDayCollider.SHIELD)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.4F))
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLUNT)
+                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder(5F))
+
+                        ,
+
+                        new AttackAnimation.Phase(0.67f, 0.68f, 0.70f, 0.82f, 1.3f,3.51f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.8F))
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(25F))
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()))
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.15F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+        RAAAHHHHH = builder.nextAccessor("biped/skill/raaahhh", ac -> new ActionAnimation(0.0f,0.1f,ac, Armatures.BIPED)
+                .addEvents(
+                        // should play when the last buff is applied
+                        AnimationEvent.InTimeEvent.create(2.4f, (e,s,p)->
+                                        e.getOriginal().level().playSound(
+                                                (Player) e.getOriginal(),
+                                                e.getOriginal(),
+                                                SoundEvents.RAVAGER_ROAR,
+                                                SoundSource.PLAYERS,
+                                                100, 1.3F
+                                        )
+                                , AnimationEvent.Side.CLIENT)
+                )
+                .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e,s,p)->
+                                e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(),2,60)), AnimationEvent.Side.SERVER
+                ))
+                .addEvents(
+                        AnimationEvent.InTimeEvent.create(1.0f, (e,s,p)->
+                                        e.getOriginal().level().playSound(
+                                                (Player) e.getOriginal(),
+                                                e.getOriginal(),
+                                                dawnDaySounds.skeleton_banging.get(),
+                                                SoundSource.PLAYERS,
+                                                100, 1.0F
+                                        )
+                                , AnimationEvent.Side.CLIENT)
+                )
+
+        );
+
 
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
@@ -300,7 +353,7 @@ public class DawnDayAnimations {
 
 
                                 //BUZZ
-                                AnimationEvent.InTimeEvent.create(0.01f, (e,s,p)->
+                                AnimationEvent.InTimeEvent.create(0.11f, (e,s,p)->
                                                 e.getOriginal().level().playSound(
                                                         (Player) e.getOriginal(),
                                                         e.getOriginal(),

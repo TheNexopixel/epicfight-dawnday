@@ -489,8 +489,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.HOLLOW_OCHS_AUTO1,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO2,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO3,
-                            DawnDayAnimations.BAT_DASH,
-                            DawnDayAnimations.BAT_AIRSLASH)
+                            DawnDayAnimations.HOLLOW_OCHS_AUTO4,
+                            DawnDayAnimations.SABER_AUTO2,
+                            DawnDayAnimations.SABER_AUTO4)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
 
                             DawnDayAnimations.SABER_AUTO1,
