@@ -5,29 +5,22 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
 
-import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.gameasset.dawnDaySounds;
-import net.epicfight_dd.network.DDNetworkHandler;
-import net.epicfight_dd.network.ServerBoundSkillResourceConsumePacket;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.EvilOdachi_Battojutso;
 import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
+import net.epicfight_dd.skill.weapon_innate.RAHHHHH;
 import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
-import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.client.ClientEngine;
-import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
-import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
@@ -236,6 +229,12 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         WILD_STRIKES = wildstrikes;
+
+        /// RAAAHHHHHHHHHH BANG BANG BANG
+        RAAAHHH = modRegistry.build("rahhh", RAHHHHH::new,
+                RAHHHHH.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE)
+        );
 
     }
 

@@ -14,4 +14,5 @@ public class ModBusEvent {
         event.newBuilder(Epicfight_dd.MODID, AnimationBuildNexus::buildAnimations);
     }
 
+
 }

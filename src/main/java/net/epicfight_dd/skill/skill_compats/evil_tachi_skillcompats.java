@@ -14,35 +14,26 @@ import java.util.List;
 
 
 @Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public class evil_tachi_skillcompats {
-        public static void forceGuard(SkillBuildEvent bus) {
-        }
+public class evil_tachi_skillcompats {
+    public static void forceGuard(SkillBuildEvent bus) {
+    }
 
-        @SubscribeEvent
-        public static void onGuardSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
-            System.out.println("[Dawn Day] Skill being builded: " + event.getRegistryName());
-            if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "guard"))) {
-                GuardSkill.Builder builder = event.getSkillBuilder();
-                builder.addGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> {
-                    return DawnDayAnimations.EVIL_ODACHI_GUARD_HIT;
-                }).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> {
-                    return DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED;
-                });
-                System.out.println("[Dawn Day] Guard animations has been implemented");
-            }
-        }
-        @SubscribeEvent
-        public static void onParrySkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<ParryingSkill.Builder> event) {
-            if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "parrying"))) {
-                GuardSkill.Builder builder = event.getSkillBuilder();
-                builder.addGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> {
-                    return DawnDayAnimations.EVIL_ODACHI_GUARD_HIT;
-                }).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> {
-                    return DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED;
-                }).addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> {
-                    return List.of(DawnDayAnimations.EVIL_ODACHI_PARRY1, DawnDayAnimations.EVIL_ODACHI_PARRY2);
-            });
-                System.out.println("[RapierCompatSkills] Rapier Parry animations has been implemented");
-            }
+    @SubscribeEvent
+    public static void onGuardSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "guard"))) {
+            GuardSkill.Builder builder = event.getSkillBuilder();
+            builder.addGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> DawnDayAnimations.EVIL_ODACHI_GUARD_HIT)
+                    .addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED);
         }
     }
+
+    @SubscribeEvent
+    public static void onParrySkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<ParryingSkill.Builder> event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "parrying"))) {
+            GuardSkill.Builder builder = event.getSkillBuilder();
+            builder.addGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> DawnDayAnimations.EVIL_ODACHI_GUARD_HIT)
+                    .addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED)
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) -> List.of(DawnDayAnimations.EVIL_ODACHI_PARRY1, DawnDayAnimations.EVIL_ODACHI_PARRY2));
+        }
+    }
+}
