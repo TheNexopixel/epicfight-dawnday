@@ -1,0 +1,44 @@
+[versions]
+
+minecraft = "1.20.1"
+moddevgradle = "2.0.141"
+#epic-fight = "ExCap"
+#epic-fight-extra = "1.1.9"
+#invincible = "20.14.8.2-mc1.20.1-forge"
+
+# Version tags on Modrinth (usually the actual version number or a specific ID)
+#embeddium = "0.3.31+mc1.20.1"
+#mekanism = "10.4.16.80"
+#draconic-evolution = "3.1.2.621"
+#projecte = "4901949"
+#mmmmmmmmmmmm = "1.20-2.0.9"
+#battle-arts-api = "20.14.16.2"
+
+mcSafeResources = "0.0.2"
+modPublish = "1.1.0"
+#exCapExtra = "20.14.16.1"
+
+
+[libraries]
+
+#embeddium = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
+#battleArtsAPI = { module = "maven.modrinth:battle-arts-api", version.ref = "battle-arts-api" }
+#mekanism = { module = "maven.modrinth:mekanism", version.ref = "mekanism" }
+#draconicEvolution = { module = "maven.modrinth:draconic-evolution", version.ref = "draconic-evolution" }
+#projecte = { module = "curse.maven:projecte-226410", version.ref = "projecte" }
+#mmmmmmmmmmmm = { module = "maven.modrinth:mmmmmmmmmmmm", version.ref = "mmmmmmmmmmmm" }
+#epicFight = { group = "libs", name = "epicfight", version.ref = "epic-fight" }
+#exCapExtra = { module = "libs:excapextra", version.ref = "exCapExtra"}
+#epicFightExtra = { module = "maven.modrinth:epicfight-extra", version.ref = "epic-fight-extra"}
+#invincible = {module = "maven.modrinth:epic-fight-invincible-lib", version.ref = "invincible"}
+
+[plugins]
+# Environment Specific
+eclipse = { id = "eclipse"}
+idea = { id = "idea"}
+
+#Core Gradle Stuff
+moddevgradle = { id = "net.neoforged.moddev.legacyforge", version.ref = "moddevgradle" }
+publisher = { id = "me.modmuss50.mod-publish-plugin", version.ref = "modPublish"}
+
+mcSafeResources = { id = "dev.echoellet.mc-safe-resources", version.ref = "mcSafeResources" }
