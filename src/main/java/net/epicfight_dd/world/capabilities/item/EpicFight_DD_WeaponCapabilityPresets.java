@@ -459,14 +459,15 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.BAT_AUTO1,
+                            DawnDayAnimations.SAW_AUTO1,
                             DawnDayAnimations.BAT_AUTO2,
                             DawnDayAnimations.BAT_AUTO3,
+                            DawnDayAnimations.BAT_AUTO4,
                             DawnDayAnimations.BAT_DASH,
                             DawnDayAnimations.BAT_AIRSLASH)
 
 
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BAT_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.SAW_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);

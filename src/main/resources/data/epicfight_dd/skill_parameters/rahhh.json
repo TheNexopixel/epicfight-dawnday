@@ -1,7 +1,7 @@
 {
   "consumption" : 75,
   "max_stacks" : 1,
-  "buff_duration" : 600,
-  "amplifier" : 2
+  "buff_duration" : 500,
+  "amplifier" : 0
 
 }

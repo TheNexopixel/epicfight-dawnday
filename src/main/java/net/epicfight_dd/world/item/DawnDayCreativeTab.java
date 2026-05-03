@@ -1,10 +1,14 @@
 package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.effect.DawnDayPotions;
+import net.epicfight_dd.effect.EffectRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -18,7 +22,7 @@ public class DawnDayCreativeTab {
             .title(Component.translatable("creativetab.dawn_day_tab"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
-            //    output.accept(DawnDayItems.bonecutting_saw.get());
+                output.accept(DawnDayItems.bonecutting_saw.get());
                 output.accept(DawnDayItems.herb_sickle.get());
                 output.accept(DawnDayItems.saber.get());
                 output.accept(DawnDayItems.backhand_blade.get());
@@ -43,6 +47,10 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayPotions.IMPREGNABILITY_POTION.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayPotions.IMPREGNABILITY_POTION.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayPotions.IMPREGNABILITY_POTION.get()));
+
 
             })
             .build()

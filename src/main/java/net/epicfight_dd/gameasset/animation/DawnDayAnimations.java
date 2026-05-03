@@ -73,6 +73,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<StaticAnimation> SABER_IDLE;
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_IDLE;
     public static AnimationAccessor<StaticAnimation> BAT_IDLE;
+    public static AnimationAccessor<StaticAnimation> SAW_IDLE;
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
 
@@ -177,6 +178,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> POLE_AXE_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> POLE_AXE_DASH;
     public static AnimationAccessor<AirSlashAnimation> POLE_AXE_AIRSLASH;
+
+    public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO3;
 
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO2;
@@ -320,6 +325,9 @@ public class DawnDayAnimations {
 
 
         MILADY_ONEHANDED_RUN = builder.nextAccessor("biped/living/milady_onehanded_run", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        SAW_IDLE = builder.nextAccessor("biped/living/saw_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         EVIL_ODACHI_JUMP = builder.nextAccessor("biped/living/evil_odachi_jump", ac ->
@@ -605,6 +613,12 @@ public class DawnDayAnimations {
                                 ).params(new Vec3f(-0.0F, 0.25F, -1.0F), Armatures.BIPED.get().rootJoint, 0.5D, 2.5F))
 
         );
+
+        SAW_AUTO1 = builder.nextAccessor("biped/combat/saw_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.16F, 0.22F, 0.43F, 1.00F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
         BATTLESTAFF_AUTO1 = builder.nextAccessor("biped/combat/battlestaff_auto1", (accessor) ->

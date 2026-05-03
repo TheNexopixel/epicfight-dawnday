@@ -49,5 +49,8 @@
   "skill.epicfight_dd.brutal_dash.tooltip":"Take a quick step forward to stagger your opponents with your heavy weapon!",
   "item.epicfight_dd.saber":"Saber",
   "skill.epicfight_dd.wild_strikes":"Wild Strikes",
-  "skill.epicfight_dd.wild_strikes.tooltip":"Land a few quick attacks and finish off your opponent with the final strike"
+  "skill.epicfight_dd.wild_strikes.tooltip":"Land a few quick attacks and finish off your opponent with the final strike",
+  "effect.epicfight_dd.impregnability":"RAAAAAHHHHHHRRRRR",
+  "skill.epicfight_dd.rahhh":"RRAAAAHHR",
+  "skill.epicfight_dd.rahhh.tooltip":"Gives effect that increases: \n- Defence \t- Attack Speed by 10% \b- Stamina Regen \n- Impact"
 }

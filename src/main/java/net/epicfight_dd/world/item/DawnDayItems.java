@@ -1,10 +1,13 @@
 package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.effect.EffectRegistry;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -138,6 +141,20 @@ public class DawnDayItems {
 
     public static final RegistryObject<Item> netherite_halberd =
             ITEMS.register("netherite_halberd",() -> new halbeardItem(Tiers.NETHERITE));
+
+    public static final DeferredRegister<Potion> POTIONS =
+            DeferredRegister.create(ForgeRegistries.POTIONS, Epicfight_dd.MODID);
+
+    public static final RegistryObject<Potion> impregpot =
+            POTIONS.register("impregnability_potion", () ->
+                    new Potion(
+                            new MobEffectInstance(
+                                    EffectRegistry.IMPREGNABILITY.get(),
+                                    2400,
+                                    0
+                            )
+                    )
+            );
 
 
 }
