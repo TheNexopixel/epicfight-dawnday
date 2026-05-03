@@ -68,6 +68,8 @@
   "item.minecraft.splash_potion.effect.stamina_potion":"Splash Potion of Stamina",
   "item.minecraft.lingering_potion.effect.stamina_potion":"Lingering Potion of Stamina",
   "item.minecraft.potion.effect.potion_of_power":"Potion of Power",
+  "item.minecraft.splash_potion.effect.potion_of_power":"Splash Potion of Power",
+  "item.minecraft.lingering_potion.effect.potion_of_power":"Lingering Potion of Power",
   "item.minecraft.potion.effect.potion_of_impact":"Potion of Impact",
   "item.minecraft.splash_potion.effect.potion_of_impact":"Splash Potion of Impact",
   "item.minecraft.lingering_potion.effect.potion_of_impact":"Lingering Potion of Impact",

@@ -64,6 +64,7 @@ public class DawnDayCreativeTab {
 
                 // SPLASHPOTIONS
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.impregpot.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.powerpotion.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_long.get()));
@@ -77,6 +78,7 @@ public class DawnDayCreativeTab {
 
 
                 // LINGERING
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.powerpotion.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.impregpot.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_strong.get()));
