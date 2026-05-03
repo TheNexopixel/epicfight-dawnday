@@ -147,14 +147,47 @@ public class DawnDayItems {
 
     public static final RegistryObject<Potion> impregpot =
             POTIONS.register("impregnability_potion", () ->
-                    new Potion(
-                            new MobEffectInstance(
-                                    EffectRegistry.IMPREGNABILITY.get(),
-                                    2400,
-                                    0
-                            )
-                    )
-            );
+                    new Potion(new MobEffectInstance(EffectRegistry.IMPREGNABILITY.get(), 2400, 0)));
+
+    public static final RegistryObject<Potion> staminaregen =
+            POTIONS.register("staminaregen_potion", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.ENDURANCE.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> staminaregen_strong =
+            POTIONS.register("staminaregen_potion_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.ENDURANCE.get(), 1700, 1)));
+
+    public static final RegistryObject<Potion> staminaregen_long =
+            POTIONS.register("staminaregen_potion_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.ENDURANCE.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> maxstamina_long =
+            POTIONS.register("stamina_potion_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STAMNIA.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> maxstamina_strong =
+            POTIONS.register("stamina_potion_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STAMNIA.get(), 1700, 1)));
+
+    public static final RegistryObject<Potion> maxstamina =
+            POTIONS.register("stamina_potion", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STAMNIA.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> powerpotion =
+            POTIONS.register("potion_of_power", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.POTION_OF_POWER.get(), 1200, 0)));
+
+    public static final RegistryObject<Potion> impactpotion_strong =
+            POTIONS.register("potion_of_stronger_impact", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.IMPACT.get(), 1700, 1)));
+
+    public static final RegistryObject<Potion> impactpotion_long =
+            POTIONS.register("potion_of_longer_impact", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.IMPACT.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> impactpotion =
+            POTIONS.register("potion_of_impact", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.IMPACT.get(), 3600, 0)));
 
 
 }

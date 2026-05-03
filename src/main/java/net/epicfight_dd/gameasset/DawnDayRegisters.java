@@ -16,7 +16,8 @@ public class DawnDayRegisters {
                     DawnDayItems.ITEMS,
                     DawnDayCreativeTab.CREATIVE_MODE_TABS,
                     SkillDataKeyZ.DATA_KEYS,
-                    EffectRegistry.EFFECTS
+                    EffectRegistry.EFFECTS,
+                    DawnDayItems.POTIONS
             );
 
 }
