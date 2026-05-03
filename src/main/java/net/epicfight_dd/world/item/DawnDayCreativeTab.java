@@ -22,9 +22,10 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.herb_sickle.get());
                 output.accept(DawnDayItems.saber.get());
                 output.accept(DawnDayItems.backhand_blade.get());
-                output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.steelaxe.get());
                 output.accept(DawnDayItems.war_sickle.get());
+                output.accept(DawnDayItems.spiked_bat.get());
+                output.accept(DawnDayItems.bat.get());
                 output.accept(DawnDayItems.netherite_light_greatsword.get());
                 output.accept(DawnDayItems.diamond_light_greatsword.get());
                 output.accept(DawnDayItems.iron_light_greatsword.get());

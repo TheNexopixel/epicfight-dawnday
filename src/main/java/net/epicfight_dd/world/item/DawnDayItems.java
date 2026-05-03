@@ -27,6 +27,12 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2500)));
 
+    public static final RegistryObject<Item> bat =
+            ITEMS.register("bat",() -> new SwordItem(Tiers.WOOD,4,-2.6f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(840)));
+
     public static final RegistryObject<Item> saber =
             ITEMS.register("saber",() -> new SwordItem(Tiers.DIAMOND,2,-2.0f,
                     new Item.Properties().stacksTo(1)

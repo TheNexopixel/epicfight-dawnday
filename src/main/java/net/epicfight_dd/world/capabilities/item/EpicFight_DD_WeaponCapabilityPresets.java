@@ -482,7 +482,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> EpicFightSkills.SHARP_STAB)
+                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.RAAAHHH)
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
                     .newStyleCombo(CapabilityItem.Styles.OCHS,

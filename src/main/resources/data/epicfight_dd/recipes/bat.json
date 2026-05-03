@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " ND",
-    "NEN",
+    "NDN",
     "SN "
   ],
   "key": {
@@ -10,17 +10,14 @@
       "item": "minecraft:stick"
     },
     "D": {
-      "item": "minecraft:iron_ingot"
+      "tag": "minecraft:logs"
     },
     "N": {
-      "item": "minecraft:iron_nugget"
-    },
-    "E": {
-      "item": "minecraft:netherite_ingot"
+      "tag": "minecraft:planks"
     }
   },
   "result": {
-    "item": "epicfight_dd:nailbat",
+    "item": "epicfight_dd:bat",
     "count": 1
   }
 }

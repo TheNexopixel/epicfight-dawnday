@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:iron_block"
+  },
+  "base": {
+    "item": "epicfight_dd:bat"
+  },
+  "addition": {
+    "item": "minecraft:netherite_scrap"
+  },
+  "result": {
+    "item": "epicfight_dd:nailbat"
+  }
+}

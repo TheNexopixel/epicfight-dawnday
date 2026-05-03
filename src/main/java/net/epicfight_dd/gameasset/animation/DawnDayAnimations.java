@@ -314,6 +314,7 @@ public class DawnDayAnimations {
                         (e, s, p) ->
                                 e.getOriginal().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 220, 4)), AnimationEvent.Side.SERVER
                 ))
+                .addProperty(ActionAnimationProperty.CANCELABLE_MOVE,false)
 
         );
 
