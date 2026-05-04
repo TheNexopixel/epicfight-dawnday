@@ -114,7 +114,7 @@ repositories {
 
     strictMaven("https://cursemaven.com", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "maven.modrinth")
-    strictMaven("https://maven.bawnorton.com/releases", "com.github.bawnorton.mixinsquared")
+    strictMaven("https://maven.bawnorton.com/releases",  "com.github.bawnorton")
 
     flatDir {
         dir("./libs")
@@ -126,7 +126,8 @@ repositories {
 
 dependencies {
     compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1")!!)
-    implementation(jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.3.7-beta.1") as ExternalModuleDependency)
+    implementation("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.3.7-beta.1")
+    jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:[0.3.7-beta.1,)")
 }
 
 dependencies {
@@ -136,7 +137,7 @@ dependencies {
     modImplementation("curse.maven:wom-918614:7517612")
     modCompileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
     modCompileOnly("curse.maven:epicfight-nightfall-1307848:7670480")
-    modImplementation("curse.maven:epicfight-extra-1434276:7739310")
+    modImplementation("curse.maven:epicfight-extra-1434276:7961244")
     modImplementation("curse.maven:dummmmmmy-multi-225738:6860192")
     modImplementation("curse.maven:moonlight-499980:7664875")
 
@@ -171,7 +172,26 @@ tasks.named<ProcessResources>("processResources").configure {
 }
 
 tasks.named<Jar>("jar").configure {
+    manifest {
+        attributes("MixinConfigs" to mixinConfigDirectory)
+    }
     finalizedBy(tasks.named("reobfJar"))
+}
+
+tasks.named<Jar>("jar").configure {
+    finalizedBy(tasks.named("reobfJar"))
+}
+
+tasks.named<Jar>("jar").configure {
+    finalizedBy(tasks.named("reobfJar"))
+}
+
+tasks.named("jarJar").configure {
+    finalizedBy(tasks.named("reobfJar"))
+}
+
+tasks.named("assemble").configure {
+    dependsOn(tasks.named("jarJar"))
 }
 
 val TaskContainer.jar: TaskProvider<Jar>
@@ -181,3 +201,4 @@ get() = named<Jar>("jar")
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
 }
+

@@ -1712,6 +1712,7 @@ public class DawnDayAnimations {
 
                                         , AnimationEvent.Side.CLIENT))
         );
+
         EVIL_ODACHI_OVERHEADSLASH_RELEASE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_release", ac ->
                 new AttackAnimation(0.2f, 0.058f, 0.2f, 0.28f, 0.5f, InteractionHand.MAIN_HAND, DawnDayCollider.WHIRLWIND2, biped.get().rootJoint, ac, biped)
 
