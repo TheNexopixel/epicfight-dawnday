@@ -28,6 +28,10 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.war_sickle.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.bat.get());
+                output.accept(DawnDayItems.netherite_messer.get());
+                output.accept(DawnDayItems.diamond_messer.get());
+                output.accept(DawnDayItems.iron_messer.get());
+                output.accept(DawnDayItems.golden_messer.get());
                 output.accept(DawnDayItems.netherite_light_greatsword.get());
                 output.accept(DawnDayItems.diamond_light_greatsword.get());
                 output.accept(DawnDayItems.iron_light_greatsword.get());
@@ -45,6 +49,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
+                output.accept(DawnDayItems.ENERGY_DRINK.get());
 
                 // Potions
 
@@ -89,9 +94,6 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_long.get()));
-
-
-                output.accept(DawnDayItems.ENERGY_DRINK.get());
             })
             .build()
     );

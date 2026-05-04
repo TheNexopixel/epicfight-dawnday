@@ -11,6 +11,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.brewing.BrewingRecipe;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.common.crafting.StrictNBTIngredient;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -32,15 +33,11 @@ public class ModEvents {
                     new ItemStack(Items.POTION),
                     Potions.THICK);
 
-            ItemStack resultPotion = PotionUtils.setPotion(
-                    new ItemStack(Items.POTION),
-                    DawnDayItems.staminaregen.get()
-            );
-
             BrewingRecipeRegistry.addRecipe(
                     Ingredient.of(awkwardPotion),
                     Ingredient.of(Items.GOLDEN_APPLE),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get()));
+/*
             BrewingRecipeRegistry.addRecipe(
                     Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.REDSTONE),
@@ -50,18 +47,6 @@ public class ModEvents {
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_strong.get()));
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get())),
-                    Ingredient.of(Items.GUNPOWDER),
-                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_long.get())),
-                    Ingredient.of(Items.GUNPOWDER),
-                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_long.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_strong.get())),
-                    Ingredient.of(Items.GUNPOWDER),
-                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
-            BrewingRecipeRegistry.addRecipe(
                     Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
@@ -70,18 +55,6 @@ public class ModEvents {
                     Ingredient.of(Items.REDSTONE),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_long.get()));
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get())),
-                    Ingredient.of(Items.DRAGON_BREATH),
-                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_long.get())),
-                    Ingredient.of(Items.DRAGON_BREATH),
-                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_long.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_strong.get())),
-                    Ingredient.of(Items.DRAGON_BREATH),
-                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_strong.get()));
-            BrewingRecipeRegistry.addRecipe(
                     Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_strong.get()));
@@ -89,6 +62,28 @@ public class ModEvents {
                     Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.REDSTONE),
                     PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_long.get()));
+
+ */
+            // Stamina Potion
+            BrewingRecipeRegistry.addRecipe(
+                    Ingredient.of(awkwardPotion),
+                    Ingredient.of(Items.PRISMARINE_CRYSTALS),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.maxstamina.get()));
+
+            // POWER
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_STRENGTH)),
+                    Ingredient.of(Items.ECHO_SHARD),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.powerpotion.get())
+            );
+            // SWEEPING
+            BrewingRecipeRegistry.addRecipe(
+                    Ingredient.of(awkwardPotion),
+                    Ingredient.of(Items.PRISMARINE_SHARD),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.SWEEPING.get()));
+
+
         });
     }
 }

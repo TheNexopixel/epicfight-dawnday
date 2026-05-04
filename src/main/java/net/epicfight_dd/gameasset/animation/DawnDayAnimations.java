@@ -74,6 +74,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<StaticAnimation> EVIL_ODACHI_IDLE;
     public static AnimationAccessor<StaticAnimation> BAT_IDLE;
     public static AnimationAccessor<StaticAnimation> SAW_IDLE;
+    public static AnimationAccessor<StaticAnimation> MESSER_DUAL_IDLE;
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
 
@@ -179,6 +180,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<DashAttackAnimation> POLE_AXE_DASH;
     public static AnimationAccessor<AirSlashAnimation> POLE_AXE_AIRSLASH;
 
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO3;
+
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO3;
@@ -244,6 +249,9 @@ public class DawnDayAnimations {
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
+
+        MESSER_DUAL_IDLE = builder.nextAccessor("biped/living/messer_dual_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
 
         HOLLOW_OCHS_IDLE = builder.nextAccessor("biped/living/hollow_ochs_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
@@ -550,6 +558,46 @@ public class DawnDayAnimations {
                 new DashAttackAnimation(0.12F, 0.31F, 0.4F, 0.60F, 0.63F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MESSER_DUAL_AUTO1 = builder.nextAccessor("biped/combat/messer_dual_auto1", (accessor) ->
+                        new BasicAttackAnimation(0.12F, accessor, biped,
+                                new AttackAnimation.Phase(0.0f, 0.10f, 0.5f, 0.72f, 1.1f, 0.76f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                                ,
+
+                                new AttackAnimation.Phase(0.77f, 0.78f, 0.87f, 1.02f, 1.1f, 1.81f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4F))
+                                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
+                        )
+
+                                .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                                .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MESSER_DUAL_AUTO2 = builder.nextAccessor("biped/combat/messer_dual_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.40F, 0.58F, 0.87F, DawnDayCollider.KNIFE_DASH, biped.get().head, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25F))
+                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MESSER_DUAL_AUTO3 = builder.nextAccessor("biped/combat/messer_dual_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.10f, 0.8f, 0.92f, 1.3f, 0.92f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4F))
+                        ,
+
+                        new AttackAnimation.Phase(0.93f, 0.93f, 1.00f, 1.1f, 1.33f, 3.51f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.6F))
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
@@ -1050,9 +1098,10 @@ public class DawnDayAnimations {
 
                         new AttackAnimation.Phase(1.89f, 1.95f, 2.15f, 2.2f, 5.9f, 20f, InteractionHand.MAIN_HAND, biped.get().rootJoint, DawnDayCollider.WHIRLWIND2)
                                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5f))
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5f))
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(33F))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
-                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE)
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
                 )
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)

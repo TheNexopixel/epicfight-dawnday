@@ -46,5 +46,10 @@ public class EffectRegistry {
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE, "9b2e6a11-0c3d-4f88-bd22-1a9c7e5f3b44", 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
 
+    public static final RegistryObject<MobEffect> SWEEPING =
+            EFFECTS.register("sweeping",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xbde880)
+                    .addAttributeModifier(Attributes.ATTACK_SPEED, "9b2e3a11-0c3d-4f88-bd22-1a9c7e5f3b44", 0.15, AttributeModifier.Operation.MULTIPLY_TOTAL)
+            );
+
 
 }

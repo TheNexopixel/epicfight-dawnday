@@ -123,7 +123,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.MILADY_TWOHANDED_AUTO2,
                             DawnDayAnimations.MILADY_TWOHANDED_AUTO3,
                             DawnDayAnimations.MILADY_TWOHANDED_AUTO4,
-                            DawnDayAnimations.MILADY_TWOHANDED_DASH,
+                            DawnDayAnimations.MILADY_DASH_NEW,
                             DawnDayAnimations.MILADY_AIR_SLASH
                     )
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
@@ -381,6 +381,47 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> MESSER = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(DawnDayCollider.KNIFE)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE)
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.WILD_STRIKES)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.SABER_AUTO1,
+                            DawnDayAnimations.SABER_AUTO2,
+                            DawnDayAnimations.SABER_AUTO3,
+                            DawnDayAnimations.SABER_AUTO4,
+                            DawnDayAnimations.SABER_AUTO5,
+                            DawnDayAnimations.SABER_AUTO6,
+                            DawnDayAnimations.SABER_DASH,
+                            DawnDayAnimations.SABER_AIRSLASH)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.MESSER_DUAL_AUTO1,
+                            DawnDayAnimations.MESSER_DUAL_AUTO2,
+                            DawnDayAnimations.MESSER_DUAL_AUTO3,
+                            DawnDayAnimations.KNIFE_DUAL_DASH,
+                            DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SABER_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.MESSER_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+
+            ;
+
     public static HitParticleType randomSlashHitParticleTYPE(){
         int randomInt = (int)(Math.random() * (double)4.0F);
         HitParticleType RandomHitParticle;
@@ -522,6 +563,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         }
 
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "messer"), MESSER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "bonecutting_saw"), BONECUTTING_SAW);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nailbat"), BAT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "knife"), KNIFE);

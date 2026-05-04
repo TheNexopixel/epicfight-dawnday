@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":2.0,
+      "armor_negation":15.0,
+      "max_strikes":7
+    }
+  },
+  "type":"epicfight_dd:messer"
+}

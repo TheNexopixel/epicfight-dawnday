@@ -22,8 +22,30 @@ public class DawnDayItems {
             ITEMS.register("backhand_blade",() -> new SwordItem(Tiers.IRON,3,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2561))
-                    );
+                            .defaultDurability(2561)));
+
+    public static final RegistryObject<Item> diamond_messer =
+            ITEMS.register("diamond_messer",() -> new SwordItem(Tiers.DIAMOND,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(1561)));
+    public static final RegistryObject<Item> golden_messer =
+            ITEMS.register("golden_messer",() -> new SwordItem(Tiers.GOLD,3,-2.0f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(530)));
+    public static final RegistryObject<Item> netherite_messer =
+            ITEMS.register("netherite_messer",() -> new SwordItem(Tiers.NETHERITE,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(2561)));
+
+    public static final RegistryObject<Item> iron_messer =
+            ITEMS.register("iron_messer",() -> new SwordItem(Tiers.IRON,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(860)));
+
     public static final RegistryObject<Item> herb_sickle =
             ITEMS.register("herb_sickle",() -> new SwordItem(Tiers.DIAMOND,3,-2.2f,
                     new Item.Properties().stacksTo(1)
@@ -31,7 +53,7 @@ public class DawnDayItems {
                             .defaultDurability(2500)));
 
     public static final RegistryObject<Item> bat =
-            ITEMS.register("bat",() -> new SwordItem(Tiers.WOOD,4,-2.6f,
+            ITEMS.register("bat",() -> new SwordItem(Tiers.WOOD,4,-2.5f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(840)));
@@ -176,6 +198,9 @@ public class DawnDayItems {
     public static final RegistryObject<Potion> powerpotion =
             POTIONS.register("potion_of_power", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.POTION_OF_POWER.get(), 1200, 0)));
+    public static final RegistryObject<Potion> SWEEPING =
+            POTIONS.register("sweeping", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.SWEEPING.get(), 1300, 0)));
 
     public static final RegistryObject<Potion> impactpotion_strong =
             POTIONS.register("potion_of_stronger_impact", () ->
