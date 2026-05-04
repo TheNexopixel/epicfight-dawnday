@@ -62,7 +62,7 @@ public class SpecialDrinkItem extends PotionItem {
 
         LivingEntityPatch<?> patch = EpicFightCapabilities.getEntityPatch(entityLiving,LivingEntityPatch.class);
         if(patch != null){
-            patch.playAnimationSynchronized(QoLMiscAnimations.WIPE_MOUTH,0.0f);
+            patch.playAnimation(QoLMiscAnimations.WIPE_MOUTH,0.0f);
         }
 
         if (player != null) {
