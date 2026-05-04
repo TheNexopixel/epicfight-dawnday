@@ -90,6 +90,8 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_long.get()));
 
+
+                output.accept(DawnDayItems.ENERGY_DRINK.get());
             })
             .build()
     );

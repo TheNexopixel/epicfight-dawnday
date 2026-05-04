@@ -3,6 +3,7 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
+import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
@@ -16,6 +17,7 @@ import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.api.animation.types.KnockdownAnimation;
 import yesman.epicfight.api.animation.types.LongHitAnimation;
+import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.particle.EpicFightParticles;
@@ -60,6 +62,8 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_EXECUTE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE_HIT;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE;
+
+    public static AnimationManager.AnimationAccessor<StaticAnimation> WIPE_MOUTH;
 
 
 
@@ -274,6 +278,10 @@ public class QoLMiscAnimations {
         FORCE_THROW_HIT = builder.nextAccessor("biped/force/force_throw_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
         FORCE_WAVE = builder.nextAccessor("biped/force/force_wave", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
 
+        WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new StaticAnimation(0.2f,false,ac,Armatures.BIPED)
+                .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
+                .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(dawnDaySounds.soft_wipe.get()))
+        );
 
 
     }

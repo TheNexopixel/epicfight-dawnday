@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PMP",
+    "GBG",
+    "SHS"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "minecraft:magma_cream"
+    },
+    "G": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "H": {
+      "item": "minecraft:honey_bottle"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:energydrink",
+    "count": 1
+  }
+}

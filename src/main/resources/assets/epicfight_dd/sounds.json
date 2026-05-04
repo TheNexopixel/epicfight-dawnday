@@ -58,6 +58,12 @@
     "category":"master",
     "subtitle":"RAAHHHHHH",
     "sounds":[{"name":"epicfight_dd:sfx/skeleton_banging", "stream":false}]
+  },
+  "sfx.soft_wipe":
+  {
+    "category":"master",
+    "subtitle":"sfx.soft_wipe",
+    "sounds":[{"name":"epicfight_dd:sfx/soft_wipe", "stream":false}]
   }
 
 

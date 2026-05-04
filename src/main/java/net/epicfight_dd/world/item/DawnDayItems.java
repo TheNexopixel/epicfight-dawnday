@@ -3,10 +3,8 @@ package net.epicfight_dd.world.item;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,6 +14,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class DawnDayItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Epicfight_dd.MODID);
+
+
 
 
     public static final RegistryObject<Item> backhand_blade =
@@ -189,5 +189,33 @@ public class DawnDayItems {
             POTIONS.register("potion_of_impact", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.IMPACT.get(), 3600, 0)));
 
+    public static final RegistryObject<Item> ENERGY_DRINK = ITEMS.register(
+            "energydrink",
+            () -> new SpecialDrinkItem(
+                    new Item.Properties()
+                            .stacksTo(4).craftRemainder(Items.IRON_NUGGET),
+
+                    new MobEffectInstance(EffectRegistry.ENDURANCE.get(),
+                            1200,
+                            2
+                    ),
+
+                    new MobEffectInstance(EffectRegistry.STAMNIA.get(),
+                            1000,
+                            0
+                    ),
+
+                    new MobEffectInstance(
+                            MobEffects.MOVEMENT_SPEED,
+                            1100,
+                            1
+                    ),
+                    new MobEffectInstance(
+                            MobEffects.DIG_SPEED,
+                            900,
+                            0
+                    )
+            )
+    );
 
 }
