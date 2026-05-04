@@ -63,7 +63,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE_HIT;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE;
 
-    public static AnimationManager.AnimationAccessor<StaticAnimation> WIPE_MOUTH;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> WIPE_MOUTH;
 
 
 
@@ -278,7 +278,7 @@ public class QoLMiscAnimations {
         FORCE_THROW_HIT = builder.nextAccessor("biped/force/force_throw_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
         FORCE_WAVE = builder.nextAccessor("biped/force/force_wave", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
 
-        WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new StaticAnimation(0.2f,false,ac,Armatures.BIPED)
+        WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.02f,0.2f,ac,Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
                 .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(dawnDaySounds.soft_wipe.get()))
         );
