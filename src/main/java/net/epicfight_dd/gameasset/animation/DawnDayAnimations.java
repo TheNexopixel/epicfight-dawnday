@@ -75,6 +75,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<StaticAnimation> BAT_IDLE;
     public static AnimationAccessor<StaticAnimation> SAW_IDLE;
     public static AnimationAccessor<StaticAnimation> MESSER_DUAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> MESSER_IDLE;
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
 
@@ -183,6 +184,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO3;
+
 
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO2;
@@ -253,6 +258,9 @@ public class DawnDayAnimations {
         MESSER_DUAL_IDLE = builder.nextAccessor("biped/living/messer_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
+        MESSER_IDLE = builder.nextAccessor("biped/living/messer_onehanded_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
         HOLLOW_OCHS_IDLE = builder.nextAccessor("biped/living/hollow_ochs_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
@@ -311,6 +319,15 @@ public class DawnDayAnimations {
                                                 SoundEvents.RAVAGER_ROAR,
                                                 SoundSource.PLAYERS,
                                                 100, 1.3F
+                                        )
+                                , AnimationEvent.Side.CLIENT),
+                        AnimationEvent.InTimeEvent.create(2.5f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                (Player) e.getOriginal(),
+                                                e.getOriginal(),
+                                                SoundEvents.BELL_RESONATE,
+                                                SoundSource.PLAYERS,
+                                                100, 1.2F
                                         )
                                 , AnimationEvent.Side.CLIENT),
                         AnimationEvent.InTimeEvent.create(1.0f, (e, s, p) ->
@@ -597,6 +614,22 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
                 )
 
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MESSER_ONEHANDED_AUTO1 = builder.nextAccessor("biped/combat/messer_onehanded_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.40F, 0.58F, 0.87F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        MESSER_ONEHANDED_AUTO2 = builder.nextAccessor("biped/combat/messer_onehanded_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.40F, 0.58F, 0.87F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
+                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(15F))
+                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -1093,6 +1126,7 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH.get()),
                         new AttackAnimation.Phase(1.50f, 1.54f, 1.55f, 1.56f, 5.58f, 1.59f, InteractionHand.MAIN_HAND, biped.get().rootJoint, DawnDayCollider.WHIRLWIND1)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4f))
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH.get()),
 
 
@@ -1100,6 +1134,7 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5f))
                                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(33F))
+                                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER,ValueModifier.adder(12))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
                                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
                 )
@@ -1110,7 +1145,7 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false));
 
         MILADY_TWOHANDED_AUTO1 = builder.nextAccessor("biped/combat/milady_twohanded_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.72F, 0.82F, null, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.3F, 0.42F, 0.8F, 0.82F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.milady_light_sweep.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));

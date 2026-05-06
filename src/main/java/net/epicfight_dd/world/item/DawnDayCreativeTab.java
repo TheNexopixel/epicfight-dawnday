@@ -54,7 +54,6 @@ public class DawnDayCreativeTab {
                 // Potions
 
                 // NORMAL
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impregpot.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_long.get()));
@@ -65,35 +64,13 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion_long.get()));
-
-
-                // SPLASHPOTIONS
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.impregpot.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.powerpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.maxstamina.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.maxstamina_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.maxstamina_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.impactpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.impactpotion_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.impactpotion_long.get()));
-
-
-
-                // LINGERING
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.powerpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.impregpot.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.maxstamina.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.maxstamina_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.maxstamina_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.impactpotion_long.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.SWEEPING.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING_LONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_LONG.get()));
             })
             .build()
     );

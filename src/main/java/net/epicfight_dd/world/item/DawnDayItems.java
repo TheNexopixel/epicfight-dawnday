@@ -198,6 +198,7 @@ public class DawnDayItems {
     public static final RegistryObject<Potion> powerpotion =
             POTIONS.register("potion_of_power", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.POTION_OF_POWER.get(), 1200, 0)));
+
     public static final RegistryObject<Potion> SWEEPING =
             POTIONS.register("sweeping", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.SWEEPING.get(), 1300, 0)));
@@ -213,6 +214,30 @@ public class DawnDayItems {
     public static final RegistryObject<Potion> impactpotion =
             POTIONS.register("potion_of_impact", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.IMPACT.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> CRUMBLING =
+            POTIONS.register("crumbling", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 1700, 0)));
+
+    public static final RegistryObject<Potion> CRUMBLING_LONG =
+            POTIONS.register("crumbling_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 2800, 0)));
+
+    public static final RegistryObject<Potion> CRUMBLING_STRONG =
+            POTIONS.register("crumbling_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 1200, 1)));
+
+    public static final RegistryObject<Potion> CURSED =
+            POTIONS.register("cursed", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 2360, 0)));
+
+    public static final RegistryObject<Potion> CURSED_LONG =
+            POTIONS.register("cursed_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 6666, 0)));
+
+    public static final RegistryObject<Potion> CURSED_STRONG =
+            POTIONS.register("cursed_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 1329, 1)));
 
     public static final RegistryObject<Item> ENERGY_DRINK = ITEMS.register(
             "energydrink",

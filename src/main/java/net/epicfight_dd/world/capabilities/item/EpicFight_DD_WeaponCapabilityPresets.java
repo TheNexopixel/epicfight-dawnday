@@ -12,6 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import reascer.wom.gameasset.WOMSkills;
+import reascer.wom.main.WeaponsOfMinecraft;
 import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
@@ -396,13 +397,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.WILD_STRIKES)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
-                            DawnDayAnimations.SABER_AUTO1,
-                            DawnDayAnimations.SABER_AUTO2,
-                            DawnDayAnimations.SABER_AUTO3,
-                            DawnDayAnimations.SABER_AUTO4,
-                            DawnDayAnimations.SABER_AUTO5,
-                            DawnDayAnimations.SABER_AUTO6,
-                            DawnDayAnimations.SABER_DASH,
+                            DawnDayAnimations.MESSER_ONEHANDED_AUTO1,
+                            DawnDayAnimations.MESSER_ONEHANDED_AUTO2,
+                            DawnDayAnimations.SICKLE_DASH,
                             DawnDayAnimations.SABER_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
@@ -413,9 +410,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
 
 
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SABER_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.MESSER_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.MESSER_DUAL_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
@@ -546,6 +543,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK_SHIELD, Animations.BIPED_BLOCK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
@@ -557,7 +555,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
 
-        if (ModList.get().isLoaded("wom")) {
+        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
         }
