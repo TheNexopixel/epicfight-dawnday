@@ -245,7 +245,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO4;
-    public static AnimationAccessor<ActionAnimation> RAAAHHHHH;
+    public static AnimationAccessor<LongHitAnimation> RAAAHHHHH;
 
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
@@ -309,7 +309,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.15F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
-        RAAAHHHHH = builder.nextAccessor("biped/skill/raaahhh", ac -> new ActionAnimation(0.0f, 0.1f, ac, Armatures.BIPED)
+        RAAAHHHHH = builder.nextAccessor("biped/skill/raaahhh", ac -> new LongHitAnimation(0.0f, ac, Armatures.BIPED)
                 .addEvents(
                         // should play when the last buff is applied
                         AnimationEvent.InTimeEvent.create(2.4f, (e, s, p) ->
@@ -345,6 +345,8 @@ public class DawnDayAnimations {
                                 e.getOriginal().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 220, 4)), AnimationEvent.Side.SERVER
                 ))
                 .addProperty(ActionAnimationProperty.CANCELABLE_MOVE,false)
+                .addProperty(ActionAnimationProperty.STOP_MOVEMENT,true)
+                .addState(EntityState.MOVEMENT_LOCKED,true)
 
         );
 
@@ -375,28 +377,28 @@ public class DawnDayAnimations {
 
         EVIL_ODACHI_NEUTRALIZED = builder.nextAccessor("biped/living/evil_odachi_neutralize", ac ->
                 new ActionAnimation(0.12F, ac, biped)
+                        .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                                (e, s, p) ->
+                                        e.getOriginal().playSound(dawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                        ))
                         .addEvents(
-
-
-                                //BUZZ
-                                AnimationEvent.InTimeEvent.create(0.11f, (e, s, p) ->
+                                AnimationEvent.InTimeEvent.create(1.3f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
                                                         (Player) e.getOriginal(),
                                                         e.getOriginal(),
-                                                        dawnDaySounds.guard_break.get(),
+                                                        SoundEvents.WITHER_SHOOT,
                                                         SoundSource.PLAYERS,
-                                                        100, 1.0F
+                                                        30, 0.9F
                                                 )
+
 
                                         , AnimationEvent.Side.CLIENT))
                         .addEvents(
-                                AnimationEvent.InPeriodEvent.create(0.07f, 0.1f, (e, s, p) -> {
+                                AnimationEvent.InPeriodEvent.create(0.07f, 0.8f, (e, s, p) -> {
                                             var entity = e.getOriginal();
-                                            int numParticles = 5;
+                                            int numParticles = 10;
                                             for (int i = 0; i < numParticles; i++) {
                                                 if (entity == null) return;
-                                                float L = -0.1F;
-                                                float R = 0.1F;
                                                 double xOffset = 0;
                                                 double yOffset = 0;
                                                 double zOffset = 0;

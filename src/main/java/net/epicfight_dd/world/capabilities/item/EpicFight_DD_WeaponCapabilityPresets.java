@@ -22,6 +22,7 @@ import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -409,6 +410,12 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.KNIFE_DUAL_DASH,
                             DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
 
+                    .newStyleCombo(CapabilityItem.Styles.OCHS,
+                            DawnDayAnimations.MILADY_ONE_HANDED_AUTO_1,
+                            DawnDayAnimations.MILADY_ONE_HANDED_AUTO_2,
+                            DawnDayAnimations.KNIFE_DUAL_DASH,
+                            DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
+
 
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.MESSER_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
@@ -543,11 +550,11 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK_SHIELD, Animations.BIPED_BLOCK)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SPEAR_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD)
             ;
 
 

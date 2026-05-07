@@ -37,38 +37,55 @@ public class ModEvents {
                     Ingredient.of(awkwardPotion),
                     Ingredient.of(Items.GOLDEN_APPLE),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get()));
-/*
+
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get())),
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.REDSTONE),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_long.get()));
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get())),
-                    Ingredient.of(Items.GLOWSTONE_DUST),
-                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_strong.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get())),
-                    Ingredient.of(Items.GLOWSTONE_DUST),
-                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
-            BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen.get())),
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.REDSTONE),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_long.get()));
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get())),
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get())),
                     Ingredient.of(Items.GLOWSTONE_DUST),
-                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_strong.get()));
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen_strong.get()));
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen.get())),
-                    Ingredient.of(Items.REDSTONE),
-                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.staminaregen_long.get()));
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.staminaregen.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
 
- */
             // Stamina Potion
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(awkwardPotion),
-                    Ingredient.of(Items.PRISMARINE_CRYSTALS),
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
+                    Ingredient.of(Items.FEATHER),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.maxstamina.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.maxstamina.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.maxstamina_long.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.maxstamina.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.maxstamina_long.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.maxstamina.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.maxstamina_strong.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.maxstamina.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.maxstamina_strong.get()));
 
             // POWER
             BrewingRecipeRegistry.addRecipe(
@@ -77,11 +94,92 @@ public class ModEvents {
                     Ingredient.of(Items.ECHO_SHARD),
                     PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.powerpotion.get())
             );
+            // MORTAL CURSE
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING)),
+                    Ingredient.of(Items.WITHER_ROSE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.CURSED.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.CURSED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CURSED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CURSED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.CURSED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CURSED_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CURSED_STRONG.get()));
             // SWEEPING
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(awkwardPotion),
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)),
                     Ingredient.of(Items.PRISMARINE_SHARD),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.SWEEPING.get()));
+            // IMPACT
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
+                    Ingredient.of(Items.PRISMARINE_CRYSTALS),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.impactpotion.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.impactpotion_long.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.impactpotion.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.impactpotion_long.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.impactpotion_strong.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.impactpotion.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.impactpotion_strong.get()));
+            // CRUMBLING
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(thickpotion),
+                    Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CRUMBLING.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.CRUMBLING.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CRUMBLING_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CRUMBLING_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.CRUMBLING.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CRUMBLING_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CRUMBLING_STRONG.get()));
 
 
         });

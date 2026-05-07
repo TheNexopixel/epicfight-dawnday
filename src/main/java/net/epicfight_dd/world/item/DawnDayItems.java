@@ -217,19 +217,19 @@ public class DawnDayItems {
 
     public static final RegistryObject<Potion> CRUMBLING =
             POTIONS.register("crumbling", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 1700, 0)));
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 3600, 0)));
 
     public static final RegistryObject<Potion> CRUMBLING_LONG =
             POTIONS.register("crumbling_long", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 2800, 0)));
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 6666, 0)));
 
     public static final RegistryObject<Potion> CRUMBLING_STRONG =
             POTIONS.register("crumbling_strong", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 1200, 1)));
+                    new Potion(new MobEffectInstance(EffectRegistry.CRUMBLING.get(), 2100, 1)));
 
     public static final RegistryObject<Potion> CURSED =
             POTIONS.register("cursed", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 2360, 0)));
+                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 2960, 0)));
 
     public static final RegistryObject<Potion> CURSED_LONG =
             POTIONS.register("cursed_long", () ->
@@ -237,7 +237,7 @@ public class DawnDayItems {
 
     public static final RegistryObject<Potion> CURSED_STRONG =
             POTIONS.register("cursed_strong", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 1329, 1)));
+                    new Potion(new MobEffectInstance(EffectRegistry.CURSED.get(), 1929, 1)));
 
     public static final RegistryObject<Item> ENERGY_DRINK = ITEMS.register(
             "energydrink",
