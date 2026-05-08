@@ -48,6 +48,7 @@ public class DawnDaySkills {
     public static Skill GROUNDSLAM;
     public static Skill WILD_STRIKES;
     public static Skill RAAAHHH;
+    public static Skill ANNIHILATE;
 
 
     @SubscribeEvent
@@ -68,6 +69,20 @@ public class DawnDaySkills {
                        .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
                GENTLE_NUDGE = gentlenudge;
+
+        WeaponInnateSkill annihilate = modRegistry.build("annihilate",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.ANNIHILATE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        annihilate.newProperty()
+                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(15.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.9F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        ANNIHILATE = annihilate;
 
         WeaponInnateSkill groundslam = modRegistry.build("groundslam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.GROUNDSLAM)

@@ -400,6 +400,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             DawnDayAnimations.MESSER_ONEHANDED_AUTO1,
                             DawnDayAnimations.MESSER_ONEHANDED_AUTO2,
+                            DawnDayAnimations.MESSER_ONEHANDED_AUTO3,
                             DawnDayAnimations.SICKLE_DASH,
                             DawnDayAnimations.SABER_AIRSLASH)
 
@@ -505,9 +506,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.SAW_AUTO1,
-                            DawnDayAnimations.BAT_AUTO2,
-                            DawnDayAnimations.BAT_AUTO3,
-                            DawnDayAnimations.BAT_AUTO4,
+                            DawnDayAnimations.SAW_AUTO2,
+                            DawnDayAnimations.SAW_AUTO3,
+                            DawnDayAnimations.SAW_AUTO4,
                             DawnDayAnimations.BAT_DASH,
                             DawnDayAnimations.BAT_AIRSLASH)
 
@@ -520,24 +521,25 @@ public class EpicFight_DD_WeaponCapabilityPresets {
     public static final Function<Item, CapabilityItem.Builder> HOLLOW_LONGSWORD = (item) ->
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.LONGSWORD)
-                    .styleProvider((pp) -> CapabilityItem.Styles.OCHS)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(DawnDayCollider.BAT)
                     .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD ? CapabilityItem.Styles.OCHS : CapabilityItem.Styles.ONE_HAND)
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.RAAAHHH)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.RAAAHHH)
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
-                    .newStyleCombo(CapabilityItem.Styles.OCHS,
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO1,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO2,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO3,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO4,
                             DawnDayAnimations.SABER_AUTO2,
                             DawnDayAnimations.SABER_AUTO4)
+
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
 
                             DawnDayAnimations.SABER_AUTO1,
@@ -547,15 +549,52 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.BAT_AIRSLASH)
 
 
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SPEAR_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
             ;
+
+    public static final Function<Item, CapabilityItem.Builder> GREATAXE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.GREATSWORD)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.GREATSWORD)
+                    .collider(ColliderPreset.GREATSWORD)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.GREATSWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SPEARING_STRIKE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.ANNIHILATE)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.SAW_AUTO1,
+                            DawnDayAnimations.SAW_AUTO2,
+                            DawnDayAnimations.SAW_AUTO3,
+                            DawnDayAnimations.SAW_AUTO4,
+                            DawnDayAnimations.BAT_DASH,
+                            DawnDayAnimations.BAT_AIRSLASH)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.GREATAXE_DUAL_AUTO1,
+                            DawnDayAnimations.GREATAXE_DUAL_AUTO2,
+                            DawnDayAnimations.GREATAXE_DUAL_AUTO3,
+                            DawnDayAnimations.GREATAXE_DUAL_AUTO4,
+                            DawnDayAnimations.GREATAXE_DUAL_DASH,
+                            DawnDayAnimations.GREATAXE_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SAW_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.GREATAXE_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
 
     @SubscribeEvent // register Weapon Moveset
@@ -564,6 +603,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
         if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
+            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "greataxe"), GREATAXE);
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
         }
 

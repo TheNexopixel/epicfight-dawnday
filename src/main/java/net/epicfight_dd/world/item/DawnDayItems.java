@@ -125,6 +125,11 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2080)));
 
+    public static final RegistryObject<Item> nail =
+            ITEMS.register("nail",() -> new Item(
+                    new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new SwordItem(Tiers.NETHERITE,1,-2.4f,
                     new Item.Properties().stacksTo(1)
@@ -132,7 +137,7 @@ public class DawnDayItems {
                             .defaultDurability(3680)));
 
     public static final RegistryObject<Item> bonecutting_saw =
-            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,2,-2.4f,
+            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,2,-2.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680)));

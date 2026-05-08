@@ -17,13 +17,13 @@
     "fixed": {
       "parent": "epicfight_dd:item/messer",
       "textures": {
-        "layer0": "epicfight_dd:item/energydrink_gui"
+        "layer0": "epicfight_dd:item/energydrink"
       }
     },
     "ground": {
       "parent": "epicfight_dd:item/messer",
       "textures": {
-        "layer0": "epicfight_dd:item/energydrink_gui"
+        "layer0": "epicfight_dd:item/energydrink"
       }
     }
   }

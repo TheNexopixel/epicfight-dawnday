@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ID",
+    " D ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:iron_messer",
+    "count": 1
+  }
+}
+

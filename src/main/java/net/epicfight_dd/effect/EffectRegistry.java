@@ -39,7 +39,7 @@ public class EffectRegistry {
 
     public static final RegistryObject<MobEffect> IMPACT =
             EFFECTS.register("impact",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xbf7c41)
-                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "e7b8c1d2-9a3f-4c12-8f6a-1b2c3d4e5f60", 0.3, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "e7b8c1d2-9a3f-4c12-8f6a-1b2c3d4e5f60", 2.0, AttributeModifier.Operation.ADDITION)
             );
 
     public static final RegistryObject<MobEffect> POTION_OF_POWER =

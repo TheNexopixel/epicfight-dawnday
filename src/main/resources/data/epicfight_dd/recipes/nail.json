@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " I ",
+    " N "
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:nail",
+    "count": 3
+  }
+}
+
