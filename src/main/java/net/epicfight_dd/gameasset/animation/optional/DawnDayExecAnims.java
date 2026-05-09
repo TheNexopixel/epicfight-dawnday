@@ -154,6 +154,7 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
                         .addState(EntityState.TURNING_LOCKED,true)
                         .addState(EntityState.LOCKON_ROTATE,true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.SYNC_CAMERA,true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(1,6.1F))
                         .addEvents(
                                 AnimationEvent.InPeriodEvent.create(0.27f,6.1f, (e,s,p)->{
@@ -302,7 +303,7 @@ public class DawnDayExecAnims {
                                     float upY = 1.0F;
                                     float upZ = 0.0F;
 
-                                    float beamRange = 8.0F;
+                                    float beamRange = 4.0F;
                                     int particleCount = 70;
                                     Random rand = new Random();
 

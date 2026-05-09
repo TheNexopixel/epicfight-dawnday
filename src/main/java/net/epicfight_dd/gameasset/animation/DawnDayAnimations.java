@@ -17,8 +17,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.joml.Vector3f;
+import reascer.wom.gameasset.WOMAnimations;
 import reascer.wom.particle.WOMParticles;
 import reascer.wom.world.damagesources.WOMDamageType;
+import reascer.wom.world.damagesources.WOMExtraDamageInstance;
+import reascer.wom.world.damagesources.WOMStuntypes;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -758,13 +761,12 @@ public class DawnDayAnimations {
 
         BAT_AUTO1 = builder.nextAccessor("biped/combat/nailbat_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.21F, 0.49F, 0.76F, 0.87F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BAT_AUTO2 = builder.nextAccessor("biped/combat/nailbat_auto2", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.21F, 0.42F, 0.72F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -2062,7 +2064,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.FIREWORK_ROCKET_BLAST)
                         .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(8))
                         .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(15))
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.65f))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.88f))
                         .addProperty(AttackPhaseProperty.PARTICLE, WOMParticles.ANTITHEUS_PUNCH_HIT)
                         .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                         .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
@@ -2151,10 +2153,10 @@ public class DawnDayAnimations {
                 new AttackAnimation(0.1f, 0.658f, 0.728f, 0.9f, 1.2f, InteractionHand.MAIN_HAND, DawnDayCollider.EVIL_TACHI_RAY, biped.get().rootJoint, ac, biped)
 
                         .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.AIR_BURST)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.WITHER_BREAK_BLOCK)
+                        .addProperty(AttackPhaseProperty.PARTICLE, WOMParticles.ANTITHEUS_PUNCH_HIT)
                         .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                        .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE))
+                        .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.BYPASS_DODGE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.UNBLOCKALBE, DamageTypeTags.BYPASSES_RESISTANCE))
                         .addState(EntityState.TURNING_LOCKED, true)
                         .addState(EntityState.LOCKON_ROTATE, true)
                         .addProperty(AttackAnimationProperty.FIXED_HEAD_ROTATION, true)

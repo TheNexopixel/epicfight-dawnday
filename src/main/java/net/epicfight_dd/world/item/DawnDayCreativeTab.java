@@ -7,8 +7,11 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import reascer.wom.main.WeaponsOfMinecraft;
+import reascer.wom.world.item.WOMItems;
 
 public class DawnDayCreativeTab {
 
@@ -49,11 +52,21 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
-                output.accept(DawnDayItems.ENERGY_DRINK.get());
+
+                if (ModList.get().isLoaded("evil_tachi_moveset")){
+                    output.accept(WOMItems.EVIL_TACHI.get());}
+                if (ModList.get().isLoaded("greataxe_moveset")){
+                    output.accept(WOMItems.NETHERITE_GREATAXE.get());
+                    output.accept(WOMItems.DIAMOND_GREATAXE.get());
+                    output.accept(WOMItems.GOLDEN_GREATAXE.get());
+                    output.accept(WOMItems.IRON_GREATAXE.get());}
+                if (ModList.get().isLoaded("hollow_moveset")) {
+                    output.accept(WOMItems.HOLLOW_LONGSWORD.get());}
 
                 // Potions
 
                 // NORMAL
+                output.accept(DawnDayItems.ENERGY_DRINK.get());
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_long.get()));
@@ -74,6 +87,24 @@ public class DawnDayCreativeTab {
             })
             .build()
     );
+
+    public static final RegistryObject<CreativeModeTab> EFDDXWOM = CREATIVE_MODE_TABS.register("efdd_x_wom", () -> CreativeModeTab.builder().icon(() ->
+                    new ItemStack(DawnDayItems.bonecutting_saw.get()))
+            .title(Component.translatable("creativetab.efdd_x_wom"))
+
+            .displayItems((itemDisplayParameters, output) -> {
+                if (ModList.get().isLoaded("evil_tachi_moveset")){
+                    output.accept(WOMItems.EVIL_TACHI.get());}
+                if (ModList.get().isLoaded("greataxe_moveset")){
+                    output.accept(WOMItems.NETHERITE_GREATAXE.get());
+                    output.accept(WOMItems.DIAMOND_GREATAXE.get());
+                    output.accept(WOMItems.GOLDEN_GREATAXE.get());
+                    output.accept(WOMItems.IRON_GREATAXE.get());}
+                if (ModList.get().isLoaded("hollow_moveset")) {
+                    output.accept(WOMItems.HOLLOW_LONGSWORD.get());}
+            })
+            .build());
+
 
 
 }
