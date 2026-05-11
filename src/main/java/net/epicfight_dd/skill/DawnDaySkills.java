@@ -1,6 +1,7 @@
 package net.epicfight_dd.skill;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
@@ -75,10 +76,9 @@ public class DawnDaySkills {
                 .setCategory(SkillCategories.WEAPON_INNATE));
         annihilate.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(15.0F))
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.9F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(7.5F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
@@ -204,7 +204,7 @@ public class DawnDaySkills {
         SPINNING_SHADOW = spinshadow;
 
         WeaponInnateSkill evilbeam = modRegistry.build("evil_beam",EvilOdachi_Battojutso::new,EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
-                .setAnimations(DawnDayAnimations.EVIL_ODACHI_BEAAAMMMM)
+                .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         evilbeam.newProperty()
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))

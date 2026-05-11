@@ -176,6 +176,18 @@ public class DawnDayItems {
             POTIONS.register("impregnability_potion", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.IMPREGNABILITY.get(), 2400, 0)));
 
+    public static final RegistryObject<Potion> STUNARMOR =
+            POTIONS.register("stun_armor", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STUNARMOR.get(), 4000, 0)));
+
+    public static final RegistryObject<Potion> STUNARMOR_LONG =
+            POTIONS.register("stun_armor_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STUNARMOR.get(), 10400, 0)));
+
+    public static final RegistryObject<Potion> STUNARMOR_STRONG =
+            POTIONS.register("stun_armor_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.STUNARMOR.get(), 2100, 1)));
+
     public static final RegistryObject<Potion> staminaregen =
             POTIONS.register("staminaregen_potion", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.ENDURANCE.get(), 3600, 0)));

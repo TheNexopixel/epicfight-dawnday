@@ -15,9 +15,13 @@ public class AnimationBuildNexus {
         QoLMiscAnimations.animBuild(builder);
         WingStanceAnims.build(builder);
 
-        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
+        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
             DawnDayExecAnims.build(builder);
         }
+        if(ModList.get().isLoaded("wom")) {
+            AdditionalAnimations.build(builder);
+        }
+
 
 
     }

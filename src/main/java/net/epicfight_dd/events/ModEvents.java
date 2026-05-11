@@ -34,9 +34,11 @@ public class ModEvents {
                     Potions.THICK);
 
             BrewingRecipeRegistry.addRecipe(
-                    Ingredient.of(awkwardPotion),
+                    StrictNBTIngredient.of(awkwardPotion),
                     Ingredient.of(Items.GOLDEN_APPLE),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get()));
+
+
 
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
@@ -180,6 +182,33 @@ public class ModEvents {
                             PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING.get())),
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CRUMBLING_STRONG.get()));
+
+            // STUNARMOR
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(thickpotion),
+                    Ingredient.of(Items.IRON_INGOT),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.STUNARMOR.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.STUNARMOR_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.STUNARMOR.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.STUNARMOR_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.STUNARMOR_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.STUNARMOR.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.STUNARMOR_STRONG.get()));
 
 
         });

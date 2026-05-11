@@ -1,5 +1,6 @@
 package net.epicfight_dd.mixin;
 
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayCollider;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +20,7 @@ public class BusterMixin {
     @Inject(method = "getWindupAnimation", at = @At("HEAD"), cancellable = true)
     private void evilTachiWindup(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<?>> cir) {
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.EVIL_TACHI) {
-            cir.setReturnValue(DawnDayAnimations.EVIL_ODACHI_OVERHEADSLASH_CHARGE);
+            cir.setReturnValue(AdditionalAnimations.EVIL_ODACHI_OVERHEADSLASH_CHARGE);
         }
     }
 
@@ -27,7 +28,7 @@ public class BusterMixin {
     @Inject(method = "getReleaseAnimataion", at = @At("HEAD"), cancellable = true)
     private void evilTachiRelease(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<? extends StaticAnimation>> cir){
         if(capabilityItem.getWeaponCollider() == DawnDayCollider.EVIL_TACHI){
-            cir.setReturnValue(DawnDayAnimations.EVIL_ODACHI_OVERHEADSLASH_RELEASE);
+            cir.setReturnValue(AdditionalAnimations.EVIL_ODACHI_OVERHEADSLASH_RELEASE);
         }
     }
 

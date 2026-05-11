@@ -1,6 +1,7 @@
 package net.epicfight_dd.skill.skill_compats;
 
 import com.hm.efn.gameasset.animations.EFNSkillAnimations;
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
@@ -35,9 +36,9 @@ public class NightfallCompat implements ICompatModule {
 
                     .addGuardMotion(
                             EpicFightDD_WeaponCategories.EVIL_TACHI,
-                            (i, p) -> DawnDayAnimations.EVIL_ODACHI_GUARD_HIT
+                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_GUARD_HIT
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI,
-                            (i, p) -> DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED)
+                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED)
 
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))

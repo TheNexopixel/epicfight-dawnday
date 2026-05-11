@@ -1,5 +1,6 @@
 package net.epicfight_dd.skill.skill_compats;
 
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.world.item.ItemStack;
@@ -68,11 +69,11 @@ public class WoMCompat implements ICompatModule {
 
         //Normal
         guardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                DawnDayAnimations.EVIL_ODACHI_GUARD_HIT);
+                AdditionalAnimations.EVIL_ODACHI_GUARD_HIT);
         guardBreakMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                DawnDayAnimations.EVIL_ODACHI_NEUTRALIZED);
+                AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
-                DawnDayAnimations.EVIL_ODACHI_COUNTER);
+                AdditionalAnimations.EVIL_ODACHI_COUNTER);
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
         temp = GuardSkill.class.getDeclaredField("guardMotions");

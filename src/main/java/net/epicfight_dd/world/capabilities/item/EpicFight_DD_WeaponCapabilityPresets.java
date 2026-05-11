@@ -453,22 +453,22 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .passiveSkill(WOMSkills.EVIL_TACHI_PASSIVE)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.EVIL_BEAAAAMMMM)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.EVIL_ODACHI_AUTO1,
-                            DawnDayAnimations.EVIL_ODACHI_AUTO2,
-                            DawnDayAnimations.EVIL_ODACHI_AUTO3,
-                            DawnDayAnimations.EVIL_ODACHI_AUTO4,
-                            DawnDayAnimations.EVIL_ODACHI_DASH,
-                            DawnDayAnimations.EVIL_ODACHI_AIRSLASH)
+                            AdditionalAnimations.EVIL_ODACHI_AUTO1,
+                            AdditionalAnimations.EVIL_ODACHI_AUTO2,
+                            AdditionalAnimations.EVIL_ODACHI_AUTO3,
+                            AdditionalAnimations.EVIL_ODACHI_AUTO4,
+                            AdditionalAnimations.EVIL_ODACHI_DASH,
+                            AdditionalAnimations.EVIL_ODACHI_AIRSLASH)
 
 
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.EVIL_ODACHI_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.EVIL_ODACHI_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, DawnDayAnimations.EVIL_ODACHI_KNEEL)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, DawnDayAnimations.EVIL_ODACHI_SNEAK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.EVIL_ODACHI_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, AdditionalAnimations.EVIL_ODACHI_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, AdditionalAnimations.EVIL_ODACHI_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, AdditionalAnimations.EVIL_ODACHI_KNEEL)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, AdditionalAnimations.EVIL_ODACHI_SNEAK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, AdditionalAnimations.EVIL_ODACHI_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.WITHERING_DEMISE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.JUMP, DawnDayAnimations.EVIL_ODACHI_JUMP)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.EVIL_ODACHI_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.JUMP, AdditionalAnimations.EVIL_ODACHI_JUMP)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, AdditionalAnimations.EVIL_ODACHI_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> BAT = (item) ->
             WeaponCapability.builder()

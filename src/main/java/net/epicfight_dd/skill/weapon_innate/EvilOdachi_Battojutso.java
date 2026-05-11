@@ -1,5 +1,6 @@
 package net.epicfight_dd.skill.weapon_innate;
 
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.minecraft.network.FriendlyByteBuf;
 import yesman.epicfight.skill.*;
@@ -18,7 +19,7 @@ public class EvilOdachi_Battojutso extends SimpleWeaponInnateSkill {
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
         boolean is_sprint = container.getServerExecutor().getOriginal().isSprinting();
         if (is_sprint) {
-            container.getExecutor().playAnimationSynchronized(DawnDayAnimations.EVIL_ODACHI_BATTOJUTSO, 0);
+            container.getExecutor().playAnimationSynchronized(AdditionalAnimations.EVIL_ODACHI_BATTOJUTSO, 0);
         } else {
             super.executeOnServer(container, args);
         }

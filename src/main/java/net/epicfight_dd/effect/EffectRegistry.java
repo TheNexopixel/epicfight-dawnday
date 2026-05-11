@@ -37,14 +37,19 @@ public class EffectRegistry {
                     .addAttributeModifier(EpicFightAttributes.MAX_STAMINA.get(), "3f2504e0-4f89-11d3-9a0c-0305e82c3301", 5.0, AttributeModifier.Operation.ADDITION)
             );
 
+    public static final RegistryObject<MobEffect> STUNARMOR =
+            EFFECTS.register("stunarmor",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xf56d33)
+                    .addAttributeModifier(EpicFightAttributes.STUN_ARMOR.get(), "3f2504e0-4f29-11d3-9a0c-0305e82c3301", 10.0, AttributeModifier.Operation.ADDITION)
+            );
+
     public static final RegistryObject<MobEffect> IMPACT =
             EFFECTS.register("impact",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xbf7c41)
-                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "e7b8c1d2-9a3f-4c12-8f6a-1b2c3d4e5f60", 2.0, AttributeModifier.Operation.ADDITION)
+                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "e7b8c1d2-9a3f-4c12-8f6a-1b2c3d4e5f60", 3.0, AttributeModifier.Operation.ADDITION)
             );
 
     public static final RegistryObject<MobEffect> POTION_OF_POWER =
             EFFECTS.register("potion_of_power",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0x750000)
-                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, "9b2e6a11-0c3d-4f88-bd22-1a9c7e5f3b44", 0.2, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, "9b2e6a11-0c3d-4f88-bd22-1a9c7e5f3b44", 0.25, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
 
     public static final RegistryObject<MobEffect> SWEEPING =

@@ -53,20 +53,13 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
 
-                if (ModList.get().isLoaded("evil_tachi_moveset")){
-                    output.accept(WOMItems.EVIL_TACHI.get());}
-                if (ModList.get().isLoaded("greataxe_moveset")){
-                    output.accept(WOMItems.NETHERITE_GREATAXE.get());
-                    output.accept(WOMItems.DIAMOND_GREATAXE.get());
-                    output.accept(WOMItems.GOLDEN_GREATAXE.get());
-                    output.accept(WOMItems.IRON_GREATAXE.get());}
-                if (ModList.get().isLoaded("hollow_moveset")) {
-                    output.accept(WOMItems.HOLLOW_LONGSWORD.get());}
-
                 // Potions
 
                 // NORMAL
                 output.accept(DawnDayItems.ENERGY_DRINK.get());
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_LONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_strong.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_long.get()));

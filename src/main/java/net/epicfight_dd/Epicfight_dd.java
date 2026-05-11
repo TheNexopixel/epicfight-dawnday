@@ -2,6 +2,7 @@ package net.epicfight_dd;
 
 import com.hm.efn.EFN;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
+import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
