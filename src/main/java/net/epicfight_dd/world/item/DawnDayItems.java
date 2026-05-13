@@ -172,10 +172,6 @@ public class DawnDayItems {
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(ForgeRegistries.POTIONS, Epicfight_dd.MODID);
 
-    public static final RegistryObject<Potion> impregpot =
-            POTIONS.register("impregnability_potion", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.IMPREGNABILITY.get(), 2400, 0)));
-
     public static final RegistryObject<Potion> STUNARMOR =
             POTIONS.register("stun_armor", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.STUNARMOR.get(), 4000, 0)));
@@ -187,6 +183,18 @@ public class DawnDayItems {
     public static final RegistryObject<Potion> STUNARMOR_STRONG =
             POTIONS.register("stun_armor_strong", () ->
                     new Potion(new MobEffectInstance(EffectRegistry.STUNARMOR.get(), 2100, 1)));
+
+    public static final RegistryObject<Potion> FORTIFIED =
+            POTIONS.register("fortified", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.FORTIFIED.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> FORTIFIED_LONG =
+            POTIONS.register("fortified_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.FORTIFIED.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> FORTIFIED_STRONG =
+            POTIONS.register("fortified_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.FORTIFIED.get(), 1800, 1)));
 
     public static final RegistryObject<Potion> staminaregen =
             POTIONS.register("staminaregen_potion", () ->

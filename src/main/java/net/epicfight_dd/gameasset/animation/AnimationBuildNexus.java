@@ -1,5 +1,6 @@
 package net.epicfight_dd.gameasset.animation;
 
+import net.epicfight_dd.gameasset.animation.optional.AdditionalExecutions;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecAnims;
 import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.CombatEvolution;
@@ -21,9 +22,11 @@ public class AnimationBuildNexus {
         if(ModList.get().isLoaded("wom")) {
             AdditionalAnimations.build(builder);
         }
+        if (ModList.get().isLoaded("wom")
+                && ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
 
-
-
+            AdditionalExecutions.build(builder);
+        }
     }
 
 

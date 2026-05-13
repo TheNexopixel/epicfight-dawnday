@@ -57,6 +57,12 @@ public class EffectRegistry {
                     .addAttributeModifier(Attributes.ATTACK_SPEED, "9b2e3a11-0c3d-4f88-bd22-1a9c7e5f3b44", 0.15, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
 
+    public static final RegistryObject<MobEffect> FORTIFIED =
+            EFFECTS.register("fortified",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xded6ca)
+                    .addAttributeModifier(Attributes.ARMOR, "9b2e3a11-1c3d-4f88-bd22-1a9c7e5f3b44", 6.0, AttributeModifier.Operation.ADDITION)
+                    .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "9b2e3a13-1c3d-4f88-bd22-1a9c7e5f3b44", 2.5, AttributeModifier.Operation.ADDITION)
+            );
+
     public static final RegistryObject<MobEffect> CRUMBLING =
             EFFECTS.register("crumbling",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0xa18074)
                     .addAttributeModifier(Attributes.ARMOR, "9b2e3a10-0c3d-4f88-bd22-1a9c7e5f3b44", -0.25, AttributeModifier.Operation.MULTIPLY_TOTAL)

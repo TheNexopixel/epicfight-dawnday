@@ -48,20 +48,6 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN;
     public static AnimationManager.AnimationAccessor<KnockdownAnimation> BREAKDOWN;
 
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_ULTIMATE;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_WAVE;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_THROW_HIT;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_TROW;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_STANDUP2;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_STANDUP1;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH_HIT;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PUSH;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PULL_HIT;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_PULL;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_EXECUTED;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_EXECUTE;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE_HIT;
-    public static AnimationManager.AnimationAccessor<ActionAnimation> FORCE_CHOKE;
 
     public static AnimationManager.AnimationAccessor<ActionAnimation> WIPE_MOUTH;
 
@@ -262,22 +248,6 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );
         // Just Animations I have done some time ago. I wanted to see how they look like ingame
-
-        FORCE_CHOKE = builder.nextAccessor("biped/force/force_choke", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_ULTIMATE = builder.nextAccessor("biped/force/force_ultimate", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_EXECUTE = builder.nextAccessor("biped/force/force_execute", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PUSH_STANDUP2 = builder.nextAccessor("biped/force/force_push_standup2", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PULL = builder.nextAccessor("biped/force/force_pull", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PUSH = builder.nextAccessor("biped/force/force_push", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_EXECUTED = builder.nextAccessor("biped/force/force_executed", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_CHOKE_HIT = builder.nextAccessor("biped/force/force_choke_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PULL_HIT = builder.nextAccessor("biped/force/force_pull_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PUSH_HIT = builder.nextAccessor("biped/force/force_push_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_PUSH_STANDUP1 = builder.nextAccessor("biped/force/force_push_standup1", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_TROW = builder.nextAccessor("biped/force/force_throw", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_THROW_HIT = builder.nextAccessor("biped/force/force_throw_hit", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-        FORCE_WAVE = builder.nextAccessor("biped/force/force_wave", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED));
-
         WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.02f,0.2f,ac,Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
                 .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(dawnDaySounds.soft_wipe.get()))

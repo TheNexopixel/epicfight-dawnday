@@ -52,11 +52,15 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
+                output.accept(DawnDayItems.nail.get());
 
                 // Potions
 
                 // NORMAL
                 output.accept(DawnDayItems.ENERGY_DRINK.get());
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.FORTIFIED.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.FORTIFIED_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.FORTIFIED_LONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_STRONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_LONG.get()));
@@ -80,7 +84,6 @@ public class DawnDayCreativeTab {
             })
             .build()
     );
-
     public static final RegistryObject<CreativeModeTab> EFDDXWOM = CREATIVE_MODE_TABS.register("efdd_x_wom", () -> CreativeModeTab.builder().icon(() ->
                     new ItemStack(DawnDayItems.bonecutting_saw.get()))
             .title(Component.translatable("creativetab.efdd_x_wom"))

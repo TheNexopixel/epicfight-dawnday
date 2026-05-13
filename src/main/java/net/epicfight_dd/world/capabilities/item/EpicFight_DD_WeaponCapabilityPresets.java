@@ -163,7 +163,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.WAR_SICKLE_AUTO4,
                             DawnDayAnimations.WAR_SICKLE_AUTO5,
                             DawnDayAnimations.WAR_SICKLE_AUTO6,
-                            DawnDayAnimations.POLE_AXE_DASH,
+                            DawnDayAnimations.SICKLE_DASH,
                             DawnDayAnimations.MILADY_AIR_SLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WAR_SICKLE_IDLE)
@@ -315,7 +315,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.STEELAXE_AUTO3,
                             DawnDayAnimations.STEELAXE_AUTO4,
                             DawnDayAnimations.HALBERD_DASH,
-                            DawnDayAnimations.POLE_AXE_AUTO3)
+                            DawnDayAnimations.BAT_DASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.STEELAXE_IDLE)
@@ -531,7 +531,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.RAAAHHH)
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.BRUTAL_DASH)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO1,
                             DawnDayAnimations.HOLLOW_OCHS_AUTO2,
@@ -542,17 +542,18 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
 
-                            DawnDayAnimations.SABER_AUTO1,
-                            DawnDayAnimations.SABER_AUTO2,
-                            DawnDayAnimations.SABER_AUTO3,
-                            DawnDayAnimations.BAT_DASH,
-                            DawnDayAnimations.BAT_AIRSLASH)
+                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO1,
+                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO2,
+                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO3,
+                            DawnDayAnimations.SICKLE_DASH,
+                            DawnDayAnimations.BAT_DASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.HOLLOW_OCHS_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.HOLLOW_OCHS_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK_SHIELD, Animations.BIPED_BLOCK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_ONEHANDED_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)

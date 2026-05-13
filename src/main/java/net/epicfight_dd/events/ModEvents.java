@@ -211,6 +211,32 @@ public class ModEvents {
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.STUNARMOR_STRONG.get()));
 
 
+            // FORTIFIED
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(thickpotion),
+                    Ingredient.of(Items.GOLD_INGOT),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.FORTIFIED.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.FORTIFIED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.FORTIFIED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.FORTIFIED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.FORTIFIED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.FORTIFIED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.FORTIFIED_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.FORTIFIED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.FORTIFIED_STRONG.get()));
         });
     }
 }

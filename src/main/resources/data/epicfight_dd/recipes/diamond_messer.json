@@ -7,17 +7,17 @@
   ],
   "key": {
     "K": {
-      "item": "epicfight_dd:iron_knife"
+      "item": "epicfight_dd:diamond_knife"
     },
     "D": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:diamond"
     },
     "N": {
       "item": "minecraft:gold_nugget"
     }
   },
   "result": {
-    "item": "epicfight_dd:iron_messer",
+    "item": "epicfight_dd:diamond_messer",
     "count": 1
   }
 }

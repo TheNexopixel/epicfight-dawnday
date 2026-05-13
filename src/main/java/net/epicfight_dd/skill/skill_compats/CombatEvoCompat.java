@@ -3,17 +3,15 @@ package net.epicfight_dd.skill.skill_compats;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecution_TYPES;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
-import net.epicfight_dd.skill.skill_compats.WoMCompat;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.api.event.RegisterCustomExecutionEvent;
 import reascer.wom.main.WeaponsOfMinecraft;
-import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
-import yesman.epicfight.world.item.GloveItem;
 
 public class  CombatEvoCompat implements ICompatModule {
 
@@ -49,10 +47,10 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.wooden_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
 
-      event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.EVIL_TACHI);
-
-
+      if (ModList.get().isLoaded("wom")) {
+          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
+                  DawnDayExecution_TYPES.EVIL_TACHI);
+      }
 
   }
 

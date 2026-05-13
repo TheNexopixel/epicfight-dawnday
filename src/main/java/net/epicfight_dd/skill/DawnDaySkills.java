@@ -13,8 +13,10 @@ import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
 import net.epicfight_dd.skill.weapon_innate.RAHHHHH;
 import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -203,19 +205,21 @@ public class DawnDaySkills {
 
         SPINNING_SHADOW = spinshadow;
 
-        WeaponInnateSkill evilbeam = modRegistry.build("evil_beam",EvilOdachi_Battojutso::new,EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
-                .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
-                .setCategory(SkillCategories.WEAPON_INNATE));
-        evilbeam.newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
-                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
-                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.FINISHER))
-                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(15.5F))
-                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
-                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        if (ModList.get().isLoaded("wom")) {
+            WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", EvilOdachi_Battojutso::new, EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
+                    .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
+                    .setCategory(SkillCategories.WEAPON_INNATE));
+            evilbeam.newProperty()
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25.0F))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(15.5F))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
-        EVIL_BEAAAAMMMM = evilbeam;
+            EVIL_BEAAAAMMMM = evilbeam;
+        }
 
         WeaponInnateSkill brutaldash = modRegistry.build("brutal_dash",SkullRuptureSkill::new,SkullRuptureSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.BRUTAL_DASH)
@@ -239,6 +243,7 @@ public class DawnDaySkills {
                 .setCategory(SkillCategories.WEAPON_INNATE));
         wildstrikes.newProperty()
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER,ValueModifier.adder(25.0F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25F))
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
