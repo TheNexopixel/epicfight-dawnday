@@ -35,7 +35,6 @@ public class RAHHHHH extends WeaponInnateSkill {
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
         super.executeOnServer(container, args);
         container.getExecutor().playAnimationSynchronized(DawnDayAnimations.RAAAHHHHH,0.1f);
-        container.getExecutor().getOriginal().addEffect(new MobEffectInstance(EffectRegistry.IMPREGNABILITY.get(), Duration, Amplifier));
     }
 
 

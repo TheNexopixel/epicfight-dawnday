@@ -1,8 +1,8 @@
 package net.epicfight_dd;
 
 import com.hm.efn.EFN;
+import net.epicfight_dd.events.DeathSoundEvent;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
-import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
@@ -15,7 +15,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,6 +38,7 @@ public class Epicfight_dd {
 
     public Epicfight_dd(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
+        bus.addListener(this::onConfigLoad);
 
         //register every deferred register in the list with the mod eventbus
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
@@ -46,6 +50,10 @@ public class Epicfight_dd {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        ModLoadingContext.get().registerConfig(
+                ModConfig.Type.COMMON,
+                DawnDayConfig.SPEC
+        );
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 
@@ -65,6 +73,14 @@ public class Epicfight_dd {
         }
 
         bus.addListener(this::commonSetup);
+
+
+    }
+    private void onConfigLoad(final ModConfigEvent.Loading event) {
+
+        if (DawnDayConfig.ENABLE_DEATH_SOUND.get()) {
+            MinecraftForge.EVENT_BUS.register(new DeathSoundEvent());
+        }
 
 
     }

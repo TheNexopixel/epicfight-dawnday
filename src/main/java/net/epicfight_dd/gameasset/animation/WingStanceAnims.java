@@ -164,14 +164,13 @@ public class WingStanceAnims {
         WINGSTANCE_DASH = builder.nextAccessor("biped/skill/wingstance/wingstance_dash", (accessor) ->
                 new DashAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.05f, 0.18f, 0.30f, 0.8f, 0.38f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 5))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.55f)),
+                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder( 1))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
 
                         new AttackAnimation.Phase(0.481f, 0.5f, 0.50f, 0.55f, 0.8f,20.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(33.33f))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_light_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 0.93)))
 

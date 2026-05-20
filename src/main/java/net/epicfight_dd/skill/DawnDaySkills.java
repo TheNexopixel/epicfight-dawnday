@@ -8,10 +8,7 @@ import java.util.Set;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
-import net.epicfight_dd.skill.weapon_innate.EvilOdachi_Battojutso;
-import net.epicfight_dd.skill.weapon_innate.FuriousCutSkill;
-import net.epicfight_dd.skill.weapon_innate.RAHHHHH;
-import net.epicfight_dd.skill.weapon_innate.SkullRuptureSkill;
+import net.epicfight_dd.skill.weapon_innate.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -52,6 +49,7 @@ public class DawnDaySkills {
     public static Skill WILD_STRIKES;
     public static Skill RAAAHHH;
     public static Skill ANNIHILATE;
+    public static Skill SEPUKKU;
 
 
     @SubscribeEvent
@@ -253,6 +251,11 @@ public class DawnDaySkills {
         /// RAAAHHHHHHHHHH BANG BANG BANG
         RAAAHHH = modRegistry.build("rahhh", RAHHHHH::new,
                 RAHHHHH.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE)
+        );
+
+        SEPUKKU = modRegistry.build("sepukku", Sepukku::new,
+                Sepukku.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE)
         );
 

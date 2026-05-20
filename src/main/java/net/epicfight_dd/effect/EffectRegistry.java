@@ -63,6 +63,18 @@ public class EffectRegistry {
                     .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "9b2e3a13-1c3d-4f88-bd22-1a9c7e5f3b44", 2.5, AttributeModifier.Operation.ADDITION)
             );
 
+    public static final RegistryObject<MobEffect> SEPUKKU =
+            EFFECTS.register("sepukku",()-> new SepukkuEffect(MobEffectCategory.BENEFICIAL,0xa11106)
+                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, "9b2e3a11-1c3d-4f58-bd22-1a9c7e5f3b44", 0.3, AttributeModifier.Operation.MULTIPLY_BASE)
+                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "9b2e3a11-9a3f-4c12-8f6a-1b2c3d4e5f60", 1.0, AttributeModifier.Operation.ADDITION)
+            );
+
+    public static final RegistryObject<MobEffect> DRAINDED =
+            EFFECTS.register("drained",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0xa11106)
+                    .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "9b2e3a11-1c1d-4f58-bd22-1a9c7e5f3b44", -0.4, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "9b2e3a11-9a3f-4c12-8f6a-1b2c3d3e5f60", -0.5, AttributeModifier.Operation.ADDITION)
+            );
+
     public static final RegistryObject<MobEffect> CRUMBLING =
             EFFECTS.register("crumbling",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0xa18074)
                     .addAttributeModifier(Attributes.ARMOR, "9b2e3a10-0c3d-4f88-bd22-1a9c7e5f3b44", -0.25, AttributeModifier.Operation.MULTIPLY_TOTAL)

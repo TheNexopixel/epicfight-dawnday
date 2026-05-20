@@ -70,6 +70,18 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2500)));
 
+    public static final RegistryObject<Item> NIGHT_RITUS_DAGGER =
+            ITEMS.register("night_ritus_dagger",() -> new SwordItem(Tiers.DIAMOND,1,-2.0f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2800)));
+
+    public static final RegistryObject<Item> BLOOD_RITUS_DAGGER =
+            ITEMS.register("blood_ritus_dagger",() ->  new SwordItem(Tiers.DIAMOND,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2100)));
+
     public static final RegistryObject<Item> iron_knife =
             ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,1,-2.2f,
                     new Item.Properties().stacksTo(1)

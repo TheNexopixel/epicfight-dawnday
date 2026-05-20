@@ -22,6 +22,13 @@ public class dawnDaySounds {
     public static final RegistryObject<SoundEvent> poise_break = registerSound("sfx.poise_break");
     public static final RegistryObject<SoundEvent> skeleton_banging = registerSound("sfx.skeleton_banging");
     public static final RegistryObject<SoundEvent> soft_wipe = registerSound("sfx.soft_wipe");
+    public static final RegistryObject<SoundEvent> CRITICAL_HIT = registerSound("sfx.critical_hit");
+    public static final RegistryObject<SoundEvent> PULL_OUT = registerSound("sfx.pull_out");
+    public static final RegistryObject<SoundEvent> KILLED1 = registerSound("sfx.killed1");
+    public static final RegistryObject<SoundEvent> KILLED2 = registerSound("sfx.killed2");
+    public static final RegistryObject<SoundEvent> KILLED3 = registerSound("sfx.killed3");
+    public static final RegistryObject<SoundEvent> DRAINED = registerSound("sfx.drained");
+
 
 
 

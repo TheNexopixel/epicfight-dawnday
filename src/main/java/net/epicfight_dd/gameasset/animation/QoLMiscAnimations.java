@@ -17,7 +17,6 @@ import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.api.animation.types.KnockdownAnimation;
 import yesman.epicfight.api.animation.types.LongHitAnimation;
-import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.particle.EpicFightParticles;
@@ -42,6 +41,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SONICBOOM;
     public static AnimationManager.AnimationAccessor<ActionAnimation> EXPLOSION_DEATH;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> SEPUKKU_DEATH;
     public static AnimationManager.AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
 
     public static AnimationManager.AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
@@ -85,6 +85,8 @@ public class QoLMiscAnimations {
 
                     if (source.is(DamageTypes.MAGIC) || source.is(DamageTypes.INDIRECT_MAGIC)) return 13;
 
+                    if (source.is(DamageTypes.GENERIC_KILL)) return 16;
+
                     if(source.is(DamageTypes.STARVE) || source.is(DamageTypes.DRY_OUT) || source.is(DamageTypes.FREEZE)) return 14;
 
 
@@ -106,7 +108,9 @@ public class QoLMiscAnimations {
                         GENERIC_DEATH_7,         // 12
                         DEATH_MAGIC,             // 13
                         SAD_DEATH,               // 14
-                        GENERIC_DEATH_8          // 15
+                        GENERIC_DEATH_8,         // 15
+                        SEPUKKU_DEATH            // 16
+
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
@@ -115,7 +119,79 @@ public class QoLMiscAnimations {
 
 
         GENERIC_DEATH_1 = builder.nextAccessor("biped/deathanims/death_generic1", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e, s, p) ->
+                                e.getOriginal().playSound(dawnDaySounds.KILLED1.get(),100,1), AnimationEvent.Side.CLIENT
+                )));
+
+        SEPUKKU_DEATH = builder.nextAccessor("biped/deathanims/sepukku_death", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(
+
+                        AnimationEvent.InPeriodEvent.create(
+
+                                0.1f,
+                                2.4f,
+
+                                (entitypatch, animation, params) -> {
+
+                                    LivingEntity entity =
+                                            entitypatch.getOriginal();
+
+                                    float yaw = entity.getYRot();
+
+                                    double rad = Math.toRadians(yaw);
+
+                                    double forwardX = -Math.sin(rad);
+                                    double forwardZ = Math.cos(rad);
+
+                                    for (int i = 0; i < 4; i++) {
+
+                                        double x =
+                                                entity.getX()
+                                                        + (entity.getRandom().nextDouble() - 0.5D)
+                                                        * 0.25D;
+
+                                        double y =
+                                                entity.getY()
+                                                        + entity.getBbHeight() * 0.65D;
+
+                                        double z =
+                                                entity.getZ()
+                                                        + (entity.getRandom().nextDouble() - 0.5D)
+                                                        * 0.25D;
+
+                                        double motionX =
+                                                forwardX * 0.08D
+                                                        + (entity.getRandom().nextDouble() - 0.5D)
+                                                        * 0.02D;
+
+                                        double motionY =
+                                                -0.16D;
+
+                                        double motionZ =
+                                                forwardZ * 0.08D
+                                                        + (entity.getRandom().nextDouble() - 0.5D)
+                                                        * 0.02D;
+
+                                        entity.level().addParticle(
+                                                EpicFightParticles.BLOOD.get(),
+
+                                                x,
+                                                y,
+                                                z,
+
+                                                motionX,
+                                                motionY,
+                                                motionZ
+                                        );
+                                    }
+                                }, AnimationEvent.Side.CLIENT
+                        )
+                )
+                );
 
         DEATH_SONICBOOM = builder.nextAccessor("biped/deathanims/death_sonicboom", ac -> new ActionAnimation(0.0f,4.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));

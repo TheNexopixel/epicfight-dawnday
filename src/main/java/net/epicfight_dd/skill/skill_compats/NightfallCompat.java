@@ -40,6 +40,15 @@ public class NightfallCompat implements ICompatModule {
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI,
                             (i, p) -> AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED)
 
+                    .addGuardMotion(
+                            EpicFightDD_WeaponCategories.RITUS_DAGGER,
+                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER,
+                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED)
+
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 

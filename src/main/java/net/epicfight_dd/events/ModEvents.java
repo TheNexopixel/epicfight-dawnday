@@ -214,7 +214,7 @@ public class ModEvents {
             // FORTIFIED
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(thickpotion),
-                    Ingredient.of(Items.GOLD_INGOT),
+                    Ingredient.of(Items.DIAMOND),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.FORTIFIED.get()));
 
             BrewingRecipeRegistry.addRecipe(

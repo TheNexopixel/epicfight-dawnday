@@ -6,7 +6,9 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum EpicFightDD_WeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
-    EVIL_TACHI;
+    EVIL_TACHI,
+    RITUS_DAGGER;
+
         final int id;
 
     EpicFightDD_WeaponCategories() {

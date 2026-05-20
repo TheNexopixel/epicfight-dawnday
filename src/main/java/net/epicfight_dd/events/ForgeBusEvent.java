@@ -83,6 +83,21 @@ public class ForgeBusEvent {
                 }
             }
         }
+        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.SEPUKKU.get())){
+            LivingEntity target = event.getEntity();
+            if(target instanceof ServerPlayer player){
+                ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
+                if (playerPatch != null) {
+                    if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
+                            && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
+                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPUKKU)
+
+                    ) {
+                        target.removeEffect(EffectRegistry.SEPUKKU.get());
+                    }
+                }
+            }
+        }
     }
 
 

@@ -22,13 +22,11 @@ import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
-import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
-import yesman.epicfight.world.capabilities.item.WeaponCapabilityPresets;
 
 
 import java.util.function.Function;
@@ -597,6 +595,81 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> BLOOD_RITUS_DAGGER = (item) ->
+            WeaponCapability.builder()
+                    .category(EpicFightDD_WeaponCategories.RITUS_DAGGER)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(DawnDayCollider.KNIFE)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.RITUS_DAGGER ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.RITUS_DAGGER)
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SEPUKKU)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO1,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO2,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO3,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO4,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO2,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
+                            DawnDayAnimations.MESSER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.BLOOD_RITUS_DAGGER_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
+
+    public static final Function<Item, CapabilityItem.Builder> NIGHT_RITUS_DAGGER = (item) ->
+            WeaponCapability.builder()
+                    .category(EpicFightDD_WeaponCategories.RITUS_DAGGER)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(DawnDayCollider.KNIFE)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.RITUS_DAGGER ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.RITUS_DAGGER)
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SEPUKKU)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO2,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO3,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO4,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_DASH,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO3)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
+                            DawnDayAnimations.MESSER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3)
+
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.NIGHT_RITUS_DAGGER_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, DawnDayAnimations.RITUS_DAGGER_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
@@ -609,6 +682,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         }
 
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "night_ritus_dagger"), NIGHT_RITUS_DAGGER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "messer"), MESSER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "bonecutting_saw"), BONECUTTING_SAW);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nailbat"), BAT);

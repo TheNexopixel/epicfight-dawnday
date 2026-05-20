@@ -11,6 +11,30 @@
     "subtitle":"sfx.heavy_slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
   },
+  "sfx.killed1":
+  {
+    "category":"master",
+    "subtitle":"Something Died",
+    "sounds":[{"name":"epicfight_dd:sfx/killed1", "stream":false}]
+  },
+  "sfx.killed2":
+  {
+    "category":"master",
+    "subtitle":"Something Died",
+    "sounds":[{"name":"epicfight_dd:sfx/killed2", "stream":false}]
+  },
+  "sfx.killed3":
+  {
+    "category":"master",
+    "subtitle":"Something Died",
+    "sounds":[{"name":"epicfight_dd:sfx/killed3", "stream":false}]
+  },
+  "sfx.drained":
+  {
+    "category":"master",
+    "subtitle":"Sepukku has worn off",
+    "sounds":[{"name":"epicfight_dd:sfx/drained", "stream":false}]
+  },
 
   "sfx.milady_dual_slash": {
     "category": "master",
@@ -28,6 +52,20 @@
       "category":"master",
       "subtitle":"sfx.light_sweep",
       "sounds":[{"name":"epicfight_dd:sfx/milady_extra_light", "stream":false}]
+  },
+
+  "sfx.critical_hit":
+  {
+    "category":"master",
+    "subtitle":"Critical Hit",
+    "sounds":[{"name":"epicfight_dd:sfx/critical_hit", "stream":false}]
+  },
+
+  "sfx.pull_out":
+  {
+    "category":"master",
+    "subtitle":"Weapon Pulled Out",
+    "sounds":[{"name":"epicfight_dd:sfx/pull_out", "stream":false}]
   },
   "sfx.piercing_fang":
   {

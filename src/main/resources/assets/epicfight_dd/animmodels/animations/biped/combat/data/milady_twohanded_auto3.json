@@ -2,7 +2,7 @@
     "trail_effects": [
       {
         "start_time": 0.35,
-        "end_time": 0.52,
+        "end_time": 0.58,
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"
       }

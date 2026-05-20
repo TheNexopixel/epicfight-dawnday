@@ -132,7 +132,7 @@ dependencies {
 
 dependencies {
     // Custom Mod Dependencies
-    modImplementation("curse.maven:epic-fight-mod-405076:7789099")
+    modImplementation("curse.maven:epic-fight-mod-405076:8049910")
     modImplementation("curse.maven:combat-evolution-1377795:7765635")
     modImplementation("curse.maven:wom-918614:7517612")
     modCompileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
