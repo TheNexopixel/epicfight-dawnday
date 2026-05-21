@@ -38,7 +38,6 @@ public class Epicfight_dd {
 
     public Epicfight_dd(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
-        bus.addListener(this::onConfigLoad);
 
         //register every deferred register in the list with the mod eventbus
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
@@ -76,14 +75,8 @@ public class Epicfight_dd {
 
 
     }
-    private void onConfigLoad(final ModConfigEvent.Loading event) {
-
-        if (DawnDayConfig.ENABLE_DEATH_SOUND.get()) {
-            MinecraftForge.EVENT_BUS.register(new DeathSoundEvent());
-        }
 
 
-    }
 
 
     private void commonSetup(final FMLCommonSetupEvent event) {

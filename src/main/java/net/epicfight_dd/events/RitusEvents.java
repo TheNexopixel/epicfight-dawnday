@@ -30,17 +30,22 @@ public class RitusEvents {
         if (player.getMainHandItem().getItem() != DawnDayItems.NIGHT_RITUS_DAGGER.get()) {
             return;
         }
-
+        int moonPhase = player.level().getMoonPhase();
+        float bonus;
         Level level = player.level();
 
-
         if (level.isNight()) {
+        switch (moonPhase) {
 
-
-            float damage = event.getAmount();
-
-            event.setAmount(damage + 3.0f);
+            case 0 -> bonus = 5.0f; // = full moon
+            case 1, 7 -> bonus = 3.5f;
+            case 2, 6 -> bonus = 2.5f;
+            case 3, 5 -> bonus = 1.0f;
+            default -> bonus = 0.0f;
         }
+        event.setAmount(event.getAmount() + bonus);
+        }
+
     }
     @SubscribeEvent
     public static void onSeppuku(LivingHurtEvent event) {
@@ -120,21 +125,18 @@ public class RitusEvents {
             PlayerPatch<?> playerPatch =
                     EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
 
-            if (playerPatch != null) {
+            float stamina = playerPatch.getStamina();
 
-                float stamina = playerPatch.getStamina();
-
-                if (player.level().isNight()) {
-                    playerPatch.setStamina(stamina + 1.0f);
-                }
-                if (player.hasEffect(EffectRegistry.SEPUKKU.get())
-                && player.level().isNight()) {
-                    playerPatch.setStamina(stamina + 4.0f);
-                }
-                else {
-                    playerPatch.setStamina(stamina + 0.5f);
-                }
+            if (player.level().isNight()) {
+                playerPatch.setStamina(stamina + 1.0f);
             }
+            if (player.hasEffect(EffectRegistry.SEPUKKU.get())
+                    && player.level().isNight()) {
+                playerPatch.setStamina(stamina + 4.0f);
+            } else {
+                playerPatch.setStamina(stamina + 0.5f);
+            }
+
 
             if (!player.level().isClientSide) {
 
@@ -156,5 +158,6 @@ public class RitusEvents {
                 );
             }
         }
+        }
     }
-}
+
