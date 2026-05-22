@@ -35,7 +35,18 @@
     "subtitle":"Sepukku has worn off",
     "sounds":[{"name":"epicfight_dd:sfx/drained", "stream":false}]
   },
-
+  "sfx.cursed_1":
+{
+  "category":"master",
+  "subtitle":"A curse lies upon you",
+  "sounds":[{"name":"epicfight_dd:sfx/cursed_1", "stream":false}]
+},
+  "sfx.cursed_2":
+  {
+    "category":"master",
+    "subtitle":"A curse lies upon you",
+    "sounds":[{"name":"epicfight_dd:sfx/cursed_2", "stream":false}]
+  },
   "sfx.milady_dual_slash": {
     "category": "master",
     "subtitle": "sfx.dual_slash",

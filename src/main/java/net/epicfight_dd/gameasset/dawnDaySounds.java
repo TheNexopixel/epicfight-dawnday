@@ -28,6 +28,8 @@ public class dawnDaySounds {
     public static final RegistryObject<SoundEvent> KILLED2 = registerSound("sfx.killed2");
     public static final RegistryObject<SoundEvent> KILLED3 = registerSound("sfx.killed3");
     public static final RegistryObject<SoundEvent> DRAINED = registerSound("sfx.drained");
+    public static final RegistryObject<SoundEvent> CURSED1 = registerSound("sfx.cursed_1");
+    public static final RegistryObject<SoundEvent> CURSED2 = registerSound("sfx.cursed_2");
 
 
 

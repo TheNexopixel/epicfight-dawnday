@@ -9,6 +9,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import yesman.epicfight.world.item.WeaponItem;
 
 @SuppressWarnings("unused")
 public class DawnDayItems {
@@ -65,10 +66,10 @@ public class DawnDayItems {
                             .defaultDurability(2500)));
 
     public static final RegistryObject<Item> steelaxe =
-            ITEMS.register("steelaxe",() -> new SwordItem(Tiers.NETHERITE,4,-2.7f,
+            ITEMS.register("steelaxe",() -> new WeaponItem(Tiers.NETHERITE,4,-2.7f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2500)));
+                            .defaultDurability(2500)){});
 
     public static final RegistryObject<Item> NIGHT_RITUS_DAGGER =
             ITEMS.register("night_ritus_dagger",() -> new SwordItem(Tiers.DIAMOND,1,-2.0f,
@@ -117,14 +118,14 @@ public class DawnDayItems {
                             .defaultDurability(980)));
 
     public static final RegistryObject<Item> golden_battlestaff =
-            ITEMS.register("golden_battlestaff",() -> new SwordItem(Tiers.GOLD,3,-2.2f,
+            ITEMS.register("golden_battlestaff",() -> new WeaponItem(Tiers.GOLD,3,-2.2f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(680)));
+                            .defaultDurability(680)){});
 
     public static final RegistryObject<Item> diamond_battlestaff =
-            ITEMS.register("diamond_battlestaff",() -> new SwordItem(Tiers.DIAMOND,3,-2.5f,
+            ITEMS.register("diamond_battlestaff",() -> new WeaponItem(Tiers.DIAMOND, 3, -2.5f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(1680)));
+                            .defaultDurability(1680)) {});
 
     public static final RegistryObject<Item> netherite_battlestaff =
             ITEMS.register("netherite_battlestaff",() -> new SwordItem(Tiers.NETHERITE,3,-2.5f,
@@ -183,6 +184,18 @@ public class DawnDayItems {
 
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(ForgeRegistries.POTIONS, Epicfight_dd.MODID);
+
+    public static final RegistryObject<Potion> EXHAUSTED =
+            POTIONS.register("exhausted", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.EXHAUSTED.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> EXHAUSTED_LONG =
+            POTIONS.register("exhausted_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.EXHAUSTED.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> EXHAUSTED_STRONG =
+            POTIONS.register("exhausted_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.EXHAUSTED.get(), 2400, 1)));
 
     public static final RegistryObject<Potion> STUNARMOR =
             POTIONS.register("stun_armor", () ->

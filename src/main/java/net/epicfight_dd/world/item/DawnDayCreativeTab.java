@@ -83,6 +83,11 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_STRONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_LONG.get()));
+                /*
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED_LONG.get()));
+                 */
             })
             .build()
     );

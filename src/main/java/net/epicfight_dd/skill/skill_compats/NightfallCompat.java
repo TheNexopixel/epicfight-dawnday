@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
@@ -66,7 +67,9 @@ public class NightfallCompat implements ICompatModule {
         public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
 
             icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
-            icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
+            if  (ModList.get().isLoaded("wom")) {
+                icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
+            }
         }
 
 

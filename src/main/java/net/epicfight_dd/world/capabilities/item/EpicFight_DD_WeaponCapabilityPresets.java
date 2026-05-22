@@ -620,9 +620,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
-                            DawnDayAnimations.MESSER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
-                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3)
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.BLOOD_RITUS_DAGGER_IDLE)
@@ -657,9 +657,9 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
-                            DawnDayAnimations.MESSER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
-                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3)
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
 
 
 

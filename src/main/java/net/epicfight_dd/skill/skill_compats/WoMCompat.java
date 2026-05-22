@@ -67,13 +67,19 @@ public class WoMCompat implements ICompatModule {
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreakMotions = new HashMap<>();
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advancedGuardMotions = new HashMap<>();
 
-        //Normal
+
         guardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
                 AdditionalAnimations.EVIL_ODACHI_GUARD_HIT);
         guardBreakMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
                 AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
                 AdditionalAnimations.EVIL_ODACHI_COUNTER);
+        guardMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (item, player) ->
+                DawnDayAnimations.RITUS_DAGGER_GUARD_HIT);
+        guardBreakMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (item, player) ->
+                DawnDayAnimations.RITUS_DAGGER_GUARD);
+        advancedGuardMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
+                DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
         temp = GuardSkill.class.getDeclaredField("guardMotions");

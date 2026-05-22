@@ -64,6 +64,45 @@ public class ModEvents {
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.staminaregen_strong.get()));
 
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get())),
+                    Ingredient.of(Items.WITHER_ROSE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.EXHAUSTED.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.staminaregen.get())),
+                    Ingredient.of(Items.WITHER_ROSE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.EXHAUSTED.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), DawnDayItems.staminaregen.get())),
+                    Ingredient.of(Items.WITHER_ROSE),
+                    PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION),DawnDayItems.EXHAUSTED.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.EXHAUSTED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.EXHAUSTED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED.get())),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.EXHAUSTED_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.EXHAUSTED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.EXHAUSTED_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED.get())),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.EXHAUSTED_STRONG.get()));
+
             // Stamina Potion
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(

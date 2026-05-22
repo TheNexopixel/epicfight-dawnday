@@ -16,15 +16,17 @@
       },
       {
         "start_time": 1.9,
-        "end_time": 1.9,
-        "lifetime": 25,
+        "end_time": 2.0,
+        "lifetime": 8,
+        "end_pos": [0.0, 0.0, -3.0],
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"
       },
       {
-        "start_time": 1.9,
-        "end_time": 1.9,
-        "lifetime": 25,
+        "start_time": 1.8,
+        "end_time": 2.0,
+        "lifetime": 8,
+        "end_pos": [0.0, 0.0, -3.0],
         "joint": "Tool_L",
         "item_skin_hand": "off_hand"
       }

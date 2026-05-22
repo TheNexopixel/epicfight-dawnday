@@ -1,18 +1,14 @@
 package net.epicfight_dd.effect;
 
-import com.hm.efn.mobeffects.AttackSpeedIncreaseEffect;
 import net.epicfight_dd.Epicfight_dd;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
-
-import java.util.UUID;
 
 public class EffectRegistry {
 
@@ -30,6 +26,11 @@ public class EffectRegistry {
     public static final RegistryObject<MobEffect> ENDURANCE =
             EFFECTS.register("endurance",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xffe100)
                     .addAttributeModifier(EpicFightAttributes.STAMINA_REGEN.get(), "3f7c9c7e-8c4d-4c4a-a2d7-5c6b9f2a1e8d", 0.33, AttributeModifier.Operation.ADDITION)
+            );
+
+    public static final RegistryObject<MobEffect> EXHAUSTED =
+            EFFECTS.register("exhausted",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0x222e00)
+                    .addAttributeModifier(EpicFightAttributes.STAMINA_REGEN.get(), "3f7c9c7e-8c4d-4c1a-a2d7-5c6b9f2a1e2d", -0.40, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
 
     public static final RegistryObject<MobEffect> STAMNIA =
