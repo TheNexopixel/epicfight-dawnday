@@ -36,7 +36,7 @@ public class DeathSoundEvent {
                         entity.getY(),
                         entity.getZ(),
                         sound,
-                        SoundSource.AMBIENT,
+                        SoundSource.PLAYERS,
                         1.0f,
                         1.0f
                 );

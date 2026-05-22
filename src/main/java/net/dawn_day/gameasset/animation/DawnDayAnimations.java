@@ -189,6 +189,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<ComboAttackAnimation> RITUS_DAGGER_DUAL_AUTO1;
     public static AnimationAccessor<ComboAttackAnimation> RITUS_DAGGER_DUAL_AUTO2;
     public static AnimationAccessor<ComboAttackAnimation> RITUS_DAGGER_DUAL_AUTO3;
+    public static AnimationAccessor<ComboAttackAnimation> RITUS_DAGGER_DUAL_AIRSLASH;
     public static AnimationAccessor<DashAttackAnimation> RITUS_DAGGER_DUAL_DASH;
 
 
@@ -366,23 +367,49 @@ public class DawnDayAnimations {
         );
         RITUS_DAGGER_DUAL_AUTO3 = builder.nextAccessor("biped/combat/ritus_dagger_dual_auto3", (accessor) ->
                 new ComboAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.10f, 0.25f, 0.33f, 0.6f, 0.35f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                        new AttackAnimation.Phase(0.0f, 0.10f, 0.1f, 0.2f, 1.5f, 0.2f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.13F))
+                        ,
+
+                        new AttackAnimation.Phase(0.21f, 0.22f, 0.4f, 0.5f, 1.5f, 0.5f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG),
+
+                        new AttackAnimation.Phase(0.5f, 0.56f, 0.5f, 0.68f, 1.5f, 0.7f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.KNIFE_DASH)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.53F)),
+
+                        new AttackAnimation.Phase(0.7f, 0.72f, 0.8f, 0.9f, 1.5f, 0.9f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.23F)),
+
+                        new AttackAnimation.Phase(0.9f, 0.9f, 0.91f, 1.1f, 1.2f, 5.18f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25F))
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.84F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+        RITUS_DAGGER_DUAL_AIRSLASH = builder.nextAccessor("biped/combat/ritus_dagger_dual_airslash", (accessor) ->
+                new ComboAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.10f, 0.25f, 0.33f, 1.0f, 0.35f, InteractionHand.OFF_HAND, biped.get().toolL, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F))
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         ,
 
-                        new AttackAnimation.Phase(0.36f, 0.37f, 0.39f, 0.50f, 0.68f, 0.56f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.36f, 0.37f, 0.39f, 0.50f, 1.08f, 0.56f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
 
-                        new AttackAnimation.Phase(0.56f, 0.47f, 0.77f, 0.85f, 0.68f, 3.51f, InteractionHand.MAIN_HAND, biped.get().head, DawnDayCollider.KNIFE_DASH)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F))
+                        new AttackAnimation.Phase(0.56f, 0.47f, 0.77f, 0.85f, 1.08f, 3.51f, InteractionHand.MAIN_HAND, biped.get().head, DawnDayCollider.KNIFE_DASH)
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
                                 .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                 )
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.88F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL,true)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.15F, 0.8F))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.15F, 0.7F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 

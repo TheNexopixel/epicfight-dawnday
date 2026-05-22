@@ -83,6 +83,171 @@ public class DawnDayLootModifiers {
 
                 event.getTable().addPool(pool);
             }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/bastion_bridge"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.15f)
+                        )
+                        .add(
+
+                                LootItem.lootTableItem(
+                                                DawnDayItems.netherite_halberd.get()
+
+                                        )
+                        )
+                        .name("netherite_halberd")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/bastion_treasure"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.1f)
+                        )
+                        .add(
+
+                                LootItem.lootTableItem(
+                                        DawnDayItems.milady.get()
+
+                                )
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.diamond_light_greatsword.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.diamond_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.diamond_halberd.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
+                        .name("milady")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/bastion_hoglin_stable"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.253f)
+                        )
+                        .add(
+
+                                LootItem.lootTableItem(
+                                        DawnDayItems.netherite_battlestaff.get()
+
+                                )
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .name("netherite_battlestaff")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/bastion_other"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.2f)
+                        )
+                        .add(
+
+                                LootItem.lootTableItem(
+                                        DawnDayItems.netherite_messer.get()
+
+                                )
+
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
+                        .name("netherite_messer")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/simple_dungeon"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.35f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.herb_sickle.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.iron_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.iron_light_greatsword.get()))
+                        .name("herb_sickle")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/shipwreck_treasure"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.152f)
+                        )
+                        .add(
+
+                                LootItem.lootTableItem(
+                                        DawnDayItems.saber.get()
+
+                                )
+                        )
+                        .name("saber")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/ruined_portal"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.2f))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.golden_light_greatsword.get()))
+                        .name("golden_messer")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/abandoned_mineshaft"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.3f))
+                        .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
+                        .name("backhand_blade")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
         }
     }
 }

@@ -65,6 +65,7 @@
   "effect.epicfight_dd.crushing": "Crushing",
   "effect.epicfight_dd.unflinching": "Unflinching",
   "effect.epicfight_dd.crumbling":"Crumbling",
+  "effect.epicfight_dd.exhausted":"Exhausted",
   "effect.epicfight_dd.fortified":"Fortified",
   "effect.epicfight_dd.sepukku":"Sepukku",
   "effect.epicfight_dd.drained":"Drained",
@@ -85,6 +86,18 @@
   "item.epicfight_dd.netherite_messer":"Netherite Messer",
   "item.epicfight_dd.night_ritus_dagger":"Night Ritual Dagger",
   "item.epicfight_dd.blood_ritus_dagger":"Blood Ritual Dagger",
+
+  "item.minecraft.potion.effect.exhausted":"Potion of Exhausting",
+  "item.minecraft.splash_potion.effect.exhausted":"Splash Potion of Exhausting",
+  "item.minecraft.lingering_potion.effect.exhausted":"Lingering Potion of Exhausting",
+  "item.minecraft.potion.effect.exhausted_long":"Potion of Exhausting",
+  "item.minecraft.splash_potion.effect.exhausted_long":"Splash Potion of Exhausting",
+  "item.minecraft.lingering_potion.effect.exhausted_long":"Lingering Potion of Exhausting",
+  "item.minecraft.potion.effect.exhausted_strong":"Potion of Exhausting",
+  "item.minecraft.splash_potion.effect.exhausted_strong":"Splash Potion of Exhausting",
+  "item.minecraft.lingering_potion.effect.exhausted_strong":"Lingering Potion of Exhausting",
+
+
 
   "item.minecraft.potion.effect.stun_armor":"Potion of Stun Resistance",
   "item.minecraft.splash_potion.effect.stun_armor":"Splash Potion of Stun Resistance",
@@ -159,6 +172,10 @@
   "item.minecraft.splash_potion.effect.potion_of_longer_impact":"Splash Potion of Longer Impact",
   "item.minecraft.lingering_potion.effect.potion_of_longer_impact":"Lingering Potion of Longer Impact",
 
+
+  "item.minecraft.tipped_arrow.effect.exhausted": "Arrow of Exhausting",
+  "item.minecraft.tipped_arrow.effect.exhausted_long": "Arrow of Exhausting",
+  "item.minecraft.tipped_arrow.effect.exhausted_strong": "Arrow of Exhausting",
   "item.minecraft.tipped_arrow.effect.stun_armor": "Arrow of Stun Armor",
   "item.minecraft.tipped_arrow.effect.stun_armor_long": "Arrow of Stun Armor",
   "item.minecraft.tipped_arrow.effect.stun_armor_strong": "Arrow of Stun Armor",
