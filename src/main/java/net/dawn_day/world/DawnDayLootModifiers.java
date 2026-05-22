@@ -84,7 +84,7 @@ public class DawnDayLootModifiers {
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/bastion_bridge"))) {
 
@@ -95,7 +95,7 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                                DawnDayItems.netherite_halberd.get()
+                                                DawnDayItems.NETHERITE_HALBERD.get()
 
                                         )
                         )
@@ -105,7 +105,7 @@ public class DawnDayLootModifiers {
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/bastion_treasure"))) {
 
@@ -116,21 +116,21 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.milady.get()
+                                        DawnDayItems.MILADY.get()
 
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_light_greatsword.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_halberd.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_LIGHT_GREATSWORD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_HALBERD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BONECUTTING_SAW.get()))
                         .name("milady")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/bastion_hoglin_stable"))) {
 
@@ -141,19 +141,19 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.netherite_battlestaff.get()
+                                        DawnDayItems.NETHERITE_BATTLESTAFF.get()
 
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
                         .name("netherite_battlestaff")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/bastion_other"))) {
 
@@ -164,20 +164,20 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.netherite_messer.get()
+                                        DawnDayItems.NETHERITE_MESSER.get()
 
                                 )
 
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_KNIFE.get()))
                         .name("netherite_messer")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/simple_dungeon"))) {
 
@@ -185,16 +185,16 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.herb_sickle.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_battlestaff.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_light_greatsword.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.HERB_SICKLE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_LIGHT_GREATSWORD.get()))
                         .name("herb_sickle")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/shipwreck_treasure"))) {
 
@@ -205,7 +205,7 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.saber.get()
+                                        DawnDayItems.SABER.get()
 
                                 )
                         )
@@ -215,34 +215,34 @@ public class DawnDayLootModifiers {
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/ruined_portal"))) {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.2f))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_light_greatsword.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_KNIFE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_LIGHT_GREATSWORD.get()))
                         .name("golden_messer")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/abandoned_mineshaft"))) {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.3f))
-                        .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BACKHAND_BLADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_KNIFE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_HALBERD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_MESSER.get()))
                         .name("backhand_blade")
                         .build();
 

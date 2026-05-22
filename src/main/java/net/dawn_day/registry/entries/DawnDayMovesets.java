@@ -123,7 +123,7 @@ public final class DawnDayMovesets
     );
 
     public static final DeferredMoveset RITUS_2H = REGISTRY.registerMoveset("ritus_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2, DawnDayAnimations.MESSER_DUAL_AUTO3, DawnDayAnimations.RITUS_DAGGER_DUAL_DASH, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3)
+            .addComboAttacks(DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2, DawnDayAnimations.MESSER_DUAL_AUTO3, DawnDayAnimations.RITUS_DAGGER_DUAL_DASH, DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.WHIRLWIND.get())
