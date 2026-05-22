@@ -1,4 +1,4 @@
-rootProject.name = "build-logic"
+rootProject.name = "Build Logic"
 
 dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
