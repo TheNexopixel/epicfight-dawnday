@@ -1,7 +1,7 @@
 package net.dawn_day.events;
 
-import net.dawn_day.effect.EffectRegistry;
-import net.dawn_day.world.item.DawnDayItems;
+import net.dawn_day.registry.entries.DawnDayEffects;
+import net.dawn_day.registry.entries.DawnDayItems;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -55,7 +55,7 @@ public class RitusEvents {
             return;
         }
 
-        if (player.hasEffect(EffectRegistry.SEPUKKU)) {
+        if (player.hasEffect(DawnDayEffects.SEPUKKU)) {
 
 
             float damage = event.getNewDamage();
@@ -72,10 +72,10 @@ public class RitusEvents {
 
         if (player.getMainHandItem().is(DawnDayItems.BLOOD_RITUS_DAGGER)) {
 
-            if(player.hasEffect(EffectRegistry.SEPUKKU)) {
+            if(player.hasEffect(DawnDayEffects.SEPUKKU)) {
                 player.heal(2.0f);
             }
-            if(player.hasEffect(EffectRegistry.DRAINED)) {
+            if(player.hasEffect(DawnDayEffects.DRAINED)) {
                 player.heal(0.5f);
             }
             else {
@@ -117,7 +117,7 @@ public class RitusEvents {
             if (player.level().isNight()) {
                 playerPatch.setStamina(stamina + 1.0f);
             }
-            if (player.hasEffect(EffectRegistry.SEPUKKU)
+            if (player.hasEffect(DawnDayEffects.SEPUKKU)
                     && player.level().isNight()) {
                 playerPatch.setStamina(stamina + 4.0f);
             } else {

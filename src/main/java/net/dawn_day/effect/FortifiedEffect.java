@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class FortifiedEffect extends MobEffect {
 
-    protected FortifiedEffect(MobEffectCategory pCategory, int pColor) {
+    public FortifiedEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 

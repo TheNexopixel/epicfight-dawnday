@@ -1,6 +1,6 @@
 package net.dawn_day.events;
 
-import net.dawn_day.world.item.DawnDayItems;
+import net.dawn_day.registry.entries.DawnDayPotions;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,44 +13,44 @@ public class ModEvents {
         var builder = event.getBuilder();
 
         // ==================== STAMINA REGEN ====================
-        builder.addMix(Potions.AWKWARD, Items.GOLDEN_APPLE, DawnDayItems.STAMINA_STIMULANT);
-        builder.addMix(DawnDayItems.STAMINA_STIMULANT, Items.REDSTONE, DawnDayItems.LONG_STAMINA_STIMULANT);
-        builder.addMix(DawnDayItems.STAMINA_STIMULANT, Items.GLOWSTONE_DUST, DawnDayItems.STRONG_STAMINA_STIMULANT);
+        builder.addMix(Potions.AWKWARD, Items.GOLDEN_APPLE, DawnDayPotions.STAMINA_STIMULANT);
+        builder.addMix(DawnDayPotions.STAMINA_STIMULANT, Items.REDSTONE, DawnDayPotions.LONG_STAMINA_STIMULANT);
+        builder.addMix(DawnDayPotions.STAMINA_STIMULANT, Items.GLOWSTONE_DUST, DawnDayPotions.STRONG_STAMINA_STIMULANT);
 
         // ==================== MAX STAMINA ====================
-        builder.addMix(Potions.AWKWARD, Items.FEATHER, DawnDayItems.STAMINA_POTION);
-        builder.addMix(DawnDayItems.STAMINA_POTION, Items.REDSTONE, DawnDayItems.LONG_STAMINA_POTION);
-        builder.addMix(DawnDayItems.STAMINA_POTION, Items.GLOWSTONE_DUST, DawnDayItems.STRONG_STAMINA_POTION);
+        builder.addMix(Potions.AWKWARD, Items.FEATHER, DawnDayPotions.STAMINA_POTION);
+        builder.addMix(DawnDayPotions.STAMINA_POTION, Items.REDSTONE, DawnDayPotions.LONG_STAMINA_POTION);
+        builder.addMix(DawnDayPotions.STAMINA_POTION, Items.GLOWSTONE_DUST, DawnDayPotions.STRONG_STAMINA_POTION);
 
         // ==================== POWER ====================
-        builder.addMix(Potions.STRONG_STRENGTH, Items.ECHO_SHARD, DawnDayItems.POWER_POTION);
+        builder.addMix(Potions.STRONG_STRENGTH, Items.ECHO_SHARD, DawnDayPotions.POWER_POTION);
 
         // ==================== MORTAL CURSE ====================
-        builder.addMix(Potions.STRONG_HEALING, Items.WITHER_ROSE, DawnDayItems.CURSED);
-        builder.addMix(DawnDayItems.CURSED, Items.REDSTONE, DawnDayItems.CURSED_LONG);
-        builder.addMix(DawnDayItems.CURSED, Items.GLOWSTONE_DUST, DawnDayItems.CURSED_STRONG);
+        builder.addMix(Potions.STRONG_HEALING, Items.WITHER_ROSE, DawnDayPotions.CURSED);
+        builder.addMix(DawnDayPotions.CURSED, Items.REDSTONE, DawnDayPotions.CURSED_LONG);
+        builder.addMix(DawnDayPotions.CURSED, Items.GLOWSTONE_DUST, DawnDayPotions.CURSED_STRONG);
 
         // ==================== SWEEPING ====================
-        builder.addMix(Potions.MUNDANE, Items.PRISMARINE_SHARD, DawnDayItems.SWEEPING);
+        builder.addMix(Potions.MUNDANE, Items.PRISMARINE_SHARD, DawnDayPotions.SWEEPING);
 
         // ==================== IMPACT ====================
-        builder.addMix(Potions.AWKWARD, Items.PRISMARINE_CRYSTALS, DawnDayItems.impactpotion);
-        builder.addMix(DawnDayItems.impactpotion, Items.REDSTONE, DawnDayItems.impactpotion_long);
-        builder.addMix(DawnDayItems.impactpotion, Items.GLOWSTONE_DUST, DawnDayItems.impactpotion_strong);
+        builder.addMix(Potions.AWKWARD, Items.PRISMARINE_CRYSTALS, DawnDayPotions.impactpotion);
+        builder.addMix(DawnDayPotions.impactpotion, Items.REDSTONE, DawnDayPotions.impactpotion_long);
+        builder.addMix(DawnDayPotions.impactpotion, Items.GLOWSTONE_DUST, DawnDayPotions.impactpotion_strong);
 
         // ==================== CRUMBLING ====================
-        builder.addMix(Potions.THICK, Items.POPPED_CHORUS_FRUIT, DawnDayItems.CRUMBLING);
-        builder.addMix(DawnDayItems.CRUMBLING, Items.REDSTONE, DawnDayItems.CRUMBLING_LONG);
-        builder.addMix(DawnDayItems.CRUMBLING, Items.GLOWSTONE_DUST, DawnDayItems.CRUMBLING_STRONG);
+        builder.addMix(Potions.THICK, Items.POPPED_CHORUS_FRUIT, DawnDayPotions.CRUMBLING);
+        builder.addMix(DawnDayPotions.CRUMBLING, Items.REDSTONE, DawnDayPotions.CRUMBLING_LONG);
+        builder.addMix(DawnDayPotions.CRUMBLING, Items.GLOWSTONE_DUST, DawnDayPotions.CRUMBLING_STRONG);
 
         // ==================== STUN ARMOR ====================
-        builder.addMix(Potions.THICK, Items.IRON_INGOT, DawnDayItems.STUNARMOR);
-        builder.addMix(DawnDayItems.STUNARMOR, Items.REDSTONE, DawnDayItems.STUNARMOR_LONG);
-        builder.addMix(DawnDayItems.STUNARMOR, Items.GLOWSTONE_DUST, DawnDayItems.STUNARMOR_STRONG);
+        builder.addMix(Potions.THICK, Items.IRON_INGOT, DawnDayPotions.STUNARMOR);
+        builder.addMix(DawnDayPotions.STUNARMOR, Items.REDSTONE, DawnDayPotions.STUNARMOR_LONG);
+        builder.addMix(DawnDayPotions.STUNARMOR, Items.GLOWSTONE_DUST, DawnDayPotions.STUNARMOR_STRONG);
 
         // ==================== FORTIFIED ====================
-        builder.addMix(Potions.THICK, Items.DIAMOND, DawnDayItems.FORTIFIED);
-        builder.addMix(DawnDayItems.FORTIFIED, Items.REDSTONE, DawnDayItems.FORTIFIED_LONG);
-        builder.addMix(DawnDayItems.FORTIFIED, Items.GLOWSTONE_DUST, DawnDayItems.FORTIFIED_STRONG);
+        builder.addMix(Potions.THICK, Items.DIAMOND, DawnDayPotions.FORTIFIED);
+        builder.addMix(DawnDayPotions.FORTIFIED, Items.REDSTONE, DawnDayPotions.FORTIFIED_LONG);
+        builder.addMix(DawnDayPotions.FORTIFIED, Items.GLOWSTONE_DUST, DawnDayPotions.FORTIFIED_STRONG);
     }
 }

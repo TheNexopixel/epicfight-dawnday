@@ -1,7 +1,7 @@
 package net.dawn_day.gameasset.animation;
 
-import net.dawn_day.effect.EffectRegistry;
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDayEffects;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -601,7 +601,7 @@ public class DawnDayAnimations {
 
                                     entity.addEffect(
                                             new MobEffectInstance(
-                                                    EffectRegistry.IMPREGNABILITY,
+                                                    DawnDayEffects.IMPREGNABILITY,
                                                     400, 0, false, false, true
                                             )
                                     );
@@ -667,8 +667,8 @@ public class DawnDayAnimations {
                                             float damage =
                                                     1.5f + maxHealth * 0.3F;
 
-                                            if (entitypatch.getOriginal().hasEffect(EffectRegistry.DRAINED) ||
-                                                    entitypatch.getOriginal().hasEffect(EffectRegistry.SEPUKKU)) {
+                                            if (entitypatch.getOriginal().hasEffect(DawnDayEffects.DRAINED) ||
+                                                    entitypatch.getOriginal().hasEffect(DawnDayEffects.SEPUKKU)) {
 
 
                                                 damage = 3 + maxHealth * 0.6F;
@@ -769,7 +769,7 @@ public class DawnDayAnimations {
 
                                             entity.addEffect(
                                                     new MobEffectInstance(
-                                                            EffectRegistry.SEPUKKU,
+                                                            DawnDayEffects.SEPUKKU,
                                                             600, 0, false, false, true
                                                     )
                                             );

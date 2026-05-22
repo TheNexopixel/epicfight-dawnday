@@ -3,7 +3,7 @@ package net.dawn_day.gameasset.animation;
 import net.dawn_day.gameasset.animation.types.SelectiveAnimationProxy;
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;

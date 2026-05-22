@@ -1,6 +1,6 @@
 package net.dawn_day.gameasset.animation;
 
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotions;

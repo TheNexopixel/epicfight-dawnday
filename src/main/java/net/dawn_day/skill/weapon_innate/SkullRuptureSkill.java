@@ -1,7 +1,7 @@
 package net.dawn_day.skill.weapon_innate;
 
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;

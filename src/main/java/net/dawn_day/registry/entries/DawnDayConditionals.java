@@ -1,8 +1,6 @@
 package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
-import net.dawn_day.skill.DawnDaySkills;
-import net.dawn_day.skill.SkillDataKeys;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.ex_cap.provider.ProviderConditional;
@@ -30,7 +28,7 @@ public final class DawnDayConditionals
 
     public static final DeferredConditional WINGSTANCE_ACTIVE = REGISTRY.registerConditional(
             "wingstance_active",
-            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.OCHS, DawnDaySkills.WINGSTANCE, SkillSlots.WEAPON_PASSIVE, SkillDataKeys.SPECIAL_STANCE_ACTIVATE, false)
+            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.OCHS, DawnDaySkills.WINGSTANCE, SkillSlots.WEAPON_PASSIVE, DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE, false)
     );
 
     public static final DeferredConditional DUAL_AXES = REGISTRY.registerConditional("dual_axes", () ->

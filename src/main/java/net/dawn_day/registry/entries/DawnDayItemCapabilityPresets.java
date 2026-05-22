@@ -1,7 +1,6 @@
 package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
-import net.dawn_day.gameasset.DawnDaySounds;
 import net.dawn_day.gameasset.animation.DawnDayCollider;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
 import yesman.epicfight.gameasset.ColliderPreset;

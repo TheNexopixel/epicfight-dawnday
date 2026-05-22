@@ -4,7 +4,6 @@ import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.gameasset.animation.DawnDayAnimations;
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
 import net.dawn_day.gameasset.animation.WingStanceAnims;
-import net.dawn_day.skill.DawnDaySkills;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.ex_cap.data.Moveset;
 import yesman.epicfight.gameasset.Animations;

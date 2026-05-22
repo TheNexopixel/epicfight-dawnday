@@ -1,9 +1,9 @@
 package net.dawn_day.events;
 
 import net.dawn_day.EpicFightDawnDay;
-import net.dawn_day.effect.EffectRegistry;
+import net.dawn_day.registry.entries.DawnDayEffects;
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
-import net.dawn_day.skill.DawnDaySkills;
+import net.dawn_day.registry.entries.DawnDaySkills;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -24,7 +24,7 @@ import java.util.Objects;
 public class GameBusEvent {
     @SubscribeEvent
     public static void resistance(LivingDamageEvent.Pre event) {
-        var effectInstance = event.getEntity().getEffect(EffectRegistry.IMPREGNABILITY);
+        var effectInstance = event.getEntity().getEffect(DawnDayEffects.IMPREGNABILITY);
 
         if (effectInstance != null) {
             float originalAmount = event.getNewDamage();
@@ -42,7 +42,7 @@ public class GameBusEvent {
         }
         LivingEntity entity = event.getEntityPatch().getOriginal();
         StunType stunType = event.getStunType();
-        if(entity.hasEffect(EffectRegistry.IMPREGNABILITY) && stunType != StunType.NEUTRALIZE){
+        if(entity.hasEffect(DawnDayEffects.IMPREGNABILITY) && stunType != StunType.NEUTRALIZE){
             event.cancel();
         }
     }
@@ -50,14 +50,14 @@ public class GameBusEvent {
     @SubscribeEvent
     public static void onKB(LivingKnockBackEvent event) {
         LivingEntity entity = event.getEntity();
-        if ( entity.hasEffect(EffectRegistry.IMPREGNABILITY) ) {
+        if ( entity.hasEffect(DawnDayEffects.IMPREGNABILITY) ) {
             event.setCanceled(true);
         }
     }
 
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent event){
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.IMPREGNABILITY)){
+        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.IMPREGNABILITY)){
             LivingEntity target = event.getEntity();
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
@@ -67,12 +67,12 @@ public class GameBusEvent {
                             .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.RAAAHHH)
 
                     ) {
-                        target.removeEffect(EffectRegistry.IMPREGNABILITY);
+                        target.removeEffect(DawnDayEffects.IMPREGNABILITY);
                     }
                 }
             }
         }
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.SEPUKKU)){
+        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU)){
             LivingEntity target = event.getEntity();
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
@@ -82,7 +82,7 @@ public class GameBusEvent {
                             .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU)
 
                     ) {
-                        target.removeEffect(EffectRegistry.SEPUKKU);
+                        target.removeEffect(DawnDayEffects.SEPUKKU);
                     }
                 }
             }

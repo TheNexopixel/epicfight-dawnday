@@ -1,6 +1,6 @@
 package net.dawn_day.world;
 
-import net.dawn_day.world.item.DawnDayItems;
+import net.dawn_day.registry.entries.DawnDayItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;

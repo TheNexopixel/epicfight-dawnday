@@ -1,4 +1,4 @@
-package net.dawn_day.skill;
+package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.skill.stances.WingStanceSkill;
@@ -10,9 +10,9 @@ import yesman.epicfight.registry.EpicFightRegistries;
 import yesman.epicfight.skill.SkillDataKey;
 
 
-public class SkillDataKeys {
+public final class DawnDaySkillDataKeys {
 
-    private SkillDataKeys(){}
+    private DawnDaySkillDataKeys(){}
 
  /*
 ヽ(｀Д´)ﾉ

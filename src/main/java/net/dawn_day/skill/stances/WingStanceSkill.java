@@ -3,7 +3,7 @@ package net.dawn_day.skill.stances;
 import net.dawn_day.gameasset.animation.WingStanceAnims;
 import net.dawn_day.network.DDNetworkHandler;
 import net.dawn_day.network.CPSkillConsume;
-import net.dawn_day.skill.SkillDataKeys;
+import net.dawn_day.registry.entries.DawnDaySkillDataKeys;
 import net.neoforged.neoforge.network.PacketDistributor;
 import yesman.epicfight.api.event.EntityEventListener;
 import yesman.epicfight.api.event.EpicFightEventHooks;
@@ -36,8 +36,8 @@ public class WingStanceSkill extends Skill {
             boolean canActivate = innateStackCount >= 1 || container.getExecutor().getOriginal().isCreative();
             boolean isInWingStance = false;
 
-            if (data_manager != null && data_manager.hasData(SkillDataKeys.SPECIAL_STANCE_ACTIVATE)) {
-                isInWingStance = data_manager.getDataValue(SkillDataKeys.SPECIAL_STANCE_ACTIVATE);
+            if (data_manager != null && data_manager.hasData(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE)) {
+                isInWingStance = data_manager.getDataValue(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE);
             }
 
             if (!isInWingStance) return;

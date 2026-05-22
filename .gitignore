@@ -103,6 +103,8 @@ $RECYCLE.BIN/
 *.lnk
 
 .gradle
+.kotlin
+gradle/build-logic/.kotlin
 build/
 
 # Ignore Gradle GUI config

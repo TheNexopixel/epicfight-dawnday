@@ -1,4 +1,4 @@
-package net.dawn_day.gameasset;
+package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -7,11 +7,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class DawnDaySounds {
+public final class DawnDaySounds {
 
+    private DawnDaySounds() {}
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, EpicFightDawnDay.MOD_ID);
-
-
     public static final DeferredHolder<SoundEvent, SoundEvent> MILADY_LIGHT_SLASH = registerSound("sfx.milady_slash");
     public static final DeferredHolder<SoundEvent, SoundEvent> MILADY_HEAVY_SLASH = registerSound("sfx.milady_heavy_slash");
     public static final DeferredHolder<SoundEvent, SoundEvent> MILADY_DUAL_SLASH = registerSound("sfx.milady_dual_slash");

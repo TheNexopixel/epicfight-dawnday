@@ -1,6 +1,6 @@
 package net.dawn_day.gameasset.animation;
 
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -16,7 +16,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import org.joml.Vector3f;
-import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;

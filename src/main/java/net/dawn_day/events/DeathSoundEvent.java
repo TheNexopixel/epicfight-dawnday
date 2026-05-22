@@ -1,7 +1,7 @@
 package net.dawn_day.events;
 
 import net.dawn_day.DawnDayConfig;
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;

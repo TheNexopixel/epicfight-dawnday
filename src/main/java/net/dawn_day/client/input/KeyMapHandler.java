@@ -5,9 +5,9 @@ import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.gameasset.animation.WingStanceAnims;
 import net.dawn_day.network.CPLivingModifierPacket;
 import net.dawn_day.network.DDNetworkHandler;
-import net.dawn_day.skill.DawnDaySkills;
-import net.dawn_day.skill.SkillDataKeys;
-import net.dawn_day.world.item.DawnDayItems;
+import net.dawn_day.registry.entries.DawnDaySkills;
+import net.dawn_day.registry.entries.DawnDaySkillDataKeys;
+import net.dawn_day.registry.entries.DawnDayItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -34,7 +34,7 @@ public class KeyMapHandler {
             if (DawnDayKeyMappings.SWITCH_STANCE.consumeClick()) {
                 LocalPlayerPatch localPlayerPatch = EpicFightCapabilities.getLocalPlayerPatch(mc.player);
                 if (localPlayerPatch != null && localPlayerPatch.isEpicFightMode()
-                        && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeys.SPECIAL_STANCE_ACTIVATE)) {
+                        && localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE)) {
 
                     AnimationPlayer animationPlayer = localPlayerPatch.getAnimator().getPlayerFor(null);
 
@@ -46,8 +46,8 @@ public class KeyMapHandler {
                             && !(animationPlayer.getAnimation().checkType(AttackAnimation.class))
                             && !isHoldingMiladyOffhand) {
 
-                        if (localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeys.SPECIAL_STANCE_ACTIVATE) == false) {
-                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE.get()).getDataManager().setDataSync(SkillDataKeys.SPECIAL_STANCE_ACTIVATE, true);
+                        if (localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE) == false) {
+                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE.get()).getDataManager().setDataSync(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE, true);
 
                             localPlayerPatch.getOriginal().playSound(SoundEvents.AMETHYST_BLOCK_RESONATE, 150f, 0.85f);
 
@@ -85,7 +85,7 @@ public class KeyMapHandler {
 
 
                         } else {
-                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE.get()).getDataManager().setDataSync(SkillDataKeys.SPECIAL_STANCE_ACTIVATE, false);
+                            localPlayerPatch.getSkill(DawnDaySkills.WINGSTANCE.get()).getDataManager().setDataSync(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE, false);
                             localPlayerPatch.getOriginal().playSound(SoundEvents.BEACON_DEACTIVATE, 70f, 1.0f);
 
                             CPLivingModifierPacket modifierPacket = new CPLivingModifierPacket(true);

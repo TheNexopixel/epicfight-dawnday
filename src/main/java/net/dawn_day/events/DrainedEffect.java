@@ -1,7 +1,7 @@
 package net.dawn_day.events;
 
-import net.dawn_day.effect.EffectRegistry;
-import net.dawn_day.gameasset.DawnDaySounds;
+import net.dawn_day.registry.entries.DawnDayEffects;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +20,7 @@ public class DrainedEffect {
         LivingEntity entity = event.getEntity();
 
         if (event.getEffectInstance().getEffect()
-                != EffectRegistry.DRAINED.get()) {
+                != DawnDayEffects.DRAINED.get()) {
             return;
         }
 
@@ -63,9 +63,9 @@ public class DrainedEffect {
 
     @SubscribeEvent
     public static void onEffectExpire(MobEffectEvent.Expired event) {
-        if (event.getEffectInstance().is(EffectRegistry.SEPUKKU))
+        if (event.getEffectInstance().is(DawnDayEffects.SEPUKKU))
         {
-            event.getEntity().addEffect(new MobEffectInstance(EffectRegistry.DRAINED, 350, 0));
+            event.getEntity().addEffect(new MobEffectInstance(DawnDayEffects.DRAINED, 350, 0));
         }
     }
 

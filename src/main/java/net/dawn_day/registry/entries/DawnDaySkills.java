@@ -1,4 +1,4 @@
-package net.dawn_day.skill;
+package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.gameasset.animation.AdditionalAnimations;
@@ -6,7 +6,6 @@ import net.dawn_day.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
 
-import net.dawn_day.gameasset.DawnDaySounds;
 import net.dawn_day.skill.stances.WingStanceSkill;
 import net.dawn_day.skill.weapon_innate.*;
 

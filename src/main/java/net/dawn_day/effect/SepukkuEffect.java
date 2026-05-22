@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class SepukkuEffect extends MobEffect {
 
-    protected SepukkuEffect(MobEffectCategory pCategory, int pColor) {
+    public SepukkuEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 
