@@ -1,6 +1,6 @@
 {
   "required": false,
-  "package": "net.epicfight_dd.mixin",
+  "package": "net.dawn_day.mixin",
   "refmap": "mixins.epicfight_dd.refmap.json",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",

@@ -1,0 +1,150 @@
+package net.dawn_day.events;
+
+import net.dawn_day.registry.entries.DawnDayEffects;
+import net.dawn_day.registry.entries.DawnDayItems;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import org.joml.Vector3f;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+
+@EventBusSubscriber
+public class RitusEvents {
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingDamageEvent.Pre event) {
+
+        if (!(event.getSource().getEntity() instanceof Player player)) {
+            return;
+        }
+
+        if (player.getMainHandItem().getItem() != DawnDayItems.NIGHT_RITUS_DAGGER.get()) {
+            return;
+        }
+        int moonPhase = player.level().getMoonPhase();
+        float bonus;
+        Level level = player.level();
+
+        if (level.isNight()) {
+            switch (moonPhase) {
+                case 0 -> bonus = 5.0f; // = full moon
+                case 1, 7 -> bonus = 3.5f;
+                case 2, 6 -> bonus = 2.5f;
+                case 3, 5 -> bonus = 1.0f;
+                default -> bonus = 0.0f;
+            }
+            event.setNewDamage(event.getNewDamage() + bonus);
+        }
+    }
+    @SubscribeEvent
+    public static void onSeppuku(LivingDamageEvent.Pre event) {
+
+
+        if (!(event.getSource().getEntity() instanceof Player player)) {
+            return;
+        }
+
+
+        if (player.getMainHandItem().getItem() != DawnDayItems.BLOOD_RITUS_DAGGER.get()) {
+            return;
+        }
+
+        if (player.hasEffect(DawnDayEffects.SEPUKKU)) {
+
+
+            float damage = event.getNewDamage();
+
+            event.setNewDamage(damage + 2.0f);
+        }
+    }
+    @SubscribeEvent
+    public static void onEntityDeath(LivingDeathEvent event) {
+
+        if (!(event.getSource().getEntity() instanceof Player player)) {
+            return;
+        }
+
+        if (player.getMainHandItem().is(DawnDayItems.BLOOD_RITUS_DAGGER)) {
+
+            if(player.hasEffect(DawnDayEffects.SEPUKKU)) {
+                player.heal(2.0f);
+            }
+            if(player.hasEffect(DawnDayEffects.DRAINED)) {
+                player.heal(0.5f);
+            }
+            else {
+                player.heal(1.0f);
+            }
+
+            if (!player.level().isClientSide) {
+
+                ServerLevel level = (ServerLevel) player.level();
+
+                level.sendParticles(
+                        new DustParticleOptions(
+                                new Vector3f(1.0f, 0.0f, 0.0f),
+                                1.2f
+                        ),
+                        player.getX(),
+                        player.getY() + 1.0,
+                        player.getZ(),
+                        15,
+                        0.3,
+                        0.5,
+                        0.3,
+                        0.01
+                );
+            }
+        }
+
+
+        // NIGHT DAGGER
+
+
+        if (player.getMainHandItem().is(DawnDayItems.NIGHT_RITUS_DAGGER)) {
+
+            PlayerPatch<?> playerPatch =
+                    EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
+
+            float stamina = playerPatch.getStamina();
+
+            if (player.level().isNight()) {
+                playerPatch.setStamina(stamina + 1.0f);
+            }
+            if (player.hasEffect(DawnDayEffects.SEPUKKU)
+                    && player.level().isNight()) {
+                playerPatch.setStamina(stamina + 4.0f);
+            } else {
+                playerPatch.setStamina(stamina + 0.5f);
+            }
+
+
+            if (!player.level().isClientSide) {
+
+                ServerLevel level = (ServerLevel) player.level();
+
+                level.sendParticles(
+                        new DustParticleOptions(
+                                new Vector3f(0.2f, 0.4f, 1.0f),
+                                1.2f
+                        ),
+                        player.getX(),
+                        player.getY() + 1.0,
+                        player.getZ(),
+                        15,
+                        0.3,
+                        0.5,
+                        0.3,
+                        0.01
+                );
+            }
+        }
+        }
+    }
+

@@ -1,44 +1,46 @@
 [versions]
+#Core Mod Versions
+mod = "21.17.0.1"
+java = "21"
 
-minecraft = "1.20.1"
-moddevgradle = "2.0.141"
-#epic-fight = "ExCap"
-#epic-fight-extra = "1.1.9"
-#invincible = "20.14.8.2-mc1.20.1-forge"
+# Minecraft
+minecraft = "1.21.1"
+parchmentMappings = "2024.11.17"
 
-# Version tags on Modrinth (usually the actual version number or a specific ID)
-#embeddium = "0.3.31+mc1.20.1"
-#mekanism = "10.4.16.80"
-#draconic-evolution = "3.1.2.621"
-#projecte = "4901949"
-#mmmmmmmmmmmm = "1.20-2.0.9"
-#battle-arts-api = "20.14.16.2"
+# NeoForge
+neoforge = "21.1.220"
+neoforgeRange = "[21,)"
+moddevgradle = "2.0.134"
+neoform = "1.21.1-20240808.144430"
 
+# SpongePowered Mixin
+mixin = "0.8.7"
+
+# Plugins
 mcSafeResources = "0.0.2"
 modPublish = "1.1.0"
-#exCapExtra = "20.14.16.1"
+
+# Dependencies
+epic-fight = "21.17.2-mc1.21.1-neoforge"
+epicskills = "21.3.1-1.21.1"
+dummy = "1.21-2.0.12-neoforge"
+moonlight = "1.21-2.29.33-neoforge"
+
 
 
 [libraries]
+epicFight = { module = "maven.modrinth:epic-fight", version.ref = "epic-fight" }
+dummy = { group = "maven.modrinth", name = "mmmmmmmmmmmm", version.ref = "dummy"}
+moonlight = { group = "maven.modrinth", name = "moonlight", version.ref = "moonlight"}
 
-#embeddium = { module = "maven.modrinth:embeddium", version.ref = "embeddium" }
-#battleArtsAPI = { module = "maven.modrinth:battle-arts-api", version.ref = "battle-arts-api" }
-#mekanism = { module = "maven.modrinth:mekanism", version.ref = "mekanism" }
-#draconicEvolution = { module = "maven.modrinth:draconic-evolution", version.ref = "draconic-evolution" }
-#projecte = { module = "curse.maven:projecte-226410", version.ref = "projecte" }
-#mmmmmmmmmmmm = { module = "maven.modrinth:mmmmmmmmmmmm", version.ref = "mmmmmmmmmmmm" }
-#epicFight = { group = "libs", name = "epicfight", version.ref = "epic-fight" }
-#exCapExtra = { module = "libs:excapextra", version.ref = "exCapExtra"}
-#epicFightExtra = { module = "maven.modrinth:epicfight-extra", version.ref = "epic-fight-extra"}
-#invincible = {module = "maven.modrinth:epic-fight-invincible-lib", version.ref = "invincible"}
+publisher = { module = "me.modmuss50.mod-publish-plugin:me.modmuss50.mod-publish-plugin.gradle.plugin", version.ref = "modPublish"}
+
 
 [plugins]
-# Environment Specific
-eclipse = { id = "eclipse"}
-idea = { id = "idea"}
-
+core = {id = "core"}
 #Core Gradle Stuff
-moddevgradle = { id = "net.neoforged.moddev.legacyforge", version.ref = "moddevgradle" }
-publisher = { id = "me.modmuss50.mod-publish-plugin", version.ref = "modPublish"}
-
+moddevgradle = { id = "net.neoforged.moddev", version.ref = "moddevgradle" }
 mcSafeResources = { id = "dev.echoellet.mc-safe-resources", version.ref = "mcSafeResources" }
+
+[bundles]
+dummyBundle = ["dummy", "moonlight"]
