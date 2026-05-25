@@ -56,7 +56,7 @@ public class QoLMiscAnimations {
     public static void animBuild(AnimationManager.AnimationBuilder builder){
 
         EXPRESSIVE_DEATH = builder.nextAccessor(
-                "biped/living/death_sel",
+                "biped/living/death",
                 ac -> new SelectiveAnimationProxy(patch -> {
                     LivingEntity entity = patch.getOriginal();
                     DamageSource source = entity.getLastDamageSource();
@@ -119,12 +119,7 @@ public class QoLMiscAnimations {
 
 
         GENERIC_DEATH_1 = builder.nextAccessor("biped/deathanims/death_generic1", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
-                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                        (e, s, p) ->
-                                e.getOriginal().playSound(DawnDaySounds.KILLED1.get(),100,1), AnimationEvent.Side.CLIENT
-                )));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         SEPUKKU_DEATH = builder.nextAccessor("biped/deathanims/sepukku_death", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)

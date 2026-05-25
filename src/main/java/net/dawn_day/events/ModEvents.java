@@ -1,11 +1,14 @@
 package net.dawn_day.events;
 
+import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.registry.entries.DawnDayPotions;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
+@EventBusSubscriber(modid = EpicFightDawnDay.MOD_ID)
 public class ModEvents {
 
     @SubscribeEvent

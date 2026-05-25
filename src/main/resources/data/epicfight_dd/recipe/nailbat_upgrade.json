@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "NNN",
+    "NIN",
+    " B "
+  ],
+  "key": {
+    "N": {
+      "item": "epicfight_dd:nail"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "B": {
+      "item": "epicfight_dd:bat"
+    }
+  },
+
+  "result": {
+    "id": "epicfight_dd:nailbat",
+    "count": 1
+  }
+}

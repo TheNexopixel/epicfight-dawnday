@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " D ",
+    "NK ",
+    "N N"
+  ],
+  "key": {
+    "K": {
+      "item": "epicfight_dd:iron_knife"
+    },
+    "D": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "id": "epicfight_dd:iron_messer",
+    "count": 1
+  }
+}
+

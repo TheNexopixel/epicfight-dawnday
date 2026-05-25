@@ -14,7 +14,7 @@ public class DawnDayKeyMappings {
     public static final KeyMapping SWITCH_STANCE =
             new CombatKeyMapping(
                     LangKeys.KEY_SWITCH_STANCE,
-                    InputConstants.KEY_Y,
+                    InputConstants.KEY_J,
                     EpicFightInputCategories.COMBAT
             );
 

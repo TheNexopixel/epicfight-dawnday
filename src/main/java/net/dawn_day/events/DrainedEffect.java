@@ -1,5 +1,6 @@
 package net.dawn_day.events;
 
+import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.registry.entries.DawnDayEffects;
 import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -13,7 +14,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.joml.Vector3f;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = EpicFightDawnDay.MOD_ID)
 public class DrainedEffect {
     @SubscribeEvent
     public static void onEffectAdded(MobEffectEvent.Added event) {
@@ -60,7 +61,8 @@ public class DrainedEffect {
                 );
             }
         }
-        if (event.getEffectInstance().getEffect().is(DawnDayEffects.CURSED)) {
+        if (event.getEffectInstance().getEffect().value()
+                == DawnDayEffects.CURSED.get()) {
 
             int random = entity.level().random.nextInt(2);
             SoundEvent sound;
@@ -113,8 +115,9 @@ public class DrainedEffect {
 
     @SubscribeEvent
     public static void onEffectExpire(MobEffectEvent.Expired event) {
-        if (event.getEffectInstance().is(DawnDayEffects.SEPUKKU))
-        {
+        assert event.getEffectInstance() != null;
+        if (event.getEffectInstance().getEffect().value()
+                == DawnDayEffects.SEPUKKU.get()) {
             event.getEntity().addEffect(new MobEffectInstance(DawnDayEffects.DRAINED, 350, 0));
         }
     }
