@@ -1,10 +1,10 @@
 package net.epicfight_dd.api.animation;
 
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
+
 
 public class AnimUtils {
     /// useful for in game testing acquired data
@@ -26,9 +26,9 @@ public class AnimUtils {
     public static AnimationEvent.@NotNull InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> playSoundOnFrame(int blenderFrame, SoundEvent soundEvent) {
         return AnimationEvent.InTimeEvent.create(
                 AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) -> {
-                    e.getOriginal().level().playSound(null, e.getOriginal().getOnPos(),soundEvent, SoundSource.PLAYERS, 1.0f, 1.0f);
+                    e.playSound(soundEvent,1.0f,1.0f,1.0f);
 
-                }, AnimationEvent.Side.CLIENT
+                }, AnimationEvent.Side.BOTH
         );
     }
 
