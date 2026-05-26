@@ -1,13 +1,18 @@
 package net.epicfight_dd.gameasset.animation.optional;
 
 
+import net.epicfight_dd.api.animation.AnimUtils;
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionAttackProxy;
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionHitAnimation;
+import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
+import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
@@ -24,6 +29,8 @@ import yesman.epicfight.world.damagesource.ExtraDamageInstance;
 
 import java.util.Set;
 
+import static net.epicfight_dd.api.animation.AnimUtils.playSoundOnFrame;
+
 public class DawnDayExecAnims {
 
     private static final ExtraDamageInstance.ExtraDamage TARGET_MAX_HEALTH = new ExtraDamageInstance.ExtraDamage(
@@ -33,6 +40,8 @@ public class DawnDayExecAnims {
 
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> EXECUTION_KNEE_STOMP;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> EXECUTED_FIST_FULL;
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> NAOYA_EXEC;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> NAOYA_EXEC_HIT;
 
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT_SPECIAL;
@@ -63,6 +72,60 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
 
         );
+
+        NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac)->
+                new ExecutionAttackAnimation(0.1f,0.0f,
+                        AnimUtils.getAnimTimeFromFrame(220),
+                        AnimUtils.getAnimTimeFromFrame(229),
+                        0.93f,
+                        executionCollider,
+                        Armatures.BIPED.get().handR,
+                        ac,
+                        Armatures.BIPED
+                )
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.0F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, dawnDaySounds.soft_wipe.get())
+                        .addEvents(
+                                playSoundOnFrame(13,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(16,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(20,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(26,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(38,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(43,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(70,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(83,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(94,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(101,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(106,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(115,EpicFightSounds.BLUNT_HIT.get()),
+                                playSoundOnFrame(124,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(145,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(154,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(163,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(168,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(173,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(178,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(185,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(193,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(199,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(203,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(209,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(218,dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(220,dawnDaySounds.Light_Punch.get())
+
+                        )
+
+
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
+
+        );
+
+        NAOYA_EXEC_HIT = builder.nextAccessor("biped/execution/unarmed/get_aurafarmed", (accessor) ->
+                new ExecutionHitAnimation(0.12f, accessor, Armatures.BIPED)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
+
+        );
+
 
 
         MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor)->
@@ -112,6 +175,8 @@ public class DawnDayExecAnims {
 
         );
 
+
+
         BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor)->
         get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.8f,0.85f,1.42f,1.45f));
 
@@ -121,8 +186,6 @@ public class DawnDayExecAnims {
 
 
     }
-
-
 
 
 
@@ -143,7 +206,6 @@ public class DawnDayExecAnims {
 
     }
 
-    @SuppressWarnings("RedundantArrayCreation")
     private static ExecutionAttackAnimation getExecutionAttackAnimation(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider, AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION) {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
@@ -157,7 +219,6 @@ public class DawnDayExecAnims {
 
 
     }
-    @SuppressWarnings("RedundantArrayCreation")
     private static ExecutionAttackAnimation get2PhaseExecAtkAnim(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
                                                                  AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
                                                                  float preDelay1,

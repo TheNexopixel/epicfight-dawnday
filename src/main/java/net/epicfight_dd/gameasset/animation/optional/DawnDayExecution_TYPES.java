@@ -17,6 +17,12 @@ public class DawnDayExecution_TYPES {
             new Vec3(0.201, 0.0, 1.90), -90.1f, 87
     );
 
+    public static final Type NAOYA = new Type(
+            DawnDayExecAnims.NAOYA_EXEC,
+            DawnDayExecAnims.NAOYA_EXEC_HIT,
+            new Vec3(0.201d,0.0d,0.0d), 180.0f, 90
+    );
+
     public static final Type MILADY = new Type(
             DawnDayExecAnims.MILADY_EXECUTION,
             DawnDayExecAnims.MILADY_EXECUTION_HIT,

@@ -5,6 +5,37 @@
     "subtitle":"sfx.slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false},{"name":"epicfight_dd:sfx/milady_light_slash", "stream":false}]
   },
+  "sfx.light_punch": {
+    "category": "entity",
+    "subtitle": "sfx.light_punch",
+    "sounds" : [
+      {
+      "name": "epicfight_dd:sfx/lightpunch1",
+      "stream" : false
+    },
+      {
+        "name": "epicfight_dd:sfx/lightpunch2",
+        "stream" : false
+      },
+      {
+        "name": "epicfight_dd:sfx/lightpunch3",
+        "stream" : false
+      },
+      {
+        "name": "epicfight_dd:sfx/lightpunch4",
+        "stream" : false
+      },
+      {
+        "name": "epicfight_dd:sfx/lightpunch5",
+        "stream" : false
+      },
+      {
+        "name": "epicfight_dd:sfx/lightpunch6",
+        "stream" : false
+      }
+
+    ]
+  },
   "sfx.milady_heavy_slash":
   {
     "category":"master",
@@ -104,13 +135,13 @@
   },
   "sfx.skeleton_banging":
   {
-    "category":"master",
+    "category":"entity",
     "subtitle":"RAAHHHHHH",
     "sounds":[{"name":"epicfight_dd:sfx/skeleton_banging", "stream":false}]
   },
   "sfx.soft_wipe":
   {
-    "category":"master",
+    "category":"entity",
     "subtitle":"sfx.soft_wipe",
     "sounds":[{"name":"epicfight_dd:sfx/soft_wipe", "stream":false}]
   }

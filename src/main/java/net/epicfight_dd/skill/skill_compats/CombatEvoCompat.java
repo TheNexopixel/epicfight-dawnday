@@ -12,6 +12,7 @@ import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.item.GloveItem;
 
 public class  CombatEvoCompat implements ICompatModule {
 
@@ -20,10 +21,11 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(EpicFightMod.identifier("glove"), CapabilityItem.Styles.COMMON,
               (item, livingentitypatch) -> {
                   Item item1 = livingentitypatch.getAdvancedHoldingItemStack(InteractionHand.OFF_HAND).getItem();
-                    return DawnDayExecution_TYPES.KNEE_STOMP;
-//                  if (item1 instanceof GloveItem) {
 
-//                  } else return null;
+                  if (item1 instanceof GloveItem) {
+                   return DawnDayExecution_TYPES.NAOYA;
+                  }
+                  return DawnDayExecution_TYPES.KNEE_STOMP;
               });
 
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
