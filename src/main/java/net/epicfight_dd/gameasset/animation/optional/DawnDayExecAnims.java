@@ -6,13 +6,10 @@ import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionAtta
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionHitAnimation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
-import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
@@ -87,28 +84,28 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, dawnDaySounds.soft_wipe.get())
                         .addEvents(
                                 playSoundOnFrame(13,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(16,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(20,dawnDaySounds.Light_Punch.get()),
+//                                playSoundOnFrame(16,dawnDaySounds.Light_Punch.get()),
+//                                playSoundOnFrame(20,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(26,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(38,dawnDaySounds.Light_Punch.get()),
+                              //  playSoundOnFrame(38,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(43,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(70,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(83,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(94,dawnDaySounds.Light_Punch.get()),
+                            //    playSoundOnFrame(94,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(101,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(106,dawnDaySounds.Light_Punch.get()),
+                          //      playSoundOnFrame(106,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(115,EpicFightSounds.BLUNT_HIT.get()),
-                                playSoundOnFrame(124,dawnDaySounds.Light_Punch.get()),
+                           //     playSoundOnFrame(124,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(145,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(154,dawnDaySounds.Light_Punch.get()),
+                          //      playSoundOnFrame(154,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(163,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(168,dawnDaySounds.Light_Punch.get()),
+                         //       playSoundOnFrame(168,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(173,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(178,dawnDaySounds.Light_Punch.get()),
+                          //      playSoundOnFrame(178,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(185,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(193,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(199,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(203,dawnDaySounds.Light_Punch.get()),
+                        //        playSoundOnFrame(199,dawnDaySounds.Light_Punch.get()),
+                        //        playSoundOnFrame(203,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(209,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(218,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(220,dawnDaySounds.Light_Punch.get())
