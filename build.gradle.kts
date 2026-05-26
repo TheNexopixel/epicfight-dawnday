@@ -137,7 +137,7 @@ dependencies {
     modImplementation("curse.maven:wom-918614:7517612")
     modCompileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
     modCompileOnly("curse.maven:epicfight-nightfall-1307848:7670480")
-    modImplementation("curse.maven:epicfight-extra-1434276:7961244")
+    modCompileOnly("curse.maven:epicfight-extra-1434276:7961244")
     modImplementation("curse.maven:dummmmmmy-multi-225738:6860192")
     modImplementation("curse.maven:moonlight-499980:7664875")
 
@@ -182,9 +182,7 @@ tasks.named<Jar>("jar").configure {
     finalizedBy(tasks.named("reobfJar"))
 }
 
-tasks.named<Jar>("jar").configure {
-    finalizedBy(tasks.named("reobfJar"))
-}
+
 
 tasks.named("jarJar").configure {
     finalizedBy(tasks.named("reobfJar"))

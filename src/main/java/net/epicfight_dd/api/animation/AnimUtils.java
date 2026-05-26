@@ -28,7 +28,7 @@ public class AnimUtils {
                 AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) -> {
                     e.playSound(soundEvent,1.0f,1.0f,1.0f);
 
-                }, AnimationEvent.Side.BOTH
+                }, AnimationEvent.Side.CLIENT
         );
     }
 

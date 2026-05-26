@@ -52,7 +52,6 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
 
-
     public static void build(AnimationManager.AnimationBuilder builder) {
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
         MultiCollider<OBBCollider> executionCollider2 = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, 1.5F);
@@ -70,8 +69,8 @@ public class DawnDayExecAnims {
 
         );
 
-        NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac)->
-                new ExecutionAttackAnimation(0.1f,0.0f,
+        NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
+                new ExecutionAttackAnimation(0.1f, 0.0f,
                         AnimUtils.getAnimTimeFromFrame(220),
                         AnimUtils.getAnimTimeFromFrame(229),
                         190.93f,
@@ -84,32 +83,32 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, dawnDaySounds.soft_wipe.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                         .addEvents(
-                                playSoundOnFrame(13,dawnDaySounds.Light_Punch.get()),
-//                                playSoundOnFrame(16,dawnDaySounds.Light_Punch.get()),
-//                                playSoundOnFrame(20,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(26,dawnDaySounds.Light_Punch.get()),
-                              //  playSoundOnFrame(38,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(43,dawnDaySounds.Light_Punch.get()),
-                            //    playSoundOnFrame(70,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(83,dawnDaySounds.Light_Punch.get()),
-                            //    playSoundOnFrame(94,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(101,dawnDaySounds.Light_Punch.get()),
-                          //      playSoundOnFrame(106,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(118,EpicFightSounds.BLUNT_HIT.get()),
-                           //     playSoundOnFrame(124,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(145,dawnDaySounds.Light_Punch.get()),
-                          //      playSoundOnFrame(154,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(163,dawnDaySounds.Light_Punch.get()),
-                         //       playSoundOnFrame(168,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(173,dawnDaySounds.Light_Punch.get()),
-                          //      playSoundOnFrame(178,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(185,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(193,dawnDaySounds.Light_Punch.get()),
-                        //        playSoundOnFrame(199,dawnDaySounds.Light_Punch.get()),
-                        //        playSoundOnFrame(203,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(209,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(218,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(220,dawnDaySounds.Light_Punch.get())
+                                playSoundOnFrame(13, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(16, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(20, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(26, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(38, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(43, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(70, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(83, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(94, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(101, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(106, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(118, EpicFightSounds.BLUNT_HIT.get()),
+                                playSoundOnFrame(124, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(145, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(154, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(163, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(168, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(173, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(178, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(185, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(193, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(199, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(203, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(209, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(218, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(220, dawnDaySounds.Light_Punch.get())
 
                         )
 
@@ -125,9 +124,8 @@ public class DawnDayExecAnims {
         );
 
 
-
-        MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor)->
-                milady(accessor,executionCollider,CONSTANT_EXECUTION,0.22f,0.23f,1.77f,1.78f));
+        MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
+                milady(accessor, executionCollider, CONSTANT_EXECUTION, 0.22f, 0.23f, 1.77f, 1.78f));
 
         MILADY_EXECUTION_DUAL = builder.nextAccessor("biped/execution/milady/milady_special_execution", (accessor) ->
                 getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));
@@ -174,18 +172,15 @@ public class DawnDayExecAnims {
         );
 
 
+        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor) ->
+                get2PhaseExecAtkAnim(accessor, executionCollider, CONSTANT_EXECUTION, 0.8f, 0.85f, 1.42f, 1.45f));
 
-        BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor)->
-        get2PhaseExecAtkAnim(accessor,executionCollider,CONSTANT_EXECUTION,0.8f,0.85f,1.42f,1.45f));
 
-
-        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor)->
+        BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor) ->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
 
     }
-
-
 
 
     @SuppressWarnings("RedundantArrayCreation")
@@ -217,10 +212,11 @@ public class DawnDayExecAnims {
 
 
     }
+
     private static ExecutionAttackAnimation get2PhaseExecAtkAnim(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
                                                                  AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
                                                                  float preDelay1,
-                                                                 float contact1 ,
+                                                                 float contact1,
                                                                  float preDelay2,
                                                                  float contact2
 
@@ -238,12 +234,13 @@ public class DawnDayExecAnims {
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }
+
     private static ExecutionAttackAnimation milady(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
-                                                           AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
-                                                           float preDelay1,
-                                                           float contact1 ,
-                                                           float preDelay2,
-                                                           float contact2
+                                                   AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                   float preDelay1,
+                                                   float contact1,
+                                                   float preDelay2,
+                                                   float contact2
 
 // Thats for Milady
     ) {
@@ -257,7 +254,7 @@ public class DawnDayExecAnims {
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.9F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_HIT.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
 
         }))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
