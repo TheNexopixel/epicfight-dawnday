@@ -74,7 +74,7 @@ public class DawnDayExecAnims {
                 new ExecutionAttackAnimation(0.1f,0.0f,
                         AnimUtils.getAnimTimeFromFrame(220),
                         AnimUtils.getAnimTimeFromFrame(229),
-                        0.93f,
+                        190.93f,
                         executionCollider,
                         Armatures.BIPED.get().handR,
                         ac,
@@ -82,6 +82,7 @@ public class DawnDayExecAnims {
                 )
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.0F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, dawnDaySounds.soft_wipe.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                         .addEvents(
                                 playSoundOnFrame(13,dawnDaySounds.Light_Punch.get()),
 //                                playSoundOnFrame(16,dawnDaySounds.Light_Punch.get()),
@@ -89,12 +90,12 @@ public class DawnDayExecAnims {
                                 playSoundOnFrame(26,dawnDaySounds.Light_Punch.get()),
                               //  playSoundOnFrame(38,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(43,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(70,dawnDaySounds.Light_Punch.get()),
+                            //    playSoundOnFrame(70,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(83,dawnDaySounds.Light_Punch.get()),
                             //    playSoundOnFrame(94,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(101,dawnDaySounds.Light_Punch.get()),
                           //      playSoundOnFrame(106,dawnDaySounds.Light_Punch.get()),
-                                playSoundOnFrame(115,EpicFightSounds.BLUNT_HIT.get()),
+                                playSoundOnFrame(118,EpicFightSounds.BLUNT_HIT.get()),
                            //     playSoundOnFrame(124,dawnDaySounds.Light_Punch.get()),
                                 playSoundOnFrame(145,dawnDaySounds.Light_Punch.get()),
                           //      playSoundOnFrame(154,dawnDaySounds.Light_Punch.get()),
