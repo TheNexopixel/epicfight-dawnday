@@ -27,7 +27,11 @@ public class EpicFightDawnDay {
     }
     public EpicFightDawnDay(IEventBus bus, ModContainer modContainer) {
         bus.addListener(ModBusEvent::registerAnimation);
-        bus.addListener(DawnDayKeyMappings::registerKeys);
+   //nexo pls import the required import and build
+    if (EpicFightSharedConstants.isPhysicalClient()) {
+         bus.addListener(DawnDayKeyMappings::registerKeys);
+    }
+        
         DawnDayRegistry.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
         WeaponCategory.ENUM_MANAGER.registerEnumCls(EpicFightDawnDay.MOD_ID, DawnDayWeaponCategories.class);
         modContainer.registerConfig(
