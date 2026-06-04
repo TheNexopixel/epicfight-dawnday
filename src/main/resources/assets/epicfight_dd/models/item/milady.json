@@ -1,23 +1,42 @@
 {
-  "loader": "forge:separate_transforms",
-  "base": {
-    "parent": "epicfight_dd:item/milady_3d"
-  },
-  "gui_light": "front",
-  "parent": "epicfight_dd:item/milady_gui",
-  "perspectives": {
-    "gui": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "epicfight_dd:item/milady_icon"
-      },
-      "gui_light": "front"
-    },
-    "ground": {
-      "parent": "item/generated",
-      "textures": {
-        "layer0": "epicfight_dd:item/milady_icon"
-      }
-    }
-  }
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/milady.obj",
+		"textures": {
+			"milady": "epicfight_dd:item/milady"
+		},
+
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, 0],
+			"translation": [7.5, 13.25, 4.3],
+			"scale": [1.0, 1.0, 1.0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, 0],
+			"translation": [-7.5, 13.25, 4.3],
+			"scale": [1, 1, 1]
+		}
+	}
+	},
+
+	"perspectives": {
+		"gui": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/milady_icon"
+			},
+			"gui_light": "front"
+		},
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/milady_icon"
+			},
+			"gui_light": "front"
+		}
+	}
 }

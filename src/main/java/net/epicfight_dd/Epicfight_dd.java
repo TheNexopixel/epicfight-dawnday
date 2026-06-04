@@ -9,6 +9,7 @@ import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.skill.skill_compats.WoMCompat;
 import net.epicfight_dd.skill.skill_compats.evil_tachi_skillcompats;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,6 +45,9 @@ public class Epicfight_dd {
         bus.addListener(evil_tachi_skillcompats::forceGuard);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
+      //  DawnDayPaintings.register(bus);
+
+
 
 
         // Register ourselves for server and other game events we are interested in

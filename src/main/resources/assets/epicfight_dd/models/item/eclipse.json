@@ -1,0 +1,42 @@
+{
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/rebellion.obj",
+		"textures": {
+			"rebellion.png": "epicfight_dd:item/rebellion"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [0, 0, 0],
+				"translation": [-1.5, -11.0, 10.0],
+				"scale": [0.9, 0.9, 0.9]
+			},
+			"firstperson_righthand": {
+				"rotation": [0, 0, 0],
+				"translation": [0, 0, 0],
+				"scale": [1, 1, 1]
+			}
+		}
+	},
+
+	"perspectives": {
+		"gui": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/eclipse_gui"
+			},
+			"gui_light": "front"
+		},
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/eclipse_gui"
+			},
+			"gui_light": "front"
+		}
+	}
+}

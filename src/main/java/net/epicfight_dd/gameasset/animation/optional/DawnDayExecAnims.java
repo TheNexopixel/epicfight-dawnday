@@ -48,12 +48,22 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> BATTLESTAFF_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> BATTLESTAFF_EXECUTED;
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> IRON_FIST_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> IRON_FIST_EXECUTED;
+
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> GREATAXE_DUAL_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> GREATAXE_DUAL_EXECUTED;
+
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_DUAL_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_DUAL_EXECUTED;
+
     public static AnimationManager.AnimationAccessor<SelectiveExecutionAttackProxy> MILADY_EXECUTION_SEL;
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
+        MultiCollider<OBBCollider> executionColliderBIG = new MultiOBBCollider(3, 4.25F, 1.5F, 3.5F, 0.0F, 1.5F, -2.5F);
         MultiCollider<OBBCollider> executionCollider2 = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, 1.5F);
         MultiCollider<OBBCollider> evil_collider = new MultiOBBCollider(1, 2.0F, 7.5F, 9.5F, 0.0F, 3.5F, 1.5F);
 
@@ -68,6 +78,20 @@ public class DawnDayExecAnims {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
 
         );
+
+        IRON_FIST_EXECUTED = builder.nextAccessor("biped/execution/iron_fist_executed", (accessor) ->
+                (new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+
+        );
+        GREATAXE_DUAL_EXECUTED = builder.nextAccessor("biped/execution/greataxe_dual_executed", (accessor) ->
+                (new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+
+        );
+
+        IRON_FIST_EXECUTE = builder.nextAccessor("biped/execution/iron_fist_execute", (accessor) ->
+                IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.42f, 0.43f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f));
 
         NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
                 new ExecutionAttackAnimation(0.1f, 0.0f,
@@ -179,6 +203,14 @@ public class DawnDayExecAnims {
         BATTLESTAFF_EXECUTED = builder.nextAccessor("biped/execution/battlestaff_executed", (accessor) ->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
+        GREATAXE_DUAL_EXECUTE = builder.nextAccessor("biped/execution/greataxe_dual_execute", (accessor) ->
+                greataxe_dual(accessor, executionCollider, CONSTANT_EXECUTION, 1.3f, 1.4f, 2.42f, 2.5f,3.85f,3.9f));
+
+        RITUS_DAGGER_DUAL_EXECUTE = builder.nextAccessor("biped/execution/ritus_dagger_dual_execute", (accessor) ->
+                ritusdaggerdual(accessor, executionCollider, CONSTANT_EXECUTION, 0.4f, 0.5f, 1.0f, 1.1f,2.65f,2.7f,3.4f,3.5f,4.8f,4.9f));
+        RITUS_DAGGER_DUAL_EXECUTED = builder.nextAccessor("biped/execution/ritus_dagger_dual_executed", (accessor) ->
+                new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
+
 
     }
 
@@ -213,6 +245,47 @@ public class DawnDayExecAnims {
 
     }
 
+    private static ExecutionAttackAnimation IRON_FIST_EXECUTE(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                                 AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                                 float preDelay1,
+                                                                 float contact1,
+                                                                 float preDelay2,
+                                                                 float contact2,
+                                                              float preDelay3,
+                                                                  float contact3,
+                                                                 float preDelay4,
+                                                                 float contact4,
+                                                                float preDelay5,
+                                                                 float contact5
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{
+                        (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 0.5F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.5F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 1.7F, 0.0F, preDelay2, contact2, 12.73F, 1.9F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.8F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 2.1F, 0.0F, preDelay3, contact3, 12.73F, 2.4F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.45F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 3.0F, 0.0F, preDelay4, contact4, 12.73F, 3.83F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(6.2F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 4.63F, 0.0F, preDelay5, contact5, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.5F))
+
+        }))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
+
+    }
+    // Thats for Battlestaff
     private static ExecutionAttackAnimation get2PhaseExecAtkAnim(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
                                                                  AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
                                                                  float preDelay1,
@@ -220,7 +293,6 @@ public class DawnDayExecAnims {
                                                                  float preDelay2,
                                                                  float contact2
 
-// Thats for Battlestaff
     ) {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
@@ -231,6 +303,72 @@ public class DawnDayExecAnims {
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.6F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())}))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
+
+    }
+    private static ExecutionAttackAnimation ritusdaggerdual(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                          AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                          float preDelay1,
+                                                          float contact1,
+                                                          float preDelay2,
+                                                          float contact2,
+                                                          float preDelay3,
+                                                          float contact3,
+                                                            float preDelay4,
+                                                            float contact4,
+                                                            float preDelay5,
+                                                            float contact5
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 0.93F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 0.83F, 0.0F, preDelay2, contact2, 18.0F, 1.5F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.3F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 1.6F, 0.0F, preDelay3, contact3, 18.0F, 2.75F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.3F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 3.6F, 0.0F, preDelay4, contact4, 18.0F, 4.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(4.3F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get()),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 4.0F, 0.0F, preDelay5, contact5, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100F))
+        }))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
+
+    }
+    private static ExecutionAttackAnimation greataxe_dual(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                                 AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                                 float preDelay1,
+                                                                 float contact1,
+                                                                 float preDelay2,
+                                                                 float contact2,
+                                                                 float preDelay3,
+                                                                 float contact3
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.53F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 1.93F, 0.0F, preDelay2, contact2, 18.0F, 2.5F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.3F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()),
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 3.0F, 0.0F, preDelay3, contact3, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100F))
+        }))
                 .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }

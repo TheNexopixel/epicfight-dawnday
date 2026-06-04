@@ -24,6 +24,9 @@ public class DawnDayCreativeTab {
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
                 output.accept(DawnDayItems.bonecutting_saw.get());
+                output.accept(DawnDayItems.VITREUS.get());
+                output.accept(DawnDayItems.ECLIPSE.get());
+                output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.herb_sickle.get());
