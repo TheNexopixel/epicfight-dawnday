@@ -1,9 +1,20 @@
 package net.epicfight_dd.api.animation;
 
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.jetbrains.annotations.NotNull;
+import reascer.wom.gameasset.animations.weapons.AnimsNapoleon;
+import reascer.wom.gameasset.animations.weapons.AnimsSatsujin;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
+import yesman.epicfight.world.damagesource.StunType;
+
+import java.util.List;
 
 
 public class AnimUtils {
@@ -29,6 +40,81 @@ public class AnimUtils {
                     e.playSound(soundEvent,1.0f,1.0f,1.0f);
 
                 }, AnimationEvent.Side.CLIENT
+        );
+    }
+
+    public static AnimationEvent.@NotNull SimpleEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height) {
+
+        return AnimationEvent.SimpleEvent.create(
+                (livingEntityPatch, assetAccessor, animationParameters) -> {
+
+                    if (!livingEntityPatch.isLastAttackSuccess()) {
+                        return;
+                    }
+
+                    List<LivingEntity> targets =
+                            livingEntityPatch.getCurrentlyActuallyHitEntities();
+
+                    if (targets == null || targets.isEmpty()) {
+                        return;
+                    }
+
+                    for (LivingEntity entity : targets) {
+                        if (entity == null || !entity.isAlive()) {
+                            continue;
+                        }
+
+                        LivingEntityPatch<?> targetPatch =
+                                EpicFightCapabilities.getEntityPatch(
+                                        entity,
+                                        LivingEntityPatch.class
+                                );
+
+                        if (targetPatch != null) {
+                            float stunTime = height * (
+                                    1.0F - (float) entity.getAttributeValue(
+                                            Attributes.KNOCKBACK_RESISTANCE
+                                    )
+                            );
+
+                            targetPatch.applyStun(
+                                    StunType.SHORT,
+                                    stunTime
+                            );
+                        }
+
+                        entity.setDeltaMovement(
+                                entity.getDeltaMovement().x,
+                                entity.getDeltaMovement().y + height,
+                                entity.getDeltaMovement().z
+                        );
+
+                        entity.hasImpulse = true;
+
+                        entity.addEffect(
+                                new MobEffectInstance(
+                                        MobEffects.LEVITATION,
+                                        5,
+                                        0,
+                                        true,
+                                        false,
+                                        false
+                                )
+                        );
+
+                        entity.addEffect(
+                                new MobEffectInstance(
+                                        MobEffects.SLOW_FALLING,
+                                        40,
+                                        0,
+                                        true,
+                                        false,
+                                        false
+                                )
+                        );
+                    }
+                },
+                AnimationEvent.Side.SERVER
         );
     }
 

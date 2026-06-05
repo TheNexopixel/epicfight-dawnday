@@ -1,5 +1,6 @@
 package net.epicfight_dd.gameasset.animation;
 
+import net.epicfight_dd.api.animation.AnimUtils;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -277,7 +278,11 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0f, 0.50f))
-                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+                        .addEvents(
+                                AnimUtils.LaunchEnemyAirSlash(0.6f)
+                        )
+        );
 
         EVIL_ODACHI_OVERHEADSLASH_CHARGE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_charge", ac ->
                 new ActionAnimation(0.1f, ac, Armatures.BIPED)
