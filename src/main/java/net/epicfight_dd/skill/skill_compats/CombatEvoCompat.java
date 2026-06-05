@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.api.event.RegisterCustomExecutionEvent;
 import reascer.wom.main.WeaponsOfMinecraft;
+import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
@@ -49,9 +50,30 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.wooden_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
 
+      event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.IRON_FIST);
+
+      event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.IRON_FIST);
+
+      event.registerExecutionByItem(DawnDayItems.BLOOD_RITUS_DAGGER.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
+      event.registerExecutionByItem(DawnDayItems.NIGHT_RITUS_DAGGER.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
+
       if (ModList.get().isLoaded("wom")) {
           event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
                   DawnDayExecution_TYPES.EVIL_TACHI);
+
+          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.TWO_HAND,
+                  DawnDayExecution_TYPES.GREATAXE_DUAL);
+          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.TWO_HAND,
+                  DawnDayExecution_TYPES.GREATAXE_DUAL);
+          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.TWO_HAND,
+                  DawnDayExecution_TYPES.GREATAXE_DUAL);
+          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.TWO_HAND,
+                  DawnDayExecution_TYPES.GREATAXE_DUAL);
+
       }
 
   }

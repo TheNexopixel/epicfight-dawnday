@@ -128,13 +128,13 @@ public class RitusEvents {
             float stamina = playerPatch.getStamina();
 
             if (player.level().isNight()) {
-                playerPatch.setStamina(stamina + 1.0f);
+                playerPatch.setStamina(stamina + 3.0f);
             }
             if (player.hasEffect(EffectRegistry.SEPUKKU.get())
                     && player.level().isNight()) {
-                playerPatch.setStamina(stamina + 4.0f);
+                playerPatch.setStamina(stamina + 6.0f);
             } else {
-                playerPatch.setStamina(stamina + 0.5f);
+                playerPatch.setStamina(stamina + 1.5f);
             }
 
 

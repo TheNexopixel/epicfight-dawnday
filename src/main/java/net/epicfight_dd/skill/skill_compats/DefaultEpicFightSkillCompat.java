@@ -35,6 +35,12 @@ public class DefaultEpicFightSkillCompat {
             ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
+            builder.addGuardMotion(
+                    EpicFightDD_WeaponCategories.IRON_FIST,
+                    (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_HIT
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.IRON_FIST,
+                    (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_BREAK);
+
 
         }
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","guard"))) {
@@ -62,6 +68,19 @@ public class DefaultEpicFightSkillCompat {
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
+                            (i, p) -> List.of(
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT2,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT3
+                            ));
+
+            builder.addGuardMotion(
+                    EpicFightDD_WeaponCategories.IRON_FIST,
+                    (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_HIT
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.IRON_FIST,
+                    (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_BREAK)
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.IRON_FIST,
                             (i, p) -> List.of(
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT2,
@@ -99,6 +118,7 @@ public class DefaultEpicFightSkillCompat {
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
         icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
+        icon.registerCategory(EpicFightDD_WeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));
 
         if (ModList.get().isLoaded("wom")) {
             icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));

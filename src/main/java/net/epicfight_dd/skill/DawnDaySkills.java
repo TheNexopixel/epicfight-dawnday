@@ -50,6 +50,7 @@ public class DawnDaySkills {
     public static Skill RAAAHHH;
     public static Skill ANNIHILATE;
     public static Skill SEPUKKU;
+    public static Skill POWERFUL_KICK;
 
 
     @SubscribeEvent
@@ -79,7 +80,7 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(7.5F))
-                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         ANNIHILATE = annihilate;
@@ -185,7 +186,7 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5.0F))
                 .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(33.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.7F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.4F))
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
@@ -223,7 +224,7 @@ public class DawnDaySkills {
                 .setAnimations(DawnDayAnimations.BRUTAL_DASH)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         brutaldash.newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.05F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.05F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
                 .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.FINISHER))
@@ -235,6 +236,23 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         BRUTAL_DASH = brutaldash;
+
+        WeaponInnateSkill powerfulkick = modRegistry.build("powerful_kick",SkullRuptureSkill::new,SkullRuptureSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.POWERFUL_KICK)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        powerfulkick.newProperty()
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.25F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.FINISHER))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.EXECUTION))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(33.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(5.5F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+
+        POWERFUL_KICK = powerfulkick;
 
         WeaponInnateSkill wildstrikes = modRegistry.build("wild_strikes",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.WILD_STRIKES)

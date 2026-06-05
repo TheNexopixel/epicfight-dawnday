@@ -80,6 +80,12 @@ public class WoMCompat implements ICompatModule {
                 DawnDayAnimations.RITUS_DAGGER_GUARD);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
                 DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
+        guardMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (item, player) ->
+                DawnDayAnimations.IRON_FIST_GUARD_HIT);
+        guardBreakMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (item, player) ->
+                DawnDayAnimations.IRON_FIST_GUARD);
+        advancedGuardMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (itemCap, playerpatch) ->
+                DawnDayAnimations.IRON_FIST_GUARD_COUNTER);
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
         temp = GuardSkill.class.getDeclaredField("guardMotions");

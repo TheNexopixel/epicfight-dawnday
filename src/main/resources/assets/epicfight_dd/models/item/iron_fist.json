@@ -1,0 +1,41 @@
+{
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/iron_fist.obj",
+		"textures": {
+			"fist.png": "epicfight_dd:item/fist"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [180, -180, 0],
+				"translation": [-15, 6.0, 8.0],
+				"scale": [1, 1, 1]
+			},
+			"thirdperson_lefthand": {
+				"rotation": [180, -180, 0],
+				"translation": [14, 6.0, 8.0],
+				"scale": [1, 1, 1]
+			}
+		}
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/iron_fist_gui"
+			},
+			"gui_light": "front"
+		},
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/iron_fist_gui"
+			},
+			"gui_light": "front"
+		}
+	}
+}

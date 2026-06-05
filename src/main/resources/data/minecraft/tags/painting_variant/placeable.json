@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "epicfight_dd:cultist",
+    "epicfight_dd:thunderstorm",
+    "epicfight_dd:mountain",
+    "epicfight_dd:wilted_flower"
+  ]
+}

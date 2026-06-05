@@ -25,6 +25,24 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2561)));
 
+    public static final RegistryObject<Item> VITREUS =
+            ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,2,-2.4f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.EPIC)
+                            .defaultDurability(4561)));
+
+    public static final RegistryObject<Item> ECLIPSE =
+            ITEMS.register("eclipse",() -> new SwordItem(Tiers.NETHERITE,1,-2.7f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.EPIC)
+                            .defaultDurability(5561)));
+
+    public static final RegistryObject<Item> IRON_FIST =
+            ITEMS.register("iron_fist",() -> new SwordItem(Tiers.IRON,1,-1.7f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(5561)));
+
     public static final RegistryObject<Item> diamond_messer =
             ITEMS.register("diamond_messer",() -> new SwordItem(Tiers.DIAMOND,2,-2.1f,
                     new Item.Properties().stacksTo(1)
@@ -108,9 +126,9 @@ public class DawnDayItems {
                             .defaultDurability(360)));
 
     public static final RegistryObject<Item> wooden_battlestaff =
-            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,5,-2.2f,
+            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,5,-2.4f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(1450)));
+                            .defaultDurability(650)));
 
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
@@ -150,7 +168,7 @@ public class DawnDayItems {
                             .defaultDurability(3680)));
 
     public static final RegistryObject<Item> bonecutting_saw =
-            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,2,-2.8f,
+            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,1,-2.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680)));
