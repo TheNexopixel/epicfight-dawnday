@@ -24,8 +24,8 @@ public class DawnDayCreativeTab {
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
                 output.accept(DawnDayItems.bonecutting_saw.get());
-                output.accept(DawnDayItems.VITREUS.get());
-                output.accept(DawnDayItems.ECLIPSE.get());
+           //     output.accept(DawnDayItems.VITREUS.get());
+           //     output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
@@ -95,7 +95,8 @@ public class DawnDayCreativeTab {
             .build()
     );
     public static final RegistryObject<CreativeModeTab> EFDDXWOM = CREATIVE_MODE_TABS.register("efdd_x_wom", () -> CreativeModeTab.builder().icon(() ->
-                    new ItemStack(DawnDayItems.bonecutting_saw.get()))
+                    new
+                            ItemStack(WOMItems.EVIL_TACHI.get()))
             .title(Component.translatable("creativetab.efdd_x_wom"))
 
             .displayItems((itemDisplayParameters, output) -> {

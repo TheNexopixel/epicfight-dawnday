@@ -28,13 +28,13 @@ public class DawnDayItems {
     public static final RegistryObject<Item> VITREUS =
             ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,2,-2.4f,
                     new Item.Properties().stacksTo(1)
-                            .rarity(Rarity.EPIC)
+                            .rarity(Rarity.RARE)
                             .defaultDurability(4561)));
 
     public static final RegistryObject<Item> ECLIPSE =
-            ITEMS.register("eclipse",() -> new SwordItem(Tiers.NETHERITE,1,-2.7f,
+            ITEMS.register("eclipse",() -> new SwordItem(Tiers.NETHERITE,4,-2.7f,
                     new Item.Properties().stacksTo(1)
-                            .rarity(Rarity.EPIC)
+                            .rarity(Rarity.RARE)
                             .defaultDurability(5561)));
 
     public static final RegistryObject<Item> IRON_FIST =

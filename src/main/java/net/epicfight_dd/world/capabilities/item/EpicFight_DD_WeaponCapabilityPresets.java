@@ -155,16 +155,16 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.STEEL_WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.WARSICKLE_ATT1,
-                            DawnDayAnimations.WARSICKLE_ATT2,
-                            DawnDayAnimations.WARSICKLE_ATT3,
+                            DawnDayAnimations.WAR_SICKLE_AUTO1,
+                            DawnDayAnimations.WAR_SICKLE_AUTO2,
+                            DawnDayAnimations.WAR_SICKLE_AUTO2,
                             DawnDayAnimations.WAR_SICKLE_AUTO4,
                             DawnDayAnimations.WAR_SICKLE_AUTO5,
                             DawnDayAnimations.WAR_SICKLE_AUTO6,
                             DawnDayAnimations.SICKLE_DASH,
                             DawnDayAnimations.BAT_DASH
                     )
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WARSICKLE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WAR_SICKLE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
@@ -580,12 +580,12 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.BAT_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.GREATAXE_DUAL_AUTO1,
-                            DawnDayAnimations.GREATAXE_DUAL_AUTO2,
-                            DawnDayAnimations.GREATAXE_DUAL_AUTO3,
-                            DawnDayAnimations.GREATAXE_DUAL_AUTO4,
-                            DawnDayAnimations.GREATAXE_DUAL_DASH,
-                            DawnDayAnimations.GREATAXE_AIRSLASH)
+                            AdditionalAnimations.GREATAXE_DUAL_AUTO1,
+                            AdditionalAnimations.GREATAXE_DUAL_AUTO2,
+                            AdditionalAnimations.GREATAXE_DUAL_AUTO3,
+                            AdditionalAnimations.GREATAXE_DUAL_AUTO4,
+                            AdditionalAnimations.GREATAXE_DUAL_DASH,
+                            AdditionalAnimations.GREATAXE_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SAW_IDLE)
@@ -686,7 +686,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.ECLIPSE_ATT1,
                             DawnDayAnimations.ECLIPSE_ATT2,
                             DawnDayAnimations.ECLIPSE_ATT3,
-                            DawnDayAnimations.BAT_AIRSLASH,
+                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO3,
+                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO2,
                             DawnDayAnimations.BAT_DASH)
 
 
@@ -710,8 +711,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.SAW_AUTO2,
                             DawnDayAnimations.SAW_AUTO3,
                             DawnDayAnimations.SAW_AUTO4,
-                            DawnDayAnimations.GREATAXE_DUAL_DASH,
-                            DawnDayAnimations.GREATAXE_AIRSLASH)
+                            AdditionalAnimations.GREATAXE_DUAL_DASH,
+                            AdditionalAnimations.GREATAXE_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DelightAnimations.SKILLET_IDLE)
@@ -762,6 +763,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.IRON_FIST_AUTO2,
                             DawnDayAnimations.IRON_FIST_AUTO3,
                             DawnDayAnimations.IRON_FIST_AUTO4,
+                            DawnDayAnimations.IRON_FIST_AUTO5,
                             DawnDayAnimations.IRON_FIST_DASH,
                             DawnDayAnimations.IRON_FIST_AIRSLASH)
 
@@ -770,12 +772,18 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.IRON_FIST_AUTO2,
                             DawnDayAnimations.IRON_FIST_AUTO3,
                             DawnDayAnimations.IRON_FIST_AUTO4,
+                            DawnDayAnimations.IRON_FIST_AUTO5,
                             DawnDayAnimations.IRON_FIST_DASH,
                             DawnDayAnimations.IRON_FIST_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE);
 
 

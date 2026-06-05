@@ -2,6 +2,7 @@ package net.epicfight_dd.world;
 
 import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -185,6 +186,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.herb_sickle.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_battlestaff.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_light_greatsword.get()))
                         .name("herb_sickle")
@@ -239,6 +241,7 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.3f))
                         .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))

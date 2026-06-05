@@ -112,6 +112,7 @@ public class WingStanceAnims {
                 new BasicAttackAnimation(0.12F, 0.0f, 0.6f, 0.9f, 1.0F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         WINGSTANCE_ATTACK_3 = builder.nextAccessor("biped/skill/wingstance/wingstance_auto3", (accessor) ->
@@ -159,6 +160,7 @@ public class WingStanceAnims {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.13)))
 
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         WINGSTANCE_DASH = builder.nextAccessor("biped/skill/wingstance/wingstance_dash", (accessor) ->

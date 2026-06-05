@@ -89,6 +89,8 @@ public class DawnDayAnimations {
     public static AnimationAccessor<AirSlashAnimation> BATTLESTAFF_AIRSLASH;
 
     public static AnimationAccessor<StaticAnimation> IRON_FIST_IDLE;
+    public static AnimationAccessor<StaticAnimation> IRON_FIST_WALK;
+    public static AnimationAccessor<StaticAnimation> IRON_FIST_RUN;
     public static AnimationAccessor<LongHitAnimation> IRON_FIST_GUARD_BREAK;
     public static AnimationAccessor<StaticAnimation> IRON_FIST_GUARD;
     public static AnimationAccessor<GuardAnimation> IRON_FIST_GUARD_HIT;
@@ -97,6 +99,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AUTO5;
     public static AnimationAccessor<DashAttackAnimation> IRON_FIST_DASH;
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> POWERFUL_KICK;
@@ -221,13 +224,6 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO4;
 
-    public static AnimationAccessor<BasicAttackAnimation> GREATAXE_DUAL_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> GREATAXE_DUAL_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> GREATAXE_DUAL_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> GREATAXE_DUAL_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> GREATAXE_DUAL_DASH;
-    public static AnimationAccessor<AirSlashAnimation> GREATAXE_AIRSLASH;
-    public static AnimationAccessor<AttackAnimation> ANNIHILATE;
 
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO2;
@@ -280,6 +276,12 @@ public class DawnDayAnimations {
                 new StaticAnimation(0.12F, true, ac, biped));
 
         IRON_FIST_IDLE = builder.nextAccessor("biped/living/iron_fist_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        IRON_FIST_WALK = builder.nextAccessor("biped/living/iron_fist_walk", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        IRON_FIST_RUN = builder.nextAccessor("biped/living/iron_fist_run", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         IRON_FIST_GUARD = builder.nextAccessor("biped/living/iron_fist_guard", ac ->
@@ -411,6 +413,7 @@ public class DawnDayAnimations {
                 )
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.78F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 
@@ -463,6 +466,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.88F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL,false)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
                     //    .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.15F, 0.7F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
@@ -680,7 +684,7 @@ public class DawnDayAnimations {
 
                         new AttackAnimation.Phase(0.41f, 0.5f, 0.58f, 0.65f, 1.1f, 0.7f, InteractionHand.MAIN_HAND, biped.get().kneeR, DawnDayCollider.IRON_FIST_KICK),
 
-                        new AttackAnimation.Phase(0.81f, 0.5f, 0.95f, 1.05f, 1.1f, 3.51f, InteractionHand.MAIN_HAND, biped.get().kneeL, DawnDayCollider.IRON_FIST_REACH)
+                        new AttackAnimation.Phase(0.81f, 0.8f, 0.95f, 1.05f, 1.1f, 3.51f, InteractionHand.MAIN_HAND, biped.get().kneeL, DawnDayCollider.IRON_FIST_REACH)
                                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER,ValueModifier.adder(6))
                                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2f))
@@ -692,6 +696,18 @@ public class DawnDayAnimations {
         );
 
         IRON_FIST_AUTO4 = builder.nextAccessor("biped/combat/iron_fist_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.13f, 0.26f, 0.9f, 0.36f, InteractionHand.MAIN_HAND, biped.get().toolL, DawnDayCollider.IRON_FIST_REACH),
+
+                        new AttackAnimation.Phase(0.41f, 0.5f, 0.43f, 0.65f, 0.9f, 3.51f, InteractionHand.MAIN_HAND, biped.get().kneeR, DawnDayCollider.IRON_FIST_KICK)
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.82F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        IRON_FIST_AUTO5 = builder.nextAccessor("biped/combat/iron_fist_auto5", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.41F, 0.73F, 0.8F, 1.33F, DawnDayCollider.IRON_FIST_REACH, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.4f))
                         .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
@@ -1192,113 +1208,6 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-
-        GREATAXE_DUAL_AUTO1 = builder.nextAccessor("biped/combat/greataxe_dual_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.20f, 0.4f, 0.6f, 1.2f, 0.7f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F))
-                        ,
-
-                        new AttackAnimation.Phase(0.8f, 0.9f, 1.00f, 1.3f, 1.23f, 3.51f, InteractionHand.OFF_HAND, biped.get().toolL, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.90F))
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                )
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        GREATAXE_DUAL_AUTO2 = builder.nextAccessor("biped/combat/greataxe_dual_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.20f, 0.35f, 0.5f, 1.7f, 0.55f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
-                        ,
-
-                        new AttackAnimation.Phase(0.6f, 0.6f, 0.80f, 1.0f, 1.73f, 1.05f, InteractionHand.OFF_HAND, biped.get().toolL, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F))
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(0F))
-                ,
-                        new AttackAnimation.Phase(1.1f, 1.2f, 1.35f, 1.55f, 1.73f, 3.51f, InteractionHand.MAIN_HAND, biped.get().rootJoint, DawnDayCollider.BONE_SAW_AUTO4)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.05F))
-                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
-                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(4F))
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                )
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        1.45F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(-0.0F, 0.25F, -2.0F), Armatures.BIPED.get().rootJoint,0.5D, 1.0F))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        GREATAXE_DUAL_AUTO3 = builder.nextAccessor("biped/combat/greataxe_dual_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.50f, 0.67f, 0.72f, 1.1f, 0.73f, InteractionHand.OFF_HAND, biped.get().toolL, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.3F))
-                        ,
-
-                        new AttackAnimation.Phase(0.74f, 0.75f, 0.76f, 0.85f, 1.13f, 0.86f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.3F)),
-
-                        new AttackAnimation.Phase(0.87f, 0.87f, 0.88f, 1.03f, 1.23f, 3.51f, InteractionHand.MAIN_HAND, biped.get().rootJoint, DawnDayCollider.BONE_SAW_AUTO4)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
-                                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                )
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        0.75F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(-0.0F, 0.25F, -4.0F), Armatures.BIPED.get().rootJoint, 2.0D, 2.0F))
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        GREATAXE_DUAL_AUTO4 = builder.nextAccessor("biped/combat/greataxe_dual_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.71F, 0.91F, 1.13F, 1.87F, DawnDayCollider.BONE_SAW_AUTO4, biped.get().rootJoint, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4F))
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
-                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6F))
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        0.95F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(-0.0F, 0.25F, -3.0F), Armatures.BIPED.get().rootJoint, 3.0D, 4.0F))
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        GREATAXE_DUAL_DASH = builder.nextAccessor("biped/combat/greataxe_dash", (accessor) ->
-                new DashAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.50f, 0.47f, 0.52f, 1.3f, 0.53f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
-                        ,
-
-                        new AttackAnimation.Phase(0.54f, 0.55f, 0.56f, 0.75f, 1.3f, 2.86f, InteractionHand.OFF_HAND, biped.get().toolL, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
-                )
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        GREATAXE_AIRSLASH = builder.nextAccessor("biped/combat/greataxe_scissors", (accessor) ->
-                new AirSlashAnimation(0.12F, 0.65F, 0.7F, 1.27F, DawnDayCollider.BACKHAND_INNATE, biped.get().rootJoint, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F))
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 0.55F))
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-
         BAT_AUTO1 = builder.nextAccessor("biped/combat/nailbat_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.21F, 0.49F, 0.76F, 0.87F, DawnDayCollider.BAT_LONGER, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F))
@@ -1608,25 +1517,6 @@ public class DawnDayAnimations {
                         .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
                                 (e, s, p) ->
                                         e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 2, 60)), AnimationEvent.Side.SERVER
-                        ))
-        );
-
-        ANNIHILATE = builder.nextAccessor("biped/skill/annihilate", ac ->
-                new AttackAnimation(0.1f, 1.1f, 1.3f, 1.5f, 20f, InteractionHand.MAIN_HAND, DawnDayCollider.BONE_SAW_AUTO4, biped.get().rootJoint, ac, biped)
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
-                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false)
-                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL, true)
-                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.5F, 1.2F))
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        1.4F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(2.0F, 0.25F, 5.0F), Armatures.BIPED.get().rootJoint, 3.5D, 3.5F))
-                        .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 15, 60 )), AnimationEvent.Side.SERVER
                         ))
         );
 

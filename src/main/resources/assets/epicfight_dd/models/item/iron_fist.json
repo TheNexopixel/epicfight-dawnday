@@ -6,7 +6,8 @@
 		"flip_v": true,
 		"model": "epicfight_dd:models/obj/iron_fist.obj",
 		"textures": {
-			"fist.png": "epicfight_dd:item/fist"
+			"fist.png": "epicfight_dd:item/fist",
+			"spikes.png": "epicfight_dd:item/spikes"
 		},
 
 		"display": {
@@ -16,8 +17,8 @@
 				"scale": [1, 1, 1]
 			},
 			"thirdperson_lefthand": {
-				"rotation": [180, -180, 0],
-				"translation": [14, 6.0, 8.0],
+				"rotation": [180, 0, 0],
+				"translation": [-14, 6.0, -8.0],
 				"scale": [1, 1, 1]
 			}
 		}
