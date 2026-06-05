@@ -147,11 +147,6 @@ public class DawnDayExecAnims {
 
         NAOYA_EXEC_HIT = builder.nextAccessor("biped/execution/unarmed/get_aurafarmed", (accessor) ->
                 new ExecutionHitAnimation(0.12f, accessor, Armatures.BIPED)
-                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_END_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e,s,p)->
-                                        e.playAnimationSynchronized(Animations.BIPED_ROLL_BACKWARD,0.01f)
-                                        , AnimationEvent.Side.SERVER
-                        ))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION)
 
         );
