@@ -78,7 +78,7 @@ public class AnimUtils {
                             );
 
                             targetPatch.applyStun(
-                                    StunType.SHORT,
+                                    StunType.HOLD,
                                     stunTime
                             );
                         }
@@ -94,7 +94,7 @@ public class AnimUtils {
                         entity.addEffect(
                                 new MobEffectInstance(
                                         MobEffects.LEVITATION,
-                                        5,
+                                        1,
                                         0,
                                         true,
                                         false,
@@ -105,7 +105,7 @@ public class AnimUtils {
                         entity.addEffect(
                                 new MobEffectInstance(
                                         MobEffects.SLOW_FALLING,
-                                        40,
+                                        10,
                                         0,
                                         true,
                                         false,

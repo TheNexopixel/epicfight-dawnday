@@ -280,7 +280,7 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0f, 0.50f))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
                         .addEvents(
-                                AnimUtils.LaunchEnemyAirSlash(0.6f)
+                                AnimUtils.LaunchEnemyAirSlash(0.15f)
                         )
         );
 
