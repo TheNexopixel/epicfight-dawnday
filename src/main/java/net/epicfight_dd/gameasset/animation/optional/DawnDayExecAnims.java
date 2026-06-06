@@ -20,7 +20,6 @@ import yesman.epicfight.api.collider.MultiCollider;
 import yesman.epicfight.api.collider.MultiOBBCollider;
 import yesman.epicfight.api.collider.OBBCollider;
 import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.model.armature.HumanoidArmature;
@@ -33,6 +32,7 @@ import java.util.Set;
 
 import static net.epicfight_dd.api.animation.AnimUtils.playSoundOnFrame;
 
+@SuppressWarnings("SameParameterValue")
 public class DawnDayExecAnims {
 
     private static final ExtraDamageInstance.ExtraDamage TARGET_MAX_HEALTH = new ExtraDamageInstance.ExtraDamage(
@@ -105,39 +105,47 @@ public class DawnDayExecAnims {
                 IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.42f, 0.43f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f));
 
         NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
-                new ExecutionAttackAnimation(0.1f, ac, biped,
-
-                        getLightPunchExecPhase(Left_hand, 13,false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 13, false, executionCollider2),
-                        getLightPunchExecPhase(Left_hand, 16, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 20, false, executionCollider2),
-                        getLightPunchExecPhase(Left_hand, 26, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 38, false, executionCollider2),
-                        getLightPunchExecPhase(Left_hand, 43, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 70, false, executionCollider2),
-                        getLightPunchExecPhase(Left_hand, 83, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 94, false, executionCollider2),
-                        getLightPunchExecPhase(Left_hand, 101, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 106, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 118, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 124, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 145, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 154, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 163, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 168, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 173, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 178, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 185, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 193, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 199, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 203, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 209, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 218, false, executionCollider2),
-                        getLightPunchExecPhase(Right_hand, 220, true, executionCollider2)
+                new ExecutionAttackAnimation(0.1f, 0.0f,
+                        AnimUtils.getAnimTimeFromFrame(220),
+                        AnimUtils.getAnimTimeFromFrame(229),
+                        190.93f,
+                        executionCollider,
+                        Armatures.BIPED.get().rootJoint,
+                        ac,
+                        Armatures.BIPED
                 )
-
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.HIT_BLUNT)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, dawnDaySounds.soft_wipe.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.EXTRA_DAMAGE, Set.of(TARGET_MAX_HEALTH.create(15.0F, 0.08F)))
                         .addEvents(
-                                playSoundOnFrame(118, EpicFightSounds.BLUNT_HIT.get())
+                                playSoundOnFrame(13, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(16, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(20, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(26, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(38, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(43, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(70, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(83, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(94, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(101, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(106, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(118, EpicFightSounds.BLUNT_HIT.get()),
+                                playSoundOnFrame(124, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(145, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(154, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(163, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(168, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(173, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(178, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(185, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(193, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(199, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(203, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(209, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(218, dawnDaySounds.Light_Punch.get()),
+                                playSoundOnFrame(220, dawnDaySounds.Light_Punch.get())
+
                         )
 
 

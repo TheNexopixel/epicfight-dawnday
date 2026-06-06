@@ -6,8 +6,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.jetbrains.annotations.NotNull;
-import reascer.wom.gameasset.animations.weapons.AnimsNapoleon;
-import reascer.wom.gameasset.animations.weapons.AnimsSatsujin;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
@@ -36,10 +34,8 @@ public class AnimUtils {
 
     public static AnimationEvent.@NotNull InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> playSoundOnFrame(int blenderFrame, SoundEvent soundEvent) {
         return AnimationEvent.InTimeEvent.create(
-                AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) -> {
-                    e.playSound(soundEvent,1.0f,1.0f,1.0f);
-
-                }, AnimationEvent.Side.CLIENT
+                AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) ->
+                        e.playSound(soundEvent,1.0f,1.0f,1.0f), AnimationEvent.Side.CLIENT
         );
     }
 
@@ -70,7 +66,7 @@ public class AnimUtils {
                                         LivingEntityPatch.class
                                 );
 
-                        if (targetPatch != null) {
+                        if (targetPatch != null && !targetPatch.isStunned()) {
                             float stunTime = height * (
                                     1.0F - (float) entity.getAttributeValue(
                                             Attributes.KNOCKBACK_RESISTANCE

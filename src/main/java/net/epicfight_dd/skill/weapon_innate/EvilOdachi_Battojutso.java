@@ -1,7 +1,6 @@
 package net.epicfight_dd.skill.weapon_innate;
 
 import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
-import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.minecraft.network.FriendlyByteBuf;
 import yesman.epicfight.skill.*;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;

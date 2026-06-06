@@ -13,7 +13,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -210,6 +209,7 @@ public class DawnDaySkills {
         if (ModList.get().isLoaded("wom")) {
             WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", EvilOdachi_Battojutso::new, EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
                     .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
+                    .setResource(Skill.Resource.STAMINA)
                     .setCategory(SkillCategories.WEAPON_INNATE));
             evilbeam.newProperty()
                     .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
