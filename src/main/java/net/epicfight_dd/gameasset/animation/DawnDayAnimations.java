@@ -673,6 +673,7 @@ public class DawnDayAnimations {
                 )
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.82F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 
@@ -692,14 +693,15 @@ public class DawnDayAnimations {
                 )
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.82F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 
         IRON_FIST_AUTO4 = builder.nextAccessor("biped/combat/iron_fist_auto4", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.20f, 0.13f, 0.26f, 0.9f, 0.36f, InteractionHand.MAIN_HAND, biped.get().toolL, DawnDayCollider.IRON_FIST_REACH),
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.13f, 0.26f, 0.7f, 0.36f, InteractionHand.MAIN_HAND, biped.get().toolL, DawnDayCollider.IRON_FIST_REACH),
 
-                        new AttackAnimation.Phase(0.41f, 0.5f, 0.43f, 0.65f, 0.9f, 3.51f, InteractionHand.MAIN_HAND, biped.get().kneeR, DawnDayCollider.IRON_FIST_KICK)
+                        new AttackAnimation.Phase(0.41f, 0.5f, 0.43f, 0.65f, 0.7f, 3.51f, InteractionHand.MAIN_HAND, biped.get().kneeR, DawnDayCollider.IRON_FIST_KICK)
                 )
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.82F)
@@ -732,6 +734,7 @@ public class DawnDayAnimations {
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.82F)
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL,true)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 1.25F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
         );

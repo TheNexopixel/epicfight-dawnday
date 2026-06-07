@@ -91,6 +91,28 @@ public class RitusEvents {
             else {
                 player.heal(1.0f);
             }
+            if (player.hasEffect(EffectRegistry.DRAINDED.get())) {
+                if (!player.level().isClientSide) {
+
+                    ServerLevel level = (ServerLevel) player.level();
+
+                    level.sendParticles(
+                            new DustParticleOptions(
+                                    new Vector3f(1.0f, 1.0f, 1.0f),
+                                    1.2f
+                            ),
+                            player.getX(),
+                            player.getY() + 1.0,
+                            player.getZ(),
+                            15,
+                            0.3,
+                            0.5,
+                            0.3,
+                            0.01
+                    );
+                }
+                player.removeEffect(EffectRegistry.DRAINDED.get());
+            }
 
 
 

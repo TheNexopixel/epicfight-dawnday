@@ -1,6 +1,7 @@
 package net.epicfight_dd.gameasset.animation;
 
 import net.epicfight_dd.api.animation.AnimUtils;
+import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -12,6 +13,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -63,6 +65,7 @@ public class AdditionalAnimations {
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_AUTO2;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_AUTO3;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_AUTO4;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_AUTO5;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_DASH;
     public static AnimationManager.AnimationAccessor<AirSlashAnimation> EVIL_ODACHI_AIRSLASH;
     public static AnimationManager.AnimationAccessor<AttackAnimation> EVIL_ODACHI_BEAAAMMMM;
@@ -224,7 +227,7 @@ public class AdditionalAnimations {
 
         EVIL_ODACHI_AUTO4 = builder.nextAccessor("biped/combat/evil_odachi_auto4", (accessor) ->
                 new BasicMultipleAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.42f, 0.6f, 1.5f, 0.62f,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.42f, 0.6f, 1.2f, 0.62f,
                                 InteractionHand.MAIN_HAND, biped.get().legR, DawnDayCollider.EVIL_TACHI_SPECIAL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(0.8f))
@@ -233,15 +236,14 @@ public class AdditionalAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.05f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get()),
 
-                        new AttackAnimation.Phase(0.6f, 0.65f, 0.70f, 0.9f, 1.5f, 0.9f,
+                        new AttackAnimation.Phase(0.6f, 0.65f, 0.70f, 0.9f, 1.2f, 0.9f,
                                 InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.85f))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_HIT.get())
 
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.5f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE),
 
-                        new AttackAnimation.Phase(1.02f, 1.0f, 1.02f, 1.55f, 1.7f, 5.48f,
+                        new AttackAnimation.Phase(1.02f, 1.0f, 1.02f, 1.55f, 1.2f, 5.48f,
                                 InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.60f))
 
@@ -252,6 +254,33 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 1.7F))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        EVIL_ODACHI_AUTO5 = builder.nextAccessor("biped/combat/evil_odachi_auto5", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.32f, 0.53f, 1.5f, 0.62f,
+                                InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.SHORT),
+
+                        new AttackAnimation.Phase(0.9f, 1.15f, 0.95f, 1.2f, 1.8f, 1.7f,
+                                InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1f))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+
+                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.9f))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE),
+
+                        new AttackAnimation.Phase(1.92f, 1.9f, 1.72f, 2.1f, 2.1f, 5.48f,
+                                InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.20f))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(4))
+                )
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 2.3F))
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 

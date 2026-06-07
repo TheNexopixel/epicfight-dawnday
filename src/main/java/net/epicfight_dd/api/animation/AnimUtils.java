@@ -35,11 +35,11 @@ public class AnimUtils {
     public static AnimationEvent.@NotNull InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> playSoundOnFrame(int blenderFrame, SoundEvent soundEvent) {
         return AnimationEvent.InTimeEvent.create(
                 AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) ->
-                        e.playSound(soundEvent,1.0f,1.0f,1.0f), AnimationEvent.Side.CLIENT
+                        e.playSound(soundEvent,0.4f,1.1f,1.25f), AnimationEvent.Side.CLIENT
         );
     }
 
-    public static AnimationEvent.@NotNull SimpleEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height) {
+    public static AnimationEvent.SimpleEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height) {
 
         return AnimationEvent.SimpleEvent.create(
                 (livingEntityPatch, assetAccessor, animationParameters) -> {
@@ -56,6 +56,7 @@ public class AnimUtils {
                     }
 
                     for (LivingEntity entity : targets) {
+
                         if (entity == null || !entity.isAlive()) {
                             continue;
                         }
@@ -67,6 +68,7 @@ public class AnimUtils {
                                 );
 
                         if (targetPatch != null && !targetPatch.isStunned()) {
+
                             float stunTime = height * (
                                     1.0F - (float) entity.getAttributeValue(
                                             Attributes.KNOCKBACK_RESISTANCE
@@ -79,30 +81,11 @@ public class AnimUtils {
                             );
                         }
 
-                        entity.setDeltaMovement(
-                                entity.getDeltaMovement().x,
-                                entity.getDeltaMovement().y + height,
-                                entity.getDeltaMovement().z
-                        );
-
-                        entity.hasImpulse = true;
-
                         entity.addEffect(
                                 new MobEffectInstance(
                                         MobEffects.LEVITATION,
-                                        1,
-                                        0,
-                                        true,
-                                        false,
-                                        false
-                                )
-                        );
-
-                        entity.addEffect(
-                                new MobEffectInstance(
-                                        MobEffects.SLOW_FALLING,
-                                        10,
-                                        0,
+                                        4,
+                                        5,
                                         true,
                                         false,
                                         false

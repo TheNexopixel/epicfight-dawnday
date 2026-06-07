@@ -61,6 +61,11 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.NIGHT_RITUS_DAGGER.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
 
+      event.registerExecutionByItem(DawnDayItems.BLOOD_RITUS_DAGGER.getId(), CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
+      event.registerExecutionByItem(DawnDayItems.NIGHT_RITUS_DAGGER.getId(), CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
+
       if (ModList.get().isLoaded("wom")) {
           event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
                   DawnDayExecution_TYPES.EVIL_TACHI);

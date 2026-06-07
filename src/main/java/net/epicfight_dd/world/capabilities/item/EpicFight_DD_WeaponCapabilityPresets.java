@@ -455,6 +455,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             AdditionalAnimations.EVIL_ODACHI_AUTO2,
                             AdditionalAnimations.EVIL_ODACHI_AUTO3,
                             AdditionalAnimations.EVIL_ODACHI_AUTO4,
+                            AdditionalAnimations.EVIL_ODACHI_AUTO5,
                             AdditionalAnimations.EVIL_ODACHI_DASH,
                             AdditionalAnimations.EVIL_ODACHI_AIRSLASH)
 

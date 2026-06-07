@@ -62,6 +62,12 @@ public class DawnDayExecution_TYPES {
             new Vec3(0.05, 0.0F, 0.0F), -25.0F, 112
     );
 
+    public static final Type ONEHANDED_RITUAL_DAGGER = new Type(
+            DawnDayExecAnims.RITUS_DAGGER_EXECUTE,
+            DawnDayExecAnims.RITUS_DAGGER_EXECUTED,
+            new Vec3(0.6, 0.0F, 0.0F), 0.0F, 112
+    );
+
 
 
 

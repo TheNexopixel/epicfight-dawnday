@@ -2,6 +2,7 @@ package net.epicfight_dd.gameasset.animation.optional;
 
 
 import net.epicfight_dd.api.animation.AnimUtils;
+import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionAttackProxy;
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionHitAnimation;
 import net.epicfight_dd.gameasset.dawnDaySounds;
@@ -9,6 +10,7 @@ import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
 import org.jetbrains.annotations.NotNull;
@@ -63,6 +65,9 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_DUAL_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_DUAL_EXECUTED;
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_EXECUTED;
+
     public static AnimationManager.AnimationAccessor<SelectiveExecutionAttackProxy> MILADY_EXECUTION_SEL;
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
@@ -102,7 +107,7 @@ public class DawnDayExecAnims {
         );
 
         IRON_FIST_EXECUTE = builder.nextAccessor("biped/execution/iron_fist_execute", (accessor) ->
-                IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.42f, 0.43f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f));
+                IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.64f, 0.67f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f));
 
         NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
                 new ExecutionAttackAnimation(0.1f, 0.0f,
@@ -223,6 +228,55 @@ public class DawnDayExecAnims {
         RITUS_DAGGER_DUAL_EXECUTED = builder.nextAccessor("biped/execution/ritus_dagger_dual_executed", (accessor) ->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
+        RITUS_DAGGER_EXECUTE = builder.nextAccessor("biped/execution/ritus_dagger_execute", (accessor) ->
+                RITUS_DAGGER_ONEHANDED(accessor, executionCollider, CONSTANT_EXECUTION, 0.7f, 0.75f, 2.32f, 2.35f));
+
+
+        RITUS_DAGGER_EXECUTED = builder.nextAccessor("biped/execution/ritus_dagger_executed", (accessor) ->
+                new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
+
+
+    }
+
+    private static ExecutionAttackAnimation RITUS_DAGGER_ONEHANDED(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                                 AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                                 float preDelay1,
+                                                                 float contact1,
+                                                                 float preDelay2,
+                                                                 float contact2
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.23F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.6F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+
+        }))
+                .addEvents(
+                        AnimationEvent.InTimeEvent.create(
+                                2.35f,
+
+                                (e, s, p) -> {
+
+                                    LivingEntity entity = e.getOriginal();
+
+                                    entity.addEffect(
+                                            new MobEffectInstance(
+                                                    EffectRegistry.SEPUKKU.get(),
+                                                    350, 1, false, false, true
+                                            )
+                                    );
+                                }, AnimationEvent.Side.SERVER
+                        )
+                )
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }
 
@@ -299,7 +353,7 @@ public class DawnDayExecAnims {
         return (new ExecutionAttackAnimation(0.01F, accessor,
 
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{
-                        (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 0.5F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.2F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.5F)),
 

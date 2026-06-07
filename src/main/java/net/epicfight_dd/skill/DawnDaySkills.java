@@ -209,7 +209,6 @@ public class DawnDaySkills {
         if (ModList.get().isLoaded("wom")) {
             WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", EvilOdachi_Battojutso::new, EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
                     .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
-                    .setResource(Skill.Resource.STAMINA)
                     .setCategory(SkillCategories.WEAPON_INNATE));
             evilbeam.newProperty()
                     .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
