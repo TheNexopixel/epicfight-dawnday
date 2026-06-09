@@ -8,11 +8,17 @@ modId="${modId}"
 version="${modVersion}"
 displayName="${displayName}"
 logoFile= "${modId}_title.png"
-credits="Epic Fight"
+credits="Epic Fight, Forixaim for initial Neoforge port"
 authors="${authors}"
 
 
 description="${description}"
+
+
+[[mixins]]
+config="mixins.${modId}.json"
+
+
 [[dependencies."${modId}"]]
 modId="epicfight"
 mandatory=true

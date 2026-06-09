@@ -121,4 +121,3 @@ artifacts {
     archives(apiSourcesJar)
 }
 
-configureModPublish(ModLoader.NeoForge) { tasks.jar.get().archiveFile }

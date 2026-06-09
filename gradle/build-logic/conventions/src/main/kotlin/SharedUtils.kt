@@ -1,7 +1,6 @@
 // Shared utilities between all Gradle projects or plugins.
 
 import me.modmuss50.mpp.ModPublishExtension
-import org.gradle.api.GradleException
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -18,8 +17,6 @@ fun RepositoryHandler.strictMaven(name: String, url: String, vararg includeGroup
         filter { includeGroups.forEach { includeGroup(it) } }
     }
 }
-
-const val generationTaskGroup = "generation"
 
 private val Project.versionCatalog: VersionCatalog
     get() = extensions.getByType(VersionCatalogsExtension::class.java).named("libs")
@@ -84,7 +81,7 @@ fun Project.configureBaseArchive(variant: String) {
         // to keep the JAR file name consistent with the mod project slug URL,
         // and therefore Modrinth will automatically download the sources JAR file: https://support.modrinth.com/en/articles/8801191-modrinth-maven#h_1b24106498
         // This workaround is not needed if the mod ID matches the project slug.
-        archivesName.set("epic-fight")
+        archivesName.set("epic-fight-dawn-day")
         version = getFullModVersion(variant)
     }
 }
@@ -144,13 +141,6 @@ fun Project.configureModPublish(
     jarFile: () -> Provider<RegularFile>,
 ) {
     val project = this
-    project.tasks.named("publishMods") {
-        doLast {
-            if (extractCurrentVersionChangelog() == null) {
-                throw GradleException("Cannot run publishMods task: No changelog found for version $modVersion in CHANGELOG.md file")
-            }
-        }
-    }
     extensions.getByType(ModPublishExtension::class.java).apply {
         // Assumes `java { withSourcesJar() }` is called.
         val sourcesJar = project.tasks.named("sourcesJar")
@@ -170,49 +160,6 @@ fun Project.configureModPublish(
         file.set(jarFile())
         additionalFiles.from(sourcesJar)
 
-        val requiredDependencies = emptyList<String>()
-        val optionalDependencies = emptyList<String>()
-
-        curseforge {
-            accessToken.set(providers.environmentVariable("CURSEFORGE_TOKEN"))
-            projectId.set("405076")
-            minecraftVersions.add(mcVersion)
-            projectSlug.set("epic-fight-mod")
-
-            requiredDependencies.forEach { requires(it) }
-            optionalDependencies.forEach { optional(it) }
-        }
-
-        modrinth {
-            accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
-            projectId.set("vu3NZ5Ma")
-            minecraftVersions.add(mcVersion)
-
-            requiredDependencies.forEach { requires(it) }
-            optionalDependencies.forEach { optional(it) }
-        }
-
-        discord {
-            webhookUrl.set(providers.environmentVariable("DISCORD_WEBHOOK"))
-            dryRunWebhookUrl.set(providers.environmentVariable("DRY_RUN_DISCORD_WEBHOOK"))
-            username.set("Update Notification")
-            avatarUrl.set("https://i.imgur.com/FrxDviN.png")
-            content.set(
-                changelog.map {
-                    buildString {
-                        appendLine("<@&1074034800849059930>")
-                        appendLine("# Epic Fight $modVersion is out!")
-                        appendLine(releaseChangelog)
-                    }
-                }
-            )
-
-            style {
-                look.set("MODERN")
-                link.set("EMBED")
-                thumbnailUrl.set("https://i.imgur.com/nI8xOCy.png")
-            }
-        }
     }
 }
 
