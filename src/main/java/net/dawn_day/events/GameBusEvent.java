@@ -10,10 +10,11 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
-import yesman.epicfight.api.event.types.entity.StunnedEvent;
+import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
@@ -34,17 +35,23 @@ public class GameBusEvent {
         }
     }
 
-    public static void onStun(StunnedEvent event) {
+    public static void onStun(FMLCommonSetupEvent evt) {
+        EpicFightEventHooks.Entity.APPLY_STUN.registerEvent((event)-> {
+
         if(event.getEntityPatch() instanceof ServerPlayerPatch serverPlayerPatch){
             if(event.getStunType().equals(StunType.KNOCKDOWN)){
                 serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN, 0.0f);
             }
         }
         LivingEntity entity = event.getEntityPatch().getOriginal();
+
         StunType stunType = event.getStunType();
+
         if(entity.hasEffect(DawnDayEffects.IMPREGNABILITY) && stunType != StunType.NEUTRALIZE){
             event.cancel();
         }
+
+        });
     }
 
     @SubscribeEvent
@@ -78,8 +85,8 @@ public class GameBusEvent {
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
                 if (playerPatch != null) {
                     if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
-                            && !Objects.deepEquals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU)
+                            && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
+                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU.get())
 
                     ) {
                         target.removeEffect(DawnDayEffects.SEPUKKU);

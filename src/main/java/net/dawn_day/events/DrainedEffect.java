@@ -5,6 +5,7 @@ import net.dawn_day.registry.entries.DawnDayEffects;
 import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,51 +17,58 @@ import org.joml.Vector3f;
 
 @EventBusSubscriber(modid = EpicFightDawnDay.MOD_ID)
 public class DrainedEffect {
+
     @SubscribeEvent
     public static void onEffectAdded(MobEffectEvent.Added event) {
 
         LivingEntity entity = event.getEntity();
 
-        if (event.getEffectInstance().getEffect()
-                != DawnDayEffects.DRAINED.get()) {
+        if (!(entity instanceof ServerPlayer)) {
             return;
         }
 
-        entity.level().playSound(
-                null,
-                entity.getX(),
-                entity.getY(),
-                entity.getZ(),
-                DawnDaySounds.DRAINED.get(),
-                SoundSource.PLAYERS,
-                1.5f,
-                1.2f
-        );
-        if (!entity.level().isClientSide) {
+        if (event.getEffectInstance().getEffect()
+                == DawnDayEffects.DRAINED.get()) {
 
-            ServerLevel level = (ServerLevel) entity.level();
 
-            for (int i = 0; i < 35; i++) {
+            entity.level().playSound(
+                    null,
+                    entity.getX(),
+                    entity.getY(),
+                    entity.getZ(),
+                    DawnDaySounds.DRAINED.get(),
+                    SoundSource.PLAYERS,
+                    1.5f,
+                    1.2f
+            );
 
-                float gray = 0.1f + level.random.nextFloat() * 0.25f;
-                float scale = 0.7f + level.random.nextFloat() * 1.2f;
+            if (!entity.level().isClientSide) {
 
-                level.sendParticles(
-                        new DustParticleOptions(
-                                new Vector3f(gray, gray, gray),
-                                scale
-                        ),
-                        entity.getX(),
-                        entity.getY() + 1.0,
-                        entity.getZ(),
-                        1,
-                        0.4,
-                        0.5,
-                        0.4,
-                        0.02
-                );
+                ServerLevel level = (ServerLevel) entity.level();
+
+                for (int i = 0; i < 35; i++) {
+
+                    float gray = 0.1f + level.random.nextFloat() * 0.25f;
+                    float scale = 0.7f + level.random.nextFloat() * 1.2f;
+
+                    level.sendParticles(
+                            new DustParticleOptions(
+                                    new Vector3f(gray, gray, gray),
+                                    scale
+                            ),
+                            entity.getX(),
+                            entity.getY() + 1.0,
+                            entity.getZ(),
+                            1,
+                            0.4,
+                            0.5,
+                            0.4,
+                            0.02
+                    );
+                }
             }
         }
+
         if (event.getEffectInstance().getEffect().value()
                 == DawnDayEffects.CURSED.get()) {
 
@@ -85,7 +93,7 @@ public class DrainedEffect {
             );
             if (!entity.level().isClientSide) {
 
-                ServerLevel level = (ServerLevel) entity.level();
+                ServerLevel level = (ServerLevel) event.getEntity().level();
 
                 for (int i = 0; i < 35; i++) {
 
@@ -115,11 +123,12 @@ public class DrainedEffect {
 
     @SubscribeEvent
     public static void onEffectExpire(MobEffectEvent.Expired event) {
-        assert event.getEffectInstance() != null;
-        if (event.getEffectInstance().getEffect().value()
+
+        if (event.getEffectInstance() != null && event.getEffectInstance().getEffect().value()
                 == DawnDayEffects.SEPUKKU.get()) {
             event.getEntity().addEffect(new MobEffectInstance(DawnDayEffects.DRAINED, 350, 0));
         }
+
     }
 
 }

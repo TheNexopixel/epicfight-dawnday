@@ -1,9 +1,9 @@
 package net.dawn_day.effect;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class SepukkuEffect extends MobEffect {
@@ -14,14 +14,11 @@ public class SepukkuEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        if (!(entity instanceof Player)) {
+        if (!(entity instanceof ServerPlayer)) {
             return false;
         }
         return super.applyEffectTick(entity, amplifier);
     }
-
-
-
 
 
 }
