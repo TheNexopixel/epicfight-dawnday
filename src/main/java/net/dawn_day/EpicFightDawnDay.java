@@ -13,6 +13,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
+import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 
@@ -27,7 +28,7 @@ public class EpicFightDawnDay {
     }
     public EpicFightDawnDay(IEventBus bus, ModContainer modContainer) {
         bus.addListener(ModBusEvent::registerAnimation);
-   //nexo pls import the required import and build
+
     if (EpicFightSharedConstants.isPhysicalClient()) {
          bus.addListener(DawnDayKeyMappings::registerKeys);
     }
