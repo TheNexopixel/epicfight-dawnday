@@ -1,5 +1,6 @@
 package net.epicfight_dd.skill;
 
+import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
@@ -45,10 +46,12 @@ public class DawnDaySkills {
     public static Skill EVIL_BEAAAAMMMM;
     public static Skill BRUTAL_DASH;
     public static Skill GROUNDSLAM;
+    public static Skill INCISURA_VITREA;
     public static Skill WILD_STRIKES;
     public static Skill RAAAHHH;
     public static Skill ANNIHILATE;
     public static Skill SEPUKKU;
+    public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
 
 
@@ -56,20 +59,47 @@ public class DawnDaySkills {
     public static void buildSkillEvent(SkillBuildEvent build){
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
 
-       WeaponInnateSkill gentlenudge = modRegistry.build("gentle_nudge",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                .setAnimations(DawnDayAnimations.MILADY_KNUCKLE_INNATE)
+
+            WeaponInnateSkill gentlenudge = modRegistry.build("gentle_nudge", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                    .setAnimations(DawnDayAnimations.MILADY_KNUCKLE_INNATE)
+                    .setCategory(SkillCategories.WEAPON_INNATE));
+            gentlenudge.newProperty()
+                    .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                    .addProperty(AttackPhaseProperty.HIT_SOUND, dawnDaySounds.poise_break.get())
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+            GENTLE_NUDGE = gentlenudge;
+
+
+        WeaponInnateSkill incivi = modRegistry.build("incisura_vitrea",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.INCISURA_VITREA)
                 .setCategory(SkillCategories.WEAPON_INNATE));
-               gentlenudge.newProperty()
-                       .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
-                       .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
-                       .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F))
-                       .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                       .addProperty(AttackPhaseProperty.HIT_SOUND,dawnDaySounds.poise_break.get())
-                       .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
-                       .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
-                       .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
-                       .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
-               GENTLE_NUDGE = gentlenudge;
+        incivi.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(15.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(4.2F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.8F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        INCISURA_VITREA = incivi;
+
+        WeaponInnateSkill piercingstrike = modRegistry.build("piercing_strike",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.PIERCING_STRIKE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        piercingstrike.newProperty()
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.8F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(60.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.5F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        PIERCING_STRIKE = piercingstrike;
 
 
         if (ModList.get().isLoaded("wom")) {

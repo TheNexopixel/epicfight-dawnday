@@ -26,10 +26,34 @@ public class DawnDayItems {
                             .defaultDurability(2561)));
 
     public static final RegistryObject<Item> VITREUS =
-            ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,2,-2.4f,
+            ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,3,-2.2f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(4561)));
+
+    public static final RegistryObject<Item> IRON_FLORETT =
+            ITEMS.register("iron_florett",() -> new SwordItem(Tiers.IRON,2,-2.05f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(861)));
+
+    public static final RegistryObject<Item> GOLDEN_FLORETT =
+            ITEMS.register("golden_florett",() -> new SwordItem(Tiers.GOLD,2,-1.9f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(861)));
+
+    public static final RegistryObject<Item> DIAMOND_FLORETT =
+            ITEMS.register("diamond_florett",() -> new SwordItem(Tiers.DIAMOND,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(1861)));
+
+    public static final RegistryObject<Item> NETHERITE_FLORETT =
+            ITEMS.register("netherite_florett",() -> new SwordItem(Tiers.NETHERITE,2,-2.15f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(1861)));
 
     public static final RegistryObject<Item> ECLIPSE =
             ITEMS.register("eclipse",() -> new SwordItem(Tiers.NETHERITE,4,-2.7f,
@@ -159,6 +183,11 @@ public class DawnDayItems {
     public static final RegistryObject<Item> nail =
             ITEMS.register("nail",() -> new Item(
                     new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> ruby =
+            ITEMS.register("ruby",() -> new Item(
+                    new Item.Properties().stacksTo(16)
                             .rarity(Rarity.COMMON)));
 
     public static final RegistryObject<Item> milady =

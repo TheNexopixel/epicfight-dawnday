@@ -4,8 +4,8 @@
     "common":
     {
       "impact":1.6,
-      "max_strikes":8
+      "max_strikes":3
     }
   },
-  "type":"epicfight_dd:saber"
+  "type":"epicfight_dd:vitreus"
 }

@@ -135,26 +135,28 @@ public class AdditionalExecutions {
                         .addEvents(
                                 AnimationEvent.InTimeEvent.create(0.2f, (e,s,p)->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         SoundEvents.WITHER_AMBIENT,
                                                         SoundSource.PLAYERS,
-                                                        100, 1.0F
+                                                        1.0F,
+                                                        1.0F
                                                 )
 
 
-                                        , AnimationEvent.Side.CLIENT),
+                                        , AnimationEvent.Side.SERVER),
                                 AnimationEvent.InTimeEvent.create(6.2f, (e,s,p)->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         SoundEvents.WITHER_SHOOT,
                                                         SoundSource.PLAYERS,
-                                                        100, 1.0F
+                                                        1.0F,
+                                                        1.0F
                                                 )
 
 
-                                        , AnimationEvent.Side.CLIENT)
+                                        , AnimationEvent.Side.SERVER)
                         )
                         .addEvents(
 
@@ -162,30 +164,34 @@ public class AdditionalExecutions {
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(2.25f, (e,s,p)->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         EpicFightSounds.BUZZ.get(),
                                                         SoundSource.PLAYERS,
-                                                        100, 0.7F
+                                                        1.0F,
+                                                        0.7F
                                                 )
 
 
-                                        , AnimationEvent.Side.CLIENT),
+                                        , AnimationEvent.Side.SERVER),
+
+                                AnimationEvent.InTimeEvent.create(3.01f, (e, s, p) ->
+                                                e.getOriginal().level().playSound(
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
+                                                        EpicFightSounds.LASER_BLAST.get(),
+                                                        SoundSource.PLAYERS,
+                                                        1.0F,
+                                                        0.8F
+                                                )
+
+
+                                        , AnimationEvent.Side.SERVER),
 
 
                                 //BEAM + LASER SOUND
                                 AnimationEvent.InTimeEvent.create(3.01F, (entitypatch, self, params) -> {
                                     LivingEntity entity = entitypatch.getOriginal();
-
-                                    if (entitypatch instanceof PlayerPatch) {
-                                        entity.level().playSound(
-                                                (Player) entity,
-                                                entity,
-                                                EpicFightSounds.LASER_BLAST.get(),
-                                                SoundSource.PLAYERS,
-                                                100, 0.8F
-                                        );
-                                    }
 
                                     // Bone matrix only for world spawn position of particle
                                     OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(

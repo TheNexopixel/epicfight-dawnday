@@ -41,16 +41,17 @@ public class DefaultEpicFightSkillCompat {
             ).addGuardBreakMotion(EpicFightDD_WeaponCategories.IRON_FIST,
                     (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_BREAK);
 
-
-        }
-        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","guard"))) {
-            GuardSkill.Builder builder = event.getSkillBuilder();
-
             builder.addGuardMotion(
                     EpicFightDD_WeaponCategories.RITUS_DAGGER,
                     (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
             ).addGuardBreakMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER,
                     (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
+
+            builder.addGuardMotion(
+                    EpicFightDD_WeaponCategories.FLORETT,
+                    (i, p) -> DawnDayAnimations.FLORETT_DUAL_GUARD_HIT
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.FLORETT,
+                    (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED);
 
 
         }
@@ -87,6 +88,17 @@ public class DefaultEpicFightSkillCompat {
                                     Animations.SWORD_GUARD_ACTIVE_HIT1,
                                     Animations.SWORD_GUARD_ACTIVE_HIT3
                             ));
+
+            builder.addGuardMotion(
+                            EpicFightDD_WeaponCategories.FLORETT,
+                            (i, p) -> DawnDayAnimations.FLORETT_DUAL_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.FLORETT,
+                            (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.FLORETT,
+                            (i, p) -> List.of(
+                                    DawnDayAnimations.FLORETT_DUAL_PARRY1,
+                                    DawnDayAnimations.FLORETT_DUAL_PARRY2
+                            ));
         }
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","parrying"))) {
             GuardSkill.Builder builder = event.getSkillBuilder();
@@ -110,6 +122,7 @@ public class DefaultEpicFightSkillCompat {
             SwordmasterSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.EVIL_TACHI)
+                    .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.FLORETT)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD);
         }
     }
@@ -118,6 +131,7 @@ public class DefaultEpicFightSkillCompat {
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
         icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
+        icon.registerCategory(EpicFightDD_WeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));
 
         if (ModList.get().isLoaded("wom")) {

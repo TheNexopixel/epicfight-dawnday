@@ -33,6 +33,7 @@ public class DawnDayLootModifiers {
                                         DawnDayItems.NIGHT_RITUS_DAGGER.get()
                                 )
                         )
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("night_ritus_dagger")
                         .build();
 
@@ -45,15 +46,10 @@ public class DawnDayLootModifiers {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
-                                LootItemRandomChanceCondition.randomChance(0.25f)
+                                LootItemRandomChanceCondition.randomChance(0.35f)
                         )
-                        .add(
-
-                                LootItem.lootTableItem(
-                                        DawnDayItems.BLOOD_RITUS_DAGGER.get()
-
-                                )
-                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("blood_ritus_dagger")
                         .build();
 
@@ -210,6 +206,7 @@ public class DawnDayLootModifiers {
 
                                 )
                         )
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("saber")
                         .build();
 
@@ -242,6 +239,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.3f))
                         .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))

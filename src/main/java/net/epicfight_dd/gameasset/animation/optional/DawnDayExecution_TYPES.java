@@ -49,7 +49,7 @@ public class DawnDayExecution_TYPES {
     public static final Type IRON_FIST = new Type(
             DawnDayExecAnims.IRON_FIST_EXECUTE,
             DawnDayExecAnims.IRON_FIST_EXECUTED,
-            new Vec3(0.1, 0.0F, 0.0F), 0.0F, 115
+            new Vec3(0.4, 0.0F, 0.0F), 0.0F, 115
     );
     public static final Type GREATAXE_DUAL = new Type(
             DawnDayExecAnims.GREATAXE_DUAL_EXECUTE,
@@ -59,7 +59,7 @@ public class DawnDayExecution_TYPES {
     public static final Type DUAL_RITUAL_DAGGER = new Type(
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTE,
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTED,
-            new Vec3(0.05, 0.0F, 0.0F), -25.0F, 112
+            new Vec3(1.50, 0.0F, 0.0F), 0F, 112
     );
 
     public static final Type ONEHANDED_RITUAL_DAGGER = new Type(

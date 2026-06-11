@@ -218,7 +218,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(DawnDayCollider.BATTLESTAFF_FRONT)
+                    .collider(DawnDayCollider.BATTLESTAFF_FULL)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
@@ -242,7 +242,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(DawnDayCollider.BATTLESTAFF_FRONT)
+                    .collider(DawnDayCollider.BATTLESTAFF_FULL)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
@@ -787,10 +787,75 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE);
 
+    public static final Function<Item, CapabilityItem.Builder> VITREUS = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.TACHI)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(DawnDayCollider.BAT_LONGER)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.INCISURA_VITREA)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.VITR_AUTO1,
+                            DawnDayAnimations.VITR_AUTO2,
+                            DawnDayAnimations.VITR_AUTO3,
+                            DawnDayAnimations.VITR_AUTO4,
+                            DawnDayAnimations.VITR_DASH,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.VITR_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR);
+
+    public static final Function<Item, CapabilityItem.Builder> FLORETT = (item) ->
+            WeaponCapability.builder()
+                    .category(EpicFightDD_WeaponCategories.FLORETT)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .styleProvider((pp) ->
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.FLORETT ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.FLORETT)
+
+                    .collider(DawnDayCollider.BAT_LONGER)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.FLORETT_AUTO1,
+                            DawnDayAnimations.FLORETT_AUTO2,
+                            DawnDayAnimations.FLORETT_AUTO3,
+                            DawnDayAnimations.FLORETT_AUTO4,
+                            DawnDayAnimations.VITR_DASH,
+                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.FLORETT_DUAL_AUTO1,
+                            DawnDayAnimations.FLORETT_DUAL_AUTO2,
+                            DawnDayAnimations.FLORETT_DUAL_AUTO3,
+                            DawnDayAnimations.FLORETT_DUAL_DASH,
+                            DawnDayAnimations.FLORETT_DUAL_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.FLORETT_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.FLORETT_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.FLORETT_DUAL_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.FLORETT_DUAL_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
 
         if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
@@ -803,6 +868,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "delight_knife"), DELIGHT_KNIFE);
         }
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "florett"), FLORETT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "night_ritus_dagger"), NIGHT_RITUS_DAGGER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "messer"), MESSER);

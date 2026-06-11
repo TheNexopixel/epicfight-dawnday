@@ -24,7 +24,7 @@ public class DawnDayCreativeTab {
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(DawnDayItems.milady.get());
                 output.accept(DawnDayItems.bonecutting_saw.get());
-           //     output.accept(DawnDayItems.VITREUS.get());
+                output.accept(DawnDayItems.VITREUS.get());
            //     output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
@@ -36,6 +36,10 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.war_sickle.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.bat.get());
+                output.accept(DawnDayItems.NETHERITE_FLORETT.get());
+                output.accept(DawnDayItems.DIAMOND_FLORETT.get());
+                output.accept(DawnDayItems.IRON_FLORETT.get());
+                output.accept(DawnDayItems.GOLDEN_FLORETT.get());
                 output.accept(DawnDayItems.netherite_messer.get());
                 output.accept(DawnDayItems.diamond_messer.get());
                 output.accept(DawnDayItems.iron_messer.get());
@@ -58,6 +62,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
                 output.accept(DawnDayItems.nail.get());
+                output.accept(DawnDayItems.ruby.get());
 
                 // Potions
 

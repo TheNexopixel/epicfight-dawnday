@@ -81,8 +81,6 @@ public class DawnDayExecAnims {
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
         MultiCollider<OBBCollider> executionColliderBIG = new MultiOBBCollider(3, 4.25F, 1.5F, 3.5F, 0.0F, 1.5F, -2.5F);
         MultiCollider<OBBCollider> executionCollider2 = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, 1.5F);
-        MultiCollider<OBBCollider> evil_collider = new MultiOBBCollider(1, 2.0F, 7.5F, 9.5F, 0.0F, 3.5F, 1.5F);
-
         AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 1.0F;
         AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTED = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.8333333F;
 
@@ -107,7 +105,8 @@ public class DawnDayExecAnims {
         );
 
         IRON_FIST_EXECUTE = builder.nextAccessor("biped/execution/iron_fist_execute", (accessor) ->
-                IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.64f, 0.67f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f));
+                IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.64f, 0.67f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
 
         NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
                 new ExecutionAttackAnimation(0.1f, 0.0f,
@@ -224,7 +223,8 @@ public class DawnDayExecAnims {
                 greataxe_dual(accessor, executionCollider, CONSTANT_EXECUTION, 1.3f, 1.4f, 2.42f, 2.5f,3.85f,3.9f));
 
         RITUS_DAGGER_DUAL_EXECUTE = builder.nextAccessor("biped/execution/ritus_dagger_dual_execute", (accessor) ->
-                ritusdaggerdual(accessor, executionCollider, CONSTANT_EXECUTION, 0.4f, 0.5f, 1.0f, 1.1f,2.65f,2.7f,3.4f,3.5f,4.8f,4.9f));
+                ritusdaggerdual(accessor, executionCollider, CONSTANT_EXECUTION, 0.4f, 0.5f, 1.0f, 1.1f,2.65f,2.7f,3.4f,3.5f,4.8f,4.9f)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
         RITUS_DAGGER_DUAL_EXECUTED = builder.nextAccessor("biped/execution/ritus_dagger_dual_executed", (accessor) ->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
@@ -250,13 +250,13 @@ public class DawnDayExecAnims {
 
                 Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.23F, Armatures.BIPED.get().rootJoint, executionCollider))
                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
+                .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.6F)),
 
                 (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
-                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
 
         }))
                 .addEvents(
@@ -270,7 +270,7 @@ public class DawnDayExecAnims {
                                     entity.addEffect(
                                             new MobEffectInstance(
                                                     EffectRegistry.SEPUKKU.get(),
-                                                    350, 1, false, false, true
+                                                    300, 0, false, false, true
                                             )
                                     );
                                 }, AnimationEvent.Side.SERVER

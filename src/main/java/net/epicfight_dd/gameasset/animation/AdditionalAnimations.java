@@ -124,15 +124,16 @@ public class AdditionalAnimations {
                         .addEvents(
                                 AnimationEvent.InTimeEvent.create(1.3f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         SoundEvents.WITHER_SHOOT,
                                                         SoundSource.PLAYERS,
-                                                        30, 0.9F
+                                                        1.0F,
+                                                        1.0F
                                                 )
 
 
-                                        , AnimationEvent.Side.CLIENT))
+                                        , AnimationEvent.Side.SERVER))
                         .addEvents(
                                 AnimationEvent.InPeriodEvent.create(0.07f, 0.8f, (e, s, p) -> {
                                             var entity = e.getOriginal();
@@ -332,14 +333,15 @@ public class AdditionalAnimations {
                                 // SFX
                                 AnimationEvent.InTimeEvent.create(0.15f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         SoundEvents.WITHER_AMBIENT,
                                                         SoundSource.PLAYERS,
-                                                        100, 1.0F
+                                                        1.0F,
+                                                        1.0F
                                                 )
 
-                                        , AnimationEvent.Side.CLIENT))
+                                        , AnimationEvent.Side.SERVER))
         );
 
         EVIL_ODACHI_OVERHEADSLASH_RELEASE = builder.nextAccessor("biped/skill/evil_odachi_overheadslash_release", ac ->
@@ -363,14 +365,15 @@ public class AdditionalAnimations {
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(0.21f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         SoundEvents.WITHER_BREAK_BLOCK,
                                                         SoundSource.PLAYERS,
-                                                        100, 1.1F
+                                                        1.0F,
+                                                        1.1F
                                                 )
 
-                                        , AnimationEvent.Side.CLIENT)
+                                        , AnimationEvent.Side.SERVER)
                         )
                         .addEvents(
                                 AnimationEvent.InTimeEvent.create(
@@ -401,14 +404,15 @@ public class AdditionalAnimations {
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(0.15f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         EpicFightSounds.BUZZ.get(),
                                                         SoundSource.PLAYERS,
-                                                        100, 1.1F
+                                                        1.0F,
+                                                        1.1F
                                                 )
 
-                                        , AnimationEvent.Side.CLIENT))
+                                        , AnimationEvent.Side.SERVER))
         );
 
         EVIL_ODACHI_BATTOJUTSO = builder.nextAccessor("biped/skill/evil_odachi_battojutso", ac ->
@@ -534,30 +538,32 @@ public class AdditionalAnimations {
                                 //BUZZ
                                 AnimationEvent.InTimeEvent.create(0.15f, (e, s, p) ->
                                                 e.getOriginal().level().playSound(
-                                                        (Player) e.getOriginal(),
-                                                        e.getOriginal(),
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
                                                         EpicFightSounds.BUZZ.get(),
                                                         SoundSource.PLAYERS,
-                                                        100, 0.9F
+                                                        1.0F,
+                                                        0.9F
                                                 )
 
 
-                                        , AnimationEvent.Side.CLIENT),
+                                        , AnimationEvent.Side.SERVER),
+
+                                AnimationEvent.InTimeEvent.create(0.66f, (e, s, p) ->
+                                                e.getOriginal().level().playSound(
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
+                                                        EpicFightSounds.LASER_BLAST.get(),
+                                                        SoundSource.PLAYERS,
+                                                        1.0F,
+                                                        0.9F
+                                                )
 
 
-                                //BEAM + LASER SOUND
+                                        , AnimationEvent.Side.SERVER),
+
                                 AnimationEvent.InTimeEvent.create(0.66F, (entitypatch, self, params) -> {
                                     LivingEntity entity = entitypatch.getOriginal();
-
-                                    if (entitypatch instanceof PlayerPatch) {
-                                        entity.level().playSound(
-                                                (Player) entity,
-                                                entity,
-                                                EpicFightSounds.LASER_BLAST.get(),
-                                                SoundSource.PLAYERS,
-                                                100, 0.9F
-                                        );
-                                    }
 
                                     // Bone matrix only for world spawn position of particle
                                     OpenMatrix4f originMatrix = entitypatch.getArmature().getBoundTransformFor(
