@@ -45,7 +45,6 @@ public class Epicfight_dd {
         bus.addListener(evil_tachi_skillcompats::forceGuard);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
-      //  DawnDayPaintings.register(bus);
 
 
 

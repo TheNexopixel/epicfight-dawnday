@@ -47,6 +47,15 @@ public class NightfallCompat implements ICompatModule {
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER,
                             (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED)
 
+                    .addGuardMotion(
+                            EpicFightDD_WeaponCategories.FLORETT,
+                            (i, p) -> DawnDayAnimations.FLORETT_DUAL_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.FLORETT,
+                            (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
+
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.FLORETT, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 
@@ -67,6 +76,8 @@ public class NightfallCompat implements ICompatModule {
         public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
 
             icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
+            icon.registerCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
+            icon.registerCategory(EpicFightDD_WeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
             if  (ModList.get().isLoaded("wom")) {
                 icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
             }

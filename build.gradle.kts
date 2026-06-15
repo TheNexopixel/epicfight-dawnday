@@ -134,7 +134,6 @@ dependencies {
     // Custom Mod Dependencies
     modImplementation("curse.maven:epic-fight-mod-405076:8049910")
     modImplementation("curse.maven:combat-evolution-1377795:8164342")
-    modImplementation("curse.maven:farmers-delight-398521:8083474")
     modImplementation("curse.maven:wom-918614:8195403")
     modCompileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
     modCompileOnly("curse.maven:epicfight-nightfall-1307848:7670480")

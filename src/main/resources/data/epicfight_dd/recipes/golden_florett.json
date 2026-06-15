@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " D ",
+    " D ",
+    "DKD"
+  ],
+  "key": {
+    "K": {
+      "item": "epicfight_dd:golden_messer"
+    },
+    "D": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:golden_florett",
+    "count": 1
+  }
+}
+

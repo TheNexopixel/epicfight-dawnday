@@ -48,6 +48,7 @@ public class DawnDaySkills {
     public static Skill GROUNDSLAM;
     public static Skill INCISURA_VITREA;
     public static Skill WILD_STRIKES;
+    public static Skill WILD_STRIKES_DUAL;
     public static Skill RAAAHHH;
     public static Skill ANNIHILATE;
     public static Skill SEPUKKU;
@@ -297,6 +298,17 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         WILD_STRIKES = wildstrikes;
+
+        WeaponInnateSkill wildstrikes_dual = modRegistry.build("wild_strikes_dual",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.WILD_STRIKES_DUAL)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        wildstrikes_dual.newProperty()
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.5F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(50F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+
+        WILD_STRIKES_DUAL = wildstrikes_dual;
 
         /// RAAAHHHHHHHHHH BANG BANG BANG
         RAAAHHH = modRegistry.build("rahhh", RAHHHHH::new,

@@ -27,10 +27,6 @@ public class AnimationBuildNexus {
 
             AdditionalExecutions.build(builder);
         }
-
-        if (ModList.get().isLoaded("farmersdelight")) {
-            DelightAnimations.build(builder);
-        }
     }
 
 

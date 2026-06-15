@@ -58,6 +58,24 @@ public class DawnDayLootModifiers {
             if (event.getName().equals(
                     new ResourceLocation(
                             "minecraft",
+                            "chests/desert_pyramid"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.35f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_FLORETT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_FLORETT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.steelaxe.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .name("blood_ritus_dagger")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
                             "chests/village/village_toolsmith"))) {
 
                 LootPool pool = LootPool.lootPool()

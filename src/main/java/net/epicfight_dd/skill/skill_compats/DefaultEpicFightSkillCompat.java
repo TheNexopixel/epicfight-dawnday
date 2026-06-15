@@ -96,8 +96,10 @@ public class DefaultEpicFightSkillCompat {
                             (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.FLORETT,
                             (i, p) -> List.of(
-                                    DawnDayAnimations.FLORETT_DUAL_PARRY1,
-                                    DawnDayAnimations.FLORETT_DUAL_PARRY2
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT2,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT3
                             ));
         }
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","parrying"))) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    " D ",
+    "SKS"
+  ],
+  "key": {
+    "K": {
+      "item": "epicfight_dd:netherite_messer"
+    },
+    "D": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "S": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:netherite_florett",
+    "count": 1
+  }
+}
+

@@ -62,6 +62,15 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.IRON_FIST);
 
+      event.registerExecutionByItem(DawnDayItems.IRON_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.MILADY_DUAL);
+      event.registerExecutionByItem(DawnDayItems.GOLDEN_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.MILADY_DUAL);
+      event.registerExecutionByItem(DawnDayItems.DIAMOND_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.MILADY_DUAL);
+      event.registerExecutionByItem(DawnDayItems.NETHERITE_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.MILADY_DUAL);
+
       event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.ONE_HAND,
               DawnDayExecution_TYPES.IRON_FIST);
 
