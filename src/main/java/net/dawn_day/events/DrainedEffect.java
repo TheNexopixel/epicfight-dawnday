@@ -24,8 +24,8 @@ public class DrainedEffect {
         LivingEntity entity = event.getEntity();
 
         if (!(entity instanceof ServerPlayer)) {
-            if(entity.hasEffect(DawnDayEffects.CURSED)){
-                entity.removeEffect(DawnDayEffects.CURSED);
+            if(event.getEffectInstance().getEffect().value() == DawnDayEffects.CURSED.get()){
+                entity.removeEffect(DawnDayEffects.CURSED.getDelegate());
             }
             return;
         }
