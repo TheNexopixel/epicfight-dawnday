@@ -19,6 +19,16 @@ import org.joml.Vector3f;
 public class DrainedEffect {
 
     @SubscribeEvent
+    public static void denyEffects(MobEffectEvent.Applicable event){
+        if (event.getEffectInstance().is(DawnDayEffects.CURSED)
+                && !(event.getEntity() instanceof ServerPlayer)) {
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
+    }
+
+
+
+    @SubscribeEvent
     public static void onEffectAdded(MobEffectEvent.Added event) {
 
         LivingEntity entity = event.getEntity();

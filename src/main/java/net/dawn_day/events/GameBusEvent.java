@@ -4,6 +4,7 @@ import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.registry.entries.DawnDayEffects;
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
 import net.dawn_day.registry.entries.DawnDaySkills;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,6 +16,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import yesman.epicfight.api.event.EpicFightEventHooks;
+import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
@@ -83,14 +85,20 @@ public class GameBusEvent {
         }
         if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU.getDelegate())){
             LivingEntity target = event.getEntity();
+            if (EpicFightSharedConstants.IS_DEV_ENV) {
+                target.sendSystemMessage(Component.literal("YOU HAVE CHANGED ITEMS WITH SEPPUKU!"));
+            }
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
                 if (playerPatch != null) {
                     if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
-                            && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU.get())
+                            && !Objects.deepEquals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
+                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU)
 
                     ) {
+                        if (EpicFightSharedConstants.IS_DEV_ENV) {
+                            target.sendSystemMessage(Component.literal("Trying to remove seppuku!"));
+                        }
                         target.removeEffect(DawnDayEffects.SEPUKKU);
                     }
                 }

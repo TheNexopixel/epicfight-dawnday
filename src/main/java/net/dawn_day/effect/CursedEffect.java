@@ -25,10 +25,10 @@ public class CursedEffect extends FortifiedEffect{
         }
     }
 
-//    @Override
-//    public void applyInstantenousEffect(@Nullable Entity source, @Nullable Entity indirectSource, @NotNull LivingEntity livingEntity, int amplifier, double health) {
-//        if (livingEntity instanceof ServerPlayer) {
-//            super.applyInstantenousEffect(source, indirectSource, livingEntity, amplifier, health);
-//        }
-//    }
+    @Override
+    public void applyInstantenousEffect(@Nullable Entity source, @Nullable Entity indirectSource, @NotNull LivingEntity livingEntity, int amplifier, double health) {
+        if (livingEntity instanceof ServerPlayer) {
+            super.applyInstantenousEffect(source, indirectSource, livingEntity, amplifier, health);
+        }
+    }
 }
