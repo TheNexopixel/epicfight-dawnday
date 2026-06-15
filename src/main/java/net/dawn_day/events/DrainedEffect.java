@@ -24,11 +24,14 @@ public class DrainedEffect {
         LivingEntity entity = event.getEntity();
 
         if (!(entity instanceof ServerPlayer)) {
+            if(entity.hasEffect(DawnDayEffects.CURSED)){
+                entity.removeEffect(DawnDayEffects.CURSED);
+            }
             return;
         }
 
-        if (event.getEffectInstance().getEffect()
-                == DawnDayEffects.DRAINED.get()) {
+        if (event.getEffectInstance().getEffect().value()
+                == DawnDayEffects.DRAINED.value()) {
 
 
             entity.level().playSound(
@@ -70,7 +73,8 @@ public class DrainedEffect {
         }
 
         if (event.getEffectInstance().getEffect().value()
-                == DawnDayEffects.CURSED.get()) {
+                == DawnDayEffects.CURSED.get()
+        ) {
 
             int random = entity.level().random.nextInt(2);
             SoundEvent sound;
@@ -124,8 +128,9 @@ public class DrainedEffect {
     @SubscribeEvent
     public static void onEffectExpire(MobEffectEvent.Expired event) {
 
-        if (event.getEffectInstance() != null && event.getEffectInstance().getEffect().value()
-                == DawnDayEffects.SEPUKKU.get()) {
+        if (event.getEffectInstance() != null
+                && event.getEffectInstance().getEffect().value()
+                == DawnDayEffects.SEPUKKU.value() && !event.getEntity().level().isClientSide) {
             event.getEntity().addEffect(new MobEffectInstance(DawnDayEffects.DRAINED, 350, 0));
         }
 
