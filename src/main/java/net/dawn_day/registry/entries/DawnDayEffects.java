@@ -1,6 +1,7 @@
 package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
+import net.dawn_day.effect.CursedEffect;
 import net.dawn_day.effect.FortifiedEffect;
 import net.dawn_day.effect.SepukkuEffect;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -81,7 +82,7 @@ public final class DawnDayEffects {
             );
 
     public static final DeferredHolder<MobEffect, MobEffect> CURSED =
-            REGISTRY.register("cursed", () -> new FortifiedEffect(MobEffectCategory.HARMFUL, 0xa0303)
+            REGISTRY.register("cursed", () -> new CursedEffect(MobEffectCategory.HARMFUL, 0xa0303)
                     .addAttributeModifier(Attributes.MAX_HEALTH, EpicFightDawnDay.identifier("cursed"), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, potency -> (potency + 1) * -0.3)
             );
 

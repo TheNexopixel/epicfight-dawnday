@@ -23,6 +23,8 @@ import java.util.Objects;
 
 @EventBusSubscriber(modid = EpicFightDawnDay.MOD_ID)
 public class GameBusEvent {
+
+
     @SubscribeEvent
     public static void resistance(LivingDamageEvent.Pre event) {
         var effectInstance = event.getEntity().getEffect(DawnDayEffects.IMPREGNABILITY);
@@ -79,7 +81,7 @@ public class GameBusEvent {
                 }
             }
         }
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU)){
+        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU.getDelegate())){
             LivingEntity target = event.getEntity();
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
