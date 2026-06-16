@@ -47,13 +47,26 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.25f)
                         )
-                        .add(
+                        .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .name("blood_ritus_dagger")
+                        .build();
 
-                                LootItem.lootTableItem(
-                                        DawnDayItems.BLOOD_RITUS_DAGGER.get()
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    ResourceLocation.fromNamespaceAndPath(
+                            "minecraft",
+                            "chests/desert_pyramid"))) {
 
-                                )
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.25f)
                         )
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_FLORETT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.WAR_SICKLE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_HALBERD.get()))
                         .name("blood_ritus_dagger")
                         .build();
 
@@ -111,7 +124,7 @@ public class DawnDayLootModifiers {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
-                                LootItemRandomChanceCondition.randomChance(0.1f)
+                                LootItemRandomChanceCondition.randomChance(0.3f)
                         )
                         .add(
 
@@ -186,6 +199,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.HERB_SICKLE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_LIGHT_GREATSWORD.get()))
                         .name("herb_sickle")
@@ -209,6 +223,7 @@ public class DawnDayLootModifiers {
 
                                 )
                         )
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("saber")
                         .build();
 
@@ -241,6 +256,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.3f))
                         .add(LootItem.lootTableItem(DawnDayItems.BACKHAND_BLADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_KNIFE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_MESSER.get()))
                         .name("backhand_blade")

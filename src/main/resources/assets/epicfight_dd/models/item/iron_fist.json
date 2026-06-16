@@ -1,0 +1,40 @@
+{
+	"loader": "neoforge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "neoforge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/iron_fist.obj",
+		"textures": {
+			"fist.png": "epicfight_dd:item/fist",
+			"spikes.png": "epicfight_dd:item/spikes"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [180, -180, 0],
+				"translation": [-15, 6.0, 8.0],
+				"scale": [1, 1, 1]
+			},
+			"thirdperson_lefthand": {
+				"rotation": [180, 0, 0],
+				"translation": [-14, 6.0, -8.0],
+				"scale": [1, 1, 1]
+			},
+			"gui": {
+				"rotation": [0, 45, 0],
+				"translation": [20, -7.5, 0.0],
+				"scale": [1.3, 1.3,1.3]
+		}
+		}
+	},
+	"perspectives": {
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/iron_fist_gui"
+			},
+			"gui_light": "front"
+		}
+	}
+}

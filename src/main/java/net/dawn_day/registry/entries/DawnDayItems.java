@@ -23,11 +23,47 @@ public final class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .durability(2561)));
 
+    public static final DeferredItem<Item> VITREUS =
+            REGISTRY.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 1, -2.2f)).stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .durability(4561)));
+
+    public static final DeferredItem<Item> IRON_FLORETT =
+            REGISTRY.register("iron_florett",() -> new SwordItem(Tiers.IRON,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.IRON, 2, -2.05f)).stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .durability(861)));
+
+    public static final DeferredItem<Item> GOLDEN_FLORETT =
+            REGISTRY.register("golden_florett",() -> new SwordItem(Tiers.GOLD,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.GOLD, 2, -1.9f)).stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .durability(861)));
+
+    public static final DeferredItem<Item> DIAMOND_FLORETT =
+            REGISTRY.register("diamond_florett",() -> new SwordItem(Tiers.DIAMOND,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 2, -2.1f)).stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .durability(1861)));
+
+    public static final DeferredItem<Item> NETHERITE_FLORETT =
+            REGISTRY.register("netherite_florett",() -> new SwordItem(Tiers.NETHERITE,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 2, -2.15f)).stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .durability(1861)));
+
     public static final DeferredItem<Item> DIAMOND_MESSER =
             REGISTRY.register("diamond_messer", () -> new SwordItem(Tiers.DIAMOND,
                     new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 2, -2.1f)).stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .durability(1561)));
+
+    public static final DeferredItem<Item> IRON_FIST =
+            REGISTRY.register("iron_fist",() -> new SwordItem(Tiers.IRON,
+                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.IRON, 1, -1.7f)).stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .durability(5561)));
 
     public static final DeferredItem<Item> GOLDEN_MESSER =
             REGISTRY.register("golden_messer", () -> new SwordItem(Tiers.GOLD,
@@ -141,6 +177,11 @@ public final class DawnDayItems {
     public static final DeferredItem<Item> NAIL =
             REGISTRY.register("nail", () -> new Item(
                     new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> ruby =
+            REGISTRY.register("ruby",() -> new Item(
+                    new Item.Properties().stacksTo(16)
                             .rarity(Rarity.COMMON)));
 
     public static final DeferredItem<Item> MILADY =

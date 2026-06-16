@@ -11,19 +11,19 @@
     "gui": {
       "parent": "epicfight_dd:item/messer",
       "textures": {
-        "layer0": "epicfight_dd:item/night_ritus_dagger"
+        "layer0": "epicfight_dd:item/night_ritus_dagger_gui"
       }
     },
     "fixed": {
       "parent": "epicfight_dd:item/messer",
       "textures": {
-        "layer0": "epicfight_dd:item/night_ritus_dagger"
+        "layer0": "epicfight_dd:item/night_ritus_dagger_gui"
       }
     },
     "ground": {
       "parent": "epicfight_dd:item/messer",
       "textures": {
-        "layer0": "epicfight_dd:item/night_ritus_dagger"
+        "layer0": "epicfight_dd:item/night_ritus_dagger_gui"
       }
     }
   }

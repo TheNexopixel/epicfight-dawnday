@@ -1,0 +1,70 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "epicfight_dd:item/iron_florett"
+    },
+
+    "display": {
+      "thirdperson_righthand": {
+        "rotation": [-45, -90, 0],
+        "translation": [-0.2, 11.0, 0.8],
+        "scale": [1.7, 1.7, 0.8]
+      },
+      "thirdperson_lefthand": {
+        "rotation": [45, -90, 0],
+        "translation": [0.20, 11.0, 0.8],
+        "scale": [1.7, 1.7, 0.8]
+      },
+      "firstperson_righthand": {
+        "rotation": [0, -90, 25],
+        "translation": [1.13, 3.2, 1.13],
+        "scale": [1.7, 1.7, 0.85]
+      },
+      "firstperson_lefthand": {
+        "rotation": [0, 90, -25],
+        "translation": [1.13, 3.2, 1.13],
+        "scale": [1.7, 1.7, 0.85]
+      },
+      "ground": {
+        "translation": [0, 1.0, 0],
+        "scale": [0.65, 0.65, 0.65]
+      },
+      "gui": {
+        "translation": [0, 0, 0]
+      },
+      "head": {
+        "rotation": [0, 180, 0],
+        "translation": [0, 13, 7]
+      },
+      "fixed": {
+        "translation": [0, 0, 0],
+        "rotation": [0, 0, 90],
+        "scale": [1.2, 1.2, 1.0]
+      }
+    }
+
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "epicfight_dd:item/iron_florett_gui"
+      }
+    },
+    "fixed": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "epicfight_dd:item/iron_florett_gui"
+      }
+    },
+    "ground": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "epicfight_dd:item/iron_florett_gui"
+      }
+    }
+  }
+}

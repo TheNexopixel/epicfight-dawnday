@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " GD",
+    " RG",
+    "S  "
+  ],
+  "key": {
+    "R": {
+      "item": "epicfight_dd:ruby"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "epicfight_dd:vitreus",
+    "count": 1
+  }
+}
+
