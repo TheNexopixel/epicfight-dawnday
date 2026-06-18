@@ -123,7 +123,7 @@ public final class DawnDayMovesets
     );
 
     public static final DeferredMoveset RITUS_2H = REGISTRY.registerMoveset("ritus_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2, DawnDayAnimations.MESSER_DUAL_AUTO3, DawnDayAnimations.RITUS_DAGGER_DUAL_DASH, DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
+            .addComboAttacks(DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2, DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3, DawnDayAnimations.RITUS_DAGGER_DUAL_DASH, DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.WHIRLWIND.get())
@@ -147,6 +147,46 @@ public final class DawnDayMovesets
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.WILD_STRIKES.get())
     );
+
+    public static final DeferredMoveset FLORETT_1H = REGISTRY.registerMoveset("florett_1h", () -> Moveset.builder()
+            .addComboAttacks(DawnDayAnimations.FLORETT_AUTO1, DawnDayAnimations.FLORETT_AUTO2, DawnDayAnimations.FLORETT_AUTO3,DawnDayAnimations.FLORETT_AUTO4, DawnDayAnimations.VITR_DASH, DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.FLORETT_IDLE)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+            .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.FLORETT_DUAL_GUARD)
+            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.PIERCING_STRIKE.get())
+    );
+    public static final DeferredMoveset FLORETT_2H = REGISTRY.registerMoveset("florett_2h", () -> Moveset.builder()
+            .addComboAttacks(DawnDayAnimations.FLORETT_DUAL_AUTO1, DawnDayAnimations.FLORETT_DUAL_AUTO2, DawnDayAnimations.FLORETT_DUAL_AUTO3, DawnDayAnimations.FLORETT_DUAL_DASH, DawnDayAnimations.FLORETT_DUAL_AIRSLASH)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.FLORETT_DUAL_IDLE)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.FLORETT_DUAL_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+            .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.FLORETT_DUAL_GUARD)
+            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.WILD_STRIKES_DUAL.get())
+    );
+    public static final DeferredMoveset IRON_FIST_1H = REGISTRY.registerMoveset("iron_fist_1h", () -> Moveset.builder()
+            .addComboAttacks(DawnDayAnimations.IRON_FIST_AUTO1, DawnDayAnimations.IRON_FIST_AUTO2, DawnDayAnimations.IRON_FIST_AUTO3,DawnDayAnimations.IRON_FIST_AUTO4,DawnDayAnimations.IRON_FIST_AUTO5, DawnDayAnimations.IRON_FIST_DASH, DawnDayAnimations.IRON_FIST_AIRSLASH)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
+            .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
+            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.POWERFUL_KICK.get()));
+
+    public static final DeferredMoveset IRON_FIST_2H = REGISTRY.registerMoveset("iron_fist_2h", () -> Moveset.builder()
+            .addComboAttacks(DawnDayAnimations.IRON_FIST_AUTO1, DawnDayAnimations.IRON_FIST_AUTO2, DawnDayAnimations.IRON_FIST_AUTO3,DawnDayAnimations.IRON_FIST_AUTO4,DawnDayAnimations.IRON_FIST_AUTO5, DawnDayAnimations.IRON_FIST_DASH, DawnDayAnimations.IRON_FIST_AIRSLASH)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
+            .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
+            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.POWERFUL_KICK.get()));
+
+    public static final DeferredMoveset VITREUS_1H = REGISTRY.registerMoveset("vitreus_1h", () -> Moveset.builder()
+            .addComboAttacks(DawnDayAnimations.VITR_AUTO1, DawnDayAnimations.VITR_AUTO2, DawnDayAnimations.VITR_AUTO3,DawnDayAnimations.VITR_AUTO4, DawnDayAnimations.VITR_DASH, DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.VITR_IDLE)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+            .addLivingMotionModifier(LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
+            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.INCISURA_VITREA.get()));
 
     public static final DeferredMoveset MESSER_2H = REGISTRY.registerMoveset("messer_2h", () -> Moveset.builder()
             .addComboAttacks(DawnDayAnimations.MESSER_DUAL_AUTO1, DawnDayAnimations.MESSER_DUAL_AUTO2, DawnDayAnimations.MESSER_DUAL_AUTO3, DawnDayAnimations.KNIFE_DUAL_DASH, DawnDayAnimations.KNIFE_DUAL_AIRSLASH)

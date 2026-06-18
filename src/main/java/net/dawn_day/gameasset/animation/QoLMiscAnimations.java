@@ -318,7 +318,6 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );
-        // Just Animations I have done some time ago. I wanted to see how they look like ingame
         WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.02f,0.2f,ac,Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
                 .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(DawnDaySounds.SOFT_WIPE.get()))

@@ -62,6 +62,61 @@ public final class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                 .build(key)
     );
+    public static final DeferredHolder<Skill, WeaponInnateSkill> PIERCING_STRIKE = REGISTRY.register("piercing_strike", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.PIERCING_STRIKE)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                .newProperty()
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.8F))
+            .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(60.0F))
+            .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.5F))
+            .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> INCISURA_VITREA = REGISTRY.register("incisura_vitrea", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.INCISURA_VITREA)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(15.0F))
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(4.2F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.8F))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                            .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> POWERFUL_KICK = REGISTRY.register("powerful_kick", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.POWERFUL_KICK)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.25F))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.FINISHER))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG,Set.of(EpicFightDamageTypeTags.EXECUTION))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(33.0F))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(5.5F))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+            .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> WILD_STRIKES_DUAL = REGISTRY.register("wild_strikes_dual", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.WILD_STRIKES_DUAL)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.5F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(50F))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .build(key));
+
 
     public static final DeferredHolder<Skill, WeaponInnateSkill> GROUNDSLAM = REGISTRY.register("groundslam", key -> SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
             .setAnimations(DawnDayAnimations.GROUNDSLAM)

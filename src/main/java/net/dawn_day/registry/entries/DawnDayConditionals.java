@@ -42,6 +42,12 @@ public final class DawnDayConditionals
     public static final DeferredConditional DUAL_RITUS_DAGGERS = REGISTRY.registerConditional("dual_ritus_daggers", () ->
             ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.RITUS_DAGGER, InteractionHand.OFF_HAND, true)
     );
+    public static final DeferredConditional DUAL_FLORETT = REGISTRY.registerConditional("dual_florett", () ->
+            ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.FLORETT, InteractionHand.OFF_HAND, true)
+    );
+    public static final DeferredConditional DUAL_IRON_FIST = REGISTRY.registerConditional("dual_iron_fist", () ->
+            ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.IRON_FIST, InteractionHand.OFF_HAND, true)
+    );
 
     // Note: Hollow Longsword uses TWO_HAND style when a SHIELD is equipped in the offhand
     public static final DeferredConditional SHIELD_OFFHAND_FORCE_2H = REGISTRY.registerConditional("shield_offhand_force_2h", () ->

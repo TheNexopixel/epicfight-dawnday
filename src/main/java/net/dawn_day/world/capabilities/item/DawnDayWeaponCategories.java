@@ -7,6 +7,8 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
     EVIL_TACHI,
+    FLORETT,
+    IRON_FIST,
     RITUS_DAGGER;
 
         final int id;

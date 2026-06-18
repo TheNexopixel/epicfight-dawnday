@@ -19,6 +19,9 @@ public class DawnDayCollider {
 
         return collider;
     }
+    public static final Collider IRON_FIST = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"iron_fist"),new MultiOBBCollider(4, 0.6D, 0.6D, 0.7D, 0D, 0.0D, -0.55D));
+    public static final Collider IRON_FIST_KICK = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"iron_fist_kick"),new MultiOBBCollider(4, 0.7D, 0.5D, 0.6D, 0.4D, 0.0D, -0.55D));
+    public static final Collider IRON_FIST_REACH = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"iron_fist_reach"),new MultiOBBCollider(4, 0.7D, 0.6D, 0.9D, 0D, 0.2D, -0.75D));
     public static final Collider LIGHT_GREATSWORD = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"milady"),new MultiOBBCollider(4, 0.3D, 0.3D, 1.23D, 0D, 0.0D, -1.4D));
     public static final Collider HALBERD = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"halberd"),new MultiOBBCollider(6, 0.5D, 0.60D, 1.2D, 0D, 0.0D, -1.0D));
     public static final Collider HALBERD_INNATE = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"halberd_innate"),new MultiOBBCollider(1, 0.3D, 0.4D, 0.7D, 0D, 0.0D, -1.6D));
@@ -41,7 +44,7 @@ public class DawnDayCollider {
     public static final Collider BAT_BACK = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"bat_back"),new MultiOBBCollider(1, 0.55D, 0.55D, 0.7D, 0D, 0.0D, 0.6D));
     public static final Collider BAT_LONGER = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"bat_lng"),new MultiOBBCollider(4, 0.4D, 0.4D, 1.53D, 0D, 0.0D, -1.43D));
     public static final Collider GROUNDSLAM = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"groundslam"),new MultiOBBCollider(1, 4.5D, 1.0D, 4.5D, 0D, 0.5D, 0.0D));
-    public static final Collider BATTLESTAFF_FULL = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"battlestaff_full"),new MultiOBBCollider(2, 0.3D, 0.4D, 2.0D, 0D, 0.0D, 0.0D));
+    public static final Collider BATTLESTAFF_FULL = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"battlestaff_full"),new MultiOBBCollider(6, 0.3D, 0.4D, 2.0D, 0D, 0.0D, 0.0D));
     public static final Collider SABER_INNATE = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"saber_innate"),new MultiOBBCollider(1, 3.5D, 1.0D, 2.1D, 0D, 1.5D, -1.5D));
     public static final Collider SHIELD = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"shield"),new MultiOBBCollider(2, 0.15D, 0.55D, 0.75D, 0.0D, 0.15D, -0.35D));
     public static final Collider BONE_SAW_AUTO4 = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID,"bonesaw4"),new MultiOBBCollider(1, 1.8D, 1.0D, 2.1D, 0D, 1.5D, -1.4D));

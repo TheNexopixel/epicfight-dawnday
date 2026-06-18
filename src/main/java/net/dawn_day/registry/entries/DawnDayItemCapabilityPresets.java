@@ -80,7 +80,7 @@ public final class DawnDayItemCapabilityPresets
 
     public static final DeferredWeapon BATTLE_STAFF = REGISTRY.registerWeapon("battle_staff", () -> WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.SPEAR)
-            .collider(DawnDayCollider.BATTLESTAFF_FRONT)
+            .collider(DawnDayCollider.BATTLESTAFF_FULL)
             .swingSound(EpicFightSounds.WHOOSH)
             .hitParticle(EpicFightParticles.HIT_BLUNT)
             .hitSound(EpicFightSounds.BLUNT_HIT)
@@ -139,6 +139,28 @@ public final class DawnDayItemCapabilityPresets
             .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, SABER_2H)
     );
+    public static final DeferredWeapon FLORETT = REGISTRY.registerWeapon("florett", () -> WeaponCapability.builder()
+            .category(DawnDayWeaponCategories.FLORETT)
+            .collider(DawnDayCollider.BAT_LONGER)
+            .swingSound(EpicFightSounds.WHOOSH)
+            .hitParticle(EpicFightParticles.HIT_BLADE)
+            .hitSound(EpicFightSounds.BLADE_HIT)
+            .canBePlacedOffhand(true)
+            .addConditionals(DUAL_FLORETT, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, FLORETT_2H)
+            .addMoveset(CapabilityItem.Styles.ONE_HAND, FLORETT_1H)
+    );
+    public static final DeferredWeapon IRON_FIST = REGISTRY.registerWeapon("iron_fist", () -> WeaponCapability.builder()
+            .category(DawnDayWeaponCategories.IRON_FIST)
+            .collider(DawnDayCollider.IRON_FIST)
+            .swingSound(EpicFightSounds.WHOOSH)
+            .hitParticle(EpicFightParticles.HIT_BLUNT)
+            .hitSound(EpicFightSounds.BLUNT_HIT)
+            .canBePlacedOffhand(true)
+            .addConditionals(DUAL_IRON_FIST, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, IRON_FIST_2H)
+            .addMoveset(CapabilityItem.Styles.ONE_HAND, IRON_FIST_1H)
+    );
 
     public static final DeferredWeapon MESSER = REGISTRY.registerWeapon("messer", () -> WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.AXE)
@@ -151,6 +173,15 @@ public final class DawnDayItemCapabilityPresets
             .addMoveset(CapabilityItem.Styles.OCHS, MESSER_OCHS)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, MESSER_2H)
             .addMoveset(CapabilityItem.Styles.ONE_HAND, MESSER_1H)
+    );
+    public static final DeferredWeapon VITREUS = REGISTRY.registerWeapon("vitreus", () -> WeaponCapability.builder()
+            .category(CapabilityItem.WeaponCategories.TACHI)
+            .collider(DawnDayCollider.BAT_LONGER)
+            .swingSound(EpicFightSounds.WHOOSH)
+            .hitParticle(EpicFightParticles.HIT_BLADE)
+            .hitSound(EpicFightSounds.BLADE_HIT)
+            .canBePlacedOffhand(false)
+            .addMoveset(CapabilityItem.Styles.ONE_HAND, VITREUS_1H)
     );
 
 //    public static final DeferredWeapon EVIL_TACHI = REGISTRY.registerWeapon("evil_tachi", () -> WeaponCapability.builder()
