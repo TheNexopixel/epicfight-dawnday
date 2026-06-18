@@ -206,7 +206,7 @@ public class AdditionalAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                 )
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 
@@ -221,7 +221,7 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.2f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                         .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
         );
 
@@ -251,7 +251,7 @@ public class AdditionalAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(4))
                 )
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 1.7F))
@@ -278,7 +278,7 @@ public class AdditionalAnimations {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(4))
                 )
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.0F, 2.3F))
@@ -291,7 +291,7 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.5f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
@@ -304,7 +304,7 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.6f))
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 

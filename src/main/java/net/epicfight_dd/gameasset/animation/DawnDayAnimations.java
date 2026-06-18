@@ -59,6 +59,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<StaticAnimation> MESSER_DUAL_IDLE;
     public static AnimationAccessor<StaticAnimation> MESSER_IDLE;
     public static AnimationAccessor<StaticAnimation> GREATAXE_DUAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_IDLE;
+
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT1;
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT2;
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
     public static AnimationAccessor<BasicAttackAnimation> TRAIL_TEST;
@@ -296,6 +300,9 @@ public class DawnDayAnimations {
         MESSER_DUAL_IDLE = builder.nextAccessor("biped/living/messer_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
+        LIGHTGREATSWORD_SWORD_IDLE = builder.nextAccessor("biped/living/lg_sw_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
         ECLIPSE_IDLE = builder.nextAccessor("biped/living/eclipse_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
@@ -407,6 +414,33 @@ public class DawnDayAnimations {
 
         GREATAXE_DUAL_IDLE = builder.nextAccessor("biped/living/greataxe_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
+
+        LIGHTGREATSWORD_SWORD_ATT1 = builder.nextAccessor("biped/combat/lg_sw_att1", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.43f, 0.62f, 1.0f, 0.62f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        ,
+
+                        new AttackAnimation.Phase(0.72f, 0.7f, 0.72f, 0.84f, 1f, 5.8f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(15))
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+        LIGHTGREATSWORD_SWORD_ATT2 = builder.nextAccessor("biped/combat/lg_sw_att2", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.43f, 0.62f, 1.0f, 0.62f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        ,
+
+                        new AttackAnimation.Phase(0.72f, 0.7f, 0.72f, 0.84f, 1f, 5.8f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(15))
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
 
         PIERCING_STRIKE = builder.nextAccessor("biped/skill/piercing_strike", ac ->
                 new AttackAnimation(0.1f, 0.4f, 0.45f, 0.67f, 1.0f, InteractionHand.MAIN_HAND, null, biped.get().toolR, ac, biped)
