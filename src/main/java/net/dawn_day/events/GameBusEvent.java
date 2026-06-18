@@ -7,6 +7,7 @@ import net.dawn_day.registry.entries.DawnDaySkills;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -17,8 +18,10 @@ import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.main.EpicFightSharedConstants;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.Objects;
@@ -91,15 +94,25 @@ public class GameBusEvent {
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
                 if (playerPatch != null) {
-                    if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
-                            && !Objects.deepEquals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPPUKU)
+                    CapabilityItem capability = playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND);
 
-                    ) {
-                        if (EpicFightSharedConstants.IS_DEV_ENV) {
-                            target.sendSystemMessage(Component.literal("Trying to remove seppuku!"));
+                    if (!capability.isEmpty()) {
+                        Skill innate = capability.getInnateSkill(playerPatch,playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND));
+                        if (innate != null && !innate.equals(DawnDaySkills.SEPPUKU.value()) && capability.getWeaponCategory() != CapabilityItem.WeaponCategories.NOT_WEAPON) {
+                            if (EpicFightSharedConstants.IS_DEV_ENV) {
+                                target.sendSystemMessage(Component.literal(
+                                        "Is Capability empty?: " + capability.isEmpty()
+                                ));
+                                target.sendSystemMessage(Component.literal(
+                                        "Innate: " + innate
+                                ));
+                                target.sendSystemMessage(Component.literal(
+                                        "Trying to remove seppuku!"
+                                ));
+                            }
+                            target.removeEffect(DawnDayEffects.SEPUKKU);
+                            target.addEffect(new MobEffectInstance(DawnDayEffects.DRAINED, 350, 0));
                         }
-                        target.removeEffect(DawnDayEffects.SEPUKKU);
                     }
                 }
             }
