@@ -38,6 +38,7 @@ public class SelectiveAnimationProxy extends StaticAnimation {
 
     @Override
     public void tick(LivingEntityPatch<?> entitypatch) {
+        //Nothing ever happens
     }
 
     @Override
