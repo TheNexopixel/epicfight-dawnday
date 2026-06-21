@@ -115,6 +115,9 @@
   "item.epicfight_dd.night_ritus_dagger":"Night Ritual Dagger",
   "item.epicfight_dd.blood_ritus_dagger":"Blood Ritual Dagger",
 
+  "skill.epicfight_dd.redemption":"Redemption",
+  "skill.epicfight_dd.redemption.tooltip":"If your health falls below 3 Hearts, negative effects will be reflected back at the last attacker and you will be cleansed. You also become more resistant to damage and regain half your stamina.\n\nBut this skill will not protect you from death...",
+
   "item.minecraft.potion.effect.exhausted":"Potion of Exhausting",
   "item.minecraft.splash_potion.effect.exhausted":"Splash Potion of Exhausting",
   "item.minecraft.lingering_potion.effect.exhausted":"Lingering Potion of Exhausting",

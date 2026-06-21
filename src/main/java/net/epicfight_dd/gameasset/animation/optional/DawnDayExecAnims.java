@@ -68,6 +68,9 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_EXECUTED;
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> LG_SW_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> LG_SW_EXECUTED;
+
     public static AnimationManager.AnimationAccessor<SelectiveExecutionAttackProxy> MILADY_EXECUTION_SEL;
     public static AnimationManager.AnimationAccessor<SelectiveExecutionHitAnimation> MILADY_EXECUTION_SEL_HIT;
 
@@ -235,6 +238,49 @@ public class DawnDayExecAnims {
         RITUS_DAGGER_EXECUTED = builder.nextAccessor("biped/execution/ritus_dagger_executed", (accessor) ->
                 new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
+        LG_SW_EXECUTED = builder.nextAccessor("biped/execution/lg_sw_executed", (accessor) ->
+                new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
+
+        LG_SW_EXECUTE = builder.nextAccessor("biped/execution/lg_sw_execute", (accessor) ->
+                lgswexecution(accessor, executionCollider, CONSTANT_EXECUTION, 1.1f, 1.2f, 3.4f, 3.5f,4.3f,4.4f,5.4f,5.5f)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
+
+
+    }
+    private static ExecutionAttackAnimation lgswexecution(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                              AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                              float preDelay1,
+                                                              float contact1,
+                                                              float preDelay2,
+                                                              float contact2,
+                                                          float preDelay3,
+                                                          float contact3,
+                                                              float preDelay4,
+                                                              float contact4
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.5F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.0F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 1.7F, 0.0F, preDelay2, contact2, 12.73F, 3.9F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.4F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 4.2F, 0.0F, preDelay3, contact3, 12.73F, 4.9F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.EVISCERATE)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.52F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 4.93F, 0.0F, preDelay4, contact4, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F))
+
+        }))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }
 

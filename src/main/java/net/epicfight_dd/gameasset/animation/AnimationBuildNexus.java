@@ -1,5 +1,6 @@
 package net.epicfight_dd.gameasset.animation;
 
+import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.gameasset.animation.optional.AdditionalExecutions;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecAnims;
 import net.minecraftforge.fml.ModList;
@@ -13,7 +14,11 @@ public class AnimationBuildNexus {
     public static void buildAnimations(AnimationManager.AnimationBuilder builder) {
 
         DawnDayAnimations.build(builder); // use this builder from this and put it there
-        QoLMiscAnimations.animBuild(builder);
+
+
+            QoLMiscAnimations.animBuild(builder);
+
+
         WingStanceAnims.build(builder);
 
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {

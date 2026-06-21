@@ -25,6 +25,32 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .defaultDurability(2561)));
 
+    public static final RegistryObject<Item> iron_light_greatsword =
+            ITEMS.register("iron_light_greatsword",() -> new SwordItem(Tiers.IRON,4,-2.45f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(861)));
+    public static final RegistryObject<Item> golden_light_greatsword =
+            ITEMS.register("golden_light_greatsword",() -> new SwordItem(Tiers.GOLD,4,-2.35f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(461)));
+    public static final RegistryObject<Item> diamond_light_greatsword =
+            ITEMS.register("diamond_light_greatsword",() -> new SwordItem(Tiers.DIAMOND,4,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(1361)));
+    public static final RegistryObject<Item> netherite_light_greatsword =
+            ITEMS.register("netherite_light_greatsword",() -> new SwordItem(Tiers.NETHERITE,4,-2.55f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(2061)));
+    public static final RegistryObject<Item> WAR_SICKLE =
+            ITEMS.register("war_sickle",() -> new SwordItem(Tiers.NETHERITE,3,-2.7f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(2061)));
+
     public static final RegistryObject<Item> VITREUS =
             ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,3,-2.2f,
                     new Item.Properties().stacksTo(1)
@@ -201,22 +227,6 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680)));
-
-    public static final RegistryObject<Item> netherite_light_greatsword =
-            ITEMS.register("netherite_light_greatsword",() -> new light_greatsword_Item(Tiers.NETHERITE, 4,-2.0f,2442));
-
-    public static final RegistryObject<Item> diamond_light_greatsword =
-            ITEMS.register("diamond_light_greatsword",() -> new light_greatsword_Item(Tiers.DIAMOND, 4,-1.5f,1942));
-
-    public static final RegistryObject<Item> golden_light_greatsword =
-            ITEMS.register("golden_light_greatsword",() -> new light_greatsword_Item(Tiers.GOLD, 4,-1.5f,600));
-
-    public static final RegistryObject<Item> iron_light_greatsword =
-            ITEMS.register("iron_light_greatsword",() -> new light_greatsword_Item(Tiers.IRON, 3, -1.5f,961));
-
-    public static final RegistryObject<Item> war_sickle =
-            ITEMS.register("war_sickle",() -> new war_sickle_item(Tiers.NETHERITE));
-
     public static final RegistryObject<Item> diamond_halberd =
             ITEMS.register("diamond_halberd",() -> new halbeardItem(Tiers.DIAMOND));
 

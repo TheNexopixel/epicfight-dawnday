@@ -67,6 +67,11 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.RITUS_DAGGER_EXECUTED,
             new Vec3(0.6, 0.0F, 0.0F), 0.0F, 112
     );
+    public static final Type LIGHTGREATSWORD_SWORD = new Type(
+            DawnDayExecAnims.LG_SW_EXECUTE,
+            DawnDayExecAnims.LG_SW_EXECUTED,
+            new Vec3(2.55, 0.0F, 0.0F), 0.0F, 112
+    );
 
 
 

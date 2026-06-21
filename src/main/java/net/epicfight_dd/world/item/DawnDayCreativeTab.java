@@ -1,6 +1,7 @@
 package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.skill.DawnDaySkills;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,8 +11,9 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import reascer.wom.main.WeaponsOfMinecraft;
 import reascer.wom.world.item.WOMItems;
+import yesman.epicfight.world.item.EpicFightItems;
+import yesman.epicfight.world.item.SkillBookItem;
 
 public class DawnDayCreativeTab {
 
@@ -33,7 +35,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.saber.get());
                 output.accept(DawnDayItems.backhand_blade.get());
                 output.accept(DawnDayItems.steelaxe.get());
-                output.accept(DawnDayItems.war_sickle.get());
+                output.accept(DawnDayItems.WAR_SICKLE.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.bat.get());
                 output.accept(DawnDayItems.NETHERITE_FLORETT.get());
@@ -63,6 +65,9 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.wooden_battlestaff.get());
                 output.accept(DawnDayItems.nail.get());
                 output.accept(DawnDayItems.ruby.get());
+                ItemStack book_red = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.REDEMPTION, book_red);
+                output.accept(book_red);
 
                 // Potions
 

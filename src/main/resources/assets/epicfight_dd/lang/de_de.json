@@ -218,5 +218,7 @@
   "item.minecraft.lingering_potion.effect.exhausted_strong": "Lingering Potion of Exhausting",
   "item.minecraft.tipped_arrow.effect.exhausted": "Arrow of Exhausting",
   "item.minecraft.tipped_arrow.effect.exhausted_long": "Arrow of Exhausting",
-  "item.minecraft.tipped_arrow.effect.exhausted_strong": "Arrow of Exhausting"
+  "item.minecraft.tipped_arrow.effect.exhausted_strong": "Arrow of Exhausting",
+  "skill.epicfight_dd.redemption": "Erlösung",
+  "skill.epicfight_dd.redemption.tooltip": "Wenn deine Lebenspunkte unter 3 Herzen fallen, werden negative Effekte auf den letzten Angreifer zurückgeworfen und du wirst gereinigt. Zudem bist du resistenter gegen Schaden und erhältst die Hälfte deiner Ausdauer zurück.\n\nDoch dieser Skill kann dich nicht vor zu großem Schaden schützen."
 }

@@ -1,6 +1,6 @@
 package net.epicfight_dd.skill;
 
-import net.epicfight_dd.DawnDayConfig;
+
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
@@ -8,6 +8,7 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import java.util.Set;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +22,7 @@ import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
@@ -54,6 +56,8 @@ public class DawnDaySkills {
     public static Skill SEPUKKU;
     public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
+    public static Skill ACHILLES_HEEL;
+    public static Skill REDEMPTION;
 
 
     @SubscribeEvent
@@ -67,13 +71,15 @@ public class DawnDaySkills {
             gentlenudge.newProperty()
                     .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
-                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F))
-                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.01F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100.0F))
                     .addProperty(AttackPhaseProperty.HIT_SOUND, dawnDaySounds.poise_break.get())
-                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6.6F))
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
-                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
-                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
             GENTLE_NUDGE = gentlenudge;
 
 
@@ -320,6 +326,11 @@ public class DawnDaySkills {
                 Sepukku.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE)
         );
+
+        REDEMPTION = modRegistry.build("redemption", RedemptionSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.IDENTITY));
 
     }
 

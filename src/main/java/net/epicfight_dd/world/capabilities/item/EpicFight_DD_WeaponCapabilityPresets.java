@@ -61,7 +61,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             .swingSound(dawnDaySounds.Milady_light_slash.get())
             .hitSound(EpicFightSounds.BLADE_HIT.get())
             .canBePlacedOffhand(true)
-            .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.PIERCING_FANG)
+            .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
             .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
             .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.FURIOUS_CUT)
 
@@ -114,9 +114,11 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .category(CapabilityItem.WeaponCategories.LONGSWORD)
                     .styleProvider((pp) ->
                             {
-                                if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD) {
+                                if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND)
+                                        .getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD) {
                                     return CapabilityItem.Styles.TWO_HAND;
-                                } else if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD){
+                                } else if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD ||
+                                        pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE){
                                     return CapabilityItem.Styles.OCHS;
                                 } else {
                                     return CapabilityItem.Styles.ONE_HAND;
@@ -126,12 +128,14 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
                     )
                     .collider(DawnDayCollider.LIGHT_GREATSWORD)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.QUICK_RUSH)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
-                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.POWERFUL_KICK)
+                    .innateSkill(CapabilityItem.Styles.OCHS, ip -> DawnDaySkills.GENTLE_NUDGE)
                     .weaponCombinationPredicator((entityPatch) ->
                             EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD ||
                                     EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD
+                                    ||
+                                    EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE
                     )
 
                     .swingSound(dawnDaySounds.Milady_light_slash.get())
@@ -156,11 +160,16 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .newStyleCombo(CapabilityItem.Styles.OCHS,
                             DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT1,
                             DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT2,
-                            DawnDayAnimations.MILADY_DUAL_DASH,
-                            DawnDayAnimations.MILADY_DUAL_AIRSLASH)
+                            DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT3,
+                            DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT4,
+                            DawnDayAnimations.MILADY_SPECIAL_AUTO1,
+                            DawnDayAnimations.MILADY_SPECIAL_AUTO2)
                     .canBePlacedOffhand(true)
 
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.LIGHTGREATSWORD_SWORD_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, DawnDayAnimations.LIGHTGREATSWORD_SWORD_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, DawnDayAnimations.LIGHTGREATSWORD_SWORD_RUN)
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.MILADY_DUAL_IS_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.MILADY_TWOHANDED_IS_IDLE)
@@ -325,7 +334,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> STEEL_AXE = (item) ->
             WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(ColliderPreset.LONGSWORD)
                     .swingSound(EpicFightSounds.WHOOSH.get())
@@ -409,13 +418,13 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> MESSER = (item) ->
             WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .category(CapabilityItem.WeaponCategories.SWORD)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(DawnDayCollider.KNIFE)
                     .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .swingSound(EpicFightSounds.WHOOSH.get())
-                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD)
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
@@ -619,6 +628,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.GREATAXE_DUAL_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.LIGHTGREATSWORD_SWORD_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.LIGHTGREATSWORD_SWORD_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
@@ -760,8 +771,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.IRON_FIST_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, DawnDayAnimations.IRON_FIST_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.IRON_FIST_IDLE);
@@ -787,7 +798,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.VITR_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.VITR_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR);
 
     public static final Function<Item, CapabilityItem.Builder> FLORETT = (item) ->

@@ -84,6 +84,15 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.NIGHT_RITUS_DAGGER.getId(), CapabilityItem.Styles.ONE_HAND,
               DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
 
+      event.registerExecutionByItem(DawnDayItems.iron_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.golden_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.diamond_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.netherite_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+
       if (ModList.get().isLoaded("wom")) {
           event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
                   DawnDayExecution_TYPES.EVIL_TACHI);

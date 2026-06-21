@@ -47,9 +47,9 @@ public class DawnDayCollider {
     public static final Collider BONE_SAW_AUTO4 = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"bonesaw4"),new MultiOBBCollider(1, 1.8D, 1.0D, 2.1D, 0D, 1.5D, -1.4D));
     public static final Collider WILDSTRIKES = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"wstrikes"),new MultiOBBCollider(4, 0.3D, 0.3D, 3.03D, 0D, 0.0D, -3.3D));
     public static final Collider KNIFE_BIGGER = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"knife_bigger"),new MultiOBBCollider(4, 0.4D, 0.5D, 1.0D, 0D, 0.1D, -0.8D));
-    public static final Collider IRON_FIST = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist"),new MultiOBBCollider(4, 0.6D, 0.6D, 0.7D, 0D, 0.0D, -0.55D));
+    public static final Collider IRON_FIST = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist"),new MultiOBBCollider(5, 0.6D, 0.8D, 0.6D, 0.0D, -0.5D, -0.25D));
     public static final Collider IRON_FIST_KICK = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist_kick"),new MultiOBBCollider(4, 0.7D, 0.5D, 0.6D, 0.4D, 0.0D, -0.55D));
-    public static final Collider IRON_FIST_REACH = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist_reach"),new MultiOBBCollider(4, 0.7D, 0.6D, 0.9D, 0D, 0.2D, -0.75D));
+    public static final Collider IRON_FIST_REACH = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist_reach"),new MultiOBBCollider(5, 0.7D, 1.0D, 0.7D, 0.0D, -0.7D, -0.25D));
 
 
 

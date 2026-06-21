@@ -7,9 +7,11 @@ import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -17,12 +19,18 @@ import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.api.animation.types.KnockdownAnimation;
 import yesman.epicfight.api.animation.types.LongHitAnimation;
+import yesman.epicfight.api.utils.TimePairList;
+import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import static net.epicfight_dd.api.animation.JointTrack.getJointWithTranslation;
 
 public class QoLMiscAnimations {
 
@@ -55,6 +63,7 @@ public class QoLMiscAnimations {
 
     public static void animBuild(AnimationManager.AnimationBuilder builder){
 
+
         EXPRESSIVE_DEATH = builder.nextAccessor(
                 "biped/living/death_sel",
                 ac -> new SelectiveAnimationProxy(patch -> {
@@ -62,6 +71,8 @@ public class QoLMiscAnimations {
                     DamageSource source = entity.getLastDamageSource();
 
                     if (source == null) return 0; //  fallback
+
+
 
 
                     boolean deathByTacZBullet = ModList.get().isLoaded(GunMod.MOD_ID) &&
@@ -113,6 +124,405 @@ public class QoLMiscAnimations {
 
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                                (e, s, p) ->{
+
+
+
+                                                for (int i = 0; i < 80; i++) {
+
+
+                                                    LivingEntity entity = e.getOriginal();
+
+                                                    RandomSource random = entity.getRandom();
+
+                                                    if (!entity.level().isClientSide()) {
+                                                        return;
+                                                    }
+
+                                                    double x =
+                                                            entity.getX()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    double y =
+                                                            entity.getY()
+                                                                    + random.nextDouble() * entity.getBbHeight();
+
+                                                    double z =
+                                                            entity.getZ()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    double vx =
+                                                            random.nextGaussian() * 0.20D;
+
+                                                    double vy =
+                                                            random.nextDouble() * 0.18D;
+
+                                                    double vz =
+                                                            random.nextGaussian() * 0.20D;
+
+                                                    entity.level().addParticle(
+                                                            ParticleTypes.ASH,
+                                                            x,
+                                                            y,
+                                                            z,
+                                                            vx,
+                                                            vy,
+                                                            vz
+                                                    );
+
+                                            }
+
+                                }, AnimationEvent.Side.CLIENT
+                                        )
+                        )
+                        .addEvents(
+                                AnimationProperty.StaticAnimationProperty.TICK_EVENTS,
+                                AnimationEvent.SimpleEvent.create(
+                                        (patch, anim, params) -> {
+
+                                            LivingEntity entity = patch.getOriginal();
+
+                                            if (entity == null || !entity.level().isClientSide()) {
+                                                return;
+                                            }
+
+                                            RandomSource random = entity.getRandom();
+
+                                            int numParticles = 3;
+
+                                            for (int i = 0; i < numParticles; i++) {
+
+                                                float L = -0.05F;
+                                                float R = 0.05F;
+
+                                                List<Vec3> positions = new ArrayList<>();
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(L, 0F, 0.6F),
+                                                        Armatures.BIPED.get().head
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(R, 0F, 0.6F),
+                                                        Armatures.BIPED.get().head
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(L, 0.06F, 0.1F),
+                                                        Armatures.BIPED.get().chest
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(R, 0.06F, 0.1F),
+                                                        Armatures.BIPED.get().chest
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(L, 0.00F, 0.0F),
+                                                        Armatures.BIPED.get().torso
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(L, 0.06F, 0.1F),
+                                                        Armatures.BIPED.get().thighL
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(R, 0.06F, 0.1F),
+                                                        Armatures.BIPED.get().thighR
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.6F, 0F),
+                                                        Armatures.BIPED.get().handL
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.6F, 0F),
+                                                        Armatures.BIPED.get().handR
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.2F, 0.2F),
+                                                        Armatures.BIPED.get().kneeL
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.2F, 0.2F),
+                                                        Armatures.BIPED.get().kneeR
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.2F, 0.2F),
+                                                        Armatures.BIPED.get().legL
+                                                ));
+
+                                                positions.add(getJointWithTranslation(
+                                                        Minecraft.getInstance().player,
+                                                        entity,
+                                                        new Vec3f(0F, 0.2F, 0.2F),
+                                                        Armatures.BIPED.get().legR
+                                                ));
+
+                                                Vec3 movement = entity.getDeltaMovement();
+
+                                                for (Vec3 pos : positions) {
+
+                                                    if (pos == null) {
+                                                        continue;
+                                                    }
+
+
+                                                    double x =
+                                                            pos.x + random.nextGaussian() * 0.08D;
+
+                                                    double y =
+                                                            pos.y + random.nextGaussian() * 0.12D;
+
+                                                    double z =
+                                                            pos.z + random.nextGaussian() * 0.08D;
+
+
+                                                    double windStrength =
+                                                            0.05D + random.nextDouble() * 0.15D;
+
+                                                    double windAngle =
+                                                            random.nextDouble() * Math.PI * 2.0D;
+
+                                                    double windX =
+                                                            Math.cos(windAngle) * windStrength;
+
+                                                    double windZ =
+                                                            Math.sin(windAngle) * windStrength;
+
+
+                                                    double swirlAngle =
+                                                            random.nextDouble() * Math.PI * 2.0D;
+
+                                                    double swirlStrength =
+                                                            0.05D + random.nextDouble() * 0.12D;
+
+                                                    double swirlX =
+                                                            Math.cos(swirlAngle) * swirlStrength;
+
+                                                    double swirlZ =
+                                                            Math.sin(swirlAngle) * swirlStrength;
+
+
+                                                    double vx =
+                                                            movement.x * 0.5D
+                                                                    + windX
+                                                                    + swirlX
+                                                                    + random.nextGaussian() * 0.05D;
+
+                                                    double vy =
+                                                            movement.y * 0.3D
+                                                                    + random.nextDouble() * 0.12D;
+
+                                                    double vz =
+                                                            movement.z * 0.5D
+                                                                    + windZ
+                                                                    + swirlZ
+                                                                    + random.nextGaussian() * 0.05D;
+
+
+                                                    if (random.nextFloat() < 0.15F) {
+
+                                                        vx *= 2.5D;
+                                                        vy *= 1.5D;
+                                                        vz *= 2.5D;
+                                                    }
+
+                                                    Particle particle =
+                                                            Minecraft.getInstance()
+                                                                    .particleEngine
+                                                                    .createParticle(
+                                                                            ParticleTypes.WHITE_ASH,
+                                                                            x,
+                                                                            y,
+                                                                            z,
+                                                                            vx,
+                                                                            vy,
+                                                                            vz
+                                                                    );
+
+                                                    if (particle != null) {
+                                                        particle.setLifetime(
+                                                                20 + random.nextInt(20)
+                                                        );
+                                                    }
+
+
+                                                    if (random.nextFloat() < 0.35F) {
+
+                                                        entity.level().addParticle(
+                                                                ParticleTypes.ASH,
+                                                                x,
+                                                                y,
+                                                                z,
+                                                                (random.nextDouble() - 0.5D) * 0.08D,
+                                                                0.05D + random.nextDouble() * 0.04D,
+                                                                (random.nextDouble() - 0.5D) * 0.08D
+                                                        );
+                                                    }
+                                                }
+                                            }
+
+                                        },
+                                        AnimationEvent.Side.CLIENT
+                                )
+                        )
+
+
+                        .addEvents(
+                                AnimationProperty.StaticAnimationProperty.TICK_EVENTS,
+                                AnimationEvent.SimpleEvent.create(
+                                        (patch, anim, params) -> {
+
+                                            LivingEntity entity = patch.getOriginal();
+
+                                            if (!entity.level().isClientSide()) {
+                                                return;
+                                            }
+
+                                            RandomSource random = entity.getRandom();
+
+
+                                            if (entity.tickCount % 2 != 0) {
+                                                return;
+                                            }
+
+                                            double windX = 0.02D;
+                                            double windZ = -0.015D;
+
+
+                                            for (int i = 0; i < 12; i++) {
+
+                                                double x =
+                                                        entity.getX()
+                                                                + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                double y =
+                                                        entity.getY()
+                                                                + random.nextDouble() * entity.getBbHeight();
+
+                                                double z =
+                                                        entity.getZ()
+                                                                + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                double angle =
+                                                        random.nextDouble() * Math.PI * 2.0D;
+
+                                                double swirlX =
+                                                        Math.cos(angle) * 0.04D;
+
+                                                double swirlZ =
+                                                        Math.sin(angle) * 0.04D;
+
+                                                double vx =
+                                                        swirlX
+                                                                + random.nextGaussian() * 0.03D
+                                                                + windX;
+
+                                                double vy =
+                                                        random.nextDouble() * 0.04D;
+
+                                                double vz =
+                                                        swirlZ
+                                                                + random.nextGaussian() * 0.03D
+                                                                + windZ;
+
+                                                entity.level().addParticle(
+                                                        ParticleTypes.WHITE_ASH,
+                                                        x,
+                                                        y,
+                                                        z,
+                                                        vx,
+                                                        vy,
+                                                        vz
+                                                );
+                                            }
+
+
+                                            for (int i = 0; i < 8; i++) {
+
+                                                double x =
+                                                        entity.getX()
+                                                                + (random.nextDouble() - 0.5D) * 0.8D;
+
+                                                double y =
+                                                        entity.getY()
+                                                                + random.nextDouble() * entity.getBbHeight();
+
+                                                double z =
+                                                        entity.getZ()
+                                                                + (random.nextDouble() - 0.5D) * 0.8D;
+
+                                                entity.level().addParticle(
+                                                        ParticleTypes.ASH,
+                                                        x,
+                                                        y,
+                                                        z,
+                                                        (random.nextDouble() - 0.5D) * 0.02D,
+                                                        0.05D + random.nextDouble() * 0.03D,
+                                                        (random.nextDouble() - 0.5D) * 0.02D
+                                                );
+                                            }
+
+
+                                            for (int i = 0; i < 8; i++) {
+
+                                                double x =
+                                                        entity.getX()
+                                                                + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                double z =
+                                                        entity.getZ()
+                                                                + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                entity.level().addParticle(
+                                                        ParticleTypes.ASH,
+                                                        x,
+                                                        entity.getY() + 0.05D,
+                                                        z,
+                                                        (random.nextDouble() - 0.5D) * 0.02D,
+                                                        0.01D,
+                                                        (random.nextDouble() - 0.5D) * 0.02D
+                                                );
+                                            }
+                                        },
+                                        AnimationEvent.Side.CLIENT
+                                )
+                        )
+
+
+
+
         );
 
 
@@ -120,11 +530,7 @@ public class QoLMiscAnimations {
 
         GENERIC_DEATH_1 = builder.nextAccessor("biped/deathanims/death_generic1", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
-                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                        (e, s, p) ->
-                                e.getOriginal().playSound(dawnDaySounds.KILLED1.get(),100,1), AnimationEvent.Side.CLIENT
-                )));
+        );
 
         SEPUKKU_DEATH = builder.nextAccessor("biped/deathanims/sepukku_death", ac -> new ActionAnimation(0.0f,20.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
@@ -218,13 +624,17 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         DEATH_MAGIC = builder.nextAccessor("biped/deathanims/death_magic", ac -> new ActionAnimation(0.0f,7.5f,ac, Armatures.BIPED)
-                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(4f, 6.60f))
+                .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL,true));
 
         SAD_DEATH = builder.nextAccessor("biped/deathanims/death_starving", ac -> new ActionAnimation(0.0f,2.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         WITHERING_DEMISE = builder.nextAccessor("biped/deathanims/death_wither", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL,true)
+                .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0f, 5.60f))
                 .addEvents(AnimationProperty.StaticAnimationProperty.TICK_EVENTS, AnimationEvent.SimpleEvent.create(
                         (e,s,p)->{
                             LivingEntity entity = e.getOriginal();

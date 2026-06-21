@@ -12,13 +12,13 @@
 
 		"display": {
 			"thirdperson_righthand": {
-				"rotation": [180, -180, 0],
-				"translation": [-15, 6.0, 8.0],
-				"scale": [1, 1, 1]
+				"rotation": [-95, 0, 180],
+				"translation": [-14.0, 5.5, -5.0],
+				"scale": [1.0, 1.0, 1.0]
 			},
 			"thirdperson_lefthand": {
-				"rotation": [180, 0, 0],
-				"translation": [-14, 6.0, -8.0],
+				"rotation": [95, 0, -0],
+				"translation": [-14, -9.0, -6.0],
 				"scale": [1, 1, 1]
 			},
 			"gui": {
