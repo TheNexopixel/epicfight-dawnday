@@ -15,6 +15,11 @@ public class DawnDayConfig {
                     .comment("Set Gamemode to Spectator when a player respawns (Default: false)")
                     .define("death_spectator", false);
 
+    public static final ForgeConfigSpec.BooleanValue ENABLE_DEATH_PARTICLES =
+            BUILDER
+                    .comment("Enables the Particles on DawnDays Custom Death Animations (Default: true)")
+                    .define("death_particles", true);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
 }

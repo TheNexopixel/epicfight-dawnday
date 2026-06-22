@@ -26,11 +26,7 @@ public class IronFistEvent {
         float damage = event.getAmount();
 
         if (offHand != DawnDayItems.IRON_FIST.get()) {
-            event.setAmount(damage - 1f);
-        }
-
-        else {
-            event.setAmount(damage + 1f);
+            event.setAmount(damage - 2.0f);
         }
     }
 }

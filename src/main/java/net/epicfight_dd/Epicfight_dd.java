@@ -1,7 +1,6 @@
 package net.epicfight_dd;
 
 import com.hm.efn.EFN;
-import net.epicfight_dd.events.DeathSoundEvent;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
@@ -9,7 +8,6 @@ import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.skill.skill_compats.WoMCompat;
 import net.epicfight_dd.skill.skill_compats.evil_tachi_skillcompats;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
-import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +17,6 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -33,7 +30,6 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 public class Epicfight_dd {
 
     public static final String MODID = "epicfight_dd";
-
 
 
 
@@ -51,6 +47,7 @@ public class Epicfight_dd {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
 
         ModLoadingContext.get().registerConfig(
                 ModConfig.Type.COMMON,

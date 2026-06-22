@@ -77,14 +77,22 @@ public class RitusEvents {
 
 
         // BLOOD DAGGER
+        boolean playerKill = event.getEntity() instanceof Player;
 
 
         if (player.getMainHandItem().getItem()
                 == DawnDayItems.BLOOD_RITUS_DAGGER.get()) {
+            if (event.getEntity() instanceof Player) {
+                player.heal ( 10.0F);
+            }
+            if (event.getEntity() instanceof Player && (player.hasEffect(EffectRegistry.SEPUKKU.get()) )) {
+                player.heal ( 20.0F);
+            }
 
             if(player.hasEffect(EffectRegistry.SEPUKKU.get())) {
                 player.heal(2.0f);
             }
+
             if(player.hasEffect(EffectRegistry.DRAINDED.get())) {
                 player.heal(0.5f);
             }
@@ -148,6 +156,15 @@ public class RitusEvents {
                     EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
 
             float stamina = playerPatch.getStamina();
+            float maxstamina = playerPatch.getMaxStamina();
+
+            if (event.getEntity() instanceof Player) {
+                playerPatch.setStamina(stamina + maxstamina / 2);
+            }
+            if (event.getEntity() instanceof Player && (player.hasEffect(EffectRegistry.SEPUKKU.get()) )) {
+                playerPatch.setStamina(stamina + maxstamina);
+            }
+
 
             if (player.level().isNight()) {
                 playerPatch.setStamina(stamina + 3.0f);

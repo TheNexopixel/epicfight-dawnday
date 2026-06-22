@@ -19,6 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.joml.Vector3f;
+import reascer.wom.animation.WomAnimationProperty;
 import reascer.wom.animation.attacks.BasicMultipleAttackAnimation;
 import reascer.wom.particle.WOMParticles;
 import reascer.wom.world.damagesources.WOMDamageType;
@@ -305,6 +306,7 @@ public class AdditionalAnimations {
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(WomAnimationProperty.CAN_SPAM,false)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 

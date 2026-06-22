@@ -199,6 +199,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_ATT3;
 
     public static AnimationAccessor<StaticAnimation> RITUS_DAGGER_GUARD;
+    public static AnimationAccessor<StaticAnimation> RITUS_DAGGER_DUAL_WALK;
     public static AnimationAccessor<LongHitAnimation> RITUS_DAGGER_NEUTRALIZED;
     public static AnimationAccessor<GuardAnimation> RITUS_DAGGER_GUARD_HIT;
     public static AnimationAccessor<ActionAnimation> RITUS_DAGGER_PARRY1;
@@ -213,6 +214,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<LongHitAnimation> SEPUKKU;
 
     public static AnimationAccessor<StaticAnimation> BLOOD_RITUS_DAGGER_IDLE;
+    public static AnimationAccessor<StaticAnimation> BLOOD_RITUS_DAGGER_WALK;
     public static AnimationAccessor<BasicAttackAnimation> BLOOD_RITUS_DAGGER_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> BLOOD_RITUS_DAGGER_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> BLOOD_RITUS_DAGGER_AUTO3;
@@ -392,6 +394,12 @@ public class DawnDayAnimations {
                 new ActionAnimation(0.12F, ac, biped));
 
         BLOOD_RITUS_DAGGER_IDLE = builder.nextAccessor("biped/living/blood_ritus_dagger_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        BLOOD_RITUS_DAGGER_WALK = builder.nextAccessor("biped/living/blood_ritus_dagger_walk", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        RITUS_DAGGER_DUAL_WALK = builder.nextAccessor("biped/living/ritus_dagger_walk", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         RITUS_DAGGER_DUAL_IDLE = builder.nextAccessor("biped/living/ritus_dagger_dual_idle", ac ->

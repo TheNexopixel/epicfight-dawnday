@@ -1,5 +1,6 @@
 package net.epicfight_dd.gameasset.animation;
 
+import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
@@ -126,6 +127,9 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
                                 (e, s, p) ->{
+                                    if (DawnDayConfig.ENABLE_DEATH_PARTICLES.get().equals(false)){
+                                        return;
+                                    }
 
 
 
@@ -180,6 +184,9 @@ public class QoLMiscAnimations {
                                 AnimationProperty.StaticAnimationProperty.TICK_EVENTS,
                                 AnimationEvent.SimpleEvent.create(
                                         (patch, anim, params) -> {
+                                            if (DawnDayConfig.ENABLE_DEATH_PARTICLES.get().equals(false)){
+                                                return;
+                                            }
 
                                             LivingEntity entity = patch.getOriginal();
 
@@ -403,6 +410,9 @@ public class QoLMiscAnimations {
                                 AnimationProperty.StaticAnimationProperty.TICK_EVENTS,
                                 AnimationEvent.SimpleEvent.create(
                                         (patch, anim, params) -> {
+                                            if (DawnDayConfig.ENABLE_DEATH_PARTICLES.get().equals(false)){
+                                                return;
+                                            }
 
                                             LivingEntity entity = patch.getOriginal();
 

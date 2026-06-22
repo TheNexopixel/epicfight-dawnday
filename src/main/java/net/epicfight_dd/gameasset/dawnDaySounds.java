@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class dawnDaySounds {
 
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "t0001");
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "epicfight_dd");
 
 
     public static final RegistryObject<SoundEvent> Milady_light_slash = registerSound("sfx.milady_slash");

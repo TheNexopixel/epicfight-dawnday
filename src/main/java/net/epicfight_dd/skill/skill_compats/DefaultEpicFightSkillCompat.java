@@ -121,7 +121,7 @@ public class DefaultEpicFightSkillCompat {
     @SubscribeEvent
     public static void onSwordSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<SwordmasterSkill.Builder> event) {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","swordmaster"))) {
-            SwordmasterSkill.Builder builder = event.getSkillBuilder();
+                SwordmasterSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.EVIL_TACHI)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.FLORETT)

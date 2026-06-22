@@ -21,7 +21,7 @@ public class RAHHHHH extends WeaponInnateSkill {
     public RAHHHHH(SkillBuilder<? extends WeaponInnateSkill> builder) {
         super(builder);
     }
-
+/*
     @Override
     public void setParams(CompoundTag parameters) {
         super.setParams(parameters);
@@ -30,6 +30,8 @@ public class RAHHHHH extends WeaponInnateSkill {
             Amplifier = parameters.getInt("amplifier");
         }
     }
+
+ */
 
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {

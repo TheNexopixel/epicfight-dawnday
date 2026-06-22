@@ -56,7 +56,6 @@ public class DawnDaySkills {
     public static Skill SEPUKKU;
     public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
-    public static Skill ACHILLES_HEEL;
     public static Skill REDEMPTION;
 
 
