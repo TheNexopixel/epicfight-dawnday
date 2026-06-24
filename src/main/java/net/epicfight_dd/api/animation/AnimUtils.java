@@ -16,6 +16,7 @@ import java.util.List;
 
 
 public class AnimUtils {
+
     /// useful for in game testing acquired data
     public static float getAnimTimeFromTickTime(int ticks) {
         return (float) ticks / 20;
@@ -100,6 +101,8 @@ public class AnimUtils {
                             entity.hasImpulse = true;
                             entity.hurtMarked = true;
                         }
+                        //remove after use
+                        targets.remove(entity);
 
                     });
 
