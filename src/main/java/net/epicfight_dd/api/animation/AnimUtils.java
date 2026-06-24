@@ -35,7 +35,7 @@ public class AnimUtils {
     public static AnimationEvent.@NotNull InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> playSoundOnFrame(int blenderFrame, SoundEvent soundEvent) {
         return AnimationEvent.InTimeEvent.create(
                 AnimUtils.getAnimTimeFromFrame(blenderFrame), (e, s, p) ->
-                        e.playSound(soundEvent,0.4f,1.1f,1.25f), AnimationEvent.Side.CLIENT
+                        e.playSound(soundEvent, 0.4f, 1.1f, 1.25f), AnimationEvent.Side.CLIENT
         );
     }
 
@@ -55,10 +55,10 @@ public class AnimUtils {
                         return;
                     }
 
-                    for (LivingEntity entity : targets) {
+                    targets.forEach(entity -> {
 
                         if (entity == null || !entity.isAlive()) {
-                            continue;
+                            return;
                         }
 
                         LivingEntityPatch<?> targetPatch =
@@ -69,31 +69,42 @@ public class AnimUtils {
 
                         if (targetPatch != null && !targetPatch.isStunned()) {
 
-                            float stunTime = height * (
-                                    1.0F - (float) entity.getAttributeValue(
-                                            Attributes.KNOCKBACK_RESISTANCE
-                                    )
-                            );
+                            if (!entity.level().isClientSide) {
+                                float stunTime = height * (
+                                        1.0F - (float) entity.getAttributeValue(
+                                                Attributes.KNOCKBACK_RESISTANCE
+                                        )
+                                );
 
-                            targetPatch.applyStun(
-                                    StunType.HOLD,
-                                    stunTime
-                            );
+                                targetPatch.applyStun(
+                                        StunType.HOLD,
+                                        stunTime
+                                );
+
+
+                                entity.addEffect(
+                                        new MobEffectInstance(
+                                                MobEffects.SLOW_FALLING,
+                                                4,
+                                                5,
+                                                true,
+                                                false,
+                                                false
+                                        )
+                                );
+                            }
+                            targetPatch.setAirborneState(true);
+                            entity.hasImpulse = true;
+                            entity.hurtMarked = true;
+                            entity.setDeltaMovement(entity.getDeltaMovement().x,entity.getDeltaMovement().y() + height, entity.getDeltaMovement().z);
+                            entity.hasImpulse = true;
+                            entity.hurtMarked = true;
                         }
 
-                        entity.addEffect(
-                                new MobEffectInstance(
-                                        MobEffects.LEVITATION,
-                                        4,
-                                        5,
-                                        true,
-                                        false,
-                                        false
-                                )
-                        );
-                    }
+                    });
+
                 },
-                AnimationEvent.Side.SERVER
+                AnimationEvent.Side.BOTH
         );
     }
 

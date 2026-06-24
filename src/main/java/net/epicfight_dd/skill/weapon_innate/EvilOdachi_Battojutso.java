@@ -17,7 +17,9 @@ public class EvilOdachi_Battojutso extends SimpleWeaponInnateSkill {
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
         boolean is_sprint = container.getServerExecutor().getOriginal().isSprinting();
+
         if (is_sprint) {
+            this.setConsumption(container, 0);
             container.getExecutor().playAnimationSynchronized(AdditionalAnimations.EVIL_ODACHI_BATTOJUTSO, 0);
         } else {
             super.executeOnServer(container, args);
