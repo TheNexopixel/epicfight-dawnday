@@ -101,10 +101,11 @@ public class AnimUtils {
                             entity.hasImpulse = true;
                             entity.hurtMarked = true;
                         }
-                        //remove after use
-                        targets.remove(entity);
+                      
 
                     });
+                      //clear list
+                    targets.clear();
 
                 },
                 AnimationEvent.Side.BOTH
