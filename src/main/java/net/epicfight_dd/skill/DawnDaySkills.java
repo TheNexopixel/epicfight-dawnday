@@ -2,7 +2,6 @@ package net.epicfight_dd.skill;
 
 
 import net.epicfight_dd.Epicfight_dd;
-import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
@@ -45,14 +44,12 @@ public class DawnDaySkills {
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
     public static Skill SPINNING_SHADOW;
-    public static Skill EVIL_BEAAAAMMMM;
     public static Skill BRUTAL_DASH;
     public static Skill GROUNDSLAM;
     public static Skill INCISURA_VITREA;
     public static Skill WILD_STRIKES;
     public static Skill WILD_STRIKES_DUAL;
     public static Skill RAAAHHH;
-    public static Skill ANNIHILATE;
     public static Skill SEPUKKU;
     public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
@@ -107,21 +104,6 @@ public class DawnDaySkills {
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         PIERCING_STRIKE = piercingstrike;
 
-
-        if (ModList.get().isLoaded("wom")) {
-            WeaponInnateSkill annihilate = modRegistry.build("annihilate", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                    .setAnimations(AdditionalAnimations.ANNIHILATE)
-                    .setCategory(SkillCategories.WEAPON_INNATE));
-            annihilate.newProperty()
-                    .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
-                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(7.5F))
-                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
-                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
-                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
-            ANNIHILATE = annihilate;
-        }
 
         WeaponInnateSkill groundslam = modRegistry.build("groundslam",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.GROUNDSLAM)
@@ -242,22 +224,6 @@ public class DawnDaySkills {
 
         SPINNING_SHADOW = spinshadow;
 
-        if (ModList.get().isLoaded("wom")) {
-            WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", EvilOdachi_Battojutso::new, EvilOdachi_Battojutso.createSimpleWeaponInnateBuilder()
-                    .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
-                    .setCategory(SkillCategories.WEAPON_INNATE));
-            evilbeam.newProperty()
-                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
-                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
-                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
-                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25.0F))
-                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(15.5F))
-                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
-                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
-
-            EVIL_BEAAAAMMMM = evilbeam;
-        }
-
         WeaponInnateSkill brutaldash = modRegistry.build("brutal_dash",SkullRuptureSkill::new,SkullRuptureSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.BRUTAL_DASH)
                 .setCategory(SkillCategories.WEAPON_INNATE));
@@ -315,11 +281,6 @@ public class DawnDaySkills {
 
         WILD_STRIKES_DUAL = wildstrikes_dual;
 
-        /// RAAAHHHHHHHHHH BANG BANG BANG
-        RAAAHHH = modRegistry.build("rahhh", RAHHHHH::new,
-                RAHHHHH.createWeaponInnateBuilder()
-                        .setCategory(SkillCategories.WEAPON_INNATE)
-        );
 
         SEPUKKU = modRegistry.build("sepukku", Sepukku::new,
                 Sepukku.createWeaponInnateBuilder()

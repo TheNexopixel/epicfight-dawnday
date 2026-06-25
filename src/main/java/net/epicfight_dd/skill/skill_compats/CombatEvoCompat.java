@@ -93,21 +93,6 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.netherite_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
               DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
 
-      if (ModList.get().isLoaded("wom")) {
-          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
-                  DawnDayExecution_TYPES.EVIL_TACHI);
-
-          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.TWO_HAND,
-                  DawnDayExecution_TYPES.GREATAXE_DUAL);
-          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.TWO_HAND,
-                  DawnDayExecution_TYPES.GREATAXE_DUAL);
-          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.TWO_HAND,
-                  DawnDayExecution_TYPES.GREATAXE_DUAL);
-          event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.TWO_HAND,
-                  DawnDayExecution_TYPES.GREATAXE_DUAL);
-
-      }
-
   }
 
 

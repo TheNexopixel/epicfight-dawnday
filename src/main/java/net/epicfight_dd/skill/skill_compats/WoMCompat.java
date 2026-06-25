@@ -1,6 +1,5 @@
 package net.epicfight_dd.skill.skill_compats;
 
-import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.world.item.ItemStack;
@@ -41,10 +40,6 @@ public class WoMCompat implements ICompatModule {
     public void onForgeEventBusClient(IEventBus iEventBus) {
     }
 
-    public static void regIcon(WeaponCategoryIconRegisterEvent event) {
-        event.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
-    }
-
     public static boolean regGuarded = false;
 
     public static void buildSkillEvent(RegisterEvent event) {
@@ -68,12 +63,6 @@ public class WoMCompat implements ICompatModule {
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advancedGuardMotions = new HashMap<>();
 
 
-        guardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                AdditionalAnimations.EVIL_ODACHI_GUARD_HIT);
-        guardBreakMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-                AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED);
-        advancedGuardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
-                AdditionalAnimations.EVIL_ODACHI_COUNTER);
         guardMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (item, player) ->
                 DawnDayAnimations.RITUS_DAGGER_GUARD_HIT);
         guardBreakMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (item, player) ->

@@ -104,24 +104,4 @@ public class DawnDayCreativeTab {
             })
             .build()
     );
-    public static final RegistryObject<CreativeModeTab> EFDDXWOM = CREATIVE_MODE_TABS.register("efdd_x_wom", () -> CreativeModeTab.builder().icon(() ->
-                    new
-                            ItemStack(WOMItems.EVIL_TACHI.get()))
-            .title(Component.translatable("creativetab.efdd_x_wom"))
-
-            .displayItems((itemDisplayParameters, output) -> {
-                if (ModList.get().isLoaded("evil_tachi_moveset")){
-                    output.accept(WOMItems.EVIL_TACHI.get());}
-                if (ModList.get().isLoaded("greataxe_moveset")){
-                    output.accept(WOMItems.NETHERITE_GREATAXE.get());
-                    output.accept(WOMItems.DIAMOND_GREATAXE.get());
-                    output.accept(WOMItems.GOLDEN_GREATAXE.get());
-                    output.accept(WOMItems.IRON_GREATAXE.get());}
-                if (ModList.get().isLoaded("hollow_moveset")) {
-                    output.accept(WOMItems.HOLLOW_LONGSWORD.get());}
-            })
-            .build());
-
-
-
 }

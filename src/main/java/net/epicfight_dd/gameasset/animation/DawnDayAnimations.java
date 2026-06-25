@@ -67,6 +67,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT2;
     public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT3;
     public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT4;
+    public static AnimationAccessor<AirSlashAnimation> LIGHTGREATSWORD_SWORD_AIRSLASH;
 
     public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
     public static AnimationAccessor<BasicAttackAnimation> TRAIL_TEST;
@@ -282,19 +283,6 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> VITR_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> VITR_DASH;
 
-    public static AnimationAccessor<StaticAnimation> HOLLOW_OCHS_IDLE;
-    public static AnimationAccessor<StaticAnimation> HOLLOW_OCHS_WALK;
-    public static AnimationAccessor<StaticAnimation> HOLLOW_OCHS_RUN;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_OCHS_AUTO4;
-    public static AnimationAccessor<StaticAnimation> HOLLOW_ONEHANDED_IDLE;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_ONEHANDED_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_ONEHANDED_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> HOLLOW_ONEHANDED_AUTO3;
-    public static AnimationAccessor<LongHitAnimation> RAAAHHHHH;
-
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
     public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
@@ -411,24 +399,12 @@ public class DawnDayAnimations {
         FLORETT_DUAL_IDLE = builder.nextAccessor("biped/living/florett_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
-        HOLLOW_ONEHANDED_IDLE = builder.nextAccessor("biped/living/hollow_onehanded_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
-
         MESSER_IDLE = builder.nextAccessor("biped/living/messer_onehanded_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         TRAIL_TEST = builder.nextAccessor("biped/living/trail_test", (accessor) ->
                 new BasicAttackAnimation(0f, 0.05F, 0.25F, 0.3F, 1.43F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 50F));
-
-        HOLLOW_OCHS_IDLE = builder.nextAccessor("biped/living/hollow_ochs_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
-
-        HOLLOW_OCHS_WALK = builder.nextAccessor("biped/living/hollow_walk", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
-
-        HOLLOW_OCHS_RUN = builder.nextAccessor("biped/living/hollow_run", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
 
         GREATAXE_DUAL_IDLE = builder.nextAccessor("biped/living/greataxe_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
@@ -503,6 +479,16 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        LIGHTGREATSWORD_SWORD_AIRSLASH = builder.nextAccessor("biped/combat/lg_sw_airslash", ac ->
+                new AirSlashAnimation(0.1f,0.45f, 0.67f, 1.0f, null, biped.get().toolR, ac, biped)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false)
+                        .addProperty(AttackAnimationProperty.MOVE_VERTICAL, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0f, 0.70f))
+
         );
 
         PIERCING_STRIKE = builder.nextAccessor("biped/skill/piercing_strike", ac ->
@@ -1040,133 +1026,6 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.8F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_ONEHANDED_AUTO1 = builder.nextAccessor("biped/combat/hollow_onehanded_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.53F, 0.65F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_ONEHANDED_AUTO2 = builder.nextAccessor("biped/combat/hollow_onehanded_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.38F, 0.62F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1.5F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_ONEHANDED_AUTO3 = builder.nextAccessor("biped/combat/hollow_onehanded_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.43F, 0.62F, 1.3F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(15F))
-                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_OCHS_AUTO1 = builder.nextAccessor("biped/combat/hollow_ochs_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.57F, 0.7F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.3F))
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_OCHS_AUTO2 = builder.nextAccessor("biped/combat/hollow_ochs_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.51F, 0.4F, 0.5F, 0.63F, DawnDayCollider.SHIELD, biped.get().toolL, accessor, biped)
-                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT.get())
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
-                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(5F))
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_OCHS_AUTO3 = builder.nextAccessor("biped/combat/hollow_ochs_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.37F, 0.45F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                        .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.15F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HOLLOW_OCHS_AUTO4 = builder.nextAccessor("biped/combat/hollow_ochs_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.10f, 0.35f, 0.55f, 1.3f, 0.56f, InteractionHand.MAIN_HAND, biped.get().toolL, DawnDayCollider.SHIELD)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
-                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
-                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
-                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
-                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(5F))
-
-                        ,
-
-                        new AttackAnimation.Phase(0.67f, 0.68f, 0.70f, 0.82f, 1.3f, 3.51f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.8F))
-                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25F))
-                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get()))
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.15F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
-        );
-        RAAAHHHHH = builder.nextAccessor("biped/skill/raaahhh", ac -> new LongHitAnimation(0.0f, ac, Armatures.BIPED)
-                .addEvents(
-                        AnimationEvent.InTimeEvent.create(
-                                2.5f,
-
-                                (e, s, p) -> {
-
-                                    LivingEntity entity = e.getOriginal();
-
-                                    entity.addEffect(
-                                            new MobEffectInstance(
-                                                    EffectRegistry.IMPREGNABILITY.get(),
-                                                    400, 0, false, false, true
-                                            )
-                                    );
-                                }, AnimationEvent.Side.SERVER
-                        )
-                )
-                .addEvents(
-                        AnimationEvent.InTimeEvent.create(1.0f, (e, s, p) ->
-                                e.getOriginal().level().playSound(
-                                        null,
-                                        e.getOriginal().blockPosition(),
-                                        dawnDaySounds.skeleton_banging.get(),
-                                        SoundSource.PLAYERS,
-                                        1.0F,
-                                        1.0F
-                                )
-
-                                , AnimationEvent.Side.SERVER),
-                        AnimationEvent.InTimeEvent.create(2.5f, (e, s, p) ->
-                                        e.getOriginal().level().playSound(
-                                                null,
-                                                e.getOriginal().blockPosition(),
-                                                SoundEvents.BELL_RESONATE,
-                                                SoundSource.PLAYERS,
-                                                1.0F,
-                                                1.3F
-                                        )
-                                , AnimationEvent.Side.SERVER),
-                        AnimationEvent.InTimeEvent.create(2.4f, (e, s, p) ->
-                                e.getOriginal().level().playSound(
-                                        null,
-                                        e.getOriginal().blockPosition(),
-                                        SoundEvents.RAVAGER_ROAR,
-                                        SoundSource.PLAYERS,
-                                        1.0F,
-                                        1.5F
-                                )
-                                , AnimationEvent.Side.SERVER)
-                )
-                .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                        (e, s, p) ->
-                                e.getOriginal().addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 220, 4)), AnimationEvent.Side.SERVER
-                ))
-                .addProperty(ActionAnimationProperty.CANCELABLE_MOVE,false)
-                .addProperty(ActionAnimationProperty.STOP_MOVEMENT,true)
-                .addState(EntityState.MOVEMENT_LOCKED,true)
-
-        );
 
         SEPUKKU = builder.nextAccessor(
                 "biped/skill/sepukku",
