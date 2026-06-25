@@ -8,9 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.forgeevent.EntityStunEvent;
@@ -35,54 +33,7 @@ public class ForgeBusEvent {
     }
 
     @SubscribeEvent
-    public static void resistance(LivingDamageEvent event) {
-        var effectInstance = event.getEntity().getEffect(EffectRegistry.IMPREGNABILITY.get());
-
-        if (effectInstance != null && !event.isCanceled()) {
-            float originalAmount = event.getAmount();
-
-            float reductionFactor = 1.0f - ((effectInstance.getAmplifier() + 1) * 0.10f);
-
-            reductionFactor = Math.max(0.0f, reductionFactor);
-
-            event.setAmount(originalAmount * reductionFactor);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onStun(EntityStunEvent event) {
-        LivingEntity entity = event.getStunnedEntityPatch().getOriginal();
-        StunType stunType = event.getStunType();
-        if(entity.hasEffect(EffectRegistry.IMPREGNABILITY.get()) && stunType != StunType.NEUTRALIZE){
-            event.setCanceled(true);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onKB(LivingKnockBackEvent event) {
-        LivingEntity entity = event.getEntity();
-        if ( entity.hasEffect(EffectRegistry.IMPREGNABILITY.get()) ) {
-            event.setCanceled(true);
-        }
-    }
-
-    @SubscribeEvent
     public static void onEquipMentChange(LivingEquipmentChangeEvent event){
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.IMPREGNABILITY.get())){
-            LivingEntity target = event.getEntity();
-            if(target instanceof ServerPlayer player){
-                ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
-                if (playerPatch != null) {
-                    if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
-                            && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.RAAAHHH)
-
-                    ) {
-                        target.removeEffect(EffectRegistry.IMPREGNABILITY.get());
-                    }
-                }
-            }
-        }
         if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.SEPUKKU.get())){
             LivingEntity target = event.getEntity();
             if(target instanceof ServerPlayer player){

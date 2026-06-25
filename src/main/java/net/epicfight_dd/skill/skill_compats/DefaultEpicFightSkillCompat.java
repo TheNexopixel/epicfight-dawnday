@@ -123,7 +123,6 @@ public class DefaultEpicFightSkillCompat {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","swordmaster"))) {
                 SwordmasterSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER)
-                    .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.EVIL_TACHI)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.FLORETT)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD);
         }
@@ -136,9 +135,6 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(EpicFightDD_WeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));
 
-        if (ModList.get().isLoaded("wom")) {
-            icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
-        }
     }
 
 

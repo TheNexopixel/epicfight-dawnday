@@ -34,21 +34,27 @@ public class SepukkuEffect extends MobEffect {
             super.addAttributeModifiers(entity, map, amplifier);
         }
     }
-
+/*
     @Override
     public void removeAttributeModifiers(@NotNull LivingEntity entity, @NotNull AttributeMap map, int amplifier) {
         super.removeAttributeModifiers(entity, map, amplifier);
+            entity.getServer().execute(() ->
+                    entity.addEffect(new MobEffectInstance(
+                            EffectRegistry.DRAINDED.get(),
+                            350,
+                            0
+                    ))
+            );
 
-        entity.addEffect(new MobEffectInstance(
-                EffectRegistry.DRAINDED.get(),
-                350,
-                0
-        ));
+
+
         if (entity instanceof Player) {
             super.removeAttributeModifiers(entity, map, amplifier);
         }
-    }
 
+
+    }
+*/
 
 
 

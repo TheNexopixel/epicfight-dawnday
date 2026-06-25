@@ -1,7 +1,6 @@
 package net.epicfight_dd.skill.skill_compats;
 
 import com.hm.efn.gameasset.animations.EFNSkillAnimations;
-import net.epicfight_dd.gameasset.animation.AdditionalAnimations;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
@@ -34,13 +33,6 @@ public class NightfallCompat implements ICompatModule {
                             (i, p) -> Animations.LONGSWORD_GUARD_HIT
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
-
-                    .addGuardMotion(
-                            EpicFightDD_WeaponCategories.EVIL_TACHI,
-                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_GUARD_HIT
-                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI,
-                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED)
-
                     .addGuardMotion(
                             EpicFightDD_WeaponCategories.RITUS_DAGGER,
                             (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
@@ -59,9 +51,6 @@ public class NightfallCompat implements ICompatModule {
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 
-                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, ((capabilityItem, pp) ->
-                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
-
 
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
@@ -78,9 +67,6 @@ public class NightfallCompat implements ICompatModule {
             icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
             icon.registerCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
             icon.registerCategory(EpicFightDD_WeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
-            if  (ModList.get().isLoaded("wom")) {
-                icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
-            }
         }
 
 

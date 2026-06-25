@@ -35,11 +35,6 @@ public class DawnDayExecution_TYPES {
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 80
     );
 
-    public static final Type EVIL_TACHI = new Type(
-            AdditionalExecutions.EVIL_TACHI_EXECUTE,
-            AdditionalExecutions.EVIL_TACHI_EXECUTED,
-            new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
-    );
 
     public static final Type MILADY_DUAL = new Type(
             DawnDayExecAnims.MILADY_EXECUTION_DUAL,
@@ -50,11 +45,6 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.IRON_FIST_EXECUTE,
             DawnDayExecAnims.IRON_FIST_EXECUTED,
             new Vec3(0.4, 0.0F, 0.0F), 0.0F, 115
-    );
-    public static final Type GREATAXE_DUAL = new Type(
-            DawnDayExecAnims.GREATAXE_DUAL_EXECUTE,
-            DawnDayExecAnims.GREATAXE_DUAL_EXECUTED,
-            new Vec3(1.65, 0.0F, 0.0F), 0.0F, 112
     );
     public static final Type DUAL_RITUAL_DAGGER = new Type(
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTE,

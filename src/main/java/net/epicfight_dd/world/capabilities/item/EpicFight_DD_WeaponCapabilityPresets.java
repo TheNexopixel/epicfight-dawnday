@@ -163,7 +163,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT3,
                             DawnDayAnimations.LIGHTGREATSWORD_SWORD_ATT4,
                             DawnDayAnimations.MILADY_SPECIAL_AUTO1,
-                            DawnDayAnimations.MILADY_SPECIAL_AUTO2)
+                            DawnDayAnimations.LIGHTGREATSWORD_SWORD_AIRSLASH)
                     .canBePlacedOffhand(true)
 
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, DawnDayAnimations.LIGHTGREATSWORD_SWORD_IDLE)
@@ -473,37 +473,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         return RandomHitParticle;
     }
 
-
-    public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI = (item) ->
-            WeaponCapability.builder()
-                    .category(EpicFightDD_WeaponCategories.EVIL_TACHI)
-                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(DawnDayCollider.EVIL_TACHI)
-                    .hitParticle(randomSlashHitParticleTYPE())
-                    .swingSound(EpicFightSounds.WHOOSH.get())
-                    .hitSound(EpicFightSounds.BLADE_HIT.get())
-                    .canBePlacedOffhand(false)
-                    .passiveSkill(WOMSkills.EVIL_TACHI_PASSIVE)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.EVIL_BEAAAAMMMM)
-                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            AdditionalAnimations.EVIL_ODACHI_AUTO1,
-                            AdditionalAnimations.EVIL_ODACHI_AUTO2,
-                            AdditionalAnimations.EVIL_ODACHI_AUTO3,
-                            AdditionalAnimations.EVIL_ODACHI_AUTO4,
-                            AdditionalAnimations.EVIL_ODACHI_AUTO5,
-                            AdditionalAnimations.EVIL_ODACHI_DASH,
-                            AdditionalAnimations.EVIL_ODACHI_AIRSLASH)
-
-
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, AdditionalAnimations.EVIL_ODACHI_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, AdditionalAnimations.EVIL_ODACHI_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, AdditionalAnimations.EVIL_ODACHI_KNEEL)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, AdditionalAnimations.EVIL_ODACHI_SNEAK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, AdditionalAnimations.EVIL_ODACHI_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.WITHERING_DEMISE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.JUMP, AdditionalAnimations.EVIL_ODACHI_JUMP)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, AdditionalAnimations.EVIL_ODACHI_GUARD);
-
     public static final Function<Item, CapabilityItem.Builder> BAT = (item) ->
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.GREATSWORD)
@@ -551,87 +520,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
-
-    public static final Function<Item, CapabilityItem.Builder> HOLLOW_LONGSWORD = (item) ->
-            WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.LONGSWORD)
-                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
-                    .collider(DawnDayCollider.BAT)
-                    .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
-                    .swingSound(EpicFightSounds.WHOOSH.get())
-                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
-                    .hitSound(EpicFightSounds.BLADE_HIT.get())
-                    .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.RAAAHHH)
-                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SHIELD)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> EpicFightSkills.SHARP_STAB)
-                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.HOLLOW_OCHS_AUTO1,
-                            DawnDayAnimations.HOLLOW_OCHS_AUTO2,
-                            DawnDayAnimations.HOLLOW_OCHS_AUTO3,
-                            DawnDayAnimations.HOLLOW_OCHS_AUTO4,
-                            DawnDayAnimations.SABER_AUTO2,
-                            DawnDayAnimations.SABER_AUTO4)
-
-                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
-
-                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO1,
-                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO2,
-                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO3,
-                            DawnDayAnimations.SICKLE_DASH,
-                            DawnDayAnimations.BAT_DASH)
-
-
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_OCHS_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.HOLLOW_OCHS_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.HOLLOW_OCHS_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK_SHIELD, Animations.BIPED_BLOCK)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.HOLLOW_ONEHANDED_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_LONGSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD)
-            ;
-
-    public static final Function<Item, CapabilityItem.Builder> GREATAXE = (item) ->
-            WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.GREATSWORD)
-                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
-                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.GREATSWORD)
-                    .collider(ColliderPreset.GREATSWORD)
-                    .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.GREATSWORD ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
-                    .swingSound(EpicFightSounds.WHOOSH_BIG.get())
-                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
-                    .hitSound(EpicFightSounds.BLADE_HIT.get())
-                    .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SPEARING_STRIKE)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.ANNIHILATE)
-                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
-                            DawnDayAnimations.SAW_AUTO1,
-                            DawnDayAnimations.SAW_AUTO2,
-                            DawnDayAnimations.SAW_AUTO3,
-                            DawnDayAnimations.SAW_AUTO4,
-                            DawnDayAnimations.BAT_DASH,
-                            DawnDayAnimations.BAT_AIRSLASH)
-
-                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            AdditionalAnimations.GREATAXE_DUAL_AUTO1,
-                            AdditionalAnimations.GREATAXE_DUAL_AUTO2,
-                            AdditionalAnimations.GREATAXE_DUAL_AUTO3,
-                            AdditionalAnimations.GREATAXE_DUAL_AUTO4,
-                            AdditionalAnimations.GREATAXE_DUAL_DASH,
-                            AdditionalAnimations.GREATAXE_AIRSLASH)
-
-
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SAW_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.GREATAXE_DUAL_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.LIGHTGREATSWORD_SWORD_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.LIGHTGREATSWORD_SWORD_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> BLOOD_RITUS_DAGGER = (item) ->
             WeaponCapability.builder()
@@ -724,8 +612,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.ECLIPSE_ATT1,
                             DawnDayAnimations.ECLIPSE_ATT2,
                             DawnDayAnimations.ECLIPSE_ATT3,
-                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO3,
-                            DawnDayAnimations.HOLLOW_ONEHANDED_AUTO2,
                             DawnDayAnimations.BAT_DASH)
 
 
@@ -847,12 +733,6 @@ public class EpicFight_DD_WeaponCapabilityPresets {
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
-
-        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
-            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "evil_tachi"), EVIL_TACHI);
-            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "greataxe"), GREATAXE);
-            event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
-        }
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "florett"), FLORETT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);

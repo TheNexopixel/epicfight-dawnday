@@ -12,7 +12,6 @@ public class WeaponCategoryMapper {
     private static final Map<EpicFightDD_WeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 
     static {
-        categoryMap.put(EpicFightDD_WeaponCategories.EVIL_TACHI, CapabilityItem.WeaponCategories.TACHI);
         categoryMap.put(EpicFightDD_WeaponCategories.IRON_FIST, CapabilityItem.WeaponCategories.FIST);
         categoryMap.put(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.WeaponCategories.SWORD);
         categoryMap.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, CapabilityItem.WeaponCategories.DAGGER);
