@@ -68,7 +68,9 @@ public class AnimUtils {
                                         LivingEntityPatch.class
                                 );
 
-                        if (targetPatch != null && !targetPatch.isStunned()) {
+                        if (targetPatch != null
+                             //   && !targetPatch.isStunned()
+                        ) {
 
                             if (!entity.level().isClientSide) {
                                 float stunTime = height * (
@@ -86,7 +88,7 @@ public class AnimUtils {
                                 entity.addEffect(
                                         new MobEffectInstance(
                                                 MobEffects.SLOW_FALLING,
-                                                4,
+                                                14,
                                                 5,
                                                 true,
                                                 false,
@@ -94,16 +96,11 @@ public class AnimUtils {
                                         )
                                 );
                             }
-                            targetPatch.setAirborneState(true);
+                          //  targetPatch.setAirborneState(true);
                             entity.hasImpulse = true;
                             entity.hurtMarked = true;
                             entity.setDeltaMovement(entity.getDeltaMovement().x,entity.getDeltaMovement().y() + height, entity.getDeltaMovement().z);
-                            entity.hasImpulse = true;
-                            entity.hurtMarked = true;
                         }
-                        //remove after use
-                        targets.remove(entity);
-
                     });
 
                 },
