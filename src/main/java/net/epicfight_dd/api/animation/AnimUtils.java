@@ -40,9 +40,9 @@ public class AnimUtils {
         );
     }
 
-    public static AnimationEvent.SimpleEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height) {
+    public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height,float StartTime) {
 
-        return AnimationEvent.SimpleEvent.create(
+        return AnimationEvent.InTimeEvent.create( StartTime,
                 (livingEntityPatch, assetAccessor, animationParameters) -> {
 
                     if (!livingEntityPatch.isLastAttackSuccess()) {
