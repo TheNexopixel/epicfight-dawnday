@@ -36,6 +36,12 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
+                    EpicFightDD_WeaponCategories.SICKLE,
+                    (i, p) -> Animations.SWORD_GUARD_HIT
+            ).addGuardBreakMotion(EpicFightDD_WeaponCategories.SICKLE,
+                    (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED);
+
+            builder.addGuardMotion(
                     EpicFightDD_WeaponCategories.IRON_FIST,
                     (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_HIT
             ).addGuardBreakMotion(EpicFightDD_WeaponCategories.IRON_FIST,
@@ -69,6 +75,19 @@ public class DefaultEpicFightSkillCompat {
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
                             (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
+                            (i, p) -> List.of(
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.LONGSWORD_GUARD_ACTIVE_HIT2,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT1,
+                                    Animations.SWORD_GUARD_ACTIVE_HIT3
+                            ));
+
+            builder.addGuardMotion(
+                            EpicFightDD_WeaponCategories.SICKLE,
+                            (i, p) -> Animations.SWORD_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.SICKLE,
+                            (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED)
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.SICKLE,
                             (i, p) -> List.of(
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT1,
                                     Animations.LONGSWORD_GUARD_ACTIVE_HIT2,

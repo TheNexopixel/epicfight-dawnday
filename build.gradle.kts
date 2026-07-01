@@ -143,6 +143,7 @@ dependencies {
 
     // Performance & Core Tweaks
     modRuntimeOnly("curse.maven:embeddium-908741:5681725")
+    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:8333358")
     modRuntimeOnly("curse.maven:ferritecore-429235:4810975")
     modRuntimeOnly("curse.maven:canary-665658:5089991")
 

@@ -3,11 +3,13 @@ package net.epicfight_dd;
 import com.hm.efn.EFN;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.network.DDNetworkHandler;
+import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.skill.skill_compats.WoMCompat;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
@@ -38,7 +40,6 @@ public class Epicfight_dd {
     public static final String MODID = "epicfight_dd";
 
 
-
     public Epicfight_dd(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
 
@@ -46,6 +47,10 @@ public class Epicfight_dd {
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
         bus.addListener(this::addPackFindersEvent);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
+
+
+
+        SkillDataKeyZ.DATA_KEYS.register(bus);
 
 
 
@@ -76,6 +81,8 @@ public class Epicfight_dd {
         }
 
         bus.addListener(this::commonSetup);
+
+
 
 
     }

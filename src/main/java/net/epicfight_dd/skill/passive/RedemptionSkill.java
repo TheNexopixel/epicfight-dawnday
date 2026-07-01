@@ -4,6 +4,7 @@ import net.epicfight_dd.gameasset.dawnDaySounds;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,12 +34,13 @@ public class RedemptionSkill extends PassiveSkill {
     private static final UUID EVENT_UUID =
             UUID.fromString("8b6b6af0-d76d-11ee-a506-0242ac120002");
 
+
     public RedemptionSkill(SkillBuilder<? extends PassiveSkill> builder) {
         super(builder);
     }
     @Override
     public float getCooldownRegenPerSecond(PlayerPatch<?> playerpatch) {
-        return 1.0F / 120.0F;
+        return 1.0F;
     }
 
     @Override
@@ -266,6 +268,11 @@ public class RedemptionSkill extends PassiveSkill {
         return container.getStack() <= 0;
     }
     @Override
+    public void setParams(CompoundTag parameters) {
+        super.setParams(parameters);
+        this.consumption = parameters.getFloat("consumption");
+    }
+    @Override
     public void drawOnGui(
             BattleModeGui gui,
             SkillContainer container,
@@ -288,11 +295,11 @@ public class RedemptionSkill extends PassiveSkill {
                 1
         );
 
-        float resource = container.getResource();
+        float resource = container.getResource(partialTick);
 
         int seconds =
                 (int)Math.ceil(
-                        (1.0F - resource) * 120.0F
+                        (1.0F - resource) * consumption
                 );
 
         guiGraphics.drawString(

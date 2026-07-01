@@ -13,6 +13,7 @@ public class WeaponCategoryMapper {
 
     static {
         categoryMap.put(EpicFightDD_WeaponCategories.IRON_FIST, CapabilityItem.WeaponCategories.FIST);
+        categoryMap.put(EpicFightDD_WeaponCategories.SICKLE, CapabilityItem.WeaponCategories.SWORD);
         categoryMap.put(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.WeaponCategories.SWORD);
         categoryMap.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, CapabilityItem.WeaponCategories.DAGGER);
     }

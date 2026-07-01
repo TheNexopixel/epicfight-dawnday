@@ -41,6 +41,8 @@ public class DawnDayCollider {
     public static final Collider KNIFE_BIGGER = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"knife_bigger"),new MultiOBBCollider(4, 0.4D, 0.5D, 1.0D, 0D, 0.1D, -0.8D));
     public static final Collider IRON_FIST = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist"),new MultiOBBCollider(5, 0.6D, 0.8D, 0.6D, 0.0D, -0.5D, -0.25D));
     public static final Collider IRON_FIST_KICK = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist_kick"),new MultiOBBCollider(4, 0.7D, 0.5D, 0.6D, 0.4D, 0.0D, -0.55D));
+    public static final Collider SICKLE_LONGER = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"sickle_long"),new MultiOBBCollider(5, 0.55D, 0.6D, 1.0D, 0D, 0.0D, -0.85D));
+    public static final Collider SICKLE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"sickle"),new MultiOBBCollider(5, 0.45D, 0.5D, 0.8D, 0D, 0.0D, -0.65D));
     public static final Collider IRON_FIST_REACH = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"iron_fist_reach"),new MultiOBBCollider(5, 0.7D, 1.0D, 0.7D, 0.0D, -0.7D, -0.25D));
 
 

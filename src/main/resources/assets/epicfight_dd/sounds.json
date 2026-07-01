@@ -42,6 +42,12 @@
     "subtitle":"sfx.heavy_slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
   },
+  "sfx.guard_counter":
+  {
+    "category":"master",
+    "subtitle":"sfx.guard_counter",
+    "sounds":[{"name":"epicfight_dd:sfx/guard_counter", "stream":false}]
+  },
   "sfx.killed1":
   {
     "category":"master",

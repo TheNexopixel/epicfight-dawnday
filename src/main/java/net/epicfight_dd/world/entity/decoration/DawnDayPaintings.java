@@ -28,6 +28,10 @@ public class DawnDayPaintings {
             PAINTING_VARIANTS.register("mountain",
                     () -> new PaintingVariant(16, 16));
 
+    public static final RegistryObject<PaintingVariant> VEILED_SMOKE =
+            PAINTING_VARIANTS.register("veiled_smoke",
+                    () -> new PaintingVariant(32, 16));
+
     public static void register(IEventBus eventBus) {
         PAINTING_VARIANTS.register(eventBus);
     }

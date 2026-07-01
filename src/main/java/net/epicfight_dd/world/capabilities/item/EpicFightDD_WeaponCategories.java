@@ -6,6 +6,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum EpicFightDD_WeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
+    SICKLE,
     FLORETT,
     RITUS_DAGGER,
     IRON_FIST;

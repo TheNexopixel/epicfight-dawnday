@@ -10,11 +10,11 @@
       "item": "minecraft:stick"
     },
     "D": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:gold_ingot"
     }
   },
   "result": {
-    "item": "epicfight_dd:herb_sickle",
+    "item": "epicfight_dd:golden_sickle",
     "count": 1
   }
 }

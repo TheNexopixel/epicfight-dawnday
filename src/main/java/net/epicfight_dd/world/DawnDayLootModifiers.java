@@ -2,7 +2,6 @@ package net.epicfight_dd.world;
 
 import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -67,6 +66,7 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.steelaxe.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("blood_ritus_dagger")
                         .build();
@@ -84,14 +84,8 @@ public class DawnDayLootModifiers {
                         )
                         .add(
 
-                                LootItem.lootTableItem(
-                                        DawnDayItems.nail.get()
-
-                                )
-                                        .apply(
-                                                SetItemCountFunction.setCount(UniformGenerator.between(1f,5f))
-                                        )
-                        )
+                                LootItem.lootTableItem(DawnDayItems.nail.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,5f))))
+                        .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,2f))))
                         .name("nail")
                         .build();
 
@@ -199,11 +193,11 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.herb_sickle.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_battlestaff.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_light_greatsword.get()))
-                        .name("herb_sickle")
+                        .name("iron_sickle")
                         .build();
 
                 event.getTable().addPool(pool);
@@ -250,6 +244,22 @@ public class DawnDayLootModifiers {
             if (event.getName().equals(
                     new ResourceLocation(
                             "minecraft",
+                            "chests/jungle_temple"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.2f))
+                        .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .name("golden_messer")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
                             "chests/abandoned_mineshaft"))) {
 
                 LootPool pool = LootPool.lootPool()
@@ -257,8 +267,13 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.3f))
                         .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,3f))))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUSTED_METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,2f))))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
                         .name("backhand_blade")

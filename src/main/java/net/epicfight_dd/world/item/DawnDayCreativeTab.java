@@ -8,10 +8,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.world.item.EpicFightItems;
 import yesman.epicfight.world.item.SkillBookItem;
 
@@ -31,13 +29,16 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
-                output.accept(DawnDayItems.herb_sickle.get());
                 output.accept(DawnDayItems.saber.get());
                 output.accept(DawnDayItems.backhand_blade.get());
                 output.accept(DawnDayItems.steelaxe.get());
                 output.accept(DawnDayItems.WAR_SICKLE.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.bat.get());
+                output.accept(DawnDayItems.NETHERITE_SICKLE.get());
+                output.accept(DawnDayItems.DIAMOND_SICKLE.get());
+                output.accept(DawnDayItems.IRON_SICKLE.get());
+                output.accept(DawnDayItems.GOLDEN_SICKLE.get());
                 output.accept(DawnDayItems.NETHERITE_FLORETT.get());
                 output.accept(DawnDayItems.DIAMOND_FLORETT.get());
                 output.accept(DawnDayItems.IRON_FLORETT.get());
@@ -63,11 +64,21 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
-                output.accept(DawnDayItems.nail.get());
                 output.accept(DawnDayItems.ruby.get());
+                output.accept(DawnDayItems.TANZANITE.get());
+                output.accept(DawnDayItems.PERIDOT.get());
+                output.accept(DawnDayItems.MALACHITE.get());
+                output.accept(DawnDayItems.JADE.get());
+                output.accept(DawnDayItems.nail.get());
+                output.accept(DawnDayItems.METAL_PLATE.get());
+                output.accept(DawnDayItems.RUSTED_METAL_PLATE.get());
                 ItemStack book_red = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.REDEMPTION, book_red);
                 output.accept(book_red);
+
+                ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.IRON_WILL, book_iron_will);
+                output.accept(book_iron_will);
 
                 // Potions
 

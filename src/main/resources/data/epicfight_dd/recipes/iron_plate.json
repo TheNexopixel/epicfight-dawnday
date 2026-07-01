@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " D ",
+    "DSD",
+    " D "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:iron_nugget"
+    },
+    "result": {
+      "item": "epicfight_dd:metal_plate",
+      "count": 1
+    }
+  }
+}
+

@@ -118,7 +118,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                                         .getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD) {
                                     return CapabilityItem.Styles.TWO_HAND;
                                 } else if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD ||
-                                        pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE){
+                                        pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.SICKLE){
                                     return CapabilityItem.Styles.OCHS;
                                 } else {
                                     return CapabilityItem.Styles.ONE_HAND;
@@ -135,7 +135,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.LONGSWORD ||
                                     EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.SWORD
                                     ||
-                                    EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE
+                                    EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.SICKLE
                     )
 
                     .swingSound(dawnDaySounds.Milady_light_slash.get())
@@ -196,7 +196,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.WAR_SICKLE_AUTO4,
                             DawnDayAnimations.WAR_SICKLE_AUTO5,
                             DawnDayAnimations.WAR_SICKLE_AUTO6,
-                            DawnDayAnimations.SICKLE_DASH,
+                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
                             DawnDayAnimations.BAT_DASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WAR_SICKLE_IDLE)
@@ -299,38 +299,41 @@ public class EpicFight_DD_WeaponCapabilityPresets {
 
     public static final Function<Item, CapabilityItem.Builder> HERB_SICKLE = (item) ->
             WeaponCapability.builder()
-                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .category(EpicFightDD_WeaponCategories.SICKLE)
                     .styleProvider((pp) ->
-                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
-                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == CapabilityItem.WeaponCategories.AXE)
-                    .collider(ColliderPreset.SWORD)
+                            pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == EpicFightDD_WeaponCategories.SICKLE ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
+                    .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == EpicFightDD_WeaponCategories.SICKLE)
+                    .collider(DawnDayCollider.SICKLE)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.QUICK_RUSH)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.QUICK_STEP)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
-                            DawnDayAnimations.SICKLE_AUTO1,
-                            DawnDayAnimations.SICKLE_AUTO2,
-                            DawnDayAnimations.SICKLE_AUTO3,
-                            DawnDayAnimations.SICKLE_AUTO4,
-                            DawnDayAnimations.SICKLE_DASH,
-                            DawnDayAnimations.SICKLE_AIRSLASH)
+                            DawnDayAnimations.SICKLE_ONEHAND_AUTO1,
+                            DawnDayAnimations.SICKLE_ONEHAND_AUTO2,
+                            DawnDayAnimations.SICKLE_ONEHAND_AUTO3,
+                            DawnDayAnimations.SICKLE_ONEHAND_AUTO4,
+                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
+                            DawnDayAnimations.SICKLE_ONEHAND_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.SICKLE_DUAL_AUTO1,
                             DawnDayAnimations.SICKLE_DUAL_AUTO2,
                             DawnDayAnimations.SICKLE_DUAL_AUTO3,
-                            DawnDayAnimations.MILADY_DUAL_DASH,
-                            DawnDayAnimations.SICKLE_AIRSLASH
+                            DawnDayAnimations.SICKLE_DUAL_DASH,
+                            DawnDayAnimations.KNIFE_DUAL_AIRSLASH
                     )
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SICKLE_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.SICKLE_DUAL_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, Animations.BIPED_WALK)
-                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.SICKLE_ONEHAND_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.SICKLE_ONEHAND_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.SICKLE_ONEHAND_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.SICKLE_DUAL_IDLE);
 
     public static final Function<Item, CapabilityItem.Builder> STEEL_AXE = (item) ->
             WeaponCapability.builder()
@@ -374,8 +377,8 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.KNIFE_ONEHANDED_AUTO2,
                             DawnDayAnimations.KNIFE_ONEHANDED_AUTO3,
                             DawnDayAnimations.KNIFE_ONEHANDED_AUTO4,
-                            DawnDayAnimations.SICKLE_DASH,
-                            DawnDayAnimations.SICKLE_AIRSLASH)
+                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
+                            DawnDayAnimations.SICKLE_ONEHAND_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.KNIFE_DUAL_AUTO1,
@@ -434,7 +437,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
                             DawnDayAnimations.MESSER_ONEHANDED_AUTO1,
                             DawnDayAnimations.MESSER_ONEHANDED_AUTO2,
                             DawnDayAnimations.MESSER_ONEHANDED_AUTO3,
-                            DawnDayAnimations.SICKLE_DASH,
+                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
                             DawnDayAnimations.SABER_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,

@@ -36,9 +36,10 @@ public class ModEvents {
                     new ItemStack(Items.POTION),
                     Potions.THICK);
 
+            // ENDURANCE
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(awkwardPotion),
-                    Ingredient.of(Items.GOLDEN_APPLE),
+                    Ingredient.of(DawnDayItems.PERIDOT.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.staminaregen.get()));
 
 
@@ -107,7 +108,7 @@ public class ModEvents {
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
                             PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
-                    Ingredient.of(Items.FEATHER),
+                    Ingredient.of(DawnDayItems.MALACHITE.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.maxstamina.get()));
 
             BrewingRecipeRegistry.addRecipe(
@@ -134,8 +135,8 @@ public class ModEvents {
             // POWER
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
-                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_STRENGTH)),
-                    Ingredient.of(Items.ECHO_SHARD),
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
+                    Ingredient.of(DawnDayItems.ruby.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.powerpotion.get())
             );
             // MORTAL CURSE
@@ -169,13 +170,13 @@ public class ModEvents {
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
                             PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)),
-                    Ingredient.of(Items.PRISMARINE_SHARD),
+                    Ingredient.of(DawnDayItems.JADE.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.SWEEPING.get()));
             // IMPACT
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
                             PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
-                    Ingredient.of(Items.PRISMARINE_CRYSTALS),
+                    Ingredient.of(Items.IRON_INGOT),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.impactpotion.get()));
 
             BrewingRecipeRegistry.addRecipe(
@@ -201,7 +202,7 @@ public class ModEvents {
             // CRUMBLING
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(thickpotion),
-                    Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+                    Ingredient.of(DawnDayItems.RUSTED_METAL_PLATE.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.CRUMBLING.get()));
 
             BrewingRecipeRegistry.addRecipe(
@@ -228,7 +229,7 @@ public class ModEvents {
             // STUNARMOR
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(thickpotion),
-                    Ingredient.of(Items.IRON_INGOT),
+                    Ingredient.of(DawnDayItems.METAL_PLATE.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.STUNARMOR.get()));
 
             BrewingRecipeRegistry.addRecipe(
@@ -256,7 +257,7 @@ public class ModEvents {
             // FORTIFIED
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(thickpotion),
-                    Ingredient.of(Items.DIAMOND),
+                    Ingredient.of(DawnDayItems.TANZANITE.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.FORTIFIED.get()));
 
             BrewingRecipeRegistry.addRecipe(

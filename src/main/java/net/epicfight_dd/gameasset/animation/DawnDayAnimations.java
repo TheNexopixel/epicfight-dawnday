@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
@@ -111,15 +110,21 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> POWERFUL_KICK;
 
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_AUTO4;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_AIRSLASH;
-    public static AnimationAccessor<DashAttackAnimation> SICKLE_DASH;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_IDLE;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_WALK;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_RUN;
+    public static AnimationAccessor<AttackAnimation> QUICKSTEP_FORWARD;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> SICKLE_ONEHAND_DASH;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AIRSLASH;
+
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO3;
+    public static AnimationAccessor<DashAttackAnimation> SICKLE_DUAL_DASH;
 
     public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO2;
@@ -307,6 +312,15 @@ public class DawnDayAnimations {
                 new StaticAnimation(0.12F, true, ac, biped));
 
         ECLIPSE_IDLE = builder.nextAccessor("biped/living/eclipse_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        SICKLE_ONEHAND_IDLE = builder.nextAccessor("biped/living/sickle_onehand_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        SICKLE_ONEHAND_WALK = builder.nextAccessor("biped/living/sickle_onehand_walk", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        SICKLE_ONEHAND_RUN = builder.nextAccessor("biped/living/sickle_onehand_run", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         VITR_IDLE = builder.nextAccessor("biped/living/vit_idle", ac ->
@@ -2229,46 +2243,79 @@ public class DawnDayAnimations {
                 // .addProperty(ActionAnimationProperty.COORD_START_KEYFRAME_INDEX, 1)
                 // .addProperty(ActionAnimationProperty.DEST_LOCATION_PROVIDER, MoveCoordFunctions.SYNCHED_TARGET_ENTITY_LOCATION_VARIABLE)
         );
-
-        SICKLE_AUTO1 = builder.nextAccessor("biped/combat/sickle_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        QUICKSTEP_FORWARD = builder.nextAccessor("biped/skill/quickstep_forward", (accessor) ->
+                new AttackAnimation(0.12F, 0.3F, 0.2F, 0.8F, 0.8F, DawnDayCollider.BACKHAND_INNATE, biped.get().rootJoint, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        SICKLE_AUTO2 = builder.nextAccessor("biped/combat/sickle_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.75F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8f))
-                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        SICKLE_ONEHAND_AUTO1 = builder.nextAccessor("biped/combat/sickle_onehand_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.32f, 0.55f, 1.0f, 0.68f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
+
+                        new AttackAnimation.Phase(0.68f, 0.68f, 0.68f, 0.89f, 1.0f, 5.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)))
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        SICKLE_AUTO3 = builder.nextAccessor("biped/combat/sickle_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.3F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        SICKLE_ONEHAND_AUTO2 = builder.nextAccessor("biped/combat/sickle_onehand_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.32f, 0.55f, 1.1f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.9F)),
+
+                        new AttackAnimation.Phase(0.75f, 0.75f, 0.75f, 0.92f, 1.1f, 5.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.85F)))
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        SICKLE_AUTO4 = builder.nextAccessor("biped/combat/sickle_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.2F, 0.3F, 0.52F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        SICKLE_ONEHAND_AUTO3 = builder.nextAccessor("biped/combat/sickle_onehand_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.36f, 0.6f, 1.1f, 0.65f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.9F)),
+
+                        new AttackAnimation.Phase(0.65f, 0.65f, 0.65f, 0.82f, 1.1f, 5.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.85F)))
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        SICKLE_DASH = builder.nextAccessor("biped/combat/sickle_dash", (accessor) ->
-                new DashAttackAnimation(0.12F, 0.2F, 0.35F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        SICKLE_ONEHAND_AUTO4 = builder.nextAccessor("biped/combat/sickle_onehand_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.38F, 0.52F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        SICKLE_AIRSLASH = builder.nextAccessor("biped/combat/sickle_airslash", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.2F, 0.25F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.5f))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+        SICKLE_ONEHAND_DASH = builder.nextAccessor("biped/combat/sickle_onehand_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.3F, 0.32F, 0.46F, 0.62F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.0F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        SICKLE_ONEHAND_AIRSLASH = builder.nextAccessor("biped/combat/sickle_onehand_airslash", (accessor) ->
+                new BasicAttackAnimation(0.12F,0.6f, 0.33F, 0.6F, 1.0F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         SICKLE_DUAL_AUTO1 = builder.nextAccessor("biped/combat/sickle_dual_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.32f, 0.55f, 0.55f, 0.55f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.4f, 0.55f, 1.0f, 0.72f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
 
-                        new AttackAnimation.Phase(0.56f, 0.6f, 0.75f, 0.85f, 0.88f, 1.9f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                        new AttackAnimation.Phase(0.72f, 0.6f, 0.72f, 0.85f, 1.0f, 5.9f, InteractionHand.OFF_HAND, biped.get().toolL, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
@@ -2276,18 +2323,48 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         SICKLE_DUAL_AUTO2 = builder.nextAccessor("biped/combat/sickle_dual_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.38F, 0.52F, 0.75F, ColliderPreset.DUAL_SWORD_AIR_SLASH, biped.get().chest, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1f))
-                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.23f, 0.23f, 0.36f, 1.1f, 0.5f, InteractionHand.OFF_HAND, biped.get().toolL, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F)),
+
+                        new AttackAnimation.Phase(0.5f, 0.5f, 0.54f, 0.66f, 1.1f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F)),
+
+                        new AttackAnimation.Phase(0.75f, 0.75f, 0.8f, 0.95f, 1.1f, 5.9f, InteractionHand.OFF_HAND, biped.get().toolL, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.7F))
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         SICKLE_DUAL_AUTO3 = builder.nextAccessor("biped/combat/sickle_dual_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.38F, 0.52F, 0.75F, ColliderPreset.DUAL_SWORD_AIR_SLASH, biped.get().chest, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4f))
-                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_dual_slash.get())
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.28f, 0.38f, 1.0f, 0.63f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
+
+                        new AttackAnimation.Phase(0.63f, 0.6f, 0.63f, 0.75f, 1.0f, 5.9f, InteractionHand.OFF_HAND, biped.get().toolL, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)))
+
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        SICKLE_DUAL_DASH = builder.nextAccessor("biped/combat/sickle_dual_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.15f, 0.25f, 1.0f, 0.25f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.6F)),
+
+                        new AttackAnimation.Phase(0.25f, 0.6f, 0.40f, 0.52f, 1.0f, 0.6f, InteractionHand.OFF_HAND, biped.get().toolL, DawnDayCollider.SICKLE_LONGER)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.6F)),
+
+        new AttackAnimation.Phase(0.6f, 0.6f, 0.6f, 0.75f, 1.0f, 5.25f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.SICKLE_LONGER)
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.6F))
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         STEELAXE_AUTO1 = builder.nextAccessor("biped/combat/steelaxe_auto1", (accessor) ->

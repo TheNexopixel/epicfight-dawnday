@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.api.event.RegisterCustomExecutionEvent;
+import net.shelmarow.combat_evolution.execution.ExecutionTypeManager;
 import reascer.wom.main.WeaponsOfMinecraft;
 import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.compat.ICompatModule;
@@ -30,7 +31,7 @@ public class  CombatEvoCompat implements ICompatModule {
               });
 
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
-              DawnDayExecution_TYPES.MILADY);
+              ExecutionTypeManager.TACHI_TYPE);
 
       event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);
@@ -91,6 +92,24 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.diamond_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
               DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
       event.registerExecutionByItem(DawnDayItems.netherite_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+
+      event.registerExecutionByItem(DawnDayItems.IRON_SICKLE.getId(), CapabilityItem.Styles.ONE_HAND,
+              ExecutionTypeManager.DAGGER_TYPE);
+      event.registerExecutionByItem(DawnDayItems.GOLDEN_SICKLE.getId(), CapabilityItem.Styles.ONE_HAND,
+              ExecutionTypeManager.DAGGER_TYPE);
+      event.registerExecutionByItem(DawnDayItems.DIAMOND_SICKLE.getId(), CapabilityItem.Styles.ONE_HAND,
+              ExecutionTypeManager.DAGGER_TYPE);
+      event.registerExecutionByItem(DawnDayItems.NETHERITE_SICKLE.getId(), CapabilityItem.Styles.ONE_HAND,
+              ExecutionTypeManager.DAGGER_TYPE);
+
+      event.registerExecutionByItem(DawnDayItems.IRON_SICKLE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.GOLDEN_SICKLE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.DIAMOND_SICKLE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
+      event.registerExecutionByItem(DawnDayItems.NETHERITE_SICKLE.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);
 
   }

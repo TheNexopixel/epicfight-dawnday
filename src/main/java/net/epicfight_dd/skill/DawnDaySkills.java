@@ -7,6 +7,7 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import java.util.Set;
 
 import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.skill.passive.IronWillSkill;
 import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.*;
@@ -41,6 +42,8 @@ public class DawnDaySkills {
     public static Skill WINGSTANCE;
     public static Skill SKULL_RUPTURE;
     public static Skill QUICK_RUSH;
+    public static Skill QUICK_STEP;
+    public static Skill IRON_WILL;
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
     public static Skill SPINNING_SHADOW;
@@ -77,6 +80,7 @@ public class DawnDaySkills {
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
             GENTLE_NUDGE = gentlenudge;
+
 
 
         WeaponInnateSkill incivi = modRegistry.build("incisura_vitrea",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
@@ -286,11 +290,20 @@ public class DawnDaySkills {
                 Sepukku.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE)
         );
+        QUICK_STEP = modRegistry.build("quick_step", Quickstep::new,
+                Quickstep.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE)
+        );
 
         REDEMPTION = modRegistry.build("redemption", RedemptionSkill::new,
                 PassiveSkill.createPassiveBuilder()
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.IDENTITY));
+
+        IRON_WILL = modRegistry.build("iron_will", IronWillSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.PASSIVE));
 
     }
 

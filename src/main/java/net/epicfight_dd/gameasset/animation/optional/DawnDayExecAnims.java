@@ -48,10 +48,9 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> NAOYA_EXEC;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> NAOYA_EXEC_HIT;
 
-    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT;
-    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT_SPECIAL;
-    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> MILADY_EXECUTION;
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> MILADY_EXECUTION_DUAL;
+
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> MILADY_EXECUTION_HIT_SPECIAL;
 
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> BATTLESTAFF_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> BATTLESTAFF_EXECUTED;
@@ -160,17 +159,9 @@ public class DawnDayExecAnims {
         );
 
 
-        MILADY_EXECUTION = builder.nextAccessor("biped/execution/milady/milady_execution", (accessor) ->
-                milady(accessor, executionCollider, CONSTANT_EXECUTION, 0.22f, 0.23f, 1.77f, 1.78f));
-
         MILADY_EXECUTION_DUAL = builder.nextAccessor("biped/execution/milady/milady_special_execution", (accessor) ->
                 getExecutionAttackAnimation(accessor, executionCollider, CONSTANT_EXECUTION));
 
-        MILADY_EXECUTION_HIT = builder.nextAccessor("biped/execution/milady/milady_execution_hit", (accessor) ->
-                (new ExecutionHitAnimation(-0.3f, accessor, Armatures.BIPED))
-                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
-
-        );
 
         MILADY_EXECUTION_HIT_SPECIAL = builder.nextAccessor("biped/execution/milady/milady_special_execution_hit", (accessor) ->
                 new ExecutionHitAnimation(0.3f, accessor, Armatures.BIPED)
@@ -179,7 +170,7 @@ public class DawnDayExecAnims {
 
         );
 
-
+/*
         ///unused after Combat evolution author added style based execution.
         /// kept here for future reference if anyone decides to use this animation type
         MILADY_EXECUTION_SEL = builder.nextAccessor("biped/execproxy/ems", ac -> new SelectiveExecutionAttackProxy(patch -> {
@@ -207,6 +198,8 @@ public class DawnDayExecAnims {
 
         );
 
+
+ */
 
         BATTLESTAFF_EXECUTE = builder.nextAccessor("biped/execution/battlestaff_execute", (accessor) ->
                 get2PhaseExecAtkAnim(accessor, executionCollider, CONSTANT_EXECUTION, 0.8f, 0.85f, 1.42f, 1.45f));

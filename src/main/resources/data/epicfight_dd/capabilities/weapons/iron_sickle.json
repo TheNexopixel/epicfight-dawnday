@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":10.0,
+      "impact":0.5,
+      "max_strikes":3
+    }
+  },
+  "type":"epicfight_dd:herb_sickle"
+}

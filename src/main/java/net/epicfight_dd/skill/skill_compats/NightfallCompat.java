@@ -45,6 +45,16 @@ public class NightfallCompat implements ICompatModule {
                     ).addGuardBreakMotion(EpicFightDD_WeaponCategories.FLORETT,
                             (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
 
+                    .addGuardMotion(
+                            EpicFightDD_WeaponCategories.SICKLE,
+                            (i, p) -> Animations.SWORD_GUARD_HIT
+                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.SICKLE,
+                            (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED)
+
+                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.SICKLE, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+
                     .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.FLORETT, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 

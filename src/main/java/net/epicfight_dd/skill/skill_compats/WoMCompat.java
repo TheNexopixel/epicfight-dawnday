@@ -2,15 +2,12 @@ package net.epicfight_dd.skill.skill_compats;
 
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.RegisterEvent;
 import reascer.wom.gameasset.WOMSkills;
-
-import reascer.wom.world.item.WOMItems;
-import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.compat.ICompatModule;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -69,12 +66,20 @@ public class WoMCompat implements ICompatModule {
                 DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
                 DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
+
         guardMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_HIT);
         guardBreakMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_BREAK);
         advancedGuardMotions.put(EpicFightDD_WeaponCategories.IRON_FIST, (itemCap, playerpatch) ->
                 DawnDayAnimations.IRON_FIST_GUARD_COUNTER);
+
+        guardMotions.put(EpicFightDD_WeaponCategories.SICKLE, (item, player) ->
+                Animations.SWORD_GUARD_HIT);
+        guardBreakMotions.put(EpicFightDD_WeaponCategories.SICKLE, (item, player) ->
+                Animations.BIPED_COMMON_NEUTRALIZED);
+        advancedGuardMotions.put(EpicFightDD_WeaponCategories.SICKLE, (itemCap, playerpatch) ->
+                DawnDayAnimations.SICKLE_ONEHAND_AUTO1);
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
         temp = GuardSkill.class.getDeclaredField("guardMotions");
