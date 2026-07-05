@@ -231,5 +231,18 @@
   "skill.epicfight_dd.quick_step": "Quickstep",
   "skill.epicfight_dd.quick_step.tooltip": "Gives you the ability to escape your opponents and knock them over",
   "skill.epicfight_dd.iron_will": "Iron Will",
-  "skill.epicfight_dd.iron_will.tooltip": "If you parry an attack, your next strike will deal %s%% more damage."
+  "skill.epicfight_dd.iron_will.tooltip": "If you parry an attack, your next strike will deal %s%% more damage.",
+  "item.epicfight_dd.amber": "Amber",
+  "item.epicfight_dd.citrine": "Citrine",
+  "item.epicfight_dd.poleblade": "Poleblade",
+  "skill.epicfight_dd.blood_dance": "Blood Dance",
+  "skill.epicfight_dd.blood_dance.tooltip": "This Weapon Art was invented by Yura, enabling the Blood Cult to kill enemies more efficiently",
+  "tooltip.epicfight_dd.vitreus": "The blade of this weapon is so transparent that you might think it were made of glass. There is a glowing, bright-red ruby on the hilt.",
+  "tooltip.epicfight_dd.poleblade": "This weapon was used by the Blood Cult’s elite soldiers during the Unholy War. After that, it vanished without a trace and was never found… \n\nuntil now…",
+  "tooltip.epicfight_dd.blood_ritus_dagger": "Passive:\n\nThis weapon restores health to the wielder when they take another’s life. Sepukku has a stronger effect on this weapon.\n\nThis was once a sacred weapon, forged from mithril, but it was misused for cruel rituals by high-ranking figures in the Blood Cult.",
+  "tooltip.epicfight_dd.night_ritus_dagger": "This weapon restores stamina when you execute a target. This effect is more effective in moonlight.\n\nLike its counterpart, this weapon was forged from mithril, but under the influence of moonlight. It was therefore consecrated to Nox Obscura, the goddess of darkness. What became of this dagger afterwards, no one knows.",
+  "tooltip.epicfight_dd.bonecutting_saw": "\"Tantum qui viam mali ambulant ei digni erunt.\"\n\n This weapon was primarily used by the Eques Mortis as an instrument of execution. After the Revolution, these weapons became a symbol of atrocity and were subsequently banned. Nevertheless, some of these examples are still in circulation today.",
+  "tooltip.epicfight_dd.iron_fist": "This weapon was used for torture by the dungeon guards of the old kingdom.\n\nThe pointed prongs make it look like a fist-sized version of the Iron Maiden.",
+  "tooltip.epicfight_dd.nailbat": "It is lightly smeared with blood...",
+  "tooltip.epicfight_dd.milady": "A light greatsword; that is, a sword whose blade matches the length of a greatsword, while being constrained to a minimal weight.\n\nNicknamed after ladies of noble status for its refined appearance. With cultivated form, one can wield this weapon as swiftly as one might a straight sword."
 }

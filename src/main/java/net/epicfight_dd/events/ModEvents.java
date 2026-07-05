@@ -176,7 +176,7 @@ public class ModEvents {
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
                             PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
-                    Ingredient.of(Items.IRON_INGOT),
+                    Ingredient.of(DawnDayItems.AMBER.get()),
                     PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.impactpotion.get()));
 
             BrewingRecipeRegistry.addRecipe(

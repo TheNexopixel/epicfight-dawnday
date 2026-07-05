@@ -33,60 +33,19 @@ import java.util.Set;
 
 public class DawnDayAnimations {
 
-    public static AnimationAccessor<StaticAnimation> MILADY_WALK;
-    public static AnimationAccessor<StaticAnimation> TPOSE;
-    public static AnimationAccessor<StaticAnimation> MILADY_IS_IDLE;
-    public static AnimationAccessor<StaticAnimation> MILADY_DUAL_IS_IDLE;
-    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_IS_IDLE;
-    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_WALK;
-    public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_WALK;
-    public static AnimationAccessor<StaticAnimation> POLE_AXE_IDLE;
-    public static AnimationAccessor<StaticAnimation> WAR_SICKLE_IDLE;
-    public static AnimationAccessor<StaticAnimation> HEAVY_AXE_IDLE;
-    public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_IDLE;
+    // BACKHANDBLADE
+
     public static AnimationAccessor<StaticAnimation> BACKHAND_IDLE;
-    public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> BACKHAND_DASH;
+    public static AnimationAccessor<AttackAnimation> SPINNING_SHADOW;
+
+
+    // BATTLESTAFFS
     public static AnimationAccessor<StaticAnimation> BATTLESTAFF_IDLE;
-    public static AnimationAccessor<StaticAnimation> SICKLE_IDLE;
-    public static AnimationAccessor<StaticAnimation> SICKLE_DUAL_IDLE;
-    public static AnimationAccessor<StaticAnimation> STEELAXE_IDLE;
-    public static AnimationAccessor<StaticAnimation> KNIFE_ONEHANDED_IDLE;
-    public static AnimationAccessor<StaticAnimation> KNIFE_DUAL_IDLE;
-    public static AnimationAccessor<StaticAnimation> SABER_IDLE;
-    public static AnimationAccessor<StaticAnimation> BAT_IDLE;
-    public static AnimationAccessor<StaticAnimation> SAW_IDLE;
-    public static AnimationAccessor<StaticAnimation> MESSER_DUAL_IDLE;
-    public static AnimationAccessor<StaticAnimation> MESSER_IDLE;
-    public static AnimationAccessor<StaticAnimation> GREATAXE_DUAL_IDLE;
-    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_IDLE;
-    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_WALK;
-    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_RUN;
-
-    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT1;
-    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT2;
-    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT3;
-    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT4;
-    public static AnimationAccessor<AirSlashAnimation> LIGHTGREATSWORD_SWORD_AIRSLASH;
-
-    public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
-    public static AnimationAccessor<BasicAttackAnimation> TRAIL_TEST;
-
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO4;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO5;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO6;
-    public static AnimationAccessor<DashAttackAnimation> SABER_DASH;
-    public static AnimationAccessor<BasicAttackAnimation> SABER_AIRSLASH;
-
-    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> BAT_DASH;
-    public static AnimationAccessor<AirSlashAnimation> BAT_AIRSLASH;
-
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO3;
@@ -94,6 +53,61 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> BATTLESTAFF_AUTO5;
     public static AnimationAccessor<DashAttackAnimation> BATTLESTAFF_DASH;
     public static AnimationAccessor<AirSlashAnimation> BATTLESTAFF_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> SKULL_RUPTURE;
+    public static AnimationAccessor<AttackAnimation> GROUNDSLAM;
+
+    // BAT
+    public static AnimationAccessor<StaticAnimation> BAT_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> BAT_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> BAT_DASH;
+    public static AnimationAccessor<AirSlashAnimation> BAT_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> BRUTAL_DASH;
+
+    // ECLIPSE
+
+    public static AnimationAccessor<StaticAnimation> ECLIPSE_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT1;
+    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT2;
+    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT3;
+
+    // FLORETT
+
+    public static AnimationAccessor<StaticAnimation> FLORETT_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO4;
+
+    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_WALK;
+    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_GUARD;
+    public static AnimationAccessor<GuardAnimation> FLORETT_DUAL_GUARD_HIT;
+    public static AnimationAccessor<ActionAnimation> FLORETT_DUAL_PARRY1;
+    public static AnimationAccessor<ActionAnimation> FLORETT_DUAL_PARRY2;
+    public static AnimationAccessor<LongHitAnimation> FLORETT_DUAL_NEUTRALIZED;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AIRSLASH;
+    public static AnimationAccessor<DashAttackAnimation> FLORETT_DUAL_DASH;
+    public static AnimationAccessor<AttackAnimation> PIERCING_STRIKE;
+    public static AnimationAccessor<AttackAnimation> WILD_STRIKES;
+    public static AnimationAccessor<AttackAnimation> WILD_STRIKES_DUAL;
+
+    // HALBERD
+
+    public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
+    public static AnimationAccessor<AttackAnimation> SPEARING_STRIKE;
+
+    // IRON FIST
 
     public static AnimationAccessor<StaticAnimation> IRON_FIST_IDLE;
     public static AnimationAccessor<StaticAnimation> IRON_FIST_WALK;
@@ -110,27 +124,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> POWERFUL_KICK;
 
-    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_IDLE;
-    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_WALK;
-    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_RUN;
-    public static AnimationAccessor<AttackAnimation> QUICKSTEP_FORWARD;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> SICKLE_ONEHAND_DASH;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AIRSLASH;
+    // KNIFE
 
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO3;
-    public static AnimationAccessor<DashAttackAnimation> SICKLE_DUAL_DASH;
-
-    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO4;
-
+    public static AnimationAccessor<StaticAnimation> KNIFE_ONEHANDED_IDLE;
+    public static AnimationAccessor<StaticAnimation> KNIFE_DUAL_IDLE;
     public static AnimationAccessor<BasicAttackAnimation> KNIFE_ONEHANDED_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> KNIFE_ONEHANDED_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> KNIFE_ONEHANDED_AUTO3;
@@ -140,8 +137,38 @@ public class DawnDayAnimations {
 
     public static AnimationAccessor<DashAttackAnimation> KNIFE_DUAL_DASH;
     public static AnimationAccessor<AirSlashAnimation> KNIFE_DUAL_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> WHIRLWIND;
 
+    // LIGHTGREATSWORD x SWORD
 
+    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_IDLE;
+    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_WALK;
+    public static AnimationAccessor<StaticAnimation> LIGHTGREATSWORD_SWORD_RUN;
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT1;
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT2;
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT3;
+    public static AnimationAccessor<BasicAttackAnimation> LIGHTGREATSWORD_SWORD_ATT4;
+    public static AnimationAccessor<AirSlashAnimation> LIGHTGREATSWORD_SWORD_AIRSLASH;
+
+    // MESSER
+
+    public static AnimationAccessor<StaticAnimation> MESSER_DUAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> MESSER_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO3;
+
+    // MILDAY
+
+    public static AnimationAccessor<StaticAnimation> MILADY_IS_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_DUAL_IS_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_IS_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_TWOHANDED_WALK;
+    public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_WALK;
+    public static AnimationAccessor<StaticAnimation> MILADY_WALK;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_2;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_3;
@@ -149,21 +176,8 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_ONE_HANDED_AUTO_5;
     public static AnimationAccessor<DashAttackAnimation> milady_onehanded_dash;
     public static AnimationAccessor<AirSlashAnimation> MILADY_AIR_SLASH;
-
-    public static AnimationAccessor<AttackAnimation> MILADY_KNUCKLE_INNATE;
-    public static AnimationAccessor<AttackAnimation> PIERCING_FANG;
-    public static AnimationAccessor<AttackAnimation> SPEARING_STRIKE;
-    public static AnimationAccessor<AttackAnimation> FURIOUS_CUT;
-    public static AnimationAccessor<AttackAnimation> SKULL_RUPTURE;
-    public static AnimationAccessor<AttackAnimation> QUICK_RUSH;
-    public static AnimationAccessor<AttackAnimation> WHIRLWIND;
-    public static AnimationAccessor<AttackAnimation> IMPAILING_THRUST;
-    public static AnimationAccessor<AttackAnimation> SPINNING_SHADOW;
-    public static AnimationAccessor<AttackAnimation> BRUTAL_DASH;
-    public static AnimationAccessor<AttackAnimation> GROUNDSLAM;
-    public static AnimationAccessor<AttackAnimation> WILD_STRIKES;
-    public static AnimationAccessor<AttackAnimation> WILD_STRIKES_DUAL;
-
+    public static AnimationAccessor<StaticAnimation> MILADY_SPECIAL_IDLE;
+    public static AnimationAccessor<StaticAnimation> MILADY_ONEHANDED_RUN;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_TWOHANDED_AUTO3;
@@ -171,6 +185,10 @@ public class DawnDayAnimations {
     public static AnimationAccessor<DashAttackAnimation> MILADY_TWOHANDED_DASH;
     public static AnimationAccessor<DashAttackAnimation> MILADY_DASH_NEW;
     public static AnimationAccessor<AirSlashAnimation> MILADY_TWOHANDED_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> MILADY_KNUCKLE_INNATE;
+    public static AnimationAccessor<AttackAnimation> PIERCING_FANG;
+    public static AnimationAccessor<AttackAnimation> FURIOUS_CUT;
+    public static AnimationAccessor<AttackAnimation> IMPAILING_THRUST;
 
     public static AnimationAccessor<BasicAttackAnimation> MILADY_DUAL_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> MILADY_DUAL_AUTO2;
@@ -187,22 +205,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO5;
     public static AnimationAccessor<DashAttackAnimation> MILADY_SPECIAL_DASH;
 
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_DUAL_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> MESSER_ONEHANDED_AUTO3;
-
-    public static AnimationAccessor<StaticAnimation> ECLIPSE_IDLE;
-    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT1;
-    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT2;
-    public static AnimationAccessor<BasicAttackAnimation> ECLIPSE_ATT3;
-
-    public static AnimationAccessor<StaticAnimation> WARSICKLE_IDLE;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_ATT1;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_ATT2;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_ATT3;
+    // RITUS DAGGERS
 
     public static AnimationAccessor<StaticAnimation> RITUS_DAGGER_GUARD;
     public static AnimationAccessor<StaticAnimation> RITUS_DAGGER_DUAL_WALK;
@@ -233,51 +236,53 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> RITUS_DAGGER_DUAL_AIRSLASH;
     public static AnimationAccessor<DashAttackAnimation> RITUS_DAGGER_DUAL_DASH;
 
-    public static AnimationAccessor<StaticAnimation> FLORETT_IDLE;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_AUTO4;
+    // SABER
 
-    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_IDLE;
-    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_WALK;
-    public static AnimationAccessor<StaticAnimation> FLORETT_DUAL_GUARD;
-    public static AnimationAccessor<GuardAnimation> FLORETT_DUAL_GUARD_HIT;
-    public static AnimationAccessor<ActionAnimation> FLORETT_DUAL_PARRY1;
-    public static AnimationAccessor<ActionAnimation> FLORETT_DUAL_PARRY2;
-    public static AnimationAccessor<LongHitAnimation> FLORETT_DUAL_NEUTRALIZED;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> FLORETT_DUAL_AIRSLASH;
-    public static AnimationAccessor<DashAttackAnimation> FLORETT_DUAL_DASH;
-    public static AnimationAccessor<AttackAnimation> PIERCING_STRIKE;
+    public static AnimationAccessor<StaticAnimation> SABER_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO5;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AUTO6;
+    public static AnimationAccessor<DashAttackAnimation> SABER_DASH;
+    public static AnimationAccessor<BasicAttackAnimation> SABER_AIRSLASH;
 
+    // SAW
+
+    public static AnimationAccessor<StaticAnimation> SAW_IDLE;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO4;
 
+    // SICKLE
 
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO4;
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO5;
-    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO6;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_IDLE;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_WALK;
+    public static AnimationAccessor<StaticAnimation> SICKLE_ONEHAND_RUN;
+    public static AnimationAccessor<AttackAnimation> QUICKSTEP_FORWARD;
+    public static AnimationAccessor<StaticAnimation> SICKLE_DUAL_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AUTO4;
+    public static AnimationAccessor<DashAttackAnimation> SICKLE_ONEHAND_DASH;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_ONEHAND_AIRSLASH;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> SICKLE_DUAL_AUTO3;
+    public static AnimationAccessor<DashAttackAnimation> SICKLE_DUAL_DASH;
+    public static AnimationAccessor<AttackAnimation> QUICK_RUSH;
 
-    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> BACKHAND_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> BACKHAND_DASH;
-    public static AnimationAccessor<AirSlashAnimation> BACKHAND_AIRSLASH;
+    // STEELAXE
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> STEELAXE_AUTO4;
+    public static AnimationAccessor<StaticAnimation> STEELAXE_IDLE;
 
-    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
-    public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
+    // VITREUS
 
     public static AnimationAccessor<StaticAnimation> VITR_IDLE;
     public static AnimationAccessor<StaticAnimation> VITR_WALK;
@@ -288,10 +293,36 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> VITR_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> VITR_DASH;
 
+    // WARSICKLE
+
+    public static AnimationAccessor<StaticAnimation> WARSICKLE_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> BLOOD_DANCE;
+
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO5;
+    public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO6;
+
+   //=====================================================================================
+
+
+    // MISC
+    public static AnimationAccessor<StaticAnimation> TPOSE;
+    public static AnimationAccessor<StaticAnimation> WAR_SICKLE_IDLE;
+    public static AnimationAccessor<BasicAttackAnimation> TRAIL_TEST;
     public static AnimationAccessor<ActionAnimation> TCH_I_MISSED;
     public static AnimationAccessor<LongHitAnimation> PLS_NOOOO_DONT_KEBAB_MEEE;
     public static AnimationAccessor<GrapplingAttackAnimation> GET_KEBABed_MuAHAHAHA;
     public static AnimationAccessor<GrapplingTryAnimation> IM_GONNA_KEBAB_YOUUUU;
+
+    //=====================================================================================
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
@@ -420,8 +451,210 @@ public class DawnDayAnimations {
                 new BasicAttackAnimation(0f, 0.05F, 0.25F, 0.3F, 1.43F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 50F));
 
-        GREATAXE_DUAL_IDLE = builder.nextAccessor("biped/living/greataxe_dual_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
+
+        WARSICKLE_AUTO1 = builder.nextAccessor("biped/combat/warsickle_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.38f, 0.52f, 1.f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.8f))
+                        ,
+                        new AttackAnimation.Phase(0.6f, 0.6f, 0.65f, 0.75f, 1.3f, 0.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(0.8f, 0.8f, 0.89f, 0.98f, 1.3f, 5.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f))
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        WARSICKLE_AIRSLASH = builder.nextAccessor("biped/combat/warsickle_airslash", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.2f, 0.26f, 1.f, 0.26f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.8f))
+                        ,
+                        new AttackAnimation.Phase(0.26f, 0.26f, 0.26f, 0.35f, 1.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(0.4f, 0.4f, 0.45f, 0.52f, 1.3f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(0.6f, 0.4f, 0.62f, 0.78f, 1.3f, 15.52f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.5f))
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        WARSICKLE_AUTO2 = builder.nextAccessor("biped/combat/warsickle_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.15f, 0.35f, 2.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f)),
+
+                        new AttackAnimation.Phase(0.35f, 0.40f, 0.43f, 0.56f, 2.3f, 0.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
+                        ,
+                        new AttackAnimation.Phase(0.8f, 0.8f, 0.87f, 1.06f, 2.3f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(1.1f, 1.1f, 1.06f, 1.45f, 2.33f, 1.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.6f)),
+
+                        new AttackAnimation.Phase(1.45f, 1.1f, 1.45f, 1.6f, 2.33f, 1.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.6f)),
+
+                        new AttackAnimation.Phase(1.6f, 1.6f, 1.6f, 2.1f, 2.3f, 5.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f))
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+        WARSICKLE_AUTO3 = builder.nextAccessor("biped/combat/warsickle_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.15f, 0.35f, 2.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f)),
+
+                        new AttackAnimation.Phase(0.35f, 0.40f, 0.43f, 0.56f, 2.3f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
+                        ,
+                        new AttackAnimation.Phase(0.6f, 0.6f, 0.6f, 0.75f, 2.3f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
+                        ,
+                        new AttackAnimation.Phase(0.8f, 0.8f, 0.87f, 1.06f, 2.3f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(1.1f, 1.1f, 1.06f, 1.45f, 2.33f, 1.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.6f)),
+
+                        new AttackAnimation.Phase(1.45f, 1.1f, 1.45f, 1.6f, 2.33f, 1.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.6f)),
+
+                        new AttackAnimation.Phase(1.6f, 1.6f, 1.6f, 1.7f, 2.3f, 1.7f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3f))
+                        ,
+        new AttackAnimation.Phase(1.7f, 1.7f, 1.7f, 1.8f, 2.3f, 1.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3f)),
+
+                        new AttackAnimation.Phase(1.8f, 1.8f, 1.8f, 1.9f, 2.3f, 1.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3f)),
+
+                        new AttackAnimation.Phase(1.9f, 1.9f, 1.9f, 2.0f, 2.3f, 2.0f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.3f)),
+
+                        new AttackAnimation.Phase(2.1f, 2.1f, 2.2f, 2.4f, 2.3f, 2.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(2.45f, 2.6f, 2.45f, 2.6f, 2.3f, 2.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(2.6f, 2.6f, 2.7f, 2.8f, 2.8f, 7.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+        BLOOD_DANCE = builder.nextAccessor("biped/skill/blood_dance", (accessor) ->
+                new AttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.15f, 0.35f, 2.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f)),
+
+                        new AttackAnimation.Phase(0.35f, 0.40f, 0.43f, 0.56f, 2.3f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
+                        ,
+                        new AttackAnimation.Phase(0.6f, 0.6f, 0.6f, 0.75f, 2.3f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.1f))
+                        ,
+                        new AttackAnimation.Phase(0.8f, 0.8f, 0.87f, 1.06f, 2.3f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(1.1f, 1.1f, 1.06f, 1.45f, 2.33f, 1.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(1.45f, 1.1f, 1.45f, 1.6f, 2.33f, 1.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.65f)),
+
+                        new AttackAnimation.Phase(1.6f, 1.6f, 1.6f, 1.7f, 2.3f, 1.7f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f))
+                        ,
+                        new AttackAnimation.Phase(1.7f, 1.7f, 1.7f, 1.8f, 2.3f, 1.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(1.8f, 1.8f, 1.8f, 1.9f, 2.3f, 1.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(1.9f, 1.9f, 1.9f, 2.0f, 2.3f, 2.0f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(2.1f, 2.1f, 2.2f, 2.4f, 2.3f, 2.4f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
+
+                        new AttackAnimation.Phase(2.4f, 2.6f, 2.4f, 2.5f, 2.3f, 2.5f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2f)),
+
+                        new AttackAnimation.Phase(2.5f, 2.9f, 2.54f, 2.9f, 2.8f, 7.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.POLEBLADE_2)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(2.5f))
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        WARSICKLE_AUTO4 = builder.nextAccessor("biped/combat/warsickle_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+
+                        new AttackAnimation.Phase(0.0f, 0.35f, 0.35f, 0.45f, 2.3f, 0.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(0.45f, 0.3f, 0.45f, 0.55f, 2.3f, 0.55f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(0.65f, 0.2f, 0.65f, 0.75f, 1.7f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(0.75f, 0.3f, 0.75f, 0.85f, 1.7f, 0.85f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(0.9f, 0.3f, 0.9f, 1.0f, 1.7f, 1.0f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(1.0f, 0.3f, 1.0f, 1.1f, 1.7f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+                        new AttackAnimation.Phase(1.1f, 0.3f, 1.1f, 1.2f, 1.7f, 1.2f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(1.2f, 0.3f, 1.2f, 1.3f, 1.7f, 1.3f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(1.3f, 0.3f, 1.3f, 1.4f, 1.7f, 1.3f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+
+
+
+                        new AttackAnimation.Phase(1.4f, 1.4f, 1.4f, 1.5f, 1.7f, 1.5f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.5f)),
+                        new AttackAnimation.Phase(1.5f, 1.5f, 1.5f, 1.7f, 1.7f, 6.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.5f))
+                                .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
+
+                )
+
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
 
         LIGHTGREATSWORD_SWORD_ATT1 = builder.nextAccessor("biped/combat/lg_sw_att1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
@@ -910,27 +1143,6 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        WARSICKLE_ATT1 = builder.nextAccessor("biped/combat/warsickle_att1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.41F, 0.43F, 0.6F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        WARSICKLE_ATT2 = builder.nextAccessor("biped/combat/warsickle_att2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.33F, 0.45F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        WARSICKLE_ATT3 = builder.nextAccessor("biped/combat/warsickle_att3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.41F, 0.67F, 0.89F, 0.83F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        0.75F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(-0.0F, 0.0F, -2.0F), Armatures.BIPED.get().rootJoint,0.5D, 1.0F))
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
         IRON_FIST_AUTO1 = builder.nextAccessor("biped/combat/iron_fist_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.20f, 0.22f, 0.27f, 0.55f, 0.36f, InteractionHand.MAIN_HAND, biped.get().toolR, null),
@@ -1201,8 +1413,6 @@ public class DawnDayAnimations {
         SICKLE_DUAL_IDLE = builder.nextAccessor("biped/living/sickle_dual_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
-        SICKLE_IDLE = builder.nextAccessor("biped/living/sickle_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
 
         MILADY_WALK = builder.nextAccessor("biped/living/milady_onehanded_walk", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
@@ -1228,13 +1438,8 @@ public class DawnDayAnimations {
         MILADY_TWOHANDED_IS_IDLE = builder.nextAccessor("biped/living/milady_twohanded_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
-        POLE_AXE_IDLE = builder.nextAccessor("biped/living/pole_axe_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
 
         WAR_SICKLE_IDLE = builder.nextAccessor("biped/living/war_sickle_idle", ac ->
-                new StaticAnimation(0.12F, true, ac, biped));
-
-        HEAVY_AXE_IDLE = builder.nextAccessor("biped/living/heavy_axe_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         HALBEARD_IDLE = builder.nextAccessor("biped/living/halbeard_idle", ac ->
@@ -2479,14 +2684,6 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_dual_slash.get()))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        BACKHAND_AIRSLASH = builder.nextAccessor("biped/combat/backhand_airslash", (accessor) ->
-                new AirSlashAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.10f, 0.35f, 0.8f, 0.48f, InteractionHand.MAIN_HAND, biped.get().head, null)
-                                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_dual_slash.get()))
-
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BACKHAND_DASH = builder.nextAccessor("biped/combat/backhand_dash", (accessor) ->

@@ -1,11 +1,11 @@
 {
   "trail": {
-    "color": [70, 50, 200],
+    "color": [120, 120, 200],
     "begin_pos": [0.0, -0.0, -0.4],
     "end_pos": [0.0, 0.3, -1.1],
     "lifetime": 5,
     "interpolations": 5,
-    "texture_path": "epicfight:textures/particle/swing_trail.png",
+    "texture_path": "epicfight_dd:textures/particle/night_ritus_dagger_trail.png",
     "particle_type": "epicfight:swing_trail"
   }
 }

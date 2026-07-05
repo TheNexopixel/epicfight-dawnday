@@ -77,27 +77,35 @@ public class RitusEvents {
 
 
         // BLOOD DAGGER
-        boolean playerKill = event.getEntity() instanceof Player;
+
+        LivingEntity entity = event.getEntity();
 
 
         if (player.getMainHandItem().getItem()
-                == DawnDayItems.BLOOD_RITUS_DAGGER.get()) {
+                == DawnDayItems.BLOOD_RITUS_DAGGER.get() || player.getMainHandItem().getItem()
+                == DawnDayItems.POLEBLADE.get()) {
+
+            if (entity != null) {
+                double max_health_bonus = entity.getMaxHealth() * 0.05;
+
+
+
             if (event.getEntity() instanceof Player) {
-                player.heal ( 10.0F);
+                player.heal ((float) (max_health_bonus + 10.0F));
             }
             if (event.getEntity() instanceof Player && (player.hasEffect(EffectRegistry.SEPUKKU.get()) )) {
-                player.heal ( 20.0F);
+                player.heal ((float) (max_health_bonus + 20.0F));
             }
 
             if(player.hasEffect(EffectRegistry.SEPUKKU.get())) {
-                player.heal(2.0f);
+                player.heal((float) (max_health_bonus * 2));
             }
 
             if(player.hasEffect(EffectRegistry.DRAINDED.get())) {
-                player.heal(0.5f);
+                player.heal((float) (max_health_bonus / 2));
             }
             else {
-                player.heal(1.0f);
+                player.heal((float) max_health_bonus);
             }
             if (player.hasEffect(EffectRegistry.DRAINDED.get())) {
                 if (!player.level().isClientSide) {
@@ -120,6 +128,7 @@ public class RitusEvents {
                     );
                 }
                 player.removeEffect(EffectRegistry.DRAINDED.get());
+            }
             }
 
 

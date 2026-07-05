@@ -9,10 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import reascer.wom.gameasset.WOMSkills;
-import reascer.wom.main.WeaponsOfMinecraft;
 import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
@@ -184,22 +181,40 @@ public class EpicFight_DD_WeaponCapabilityPresets {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(DawnDayCollider.WAR_SICKLE)
+                    .collider(DawnDayCollider.POLEBLADE)
                     .swingSound(dawnDaySounds.Milady_heavy_slash.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.STEEL_WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.WAR_SICKLE_AUTO1,
-                            DawnDayAnimations.WAR_SICKLE_AUTO2,
-                            DawnDayAnimations.WAR_SICKLE_AUTO2,
-                            DawnDayAnimations.WAR_SICKLE_AUTO4,
-                            DawnDayAnimations.WAR_SICKLE_AUTO5,
-                            DawnDayAnimations.WAR_SICKLE_AUTO6,
+                            DawnDayAnimations.WARSICKLE_AUTO1,
+                            DawnDayAnimations.WARSICKLE_AUTO2,
                             DawnDayAnimations.SICKLE_ONEHAND_DASH,
-                            DawnDayAnimations.BAT_DASH
+                            DawnDayAnimations.WARSICKLE_AIRSLASH
                     )
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WAR_SICKLE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WARSICKLE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
+
+    public static final Function<Item, CapabilityItem.Builder> POLEBLADE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.TACHI)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.POLEBLADE)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.BLOOD_DANCE)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.WARSICKLE_AUTO1,
+                            DawnDayAnimations.WARSICKLE_AUTO2,
+                            DawnDayAnimations.WARSICKLE_AUTO3,
+                            DawnDayAnimations.WARSICKLE_AUTO4,
+                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
+                            DawnDayAnimations.WARSICKLE_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WARSICKLE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
@@ -737,6 +752,7 @@ public class EpicFight_DD_WeaponCapabilityPresets {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "pole_blade"), POLEBLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "florett"), FLORETT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "night_ritus_dagger"), NIGHT_RITUS_DAGGER);

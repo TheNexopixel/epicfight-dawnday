@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " GD",
-    " RG",
+    " DT",
+    " RD",
     "S  "
   ],
   "key": {
     "R": {
       "item": "epicfight_dd:ruby"
     },
-    "G": {
-      "item": "minecraft:glass"
+    "T": {
+      "item": "epicfight_dd:tanzanite"
     },
     "S": {
       "item": "minecraft:stick"

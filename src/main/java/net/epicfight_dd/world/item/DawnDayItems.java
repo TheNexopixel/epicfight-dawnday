@@ -16,6 +16,19 @@ public class DawnDayItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Epicfight_dd.MODID);
 
+    public static final RegistryObject<Item> POLEBLADE =
+            ITEMS.register("poleblade", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    0,
+                    -2.0F,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(4162),
+                    "tooltip.epicfight_dd.poleblade",
+                    "yellow"
+            ));
+
     public static final RegistryObject<Item> NETHERITE_SICKLE =
             ITEMS.register("netherite_sickle",() -> new SwordItem(Tiers.NETHERITE,2,-1.9f,
                     new Item.Properties().stacksTo(1)
@@ -73,10 +86,14 @@ public class DawnDayItems {
                             .defaultDurability(2061)));
 
     public static final RegistryObject<Item> VITREUS =
-            ITEMS.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,3,-2.2f,
+            ITEMS.register("vitreus",() -> new DawnDayTooltips(Tiers.DIAMOND,3,-2.2f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(4561)));
+                            .defaultDurability(4561),
+                    "tooltip.epicfight_dd.vitreus",
+                    "white"
+
+            ));
 
     public static final RegistryObject<Item> IRON_FLORETT =
             ITEMS.register("iron_florett",() -> new SwordItem(Tiers.IRON,2,-2.05f,
@@ -155,16 +172,23 @@ public class DawnDayItems {
                             .defaultDurability(2500)){});
 
     public static final RegistryObject<Item> NIGHT_RITUS_DAGGER =
-            ITEMS.register("night_ritus_dagger",() -> new SwordItem(Tiers.DIAMOND,1,-2.0f,
+            ITEMS.register("night_ritus_dagger",() -> new DawnDayTooltips(Tiers.DIAMOND,1,-2.0f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2800)));
+                            .defaultDurability(2800),
+                    "tooltip.epicfight_dd.night_ritus_dagger",
+                    "yellow"
+
+            ));
 
     public static final RegistryObject<Item> BLOOD_RITUS_DAGGER =
-            ITEMS.register("blood_ritus_dagger",() ->  new SwordItem(Tiers.DIAMOND,2,-2.1f,
+            ITEMS.register("blood_ritus_dagger",() ->  new DawnDayTooltips(Tiers.DIAMOND,2,-2.1f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2100)));
+                            .defaultDurability(2100),
+                    "tooltip.epicfight_dd.blood_ritus_dagger",
+                    "yellow"
+            ));
 
     public static final RegistryObject<Item> iron_knife =
             ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,1,-2.2f,
@@ -193,7 +217,7 @@ public class DawnDayItems {
     public static final RegistryObject<Item> wooden_battlestaff =
             ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,5,-2.4f,
                     new Item.Properties().stacksTo(1)
-                            .defaultDurability(650)));
+                            .defaultDurability(131)));
 
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
@@ -216,10 +240,13 @@ public class DawnDayItems {
                             .defaultDurability(2680)));
 
     public static final RegistryObject<Item> spiked_bat =
-            ITEMS.register("nailbat",() -> new SwordItem(Tiers.DIAMOND,4,-2.6f,
+            ITEMS.register("nailbat",() -> new DawnDayTooltips(Tiers.DIAMOND,4,-2.6f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2080)));
+                            .defaultDurability(2080),
+                    "tooltip.epicfight_dd.nailbat",
+                    "gray"
+            ));
 
     public static final RegistryObject<Item> nail =
             ITEMS.register("nail",() -> new Item(
@@ -251,6 +278,16 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(16)
                             .rarity(Rarity.COMMON)));
 
+    public static final RegistryObject<Item> AMBER =
+            ITEMS.register("amber",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> CITRINE =
+            ITEMS.register("citrine",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
     public static final RegistryObject<Item> METAL_PLATE =
             ITEMS.register("metal_plate",() -> new Item(
                     new Item.Properties().stacksTo(64)
@@ -262,16 +299,23 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON)));
 
     public static final RegistryObject<Item> milady =
-            ITEMS.register("milady",() -> new SwordItem(Tiers.NETHERITE,1,-2.4f,
+            ITEMS.register("milady",() -> new DawnDayTooltips(Tiers.NETHERITE,1,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
-                            .defaultDurability(3680)));
+                            .defaultDurability(3680),
+                    "tooltip.epicfight_dd.milady",
+                    "white"));
 
     public static final RegistryObject<Item> bonecutting_saw =
-            ITEMS.register("bonecutting_saw",() -> new SwordItem(Tiers.NETHERITE,1,-2.8f,
+            ITEMS.register("bonecutting_saw",() -> new DawnDayTooltips(Tiers.NETHERITE,1,-2.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
-                            .defaultDurability(3680)));
+                            .defaultDurability(3680),
+                    "tooltip.epicfight_dd.bonecutting_saw",
+                    "yellow"
+
+                    )
+            );
 
     public static final RegistryObject<Item> diamond_halberd =
             ITEMS.register("diamond_halberd",() -> new halbeardItem(Tiers.DIAMOND));

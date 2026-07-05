@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  R",
+    "RSR",
+    "R  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "R": {
+      "item": "epicfight_dd:ruby"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:poleblade",
+    "count": 1
+  }
+}
+

@@ -26,6 +26,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.bonecutting_saw.get());
                 output.accept(DawnDayItems.VITREUS.get());
            //     output.accept(DawnDayItems.ECLIPSE.get());
+                output.accept(DawnDayItems.POLEBLADE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
@@ -65,10 +66,12 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.golden_battlestaff.get());
                 output.accept(DawnDayItems.wooden_battlestaff.get());
                 output.accept(DawnDayItems.ruby.get());
-                output.accept(DawnDayItems.TANZANITE.get());
+                output.accept(DawnDayItems.AMBER.get());
+                output.accept(DawnDayItems.CITRINE.get());
                 output.accept(DawnDayItems.PERIDOT.get());
                 output.accept(DawnDayItems.MALACHITE.get());
                 output.accept(DawnDayItems.JADE.get());
+                output.accept(DawnDayItems.TANZANITE.get());
                 output.accept(DawnDayItems.nail.get());
                 output.accept(DawnDayItems.METAL_PLATE.get());
                 output.accept(DawnDayItems.RUSTED_METAL_PLATE.get());

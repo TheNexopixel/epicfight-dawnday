@@ -75,12 +75,14 @@ public class IronWillSkill extends PassiveSkill {
                 EVENT_UUID,
                 event -> {
 
+
                     int stacks = container.getDataManager().getDataValue(
                             SkillDataKeyZ.IRON_WILL_STACKS.get());
 
                     if (stacks <= 0) {
                         return;
                     }
+
 
                     event.attachValueModifier(
                             ValueModifier.multiplier(this.damage_bonus)

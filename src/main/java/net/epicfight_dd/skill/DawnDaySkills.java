@@ -36,6 +36,7 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill GENTLE_NUDGE;
+    public static Skill BLOOD_DANCE;
     public static Skill PIERCING_FANG;
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
@@ -80,6 +81,16 @@ public class DawnDaySkills {
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
             GENTLE_NUDGE = gentlenudge;
+
+        WeaponInnateSkill blooddance = modRegistry.build("blood_dance", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.BLOOD_DANCE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        blooddance.newProperty()
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(15.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        BLOOD_DANCE = blooddance;
 
 
 
