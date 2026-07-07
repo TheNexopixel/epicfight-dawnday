@@ -230,11 +230,24 @@
   "skill.epicfight_dd.blood_dance": "Blutiger Tanz",
   "skill.epicfight_dd.blood_dance.tooltip": "Diese Kampfkunst wurde von Yura erfunden und ermöglicht es dem Blutkult, Feinde effizienter zu töten",
   "tooltip.epicfight_dd.vitreus": "Die Klinge dieser Waffe ist so durchsichtig, dass man meinen könnte, sie sei aus Glas. Am Griff befindet sich ein leuchtender, knallroter Rubin.",
-  "tooltip.epicfight_dd.poleblade": "Diese Waffe wurde während des Unheiligen Krieges von den Elitesoldaten des Blutkultes eingesetzt. Danach verschwand sie spurlos und wurde nie wieder gefunden …\n\nbis jetzt …",
-  "tooltip.epicfight_dd.blood_ritus_dagger": "Passive:\n\nDiese Waffe gibt dem Anwender Leben zurück, wenn er dafür ein anderes nimmt. Sepukku hat auf dieser Waffe einen stärkeren Effekt.\n\nDies war einst eine Heilige Waffe, geschmiedet aus Mithril, jedoch missbraucht für Grausame Rituale seites hoher Tiere des Blutkultes. ",
-  "tooltip.epicfight_dd.night_ritus_dagger": "Diese Waffe regeneriert Stamina durch einen Kill. Dieser Effekt ist wirksamer im Mondlicht.\n\nDiese Waffe wurde wie sein Gegenstück aus Mithril geschmiedet, jedoch unter einfluss des Mondlichtes. Daher wurde sie Nox Obscura, der Göttin der Finsternis geweiht. Was dann mit diesem Dolch geschah, weiß niemand.",
-  "tooltip.epicfight_dd.bonecutting_saw": "\"Tantum qui viam mali ambulant ei digni erunt.\"\n\n Diese Waffe wurde vorwiegend von den Eques Mortis als Exekutionswerkzeug verwendet. Nach der Revolution wurden diese Waffen zum Symbol der Abscheulichkeit und daraufhin verboten. Nichtsdestotrotz sind einige dieser Exemplare bis heute im Umlauf..",
   "tooltip.epicfight_dd.iron_fist": "Diese Waffe wurde von der Kerkerwache des alten Königreiches zur Folter eingesetzt. Die Spitzen Zacken lassen sie aussehen wie die Faustversion der Eisernen Junfrau.",
   "tooltip.epicfight_dd.nailbat": "Er ist leicht mit Blut überzogen..",
-  "tooltip.epicfight_dd.milady": "Ein leichtes Großschwert; das heißt, ein Schwert, dessen Klinge die Länge eines Großschwerts hat, dabei aber auf ein Minimum an Gewicht beschränkt ist.\n\nAufgrund seines eleganten Aussehens wurde es nach Damen aus adeligen Kreisen benannt. Mit der entsprechenden Technik lässt sich diese Waffe ebenso schnell führen wie ein gerades Schwert."
+
+
+  "tooltip.epicfight_dd.night_ritus_dagger_headline": "Passive Eigenschaft:",
+  "tooltip.epicfight_dd.night_ritus_dagger_passive": "Diese Waffe regeneriert Stamina durch einen Kill. Dieser Effekt ist wirksamer im Mondlicht.",
+  "tooltip.epicfight_dd.night_ritus_dagger_lore": "\nDiese Waffe wurde wie sein Gegenstück aus Mithril geschmiedet, jedoch unter einfluss des Mondlichtes. Daher wurde sie Nox Obscura, der Göttin der Finsternis geweiht. Was dann mit diesem Dolch geschah, weiß niemand.",
+  "tooltip.epicfight_dd.blood_ritus_dagger_headline": "Passive Eigenschaft:",
+  "tooltip.epicfight_dd.blood_ritus_dagger_passive": "Diese Waffe gibt dem Anwender Leben zurück, wenn er dafür ein anderes nimmt. Sepukku hat auf dieser Waffe einen stärkeren Effekt.",
+  "tooltip.epicfight_dd.blood_ritus_dagger_lore": "\nDies war einst eine Heilige Waffe, geschmiedet aus Mithril, jedoch missbraucht für Grausame Rituale seites hoher Tiere des Blutkultes.",
+  "tooltip.epicfight_dd.poleblade_text1": "\nDiese Waffe wurde während des Unheiligen Krieges von den Elitesoldaten des Blutkultes eingesetzt. Danach verschwand sie spurlos und wurde nie wieder gefunden...",
+  "tooltip.epicfight_dd.poleblade_text2": "\nbis jetzt..",
+  "tooltip.epicfight_dd.bonecutting_saw_text1": "\"Tantum qui viam mali ambulant ei digni erunt.\"",
+  "tooltip.epicfight_dd.bonecutting_saw_text2": "\n Diese Waffe wurde vorwiegend von den Eques Mortis als Exekutionswerkzeug verwendet. Nach der Revolution wurden diese Waffen zum Symbol der Abscheulichkeit und daraufhin verboten. Nichtsdestotrotz sind einige dieser Exemplare bis heute im Umlauf...",
+  "tooltip.epicfight_dd.milady_passive": "Drücke Z um den Kampfstiel zu wechseln",
+  "tooltip.epicfight_dd.milady_lore": "Ein leichtes Großschwert; das heißt, ein Schwert, dessen Klinge die Länge eines Großschwerts hat, dabei aber auf ein Minimum an Gewicht beschränkt ist.\nAufgrund seines eleganten Aussehens wurde es nach Damen aus adeligen Kreisen benannt. Mit der entsprechenden Technik lässt sich diese Waffe ebenso schnell führen wie ein gerades Schwert.",
+  "tooltip.epicfight_dd.poleblade_blade_part": "Sieht aus wie ein Teil einer uralten Waffe",
+  "tooltip.epicfight_dd.nail": "Sieht Spitz aus",
+  "item.epicfight_dd.poleblade_blade_part": "Doppelklingen Bauteil",
+  "tooltip.epicfight_dd.saber": "Nach der Vereinigung wurde eine neutrale Partei ins Leben gerufen, die den Frieden wahren sollte. Um sich dieser Herausforderung zu stellen, wurden ihnen Heilige Säbel anvertraut, deren Verzierungen die Bildsprache von Gerechtigkeit verkörpern."
 }

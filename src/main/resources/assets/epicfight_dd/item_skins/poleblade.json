@@ -1,11 +1,11 @@
 {
   "trail": {
     "color": [200, 100, 100],
-    "begin_pos": [0.0, 0.0, -0.50],
+    "begin_pos": [0.0, 0.0, 2.55],
     "end_pos": [0.0, 0.0, -2.55],
     "lifetime": 5,
-    "interpolations": 5,
-    "texture_path": "epicfight_dd:textures/particle/poleblade_trail_new.png",
+    "interpolations": 20,
+    "texture_path": "epicfight_dd:textures/particle/poleblade_trail_pixelated.png",
     "particle_type": "epicfight:swing_trail"
   }
 }

@@ -33,6 +33,7 @@ public class DawnDayLootModifiers {
                                 )
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
                         .name("night_ritus_dagger")
                         .build();
 
@@ -48,6 +49,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("blood_ritus_dagger")
                         .build();
@@ -76,7 +78,7 @@ public class DawnDayLootModifiers {
             if (event.getName().equals(
                     new ResourceLocation(
                             "minecraft",
-                            "chests/village/village_toolsmith"))) {
+                            "chests/village/village_weaponsmith"))) {
 
                 LootPool pool = LootPool.lootPool()
                         .when(

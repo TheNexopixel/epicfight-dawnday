@@ -27,8 +27,6 @@
         "lifetime": 20,
         "end_pos": [0.0, 0.2, -6.8],
         "joint": "Tool_R",
-        "texture_path": "epicfight:textures/particle/katana_trail.png",
-        "particle_type": "epicfight:katana_trail",
         "item_skin_hand": "main_hand"
       }
     ]

@@ -2,6 +2,7 @@ package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.effect.EffectRegistry;
+import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
@@ -22,11 +23,21 @@ public class DawnDayItems {
                     0,
                     -2.0F,
                     new Item.Properties()
-                            .stacksTo(1)
-                            .rarity(Rarity.RARE)
-                            .defaultDurability(4162),
-                    "tooltip.epicfight_dd.poleblade",
-                    "yellow"
+                            .rarity(Rarity.EPIC),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.poleblade_text1",
+                            ChatFormatting.YELLOW),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.poleblade_text2",
+                            ChatFormatting.DARK_RED)
+
             ));
 
     public static final RegistryObject<Item> NETHERITE_SICKLE =
@@ -90,8 +101,9 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(4561),
-                    "tooltip.epicfight_dd.vitreus",
-                    "white"
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.vitreus",
+                            ChatFormatting.YELLOW)
 
             ));
 
@@ -126,10 +138,14 @@ public class DawnDayItems {
                             .defaultDurability(5561)));
 
     public static final RegistryObject<Item> IRON_FIST =
-            ITEMS.register("iron_fist",() -> new SwordItem(Tiers.IRON,1,-1.7f,
+            ITEMS.register("iron_fist",() -> new DawnDayTooltips(Tiers.IRON,1,-1.7f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(5561)));
+                            .defaultDurability(5561),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.iron_fist",
+                            ChatFormatting.YELLOW)
+            ));
 
     public static final RegistryObject<Item> diamond_messer =
             ITEMS.register("diamond_messer",() -> new SwordItem(Tiers.DIAMOND,2,-2.1f,
@@ -160,10 +176,13 @@ public class DawnDayItems {
                             .defaultDurability(840)));
 
     public static final RegistryObject<Item> saber =
-            ITEMS.register("saber",() -> new SwordItem(Tiers.DIAMOND,2,-2.0f,
+            ITEMS.register("saber",() -> new DawnDayTooltips(Tiers.DIAMOND,2,-2.0f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .defaultDurability(2500)));
+                            .defaultDurability(2500),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.saber",
+                            ChatFormatting.YELLOW)));
 
     public static final RegistryObject<Item> steelaxe =
             ITEMS.register("steelaxe",() -> new WeaponItem(Tiers.NETHERITE,4,-2.7f,
@@ -176,8 +195,16 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2800),
-                    "tooltip.epicfight_dd.night_ritus_dagger",
-                    "yellow"
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_lore",
+                            ChatFormatting.YELLOW)
 
             ));
 
@@ -186,8 +213,16 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2100),
-                    "tooltip.epicfight_dd.blood_ritus_dagger",
-                    "yellow"
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_lore",
+                            ChatFormatting.YELLOW)
             ));
 
     public static final RegistryObject<Item> iron_knife =
@@ -244,8 +279,9 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2080),
-                    "tooltip.epicfight_dd.nailbat",
-                    "gray"
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.nailbat",
+                            ChatFormatting.GRAY)
             ));
 
     public static final RegistryObject<Item> nail =
@@ -298,23 +334,38 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(64)
                             .rarity(Rarity.COMMON)));
 
+    public static final RegistryObject<Item> POLEBLADE_BLADE_PART =
+            ITEMS.register("poleblade_blade_part",() -> new Item(
+                    new Item.Properties().stacksTo(2)
+                            .rarity(Rarity.COMMON)));
+
     public static final RegistryObject<Item> milady =
             ITEMS.register("milady",() -> new DawnDayTooltips(Tiers.NETHERITE,1,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680),
-                    "tooltip.epicfight_dd.milady",
-                    "white"));
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.milady_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.milady_lore",
+                            ChatFormatting.YELLOW)
+            ));
 
     public static final RegistryObject<Item> bonecutting_saw =
             ITEMS.register("bonecutting_saw",() -> new DawnDayTooltips(Tiers.NETHERITE,1,-2.8f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
                             .defaultDurability(3680),
-                    "tooltip.epicfight_dd.bonecutting_saw",
-                    "yellow"
-
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.bonecutting_saw_text1",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.ITALIC),
+                            new TooltipLine(
+                                    "tooltip.epicfight_dd.bonecutting_saw_text2",
+                                    ChatFormatting.YELLOW)
                     )
+
             );
 
     public static final RegistryObject<Item> diamond_halberd =

@@ -7,8 +7,6 @@
         "item_skin_hand": "main_hand"
       },
       {
-        "begin_pos": [0.0, 0.0, 0.50],
-        "end_pos": [0.0, 0.0, 2.55],
         "start_time": 0.15,
         "end_time": 2.0,
         "joint": "Tool_R",

@@ -20,8 +20,6 @@
         "lifetime": 20,
         "end_pos": [0.0, 0.0, -6.8],
         "joint": "Tool_R",
-        "texture_path": "epicfight:textures/particle/katana_trail.png",
-        "particle_type": "epicfight:katana_trail",
         "item_skin_hand": "main_hand"
       },
       {
@@ -30,8 +28,6 @@
         "lifetime": 20,
         "end_pos": [0.0, 0.0, -6.8],
         "joint": "Tool_L",
-        "texture_path": "epicfight:textures/particle/katana_trail.png",
-        "particle_type": "epicfight:katana_trail",
         "item_skin_hand": "off_hand"
       }
     ]

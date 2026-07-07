@@ -67,11 +67,17 @@ public class RedemptionSkill extends PassiveSkill {
                     float incomingDamage = event.getDamage();
 
                     float healthAfterHit = currentHealth - incomingDamage;
-                    float threshold = 5.0F;
 
+
+                    if (currentHealth > 5) {
+                        return;
+                    }
+/*
                     if (healthAfterHit > threshold) {
                         return;
                     }
+
+ */
 
                     activateRedemption(container, player, event.getDamageSource());
                 }

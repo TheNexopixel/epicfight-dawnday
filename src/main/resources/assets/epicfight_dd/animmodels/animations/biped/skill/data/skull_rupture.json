@@ -4,8 +4,6 @@
         "start_time": 0.45,
         "end_time": 0.6,
         "lifetime": 6,
-        "begin_pos": [0.0, 0.0, -1.35],
-        "end_pos": [0.0, 0.0, -1.8],
         "interpolations": 9,
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"

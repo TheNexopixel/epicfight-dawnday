@@ -205,6 +205,17 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> MILADY_SPECIAL_AUTO5;
     public static AnimationAccessor<DashAttackAnimation> MILADY_SPECIAL_DASH;
 
+    // POLEBLADE
+
+    public static AnimationAccessor<StaticAnimation> WARSICKLE_IDLE;
+    public static AnimationAccessor<StaticAnimation> WARSICKLE_WALK;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> BLOOD_DANCE;
+
     // RITUS DAGGERS
 
     public static AnimationAccessor<StaticAnimation> RITUS_DAGGER_GUARD;
@@ -294,15 +305,6 @@ public class DawnDayAnimations {
     public static AnimationAccessor<DashAttackAnimation> VITR_DASH;
 
     // WARSICKLE
-
-    public static AnimationAccessor<StaticAnimation> WARSICKLE_IDLE;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO1;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO2;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AUTO4;
-    public static AnimationAccessor<BasicAttackAnimation> WARSICKLE_AIRSLASH;
-    public static AnimationAccessor<AttackAnimation> BLOOD_DANCE;
-
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> WAR_SICKLE_AUTO3;
@@ -358,6 +360,9 @@ public class DawnDayAnimations {
                 new StaticAnimation(0.12F, true, ac, biped));
 
         WARSICKLE_IDLE = builder.nextAccessor("biped/living/warsickle_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        WARSICKLE_WALK = builder.nextAccessor("biped/living/poleblade_walk", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         IRON_FIST_IDLE = builder.nextAccessor("biped/living/iron_fist_idle", ac ->
@@ -567,43 +572,43 @@ public class DawnDayAnimations {
         );
         BLOOD_DANCE = builder.nextAccessor("biped/skill/blood_dance", (accessor) ->
                 new AttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.20f, 0.15f, 0.35f, 2.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.0f, 0.20f, 0.15f, 0.35f, 30.3f, 0.35f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f)),
 
-                        new AttackAnimation.Phase(0.35f, 0.40f, 0.43f, 0.56f, 2.3f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.35f, 0.40f, 0.43f, 0.56f, 3.3f, 0.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.7f))
                         ,
-                        new AttackAnimation.Phase(0.6f, 0.6f, 0.6f, 0.75f, 2.3f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.6f, 0.6f, 0.6f, 0.75f, 3.3f, 0.75f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.1f))
                         ,
-                        new AttackAnimation.Phase(0.8f, 0.8f, 0.87f, 1.06f, 2.3f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.8f, 0.8f, 0.87f, 1.06f, 3.3f, 1.1f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(1.1f, 1.1f, 1.06f, 1.45f, 2.33f, 1.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.1f, 0.1f, 1.06f, 1.45f, 3.33f, 1.45f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(1.45f, 1.1f, 1.45f, 1.6f, 2.33f, 1.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.45f, 0.1f, 1.45f, 1.6f, 3.33f, 1.6f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.65f)),
 
-                        new AttackAnimation.Phase(1.6f, 1.6f, 1.6f, 1.7f, 2.3f, 1.7f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.6f, 0.6f, 1.6f, 1.7f, 3.3f, 1.7f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f))
                         ,
-                        new AttackAnimation.Phase(1.7f, 1.7f, 1.7f, 1.8f, 2.3f, 1.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.7f, 0.7f, 1.7f, 1.8f, 3.3f, 1.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(1.8f, 1.8f, 1.8f, 1.9f, 2.3f, 1.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.8f, 0.8f, 1.8f, 1.9f, 3.3f, 1.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(1.9f, 1.9f, 1.9f, 2.0f, 2.3f, 2.0f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(1.9f, 0.9f, 1.9f, 2.0f, 3.3f, 2.0f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(2.1f, 2.1f, 2.2f, 2.4f, 2.3f, 2.4f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(2.1f, 0.1f, 2.2f, 2.4f, 3.3f, 2.4f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.9f)),
 
-                        new AttackAnimation.Phase(2.4f, 2.6f, 2.4f, 2.5f, 2.3f, 2.5f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(2.4f, 0.6f, 2.4f, 2.5f, 3.3f, 2.5f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.2f)),
 
-                        new AttackAnimation.Phase(2.5f, 2.9f, 2.54f, 2.9f, 2.8f, 7.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.POLEBLADE_2)
+                        new AttackAnimation.Phase(2.5f, 0.9f, 2.74f, 3.0f, 3.5f, 7.9f, InteractionHand.MAIN_HAND, biped.get().toolR, DawnDayCollider.POLEBLADE_2)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(2.5f))
                                 .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
                                 .addProperty(AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
@@ -2545,13 +2550,13 @@ public class DawnDayAnimations {
 
         SICKLE_DUAL_AUTO3 = builder.nextAccessor("biped/combat/sickle_dual_auto3", (accessor) ->
                 new BasicAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.28f, 0.38f, 1.0f, 0.63f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.28f, 0.38f, 1.0f, 0.43f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
 
-                        new AttackAnimation.Phase(0.63f, 0.6f, 0.63f, 0.75f, 1.0f, 5.9f, InteractionHand.OFF_HAND, biped.get().toolL, DawnDayCollider.SICKLE_LONGER)
+                        new AttackAnimation.Phase(0.63f, 0.6f, 0.53f, 0.7f, 1.0f, 5.9f, InteractionHand.OFF_HAND, biped.get().toolL, DawnDayCollider.SICKLE_LONGER)
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)))
 
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 

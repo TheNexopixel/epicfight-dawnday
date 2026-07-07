@@ -1,8 +1,8 @@
 {
   "trail": {
-    "color": [120, 120, 200],
-    "begin_pos": [0.0, -0.0, -0.4],
-    "end_pos": [0.0, 0.3, -1.1],
+    "color": [200, 200, 200],
+    "begin_pos": [0.0, -0.0, -0.25],
+    "end_pos": [0.0, 0.3, -1.2],
     "lifetime": 5,
     "interpolations": 5,
     "texture_path": "epicfight_dd:textures/particle/night_ritus_dagger_trail.png",
