@@ -125,61 +125,6 @@ public class QoLMiscAnimations {
 
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
-                        .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->{
-                                    if (DawnDayConfig.ENABLE_DEATH_PARTICLES.get().equals(false)){
-                                        return;
-                                    }
-
-
-
-                                                for (int i = 0; i < 80; i++) {
-
-
-                                                    LivingEntity entity = e.getOriginal();
-
-                                                    RandomSource random = entity.getRandom();
-
-                                                    if (!entity.level().isClientSide()) {
-                                                        return;
-                                                    }
-
-                                                    double x =
-                                                            entity.getX()
-                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
-
-                                                    double y =
-                                                            entity.getY()
-                                                                    + random.nextDouble() * entity.getBbHeight();
-
-                                                    double z =
-                                                            entity.getZ()
-                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
-
-                                                    double vx =
-                                                            random.nextGaussian() * 0.20D;
-
-                                                    double vy =
-                                                            random.nextDouble() * 0.18D;
-
-                                                    double vz =
-                                                            random.nextGaussian() * 0.20D;
-
-                                                    entity.level().addParticle(
-                                                            ParticleTypes.ASH,
-                                                            x,
-                                                            y,
-                                                            z,
-                                                            vx,
-                                                            vy,
-                                                            vz
-                                                    );
-
-                                            }
-
-                                }, AnimationEvent.Side.CLIENT
-                                        )
-                        )
                         .addEvents(
                                 AnimationProperty.StaticAnimationProperty.TICK_EVENTS,
                                 AnimationEvent.SimpleEvent.create(
@@ -197,6 +142,214 @@ public class QoLMiscAnimations {
                                             RandomSource random = entity.getRandom();
 
                                             int numParticles = 3;
+
+                                            if (entity.isInWater()){
+                                                for (int i = 0; i < numParticles; i++) {
+
+                                                    float L = -0.05F;
+                                                    float R = 0.05F;
+
+                                                    List<Vec3> positions = new ArrayList<>();
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(L, 0F, 0.6F),
+                                                            Armatures.BIPED.get().head
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(R, 0F, 0.6F),
+                                                            Armatures.BIPED.get().head
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(L, 0.06F, 0.1F),
+                                                            Armatures.BIPED.get().chest
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(R, 0.06F, 0.1F),
+                                                            Armatures.BIPED.get().chest
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(L, 0.00F, 0.0F),
+                                                            Armatures.BIPED.get().torso
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(L, 0.06F, 0.1F),
+                                                            Armatures.BIPED.get().thighL
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(R, 0.06F, 0.1F),
+                                                            Armatures.BIPED.get().thighR
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.6F, 0F),
+                                                            Armatures.BIPED.get().handL
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.6F, 0F),
+                                                            Armatures.BIPED.get().handR
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.2F, 0.2F),
+                                                            Armatures.BIPED.get().kneeL
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.2F, 0.2F),
+                                                            Armatures.BIPED.get().kneeR
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.2F, 0.2F),
+                                                            Armatures.BIPED.get().legL
+                                                    ));
+
+                                                    positions.add(getJointWithTranslation(
+                                                            Minecraft.getInstance().player,
+                                                            entity,
+                                                            new Vec3f(0F, 0.2F, 0.2F),
+                                                            Armatures.BIPED.get().legR
+                                                    ));
+
+                                                    Vec3 movement = entity.getDeltaMovement();
+
+                                                    for (Vec3 pos : positions) {
+
+                                                        if (pos == null) {
+                                                            continue;
+                                                        }
+
+
+                                                        double x =
+                                                                pos.x + random.nextGaussian() * 0.08D;
+
+                                                        double y =
+                                                                pos.y + random.nextGaussian() * 0.12D;
+
+                                                        double z =
+                                                                pos.z + random.nextGaussian() * 0.08D;
+
+
+                                                        double windStrength =
+                                                                0.05D + random.nextDouble() * 0.15D;
+
+                                                        double windAngle =
+                                                                random.nextDouble() * Math.PI * 2.0D;
+
+                                                        double windX =
+                                                                Math.cos(windAngle) * windStrength;
+
+                                                        double windZ =
+                                                                Math.sin(windAngle) * windStrength;
+
+
+                                                        double swirlAngle =
+                                                                random.nextDouble() * Math.PI * 2.0D;
+
+                                                        double swirlStrength =
+                                                                0.05D + random.nextDouble() * 0.12D;
+
+                                                        double swirlX =
+                                                                Math.cos(swirlAngle) * swirlStrength;
+
+                                                        double swirlZ =
+                                                                Math.sin(swirlAngle) * swirlStrength;
+
+
+                                                        double vx =
+                                                                movement.x * 0.5D
+                                                                        + windX
+                                                                        + swirlX
+                                                                        + random.nextGaussian() * 0.05D;
+
+                                                        double vy =
+                                                                movement.y * 0.3D
+                                                                        + random.nextDouble() * 0.12D;
+
+                                                        double vz =
+                                                                movement.z * 0.5D
+                                                                        + windZ
+                                                                        + swirlZ
+                                                                        + random.nextGaussian() * 0.05D;
+
+
+                                                        if (random.nextFloat() < 0.15F) {
+
+                                                            vx *= 2.5D;
+                                                            vy *= 1.5D;
+                                                            vz *= 2.5D;
+                                                        }
+
+                                                        Particle particle =
+                                                                Minecraft.getInstance()
+                                                                        .particleEngine
+                                                                        .createParticle(
+                                                                                ParticleTypes.BUBBLE,
+                                                                                x,
+                                                                                y,
+                                                                                z,
+                                                                                vx,
+                                                                                vy,
+                                                                                vz
+                                                                        );
+
+                                                        if (particle != null) {
+                                                            particle.setLifetime(
+                                                                    20 + random.nextInt(20)
+                                                            );
+                                                        }
+
+
+                                                        if (random.nextFloat() < 0.35F) {
+
+                                                            entity.level().addParticle(
+                                                                    ParticleTypes.BUBBLE_POP,
+                                                                    x,
+                                                                    y,
+                                                                    z,
+                                                                    (random.nextDouble() - 0.5D) * 0.08D,
+                                                                    0.05D + random.nextDouble() * 0.04D,
+                                                                    (random.nextDouble() - 0.5D) * 0.08D
+                                                            );
+                                                        }
+                                                    }
+                                                }
+
+                                            }
+
+                                            if (!entity.isInWater()){
+
 
                                             for (int i = 0; i < numParticles; i++) {
 
@@ -399,6 +552,7 @@ public class QoLMiscAnimations {
                                                     }
                                                 }
                                             }
+                                            }
 
                                         },
                                         AnimationEvent.Side.CLIENT
@@ -429,6 +583,107 @@ public class QoLMiscAnimations {
 
                                             double windX = 0.02D;
                                             double windZ = -0.015D;
+                                            if (!entity.isInWater()) {
+
+
+                                                for (int i = 0; i < 12; i++) {
+
+                                                    double x =
+                                                            entity.getX()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    double y =
+                                                            entity.getY()
+                                                                    + random.nextDouble() * entity.getBbHeight();
+
+                                                    double z =
+                                                            entity.getZ()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    double angle =
+                                                            random.nextDouble() * Math.PI * 2.0D;
+
+                                                    double swirlX =
+                                                            Math.cos(angle) * 0.04D;
+
+                                                    double swirlZ =
+                                                            Math.sin(angle) * 0.04D;
+
+                                                    double vx =
+                                                            swirlX
+                                                                    + random.nextGaussian() * 0.03D
+                                                                    + windX;
+
+                                                    double vy =
+                                                            random.nextDouble() * 0.04D;
+
+                                                    double vz =
+                                                            swirlZ
+                                                                    + random.nextGaussian() * 0.03D
+                                                                    + windZ;
+
+                                                    entity.level().addParticle(
+                                                            ParticleTypes.WHITE_ASH,
+                                                            x,
+                                                            y,
+                                                            z,
+                                                            vx,
+                                                            vy,
+                                                            vz
+                                                    );
+                                                }
+
+
+                                                for (int i = 0; i < 8; i++) {
+
+                                                    double x =
+                                                            entity.getX()
+                                                                    + (random.nextDouble() - 0.5D) * 0.8D;
+
+                                                    double y =
+                                                            entity.getY()
+                                                                    + random.nextDouble() * entity.getBbHeight();
+
+                                                    double z =
+                                                            entity.getZ()
+                                                                    + (random.nextDouble() - 0.5D) * 0.8D;
+
+                                                    entity.level().addParticle(
+                                                            ParticleTypes.ASH,
+                                                            x,
+                                                            y,
+                                                            z,
+                                                            (random.nextDouble() - 0.5D) * 0.02D,
+                                                            0.05D + random.nextDouble() * 0.03D,
+                                                            (random.nextDouble() - 0.5D) * 0.02D
+                                                    );
+                                                }
+
+
+
+                                                for (int i = 0; i < 8; i++) {
+
+                                                    double x =
+                                                            entity.getX()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    double z =
+                                                            entity.getZ()
+                                                                    + (random.nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                                    entity.level().addParticle(
+                                                            ParticleTypes.ASH,
+                                                            x,
+                                                            entity.getY() + 0.05D,
+                                                            z,
+                                                            (random.nextDouble() - 0.5D) * 0.02D,
+                                                            0.01D,
+                                                            (random.nextDouble() - 0.5D) * 0.02D
+                                                    );
+                                                }
+                                            }
+
+                                            if (entity.isInWater()) {
 
 
                                             for (int i = 0; i < 12; i++) {
@@ -468,7 +723,7 @@ public class QoLMiscAnimations {
                                                                 + windZ;
 
                                                 entity.level().addParticle(
-                                                        ParticleTypes.WHITE_ASH,
+                                                        ParticleTypes.BUBBLE,
                                                         x,
                                                         y,
                                                         z,
@@ -494,7 +749,7 @@ public class QoLMiscAnimations {
                                                                 + (random.nextDouble() - 0.5D) * 0.8D;
 
                                                 entity.level().addParticle(
-                                                        ParticleTypes.ASH,
+                                                        ParticleTypes.BUBBLE,
                                                         x,
                                                         y,
                                                         z,
@@ -503,6 +758,7 @@ public class QoLMiscAnimations {
                                                         (random.nextDouble() - 0.5D) * 0.02D
                                                 );
                                             }
+
 
 
                                             for (int i = 0; i < 8; i++) {
@@ -516,7 +772,7 @@ public class QoLMiscAnimations {
                                                                 + (random.nextDouble() - 0.5D) * entity.getBbWidth();
 
                                                 entity.level().addParticle(
-                                                        ParticleTypes.ASH,
+                                                        ParticleTypes.BUBBLE_POP,
                                                         x,
                                                         entity.getY() + 0.05D,
                                                         z,
@@ -524,6 +780,7 @@ public class QoLMiscAnimations {
                                                         0.01D,
                                                         (random.nextDouble() - 0.5D) * 0.02D
                                                 );
+                                            }
                                             }
                                         },
                                         AnimationEvent.Side.CLIENT

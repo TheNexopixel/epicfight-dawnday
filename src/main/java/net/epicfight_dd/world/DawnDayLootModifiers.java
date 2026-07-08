@@ -49,6 +49,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("blood_ritus_dagger")
@@ -252,6 +253,7 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.2f))
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
                         .name("golden_messer")
