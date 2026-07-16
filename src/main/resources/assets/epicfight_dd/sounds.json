@@ -48,6 +48,16 @@
     "subtitle":"sfx.guard_counter",
     "sounds":[{"name":"epicfight_dd:sfx/guard_counter", "stream":false}]
   },
+  "sfx.redemption":
+  {
+    "category":"player",
+    "subtitle":"Redemption Activate",
+    "sounds":[
+      {"name":"epicfight_dd:sfx/redemption_1", "stream":false},
+      {"name":"epicfight_dd:sfx/redemption_2", "stream":false},
+      {"name":"epicfight_dd:sfx/redemption_3", "stream":false}
+    ]
+  },
   "sfx.killed1":
   {
     "category":"master",

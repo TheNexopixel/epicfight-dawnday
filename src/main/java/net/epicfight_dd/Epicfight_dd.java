@@ -63,6 +63,10 @@ public class Epicfight_dd {
                 ModConfig.Type.COMMON,
                 DawnDayConfig.SPEC
         );
+        ModLoadingContext.get().registerConfig(
+                ModConfig.Type.SERVER,
+                DawnDayServerConfig.SPEC
+        );
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
 
@@ -96,6 +100,17 @@ public class Epicfight_dd {
             if (info != null) {
                 event.addRepositorySource((source) ->
                         source.accept(Pack.create("Slam High Pitch", Component.translatable("pack.Slam High Pitch.title"), false, resourcesSupplier, info, PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
+            }
+        }
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(Epicfight_dd.MODID).getFile().findResource("packs/16xTrails");
+            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(Epicfight_dd.MODID).getFile().getFileName() + ":" + resourcePath, false, resourcePath);
+            Pack.ResourcesSupplier resourcesSupplier = (string) -> pack;
+            Pack.Info info = Pack.readPackInfo("16xTrails", resourcesSupplier);
+
+            if (info != null) {
+                event.addRepositorySource((source) ->
+                        source.accept(Pack.create("16xTrails", Component.translatable("pack.16xTrails.title"), false, resourcesSupplier, info, PackType.CLIENT_RESOURCES, Pack.Position.TOP, false, PackSource.BUILT_IN)));
             }
         }
     }

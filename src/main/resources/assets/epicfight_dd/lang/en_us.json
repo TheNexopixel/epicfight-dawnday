@@ -24,6 +24,7 @@
   "item.epicfight_dd.steelaxe" : "Steel Axe",
   "epicfight.weapon_category.ritus_dagger":"Ritual Daggers",
   "epicfight.weapon_category.florett":"Florett",
+  "epicfight.weapon_category.sickle":"Sickles",
   "epicfight.weapon_category.iron_fist":"Iron Fist",
   "epicfight.weapon_category.light_greatsword":"Light Greatswords",
   "item.epicfight_dd.backhand_blade" : "Backhand Blade",
@@ -262,5 +263,8 @@
   "tooltip.epicfight_dd.poleblade_blade_part": "It appears to be part of an ancient weapon",
   "tooltip.epicfight_dd.nail": "That looks pretty sharp",
   "item.epicfight_dd.poleblade_blade_part":"Poleblade Blade Part",
-  "tooltip.epicfight_dd.peridot": "Bright green, but no more dangerous than a pebble"
+  "tooltip.epicfight_dd.peridot": "Bright green, but no more dangerous than a pebble",
+  "pack.16xTrails.title": "DawnDay 16x16 Trails",
+  "tooltip.epicfight_dd.ruby": "This deep wine-red stone seems to absorb all light.",
+  "tooltip.epicfight_dd.amber": "One might think this stone had captured the sun, as it looks as though it’s glowing a bright orange."
 }

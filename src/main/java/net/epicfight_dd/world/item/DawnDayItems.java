@@ -19,7 +19,7 @@ public class DawnDayItems {
 
     public static final RegistryObject<Item> POLEBLADE =
             ITEMS.register("poleblade", () -> new DawnDayTooltips(
-                    Tiers.NETHERITE,
+                    Tiers.DIAMOND,
                     0,
                     -2.0F,
                     new Item.Properties()
@@ -263,6 +263,12 @@ public class DawnDayItems {
             ITEMS.register("golden_battlestaff",() -> new WeaponItem(Tiers.GOLD,3,-2.2f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(680)){});
+
+    public static final RegistryObject<Item>  AMETHIST_BATTLESTAFF =
+            ITEMS.register("amethist_battlestaff",() -> new WeaponItem(Tiers.DIAMOND, 4, -2.45f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(1250)) {});
 
     public static final RegistryObject<Item> diamond_battlestaff =
             ITEMS.register("diamond_battlestaff",() -> new WeaponItem(Tiers.DIAMOND, 3, -2.5f,

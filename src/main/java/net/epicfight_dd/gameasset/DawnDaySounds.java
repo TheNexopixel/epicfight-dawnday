@@ -7,7 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class dawnDaySounds {
+public class DawnDaySounds {
 
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "epicfight_dd");
 
@@ -21,6 +21,7 @@ public class dawnDaySounds {
     public static final RegistryObject<SoundEvent> guard_break = registerSound("sfx.guard_break");
     public static final RegistryObject<SoundEvent> poise_break = registerSound("sfx.poise_break");
     public static final RegistryObject<SoundEvent> GUARD_COUNTER = registerSound("sfx.guard_counter");
+    public static final RegistryObject<SoundEvent> REDEMPTION = registerSound("sfx.redemption");
     public static final RegistryObject<SoundEvent> soft_wipe = registerSound("sfx.soft_wipe");
     public static final RegistryObject<SoundEvent> Light_Punch = registerSound("sfx.light_punch");
     public static final RegistryObject<SoundEvent> CRITICAL_HIT = registerSound("sfx.critical_hit");

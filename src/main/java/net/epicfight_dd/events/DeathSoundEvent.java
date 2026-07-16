@@ -1,7 +1,7 @@
 package net.epicfight_dd.events;
 
 import net.epicfight_dd.DawnDayConfig;
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,9 +25,9 @@ public class DeathSoundEvent {
                 SoundEvent sound;
 
                 switch (random) {
-                    case 0 -> sound = dawnDaySounds.KILLED2.get();
-                    case 1 -> sound = dawnDaySounds.KILLED3.get();
-                    default -> sound = dawnDaySounds.KILLED1.get();
+                    case 0 -> sound = DawnDaySounds.KILLED2.get();
+                    case 1 -> sound = DawnDaySounds.KILLED3.get();
+                    default -> sound = DawnDaySounds.KILLED1.get();
                 }
 
                 entity.level().playSound(

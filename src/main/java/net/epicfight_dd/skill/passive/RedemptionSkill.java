@@ -1,6 +1,6 @@
 package net.epicfight_dd.skill.passive;
 
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -60,24 +60,11 @@ public class RedemptionSkill extends PassiveSkill {
                     if (container.getStack() <= 0) {
                         return;
                     }
-
-
-
                     float currentHealth = player.getHealth();
-                    float incomingDamage = event.getDamage();
 
-                    float healthAfterHit = currentHealth - incomingDamage;
-
-
-                    if (currentHealth > 5) {
+                    if (currentHealth > 6) {
                         return;
                     }
-/*
-                    if (healthAfterHit > threshold) {
-                        return;
-                    }
-
- */
 
                     activateRedemption(container, player, event.getDamageSource());
                 }
@@ -128,7 +115,7 @@ public class RedemptionSkill extends PassiveSkill {
                         attacker.getX(),
                         attacker.getY(),
                         attacker.getZ(),
-                        dawnDaySounds.CURSED1.get(),
+                        DawnDaySounds.CURSED1.get(),
                         attacker.getSoundSource(),
                         1.0F,
                         0.75F
@@ -223,6 +210,16 @@ public class RedemptionSkill extends PassiveSkill {
                 player.getSoundSource(),
                 1.0F,
                 0.65F
+        );
+        player.level().playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                DawnDaySounds.REDEMPTION.get(),
+                player.getSoundSource(),
+                1.5F,
+                1.0F
         );
 
         if (!player.level().isClientSide()) {

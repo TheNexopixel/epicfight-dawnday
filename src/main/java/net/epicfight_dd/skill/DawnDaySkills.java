@@ -6,13 +6,12 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
 
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.passive.IronWillSkill;
 import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
@@ -73,7 +72,7 @@ public class DawnDaySkills {
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
                     .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.01F))
                     .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100.0F))
-                    .addProperty(AttackPhaseProperty.HIT_SOUND, dawnDaySounds.poise_break.get())
+                    .addProperty(AttackPhaseProperty.HIT_SOUND, DawnDaySounds.poise_break.get())
                     .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6.6F))
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
@@ -151,7 +150,7 @@ public class DawnDaySkills {
                 .setCategory(SkillCategories.WEAPON_INNATE));
         piercingfang.newProperty()
                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                .addProperty(AttackPhaseProperty.SWING_SOUND, dawnDaySounds.piercing_fang.get())
+                .addProperty(AttackPhaseProperty.SWING_SOUND, DawnDaySounds.piercing_fang.get())
                 .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5F))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))

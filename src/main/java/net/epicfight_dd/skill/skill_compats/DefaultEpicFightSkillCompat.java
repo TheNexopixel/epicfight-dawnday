@@ -143,6 +143,7 @@ public class DefaultEpicFightSkillCompat {
                 SwordmasterSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.FLORETT)
+                    .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.SICKLE)
                     .addAvailableWeaponCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD);
         }
     }
@@ -152,6 +153,7 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
+        icon.registerCategory(EpicFightDD_WeaponCategories.SICKLE, new ItemStack(DawnDayItems.IRON_SICKLE.get()));
         icon.registerCategory(EpicFightDD_WeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));
 
     }

@@ -10,15 +10,20 @@ public class DawnDayConfig {
                     .comment("Enable Death Sound Effect (Default: true)")
                     .define("deathsound", true);
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_SPECTATOR_RESPAWN =
-            BUILDER
-                    .comment("Set Gamemode to Spectator when a player respawns (Default: false)")
-                    .define("death_spectator", false);
-
     public static final ForgeConfigSpec.BooleanValue ENABLE_DEATH_PARTICLES =
             BUILDER
                     .comment("Enables the Particles on DawnDays Custom Death Animations (Default: true)")
                     .define("death_particles", true);
+
+    public static final ForgeConfigSpec.DoubleValue SEPUKKU_ATTACK_DAMAGE =
+            BUILDER
+                    .comment("Sepukku attack damage multiplier (Default: 0.3)(0.3 = 30%)")
+                    .defineInRange("sepukku_attack_damage", 0.3D, -10D, 10D);
+
+    public static final ForgeConfigSpec.DoubleValue SEPUKKU_IMPACT =
+            BUILDER
+                    .comment("Sepukku impact bonus(Default: 0.6)")
+                    .defineInRange("sepukku_impact", 0.6D, -100D, 100D);
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 

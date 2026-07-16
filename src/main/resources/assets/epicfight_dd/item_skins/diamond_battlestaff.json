@@ -1,8 +1,8 @@
 {
   "trail": {
-    "color": [80, 160, 200],
-    "begin_pos": [0.0, 0.0, 1.75],
-    "end_pos": [0.0, 0.0, -1.75],
+    "color": [51, 235, 203],
+    "begin_pos": [0.0, 0.0, 2.3],
+    "end_pos": [0.0, 0.0, -2.3],
     "lifetime": 4,
     "interpolations": 8,
     "texture_path": "epicfight_dd:textures/particle/battlestaff_trail.png",

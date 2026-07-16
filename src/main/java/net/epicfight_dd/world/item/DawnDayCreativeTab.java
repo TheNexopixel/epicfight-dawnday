@@ -61,6 +61,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_knife.get());
                 output.accept(DawnDayItems.golden_knife.get());
                 output.accept(DawnDayItems.netherite_battlestaff.get());
+                output.accept(DawnDayItems.AMETHIST_BATTLESTAFF.get());
                 output.accept(DawnDayItems.diamond_battlestaff.get());
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());

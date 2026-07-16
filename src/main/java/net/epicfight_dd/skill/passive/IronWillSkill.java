@@ -3,7 +3,7 @@ package net.epicfight_dd.skill.passive;
 import java.util.List;
 import java.util.UUID;
 
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.ParticleTypes;
@@ -64,7 +64,7 @@ public class IronWillSkill extends PassiveSkill {
                     );
 
                     container.getExecutor().playSound(
-                            dawnDaySounds.GUARD_COUNTER.get(),
+                            DawnDaySounds.GUARD_COUNTER.get(),
                             0.9F,
                             1.1F
                     );

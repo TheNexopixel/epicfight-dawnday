@@ -4,7 +4,7 @@ import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
@@ -1003,7 +1003,7 @@ public class QoLMiscAnimations {
         // Just Animations I have done some time ago. I wanted to see how they look like ingame
         WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.02f,0.2f,ac,Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
-                .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(dawnDaySounds.soft_wipe.get()))
+                .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(DawnDaySounds.soft_wipe.get()))
         );
 
 

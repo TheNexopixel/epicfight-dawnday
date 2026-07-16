@@ -41,5 +41,19 @@ public class ItemTooltips {
             );
 
         }
+        if (stack.is(DawnDayItems.ruby.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.ruby")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
+        if (stack.is(DawnDayItems.AMBER.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.amber")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
     }
 }

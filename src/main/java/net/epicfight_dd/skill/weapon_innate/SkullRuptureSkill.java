@@ -1,7 +1,7 @@
 package net.epicfight_dd.skill.weapon_innate;
 
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;
@@ -51,7 +51,7 @@ public class SkullRuptureSkill extends SimpleWeaponInnateSkill {
                                     serverPlayerPatch.getOriginal().level().playSound(
                                             null,
                                             serverPlayerPatch.getOriginal().getOnPos(),
-                                            dawnDaySounds.guard_break.get()
+                                            DawnDaySounds.guard_break.get()
                                             , SoundSource.PLAYERS,
                                             100f,
                                             1f

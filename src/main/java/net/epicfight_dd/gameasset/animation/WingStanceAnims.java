@@ -1,6 +1,6 @@
 package net.epicfight_dd.gameasset.animation;
 
-import net.epicfight_dd.gameasset.dawnDaySounds;
+import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.LivingMotions;
@@ -57,11 +57,11 @@ public class WingStanceAnims {
         WINGSTANCE_SKILL1 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill1", (accessor) ->
                 new AttackAnimation(0.12F, accessor, biped,
                         new AttackAnimation.Phase(0.0f, 0.2f, 0.55f, 0.8f, 2.0f, 0.81f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_light_slash.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, DawnDaySounds.Milady_light_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.18f)),
 
                         new AttackAnimation.Phase(0.81f, 0.87f, 1.10f, 1.4f, 2.0f,1.41f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.Milady_heavy_slash.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, DawnDaySounds.Milady_heavy_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(15.55f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.57f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
@@ -79,7 +79,7 @@ public class WingStanceAnims {
 
         WINGSTANCE_SKILL2 = builder.nextAccessor("biped/skill/wingstance/wingstance_skill2", (accessor) ->
                 new AttackAnimation(0.12F, 0.6F, 0.65F, 1.12F, 1.8F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, dawnDaySounds.piercing_fang.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, DawnDaySounds.piercing_fang.get())
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(33.33f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.9f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
@@ -140,7 +140,7 @@ public class WingStanceAnims {
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER,ValueModifier.adder(40.0f))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_light_slash.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, DawnDaySounds.Milady_light_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.BLADE_RUSH_SKILL)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.83)))
 
@@ -157,7 +157,7 @@ public class WingStanceAnims {
 
                         new AttackAnimation.Phase(0.681f, 0.9f, 1.00f, 1.28f, 1.4f,20.5f, InteractionHand.MAIN_HAND, biped.get().toolR,null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.EVISCERATE.get())
-                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,dawnDaySounds.Milady_light_slash.get())
+                                .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, DawnDaySounds.Milady_light_slash.get())
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier((float) 1.13)))
 
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)

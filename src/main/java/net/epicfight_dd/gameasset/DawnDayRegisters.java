@@ -13,7 +13,7 @@ public class DawnDayRegisters {
 
    public static List<DeferredRegister<?>> REGISTERS =
             List.of(
-                    dawnDaySounds.SOUNDS,
+                    DawnDaySounds.SOUNDS,
                     DawnDayItems.ITEMS,
                     DawnDayCreativeTab.CREATIVE_MODE_TABS,
                     SkillDataKeyZ.DATA_KEYS,

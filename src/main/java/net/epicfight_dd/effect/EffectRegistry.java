@@ -56,10 +56,8 @@ public class EffectRegistry {
             );
 
     public static final RegistryObject<MobEffect> SEPUKKU =
-            EFFECTS.register("sepukku",()-> new SepukkuEffect(MobEffectCategory.BENEFICIAL,0xa11106)
-                    .addAttributeModifier(Attributes.ATTACK_DAMAGE, "9b2e3a11-1c3d-4f58-bd22-1a9c7e5f3b44", 0.3, AttributeModifier.Operation.MULTIPLY_BASE)
-                    .addAttributeModifier(EpicFightAttributes.IMPACT.get(), "9b2e3a11-9a3f-4c12-8f6a-1b2c3d4e5f60", 0.6, AttributeModifier.Operation.ADDITION)
-            );
+            EFFECTS.register("sepukku",
+                    () -> new SepukkuEffect(MobEffectCategory.BENEFICIAL, 0xa11106));
 
     public static final RegistryObject<MobEffect> DRAINDED =
             EFFECTS.register("drained",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0xa11106)

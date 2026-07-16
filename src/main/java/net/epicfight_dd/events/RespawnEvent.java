@@ -1,6 +1,6 @@
 package net.epicfight_dd.events;
 
-import net.epicfight_dd.DawnDayConfig;
+import net.epicfight_dd.DawnDayServerConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -12,7 +12,7 @@ public class RespawnEvent {
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
 
-        if (DawnDayConfig.ENABLE_SPECTATOR_RESPAWN.get().equals(true)) {
+        if (DawnDayServerConfig.ENABLE_SPECTATOR_RESPAWN.get().equals(true)) {
 
             if (!(event.getEntity() instanceof ServerPlayer player)) {
                 return;
