@@ -10,8 +10,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -51,7 +49,7 @@ public class ForgeBusEvent {
         }
 
         if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
-            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).get().getRealAnimation().equals(Animations.BIPED_DEATH.get().getRealAnimation())) {
+            if (mobPatch.getAnimator().getLivingAnimation(LivingMotions.DEATH,Animations.BIPED_DEATH).equals(Animations.BIPED_DEATH)) {
                 mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
                 AnimUtils.sendDevDebugmsg("mob has been given death animation");
             }
