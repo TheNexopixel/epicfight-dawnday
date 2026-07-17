@@ -10,6 +10,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -40,11 +42,11 @@ public class ForgeBusEvent {
 
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void giveDeathAnimationToMob(MobSpawnEvent event){
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void giveDeathAnimationToMob(LivingDeathEvent event){
         LivingEntity entity = event.getEntity();
 
-        if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get()){
+        if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get() || !(entity instanceof Mob)){
             return;
         }
 
