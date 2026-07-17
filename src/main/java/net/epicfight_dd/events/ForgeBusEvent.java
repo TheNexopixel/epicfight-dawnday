@@ -10,8 +10,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.LivingMotions;
@@ -20,7 +23,6 @@ import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
-import yesman.epicfight.world.capabilities.entitypatch.mob.ZombiePatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -40,7 +42,7 @@ public class ForgeBusEvent {
 
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void giveDeathAnimationToMob(MobSpawnEvent event){
         LivingEntity entity = event.getEntity();
 
@@ -49,14 +51,14 @@ public class ForgeBusEvent {
         }
 
         if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
-            AnimUtils.sendDevDebugmsg("mob has been spawned: " + entity);
-            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH) == Animations.BIPED_DEATH.get()) {
+            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH).get().getRealAnimation().equals(Animations.BIPED_DEATH.get().getRealAnimation())) {
                 mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
                 AnimUtils.sendDevDebugmsg("mob has been given death animation");
             }
         }
 
     }
+
 
     @SubscribeEvent
     public static void onEquipMentChange(LivingEquipmentChangeEvent event){
