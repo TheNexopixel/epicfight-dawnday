@@ -142,9 +142,16 @@ public class QoLMiscAnimations {
                                                 return;
                                             }
 
+
                                             LivingEntity entity = patch.getOriginal();
 
-                                            if (entity == null || !entity.level().isClientSide()) {
+                                            int tick_interval = entity instanceof Mob ? 10 : 1;
+
+                                            if(entity.tickCount % tick_interval != 0){
+                                                return;
+                                            }
+
+                                            if (!entity.level().isClientSide()) {
                                                 return;
                                             }
 

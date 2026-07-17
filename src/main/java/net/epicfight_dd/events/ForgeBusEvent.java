@@ -13,7 +13,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -45,7 +44,7 @@ public class ForgeBusEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void giveDeathAnimationToMob(LivingDeathEvent event){
         LivingEntity entity = event.getEntity();
-
+        //This works somehow, but why do I feel so uneasy
         if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get() || !(entity instanceof Mob)){
             return;
         }
