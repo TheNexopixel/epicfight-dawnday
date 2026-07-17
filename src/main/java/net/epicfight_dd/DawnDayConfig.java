@@ -15,6 +15,11 @@ public class DawnDayConfig {
                     .comment("Enables the Particles on DawnDays Custom Death Animations (Default: true)")
                     .define("death_particles", true);
 
+    public static final ForgeConfigSpec.BooleanValue ENABLE_CUSTOM_MOB_DEATH_ANIM =
+            BUILDER
+                    .comment("Enable custom death animations on humanoid mob (Default: true) <<Only affects mobs with vanilla ef death animation>>")
+                    .define("mob_death_anim", true);
+
     public static final ForgeConfigSpec.DoubleValue SEPUKKU_ATTACK_DAMAGE =
             BUILDER
                     .comment("Sepukku attack damage multiplier (Default: 0.3)(0.3 = 30%)")

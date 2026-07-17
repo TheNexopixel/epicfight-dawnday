@@ -12,6 +12,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -47,7 +48,9 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SAD_DEATH;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> SHOT_DEAD_MOB;
     public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> FALL_DEATH_MOB;
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SONICBOOM;
     public static AnimationManager.AnimationAccessor<ActionAnimation> EXPLOSION_DEATH;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SEPUKKU_DEATH;
@@ -74,8 +77,6 @@ public class QoLMiscAnimations {
                     if (source == null) return 0; //  fallback
 
 
-
-
                     boolean deathByTacZBullet = ModList.get().isLoaded(GunMod.MOD_ID) &&
                             (       source.is(ModDamageTypes.BULLET) ||
                                     source.is(ModDamageTypes.BULLET_VOID) ||
@@ -87,9 +88,15 @@ public class QoLMiscAnimations {
 
                     if (source.is(DamageTypes.WITHER)) return 2;
 
-                    if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL) || source.is(DamageTypes.FALLING_BLOCK)|| source.is(DamageTypes.FALLING_STALACTITE) || source.is(DamageTypes.STALAGMITE)) return 5;
+                    if (source.is(DamageTypes.FALL) || source.is(DamageTypes.FALLING_ANVIL) || source.is(DamageTypes.FALLING_BLOCK)|| source.is(DamageTypes.FALLING_STALACTITE) || source.is(DamageTypes.STALAGMITE)){
+                        if(entity instanceof Mob) return 17;
+                        else return 5;
+                    }
 
-                    if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE) || deathByTacZBullet) return 3;
+                    if (source.is(DamageTypes.ARROW) || source.is(DamageTypes.MOB_PROJECTILE) || deathByTacZBullet) {
+                        if(entity instanceof Mob) return 18;
+                        else return 3;
+                    }
 
                     if (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)) return 6;
 
@@ -121,7 +128,9 @@ public class QoLMiscAnimations {
                         DEATH_MAGIC,             // 13
                         SAD_DEATH,               // 14
                         GENERIC_DEATH_8,         // 15
-                        SEPUKKU_DEATH            // 16
+                        SEPUKKU_DEATH,           // 16
+                        FALL_DEATH_MOB,          // 17
+                        SHOT_DEAD_MOB            // 18
 
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
@@ -978,7 +987,41 @@ public class QoLMiscAnimations {
 
         );
 
+        SHOT_DEAD_MOB = builder.nextAccessor("biped/deathanims/death_arrow_mob", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e,s,p)->{
+
+                            LivingEntity entity = e.getOriginal();
+
+                            // Random count between 10–25
+                            int particleCount = 15 + entity.getRandom().nextInt(19);
+
+                            for (int i = 0; i < particleCount; i++) {
+                                double offsetX = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+                                double offsetY = entity.getRandom().nextDouble() * entity.getBbHeight();
+                                double offsetZ = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                entity.level().addParticle(
+                                        EpicFightParticles.BLOOD.get(),
+                                        entity.getX() + offsetX,
+                                        entity.getY() + offsetY,
+                                        entity.getZ() + offsetZ,
+                                        0.0D, 0.02D, 0.0D
+                                );
+                            }
+
+                        }, AnimationEvent.Side.CLIENT
+                ))
+
+
+        );
+
         FALL_DEATH = builder.nextAccessor("biped/deathanims/death_fall", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+        );
+
+        FALL_DEATH_MOB = builder.nextAccessor("biped/deathanims/death_fall_mob", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
         );
 

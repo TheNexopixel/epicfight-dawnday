@@ -1,5 +1,6 @@
 package net.epicfight_dd.events;
 
+import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
@@ -9,10 +10,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.EntityStunEvent;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
+import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -27,6 +33,22 @@ public class ForgeBusEvent {
        if(event.getStunnedEntityPatch() instanceof ServerPlayerPatch serverPlayerPatch){
             if(event.getStunType().equals(StunType.KNOCKDOWN)){
                 serverPlayerPatch.playAnimationSynchronized(QoLMiscAnimations.DAWNDAY_KNOCKDOWN, 0.0f);
+            }
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void giveDeathAnimationToMob(MobSpawnEvent event){
+        LivingEntity entity = event.getEntity();
+
+        if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get()){
+            return;
+        }
+
+        if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
+            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH) == Animations.BIPED_DEATH) {
+                mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
             }
         }
 
