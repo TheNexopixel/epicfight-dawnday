@@ -2,6 +2,7 @@ package net.epicfight_dd.events;
 
 import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.api.animation.AnimUtils;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.DawnDaySkills;
@@ -19,6 +20,7 @@ import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
+import yesman.epicfight.world.capabilities.entitypatch.mob.ZombiePatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -47,8 +49,10 @@ public class ForgeBusEvent {
         }
 
         if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
-            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH) == Animations.BIPED_DEATH) {
+            AnimUtils.sendDevDebugmsg("mob has been spawned: " + entity);
+            if (mobPatch.getAnimator().getLivingAnimations().get(LivingMotions.DEATH) == Animations.BIPED_DEATH.get()) {
                 mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
+                AnimUtils.sendDevDebugmsg("mob has been given death animation");
             }
         }
 

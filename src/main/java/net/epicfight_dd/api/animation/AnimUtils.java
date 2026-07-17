@@ -1,5 +1,7 @@
 package net.epicfight_dd.api.animation;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -8,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
+import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.damagesource.StunType;
@@ -25,6 +28,13 @@ public class AnimUtils {
     /// assumes animation to be at 60 frames per second
     public static float getAnimTimeFromFrame(int frame) {
         return (float) frame / 60;
+    }
+
+    public static void sendDevDebugmsg(String msg){
+        if(EpicFightSharedConstants.IS_DEV_ENV){
+            assert Minecraft.getInstance().player != null;
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal(msg));
+        }
     }
 
     public static final AnimationProperty.PlaybackSpeedModifier ONE50PERCENT = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 1.5F;
