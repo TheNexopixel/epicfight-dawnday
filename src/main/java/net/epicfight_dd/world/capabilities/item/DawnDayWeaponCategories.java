@@ -4,7 +4,7 @@ import net.minecraft.world.item.Item;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
-public enum EpicFightDD_WeaponCategories implements WeaponCategory {
+public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
     SICKLE,
     FLORETT,
@@ -13,7 +13,7 @@ public enum EpicFightDD_WeaponCategories implements WeaponCategory {
 
         final int id;
 
-    EpicFightDD_WeaponCategories() {
+    DawnDayWeaponCategories() {
         this.id = WeaponCategory.ENUM_MANAGER.assign(this);
     }
 

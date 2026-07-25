@@ -55,5 +55,26 @@ public class ItemTooltips {
             );
 
         }
+        if (stack.is(DawnDayItems.MALACHITE.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.malachite")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
+        if (stack.is(DawnDayItems.METAL_PLATE.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.metal_plate")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
+        if (stack.is(DawnDayItems.RUSTED_METAL_PLATE.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.rusted_metal_plate")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
     }
 }

@@ -1,16 +1,13 @@
 package net.epicfight_dd.skill.skill_compats;
 
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecution_TYPES;
-import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.api.event.RegisterCustomExecutionEvent;
 import net.shelmarow.combat_evolution.execution.ExecutionTypeManager;
-import reascer.wom.main.WeaponsOfMinecraft;
-import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
@@ -30,10 +27,10 @@ public class  CombatEvoCompat implements ICompatModule {
                   return DawnDayExecution_TYPES.KNEE_STOMP;
               });
 
-      event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
+      event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
               ExecutionTypeManager.TACHI_TYPE);
 
-      event.registerExecutionByCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
+      event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);
 
       event.registerExecutionByItem(DawnDayItems.diamond_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,

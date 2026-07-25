@@ -33,6 +33,7 @@ public class DawnDayLootModifiers {
                                 )
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
                         .name("night_ritus_dagger")
                         .build();
@@ -69,6 +70,25 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.steelaxe.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .name("blood_ritus_dagger")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/buried_treasure"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.4f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
                         .name("blood_ritus_dagger")
@@ -133,6 +153,7 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_light_greatsword.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_halberd.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
                         .name("milady")
@@ -222,6 +243,7 @@ public class DawnDayLootModifiers {
                                 )
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .name("saber")
                         .build();
 
@@ -274,6 +296,7 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,3f))))

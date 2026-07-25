@@ -2,9 +2,9 @@
   "parent": "item/generated",
   "display": {
     "thirdperson_righthand": {
-      "rotation": [25, -90, -25],
-      "translation": [0, 8.0, 2.0],
-      "scale": [2.5, 2.5, 0.70]
+      "rotation": [-45, -90, 0],
+      "translation": [0, 18.0, 1.0],
+      "scale": [3.6, 3.6, 1.0]
     },
     "thirdperson_lefthand": {
       "rotation": [0, 90, 40],

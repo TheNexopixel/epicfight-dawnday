@@ -52,7 +52,7 @@ public class ForgeBusEvent {
         if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
             if (mobPatch.getAnimator().getLivingAnimation(LivingMotions.DEATH,Animations.BIPED_DEATH).equals(Animations.BIPED_DEATH)) {
                 mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
-                AnimUtils.sendDevDebugmsg("mob has been given death animation");
+              //  AnimUtils.sendDevDebugmsg("mob has been given death animation");
             }
         }
 

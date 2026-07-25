@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":2.5,
+      "armor_negation":20.0,
+      "max_strikes":6
+    }
+  },
+  "type":"epicfight_dd:iudex_halberd"
+}

@@ -2,6 +2,7 @@ package net.epicfight_dd.gameasset.animation;
 
 import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.DawnDaySounds;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -9,6 +10,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.sound.SoundEvent;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.property.AnimationEvent;
@@ -30,6 +32,7 @@ import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
 
+import java.awt.image.DataBufferShort;
 import java.util.Set;
 
 public class DawnDayAnimations {
@@ -100,11 +103,10 @@ public class DawnDayAnimations {
 
     // HALBERD
 
-    public static AnimationAccessor<StaticAnimation> HALBEARD_IDLE;
+    public static AnimationAccessor<StaticAnimation> HALBERD_IDLE;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO1;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO3;
-    public static AnimationAccessor<BasicAttackAnimation> HALBERD_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> HALBERD_DASH;
     public static AnimationAccessor<AttackAnimation> SPEARING_STRIKE;
 
@@ -124,6 +126,20 @@ public class DawnDayAnimations {
     public static AnimationAccessor<DashAttackAnimation> IRON_FIST_DASH;
     public static AnimationAccessor<BasicAttackAnimation> IRON_FIST_AIRSLASH;
     public static AnimationAccessor<AttackAnimation> POWERFUL_KICK;
+
+
+    // IUDEX GUNDYR'S HALBERD
+    public static AnimationAccessor<StaticAnimation> IUDEX_HALBERD_IDLE;
+    public static AnimationAccessor<StaticAnimation> IUDEX_HALBERD_WALK;
+    public static AnimationAccessor<StaticAnimation> IUDEX_HALBERD_RUN;
+    public static AnimationAccessor<BasicAttackAnimation> IUDEX_HALBERD_AUTO1;
+    public static AnimationAccessor<BasicAttackAnimation> IUDEX_HALBERD_AUTO2;
+    public static AnimationAccessor<BasicAttackAnimation> IUDEX_HALBERD_AUTO3;
+    public static AnimationAccessor<BasicAttackAnimation> IUDEX_HALBERD_AUTO4;
+    public static AnimationAccessor<BasicAttackAnimation> IUDEX_HALBERD_AIRSLASH;
+    public static AnimationAccessor<DashAttackAnimation> IUDEX_HALBERD_DASH;
+    public static AnimationAccessor<AttackAnimation> CHAMPIONS_MIGHT;
+
 
     // KNIFE
 
@@ -343,6 +359,15 @@ public class DawnDayAnimations {
                 new StaticAnimation(0.12F, true, ac, biped));
 
         VITR_WALK = builder.nextAccessor("biped/living/vitreus_walk", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        IUDEX_HALBERD_IDLE = builder.nextAccessor("biped/living/iudex_halberd_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        IUDEX_HALBERD_WALK = builder.nextAccessor("biped/living/iudex_halberd_walk", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        IUDEX_HALBERD_RUN = builder.nextAccessor("biped/living/iudex_halberd_run", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         ECLIPSE_IDLE = builder.nextAccessor("biped/living/eclipse_idle", ac ->
@@ -1452,7 +1477,7 @@ public class DawnDayAnimations {
         WAR_SICKLE_IDLE = builder.nextAccessor("biped/living/war_sickle_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
-        HALBEARD_IDLE = builder.nextAccessor("biped/living/halbeard_idle", ac ->
+        HALBERD_IDLE = builder.nextAccessor("biped/living/halberd_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
         BATTLESTAFF_IDLE = builder.nextAccessor("biped/living/battlestaff_idle", ac ->
@@ -1693,6 +1718,49 @@ public class DawnDayAnimations {
                                 ).params(new Vec3f(-0.0F, 0.25F, -3.0F), Armatures.BIPED.get().rootJoint, 2.5D, 3.5F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
+        IUDEX_HALBERD_AIRSLASH = builder.nextAccessor("biped/combat/iudex_halberd_airslash", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.5F, 0.65F, 0.85F, 1.0F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        IUDEX_HALBERD_AUTO1 = builder.nextAccessor("biped/combat/iudex_halberd_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.5F, 0.65F, 0.85F, 1.0F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.74F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(
+                                new Vec3f(-2.0F, 0.5F, 1.0F), Armatures.BIPED.get().rootJoint, 1.1D, 1.55F))
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+
+        IUDEX_HALBERD_AUTO2 = builder.nextAccessor("biped/combat/iudex_halberd_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.5F, 0.73F, 0.90F, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        IUDEX_HALBERD_AUTO3 = builder.nextAccessor("biped/combat/iudex_halberd_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.5F, 0.8F, 0.88F, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.84F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(
+                                new Vec3f(2.0F, 0.5F, -2.0F), Armatures.BIPED.get().rootJoint, 1.1D, 1.55F))
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        IUDEX_HALBERD_AUTO4 = builder.nextAccessor("biped/combat/iudex_halberd_auto4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.5F, 0.85F, 1.0F, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER,ValueModifier.adder(1f))
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(1.1f))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addEvents(AnimationEvent.InTimeEvent.create(0.94F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(
+                                new Vec3f(2.0F, 0.5F, -2.0F), Armatures.BIPED.get().rootJoint, 1.6D, 2.1F))
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        IUDEX_HALBERD_DASH = builder.nextAccessor("biped/combat/iudex_halberd_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.5F, 0.39F, 0.67F, 0.9F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.6f))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
 
         BATTLESTAFF_AUTO1 = builder.nextAccessor("biped/combat/battlestaff_auto1", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.16F, 0.35F, 0.5F, 0.85F, null, biped.get().toolR, accessor, biped)
@@ -1918,6 +1986,24 @@ public class DawnDayAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.3F, 0.85F))
                         .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false)
+        );
+        CHAMPIONS_MIGHT = builder.nextAccessor("biped/skill/champions_might", ac ->
+                new AttackAnimation(0.1f, 1.0f, 0.7f, 1.0f, 1.6f, InteractionHand.MAIN_HAND, DawnDayCollider.BACKHAND_INNATE, biped.get().rootJoint, ac, biped)
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.72f, (e, s, p) ->
+                                                e.getOriginal().level().playSound(
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
+                                                        EpicFightSounds.WHOOSH_SHARP.get(),
+                                                        SoundSource.PLAYERS,
+                                                        0.7F,
+                                                        0.9F
+                                                )
+
+                                        , AnimationEvent.Side.SERVER))
         );
 
         WILD_STRIKES = builder.nextAccessor("biped/skill/wild_strikes", (accessor) ->
@@ -2398,37 +2484,28 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        HALBERD_AUTO1 = builder.nextAccessor("biped/combat/halbeard_auto1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.52F, 0.82F, null, biped.get().toolR, accessor, biped)
+        HALBERD_AUTO1 = builder.nextAccessor("biped/combat/halberd_auto1", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.5F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO2 = builder.nextAccessor("biped/combat/halberd_auto2", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.56F, 0.82F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        HALBERD_AUTO3 = builder.nextAccessor("biped/combat/halberd_auto3", (accessor) ->
+                new BasicAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.28f, 0.37f, 1.0f, 0.65f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)),
+
+                        new AttackAnimation.Phase(0.65f, 0.65f, 0.7f, 0.86f, 1.0f, 6.9f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8F)))
+
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
-        HALBERD_AUTO2 = builder.nextAccessor("biped/combat/halbeard_auto2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HALBERD_AUTO3 = builder.nextAccessor("biped/combat/halbeard_auto3", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HALBERD_AUTO4 = builder.nextAccessor("biped/combat/halbeard_auto4", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.3F, 0.35F, 0.62F, 0.82F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLADE)
-                        .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.WHOOSH_BIG.get())
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
-                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(1.6F))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(AnimationEvent.InTimeEvent.create(0.6F, Animations.ReusableSources.FRACTURE_GROUND_SIMPLE, AnimationEvent.Side.CLIENT).params(new Vec3f(-0.0F, 0.25F, -1.0F), Armatures.BIPED.get().toolR, 1.1D, 0.55F))
-
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
-
-        HALBERD_DASH = builder.nextAccessor("biped/combat/halbeard_dash", (accessor) ->
-                new DashAttackAnimation(0.12F, 0.0f, 0.1f, 0.3f, 1.2F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
-                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 
         GET_KEBABed_MuAHAHAHA = builder.nextAccessor("biped/skill/grab/grab_execute", ac -> new GrapplingAttackAnimation(

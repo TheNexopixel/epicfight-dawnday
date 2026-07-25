@@ -39,6 +39,18 @@ public class DawnDayItems {
                             ChatFormatting.DARK_RED)
 
             ));
+    public static final RegistryObject<Item> IUDEX_HALBERD =
+            ITEMS.register("iudex_gundyr_halberd", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    5,
+                    -2.4F,
+                    new Item.Properties()
+                            .rarity(Rarity.RARE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.iudex_gundyr_halberd",
+                            ChatFormatting.YELLOW)
+
+            ));
 
     public static final RegistryObject<Item> NETHERITE_SICKLE =
             ITEMS.register("netherite_sickle",() -> new SwordItem(Tiers.NETHERITE,2,-1.9f,
@@ -264,8 +276,8 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(680)){});
 
-    public static final RegistryObject<Item>  AMETHIST_BATTLESTAFF =
-            ITEMS.register("amethist_battlestaff",() -> new WeaponItem(Tiers.DIAMOND, 4, -2.45f,
+    public static final RegistryObject<Item> AMETHYST_BATTLESTAFF =
+            ITEMS.register("amethyst_battlestaff",() -> new WeaponItem(Tiers.DIAMOND, 4, -2.45f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(1250)) {});

@@ -28,6 +28,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.VITREUS.get());
            //     output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
+                output.accept(DawnDayItems.IUDEX_HALBERD.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.saber.get());
@@ -61,7 +62,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_knife.get());
                 output.accept(DawnDayItems.golden_knife.get());
                 output.accept(DawnDayItems.netherite_battlestaff.get());
-                output.accept(DawnDayItems.AMETHIST_BATTLESTAFF.get());
+                output.accept(DawnDayItems.AMETHYST_BATTLESTAFF.get());
                 output.accept(DawnDayItems.diamond_battlestaff.get());
                 output.accept(DawnDayItems.iron_battlestaff.get());
                 output.accept(DawnDayItems.golden_battlestaff.get());
@@ -81,7 +82,7 @@ public class DawnDayCreativeTab {
                 output.accept(book_red);
 
                 ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
-                SkillBookItem.setContainingSkill(DawnDaySkills.IRON_WILL, book_iron_will);
+                SkillBookItem.setContainingSkill(DawnDaySkills.RIPOSTE, book_iron_will);
                 output.accept(book_iron_will);
 
                 // Potions

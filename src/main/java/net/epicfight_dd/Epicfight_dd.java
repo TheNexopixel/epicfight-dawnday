@@ -7,9 +7,8 @@ import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
 import net.epicfight_dd.skill.skill_compats.NightfallCompat;
 import net.epicfight_dd.skill.skill_compats.WoMCompat;
-import net.epicfight_dd.world.capabilities.item.EpicFightDD_WeaponCategories;
+import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
@@ -46,7 +45,7 @@ public class Epicfight_dd {
         //register every deferred register in the list with the mod eventbus
         DawnDayRegisters.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
         bus.addListener(this::addPackFindersEvent);
-        WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, EpicFightDD_WeaponCategories.class);
+        WeaponCategory.ENUM_MANAGER.registerEnumCls(Epicfight_dd.MODID, DawnDayWeaponCategories.class);
 
 
 

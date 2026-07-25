@@ -7,7 +7,7 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import java.util.Set;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
-import net.epicfight_dd.skill.passive.IronWillSkill;
+import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.*;
@@ -43,7 +43,7 @@ public class DawnDaySkills {
     public static Skill SKULL_RUPTURE;
     public static Skill QUICK_RUSH;
     public static Skill QUICK_STEP;
-    public static Skill IRON_WILL;
+    public static Skill RIPOSTE;
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
     public static Skill SPINNING_SHADOW;
@@ -52,7 +52,7 @@ public class DawnDaySkills {
     public static Skill INCISURA_VITREA;
     public static Skill WILD_STRIKES;
     public static Skill WILD_STRIKES_DUAL;
-    public static Skill RAAAHHH;
+    public static Skill CHAMPIONS_MIGHT;
     public static Skill SEPUKKU;
     public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
@@ -62,6 +62,22 @@ public class DawnDaySkills {
     @SubscribeEvent
     public static void buildSkillEvent(SkillBuildEvent build){
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
+
+        WeaponInnateSkill champmight = modRegistry.build("champions_might", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.CHAMPIONS_MIGHT)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        champmight.newProperty()
+                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.61F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(70.0F))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.6F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        CHAMPIONS_MIGHT = champmight;
 
 
             WeaponInnateSkill gentlenudge = modRegistry.build("gentle_nudge", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
@@ -310,7 +326,7 @@ public class DawnDaySkills {
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.IDENTITY));
 
-        IRON_WILL = modRegistry.build("iron_will", IronWillSkill::new,
+        RIPOSTE = modRegistry.build("riposte", Riposte::new,
                 PassiveSkill.createPassiveBuilder()
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.PASSIVE));

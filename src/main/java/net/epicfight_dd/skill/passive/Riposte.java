@@ -23,11 +23,11 @@ import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
-public class IronWillSkill extends PassiveSkill {
+public class Riposte extends PassiveSkill {
     private static final UUID EVENT_UUID =
             UUID.fromString("a5d42df5-5dd5-46ec-92fb-4b4d0cfd1c42");
 
-    public IronWillSkill(SkillBuilder<? extends PassiveSkill> builder) {
+    public Riposte(SkillBuilder<? extends PassiveSkill> builder) {
         super(builder);
     }
 
@@ -62,12 +62,21 @@ public class IronWillSkill extends PassiveSkill {
                             SkillDataKeyZ.IRON_WILL_STACKS.get(),
                             1
                     );
+                    /*
+                    float reflectedDamage = event.getDamage() * 0.5F;
 
+                    container.getDataManager().setDataSync(
+                            SkillDataKeyZ.IRON_WILL_DAMAGE.get(),
+                            reflectedDamage
+                    );
+*/
                     container.getExecutor().playSound(
                             DawnDaySounds.GUARD_COUNTER.get(),
                             0.9F,
                             1.1F
                     );
+
+
                 });
 
         container.getExecutor().getEventListener().addEventListener(
