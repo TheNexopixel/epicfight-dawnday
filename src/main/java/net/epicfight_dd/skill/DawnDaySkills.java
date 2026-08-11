@@ -34,6 +34,7 @@ import yesman.epicfight.world.damagesource.StunType;
 )
 public class DawnDaySkills {
 
+    public static Skill BEAST_EYE;
     public static Skill GENTLE_NUDGE;
     public static Skill BLOOD_DANCE;
     public static Skill PIERCING_FANG;
@@ -41,6 +42,7 @@ public class DawnDaySkills {
     public static Skill FURIOUS_CUT;
     public static Skill WINGSTANCE;
     public static Skill SKULL_RUPTURE;
+    public static Skill HEAD_KNOCKER;
     public static Skill QUICK_RUSH;
     public static Skill QUICK_STEP;
     public static Skill RIPOSTE;
@@ -63,6 +65,46 @@ public class DawnDaySkills {
     public static void buildSkillEvent(SkillBuildEvent build){
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
 
+        WeaponInnateSkill headknock = modRegistry.build("head_knocker", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.HEAD_KNOCKER)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        headknock.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(40.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6.7F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.9F))
+                .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.EXECUTION))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        HEAD_KNOCKER = headknock;
+
+
+        WeaponInnateSkill beasteye = modRegistry.build("beast_eye", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.BEAST_EYE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        beasteye.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(80.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(3.6F))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.EXECUTION))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        BEAST_EYE = beasteye;
+
+
         WeaponInnateSkill champmight = modRegistry.build("champions_might", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.CHAMPIONS_MIGHT)
                 .setCategory(SkillCategories.WEAPON_INNATE));
@@ -73,6 +115,8 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(70.0F))
                 .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.6F))
                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))

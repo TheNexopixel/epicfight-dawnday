@@ -11,15 +11,10 @@
 
   "display": {
     "thirdperson_righthand": {
-      "rotation": [180, 90, 0],
-      "translation": [10.0, -10.0, 0.0],
-      "scale": [1.8, 1.8, 1.25]
-    },
-      "firstperson_righthand": {
-        "rotation": [0, 0, 0],
-        "translation": [0, 0, 0],
-        "scale": [1, 1, 1]
-      }
+      "rotation": [0, -90, 0],
+      "translation": [-11.0, 9.5, 1.0],
+      "scale": [2.1, 2.1, 1.4]
+    }
     }
   },
   "perspectives": {

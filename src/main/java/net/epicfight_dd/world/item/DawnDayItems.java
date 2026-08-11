@@ -39,6 +39,19 @@ public class DawnDayItems {
                             ChatFormatting.DARK_RED)
 
             ));
+    public static final RegistryObject<Item> HOOKCLAWS =
+            ITEMS.register("hookclaws", () -> new DawnDayTooltips(
+                    Tiers.IRON,
+                    2,
+                    -1.6F,
+                    new Item.Properties()
+                            .defaultDurability(1205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.hookclaws",
+                            ChatFormatting.GRAY)
+
+            ));
     public static final RegistryObject<Item> IUDEX_HALBERD =
             ITEMS.register("iudex_gundyr_halberd", () -> new DawnDayTooltips(
                     Tiers.NETHERITE,

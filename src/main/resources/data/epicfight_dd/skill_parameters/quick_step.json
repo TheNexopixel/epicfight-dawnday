@@ -1,4 +1,4 @@
 {
-  "max_stacks" : 3
-
+  "max_stacks" : 3,
+  "consumption" : 1
 }

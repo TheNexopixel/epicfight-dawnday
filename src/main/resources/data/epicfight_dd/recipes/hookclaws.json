@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ND",
+    "N N",
+    " N "
+  ],
+  "key": {
+    "N": {
+      "item": "epicfight_dd:metal_plate"
+    },
+    "D": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:hookclaws",
+    "count": 1
+  }
+}
+

@@ -42,6 +42,18 @@
     "subtitle":"sfx.heavy_slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
   },
+  "sfx.beast_eye_1":
+  {
+    "category":"player",
+    "subtitle":"Beast Eye Active",
+    "sounds":[{"name":"epicfight_dd:sfx/beast_eye_1", "stream":false}]
+  },
+  "sfx.beast_eye_2":
+  {
+    "category":"player",
+    "subtitle":"Beast Eye Active",
+    "sounds":[{"name":"epicfight_dd:sfx/beast_eye_2", "stream":false}]
+  },
   "sfx.guard_counter":
   {
     "category":"master",

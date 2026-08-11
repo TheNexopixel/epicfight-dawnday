@@ -32,7 +32,8 @@ public class DawnDaySounds {
     public static final RegistryObject<SoundEvent> DRAINED = registerSound("sfx.drained");
     public static final RegistryObject<SoundEvent> CURSED1 = registerSound("sfx.cursed_1");
     public static final RegistryObject<SoundEvent> CURSED2 = registerSound("sfx.cursed_2");
-
+    public static final RegistryObject<SoundEvent> BEAST_EYE_1 = registerSound("sfx.beast_eye_1");
+    public static final RegistryObject<SoundEvent> BEAST_EYE_2 = registerSound("sfx.beast_eye_2");
 
 
 

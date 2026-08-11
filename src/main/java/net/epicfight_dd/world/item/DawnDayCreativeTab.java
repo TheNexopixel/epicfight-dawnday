@@ -37,6 +37,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.WAR_SICKLE.get());
                 output.accept(DawnDayItems.spiked_bat.get());
                 output.accept(DawnDayItems.bat.get());
+                output.accept(DawnDayItems.HOOKCLAWS.get());
                 output.accept(DawnDayItems.NETHERITE_SICKLE.get());
                 output.accept(DawnDayItems.DIAMOND_SICKLE.get());
                 output.accept(DawnDayItems.IRON_SICKLE.get());

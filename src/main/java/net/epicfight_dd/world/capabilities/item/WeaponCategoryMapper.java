@@ -14,6 +14,8 @@ public class WeaponCategoryMapper {
     static {
         categoryMap.put(DawnDayWeaponCategories.IRON_FIST, CapabilityItem.WeaponCategories.FIST);
         categoryMap.put(DawnDayWeaponCategories.SICKLE, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(DawnDayWeaponCategories.CLAWS, CapabilityItem.WeaponCategories.FIST);
+        categoryMap.put(DawnDayWeaponCategories.BAT, CapabilityItem.WeaponCategories.GREATSWORD);
         categoryMap.put(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.WeaponCategories.SWORD);
         categoryMap.put(DawnDayWeaponCategories.RITUS_DAGGER, CapabilityItem.WeaponCategories.DAGGER);
     }

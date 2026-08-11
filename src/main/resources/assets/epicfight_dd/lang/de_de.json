@@ -254,5 +254,22 @@
   "tooltip.epicfight_dd.peridot": "Giftgrün, aber nicht gefährlicher als ein Kiselstein",
   "pack.16xTrails.title": "DawnDay 16x16 Trails",
   "tooltip.epicfight_dd.ruby": "Dieser tiefweinrote Stein scheint jegliches Licht zu absorbieren.",
-  "tooltip.epicfight_dd.amber": "Man könnte meinen, dieser Stein habe die Sonne eingefangen, denn es sieht aus, als leuchtet er hell orange."
+  "tooltip.epicfight_dd.amber": "Man könnte meinen, dieser Stein habe die Sonne eingefangen, denn es sieht aus, als leuchtet er hell orange.",
+  "item.epicfight_dd.amethyst_battlestaff": "Amethyst Kampfstab",
+  "item.epicfight_dd.iudex_gundyr_halberd": "Iudex Gundyr's Hellebarde",
+  "tooltip.epicfight_dd.iudex_gundyr_halberd": "Die Hellebarde von Gundyr, dem Helden, die er erhielt, als er mit seiner Aufgabe betraut wurde.\nDiese alte Hellebarde aus Gusseisen hat die Kraft, das Gleichgewicht zu zerstören, und soll niemals zerfallen – was darauf hindeutet, dass Gundyr von Anfang an zum ewigen Dienst bestimmt war.",
+  "skill.epicfight_dd.champions_might": "Die Macht des Champions",
+  "skill.epicfight_dd.champions_might.tooltip": "Nutze die Kraft, die von der Hellebarde ausgeht, um einen mächtigen Hieb auszuführen, der deine Gegner tötet.",
+  "skill.epicfight_dd.beast_eye": "Auge der Bestie",
+  "tooltip.epicfight_dd.malachite": "Eltern legen diese Steine unter die Kissen ihrer Kinder, um sie vor Alpträumen zu bewahren.",
+  "tooltip.epicfight_dd.metal_plate": "Du bist dir nicht ganz sicher woraus dieses stück Metall besteht, es scheint jedoch, als würden es viele verschiedene Legierungen sein.",
+  "tooltip.epicfight_dd.rusted_metal_plate": "Dieses Metallstück ist so stark verrostet, dass es sich nicht mehr zum Schmieden eignet. Möglicherweise gibt es jedoch andere Verwendungsmöglichkeiten dafür.",
+  "item.epicfight_dd.hookclaws": "Hakenkrallen",
+  "tooltip.epicfight_dd.hookclaws": "Eine an der Faust getragene Waffe, bestehend aus scharfen, parallel angeordneten Klingen, die vor allem von denen bevorzugt wird, die in der Dunkelheit lauern.\n\nKrallen können an beiden Händen ausgerüstet werden.",
+  "epicfight.weapon_category.claws": "Klauen",
+  "skill.epicfight_dd.beast_eye.tooltip": "",
+  "pack.DawnDay3D Weapon Pack.title": "Dawn Day 3D Weapon Pack",
+  "epicfight.weapon_category.bat": "Knüppel",
+  "skill.epicfight_dd.head_knocker": "Schädelklopfer",
+  "skill.epicfight_dd.head_knocker.tooltip": "\"Klopf Klopf!!\""
 }

@@ -134,7 +134,7 @@ dependencies {
     // Custom Mod Dependencies
     modImplementation("curse.maven:epic-fight-mod-405076:8049910")
     modImplementation("curse.maven:combat-evolution-1377795:8164342")
-    modImplementation("curse.maven:wom-918614:8195403")
+    modImplementation("curse.maven:wom-918614:8539798")
     modCompileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
     modCompileOnly("curse.maven:epicfight-nightfall-1307848:7670480")
     modCompileOnly("curse.maven:epicfight-extra-1434276:7961244")
@@ -143,7 +143,7 @@ dependencies {
 
     // Performance & Core Tweaks
     modRuntimeOnly("curse.maven:embeddium-908741:5681725")
-    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:8333358")
+    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:8545797")
     modRuntimeOnly("curse.maven:ferritecore-429235:4810975")
     modRuntimeOnly("curse.maven:canary-665658:5089991")
 

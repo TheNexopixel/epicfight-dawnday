@@ -44,6 +44,11 @@ public class NightfallCompat implements ICompatModule {
                             (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
 
                     .addGuardMotion(
+                            DawnDayWeaponCategories.CLAWS,
+                            (i, p) -> DawnDayAnimations.HOOKCLAWS_GUARD_HIT
+                    ).addGuardBreakMotion(DawnDayWeaponCategories.CLAWS,
+                            (i, p) -> DawnDayAnimations.HOOKCLAWS_NEUTRALIZE)
+                    .addGuardMotion(
                             DawnDayWeaponCategories.SICKLE,
                             (i, p) -> Animations.SWORD_GUARD_HIT
                     ).addGuardBreakMotion(DawnDayWeaponCategories.SICKLE,
@@ -54,6 +59,9 @@ public class NightfallCompat implements ICompatModule {
 
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.FLORETT, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.CLAWS, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
@@ -74,6 +82,7 @@ public class NightfallCompat implements ICompatModule {
 
             icon.registerCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
             icon.registerCategory(DawnDayWeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
+            icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
             icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         }
 

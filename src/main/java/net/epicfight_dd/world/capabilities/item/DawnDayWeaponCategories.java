@@ -7,6 +7,8 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
     SICKLE,
+    CLAWS,
+    BAT,
     FLORETT,
     RITUS_DAGGER,
     IRON_FIST;

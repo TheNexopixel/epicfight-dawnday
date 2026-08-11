@@ -1,9 +1,9 @@
 {
   "trail": {
     "color": [200, 200, 200],
-    "begin_pos": [0.0, -0.1, 0.3],
-    "end_pos": [0.0, 0.2, 1.51],
-    "lifetime": 3,
+    "begin_pos": [0.0, -0.1, -0.6],
+    "end_pos": [0.0, 0.2, -1.7],
+    "lifetime": 5,
     "interpolations": 5,
     "texture_path": "epicfight_dd:textures/particle/backhandblade_trail.png",
     "particle_type": "epicfight:swing_trail"
