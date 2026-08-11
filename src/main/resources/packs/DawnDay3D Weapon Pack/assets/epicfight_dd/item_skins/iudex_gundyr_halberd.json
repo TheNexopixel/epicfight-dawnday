@@ -1,0 +1,11 @@
+{
+  "trail": {
+    "color": [180, 186, 216],
+    	"begin_pos": [0.0, 0.2, -3.0],
+    	"end_pos": [0.0, 0.25, -2.0],
+    "lifetime": 6,
+    "interpolations": 6,
+    "texture_path": "epicfight_dd:textures/particle/weapon_trail/iron_trail.png",
+    "particle_type": "epicfight:swing_trail"
+  }
+}

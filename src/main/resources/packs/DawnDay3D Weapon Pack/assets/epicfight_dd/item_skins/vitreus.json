@@ -1,0 +1,11 @@
+{
+    "trail": {
+    	"color": [205, 205, 225],
+    	"begin_pos": [0.0, 0.0, -2.0],
+    	"end_pos": [0.0, 0.2, 0.2],
+    	"lifetime": 8,
+		"interpolations": 6,
+    	"texture_path": "epicfight_dd:textures/particle/weapon_trail/aqua_trail.png",
+    	"particle_type": "epicfight:swing_trail"
+    }
+}
