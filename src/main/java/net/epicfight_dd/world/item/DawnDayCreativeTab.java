@@ -26,7 +26,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.bonecutting_saw.get());
                 output.accept(DawnDayItems.POLEBLADE.get());
                 output.accept(DawnDayItems.VITREUS.get());
-           //     output.accept(DawnDayItems.ECLIPSE.get());
+             //   output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.IUDEX_HALBERD.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());

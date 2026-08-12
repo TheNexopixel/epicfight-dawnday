@@ -4,15 +4,16 @@
 	"base": {
 		"loader": "forge:obj",
 		"flip_v": true,
-		"model": "epicfight_dd:models/obj/rebellion.obj",
+		"model": "epicfight_dd:models/obj/eclipse.obj",
 		"textures": {
-			"rebellion.png": "epicfight_dd:item/rebellion"
+			"blade_tex.png": "epicfight_dd:item/blade_tex",
+			"aoura.png": "epicfight_dd:item/aoura"
 		},
 
 		"display": {
 			"thirdperson_righthand": {
-				"rotation": [0, 0, 0],
-				"translation": [-1.5, -11.0, 10.0],
+				"rotation": [0, 90, 0],
+				"translation": [7, -2.0, -6.0],
 				"scale": [0.9, 0.9, 0.9]
 			},
 			"firstperson_righthand": {
@@ -27,6 +28,7 @@
 	},
 
 	"perspectives": {
+
 		"gui": {
 			"parent": "item/generated",
 			"textures": {

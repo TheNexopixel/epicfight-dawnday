@@ -5,12 +5,6 @@
         "end_time": 2.0,
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"
-      },
-      {
-        "start_time": 0.15,
-        "end_time": 2.0,
-        "joint": "Tool_R",
-        "item_skin_hand": "main_hand"
       }
     ]
 }

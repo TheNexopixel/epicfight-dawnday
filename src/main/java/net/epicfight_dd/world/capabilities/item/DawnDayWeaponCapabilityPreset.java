@@ -188,13 +188,13 @@ public class DawnDayWeaponCapabilityPreset {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> EpicFightSkills.STEEL_WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.ECLIPSE_ATT1,
-                            DawnDayAnimations.ECLIPSE_ATT2,
-                            DawnDayAnimations.ECLIPSE_ATT3,
+                            DawnDayAnimations.WARSICKLE_ATT1,
+                            DawnDayAnimations.WARSICKLE_ATT2,
+                            DawnDayAnimations.WARSICKLE_ATT3,
                             DawnDayAnimations.SICKLE_ONEHAND_DASH,
                             DawnDayAnimations.BAT_DASH
                     )
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.ECLIPSE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WARSICKLE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
@@ -209,15 +209,15 @@ public class DawnDayWeaponCapabilityPreset {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.BLOOD_DANCE)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.WARSICKLE_AUTO1,
-                            DawnDayAnimations.WARSICKLE_AUTO2,
-                            DawnDayAnimations.WARSICKLE_AUTO3,
-                            DawnDayAnimations.WARSICKLE_AUTO4,
-                            DawnDayAnimations.SICKLE_ONEHAND_DASH,
-                            DawnDayAnimations.WARSICKLE_AIRSLASH
+                            DawnDayAnimations.POLEBLADE_AUTO1,
+                            DawnDayAnimations.POLEBLADE_AUTO2,
+                            DawnDayAnimations.POLEBLADE_AUTO3,
+                            DawnDayAnimations.POLEBLADE_AUTO4,
+                            DawnDayAnimations.POLEBLADE_DASH,
+                            DawnDayAnimations.POLEBLADE_AIRSLASH
                     )
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.WARSICKLE_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.WARSICKLE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.POLEBLADE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.LONGSWORD_GUARD);
 
@@ -281,11 +281,11 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO2,
                             DawnDayAnimations.BATTLESTAFF_AUTO3,
                             DawnDayAnimations.BATTLESTAFF_AUTO4,
-                            DawnDayAnimations.BACKHAND_BLADE_AUTO2,
-                            DawnDayAnimations.WARSICKLE_AIRSLASH
+                            DawnDayAnimations.POLEBLADE_DASH,
+                            DawnDayAnimations.POLEBLADE_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.WARSICKLE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
@@ -305,11 +305,11 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO2,
                             DawnDayAnimations.BATTLESTAFF_AUTO3,
                             DawnDayAnimations.BATTLESTAFF_AUTO4,
-                            DawnDayAnimations.BACKHAND_BLADE_AUTO2,
-                            DawnDayAnimations.WARSICKLE_AIRSLASH
+                            DawnDayAnimations.POLEBLADE_DASH,
+                            DawnDayAnimations.POLEBLADE_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.WARSICKLE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
@@ -329,11 +329,11 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO2,
                             DawnDayAnimations.BATTLESTAFF_AUTO3,
                             DawnDayAnimations.BATTLESTAFF_AUTO4,
-                            DawnDayAnimations.BACKHAND_BLADE_AUTO2,
-                            DawnDayAnimations.WARSICKLE_AIRSLASH
+                            DawnDayAnimations.POLEBLADE_DASH,
+                            DawnDayAnimations.POLEBLADE_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.WARSICKLE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
@@ -355,7 +355,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO3,
                             DawnDayAnimations.BATTLESTAFF_AUTO4,
                             DawnDayAnimations.BATTLESTAFF_AUTO5,
-                            DawnDayAnimations.BATTLESTAFF_DASH,
+                            DawnDayAnimations.POLEBLADE_DASH,
                             DawnDayAnimations.BATTLESTAFF_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
@@ -696,10 +696,12 @@ public class DawnDayWeaponCapabilityPreset {
                     .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.GENTLE_NUDGE)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
-                            DawnDayAnimations.ECLIPSE_ATT1,
-                            DawnDayAnimations.ECLIPSE_ATT2,
-                            DawnDayAnimations.ECLIPSE_ATT3,
-                            DawnDayAnimations.BAT_DASH)
+                            DawnDayAnimations.ECLIPSE_ATTACK1,
+                            DawnDayAnimations.ECLIPSE_ATTACK2,
+                            DawnDayAnimations.IUDEX_HALBERD_AUTO3,
+                            DawnDayAnimations.IUDEX_HALBERD_AUTO4,
+                            DawnDayAnimations.IUDEX_HALBERD_AUTO2,
+                            DawnDayAnimations.IUDEX_HALBERD_AUTO1)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.ECLIPSE_IDLE)
