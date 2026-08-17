@@ -50,9 +50,15 @@ public class AnimUtils {
         );
     }
 
-    public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> LaunchEnemyAirSlash(float height,float StartTime) {
+    public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>>
+    LaunchEnemyAirSlash(
+            float stunTime,
+            int levitationLevel,
+            int levitationTicks,
+            float startTime) {
 
-        return AnimationEvent.InTimeEvent.create( StartTime,
+        return AnimationEvent.InTimeEvent.create(
+                startTime,
                 (livingEntityPatch, assetAccessor, animationParameters) -> {
 
                     if (!livingEntityPatch.isLastAttackSuccess()) {
@@ -66,10 +72,10 @@ public class AnimUtils {
                         return;
                     }
 
-                    targets.forEach(entity -> {
+                    for (LivingEntity entity : targets) {
 
                         if (entity == null || !entity.isAlive()) {
-                            return;
+                            continue;
                         }
 
                         LivingEntityPatch<?> targetPatch =
@@ -78,43 +84,42 @@ public class AnimUtils {
                                         LivingEntityPatch.class
                                 );
 
-                        if (targetPatch != null
-                             //   && !targetPatch.isStunned()
-                        ) {
-
-                            if (!entity.level().isClientSide) {
-                                float stunTime = height * (
-                                        1.0F - (float) entity.getAttributeValue(
-                                                Attributes.KNOCKBACK_RESISTANCE
-                                        )
-                                );
-
-                                targetPatch.applyStun(
-                                        StunType.HOLD,
-                                        stunTime
-                                );
-
-
-                                entity.addEffect(
-                                        new MobEffectInstance(
-                                                MobEffects.SLOW_FALLING,
-                                                14,
-                                                5,
-                                                true,
-                                                false,
-                                                false
-                                        )
-                                );
-                            }
-                          //  targetPatch.setAirborneState(true);
-                            entity.hasImpulse = true;
-                            entity.hurtMarked = true;
-                            entity.setDeltaMovement(entity.getDeltaMovement().x,entity.getDeltaMovement().y() + height, entity.getDeltaMovement().z);
+                        if (targetPatch == null) {
+                            continue;
                         }
-                    });
+
+                        float kbRes =
+                                (float) entity.getAttributeValue(
+                                        Attributes.KNOCKBACK_RESISTANCE);
+
+                        targetPatch.applyStun(
+                                StunType.HOLD,
+                                stunTime * (1.0F - kbRes)
+                        );
+
+                        if (!entity.level().isClientSide) {
+
+                            // Alte Effekte entfernen
+                            entity.removeEffect(MobEffects.LEVITATION);
+                            entity.removeEffect(MobEffects.SLOW_FALLING);
+
+                            // EINMAL Levitation anwenden
+                            entity.addEffect(
+                                    new MobEffectInstance(
+                                            MobEffects.LEVITATION,
+                                            levitationTicks,
+                                            levitationLevel,
+                                            true,
+                                            false,
+                                            false
+                                    )
+                            );
+
+                        }
+                    }
 
                 },
-                AnimationEvent.Side.BOTH
+                AnimationEvent.Side.SERVER
         );
     }
 

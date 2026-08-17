@@ -35,7 +35,13 @@ public class NightfallCompat implements ICompatModule {
                             DawnDayWeaponCategories.RITUS_DAGGER,
                             (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
                     ).addGuardBreakMotion(DawnDayWeaponCategories.RITUS_DAGGER,
-                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED)
+                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE)
 
                     .addGuardMotion(
                             DawnDayWeaponCategories.FLORETT,
@@ -55,6 +61,8 @@ public class NightfallCompat implements ICompatModule {
                             (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED)
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.SICKLE, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.POLEBLADE, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 
 
@@ -83,6 +91,7 @@ public class NightfallCompat implements ICompatModule {
             icon.registerCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
             icon.registerCategory(DawnDayWeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
             icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
+            icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
             icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         }
 

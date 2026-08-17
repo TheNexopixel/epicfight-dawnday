@@ -67,6 +67,13 @@ public class WoMCompat implements ICompatModule {
         advancedGuardMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
                 DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
 
+        guardMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
+                DawnDayAnimations.POLEBLADE_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
+                DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+        advancedGuardMotions.put(DawnDayWeaponCategories.POLEBLADE, (itemCap, playerpatch) ->
+                DawnDayAnimations.POLEBLADE_COUNTER);
+
         guardMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_HIT);
         guardBreakMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->

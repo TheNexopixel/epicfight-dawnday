@@ -3,6 +3,7 @@ package net.epicfight_dd.gameasset.animation;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecAnims;
 import net.minecraftforge.fml.ModList;
 import net.shelmarow.combat_evolution.CombatEvolution;
+import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.api.animation.AnimationManager;
 
 
@@ -21,6 +22,9 @@ public class AnimationBuildNexus {
 
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
             DawnDayExecAnims.build(builder);
+        }
+        if(ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
+            WoMCompatAnimations.build(builder);
         }
     }
 

@@ -276,4 +276,7 @@
   "tooltip.epicfight_dd.malachite": "Родители кладут эти камни под подушки своим детям, чтобы защитить их от ночных кошмаров.",
   "tooltip.epicfight_dd.metal_plate": "Вы не уверены, из каких материалов сделан этот кусок, но, должно быть, в нём много различных металлов.",
   "tooltip.epicfight_dd.rusted_metal_plate": "Этот кусок металла проржавел настолько сильно, что уже не годится для ковки. Однако, ему можно найти другое применение.",
+  "epicfight.weapon_category.bat": "Биты",
+  "skill.epicfight_dd.head_knocker": "Головолом",
+  "skill.epicfight_dd.head_knocker.tooltip": "\"Тук-Тук!\""
 }

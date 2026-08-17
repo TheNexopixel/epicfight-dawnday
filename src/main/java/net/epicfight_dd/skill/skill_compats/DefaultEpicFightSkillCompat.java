@@ -40,6 +40,12 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
 
             builder.addGuardMotion(
+                    DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+
+            builder.addGuardMotion(
                     DawnDayWeaponCategories.SICKLE,
                     (i, p) -> Animations.SWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.SICKLE,
@@ -83,6 +89,12 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.LONGSWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE);
 
             builder.addGuardMotion(
                     DawnDayWeaponCategories.CLAWS,
@@ -205,6 +217,17 @@ public class DefaultEpicFightSkillCompat {
                                     DawnDayAnimations.HOOKCLAWS_PARRY1,
                                     DawnDayAnimations.HOOKCLAWS_PARRY2
                             ));
+
+            builder.addGuardMotion(
+                            DawnDayWeaponCategories.POLEBLADE,
+                            (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
+                    ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
+                            (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE)
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.POLEBLADE,
+                            (i, p) -> List.of(
+                                    DawnDayAnimations.POLEBLADE_PARRY1,
+                                    DawnDayAnimations.POLEBLADE_PARRY2
+                            ));
         }
 
     }
@@ -214,6 +237,7 @@ public class DefaultEpicFightSkillCompat {
                 SwordmasterSkill.Builder builder = event.getSkillBuilder();
             builder.addAvailableWeaponCategory(DawnDayWeaponCategories.RITUS_DAGGER)
                     .addAvailableWeaponCategory(DawnDayWeaponCategories.FLORETT)
+                    .addAvailableWeaponCategory(DawnDayWeaponCategories.POLEBLADE)
                     .addAvailableWeaponCategory(DawnDayWeaponCategories.CLAWS)
                     .addAvailableWeaponCategory(DawnDayWeaponCategories.SICKLE)
                     .addAvailableWeaponCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD);
@@ -226,6 +250,7 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(DawnDayWeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
         icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(DawnDayWeaponCategories.SICKLE, new ItemStack(DawnDayItems.IRON_SICKLE.get()));
+        icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
         icon.registerCategory(DawnDayWeaponCategories.BAT, new ItemStack(DawnDayItems.spiked_bat.get()));
         icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
         icon.registerCategory(DawnDayWeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));

@@ -140,7 +140,7 @@ public class DawnDaySkills {
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
             GENTLE_NUDGE = gentlenudge;
-
+/*
         WeaponInnateSkill blooddance = modRegistry.build("blood_dance", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.BLOOD_DANCE)
                 .setCategory(SkillCategories.WEAPON_INNATE));
@@ -150,6 +150,8 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
                         .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
         BLOOD_DANCE = blooddance;
+
+ */
 
 
 
@@ -369,6 +371,10 @@ public class DawnDaySkills {
                 PassiveSkill.createPassiveBuilder()
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.IDENTITY));
+
+        BLOOD_DANCE = modRegistry.build("blood_dance", BloodDanceSkill::new,
+                WeaponInnateSkill.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE));
 
         RIPOSTE = modRegistry.build("riposte", Riposte::new,
                 PassiveSkill.createPassiveBuilder()
