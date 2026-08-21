@@ -55,12 +55,16 @@ public class DawnDayExecAnims {
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> IRON_FIST_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> IRON_FIST_EXECUTED;
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> POLEBLADE_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> POLEBLADE_EXECUTED;
 
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_DUAL_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_DUAL_EXECUTED;
 
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> RITUS_DAGGER_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> RITUS_DAGGER_EXECUTED;
+
+
 
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> LG_SW_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> LG_SW_EXECUTED;
@@ -99,6 +103,13 @@ public class DawnDayExecAnims {
         IRON_FIST_EXECUTE = builder.nextAccessor("biped/execution/iron_fist_execute", (accessor) ->
                 IRON_FIST_EXECUTE(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.64f, 0.67f, 1.70f, 1.80f,2.0f,2.1f,3.1f,3.2f,5.0f,5.1f)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
+
+        POLEBLADE_EXECUTE = builder.nextAccessor("biped/execution/poleblade_execute", (accessor) ->
+                poleblade_execution(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.44f, 0.5f, 3.50f, 3.60f)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
+
+        POLEBLADE_EXECUTED = builder.nextAccessor("biped/execution/poleblade_executed", (accessor) ->
+                new ExecutionHitAnimation(0.1f, accessor, Armatures.BIPED));
 
         NAOYA_EXEC = builder.nextAccessor("biped/execution/unarmed/naoya_aurafarm", (ac) ->
                 new ExecutionAttackAnimation(0.1f, 0.0f,
@@ -224,6 +235,30 @@ public class DawnDayExecAnims {
                 lgswexecution(accessor, executionCollider, CONSTANT_EXECUTION, 1.1f, 1.2f, 3.4f, 3.5f,4.3f,4.4f,5.4f,5.5f)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
 
+
+    }
+    private static ExecutionAttackAnimation poleblade_execution(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                             AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                             float preDelay1,
+                                                             float contact1,
+                                                             float preDelay2,
+                                                             float contact2
+
+    ) {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 1.2F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.5F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 1.63F, 0.0F, preDelay2, contact2, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.5F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND,EpicFightSounds.EVISCERATE.get())
+
+        }))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
 
     }
 

@@ -872,7 +872,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.25f,1.1f))
                         .addProperty(AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
                         .addEvents(
-                                AnimUtils.LaunchEnemyAirSlash(2.0F, 12,7,0.43f))
+                                AnimUtils.LaunchEnemyAirSlash(2.0F, 10,5,0.45f))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BLOOD_DANCE_3B = builder.nextAccessor("biped/skill/blood_dance_3b", (accessor) ->

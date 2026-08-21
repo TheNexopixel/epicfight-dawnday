@@ -56,6 +56,11 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.LG_SW_EXECUTED,
             new Vec3(2.55, 0.0F, 0.0F), 0.0F, 112
     );
+    public static final Type POLEBLADE = new Type(
+            DawnDayExecAnims.POLEBLADE_EXECUTE,
+            DawnDayExecAnims.POLEBLADE_EXECUTED,
+            new Vec3(2.55, 0.0F, 0.0F), 0.0F, 130
+    );
 
 
 

@@ -51,6 +51,9 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.HOOKCLAWS.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.IRON_FIST);
 
+      event.registerExecutionByItem(DawnDayItems.POLEBLADE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.POLEBLADE);
+
       event.registerExecutionByItem(DawnDayItems.iron_knife.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
       event.registerExecutionByItem(DawnDayItems.golden_knife.getId(), CapabilityItem.Styles.TWO_HAND,
