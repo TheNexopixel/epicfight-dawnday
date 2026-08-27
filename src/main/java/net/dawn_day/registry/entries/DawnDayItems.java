@@ -1,10 +1,8 @@
 package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
-import net.dawn_day.world.item.HalberdItem;
-import net.dawn_day.world.item.LightGreatswordItem;
-import net.dawn_day.world.item.SpecialDrinkItem;
-import net.dawn_day.world.item.WarSickleItem;
+import net.dawn_day.world.item.*;
+import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
@@ -22,6 +20,7 @@ public final class DawnDayItems {
                     new Item.Properties().attributes(SwordItem.createAttributes(Tiers.IRON, 3, -2.4f)).stacksTo(1)
                             .rarity(Rarity.RARE)
                             .durability(2561)));
+
 
     public static final DeferredItem<Item> VITREUS =
             REGISTRY.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,
@@ -182,6 +181,51 @@ public final class DawnDayItems {
     public static final DeferredItem<Item> ruby =
             REGISTRY.register("ruby",() -> new Item(
                     new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> TANZANITE =
+            REGISTRY.register("tanzanite",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> PERIDOT =
+            REGISTRY.register("peridot",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> MALACHITE =
+            REGISTRY.register("malachite",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> JADE =
+            REGISTRY.register("jade",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> AMBER =
+            REGISTRY.register("amber",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> CITRINE =
+            REGISTRY.register("citrine",() -> new Item(
+                    new Item.Properties().stacksTo(16)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> METAL_PLATE =
+            REGISTRY.register("metal_plate",() -> new Item(
+                    new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> RUSTED_METAL_PLATE =
+            REGISTRY.register("rusted_metal_plate",() -> new Item(
+                    new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
+    public static final DeferredItem<Item> POLEBLADE_BLADE_PART =
+            REGISTRY.register("poleblade_blade_part",() -> new Item(
+                    new Item.Properties().stacksTo(2)
                             .rarity(Rarity.COMMON)));
 
     public static final DeferredItem<Item> MILADY =

@@ -12,8 +12,13 @@ public class WeaponCategoryMapper {
     private static final Map<DawnDayWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 
     static {
-        categoryMap.put(DawnDayWeaponCategories.EVIL_TACHI, CapabilityItem.WeaponCategories.TACHI);
+        categoryMap.put(DawnDayWeaponCategories.IRON_FIST, CapabilityItem.WeaponCategories.FIST);
+        categoryMap.put(DawnDayWeaponCategories.SICKLE, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(DawnDayWeaponCategories.POLEBLADE, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(DawnDayWeaponCategories.CLAWS, CapabilityItem.WeaponCategories.FIST);
+        categoryMap.put(DawnDayWeaponCategories.BAT, CapabilityItem.WeaponCategories.GREATSWORD);
         categoryMap.put(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(DawnDayWeaponCategories.RITUS_DAGGER, CapabilityItem.WeaponCategories.DAGGER);
     }
     public static CapabilityItem.Builder apply(Item item, DawnDayWeaponCategories category) {
         WeaponCategory mappedCategory = categoryMap.getOrDefault(category, category);

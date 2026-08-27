@@ -24,8 +24,15 @@ public final class DawnDaySkillDataKeys {
     public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(EpicFightRegistries.SKILL_DATA_KEY, EpicFightDawnDay.MOD_ID);
 
     public static final DeferredHolder<SkillDataKey<?>,SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = DATA_KEYS.register("special_stance_active", () -> SkillDataKey.createSkillDataKey(ByteBufCodecs.BOOL, false,true, WingStanceSkill.class));
+/*
+    public static final DeferredHolder<SkillDataKey<?>, SkillDataKey<Integer>> IRON_WILL_STACKS =
+            DATA_KEYS.register( "iron_will_stacks", ()
+                    -> SkillDataKey.createSkillDataKey(
+                    PacketBufferCodec.INTEGER,
+                    0, Riposte.class )
+            );
 
 
-
+ */
 
 }

@@ -19,9 +19,6 @@ public class AnimationBuildNexus {
         if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
             DawnDayExecAnims.build(builder);
         }
-        if(ModList.get().isLoaded("wom")) {
-            AdditionalAnimations.build(builder);
-        }
         if (ModList.get().isLoaded("wom")
                 && ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
 

@@ -8,6 +8,10 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
     EVIL_TACHI,
     FLORETT,
+    BAT,
+    SICKLE,
+    CLAWS,
+    POLEBLADE,
     IRON_FIST,
     RITUS_DAGGER;
 

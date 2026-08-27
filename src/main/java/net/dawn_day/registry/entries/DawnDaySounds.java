@@ -29,6 +29,8 @@ public final class DawnDaySounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> DRAINED = registerSound("sfx.drained");
     public static final DeferredHolder<SoundEvent, SoundEvent> CURSED1 = registerSound("sfx.cursed_1");
     public static final DeferredHolder<SoundEvent, SoundEvent> CURSED2 = registerSound("sfx.cursed_2");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BEAST_EYE_1 = registerSound("sfx.beast_eye_1");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BEAST_EYE_2 = registerSound("sfx.beast_eye_2");
 
     private static DeferredHolder<SoundEvent, SoundEvent> registerSound(String name) {
         ResourceLocation res = ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MOD_ID, name);

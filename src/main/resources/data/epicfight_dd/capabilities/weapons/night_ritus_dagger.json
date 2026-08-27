@@ -5,7 +5,7 @@
     {
       "impact":0.0,
       "armor_negation":20.0,
-      "max_strikes":8
+      "max_strikes":4
     }
   },
   "type":"epicfight_dd:night_ritus_dagger"

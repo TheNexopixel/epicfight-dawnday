@@ -50,7 +50,7 @@ public final class DawnDayItemCapabilityPresets
 
     public static final DeferredWeapon WAR_SICKLE = REGISTRY.registerWeapon("war_sickle", () -> WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.SPEAR)
-            .collider(DawnDayCollider.WAR_SICKLE)
+            .collider(DawnDayCollider.WARSICKLE)
             .swingSound(DawnDaySounds.MILADY_HEAVY_SLASH)
             .hitSound(EpicFightSounds.BLADE_HIT)
             .canBePlacedOffhand(false)
@@ -181,19 +181,31 @@ public final class DawnDayItemCapabilityPresets
             .hitParticle(EpicFightParticles.HIT_BLADE)
             .hitSound(EpicFightSounds.BLADE_HIT)
             .canBePlacedOffhand(false)
-            .addMoveset(CapabilityItem.Styles.ONE_HAND, VITREUS_1H)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, VITREUS_1H)
     );
 
-//    public static final DeferredWeapon EVIL_TACHI = REGISTRY.registerWeapon("evil_tachi", () -> WeaponCapability.builder()
-//            .category(EpicFightDD_WeaponCategories.EVIL_TACHI)
-//            .collider(DawnDayCollider.EVIL_TACHI)
-//            .swingSound(EpicFightSounds.WHOOSH)
-//            .hitParticle(randomSlashHitParticleTYPE()) // Your static custom method evaluates here
-//            .hitSound(EpicFightSounds.BLADE_HIT)
-//            .canBePlacedOffhand(false)
-//            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
-//            .addMoveset(CapabilityItem.Styles.TWO_HAND, EVIL_TACHI_2H)
-//    );
+    public static final DeferredWeapon POLEBLADE = REGISTRY.registerWeapon("pole_blade", () -> WeaponCapability.builder()
+            .category(DawnDayWeaponCategories.POLEBLADE)
+            .collider(DawnDayCollider.POLEBLADE)
+            .swingSound(EpicFightSounds.WHOOSH)
+            .hitParticle(EpicFightParticles.HIT_BLADE)
+            .hitSound(EpicFightSounds.BLADE_HIT)
+            .canBePlacedOffhand(false)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, POLEBLADE_2H)
+    );
+
+    public static final DeferredWeapon ECLIPSE = REGISTRY.registerWeapon("eclipse", () -> WeaponCapability.builder()
+            .category(CapabilityItem.WeaponCategories.GREATSWORD)
+            .collider(DawnDayCollider.BAT_LONGER)
+            .swingSound(EpicFightSounds.WHOOSH_BIG)
+            .hitParticle(EpicFightParticles.HIT_BLADE)
+            .hitSound(EpicFightSounds.BLADE_HIT)
+            .canBePlacedOffhand(false)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, ECLIPSE_2H)
+    );
+
 
     public static final DeferredWeapon BAT = REGISTRY.registerWeapon("bat", () -> WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.GREATSWORD)
@@ -204,6 +216,7 @@ public final class DawnDayItemCapabilityPresets
             .canBePlacedOffhand(false)
             .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, BAT_2H)
+            .addMoveset(CapabilityItem.Styles.OCHS, BAT_DUAL)
     );
 
     public static final DeferredWeapon BONECUTTING_SAW = REGISTRY.registerWeapon("bonecutting_saw", () -> WeaponCapability.builder()
@@ -216,30 +229,29 @@ public final class DawnDayItemCapabilityPresets
             .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, BONECUTTING_SAW_2H)
     );
-
-    public static final DeferredWeapon HOLLOW_LONGSWORD = REGISTRY.registerWeapon("hollow_longsword", () -> WeaponCapability.builder()
-            .category(CapabilityItem.WeaponCategories.LONGSWORD)
-            .collider(DawnDayCollider.BAT)
-            .swingSound(EpicFightSounds.WHOOSH)
-            .hitParticle(EpicFightParticles.HIT_BLADE)
-            .hitSound(EpicFightSounds.BLADE_HIT)
-            .canBePlacedOffhand(false)
-            .addConditionals(SHIELD_OFFHAND_FORCE_2H, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
-            .addMoveset(CapabilityItem.Styles.TWO_HAND, HOLLOW_LONGSWORD_2H)
-            .addMoveset(CapabilityItem.Styles.ONE_HAND, HOLLOW_LONGSWORD_1H)
-    );
-
-    public static final DeferredWeapon GREATAXE = REGISTRY.registerWeapon("greataxe", () -> WeaponCapability.builder()
-            .category(CapabilityItem.WeaponCategories.GREATSWORD)
-            .collider(ColliderPreset.GREATSWORD)
+    public static final DeferredWeapon IUDEX_HALBERD = REGISTRY.registerWeapon("iudex_halberd", () -> WeaponCapability.builder()
+            .category(CapabilityItem.WeaponCategories.SPEAR)
+            .collider(DawnDayCollider.IUDEX_HALBERD)
             .swingSound(EpicFightSounds.WHOOSH_BIG)
             .hitParticle(EpicFightParticles.HIT_BLADE)
             .hitSound(EpicFightSounds.BLADE_HIT)
-            .canBePlacedOffhand(true)
-            .addConditionals(DUAL_GREATSWORDS, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
-            .addMoveset(CapabilityItem.Styles.TWO_HAND, GREATAXE_2H)
-            .addMoveset(CapabilityItem.Styles.ONE_HAND, GREATAXE_1H)
+            .canBePlacedOffhand(false)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, IUDEX_HALBERD_2H)
     );
+    public static final DeferredWeapon HOOKCLAWS = REGISTRY.registerWeapon("hookclaws", () -> WeaponCapability.builder()
+            .category(DawnDayWeaponCategories.CLAWS)
+            .collider(DawnDayCollider.IUDEX_HALBERD)
+            .swingSound(DawnDaySounds.MILADY_LIGHT_SWEEP)
+            .hitParticle(EpicFightParticles.HIT_BLADE)
+            .hitSound(EpicFightSounds.BLADE_HIT)
+            .canBePlacedOffhand(true)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.ONE_HAND, HOOKCLAWS_1H)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, HOOKCLAWS_2H)
+    );
+
+
 
     public static final DeferredWeapon BLOOD_RITUS_DAGGER = REGISTRY.registerWeapon("blood_ritus_dagger", () -> WeaponCapability.builder()
             .category(DawnDayWeaponCategories.RITUS_DAGGER)

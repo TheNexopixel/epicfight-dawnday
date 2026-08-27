@@ -1,0 +1,22 @@
+{
+    "trail_effects": [
+      {
+        "start_time": 0.9,
+        "end_time": 1.05,
+        "lifetime": 12,
+        "begin_pos": [-0.0, -1.8, 0.8],
+        "end_pos": [-0.0, -1.8, -0.8],
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.9,
+        "end_time": 1.05,
+        "lifetime": 12,
+        "begin_pos": [-0.0, -1.8, 0.8],
+        "end_pos": [-0.0, -1.8, -0.8],
+        "joint": "Tool_L",
+        "item_skin_hand": "off_hand"
+      }
+    ]
+}

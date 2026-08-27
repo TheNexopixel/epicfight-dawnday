@@ -1,0 +1,11 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":0.32,
+      "max_strikes":8
+    }
+  },
+  "type":"epicfight_dd:pole_blade"
+}

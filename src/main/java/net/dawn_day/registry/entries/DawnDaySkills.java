@@ -1,7 +1,6 @@
 package net.dawn_day.registry.entries;
 
 import net.dawn_day.EpicFightDawnDay;
-import net.dawn_day.gameasset.animation.AdditionalAnimations;
 import net.dawn_day.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
@@ -9,7 +8,6 @@ import java.util.Set;
 import net.dawn_day.skill.stances.WingStanceSkill;
 import net.dawn_day.skill.weapon_innate.*;
 
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
@@ -48,20 +46,6 @@ public final class DawnDaySkills {
                 .build(key)
     );
 
-    public static final DeferredHolder<Skill, WeaponInnateSkill> ANNIHILATE = REGISTRY.register("annihilate", key ->
-        SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
-                .setAnimations(DawnDayAnimations.ANNIHILATE)
-                .setCategory(SkillCategories.WEAPON_INNATE)
-                .newProperty()
-                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.2F))
-                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
-                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(7.5F))
-                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
-                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
-                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
-                .build(key)
-    );
     public static final DeferredHolder<Skill, WeaponInnateSkill> PIERCING_STRIKE = REGISTRY.register("piercing_strike", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
                     .setAnimations(DawnDayAnimations.PIERCING_STRIKE)
@@ -73,6 +57,63 @@ public final class DawnDaySkills {
             .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
             .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> HEAD_KNOCKER = REGISTRY.register("head_knocker", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.HEAD_KNOCKER)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(40.0F))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(6.7F))
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.9F))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.KNOCKDOWN)
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.EXECUTION))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> BEAST_EYE = REGISTRY.register("beast_eye", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.BEAST_EYE)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(80.0F))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(3.6F))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.EXECUTION))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .build(key));
+
+    public static final DeferredHolder<Skill, WeaponInnateSkill> CHAMPIONS_MIGHT = REGISTRY.register("champions_might", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)
+                    .setAnimations(DawnDayAnimations.CHAMPIONS_MIGHT)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.61F))
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(70.0F))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.6F))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                            .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .build(key));
 
     public static final DeferredHolder<Skill, WeaponInnateSkill> INCISURA_VITREA = REGISTRY.register("incisura_vitrea", key ->
@@ -261,11 +302,32 @@ public final class DawnDaySkills {
             .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
             .build(key));
 
-    public static final DeferredHolder<Skill, RAHHHHH> RAAAHHH = REGISTRY.register("rahhh", key ->
-            WeaponInnateSkill.createWeaponInnateBuilder(RAHHHHH::new)
+
+    public static final DeferredHolder<Skill, BloodDanceSkill> BLOOD_DANCE = REGISTRY.register("blood_dance", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(BloodDanceSkill::new)
                     .setCategory(SkillCategories.WEAPON_INNATE)
                     .build(key)
     );
+    public static final DeferredHolder<Skill, Quickstep> QUICK_STEP = REGISTRY.register("quick_step", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(Quickstep::new)
+                    .setCategory(SkillCategories.WEAPON_INNATE)
+                    .build(key)
+    );
+    /*
+    public static final DeferredHolder<Skill, RedemptionSkill> REDEMPTION = REGISTRY.register("redemption", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(RedemptionSkill::new)
+                    .setCategory(SkillCategories.IDENTITY)
+                    .setResource(Skill.Resource.COOLDOWN)
+                    .build(key)
+    );
+    public static final DeferredHolder<Skill, Riposte> RIPOSTE = REGISTRY.register("riposte", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(Riposte::new)
+                    .setCategory(SkillCategories.IDENTITY)
+                    .setResource(Skill.Resource.COOLDOWN)
+                    .build(key)
+    );
+
+     */
 
     public static final DeferredHolder<Skill, Seppuku> SEPPUKU = REGISTRY.register("sepukku", key ->
             WeaponInnateSkill.createWeaponInnateBuilder(Seppuku::new)
@@ -276,19 +338,6 @@ public final class DawnDaySkills {
     // ==========================================
     // Conditionally Loaded Skills
     // ==========================================
-    public static final DeferredHolder<Skill, WeaponInnateSkill> EVIL_BEAAAAMMMM = ModList.get().isLoaded("wom") ?
-            REGISTRY.register("evil_beam", key -> OdachiIaijutsu.createSimpleWeaponInnateBuilder(OdachiIaijutsu::new)
-                    .setAnimations(AdditionalAnimations.EVIL_ODACHI_BEAAAMMMM)
-                    .setCategory(SkillCategories.WEAPON_INNATE)
-                    .newProperty()
-                    .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.7F))
-                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
-                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
-                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25.0F))
-                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(15.5F))
-                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
-                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
-                    .build(key)) : null;
 
 
 }

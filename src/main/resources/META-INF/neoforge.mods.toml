@@ -5,7 +5,7 @@ license="${license}"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 [[mods]]
 modId="${modId}"
-version="${modVersion}"
+version="21.17.1.1.0"
 displayName="${displayName}"
 logoFile= "${modId}_title.png"
 credits="Epic Fight, Forixaim for initial Neoforge port"

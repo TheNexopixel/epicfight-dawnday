@@ -1,5 +1,6 @@
 package net.dawn_day.events;
 
+import net.dawn_day.DawnDayConfig;
 import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.registry.entries.DawnDayEffects;
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
@@ -10,16 +11,23 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
+import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.event.EpicFightEventHooks;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.HumanoidMobPatch;
+import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.damagesource.StunType;
@@ -60,6 +68,22 @@ public class GameBusEvent {
 
         });
     }
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void giveDeathAnimationToMob(LivingDeathEvent event){
+        LivingEntity entity = event.getEntity();
+        //This works somehow, but why do I feel so uneasy
+        if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get() || !(entity instanceof Mob)){
+            return;
+        }
+
+        if (EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class) instanceof HumanoidMobPatch<?> mobPatch) {
+            if (mobPatch.getAnimator().getLivingAnimation(LivingMotions.DEATH, Animations.BIPED_DEATH).equals(Animations.BIPED_DEATH)) {
+                mobPatch.getAnimator().addLivingAnimation(LivingMotions.DEATH, QoLMiscAnimations.EXPRESSIVE_DEATH);
+                //  AnimUtils.sendDevDebugmsg("mob has been given death animation");
+            }
+        }
+
+    }
 
     @SubscribeEvent
     public static void onKB(LivingKnockBackEvent event) {
@@ -71,21 +95,6 @@ public class GameBusEvent {
 
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent event){
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.IMPREGNABILITY)){
-            LivingEntity target = event.getEntity();
-            if(target instanceof ServerPlayer player){
-                ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
-                if (playerPatch != null) {
-                    if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
-                            && !Objects.deepEquals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.RAAAHHH)
-
-                    ) {
-                        target.removeEffect(DawnDayEffects.IMPREGNABILITY);
-                    }
-                }
-            }
-        }
         if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU.getDelegate())){
             LivingEntity target = event.getEntity();
             if (EpicFightSharedConstants.IS_DEV_ENV) {

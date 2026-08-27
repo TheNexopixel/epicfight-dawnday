@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":26.0,
+      "impact":0.7,
+      "max_strikes":5
+    }
+  },
+  "type":"epicfight_dd:hookclaws"
+}
