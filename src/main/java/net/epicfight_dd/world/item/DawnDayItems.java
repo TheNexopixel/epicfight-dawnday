@@ -33,10 +33,10 @@ public class DawnDayItems {
                             ChatFormatting.WHITE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.poleblade_text1",
-                            ChatFormatting.YELLOW),
+                            ChatFormatting.GRAY),
                     new TooltipLine(
                             "tooltip.epicfight_dd.poleblade_text2",
-                            ChatFormatting.DARK_RED)
+                            ChatFormatting.GRAY)
 
             ));
     public static final RegistryObject<Item> HOOKCLAWS =
@@ -61,7 +61,7 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.iudex_gundyr_halberd",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
 
             ));
 
@@ -128,7 +128,7 @@ public class DawnDayItems {
                             .defaultDurability(4561),
                     new TooltipLine(
                             "tooltip.epicfight_dd.vitreus",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
 
             ));
 
@@ -169,7 +169,7 @@ public class DawnDayItems {
                             .defaultDurability(5561),
                     new TooltipLine(
                             "tooltip.epicfight_dd.iron_fist",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
             ));
 
     public static final RegistryObject<Item> diamond_messer =
@@ -207,7 +207,7 @@ public class DawnDayItems {
                             .defaultDurability(2500),
                     new TooltipLine(
                             "tooltip.epicfight_dd.saber",
-                            ChatFormatting.YELLOW)));
+                            ChatFormatting.GRAY)));
 
     public static final RegistryObject<Item> steelaxe =
             ITEMS.register("steelaxe",() -> new WeaponItem(Tiers.NETHERITE,4,-2.7f,
@@ -229,7 +229,7 @@ public class DawnDayItems {
                             ChatFormatting.WHITE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.night_ritus_dagger_lore",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
 
             ));
 
@@ -247,7 +247,7 @@ public class DawnDayItems {
                             ChatFormatting.WHITE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.blood_ritus_dagger_lore",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
             ));
 
     public static final RegistryObject<Item> iron_knife =
@@ -380,7 +380,7 @@ public class DawnDayItems {
                             ChatFormatting.WHITE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.milady_lore",
-                            ChatFormatting.YELLOW)
+                            ChatFormatting.GRAY)
             ));
 
     public static final RegistryObject<Item> bonecutting_saw =
@@ -394,7 +394,7 @@ public class DawnDayItems {
                             ChatFormatting.ITALIC),
                             new TooltipLine(
                                     "tooltip.epicfight_dd.bonecutting_saw_text2",
-                                    ChatFormatting.YELLOW)
+                                    ChatFormatting.GRAY)
                     )
 
             );

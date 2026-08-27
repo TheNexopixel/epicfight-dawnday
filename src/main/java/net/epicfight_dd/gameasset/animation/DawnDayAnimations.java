@@ -2175,12 +2175,6 @@ public class DawnDayAnimations {
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.4F)))
 
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
-                        .addEvents(
-                                AnimationEvent.InTimeEvent.create(
-                                        1.58F,
-                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
-                                        AnimationEvent.Side.CLIENT
-                                ).params(new Vec3f(-0.0F, 0.25F, -1.0F), Armatures.BIPED.get().rootJoint, 1.4D, 1.5F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         NAILBAT_DUAL_AUTO2 = builder.nextAccessor("biped/combat/nailbat_dual_auto2", (accessor) ->

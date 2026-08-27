@@ -527,24 +527,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.MESSER_DUAL_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
-
-            ;
-/*
-    public static HitParticleType randomSlashHitParticleTYPE(){
-        int randomInt = (int)(Math.random() * (double)4.0F);
-        HitParticleType RandomHitParticle;
-        switch (randomInt) {
-            case 0 -> RandomHitParticle = WOMParticles.SHARPCUT_SLASH.get();
-            case 1 -> RandomHitParticle = WOMParticles.SHARPCUT_LEFT_SLASH.get();
-            case 2 -> RandomHitParticle = WOMParticles.SHARPCUT_RIGHT_SLASH.get();
-            case 3 -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_UP_RIGHT_SLASH.get();
-            default -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_DOWN_LEFT_SLASH.get();
-        }
-        return RandomHitParticle;
-    }
-
- */
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> BAT = (item) ->
             WeaponCapability.builder()

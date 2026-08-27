@@ -68,9 +68,7 @@ public class ForgeBusEvent {
                 if (playerPatch != null) {
                     if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
                             && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPUKKU)
-
-                    ) {
+                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPUKKU)) {
                         target.removeEffect(EffectRegistry.SEPUKKU.get());
                     }
                 }

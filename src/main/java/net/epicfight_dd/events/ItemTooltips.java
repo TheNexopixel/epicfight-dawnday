@@ -34,6 +34,20 @@ public class ItemTooltips {
             );
 
         }
+        if (stack.is(DawnDayItems.ENERGY_DRINK.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.energydrink")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
+        if (stack.is(DawnDayItems.wooden_battlestaff.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.big_stick")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
         if (stack.is(DawnDayItems.PERIDOT.get())) {
             event.getToolTip().add(
                     Component.translatable("tooltip.epicfight_dd.peridot")

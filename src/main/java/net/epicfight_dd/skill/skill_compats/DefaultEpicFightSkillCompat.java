@@ -154,6 +154,11 @@ public class DefaultEpicFightSkillCompat {
                                     Animations.SWORD_GUARD_ACTIVE_HIT1,
                                     Animations.SWORD_GUARD_ACTIVE_HIT3
                             ));
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.BAT,
+                    (i, p) -> Animations.GREATSWORD_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.BAT,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
                             DawnDayWeaponCategories.SICKLE,

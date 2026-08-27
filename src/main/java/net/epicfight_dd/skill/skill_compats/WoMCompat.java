@@ -106,6 +106,10 @@ public class WoMCompat implements ICompatModule {
         for (WeaponCategory weaponCapability : guardMotions.keySet()) {
             target.put(weaponCapability, guardMotions.get(weaponCapability));
         }
+        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
+        for (WeaponCategory weaponCapability : guardMotions.keySet()) {
+            target.put(weaponCapability, guardMotions.get(weaponCapability));
+        }
 
         temp = GuardSkill.class.getDeclaredField("guardBreakMotions");
         temp.setAccessible(true);
@@ -114,6 +118,10 @@ public class WoMCompat implements ICompatModule {
             target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
         }
         target = (Map) temp.get(WOMSkills.VENGEFUL_PARRY);
+        for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
+            target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
+        }
+        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
         for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
             target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
         }

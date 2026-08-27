@@ -12,8 +12,8 @@ public class DawnDayConfig {
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_DEATH_PARTICLES =
             BUILDER
-                    .comment("Enables the Particles on DawnDays Custom Death Animations (Default: true)")
-                    .define("death_particles", true);
+                    .comment("Enables the Particles on DawnDays Custom Death Animations (Default: false)")
+                    .define("death_particles", false);
 
     public static final ForgeConfigSpec.BooleanValue ENABLE_CUSTOM_MOB_DEATH_ANIM =
             BUILDER
