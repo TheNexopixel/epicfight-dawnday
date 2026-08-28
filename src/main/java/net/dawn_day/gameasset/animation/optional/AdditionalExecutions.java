@@ -1,32 +1,32 @@
 package net.dawn_day.gameasset.animation.optional;
 
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
-import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
-import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
-import org.joml.Vector3f;
-import reascer.wom.particle.WOMParticles;
-import yesman.epicfight.api.animation.AnimationManager;
-import yesman.epicfight.api.animation.property.AnimationEvent;
-import yesman.epicfight.api.animation.property.AnimationProperty;
-import yesman.epicfight.api.animation.types.EntityState;
-import yesman.epicfight.api.collider.MultiCollider;
-import yesman.epicfight.api.collider.MultiOBBCollider;
-import yesman.epicfight.api.collider.OBBCollider;
-import yesman.epicfight.api.utils.TimePairList;
-import yesman.epicfight.api.utils.math.OpenMatrix4f;
-import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.api.utils.math.Vec3f;
-import yesman.epicfight.gameasset.Armatures;
+//import net.minecraft.client.Minecraft;
+//import net.minecraft.client.particle.Particle;
+//import net.minecraft.core.particles.DustParticleOptions;
+//import net.minecraft.core.particles.ParticleTypes;
+//import net.minecraft.sounds.SoundEvents;
+//import net.minecraft.sounds.SoundSource;
+//import net.minecraft.util.RandomSource;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.entity.player.Player;
+//import net.minecraft.world.phys.Vec3;
+//import net.shelmarow.combat_evolution.gameassets.animation.ExecutionAttackAnimation;
+//import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
+//import org.joml.Vector3f;
+//import reascer.wom.particle.WOMParticles;
+//import yesman.epicfight.api.animation.AnimationManager;
+//import yesman.epicfight.api.animation.property.AnimationEvent;
+//import yesman.epicfight.api.animation.property.AnimationProperty;
+//import yesman.epicfight.api.animation.types.EntityState;
+//import yesman.epicfight.api.collider.MultiCollider;
+//import yesman.epicfight.api.collider.MultiOBBCollider;
+//import yesman.epicfight.api.collider.OBBCollider;
+//import yesman.epicfight.api.utils.TimePairList;
+//import yesman.epicfight.api.utils.math.OpenMatrix4f;
+//import yesman.epicfight.api.utils.math.ValueModifier;
+//import yesman.epicfight.api.utils.math.Vec3f;
+//import yesman.epicfight.gameasset.Armatures;
 
 import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -38,7 +38,7 @@ import java.util.Random;
 import static net.dawn_day.api.animation.JointTrack.getJointWithTranslation;
 
 public class AdditionalExecutions {
-
+/*
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> EVIL_TACHI_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> EVIL_TACHI_EXECUTED;
 
@@ -270,4 +270,4 @@ public class AdditionalExecutions {
 
     }
 
-}
+*/ }

@@ -1,6 +1,6 @@
 package net.dawn_day.gameasset.animation.optional.type;
 
-
+/*
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.shelmarow.combat_evolution.gameassets.animation.ExecutionHitAnimation;
@@ -91,4 +91,4 @@ public class SelectiveExecutionHitAnimation extends ExecutionHitAnimation {
         }
         return this.animationsInEachState.get(0).get().getLayerType();
     }
-}
+} */

@@ -74,11 +74,11 @@ sourceSets.main {
 dependencies {
     // Custom Mod Dependencies
     implementation(libs.epicFight)
-    compileOnly("curse.maven:combat-evolution-1377795:7765635")
-    compileOnly("curse.maven:wom-918614:7517612")
+    // compileOnly("curse.maven:combat-evolution-1377795:7765635")
+    compileOnly("curse.maven:weapons-of-miracles-epicfight-918614:8691476")
     compileOnly("curse.maven:timeless-and-classics-zero-1028108:7401617")
-    compileOnly("curse.maven:epicfight-nightfall-1307848:7670480")
-    compileOnly("curse.maven:epicfight-extra-1434276:7961244")
+    compileOnly("curse.maven:epicfight-nightfall-1307848:8573921")
+    //compileOnly("curse.maven:epicfight-extra-1434276:7961244")
     runtimeOnly(libs.bundles.dummyBundle)
 }
 

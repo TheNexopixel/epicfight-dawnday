@@ -1,77 +1,76 @@
 package net.dawn_day.skill.skill_compats;
 
-//public class NightfallCompat implements ICompatModule {
-//
-//
-//    public static void onEnhancedParry(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
-//        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("efn", "efn_parry"))) {
-//            GuardSkill.Builder builder = event.getSkillBuilder();
-//            builder
-//
-//                    .addGuardMotion(
-//                            EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
-//                            (i, p) -> Animations.LONGSWORD_GUARD_HIT
-//                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD,
-//                            (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
-//
-//                    .addGuardMotion(
-//                            EpicFightDD_WeaponCategories.EVIL_TACHI,
-//                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_GUARD_HIT
-//                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.EVIL_TACHI,
-//                            (i, p) -> AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED)
-//
-//                    .addGuardMotion(
-//                            EpicFightDD_WeaponCategories.RITUS_DAGGER,
-//                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
-//                    ).addGuardBreakMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER,
-//                            (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED)
-//
-//                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
-//                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
-//
-//                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.EVIL_TACHI, ((capabilityItem, pp) ->
-//                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
-//
-//
-//                    .addAdvancedGuardMotion(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, ((capabilityItem, pp) ->
-//                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
-//
-//
-//            ;
-//
-//        }
-//    }
-//
-//        @OnlyIn(Dist.CLIENT)
-//        public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
-//
-//            icon.registerCategory(EpicFightDD_WeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
-//            icon.registerCategory(EpicFightDD_WeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
-//        }
-//
-//
-//
-//
-//
-//    @Override
-//    public void onModEventBus(IEventBus eventBus) {
-//        eventBus.addGenericListener(GuardSkill.Builder.class,
-//                EventPriority.NORMAL,
-//                NightfallCompat::onEnhancedParry);
-//    }
-//
-//    @Override
-//    public void onForgeEventBus(IEventBus eventBus) {
-//
-//    }
-//
-//    @Override
-//    public void onModEventBusClient(IEventBus eventBus) {
-//        eventBus.addListener(NightfallCompat::onIconCreate);
-//    }
-//
-//    @Override
-//    public void onForgeEventBusClient(IEventBus eventBus) {
-//
-//    }
-//}
+import com.hm.efn.gameasset.animations.EFNSkillAnimations;
+import net.dawn_day.gameasset.animation.DawnDayAnimations;
+import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.bus.api.IEventBus;
+import yesman.epicfight.api.event.EpicFightEventHooks;
+import yesman.epicfight.api.event.types.registry.SkillBuilderModificationEvent;
+import yesman.epicfight.compat.ICompatModule;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.skill.guard.GuardSkill;
+
+import java.util.List;
+
+public class NightfallCompat implements ICompatModule {
+
+
+    public static void onEnhancedParry(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("efn", "efn_parry"))) {
+            if (event.getSkillBuilder() instanceof GuardSkill.Builder builder) {
+                builder
+
+                        .addGuardMotion(
+                                DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                                (i, p) -> Animations.LONGSWORD_GUARD_HIT
+                        ).addGuardBreakMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                                (i, p) -> Animations.GREATSWORD_GUARD_BREAK)
+
+
+                        .addGuardMotion(
+                                DawnDayWeaponCategories.RITUS_DAGGER,
+                                (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
+                        ).addGuardBreakMotion(DawnDayWeaponCategories.RITUS_DAGGER,
+                                (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED)
+
+                        .addAdvancedGuardMotion(DawnDayWeaponCategories.RITUS_DAGGER, ((capabilityItem, pp) ->
+                                List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+                        .addAdvancedGuardMotion(DawnDayWeaponCategories.EVIL_TACHI, ((capabilityItem, pp) ->
+                                List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+
+                        .addAdvancedGuardMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD, ((capabilityItem, pp) ->
+                                List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+
+                ;
+
+            }
+        }
+    }
+
+
+    @Override
+    public void onModEventBus(IEventBus eventBus) {
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(NightfallCompat::onEnhancedParry, 3);
+    }
+
+    @Override
+    public void onGameEventBus(IEventBus iEventBus) {
+
+    }
+
+    @Override
+    public void onModEventBusClient(IEventBus iEventBus) {
+
+    }
+
+    @Override
+    public void onGameEventBusClient(IEventBus iEventBus) {
+
+    }
+
+
+}

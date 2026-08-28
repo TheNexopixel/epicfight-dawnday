@@ -1,9 +1,11 @@
 package net.dawn_day;
 
+import com.hm.efn.EFN;
 import com.mojang.logging.LogUtils;
 import net.dawn_day.client.input.DawnDayKeyMappings;
 import net.dawn_day.events.ModBusEvent;
 import net.dawn_day.registry.DawnDayRegistry;
+import net.dawn_day.skill.skill_compats.NightfallCompat;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
 
 import net.minecraft.network.chat.Component;
@@ -22,6 +24,8 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import org.slf4j.Logger;
+import reascer.wom.main.WeaponsOfMinecraft;
+import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
@@ -40,6 +44,10 @@ public class EpicFightDawnDay {
     }
     public EpicFightDawnDay(IEventBus bus, ModContainer modContainer) {
         bus.addListener(ModBusEvent::registerAnimation);
+
+        if(ModList.get().isLoaded(EFN.MODID)){
+            ICompatModule.loadCompatModule(bus, NightfallCompat.class);
+        }
 
     if (EpicFightSharedConstants.isPhysicalClient()) {
          bus.addListener(DawnDayKeyMappings::registerKeys);
