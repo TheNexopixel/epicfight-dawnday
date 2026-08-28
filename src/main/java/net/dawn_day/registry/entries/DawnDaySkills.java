@@ -5,6 +5,8 @@ import net.dawn_day.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
 
+import net.dawn_day.skill.passive.RedemptionSkill;
+import net.dawn_day.skill.passive.Riposte;
 import net.dawn_day.skill.stances.WingStanceSkill;
 import net.dawn_day.skill.weapon_innate.*;
 
@@ -17,6 +19,7 @@ import yesman.epicfight.registry.entries.EpicFightParticles;
 import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
@@ -78,6 +81,21 @@ public final class DawnDaySkills {
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .build(key));
+
+
+    public static final DeferredHolder<Skill, Riposte> REPOSTE = REGISTRY.register("riposte", key->
+            Riposte.createPassiveBuilder(Riposte::new)
+                     .setResource(Skill.Resource.COOLDOWN)
+                    .setCategory(SkillCategories.PASSIVE)
+                    .build(key)
+            );
+
+    public static final DeferredHolder<Skill, RedemptionSkill>  REDEMPTION = REGISTRY.register("redemption", key ->
+            PassiveSkill.createPassiveBuilder(RedemptionSkill::new)
+            .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.IDENTITY)
+                    .build(key)
+    );
 
     public static final DeferredHolder<Skill, WeaponInnateSkill> BEAST_EYE = REGISTRY.register("beast_eye", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder(SimpleWeaponInnateSkill::new)

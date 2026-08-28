@@ -3,6 +3,8 @@ package net.dawn_day.registry.entries;
 import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.world.item.*;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
@@ -232,7 +234,8 @@ public final class DawnDayItems {
             REGISTRY.register("milady", () -> new SwordItem(Tiers.NETHERITE,
                     new Item.Properties().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 1, -2.4f)).stacksTo(1)
                             .rarity(Rarity.EPIC)
-                            .durability(3680)));
+                            .durability(3680))
+            );
 
     public static final DeferredItem<Item> BONECUTTING_SAW =
             REGISTRY.register("bonecutting_saw", () -> new SwordItem(Tiers.NETHERITE,
