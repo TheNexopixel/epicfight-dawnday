@@ -1,7 +1,6 @@
 package net.dawn_day.mixin;
 
 import net.neoforged.fml.ModList;
-import net.shelmarow.combat_evolution.CombatEvolution;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -26,12 +25,14 @@ public class DawnDayMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.equals("net.epicfight_dd.mixin.ExecutionHandlerMixin")) {
            //gate specific mixin
-            return ModList.get().isLoaded(CombatEvolution.MOD_ID);
+            return ModList.get().isLoaded("combat_evolution");
         }
 
         return true; // Apply other mixins by default
 
     }
+
+
 
 
 

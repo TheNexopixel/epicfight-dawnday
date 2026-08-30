@@ -367,6 +367,38 @@ public class QoLMiscAnimations {
                 ))
 
         );
+        SHOT_DEAD_MOB = builder.nextAccessor("biped/deathanims/death_arrow_mob", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+                .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
+                        (e,s,p)->{
+
+                            LivingEntity entity = e.getOriginal();
+
+                            // Random count between 10–25
+                            int particleCount = 15 + entity.getRandom().nextInt(19);
+
+                            for (int i = 0; i < particleCount; i++) {
+                                double offsetX = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+                                double offsetY = entity.getRandom().nextDouble() * entity.getBbHeight();
+                                double offsetZ = (entity.getRandom().nextDouble() - 0.5D) * entity.getBbWidth();
+
+                                entity.level().addParticle(
+                                        EpicFightParticles.BLOOD.get(),
+                                        entity.getX() + offsetX,
+                                        entity.getY() + offsetY,
+                                        entity.getZ() + offsetZ,
+                                        0.0D, 0.02D, 0.0D
+                                );
+                            }
+
+                        }, AnimationEvent.Side.CLIENT
+                ))
+
+
+        );
+        FALL_DEATH_MOB = builder.nextAccessor("biped/deathanims/death_fall_mob", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
+        );
 
         DEATH_MAGIC = builder.nextAccessor("biped/deathanims/death_magic", ac -> new ActionAnimation(0.0f,7.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));

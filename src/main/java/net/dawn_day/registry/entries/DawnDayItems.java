@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import yesman.epicfight.world.item.WeaponItem;
 
 @SuppressWarnings("unused")
 public final class DawnDayItems {
@@ -23,12 +24,64 @@ public final class DawnDayItems {
                             .rarity(Rarity.RARE)
                             .durability(2561)));
 
+    public static final DeferredItem<Item> POLEBLADE =
+            REGISTRY.register("poleblade", () -> new DawnDayTooltips(
+                    Tiers.DIAMOND,
+                    0,
+                    -2.0F,
+                    new Item.Properties()
+                            .rarity(Rarity.EPIC),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.poleblade_text1",
+                            ChatFormatting.GRAY),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.poleblade_text2",
+                            ChatFormatting.GRAY)
+
+            ));
+    public static final DeferredItem<Item> HOOKCLAWS =
+            REGISTRY.register("hookclaws", () -> new DawnDayTooltips(
+                    Tiers.IRON,
+                    2,
+                    -1.6F,
+                    new Item.Properties()
+                            .durability(1205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.hookclaws",
+                            ChatFormatting.GRAY)
+
+            ));
+    public static final DeferredItem<Item> IUDEX_HALBERD =
+            REGISTRY.register("iudex_gundyr_halberd", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    5,
+                    -2.4F,
+                    new Item.Properties()
+                            .rarity(Rarity.RARE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.iudex_gundyr_halberd",
+                            ChatFormatting.GRAY)
+
+            ));
 
     public static final DeferredItem<Item> VITREUS =
-            REGISTRY.register("vitreus",() -> new SwordItem(Tiers.DIAMOND,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 1, -2.2f)).stacksTo(1)
+            REGISTRY.register("vitreus",() -> new DawnDayTooltips(Tiers.DIAMOND,3,-2.2f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(4561)));
+                            .durability(4561),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.vitreus",
+                            ChatFormatting.GRAY)
+
+            ));
 
     public static final DeferredItem<Item> IRON_FLORETT =
             REGISTRY.register("iron_florett",() -> new SwordItem(Tiers.IRON,
@@ -61,10 +114,14 @@ public final class DawnDayItems {
                             .durability(1561)));
 
     public static final DeferredItem<Item> IRON_FIST =
-            REGISTRY.register("iron_fist",() -> new SwordItem(Tiers.IRON,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.IRON, 1, -1.7f)).stacksTo(1)
+            REGISTRY.register("iron_fist",() -> new DawnDayTooltips(Tiers.IRON,1,-1.7f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(5561)));
+                            .durability(5561),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.iron_fist",
+                            ChatFormatting.GRAY)
+            ));
 
     public static final DeferredItem<Item> GOLDEN_MESSER =
             REGISTRY.register("golden_messer", () -> new SwordItem(Tiers.GOLD,
@@ -96,11 +153,14 @@ public final class DawnDayItems {
                             .rarity(Rarity.COMMON)
                             .durability(840)));
 
-    public static final DeferredItem<Item> SABER =
-            REGISTRY.register("saber", () -> new SwordItem(Tiers.DIAMOND,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 2, -2.0f)).stacksTo(1)
+    public static final DeferredItem<Item> saber =
+            REGISTRY.register("saber",() -> new DawnDayTooltips(Tiers.DIAMOND,2,-2.0f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(2500)));
+                            .durability(2500),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.saber",
+                            ChatFormatting.GRAY)));
 
     public static final DeferredItem<Item> STEEL_AXE =
             REGISTRY.register("steelaxe", () -> new SwordItem(Tiers.NETHERITE,
@@ -109,17 +169,39 @@ public final class DawnDayItems {
                             .durability(2500)));
 
     public static final DeferredItem<Item> NIGHT_RITUS_DAGGER =
-            REGISTRY.register("night_ritus_dagger", () -> new SwordItem(Tiers.DIAMOND,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 1, -2.0f)).stacksTo(1)
+            REGISTRY.register("night_ritus_dagger",() -> new DawnDayTooltips(Tiers.DIAMOND,1,-2.0f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(2800)));
+                            .durability(2800),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_lore",
+                            ChatFormatting.GRAY)
+
+            ));
 
     public static final DeferredItem<Item> BLOOD_RITUS_DAGGER =
-            REGISTRY.register("blood_ritus_dagger", () -> new SwordItem(Tiers.DIAMOND,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 2, -2.1f)).stacksTo(1)
+            REGISTRY.register("blood_ritus_dagger",() ->  new DawnDayTooltips(Tiers.DIAMOND,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(2100)));
-
+                            .durability(2100),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_lore",
+                            ChatFormatting.GRAY)
+            ));
     public static final DeferredItem<Item> IRON_KNIFE =
             REGISTRY.register("iron_knife", () -> new SwordItem(Tiers.IRON,
                     new Item.Properties().attributes(SwordItem.createAttributes(Tiers.IRON, 1, -2.2f)).stacksTo(1)
@@ -169,11 +251,15 @@ public final class DawnDayItems {
                     new Item.Properties().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 3, -2.5f)).stacksTo(1)
                             .durability(2680)));
 
-    public static final DeferredItem<Item> NAIL_BAT =
-            REGISTRY.register("nailbat", () -> new SwordItem(Tiers.DIAMOND,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 4, -2.6f)).stacksTo(1)
+    public static final DeferredItem<Item> spiked_bat =
+            REGISTRY.register("nailbat",() -> new DawnDayTooltips(Tiers.DIAMOND,4,-2.6f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
-                            .durability(2080)));
+                            .durability(2080),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.nailbat",
+                            ChatFormatting.GRAY)
+            ));
 
     public static final DeferredItem<Item> NAIL =
             REGISTRY.register("nail", () -> new Item(
@@ -231,11 +317,17 @@ public final class DawnDayItems {
                             .rarity(Rarity.COMMON)));
 
     public static final DeferredItem<Item> MILADY =
-            REGISTRY.register("milady", () -> new SwordItem(Tiers.NETHERITE,
-                    new Item.Properties().attributes(SwordItem.createAttributes(Tiers.NETHERITE, 1, -2.4f)).stacksTo(1)
+            REGISTRY.register("milady",() -> new DawnDayTooltips(Tiers.NETHERITE,1,-2.4f,
+                    new Item.Properties().stacksTo(1)
                             .rarity(Rarity.EPIC)
-                            .durability(3680))
-            );
+                            .durability(3680),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.milady_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.milady_lore",
+                            ChatFormatting.GRAY)
+            ));
 
     public static final DeferredItem<Item> BONECUTTING_SAW =
             REGISTRY.register("bonecutting_saw", () -> new SwordItem(Tiers.NETHERITE,

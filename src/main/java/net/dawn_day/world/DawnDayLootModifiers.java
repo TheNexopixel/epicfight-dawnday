@@ -219,7 +219,7 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.SABER.get()
+                                        DawnDayItems.saber.get()
 
                                 )
                         )

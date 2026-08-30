@@ -53,13 +53,13 @@ public class SelectiveAnimationProxy extends StaticAnimation {
     @OnlyIn(Dist.CLIENT)
     @Override
     public Layer.Priority getPriority() {
-        return this.animationsInEachState.get(0).get().getPriority();
+        return this.animationsInEachState.getFirst().get().getPriority();
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public Layer.LayerType getLayerType() {
-        return this.animationsInEachState.get(0).get().getLayerType();
+        return this.animationsInEachState.getFirst().get().getLayerType();
     }
 
 }
