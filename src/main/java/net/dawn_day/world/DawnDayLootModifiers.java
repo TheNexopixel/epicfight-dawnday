@@ -198,7 +198,7 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.HERB_SICKLE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_LIGHT_GREATSWORD.get()))

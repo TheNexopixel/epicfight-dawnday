@@ -1,10 +1,13 @@
 package net.dawn_day.skill.skill_compats;
 
+import net.dawn_day.gameasset.animation.DawnDayAnimations;
+import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import reascer.wom.gameasset.WOMSkills;
 import yesman.epicfight.compat.ICompatModule;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.registry.entries.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -46,12 +49,40 @@ public class WoMCompat implements ICompatModule {
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advancedGuardMotions = new HashMap<>();
 
         //Normal
-//        guardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-//                AdditionalAnimations.EVIL_ODACHI_GUARD_HIT);
-//        guardBreakMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (item, player) ->
-//                AdditionalAnimations.EVIL_ODACHI_NEUTRALIZED);
-//        advancedGuardMotions.put(EpicFightDD_WeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
-//                AdditionalAnimations.EVIL_ODACHI_COUNTER);
+        guardMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (item, player) ->
+                DawnDayAnimations.RITUS_DAGGER_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (item, player) ->
+                DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
+        advancedGuardMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
+                DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
+
+        guardMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
+                DawnDayAnimations.POLEBLADE_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
+                DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+        advancedGuardMotions.put(DawnDayWeaponCategories.POLEBLADE, (itemCap, playerpatch) ->
+                DawnDayAnimations.POLEBLADE_COUNTER);
+
+        guardMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
+                DawnDayAnimations.IRON_FIST_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
+                DawnDayAnimations.IRON_FIST_GUARD_BREAK);
+        advancedGuardMotions.put(DawnDayWeaponCategories.IRON_FIST, (itemCap, playerpatch) ->
+                DawnDayAnimations.IRON_FIST_GUARD_COUNTER);
+
+        guardMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
+                DawnDayAnimations.HOOKCLAWS_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
+                DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
+        advancedGuardMotions.put(DawnDayWeaponCategories.CLAWS, (itemCap, playerpatch) ->
+                DawnDayAnimations.HOOKCLAWS_COUNTER);
+
+        guardMotions.put(DawnDayWeaponCategories.SICKLE, (item, player) ->
+                Animations.SWORD_GUARD_HIT);
+        guardBreakMotions.put(DawnDayWeaponCategories.SICKLE, (item, player) ->
+                Animations.BIPED_COMMON_NEUTRALIZED);
+        advancedGuardMotions.put(DawnDayWeaponCategories.SICKLE, (itemCap, playerpatch) ->
+                DawnDayAnimations.SICKLE_ONEHAND_AUTO1);
 
         Field temp;
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
@@ -76,12 +107,20 @@ public class WoMCompat implements ICompatModule {
         for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
             target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
         }
+        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
+        for (WeaponCategory weaponCapability : guardMotions.keySet()) {
+            target.put(weaponCapability, guardMotions.get(weaponCapability));
+        }
 
         temp = GuardSkill.class.getDeclaredField("advancedGuardMotions");
         temp.setAccessible(true);
         target = (Map) temp.get(WOMSkills.COUNTER_ATTACK);
         for (WeaponCategory weaponCapability : advancedGuardMotions.keySet()) {
             target.put(weaponCapability, advancedGuardMotions.get(weaponCapability));
+        }
+        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
+        for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
+            target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
         }
 
     }

@@ -1,5 +1,5 @@
 {
-  "parent": "neoforge/generated",
+  "parent": "item/generated",
   "display": {
     "thirdperson_righthand": {
       "rotation": [45, 90, 0],

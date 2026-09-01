@@ -3,6 +3,7 @@ package net.dawn_day.registry.entries;
 import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.gameasset.animation.DawnDayCollider;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
+import net.minecraft.sounds.SoundEvents;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.registry.deferred.ItemPresetRegister;
 import yesman.epicfight.registry.deferred.holders.DeferredWeapon;
@@ -78,7 +79,7 @@ public final class DawnDayItemCapabilityPresets
             .addMoveset(CapabilityItem.Styles.TWO_HAND, HALBERD_2H)
     );
 
-    public static final DeferredWeapon BATTLE_STAFF = REGISTRY.registerWeapon("battle_staff", () -> WeaponCapability.builder()
+    public static final DeferredWeapon BATTLE_STAFF = REGISTRY.registerWeapon("battlestaff", () -> WeaponCapability.builder()
             .category(CapabilityItem.WeaponCategories.SPEAR)
             .collider(DawnDayCollider.BATTLESTAFF_FULL)
             .swingSound(EpicFightSounds.WHOOSH)
@@ -89,8 +90,14 @@ public final class DawnDayItemCapabilityPresets
             .addMoveset(CapabilityItem.Styles.TWO_HAND, BATTLE_STAFF_2H)
     );
 
-    public static final DeferredWeapon BATTLE_STAFF_WOOD = REGISTRY.registerWeapon("battle_staff_wood", () -> WeaponCapability.builder()
+    public static final DeferredWeapon BATTLE_STAFF_WOOD = REGISTRY.registerWeapon("battlestaff_wood", () -> WeaponCapability.builder()
             .parent(BATTLE_STAFF)
+
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, BATTLE_STAFF_WOOD_2H)
+    );
+    public static final DeferredWeapon BATTLE_STAFF_AMETHYST = REGISTRY.registerWeapon("battlestaff_amethyst", () -> WeaponCapability.builder()
+            .parent(BATTLE_STAFF)
+            .hitSound(SoundEvents.AMETHYST_BLOCK_HIT)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, BATTLE_STAFF_WOOD_2H)
     );
 
@@ -181,7 +188,8 @@ public final class DawnDayItemCapabilityPresets
             .hitParticle(EpicFightParticles.HIT_BLADE)
             .hitSound(EpicFightSounds.BLADE_HIT)
             .canBePlacedOffhand(false)
-            .addMoveset(CapabilityItem.Styles.TWO_HAND, VITREUS_1H)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, VITREUS_2H)
     );
 
     public static final DeferredWeapon POLEBLADE = REGISTRY.registerWeapon("pole_blade", () -> WeaponCapability.builder()
@@ -207,16 +215,16 @@ public final class DawnDayItemCapabilityPresets
     );
 
 
-    public static final DeferredWeapon BAT = REGISTRY.registerWeapon("bat", () -> WeaponCapability.builder()
-            .category(CapabilityItem.WeaponCategories.GREATSWORD)
+    public static final DeferredWeapon BAT = REGISTRY.registerWeapon("nailbat", () -> WeaponCapability.builder()
+            .category(DawnDayWeaponCategories.BAT)
             .collider(DawnDayCollider.BAT)
             .swingSound(EpicFightSounds.WHOOSH_BIG)
             .hitParticle(EpicFightParticles.HIT_BLUNT)
             .hitSound(EpicFightSounds.BLUNT_HIT)
-            .canBePlacedOffhand(false)
-            .addConditionals(EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
-            .addMoveset(CapabilityItem.Styles.TWO_HAND, BAT_2H)
-            .addMoveset(CapabilityItem.Styles.OCHS, BAT_DUAL)
+            .canBePlacedOffhand(true)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE, DUAL_BAT)
+            .addMoveset(CapabilityItem.Styles.ONE_HAND, BAT_1H)
+            .addMoveset(CapabilityItem.Styles.TWO_HAND, BAT_DUAL)
     );
 
     public static final DeferredWeapon BONECUTTING_SAW = REGISTRY.registerWeapon("bonecutting_saw", () -> WeaponCapability.builder()
@@ -241,12 +249,12 @@ public final class DawnDayItemCapabilityPresets
     );
     public static final DeferredWeapon HOOKCLAWS = REGISTRY.registerWeapon("hookclaws", () -> WeaponCapability.builder()
             .category(DawnDayWeaponCategories.CLAWS)
-            .collider(DawnDayCollider.IUDEX_HALBERD)
+            .collider(DawnDayCollider.IRON_FIST)
             .swingSound(DawnDaySounds.MILADY_LIGHT_SWEEP)
             .hitParticle(EpicFightParticles.HIT_BLADE)
             .hitSound(EpicFightSounds.BLADE_HIT)
             .canBePlacedOffhand(true)
-            .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+            .addConditionals(EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE, DUAL_HOOKCLAWS)
             .addMoveset(CapabilityItem.Styles.ONE_HAND, HOOKCLAWS_1H)
             .addMoveset(CapabilityItem.Styles.TWO_HAND, HOOKCLAWS_2H)
     );

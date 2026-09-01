@@ -6,6 +6,7 @@ import net.dawn_day.client.input.DawnDayKeyMappings;
 import net.dawn_day.events.ModBusEvent;
 import net.dawn_day.registry.DawnDayRegistry;
 import net.dawn_day.skill.skill_compats.NightfallCompat;
+import net.dawn_day.skill.skill_compats.WoMCompat;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
 
 import net.minecraft.network.chat.Component;
@@ -44,9 +45,15 @@ public class EpicFightDawnDay {
     }
     public EpicFightDawnDay(IEventBus bus, ModContainer modContainer) {
         bus.addListener(ModBusEvent::registerAnimation);
+        bus.addListener(this::addPackFindersEvent);
 
         if(ModList.get().isLoaded(EFN.MODID)){
             ICompatModule.loadCompatModule(bus, NightfallCompat.class);
+        }
+        if(ModList.get().isLoaded(WeaponsOfMinecraft.MODID)){
+            ICompatModule.loadCompatModule(bus, WoMCompat.class);
+
+            bus.addListener(WoMCompat::buildSkillEvent);
         }
 
     if (EpicFightSharedConstants.isPhysicalClient()) {
@@ -64,7 +71,7 @@ public class EpicFightDawnDay {
     
     private void commonSetup(final FMLCommonSetupEvent event) {
     }
-    /*
+
     public void addPackFindersEvent(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
 
@@ -92,5 +99,5 @@ public class EpicFightDawnDay {
 
     }
 
-     */
+
 }

@@ -218,7 +218,7 @@ public class RedemptionSkill extends PassiveSkill {
                 player.getX(),
                 player.getY(),
                 player.getZ(),
-                DawnDaySounds.CURSED2.get(), //TODO: NEXO CHANGE THE SOUND BACK TO REDEMTPION
+                DawnDaySounds.REDEMPTION.get(),
                 player.getSoundSource(),
                 1.5F,
                 1.0F

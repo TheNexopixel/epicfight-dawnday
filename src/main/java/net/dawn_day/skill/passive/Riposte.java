@@ -5,6 +5,7 @@ import java.util.UUID;
 
 
 import net.dawn_day.registry.entries.DawnDaySkillDataKeys;
+import net.dawn_day.registry.entries.DawnDaySounds;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -65,19 +66,21 @@ public class Riposte extends PassiveSkill {
                             DawnDaySkillDataKeys.IRON_WILL_STACKS,
                             1
                     );
-
-                  /*  float reflectedDamage = event.getDamage() * 0.5F;
+/*
+                    float reflectedDamage = event.getDamage() * 0.5F;
 
                     container.getDataManager().setDataSync(
                             DawnDaySkillDataKeys.IRON_WILL_DAMAGE.get(),
                             reflectedDamage
-                    ); */
+                    );
 
-//                    container.getExecutor().playSound( TODO: I LEAVE THIS TO YOU NEXO :)
-//                            DawnDaySounds.GUARD_COUNTER.get(),
-//                            0.9F,
-//                            1.1F
-//                    );
+ */
+
+                   container.getExecutor().playSound(
+                            DawnDaySounds.GUARD_COUNTER.get(),
+                            0.9F,
+                           1.1F
+                    );
 
 
                 },this);

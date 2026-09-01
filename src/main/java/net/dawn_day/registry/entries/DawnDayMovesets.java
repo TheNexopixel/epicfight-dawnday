@@ -29,14 +29,14 @@ public final class DawnDayMovesets
     public static final DeferredMoveset HALBERD_2H = REGISTRY.registerMoveset("halberd_2h", () -> Moveset.builder()
             .addComboAttacks(DawnDayAnimations.HALBERD_AUTO1, DawnDayAnimations.HALBERD_AUTO2, DawnDayAnimations.HALBERD_AUTO3, DawnDayAnimations.HALBERD_AUTO4, DawnDayAnimations.HALBERD_DASH, DawnDayAnimations.MILADY_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.HALBERD_IDLE)
-            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
-            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+            .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.IUDEX_HALBERD_WALK)
+            .addLivingMotionModifier(LivingMotions.RUN, DawnDayAnimations.IUDEX_HALBERD_RUN)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SPEAR_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.SPEARING_STRIKE.get())
     );
 
     public static final DeferredMoveset BATTLE_STAFF_2H = REGISTRY.registerMoveset("battle_staff_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.BATTLESTAFF_AUTO1, DawnDayAnimations.BATTLESTAFF_AUTO2, DawnDayAnimations.BATTLESTAFF_AUTO3, DawnDayAnimations.BATTLESTAFF_AUTO4, DawnDayAnimations.BATTLESTAFF_AUTO5, DawnDayAnimations.BATTLESTAFF_DASH, DawnDayAnimations.BATTLESTAFF_AIRSLASH)
+            .addComboAttacks(DawnDayAnimations.BATTLESTAFF_AUTO1, DawnDayAnimations.BATTLESTAFF_AUTO2, DawnDayAnimations.BATTLESTAFF_AUTO3, DawnDayAnimations.BATTLESTAFF_AUTO4,DawnDayAnimations.POLEBLADE_DASH, DawnDayAnimations.POLEBLADE_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
             .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
@@ -45,7 +45,7 @@ public final class DawnDayMovesets
     );
 
     public static final DeferredMoveset BATTLE_STAFF_WOOD_2H = REGISTRY.registerMoveset("battle_staff_wood_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.BATTLESTAFF_AUTO1, DawnDayAnimations.BATTLESTAFF_AUTO2, DawnDayAnimations.BATTLESTAFF_AUTO3, DawnDayAnimations.BATTLESTAFF_AUTO4, DawnDayAnimations.BATTLESTAFF_AUTO5, DawnDayAnimations.BATTLESTAFF_DASH, DawnDayAnimations.BATTLESTAFF_AIRSLASH)
+            .addComboAttacks(DawnDayAnimations.BATTLESTAFF_AUTO1, DawnDayAnimations.BATTLESTAFF_AUTO2, DawnDayAnimations.BATTLESTAFF_AUTO3, DawnDayAnimations.BATTLESTAFF_AUTO4, DawnDayAnimations.POLEBLADE_DASH, DawnDayAnimations.POLEBLADE_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
             .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
@@ -99,7 +99,7 @@ public final class DawnDayMovesets
     );
 
     public static final DeferredMoveset KNIFE_2H = REGISTRY.registerMoveset("knife_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.KNIFE_DUAL_AUTO1, DawnDayAnimations.KNIFE_DUAL_AUTO2, DawnDayAnimations.SICKLE_DUAL_AUTO3, DawnDayAnimations.KNIFE_DUAL_DASH, DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
+            .addComboAttacks(DawnDayAnimations.SICKLE_DUAL_AUTO1, DawnDayAnimations.SICKLE_DUAL_AUTO2, DawnDayAnimations.SICKLE_DUAL_AUTO3, DawnDayAnimations.SICKLE_DUAL_DASH, DawnDayAnimations.KNIFE_DUAL_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.KNIFE_DUAL_IDLE)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.WHIRLWIND.get())
     );
@@ -180,7 +180,7 @@ public final class DawnDayMovesets
             .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.IRON_FIST_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.POWERFUL_KICK.get()));
 
-    public static final DeferredMoveset VITREUS_1H = REGISTRY.registerMoveset("vitreus_1h", () -> Moveset.builder()
+    public static final DeferredMoveset VITREUS_2H = REGISTRY.registerMoveset("vitreus_2h", () -> Moveset.builder()
             .addComboAttacks(DawnDayAnimations.VITR_AUTO1, DawnDayAnimations.VITR_AUTO2, DawnDayAnimations.VITR_AUTO3,DawnDayAnimations.VITR_AUTO4, DawnDayAnimations.VITR_DASH, DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.VITR_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.MILADY_WALK)
@@ -222,7 +222,7 @@ public final class DawnDayMovesets
 
     public static final DeferredMoveset HOOKCLAWS_1H = REGISTRY.registerMoveset("hookclaws_1h", () -> Moveset.builder()
             .addComboAttacks(DawnDayAnimations.HOOKCLAWS_ONEHAND_AUTO1, DawnDayAnimations.HOOKCLAWS_ONEHAND_AUTO2,DawnDayAnimations.HOOKCLAWS_ONEHAND_DASH, DawnDayAnimations.HOOKCLAWS_ONEHAND_AIRSLASH)
-            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.HOOKCLAWS_IDLE)
+            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.HOOKCLAWS_ONEHAND_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.HOOKCLAWS_WALK)
             .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN)
             .addLivingMotionModifier(LivingMotions.BLOCK, DawnDayAnimations.HOOKCLAWS_GUARD)
@@ -242,7 +242,7 @@ public final class DawnDayMovesets
 
 
     // ==================== HEAVY BLUNT & GREATSWORDS ====================
-    public static final DeferredMoveset BAT_2H = REGISTRY.registerMoveset("bat_2h", () -> Moveset.builder()
+    public static final DeferredMoveset BAT_1H = REGISTRY.registerMoveset("bat_1h", () -> Moveset.builder()
             .addComboAttacks(DawnDayAnimations.BAT_AUTO1, DawnDayAnimations.BAT_AUTO2, DawnDayAnimations.BAT_AUTO3, DawnDayAnimations.BAT_AUTO4, DawnDayAnimations.BAT_DASH, DawnDayAnimations.BAT_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.BAT_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
@@ -266,15 +266,6 @@ public final class DawnDayMovesets
             .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.GREATSWORD_GUARD)
             .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.BRUTAL_DASH.get())
-    );
-
-    public static final DeferredMoveset GREATAXE_1H = REGISTRY.registerMoveset("greataxe_1h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.SAW_AUTO1, DawnDayAnimations.SAW_AUTO2, DawnDayAnimations.SAW_AUTO3, DawnDayAnimations.SAW_AUTO4, DawnDayAnimations.BAT_DASH, DawnDayAnimations.BAT_AIRSLASH)
-            .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.SAW_IDLE)
-            .addLivingMotionModifier(LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
-            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
-            .addLivingMotionModifier(LivingMotions.BLOCK, Animations.GREATSWORD_GUARD)
-            .addInnateSkill((itemStack, playerPatch) -> DawnDaySkills.SPEARING_STRIKE.get())
     );
 
 

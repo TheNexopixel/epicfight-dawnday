@@ -24,33 +24,49 @@ public class DawnDayItemTagsProvider extends ItemTagsProvider {
         this.tag(ItemTags.SWORDS)
                 .add(
                         DawnDayItems.BAT.get(),
+                        DawnDayItems.spiked_bat.get(),
                         DawnDayItems.BACKHAND_BLADE.get(),
                         DawnDayItems.BLOOD_RITUS_DAGGER.get(),
+                        DawnDayItems.NIGHT_RITUS_DAGGER.get(),
+                        DawnDayItems.IRON_FIST.get(),
+                        DawnDayItems.HOOKCLAWS.get(),
+                        DawnDayItems.POLEBLADE.get(),
+                        DawnDayItems.IUDEX_HALBERD.get(),
+
                         DawnDayItems.DIAMOND_MESSER.get(),
                         DawnDayItems.GOLDEN_MESSER.get(),
                         DawnDayItems.NETHERITE_MESSER.get(),
                         DawnDayItems.IRON_MESSER.get(),
-                        DawnDayItems.HERB_SICKLE.get(),
+
+                        DawnDayItems.IRON_SICKLE.get(),
+                        DawnDayItems.GOLDEN_SICKLE.get(),
+                        DawnDayItems.NETHERITE_SICKLE.get(),
+                        DawnDayItems.DIAMOND_SICKLE.get(),
+
                         DawnDayItems.saber.get(),
                         DawnDayItems.STEEL_AXE.get(),
-                        DawnDayItems.NIGHT_RITUS_DAGGER.get(),
+
                         DawnDayItems.IRON_KNIFE.get(),
                         DawnDayItems.DIAMOND_KNIFE.get(),
                         DawnDayItems.NETHERITE_KNIFE.get(),
                         DawnDayItems.GOLDEN_KNIFE.get(),
+
                         DawnDayItems.WOODEN_BATTLESTAFF.get(),
+                        DawnDayItems.AMETHYST_BATTLESTAFF.get(),
                         DawnDayItems.IRON_BATTLESTAFF.get(),
                         DawnDayItems.GOLDEN_BATTLESTAFF.get(),
                         DawnDayItems.DIAMOND_BATTLESTAFF.get(),
                         DawnDayItems.NETHERITE_BATTLESTAFF.get(),
-                        DawnDayItems.spiked_bat.get(),
+
                         DawnDayItems.MILADY.get(),
                         DawnDayItems.BONECUTTING_SAW.get(),
+
                         DawnDayItems.NETHERITE_LIGHT_GREATSWORD.get(),
                         DawnDayItems.DIAMOND_LIGHT_GREATSWORD.get(),
                         DawnDayItems.GOLDEN_LIGHT_GREATSWORD.get(),
                         DawnDayItems.IRON_LIGHT_GREATSWORD.get(),
                         DawnDayItems.WAR_SICKLE.get(),
+
                         DawnDayItems.DIAMOND_HALBERD.get(),
                         DawnDayItems.GOLDEN_HALBERD.get(),
                         DawnDayItems.IRON_HALBERD.get(),

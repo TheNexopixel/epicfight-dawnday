@@ -42,6 +42,12 @@ public final class DawnDayConditionals
     public static final DeferredConditional DUAL_RITUS_DAGGERS = REGISTRY.registerConditional("dual_ritus_daggers", () ->
             ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.RITUS_DAGGER, InteractionHand.OFF_HAND, true)
     );
+    public static final DeferredConditional DUAL_BAT = REGISTRY.registerConditional("dual_bat", () ->
+            ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.BAT, InteractionHand.OFF_HAND, true)
+    );
+    public static final DeferredConditional DUAL_HOOKCLAWS = REGISTRY.registerConditional("dual_hookclaws", () ->
+            ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.CLAWS, InteractionHand.OFF_HAND, true)
+    );
     public static final DeferredConditional DUAL_FLORETT = REGISTRY.registerConditional("dual_florett", () ->
             ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, DawnDayWeaponCategories.FLORETT, InteractionHand.OFF_HAND, true)
     );
