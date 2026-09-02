@@ -1,0 +1,11 @@
+{
+  "trail": {
+    "color": [200, 200, 200],
+    "begin_pos": [0.0, 0.0, 2.3],
+    "end_pos": [0.0, 0.0, -2.3],
+    "lifetime": 8,
+    "interpolations": 8,
+    "texture_path": "epicfight_dd:textures/particle/weapon_trail/amethyst_staff_trail.png",
+    "particle_type": "epicfight:swing_trail"
+  }
+}

@@ -27,7 +27,7 @@ public final class DawnDayMovesets
     );
 
     public static final DeferredMoveset HALBERD_2H = REGISTRY.registerMoveset("halberd_2h", () -> Moveset.builder()
-            .addComboAttacks(DawnDayAnimations.HALBERD_AUTO1, DawnDayAnimations.HALBERD_AUTO2, DawnDayAnimations.HALBERD_AUTO3, DawnDayAnimations.HALBERD_AUTO4, DawnDayAnimations.HALBERD_DASH, DawnDayAnimations.MILADY_AIR_SLASH)
+            .addComboAttacks(DawnDayAnimations.HALBERD_AUTO1, DawnDayAnimations.HALBERD_AUTO2, DawnDayAnimations.HALBERD_AUTO3, DawnDayAnimations.HALBERD_AUTO4, DawnDayAnimations.IUDEX_HALBERD_DASH, DawnDayAnimations.IUDEX_HALBERD_AIRSLASH)
             .addLivingMotionModifier(LivingMotions.IDLE, DawnDayAnimations.HALBERD_IDLE)
             .addLivingMotionModifier(LivingMotions.WALK, DawnDayAnimations.IUDEX_HALBERD_WALK)
             .addLivingMotionModifier(LivingMotions.RUN, DawnDayAnimations.IUDEX_HALBERD_RUN)
