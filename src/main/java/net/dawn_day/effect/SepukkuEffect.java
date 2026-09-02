@@ -1,79 +1,72 @@
 package net.dawn_day.effect;
 
 import net.dawn_day.DawnDayConfig;
-import net.dawn_day.registry.entries.DawnDayEffects;
+import net.dawn_day.EpicFightDawnDay;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import org.jetbrains.annotations.NotNull;
-import yesman.epicfight.registry.entries.EpicFightAttributes;
 
-import java.util.UUID;
-/*
+import yesman.epicfight.registry.entries.EpicFightAttributes;
 
 public class SepukkuEffect extends MobEffect {
 
-    private static final UUID ATTACK_DAMAGE_UUID =
-            UUID.fromString("9b2e3a11-1c3d-4f58-bd22-1a9c7e5f3b44");
+    private static final ResourceLocation ATTACK_DAMAGE_ID =
+            ResourceLocation.fromNamespaceAndPath(
+                    EpicFightDawnDay.MOD_ID,
+                    "9b2e3a11-1c3d-4f58-bd22-1a9c7e5f3b44"
+            );
 
-    private static final UUID IMPACT_UUID =
-            UUID.fromString("9b2e3a11-9a3f-4c12-8f6a-1b2c3d4e5f60");
+    private static final ResourceLocation IMPACT_ID =
+            ResourceLocation.fromNamespaceAndPath(
+                    EpicFightDawnDay.MOD_ID,
+                    "9b2e3a11-9a3f-4c12-8f6a-1b2c3d4e5f60"
+            );
 
-    protected SepukkuEffect(MobEffectCategory category, int color) {
+    public SepukkuEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 
-    @Override
-    public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        super.applyEffectTick(entity, amplifier);
-    }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return false;
     }
 
     @Override
-    public void addAttributeModifiers(@NotNull LivingEntity entity,
-                                      @NotNull AttributeMap map,
-                                      int amplifier) {
+    public void addAttributeModifiers(
+            AttributeMap attributes,
+            int amplifier
+    ) {
+        super.addAttributeModifiers(attributes, amplifier);
 
-        super.addAttributeModifiers(entity, map, amplifier);
-
-        if (!(entity instanceof Player)) {
-            return;
-        }
-
-        AttributeInstance attack = map.getInstance(Attributes.ATTACK_DAMAGE);
+        AttributeInstance attack =
+                attributes.getInstance(Attributes.ATTACK_DAMAGE);
 
         if (attack != null) {
-            attack.removeModifier(ATTACK_DAMAGE_UUID);
+            attack.removeModifier(ATTACK_DAMAGE_ID);
 
             attack.addPermanentModifier(
                     new AttributeModifier(
-                            ATTACK_DAMAGE_UUID,
-                            "Sepukku Attack Damage",
+                            ATTACK_DAMAGE_ID,
                             DawnDayConfig.SEPUKKU_ATTACK_DAMAGE.get(),
                             AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     )
             );
         }
 
-        AttributeInstance impact = map.getInstance(yesman.epicfight.registry.entries.EpicFightAttributes.IMPACT);
+        AttributeInstance impact =
+                attributes.getInstance(EpicFightAttributes.IMPACT);
 
         if (impact != null) {
-            impact.removeModifier(IMPACT_UUID);
+            impact.removeModifier(IMPACT_ID);
 
             impact.addPermanentModifier(
                     new AttributeModifier(
-                            IMPACT_UUID,
-                            "Sepukku Impact",
+                            IMPACT_ID,
                             DawnDayConfig.SEPUKKU_IMPACT.get(),
                             AttributeModifier.Operation.ADD_VALUE
                     )
@@ -82,34 +75,22 @@ public class SepukkuEffect extends MobEffect {
     }
 
     @Override
-    public void removeAttributeModifiers(@NotNull LivingEntity entity,
-                                         @NotNull AttributeMap map,
-                                         int amplifier) {
+    public void removeAttributeModifiers(AttributeMap attributes) {
+        super.removeAttributeModifiers(attributes);
 
-        super.removeAttributeModifiers(map);
-
-        AttributeInstance attack = map.getInstance(Attributes.ATTACK_DAMAGE);
+        AttributeInstance attack =
+                attributes.getInstance(Attributes.ATTACK_DAMAGE);
 
         if (attack != null) {
-            attack.removeModifier(ATTACK_DAMAGE_UUID);
+            attack.removeModifier(ATTACK_DAMAGE_ID);
         }
 
-        AttributeInstance impact = map.getInstance(EpicFightAttributes.IMPACT);
+        AttributeInstance impact =
+                attributes.getInstance(EpicFightAttributes.IMPACT);
 
         if (impact != null) {
-            impact.removeModifier(IMPACT_UUID);
-        }
-
-        if (!entity.level().isClientSide() && entity.getServer() != null) {
-            entity.getServer().execute(() ->
-                    entity.addEffect(new MobEffectInstance(
-                            DawnDayEffects.DRAINED,
-                            350,
-                            0
-                    ))
-            );
+            impact.removeModifier(IMPACT_ID);
         }
     }
+}
 
-
-} */

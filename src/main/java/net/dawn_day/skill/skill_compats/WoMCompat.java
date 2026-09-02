@@ -43,6 +43,7 @@ public class WoMCompat implements ICompatModule {
         regGuarded = true;
     }
 
+    @SuppressWarnings("unchecked")
     public static void regGuard() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException {
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardMotions = new HashMap<>();
         Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreakMotions = new HashMap<>();

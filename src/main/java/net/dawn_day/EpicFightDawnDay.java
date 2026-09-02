@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.dawn_day.client.input.DawnDayKeyMappings;
 import net.dawn_day.events.ModBusEvent;
 import net.dawn_day.registry.DawnDayRegistry;
+import net.dawn_day.skill.skill_compats.EpicFightSkillCompat;
 import net.dawn_day.skill.skill_compats.NightfallCompat;
 import net.dawn_day.skill.skill_compats.WoMCompat;
 import net.dawn_day.world.capabilities.item.DawnDayWeaponCategories;
@@ -50,6 +51,9 @@ public class EpicFightDawnDay {
         if(ModList.get().isLoaded(EFN.MODID)){
             ICompatModule.loadCompatModule(bus, NightfallCompat.class);
         }
+
+        ICompatModule.loadCompatModule(bus, EpicFightSkillCompat.class);
+
         if(ModList.get().isLoaded(WeaponsOfMinecraft.MODID)){
             ICompatModule.loadCompatModule(bus, WoMCompat.class);
 

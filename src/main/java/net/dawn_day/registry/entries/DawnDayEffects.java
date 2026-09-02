@@ -4,6 +4,8 @@ import net.dawn_day.EpicFightDawnDay;
 import net.dawn_day.effect.CursedEffect;
 import net.dawn_day.effect.FortifiedEffect;
 // import net.dawn_day.effect.SepukkuEffect;
+import net.dawn_day.effect.SepukkuEffect;
+import net.dawn_day.skill.weapon_innate.Seppuku;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -63,12 +65,12 @@ public final class DawnDayEffects {
                     .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, EpicFightDawnDay.identifier("fortified"), AttributeModifier.Operation.ADD_VALUE, potency -> (potency + 1) * 2.5)
             );
 
-    // FIX TIHS SHITTY CLASS!1!!!
+
     public static final DeferredHolder<MobEffect, MobEffect> SEPUKKU =
-            REGISTRY.register("sepukku", () -> new FortifiedEffect(MobEffectCategory.BENEFICIAL, 0xa11106)
+            REGISTRY.register("sepukku", () -> new SepukkuEffect(MobEffectCategory.BENEFICIAL, 0xa11106)
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE, EpicFightDawnDay.identifier("sepukku"), AttributeModifier.Operation.ADD_MULTIPLIED_BASE, potency -> (potency + 1) * 0.3)
                     .addAttributeModifier(EpicFightAttributes.IMPACT, EpicFightDawnDay.identifier("sepukku"), AttributeModifier.Operation.ADD_VALUE, potency -> (potency + 1) * 1.0)
-            );
+            ); //FIXME: The Sepukku class already adds Attribute modifiers why are we adding them again? - Nexo figure htis out i dont wanna expend more neuron thinking powah
 
     public static final DeferredHolder<MobEffect, MobEffect> DRAINED =
             REGISTRY.register("drained", () -> new FortifiedEffect(MobEffectCategory.HARMFUL, 0xa11106)

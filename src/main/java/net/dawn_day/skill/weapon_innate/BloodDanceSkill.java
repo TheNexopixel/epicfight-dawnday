@@ -21,6 +21,7 @@ public class BloodDanceSkill extends WeaponInnateSkill {
     public BloodDanceSkill(WeaponInnateSkill.Builder<?> builder) {
         super(builder);
     }
+
     @Override
     public void executeOnServer(SkillContainer container, CompoundTag arguments) {
         AssetAccessor<? extends DynamicAnimation> animation = Objects.requireNonNull(container.getExecutor().getAnimator().getPlayerFor(null)).getAnimation();

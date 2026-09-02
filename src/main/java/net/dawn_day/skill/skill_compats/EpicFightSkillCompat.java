@@ -29,12 +29,15 @@ public class EpicFightSkillCompat implements ICompatModule {
                         .addAvailableWeaponCategory(DawnDayWeaponCategories.CLAWS)
                         .addAvailableWeaponCategory(DawnDayWeaponCategories.SICKLE)
                         .addAvailableWeaponCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD)
-                        .addAvailableWeaponCategory(DawnDayWeaponCategories.FLORETT);
+                        .addAvailableWeaponCategory(DawnDayWeaponCategories.FLORETT)
+                        .addAvailableWeaponCategory(DawnDayWeaponCategories.BAT)
+                ;
             }
         }
     }
-/*
-    @SubscribeEvent
+
+
+
     public static void onGuardSkillcreate(SkillBuilderModificationEvent event) {
         if (event.getRegistryName().equals(EpicFightSkills.GUARD.getId())) {
             if (event.getSkillBuilder() instanceof GuardSkill.Builder builder) {
@@ -93,7 +96,66 @@ public class EpicFightSkillCompat implements ICompatModule {
 
     }
 
- */
+
+    public static void onImpactGuardSkillcreate(SkillBuilderModificationEvent event) {
+        if (event.getRegistryName().equals(EpicFightSkills.IMPACT_GUARD.getId())) {
+            if (event.getSkillBuilder() instanceof GuardSkill.Builder builder) {
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                        (i, p) -> Animations.LONGSWORD_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                        (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.CLAWS,
+                        (i, p) -> DawnDayAnimations.HOOKCLAWS_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.CLAWS,
+                        (i, p) -> DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.POLEBLADE,
+                        (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
+                        (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.SICKLE,
+                        (i, p) -> Animations.SWORD_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.SICKLE,
+                        (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.BAT,
+                        (i, p) -> Animations.GREATSWORD_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.BAT,
+                        (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.IRON_FIST,
+                        (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.IRON_FIST,
+                        (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_BREAK);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.RITUS_DAGGER,
+                        (i, p) -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.RITUS_DAGGER,
+                        (i, p) -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
+
+                builder.addGuardMotion(
+                        DawnDayWeaponCategories.FLORETT,
+                        (i, p) -> DawnDayAnimations.FLORETT_DUAL_GUARD_HIT
+                ).addGuardBreakMotion(DawnDayWeaponCategories.FLORETT,
+                        (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED);
+
+
+            }
+        }
+
+    }
+
+
 
 
 
@@ -105,7 +167,12 @@ public class EpicFightSkillCompat implements ICompatModule {
 
     @Override
     public void onGameEventBus(IEventBus iEventBus) {
-        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(EpicFightSkillCompat::onSwordMasterSkillCreation);
+
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(EpicFightSkillCompat::onGuardSkillcreate, 1);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(EpicFightSkillCompat::onImpactGuardSkillcreate, 2);
+        //Do same for parry but make priority 3 >> Delegating this to Nexo -> by sid
+
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(EpicFightSkillCompat::onSwordMasterSkillCreation, 1);
 
     }
 

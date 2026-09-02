@@ -1,7 +1,6 @@
 package net.dawn_day.skill.passive;
 
 import java.util.List;
-import java.util.UUID;
 
 
 import net.dawn_day.registry.entries.DawnDaySkillDataKeys;
@@ -27,15 +26,13 @@ import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 public class Riposte extends PassiveSkill {
-    private static final UUID EVENT_UUID =
-            UUID.fromString("a5d42df5-5dd5-46ec-92fb-4b4d0cfd1c42");
-
-    public Riposte(SkillBuilder<?> builder) {
-        super(builder);
-
-    }
 
     private float damage_bonus;
+
+    public Riposte(SkillBuilder<? extends SkillBuilder> builder) {
+        super(builder);
+    }
+
     @Override
     public float getCooldownRegenPerSecond(PlayerPatch<?> playerpatch) {
         return 1.0F;
@@ -45,10 +42,11 @@ public class Riposte extends PassiveSkill {
     public void onInitiate(SkillContainer container, EntityEventListener eventListener) {
         super.onInitiate(container, eventListener);
 
-        eventListener.registerEvent(
+        eventListener.registerContextAwareEvent( //NOTE: TAKE_DAMAGE_INCOME HAS TO BE CONTEXT AWARE TO PROPERLY WORK
                 EpicFightEventHooks.Entity.TAKE_DAMAGE_INCOME,
-               
-                event -> {
+
+                (event, context) -> {
+
                     if (!event.isParried()) {
                         return;
                     }
@@ -177,6 +175,7 @@ public class Riposte extends PassiveSkill {
 
         return list;
     }
+
     @Override
     public void drawOnGui(
             BattleModeGui gui,

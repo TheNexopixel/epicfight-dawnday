@@ -83,17 +83,19 @@ public final class DawnDaySkills {
                     .build(key));
 
 
-    public static final DeferredHolder<Skill, Riposte> REPOSTE = REGISTRY.register("riposte", key->
-            Riposte.createPassiveBuilder(Riposte::new)
-                     .setResource(Skill.Resource.COOLDOWN)
+    public static final DeferredHolder<Skill, Riposte> RIPOSTE = REGISTRY.register("riposte", key ->
+            PassiveSkill.createPassiveBuilder(Riposte::new)
+                    .setResource(Skill.Resource.COOLDOWN)
                     .setCategory(SkillCategories.PASSIVE)
+                    .setCreativeTab(DawnDayCreativeTabs.DAWN_DAY_TAB.value())
                     .build(key)
-            );
+    );
 
-    public static final DeferredHolder<Skill, RedemptionSkill>  REDEMPTION = REGISTRY.register("redemption", key ->
+    public static final DeferredHolder<Skill, RedemptionSkill> REDEMPTION = REGISTRY.register("redemption", key ->
             PassiveSkill.createPassiveBuilder(RedemptionSkill::new)
-            .setResource(Skill.Resource.COOLDOWN)
-                        .setCategory(SkillCategories.IDENTITY)
+                    .setResource(Skill.Resource.COOLDOWN)
+                    .setCategory(SkillCategories.IDENTITY)
+                    .setCreativeTab(DawnDayCreativeTabs.DAWN_DAY_TAB.value())
                     .build(key)
     );
 
@@ -331,21 +333,8 @@ public final class DawnDaySkills {
                     .setCategory(SkillCategories.WEAPON_INNATE)
                     .build(key)
     );
-    /*
-    public static final DeferredHolder<Skill, RedemptionSkill> REDEMPTION = REGISTRY.register("redemption", key ->
-            WeaponInnateSkill.createWeaponInnateBuilder(RedemptionSkill::new)
-                    .setCategory(SkillCategories.IDENTITY)
-                    .setResource(Skill.Resource.COOLDOWN)
-                    .build(key)
-    );
-    public static final DeferredHolder<Skill, Riposte> RIPOSTE = REGISTRY.register("riposte", key ->
-            WeaponInnateSkill.createWeaponInnateBuilder(Riposte::new)
-                    .setCategory(SkillCategories.IDENTITY)
-                    .setResource(Skill.Resource.COOLDOWN)
-                    .build(key)
-    );
 
-     */
+
 
     public static final DeferredHolder<Skill, Seppuku> SEPPUKU = REGISTRY.register("sepukku", key ->
             WeaponInnateSkill.createWeaponInnateBuilder(Seppuku::new)
