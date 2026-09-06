@@ -271,5 +271,10 @@
   "pack.DawnDay3D Weapon Pack.title": "Dawn Day 3D Weapon Pack",
   "epicfight.weapon_category.bat": "Knüppel",
   "skill.epicfight_dd.head_knocker": "Schädelklopfer",
-  "skill.epicfight_dd.head_knocker.tooltip": "\"Klopf Klopf!!\""
+  "skill.epicfight_dd.head_knocker.tooltip": "\"Klopf Klopf!!\"",
+  "epicfight.weapon_category.poleblade": "Doppelklinge",
+  "item.epicfight_dd.nightingale": "Nightingale",
+  "tooltip.epicfight_dd.energydrink": "UHHMMM, sooo good and tasty...",
+  "tooltip.epicfight_dd.big_stick": "Das ist doch nur ein Stock? Oder..",
+  "tooltip.epicfight_dd.nightingale": "Die Klinge dieses Speeres besteht aus reinem Elektrum, welches auch als Wassergold bekannt ist. Der Stab selber ist gemacht aus Vulkanglas. Nightingale gehörte einst einem Hohen Magistrat des Nachtkultes."
 }

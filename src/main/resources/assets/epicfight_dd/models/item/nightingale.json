@@ -1,0 +1,49 @@
+{
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/nightingale.obj",
+		"textures": {
+			"nightingale.png": "epicfight_dd:item/nightingale"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [0, 0, 0],
+				"translation": [17.0, 3.0, 17.0],
+				"scale": [2.1, 2.1, 2.1]
+			},
+			"gui": {
+				"rotation": [55, 55, -55],
+				"translation": [10.0, -6, -0.0],
+				"scale": [0.5, 0.5, 1.4]
+			},
+			"firstperson_righthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 1.25, -0.75]
+			},
+			"firstperson_lefthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 0.75, -0.5]
+			}
+		}
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/nightingale_gui"
+			},
+			"gui_light": "front"
+		},
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/nightingale_gui"
+			},
+			"gui_light": "front"
+		}
+	}
+}

@@ -25,8 +25,26 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.IRON_FIST) {
             cir.setReturnValue(WoMCompatAnimations.HOOKCLAWS_DFB_WINDUP);
         }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.BAT_LONGER|| capabilityItem.getWeaponCollider() == DawnDayCollider.BAT) {
+            cir.setReturnValue(WOMAnimations.GREATSWORD_BUSTER_WINDUP);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
+            cir.setReturnValue(WOMAnimations.SWORD_BUSTER_WINDUP);
+        }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.BATTLESTAFF_FULL) {
             cir.setReturnValue(WOMAnimations.STAFF_BUSTER_WINDUP);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD) {
+            cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_WINDUP);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
+            cir.setReturnValue(WoMCompatAnimations.NIGHTINGALE_DFB_WINDUP);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.KNIFE || capabilityItem.getWeaponCollider() == DawnDayCollider.FLORETT) {
+            cir.setReturnValue(WOMAnimations.SPEAR_BUSTER_WINDUP);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.LIGHT_GREATSWORD|| capabilityItem.getWeaponCollider() == DawnDayCollider.VITREUS) {
+            cir.setReturnValue(WOMAnimations.TACHI_BUSTER_WINDUP);
         }
     }
 
@@ -39,8 +57,26 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.IRON_FIST) {
             cir.setReturnValue(WoMCompatAnimations.HOOKCLAWS_DFB_RELEASE);
         }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
+            cir.setReturnValue(WOMAnimations.SWORD_BUSTER_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.LIGHT_GREATSWORD || capabilityItem.getWeaponCollider() == DawnDayCollider.VITREUS) {
+            cir.setReturnValue(WOMAnimations.TACHI_BUSTER_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.KNIFE || capabilityItem.getWeaponCollider() == DawnDayCollider.FLORETT) {
+            cir.setReturnValue(WOMAnimations.SPEAR_BUSTER_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.BAT_LONGER|| capabilityItem.getWeaponCollider() == DawnDayCollider.BAT) {
+            cir.setReturnValue(WOMAnimations.GREATSWORD_BUSTER_RELEASE);
+        }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.BATTLESTAFF_FULL) {
             cir.setReturnValue(WOMAnimations.STAFF_BUSTER_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
+            cir.setReturnValue(WoMCompatAnimations.NIGHTINGALE_DFB_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD) {
+            cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_RELEASE);
         }
     }
 }

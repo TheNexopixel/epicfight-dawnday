@@ -2,7 +2,9 @@ package net.epicfight_dd.skill.weapon_innate;
 
 import com.google.common.collect.Maps;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
+import net.epicfight_dd.gameasset.animation.WoMCompatAnimations;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.DynamicAnimation;
@@ -82,10 +84,12 @@ public class BloodDanceSkill extends WeaponInnateSkill {
                 DawnDayAnimations.POLEBLADE_AIRSLASH,
                 DawnDayAnimations.BLOOD_DANCE_AIRSLASH
         );
+        if (ModList.get().isLoaded("wom")){
         this.comboAnimation.put(
-                DawnDayAnimations.POLEBLADE_COUNTER,
+                WoMCompatAnimations.POLEBLADE_COUNTER,
                 DawnDayAnimations.BLOOD_DANCE_1
         );
+        }
         return this;
     }
 

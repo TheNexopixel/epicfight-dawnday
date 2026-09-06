@@ -741,7 +741,7 @@ public class DawnDayWeaponCapabilityPreset {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
-                    .collider(DawnDayCollider.BAT_LONGER)
+                    .collider(DawnDayCollider.VITREUS)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -794,7 +794,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == DawnDayWeaponCategories.FLORETT)
 
-                    .collider(DawnDayCollider.BAT_LONGER)
+                    .collider(DawnDayCollider.FLORETT)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
@@ -863,10 +863,35 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.HOOKCLAWS_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.HOOKCLAWS_WALK);
 
+    public static final Function<Item, CapabilityItem.Builder> NIGHTINGALE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.SPEAR)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.NIGHTINGALE)
+                   .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.NIGHTINGALE_AUTO1,
+                            DawnDayAnimations.NIGHTINGALE_AUTO2,
+                            DawnDayAnimations.NIGHTINGALE_AUTO3,
+                            DawnDayAnimations.NIGHTINGALE_AUTO4,
+                            DawnDayAnimations.NIGHTINGALE_DASH,
+                            DawnDayAnimations.NIGHTINGALE_AIRSLASH)
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.NIGHTINGALE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.DEATH_SOUL1)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.POLEBLADE_GUARD);
+
 
     @SubscribeEvent // register Weapon Moveset
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nightingale"), NIGHTINGALE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hookclaws"), HOOKCLAWS);

@@ -52,6 +52,19 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
 
             ));
+    public static final RegistryObject<Item> NIGHTINGALE =
+            ITEMS.register("nightingale", () -> new DawnDayTooltips(
+                    Tiers.DIAMOND,
+                    4,
+                    -2.3F,
+                    new Item.Properties()
+                            .defaultDurability(3242)
+                            .rarity(Rarity.RARE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.nightingale",
+                            ChatFormatting.GRAY)
+
+            ));
     public static final RegistryObject<Item> IUDEX_HALBERD =
             ITEMS.register("iudex_gundyr_halberd", () -> new DawnDayTooltips(
                     Tiers.NETHERITE,

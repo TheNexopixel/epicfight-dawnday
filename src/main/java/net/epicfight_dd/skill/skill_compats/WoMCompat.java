@@ -1,6 +1,7 @@
 package net.epicfight_dd.skill.skill_compats;
 
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
+import net.epicfight_dd.gameasset.animation.WoMCompatAnimations;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -72,21 +73,21 @@ public class WoMCompat implements ICompatModule {
         guardBreakMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
                 DawnDayAnimations.POLEBLADE_NEUTRALIZE);
         advancedGuardMotions.put(DawnDayWeaponCategories.POLEBLADE, (itemCap, playerpatch) ->
-                DawnDayAnimations.POLEBLADE_COUNTER);
+                WoMCompatAnimations.POLEBLADE_COUNTER);
 
         guardMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_HIT);
         guardBreakMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_BREAK);
         advancedGuardMotions.put(DawnDayWeaponCategories.IRON_FIST, (itemCap, playerpatch) ->
-                DawnDayAnimations.IRON_FIST_GUARD_COUNTER);
+                WoMCompatAnimations.IRON_FIST_GUARD_COUNTER);
 
         guardMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
                 DawnDayAnimations.HOOKCLAWS_GUARD_HIT);
         guardBreakMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
                 DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
         advancedGuardMotions.put(DawnDayWeaponCategories.CLAWS, (itemCap, playerpatch) ->
-                DawnDayAnimations.HOOKCLAWS_COUNTER);
+                WoMCompatAnimations.HOOKCLAWS_COUNTER);
 
         guardMotions.put(DawnDayWeaponCategories.SICKLE, (item, player) ->
                 Animations.SWORD_GUARD_HIT);

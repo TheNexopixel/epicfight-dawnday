@@ -44,6 +44,7 @@ public class QoLMiscAnimations {
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_6;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_7;
     public static AnimationManager.AnimationAccessor<ActionAnimation> GENERIC_DEATH_8;
+    public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_SOUL1;
     public static AnimationManager.AnimationAccessor<ActionAnimation> DEATH_MAGIC;
     public static AnimationManager.AnimationAccessor<ActionAnimation> WITHERING_DEMISE;
     public static AnimationManager.AnimationAccessor<ActionAnimation> SAD_DEATH;
@@ -138,7 +139,7 @@ public class QoLMiscAnimations {
                     if(entity instanceof Mob) return genericMOBDeaths[randomMOBgeneric.nextInt(genericMOBDeaths.length)];
 
 
-                    int[] genericDeaths = {1, 4, 8, 9, 10,11,12,15};
+                    int[] genericDeaths = {1, 4, 8, 9, 10,11,12,15,33};
                     return genericDeaths[randomgeneric.nextInt(genericDeaths.length)];
                 }, ac,
                         Animations.BIPED_DEATH,  // 0 index
@@ -173,7 +174,8 @@ public class QoLMiscAnimations {
                         DEATH_MOB_GENERIC9,      // 29
                         DEATH_MOB_GENERIC10,     // 30
                         DEATH_MOB_GENERIC11,     // 31
-                        DEATH_MOB_GENERIC12     // 32
+                        DEATH_MOB_GENERIC12,     // 32
+                        DEATH_SOUL1             // 33
 
                 )
                         .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true)
@@ -947,6 +949,9 @@ public class QoLMiscAnimations {
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         GENERIC_DEATH_8 = builder.nextAccessor("biped/deathanims/death_generic8", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
+                .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
+
+        DEATH_SOUL1 = builder.nextAccessor("biped/deathanims/death_soul1", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
                 .addProperty(AnimationProperty.ActionAnimationProperty.IS_DEATH_ANIMATION,true));
 
         DEATH_MOB_GENERIC1 = builder.nextAccessor("biped/deathanims/death_mob_generic1", ac -> new ActionAnimation(0.0f,0.5f,ac, Armatures.BIPED)
