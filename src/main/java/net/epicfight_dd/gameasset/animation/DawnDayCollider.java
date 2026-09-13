@@ -20,7 +20,9 @@ public class DawnDayCollider {
         return collider;
     }
     public static final Collider LIGHT_GREATSWORD = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"milady"),new MultiOBBCollider(4, 0.3D, 0.3D, 1.23D, 0D, 0.0D, -1.4D));
-    public static final Collider HALBERD = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"halberd"),new MultiOBBCollider(4, 0.3D, 0.50D, 1.4D, 0D, 0.0D, -1.3D));
+    public static final Collider GRIMM = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"grimm"),new MultiOBBCollider(4, 0.5D, 0.50D, 1.0D, 0D, 0.0D, -1.0D));
+    public static final Collider SCYTHE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"scythe"),new MultiOBBCollider(4, 0.2D, 1.20D, 1.3D, 0D, 0.0D, -2.2D));
+    public static final Collider HALBERD = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"halberd"),new MultiOBBCollider(4, 0.3D, 0.50D, 1.4D, 0D, 0.0D, -1.9D));
     public static final Collider NIGHTINGALE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"nightingale"),new MultiOBBCollider(4, 0.3D, 0.50D, 1.4D, 0D, 0.0D, -1.3D));
     public static final Collider HALBERD_INNATE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"halberd_innate"),new MultiOBBCollider(1, 0.3D, 0.5D, 0.8D, 0D, 0.0D, -2.1D));
     public static final Collider WARSICKLE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"warsickle"),new MultiOBBCollider(4, 0.3D, 0.3D, 1.5D, 0D, 0.0D, -1.0D));

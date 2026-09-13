@@ -27,6 +27,11 @@ import java.util.Set;
 
 public class WoMCompatAnimations {
 
+    // GRIMM
+    public static AnimationManager.AnimationAccessor<StaticAnimation> GRIMM_DFB_WINDUP;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> GRIMM_DFB_RELEASE;
+
+
     // HALBERD
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> HALBERD_DFB_WINDUP;
@@ -54,6 +59,26 @@ public class WoMCompatAnimations {
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
+
+        GRIMM_DFB_WINDUP = builder.nextAccessor("biped/skill/grimm_dfb_windup", ac ->
+                new StaticAnimation(1.2F, false, ac, biped)
+                        .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
+                        .addConditionalState(0, EntityState.UPDATE_LIVING_MOTION, false)
+                        .addConditionalState(1, EntityState.UPDATE_LIVING_MOTION, true)
+                        .newTimePair(0.0F, Float.MAX_VALUE).addStateRemoveOld(EntityState.CAN_SWITCH_HAND_ITEM, false)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
+        );
+        GRIMM_DFB_RELEASE = builder.nextAccessor("biped/skill/grimm_dfb_release", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.05F, 0.1F, 0.3F, 0.50F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE, WOMDamageType.BLACKOUT))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addState(EntityState.TURNING_LOCKED, true)
+                        .addState(EntityState.LOCKON_ROTATE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
         HOOKCLAWS_DFB_WINDUP = builder.nextAccessor("biped/skill/hookclaws_dfb_windup", ac ->
                 new StaticAnimation(0.3F, false, ac, biped)

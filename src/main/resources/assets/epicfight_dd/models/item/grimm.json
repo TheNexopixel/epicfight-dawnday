@@ -1,0 +1,49 @@
+{
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/grimm.obj",
+		"textures": {
+			"dreadsteel.png": "epicfight_dd:item/dreadsteel"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [0, 0, 0],
+				"translation": [9.5, -1.0, 10.0],
+				"scale": [1.2, 1.2, 1.2]
+			},
+			"gui": {
+				"rotation": [45, 45, -45],
+				"translation": [12.0, -15, 0.0],
+				"scale": [0.8, 0.8, 0.8]
+			},
+			"firstperson_righthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 1.25, -0.75]
+			},
+			"firstperson_lefthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 0.75, -0.5]
+			}
+		}
+		},
+		"perspectives": {
+			"gui": {
+				"parent": "item/generated",
+				"textures": {
+					"layer0": "epicfight_dd:item/grimm_gui"
+				},
+				"gui_light": "front"
+			},
+			"ground": {
+				"parent": "item/generated",
+				"textures": {
+					"layer0": "epicfight_dd:item/grimm_gui"
+				},
+				"gui_light": "front"
+			}
+		}
+}

@@ -871,7 +871,7 @@ public class DawnDayWeaponCapabilityPreset {
                    .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
-                    .canBePlacedOffhand(true)
+                    .canBePlacedOffhand(false)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.NIGHTINGALE_AUTO1,
@@ -887,13 +887,62 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.DEATH_SOUL1)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.POLEBLADE_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> GRIMM = (item) ->
+            WeaponCapability.builder()
+                    .category(DawnDayWeaponCategories.MORNINGSTAR)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.GRIMM)
+                    .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                    .hitParticle(EpicFightParticles.HIT_BLUNT.get())
+                    .hitSound(EpicFightSounds.BLUNT_HIT_HARD.get())
+                    .canBePlacedOffhand(true)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.HEAD_KNOCKER)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.GRIMM_AUTO1,
+                            DawnDayAnimations.GRIMM_AUTO2,
+                            DawnDayAnimations.GRIMM_AUTO3,
+                            DawnDayAnimations.GRIMM_AUTO4,
+                            DawnDayAnimations.GRIMM_DASH,
+                            DawnDayAnimations.GRIMM_AIRSLASH)
 
-    @SubscribeEvent // register Weapon Moveset
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.GRIMM_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.DEATH, QoLMiscAnimations.DEATH_SOUL1)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
+
+    public static final Function<Item, CapabilityItem.Builder> SCYTHE = (item) ->
+            WeaponCapability.builder()
+                    .category(DawnDayWeaponCategories.SCYTHE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.SCYTHE)
+                    .swingSound(DawnDaySounds.SCYTHE_SWING_HEAVY.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.QUICK_STEP)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.SCYTHE_AUTO1,
+                            DawnDayAnimations.SCYTHE_AUTO2,
+                            DawnDayAnimations.SCYTHE_AUTO3,
+                            DawnDayAnimations.SCYTHE_AUTO4,
+                            DawnDayAnimations.GRIMM_DASH,
+                            DawnDayAnimations.GRIMM_AIRSLASH)
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.SCYTHE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.IUDEX_HALBERD_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.IUDEX_HALBERD_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+
+
+    @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nightingale"), NIGHTINGALE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "scythe"), SCYTHE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "grimm"), GRIMM);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hookclaws"), HOOKCLAWS);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "pole_blade"), POLEBLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "florett"), FLORETT);

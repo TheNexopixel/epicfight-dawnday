@@ -22,6 +22,8 @@ public class DawnDaySounds {
     public static final RegistryObject<SoundEvent> poise_break = registerSound("sfx.poise_break");
     public static final RegistryObject<SoundEvent> GUARD_COUNTER = registerSound("sfx.guard_counter");
     public static final RegistryObject<SoundEvent> REDEMPTION = registerSound("sfx.redemption");
+    public static final RegistryObject<SoundEvent> SCYTHE_SWING = registerSound("sfx.scythe_swing");
+    public static final RegistryObject<SoundEvent> SCYTHE_SWING_HEAVY = registerSound("sfx.scythe_swing_heavy");
     public static final RegistryObject<SoundEvent> soft_wipe = registerSound("sfx.soft_wipe");
     public static final RegistryObject<SoundEvent> Light_Punch = registerSound("sfx.light_punch");
     public static final RegistryObject<SoundEvent> CRITICAL_HIT = registerSound("sfx.critical_hit");

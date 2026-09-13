@@ -276,5 +276,9 @@
   "item.epicfight_dd.nightingale": "Nightingale",
   "tooltip.epicfight_dd.energydrink": "UHHMMM, sooo good and tasty...",
   "tooltip.epicfight_dd.big_stick": "Das ist doch nur ein Stock? Oder..",
-  "tooltip.epicfight_dd.nightingale": "Die Klinge dieses Speeres besteht aus reinem Elektrum, welches auch als Wassergold bekannt ist. Der Stab selber ist gemacht aus Vulkanglas. Nightingale gehörte einst einem Hohen Magistrat des Nachtkultes."
+  "tooltip.epicfight_dd.nightingale": "Die Klinge dieses Speeres besteht aus reinem Elektrum, welches auch als Wassergold bekannt ist. Der Stab selber ist gemacht aus Vulkanglas. Nightingale gehörte einst einem Hohen Magistrat des Nachtkultes.",
+  "item.epicfight_dd.scythe": "Scythe",
+  "item.epicfight_dd.grimm": "Grimm",
+  "tooltip.epicfight_dd.grimm": "Das Metall scheint an einigen Stellen noch zu glühen, obwohl diese Waffe warscheinlich schon tausende Jahre alt ist!",
+  "tooltip.epicfight_dd.scythe": "Es handelt sich um eine recht alte Sense, die früher auf Farmen verwendet wurde. Der Kopf scheint jedoch verstärkt worden zu sein."
 }

@@ -28,6 +28,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.VITREUS.get());
              //   output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
+                output.accept(DawnDayItems.SCYTHE.get());
                 output.accept(DawnDayItems.IUDEX_HALBERD.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
@@ -39,6 +40,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.bat.get());
                 output.accept(DawnDayItems.HOOKCLAWS.get());
                 output.accept(DawnDayItems.NIGHTINGALE.get());
+                output.accept(DawnDayItems.GRIMM.get());
                 output.accept(DawnDayItems.NETHERITE_SICKLE.get());
                 output.accept(DawnDayItems.DIAMOND_SICKLE.get());
                 output.accept(DawnDayItems.IRON_SICKLE.get());

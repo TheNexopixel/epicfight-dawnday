@@ -34,6 +34,12 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
+                    DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
                     DawnDayWeaponCategories.CLAWS,
                     (i, p) -> DawnDayAnimations.HOOKCLAWS_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.CLAWS,
@@ -88,6 +94,18 @@ public class DefaultEpicFightSkillCompat {
                     DawnDayWeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.LONGSWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.SCYTHE,
+                    (i, p) -> Animations.SPEAR_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.SCYTHE,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
@@ -158,6 +176,18 @@ public class DefaultEpicFightSkillCompat {
                     DawnDayWeaponCategories.BAT,
                     (i, p) -> Animations.GREATSWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.BAT,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.MORNINGSTAR,
+                    (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.SCYTHE,
+                    (i, p) -> Animations.SPEAR_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.SCYTHE,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
@@ -256,6 +286,8 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(DawnDayWeaponCategories.SICKLE, new ItemStack(DawnDayItems.IRON_SICKLE.get()));
         icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
+        icon.registerCategory(DawnDayWeaponCategories.MORNINGSTAR, new ItemStack(DawnDayItems.GRIMM.get()));
+        icon.registerCategory(DawnDayWeaponCategories.SCYTHE, new ItemStack(DawnDayItems.SCYTHE.get()));
         icon.registerCategory(DawnDayWeaponCategories.BAT, new ItemStack(DawnDayItems.spiked_bat.get()));
         icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
         icon.registerCategory(DawnDayWeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));

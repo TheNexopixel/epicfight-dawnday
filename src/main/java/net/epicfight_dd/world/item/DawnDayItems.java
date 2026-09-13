@@ -52,6 +52,32 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
 
             ));
+    public static final RegistryObject<Item> GRIMM =
+            ITEMS.register("grimm", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    2,
+                    -2.5F,
+                    new Item.Properties()
+                            .defaultDurability(4205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.grimm",
+                            ChatFormatting.GRAY)
+
+            ));
+    public static final RegistryObject<Item> SCYTHE =
+            ITEMS.register("scythe", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    2,
+                    -2.5F,
+                    new Item.Properties()
+                            .defaultDurability(1805)
+                            .rarity(Rarity.RARE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.scythe",
+                            ChatFormatting.GRAY)
+
+            ));
     public static final RegistryObject<Item> NIGHTINGALE =
             ITEMS.register("nightingale", () -> new DawnDayTooltips(
                     Tiers.DIAMOND,
@@ -288,7 +314,7 @@ public class DawnDayItems {
                             .defaultDurability(360)));
 
     public static final RegistryObject<Item> wooden_battlestaff =
-            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,5,-2.4f,
+            ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,3,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(131)));
 

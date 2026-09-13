@@ -31,10 +31,13 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
             cir.setReturnValue(WOMAnimations.SWORD_BUSTER_WINDUP);
         }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.GRIMM) {
+            cir.setReturnValue(WoMCompatAnimations.GRIMM_DFB_WINDUP);
+        }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.BATTLESTAFF_FULL) {
             cir.setReturnValue(WOMAnimations.STAFF_BUSTER_WINDUP);
         }
-        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD) {
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD|| capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
             cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_WINDUP);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
@@ -57,6 +60,9 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.IRON_FIST) {
             cir.setReturnValue(WoMCompatAnimations.HOOKCLAWS_DFB_RELEASE);
         }
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.GRIMM) {
+            cir.setReturnValue(WoMCompatAnimations.GRIMM_DFB_RELEASE);
+        }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
             cir.setReturnValue(WOMAnimations.SWORD_BUSTER_RELEASE);
         }
@@ -75,7 +81,7 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
             cir.setReturnValue(WoMCompatAnimations.NIGHTINGALE_DFB_RELEASE);
         }
-        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD) {
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
             cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_RELEASE);
         }
     }

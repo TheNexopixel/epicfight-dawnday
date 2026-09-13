@@ -36,9 +36,57 @@
 
     ]
   },
+  "sfx.scythe_swing": {
+    "category": "player",
+    "subtitle": "sfx.Scythe Swing Light",
+    "sounds" : [
+      {
+        "name": "epicfight_dd:sfx/scythe_swing_2",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_swing_3",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_swing_4",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_swing_5",
+        "stream": false
+      }
+    ]
+      },
+  "sfx.scythe_swing_heavy": {
+    "category": "player",
+    "subtitle": "sfx.Scythe Swing",
+    "sounds" : [
+      {
+        "name": "epicfight_dd:sfx/scythe_big_whoosh_1",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_big_whoosh_2",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_big_whoosh_3",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_big_whoosh_4",
+        "stream": false
+      },
+      {
+        "name": "epicfight_dd:sfx/scythe_big_whoosh_5",
+        "stream": false
+      }
+    ]
+  },
   "sfx.milady_heavy_slash":
   {
-    "category":"master",
+    "category":"player",
     "subtitle":"sfx.heavy_slash",
     "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
   },
@@ -56,7 +104,7 @@
   },
   "sfx.guard_counter":
   {
-    "category":"master",
+    "category":"player",
     "subtitle":"sfx.guard_counter",
     "sounds":[{"name":"epicfight_dd:sfx/guard_counter", "stream":false}]
   },
@@ -72,19 +120,19 @@
   },
   "sfx.killed1":
   {
-    "category":"master",
+    "category":"entity",
     "subtitle":"Something Died",
     "sounds":[{"name":"epicfight_dd:sfx/killed1", "stream":false}]
   },
   "sfx.killed2":
   {
-    "category":"master",
+    "category":"entity",
     "subtitle":"Something Died",
     "sounds":[{"name":"epicfight_dd:sfx/killed2", "stream":false}]
   },
   "sfx.killed3":
   {
-    "category":"master",
+    "category":"entity",
     "subtitle":"Something Died",
     "sounds":[{"name":"epicfight_dd:sfx/killed3", "stream":false}]
   },

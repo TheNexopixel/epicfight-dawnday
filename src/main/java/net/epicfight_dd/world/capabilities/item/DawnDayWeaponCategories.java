@@ -10,6 +10,8 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     CLAWS,
     POLEBLADE,
     BAT,
+    SCYTHE,
+    MORNINGSTAR,
     FLORETT,
     RITUS_DAGGER,
     IRON_FIST;

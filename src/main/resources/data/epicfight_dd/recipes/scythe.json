@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    " BP",
+    "B  "
+  ],
+  "key": {
+    "B": {
+      "item": "epicfight_dd:wooden_battlestaff"
+    },
+    "P": {
+      "item": "epicfight_dd:metal_plate"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:scythe",
+    "count": 1
+  }
+}
+

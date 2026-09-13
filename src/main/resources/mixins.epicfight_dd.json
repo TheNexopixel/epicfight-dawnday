@@ -5,9 +5,11 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EpicFightExtraMixin",
+    "DreadfulBusterSkillRequirementMixin",
     "DreadFullBusterMixin",
-    "PlayerPatchMixin"
+    "EpicFightExtraMixin",
+    "PlayerPatchMixin",
+    "TimeTravelMixin"
   ],
   "client": [],
   "injectors": {

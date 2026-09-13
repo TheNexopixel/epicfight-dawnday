@@ -124,6 +124,8 @@
   "item.epicfight_dd.blood_ritus_dagger":"Blood Ritual Dagger",
   "item.epicfight_dd.iron_sickle":"Iron Sickle",
   "item.epicfight_dd.nightingale":"Nightingale",
+  "item.epicfight_dd.scythe":"Scythe",
+  "item.epicfight_dd.grimm":"Grimm",
   "item.epicfight_dd.diamond_sickle":"Diamond Sickle",
   "item.epicfight_dd.golden_sickle":"Golden Sickle",
   "item.epicfight_dd.netherite_sickle":"Netherite Sickle",
@@ -288,5 +290,7 @@
   "tooltip.epicfight_dd.amber": "One might think this stone had captured the sun, as it looks as though it’s glowing a bright orange.",
   "tooltip.epicfight_dd.malachite": "Parents place these stones under their children’s pillows to protect them from nightmares.",
   "tooltip.epicfight_dd.metal_plate": "You’re not sure what materials this piece is made of, but there must be plenty of various materials.",
-  "tooltip.epicfight_dd.rusted_metal_plate": "This piece of metal is so badly rusted that it is no longer suitable for forging. However, there may be other uses for it."
+  "tooltip.epicfight_dd.rusted_metal_plate": "This piece of metal is so badly rusted that it is no longer suitable for forging. However, there may be other uses for it.",
+  "tooltip.epicfight_dd.grimm":"The metal still seems to be glowing in certain places, even though this weapon is probably thousands of years old!",
+  "tooltip.epicfight_dd.scythe":"It is a rather old scythe that was once used on farms. However, the blade appears to have been reinforced."
 }
