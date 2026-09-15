@@ -41,6 +41,7 @@ public class DawnDaySkills {
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
     public static Skill WINGSTANCE;
+    public static Skill TREMEDEOUS_RETALIATION;
     public static Skill SKULL_RUPTURE;
     public static Skill HEAD_KNOCKER;
     public static Skill QUICK_RUSH;
@@ -367,6 +368,10 @@ public class DawnDaySkills {
         );
         QUICK_STEP = modRegistry.build("quick_step", Quickstep::new,
                 Quickstep.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE)
+        );
+        TREMEDEOUS_RETALIATION = modRegistry.build("tremedeous_retaliation", TremedeousRetaliationSkill::new,
+                TremedeousRetaliationSkill.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE)
         );
 

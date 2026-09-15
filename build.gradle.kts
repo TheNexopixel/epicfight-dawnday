@@ -142,8 +142,10 @@ dependencies {
     modImplementation("curse.maven:moonlight-499980:7664875")
 
     // Performance & Core Tweaks
+    // modRuntimeOnly("maven.modrinth:cwoL6CqY:3PEwIAxS")
+    modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
     modRuntimeOnly("curse.maven:embeddium-908741:5681725")
-    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:8545797")
+    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:8872568")
     modRuntimeOnly("curse.maven:ferritecore-429235:4810975")
     modRuntimeOnly("curse.maven:canary-665658:5089991")
 

@@ -11,6 +11,7 @@ import reascer.wom.gameasset.WOMAnimations;
 import reascer.wom.skill.guard.DreadFullBusterSkill;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.StaticAnimation;
+import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
@@ -29,7 +30,7 @@ public class DreadFullBusterMixin{
             cir.setReturnValue(WOMAnimations.GREATSWORD_BUSTER_WINDUP);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
-            cir.setReturnValue(WOMAnimations.SWORD_BUSTER_WINDUP);
+            cir.setReturnValue (capabilityItem.getStyle(playerPatch) == CapabilityItem.Styles.TWO_HAND ? WOMAnimations.DUALSWORD_BUSTER_WINDUP : WOMAnimations.SWORD_BUSTER_WINDUP);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.GRIMM) {
             cir.setReturnValue(WoMCompatAnimations.GRIMM_DFB_WINDUP);
@@ -64,7 +65,7 @@ public class DreadFullBusterMixin{
             cir.setReturnValue(WoMCompatAnimations.GRIMM_DFB_RELEASE);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.SICKLE) {
-            cir.setReturnValue(WOMAnimations.SWORD_BUSTER_RELEASE);
+            cir.setReturnValue (capabilityItem.getStyle(playerPatch) == CapabilityItem.Styles.TWO_HAND ? WOMAnimations.DUALSWORD_BUSTER_RELEASE : WOMAnimations.SWORD_BUSTER_RELEASE);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.LIGHT_GREATSWORD || capabilityItem.getWeaponCollider() == DawnDayCollider.VITREUS) {
             cir.setReturnValue(WOMAnimations.TACHI_BUSTER_RELEASE);

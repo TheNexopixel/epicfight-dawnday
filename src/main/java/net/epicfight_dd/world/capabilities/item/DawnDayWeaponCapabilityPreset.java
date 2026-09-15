@@ -896,7 +896,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT_HARD.get())
                     .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.HEAD_KNOCKER)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.TREMEDEOUS_RETALIATION)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.GRIMM_AUTO1,
                             DawnDayAnimations.GRIMM_AUTO2,

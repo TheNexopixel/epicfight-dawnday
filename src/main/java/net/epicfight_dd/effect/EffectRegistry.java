@@ -26,7 +26,7 @@ public class EffectRegistry {
 
     public static final RegistryObject<MobEffect> STAMNIA =
             EFFECTS.register("stamina",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0x00ff77)
-                    .addAttributeModifier(EpicFightAttributes.MAX_STAMINA.get(), "3f2504e0-4f89-11d3-9a0c-0305e82c3301", 5.0, AttributeModifier.Operation.ADDITION)
+                    .addAttributeModifier(EpicFightAttributes.MAX_STAMINA.get(), "3f2504e0-4f89-11d3-9a0c-0305e82c3301", 10.0, AttributeModifier.Operation.ADDITION)
             );
 
     public static final RegistryObject<MobEffect> STUNARMOR =

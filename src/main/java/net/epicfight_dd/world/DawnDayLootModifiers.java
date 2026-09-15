@@ -120,6 +120,42 @@ public class DawnDayLootModifiers {
             if (event.getName().equals(
                     new ResourceLocation(
                             "minecraft",
+                            "chests/village/village_armorer"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.5f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
+                        .name("gem_addition")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/village/village_cartographer"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.2f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.CITRINE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
+                        .name("gem_addition")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
                             "chests/bastion_bridge"))) {
 
                 LootPool pool = LootPool.lootPool()
@@ -145,7 +181,7 @@ public class DawnDayLootModifiers {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
-                                LootItemRandomChanceCondition.randomChance(0.1f)
+                                LootItemRandomChanceCondition.randomChance(0.3f)
                         )
                         .add(
 
@@ -156,6 +192,7 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_light_greatsword.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.diamond_halberd.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))

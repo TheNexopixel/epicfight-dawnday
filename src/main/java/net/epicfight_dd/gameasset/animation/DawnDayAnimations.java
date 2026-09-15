@@ -104,6 +104,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> GRIMM_AUTO4;
     public static AnimationAccessor<DashAttackAnimation> GRIMM_DASH;
     public static AnimationAccessor<BasicAttackAnimation> GRIMM_AIRSLASH;
+    public static AnimationAccessor<AttackAnimation> TREMENDOUS_RETALIATION;
 
 
     // FLORETT
@@ -1854,6 +1855,146 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.9F)
                         .addProperty(AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        TREMENDOUS_RETALIATION = builder.nextAccessor("biped/skill/tremedeous_retaliation", (accessor) ->
+                new AttackAnimation(0.12F, 0.11F, 0.35F, 0.4F, 1.8F, DawnDayCollider.GROUNDSLAM, biped.get().rootJoint, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER,ValueModifier.multiplier(0.1f))
+                        .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER,ValueModifier.adder(15.0f))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                        .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.9F)
+                        .addProperty(AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.05f, (e, s, p) ->{
+                                    e.getOriginal().level().playSound(
+                                            null,
+                                            e.getOriginal().blockPosition(),
+                                            SoundEvents.RAVAGER_ROAR,
+                                            SoundSource.PLAYERS,
+                                            2.1F,
+                                            1.3F
+                                    );
+
+                                }, AnimationEvent.Side.SERVER),
+
+                                AnimationEvent.InTimeEvent.create(1.3f, (e, s, p) ->{
+                                    e.getOriginal().level().playSound(
+                                            null,
+                                            e.getOriginal().blockPosition(),
+                                            EpicFightSounds.WHOOSH_BIG.get(),
+                                            SoundSource.PLAYERS,
+                                            2.0F,
+                                            0.9F
+                                    );
+
+                                }, AnimationEvent.Side.SERVER),
+                                AnimationEvent.InTimeEvent.create(0.5f, (e, s, p) ->{
+                                    e.getOriginal().level().playSound(
+                                            null,
+                                            e.getOriginal().blockPosition(),
+                                            SoundEvents.BELL_RESONATE,
+                                            SoundSource.PLAYERS,
+                                            2.0F,
+                                            1.1F
+                                    );
+
+                                }, AnimationEvent.Side.SERVER),
+                                AnimationEvent.InTimeEvent.create(
+                                        0.23f,
+                                        (e, s, p) -> {
+
+                                            LivingEntity entity = e.getOriginal();
+
+                                            int particleCount = 180 + entity.getRandom().nextInt(60);
+
+                                            for (int i = 0; i < particleCount; i++) {
+
+                                                double x = entity.getRandom().nextDouble() * 2.0D - 1.0D;
+                                                double y = entity.getRandom().nextDouble() * 2.0D - 1.0D;
+                                                double z = entity.getRandom().nextDouble() * 2.0D - 1.0D;
+
+                                                double length = Math.sqrt(
+                                                        x * x + y * y + z * z
+                                                );
+
+                                                if (length == 0.0D) {
+                                                    continue;
+                                                }
+
+                                                x /= length;
+                                                y /= length;
+                                                z /= length;
+
+                                                double speed =
+                                                        0.2D + entity.getRandom().nextDouble() * 0.5D;
+
+                                                double motionX = x * speed;
+                                                double motionY = y * speed;
+                                                double motionZ = z * speed;
+
+                                                double startX = entity.getX();
+                                                double startY = entity.getY() + entity.getBbHeight() * 0.5D;
+                                                double startZ = entity.getZ();
+
+                                                entity.level().addParticle(
+                                                        ParticleTypes.CLOUD,
+
+                                                        startX,
+                                                        startY,
+                                                        startZ,
+
+                                                        motionX,
+                                                        motionY,
+                                                        motionZ
+                                                );
+                                            }
+                                        },
+                                        AnimationEvent.Side.CLIENT
+                                )
+                        )
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.3f,
+
+                                        (e, s, p) -> {
+                                            e.getOriginal().heal(e.getOriginal().getMaxHealth() * 0.25f );
+                                        }, AnimationEvent.Side.SERVER
+                                ))
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        1.2f,
+
+                                        (e, s, p) -> {
+
+                                            LivingEntity entity = e.getOriginal();
+
+                                            entity.addEffect(
+                                                    new MobEffectInstance(
+                                                            EffectRegistry.POTION_OF_POWER.get(),
+                                                            600, 0, false, false, true
+                                                    )
+                                            );
+                                        }, AnimationEvent.Side.SERVER
+                                ),
+                                AnimationEvent.InTimeEvent.create(
+                                        1.2f,
+
+                                        (e, s, p) -> {
+
+                                            LivingEntity entity = e.getOriginal();
+
+                                            entity.addEffect(
+                                                    new MobEffectInstance(
+                                                            EpicFightMobEffects.STUN_IMMUNITY.get(),
+                                                            350, 0, false, false, true
+                                                    )
+                                            );
+                                        }, AnimationEvent.Side.SERVER
+                                )
+                        )
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+
 
 
         SEPUKKU = builder.nextAccessor(
