@@ -370,6 +370,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> SCYTHE_AUTO2;
     public static AnimationAccessor<BasicAttackAnimation> SCYTHE_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> SCYTHE_AUTO4;
+    public static AnimationAccessor<AttackAnimation> GREATER_HARVEST;
 
 
     // SICKLE
@@ -918,6 +919,29 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        GREATER_HARVEST = builder.nextAccessor("biped/skill/greater_harvest", (accessor) ->
+                new AttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.4f, 0.55f, 1.5f, 0.8f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1f)),
+
+                        new AttackAnimation.Phase(0.8f, 0.2f, 0.85f, 1.1f, 1.5f, 20f, InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
+                                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(25f))
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.FINISHER))
+                                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.BYPASS_DODGE))
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_SHARP.get())
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.5f))
+                )
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.2F)
+                        .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, false)
         );
 
 
@@ -1986,7 +2010,7 @@ public class DawnDayAnimations {
                                             entity.addEffect(
                                                     new MobEffectInstance(
                                                             EpicFightMobEffects.STUN_IMMUNITY.get(),
-                                                            350, 0, false, false, true
+                                                            600, 0, false, false, true
                                                     )
                                             );
                                         }, AnimationEvent.Side.SERVER

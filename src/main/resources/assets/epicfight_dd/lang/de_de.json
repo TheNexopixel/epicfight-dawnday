@@ -282,5 +282,7 @@
   "tooltip.epicfight_dd.grimm": "Das Metall scheint an einigen Stellen noch zu glühen, obwohl diese Waffe warscheinlich schon tausende Jahre alt ist!",
   "tooltip.epicfight_dd.scythe": "Es handelt sich um eine recht alte Sense, die früher auf Farmen verwendet wurde. Der Kopf scheint jedoch verstärkt worden zu sein.",
   "skill.epicfight_dd.tremedeous_retaliation": "Unaufhaltsame Vergeltung",
-  "skill.epicfight_dd.tremedeous_retaliation.tooltip": "Deine Angriffe werden Stärker, Du kannst nicht gestunnt werden und erhalte 25% deiner Lebenspunkte zurück. \"Rache ist ein Gericht das eiskalt serviert wird.\""
+  "skill.epicfight_dd.tremedeous_retaliation.tooltip": "\"Und diejenigen, die hochmütig sind und sich weigern, sich zu verneigen, werden erniedrigt und zu Staub zermahlen.\"\nDeine Angriffe werden Stärker, Du kannst nicht gestunnt werden und erhalte 25% deiner Lebenspunkte zurück. \"Rache ist ein Gericht das eiskalt serviert wird.\"",
+  "skill.epicfight_dd.greater_harvest": "Greater Harvest",
+  "skill.epicfight_dd.greater_harvest.tooltip": "\"Und Tyhros sprach: „Diejenigen, die sich uns in den Weg stellen, werden gänzlich vernichtet werden.“\""
 }

@@ -40,6 +40,7 @@ public class DawnDaySkills {
     public static Skill PIERCING_FANG;
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
+    public static Skill GREATER_HARVEST;
     public static Skill WINGSTANCE;
     public static Skill TREMEDEOUS_RETALIATION;
     public static Skill SKULL_RUPTURE;
@@ -86,6 +87,18 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
         ;
         HEAD_KNOCKER = headknock;
+
+        WeaponInnateSkill greaterharvest = modRegistry.build("greater_harvest", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.GREATER_HARVEST)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        greaterharvest.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(6.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+        ;
+        GREATER_HARVEST = greaterharvest;
 
 
         WeaponInnateSkill beasteye = modRegistry.build("beast_eye", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
