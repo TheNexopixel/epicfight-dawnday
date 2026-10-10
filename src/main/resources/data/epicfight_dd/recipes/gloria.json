@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " N ",
+    "NCN",
+    " N "
+  ],
+  "key": {
+    "C": {
+      "item": "epicfight_dd:glorious_charm"
+    },
+    "N": {
+      "item": "epicfight_dd:amber"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:gloria",
+    "count": 1
+  }
+}
+

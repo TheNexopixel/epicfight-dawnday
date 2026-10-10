@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " D ",
+    "DK ",
+    "N  "
+  ],
+  "key": {
+    "K": {
+      "item": "epicfight_dd:stone_knife"
+    },
+    "D": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "N": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:stone_messer",
+    "count": 1
+  }
+}
+

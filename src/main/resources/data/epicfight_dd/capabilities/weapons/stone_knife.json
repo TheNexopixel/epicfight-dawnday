@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "armor_negation":5.0,
+      "impact":0.4,
+      "max_strikes": 2
+    }
+  },
+  "type":"epicfight_dd:knife"
+}

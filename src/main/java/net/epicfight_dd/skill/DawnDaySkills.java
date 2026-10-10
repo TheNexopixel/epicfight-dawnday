@@ -35,12 +35,14 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill BEAST_EYE;
+    public static Skill GLORIA_MAXIMA;
     public static Skill GENTLE_NUDGE;
     public static Skill BLOOD_DANCE;
     public static Skill PIERCING_FANG;
     public static Skill SPEARING_STRIKE;
     public static Skill FURIOUS_CUT;
     public static Skill GREATER_HARVEST;
+    public static Skill SHARP_STABS;
     public static Skill WINGSTANCE;
     public static Skill TREMEDEOUS_RETALIATION;
     public static Skill SKULL_RUPTURE;
@@ -87,6 +89,19 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
         ;
         HEAD_KNOCKER = headknock;
+
+        WeaponInnateSkill sharpstabs = modRegistry.build("sharp_stabs", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.SHARP_STABS)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        sharpstabs.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(50.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+        ;
+        SHARP_STABS = sharpstabs;
 
         WeaponInnateSkill greaterharvest = modRegistry.build("greater_harvest", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.GREATER_HARVEST)
@@ -394,6 +409,10 @@ public class DawnDaySkills {
                         .setCategory(SkillCategories.IDENTITY));
 
         BLOOD_DANCE = modRegistry.build("blood_dance", BloodDanceSkill::new,
+                WeaponInnateSkill.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE));
+
+        GLORIA_MAXIMA = modRegistry.build("gloria_maxima", GloriaMaximaSkill::new,
                 WeaponInnateSkill.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE));
 

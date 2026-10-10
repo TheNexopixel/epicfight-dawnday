@@ -46,6 +46,12 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
 
             builder.addGuardMotion(
+                    DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.HORUS_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+
+            builder.addGuardMotion(
                     DawnDayWeaponCategories.POLEBLADE,
                     (i, p) -> DawnDayAnimations.POLEBLADE_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.POLEBLADE,
@@ -95,6 +101,13 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.LONGSWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.LIGHT_GREATSWORD,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                    DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.HORUS_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE);
+
 
             builder.addGuardMotion(
                     DawnDayWeaponCategories.MORNINGSTAR,
@@ -177,6 +190,19 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.GREATSWORD_GUARD_HIT
             ).addGuardBreakMotion(DawnDayWeaponCategories.BAT,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(
+                            DawnDayWeaponCategories.HORUS_FANG,
+                            (i, p) -> DawnDayAnimations.HORUS_GUARD_HIT
+                    ).addGuardBreakMotion(DawnDayWeaponCategories.HORUS_FANG,
+                            (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE)
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.HORUS_FANG,
+                            (i, p) -> List.of(
+                                    DawnDayAnimations.HORUS_PARRY1,
+                                    DawnDayAnimations.HORUS_PARRY2,
+                                    DawnDayAnimations.HORUS_PARRY3
+                            ));
+
 
             builder.addGuardMotion(
                     DawnDayWeaponCategories.MORNINGSTAR,
@@ -285,6 +311,7 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(DawnDayWeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
         icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(DawnDayWeaponCategories.SICKLE, new ItemStack(DawnDayItems.IRON_SICKLE.get()));
+        icon.registerCategory(DawnDayWeaponCategories.HORUS_FANG, new ItemStack(DawnDayItems.HORUS_FANG.get()));
         icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
         icon.registerCategory(DawnDayWeaponCategories.MORNINGSTAR, new ItemStack(DawnDayItems.GRIMM.get()));
         icon.registerCategory(DawnDayWeaponCategories.SCYTHE, new ItemStack(DawnDayItems.SCYTHE.get()));

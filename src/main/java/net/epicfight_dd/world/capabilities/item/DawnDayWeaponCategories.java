@@ -8,6 +8,7 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
     SICKLE,
     CLAWS,
+    HORUS_FANG,
     POLEBLADE,
     BAT,
     SCYTHE,

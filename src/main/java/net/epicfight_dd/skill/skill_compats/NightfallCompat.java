@@ -59,10 +59,19 @@ public class NightfallCompat implements ICompatModule {
                             (i, p) -> Animations.SWORD_GUARD_HIT
                     ).addGuardBreakMotion(DawnDayWeaponCategories.SICKLE,
                             (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED)
+            .addGuardMotion(
+                    DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.HORUS_GUARD_HIT
+            ).addGuardBreakMotion(DawnDayWeaponCategories.HORUS_FANG,
+                    (i, p) -> DawnDayAnimations.POLEBLADE_NEUTRALIZE)
+
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.SICKLE, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.POLEBLADE, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.HORUS_FANG, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
 
 

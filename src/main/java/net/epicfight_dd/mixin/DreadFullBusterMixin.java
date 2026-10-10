@@ -38,7 +38,7 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.BATTLESTAFF_FULL) {
             cir.setReturnValue(WOMAnimations.STAFF_BUSTER_WINDUP);
         }
-        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD|| capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.WARSICKLE|| capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD|| capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
             cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_WINDUP);
         }
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
@@ -82,7 +82,7 @@ public class DreadFullBusterMixin{
         if (capabilityItem.getWeaponCollider() == DawnDayCollider.NIGHTINGALE) {
             cir.setReturnValue(WoMCompatAnimations.NIGHTINGALE_DFB_RELEASE);
         }
-        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
+        if (capabilityItem.getWeaponCollider() == DawnDayCollider.HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.IUDEX_HALBERD || capabilityItem.getWeaponCollider() == DawnDayCollider.WARSICKLE|| capabilityItem.getWeaponCollider() == DawnDayCollider.SCYTHE) {
             cir.setReturnValue(WoMCompatAnimations.HALBERD_DFB_RELEASE);
         }
     }

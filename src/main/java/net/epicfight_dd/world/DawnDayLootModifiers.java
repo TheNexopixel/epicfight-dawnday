@@ -1,10 +1,15 @@
 package net.epicfight_dd.world;
 
+import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.epicfight_dd.world.item.DawnDayItems;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -14,6 +19,8 @@ public class DawnDayLootModifiers {
 
     @Mod.EventBusSubscriber
     public class ModLootTableModifiers {
+
+
 
         @SubscribeEvent
         public static void onLootLoad(LootTableLoadEvent event) {
@@ -83,6 +90,36 @@ public class DawnDayLootModifiers {
             if (event.getName().equals(
                     new ResourceLocation(
                             "minecraft",
+                            "chests/underwater_ruin_small"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.1f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.GLORIOUS_CHARM.get()))
+                        .name("ocean_modifierf")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/underwater_ruin_big"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.2f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.GLORIOUS_CHARM.get()))
+                        .name("ocean_modifiera")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
                             "chests/buried_treasure"))) {
 
                 LootPool pool = LootPool.lootPool()
@@ -110,7 +147,7 @@ public class DawnDayLootModifiers {
                         )
                         .add(
 
-                                LootItem.lootTableItem(DawnDayItems.nail.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,5f))))
+                                LootItem.lootTableItem(DawnDayItems.NAILS.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,5f))))
                         .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,2f))))
                         .name("nail")
                         .build();

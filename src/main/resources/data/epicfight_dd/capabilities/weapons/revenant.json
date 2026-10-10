@@ -1,0 +1,11 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":2.4,
+      "max_strikes": 4
+    }
+  },
+  "type":"epicfight_dd:revenant"
+}

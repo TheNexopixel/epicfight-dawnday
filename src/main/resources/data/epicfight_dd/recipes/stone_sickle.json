@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " DD",
+    "  D",
+    "SD "
+  ],
+  "key": {
+    "D": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:stone_sickle",
+    "count": 1
+  }
+}
+

@@ -24,6 +24,10 @@ public class DawnDayPaintings {
             PAINTING_VARIANTS.register("thunderstorm",
                     () -> new PaintingVariant(32, 32));
 
+    public static final RegistryObject<PaintingVariant> RISING_CITY =
+            PAINTING_VARIANTS.register("rising_city",
+                    () -> new PaintingVariant(64, 64));
+
     public static final RegistryObject<PaintingVariant> MOUNTAIN =
             PAINTING_VARIANTS.register("mountain",
                     () -> new PaintingVariant(16, 16));

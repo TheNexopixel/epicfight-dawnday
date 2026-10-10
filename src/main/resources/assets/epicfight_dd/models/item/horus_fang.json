@@ -1,0 +1,36 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "loader": "forge:obj",
+    "flip_v": true,
+    "model": "epicfight_dd:models/obj/horus.obj",
+    "textures": {
+      "horus_tex": "epicfight_dd:item/horus64x"
+    },
+
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [-90, -90, 0],
+      "translation": [-5.0, 14.0, -3.0],
+      "scale": [0.55, 0.55, 0.55]
+    }
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "epicfight_dd:item/horus_gui"
+      },
+      "gui_light": "front"
+    },
+    "ground": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "epicfight_dd:item/horus_gui"
+      },
+      "gui_light": "front"
+    }
+  }
+}

@@ -27,7 +27,7 @@ public class ItemTooltips {
             );
 
         }
-        if (stack.is(DawnDayItems.nail.get())) {
+        if (stack.is(DawnDayItems.NAILS.get())) {
             event.getToolTip().add(
                     Component.translatable("tooltip.epicfight_dd.nail")
                             .withStyle(ChatFormatting.GRAY)
@@ -37,6 +37,13 @@ public class ItemTooltips {
         if (stack.is(DawnDayItems.ENERGY_DRINK.get())) {
             event.getToolTip().add(
                     Component.translatable("tooltip.epicfight_dd.energydrink")
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+        }
+        if (stack.is(DawnDayItems.GLORIOUS_CHARM.get())) {
+            event.getToolTip().add(
+                    Component.translatable("tooltip.epicfight_dd.glorious_charm")
                             .withStyle(ChatFormatting.GRAY)
             );
 

@@ -1,0 +1,45 @@
+{
+	"loader": "forge:separate_transforms",
+	"gui_light": "front",
+	"base": {
+		"loader": "forge:obj",
+		"flip_v": true,
+		"model": "epicfight_dd:models/obj/revenant.obj",
+		"textures": {
+			"revtex": "epicfight_dd:item/revenant_tex"
+		},
+
+		"display": {
+			"thirdperson_righthand": {
+				"rotation": [0, 0, 0],
+				"translation": [4.0, -1.0, 4.0],
+				"scale": [0.5, 0.5, 0.5]
+			},
+			"firstperson_righthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 1.25, -0.75]
+			},
+			"firstperson_lefthand": {
+				"rotation": [-20, 0, 0],
+				"translation": [2.5, 0.75, -0.5]
+			}
+		}
+	},
+
+	"perspectives": {
+		"gui": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/revenant_gui"
+			},
+			"gui_light": "front"
+		},
+		"ground": {
+			"parent": "item/generated",
+			"textures": {
+				"layer0": "epicfight_dd:item/revenant_gui"
+			},
+			"gui_light": "front"
+		}
+	}
+}

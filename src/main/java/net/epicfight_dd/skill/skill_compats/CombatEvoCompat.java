@@ -27,6 +27,8 @@ public class  CombatEvoCompat implements ICompatModule {
                   return DawnDayExecution_TYPES.KNEE_STOMP;
               });
 
+
+
       event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
               ExecutionTypeManager.TACHI_TYPE);
 
@@ -90,6 +92,9 @@ public class  CombatEvoCompat implements ICompatModule {
               DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
       event.registerExecutionByItem(DawnDayItems.NIGHT_RITUS_DAGGER.getId(), CapabilityItem.Styles.ONE_HAND,
               DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
+
+      event.registerExecutionByItem(DawnDayItems.GLORIA.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.IRON_FIST);
 
       event.registerExecutionByItem(DawnDayItems.iron_light_greatsword.getId(), CapabilityItem.Styles.OCHS,
               DawnDayExecution_TYPES.LIGHTGREATSWORD_SWORD);

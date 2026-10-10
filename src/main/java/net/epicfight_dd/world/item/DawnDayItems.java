@@ -39,6 +39,48 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
 
             ));
+    public static final RegistryObject<Item> HORUS_FANG =
+            ITEMS.register("horus_fang", () -> new DawnDayTooltips(
+                    Tiers.IRON,
+                    3,
+                    -2.2F,
+                    new Item.Properties()
+                            .defaultDurability(1205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.horus_fang",
+                            ChatFormatting.GRAY)
+
+            ));
+
+    public static final RegistryObject<Item> REVENANT =
+            ITEMS.register("revenant", () -> new DawnDayTooltips(
+                    Tiers.STONE,
+                    8,
+                    -2.8F,
+                    new Item.Properties()
+                            .defaultDurability(1505)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.revenant",
+                            ChatFormatting.GRAY)
+
+            ));
+
+    public static final RegistryObject<Item> GLORIA =
+            ITEMS.register("gloria", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    0,
+                    -2.0F,
+                    new Item.Properties()
+                            .defaultDurability(5205)
+                            .rarity(Rarity.RARE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.gloria",
+                            ChatFormatting.GRAY)
+
+            ));
+
     public static final RegistryObject<Item> HOOKCLAWS =
             ITEMS.register("hookclaws", () -> new DawnDayTooltips(
                     Tiers.IRON,
@@ -122,6 +164,12 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON)
                             .defaultDurability(800)));
 
+    public static final RegistryObject<Item> STONE_SICKLE =
+            ITEMS.register("stone_sickle",() -> new SwordItem(Tiers.STONE,2,-1.85f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(150)));
+
     public static final RegistryObject<Item> GOLDEN_SICKLE =
             ITEMS.register("golden_sickle",() -> new SwordItem(Tiers.GOLD,2,-1.75f,
                     new Item.Properties().stacksTo(1)
@@ -139,6 +187,12 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(861)));
+
+    public static final RegistryObject<Item> STONE_LIGHT_GREATSWORD =
+            ITEMS.register("stone_light_greatsword",() -> new SwordItem(Tiers.STONE,4,-2.5f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(250)));
     public static final RegistryObject<Item> golden_light_greatsword =
             ITEMS.register("golden_light_greatsword",() -> new SwordItem(Tiers.GOLD,4,-2.35f,
                     new Item.Properties().stacksTo(1)
@@ -154,8 +208,9 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(2061)));
+
     public static final RegistryObject<Item> WAR_SICKLE =
-            ITEMS.register("war_sickle",() -> new SwordItem(Tiers.NETHERITE,3,-2.7f,
+            ITEMS.register("war_sickle",() -> new SwordItem(Tiers.NETHERITE,3,-2.6f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(2061)));
@@ -176,6 +231,12 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(861)));
+
+    public static final RegistryObject<Item> STONE_FLORETT =
+            ITEMS.register("stone_florett",() -> new SwordItem(Tiers.STONE,2,-2.1f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(130)));
 
     public static final RegistryObject<Item> GOLDEN_FLORETT =
             ITEMS.register("golden_florett",() -> new SwordItem(Tiers.GOLD,2,-1.9f,
@@ -232,6 +293,12 @@ public class DawnDayItems {
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(860)));
+
+    public static final RegistryObject<Item> STONE_MESSER =
+            ITEMS.register("stone_messer",() -> new SwordItem(Tiers.STONE,2,-2.15f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(140)));
 
     public static final RegistryObject<Item> bat =
             ITEMS.register("bat",() -> new SwordItem(Tiers.WOOD,4,-2.5f,
@@ -295,6 +362,12 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON)
                             .defaultDurability(860)));
 
+    public static final RegistryObject<Item> STONE_KNIFE =
+            ITEMS.register("stone_knife",() -> new SwordItem(Tiers.STONE,1,-2.25f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.COMMON)
+                            .defaultDurability(125)));
+
     public static final RegistryObject<Item> diamond_knife =
             ITEMS.register("diamond_knife",() -> new SwordItem(Tiers.DIAMOND,1,-2.0f,
                     new Item.Properties().stacksTo(1)
@@ -317,6 +390,11 @@ public class DawnDayItems {
             ITEMS.register("wooden_battlestaff",() -> new SwordItem(Tiers.WOOD,3,-2.4f,
                     new Item.Properties().stacksTo(1)
                             .defaultDurability(131)));
+
+    public static final RegistryObject<Item> STONE_BATTLESTAFF =
+            ITEMS.register("stone_battlestaff",() -> new SwordItem(Tiers.STONE,3,-2.45f,
+                    new Item.Properties().stacksTo(1)
+                            .defaultDurability(250)));
 
     public static final RegistryObject<Item> iron_battlestaff =
             ITEMS.register("iron_battlestaff",() -> new SwordItem(Tiers.IRON,3,-2.5f,
@@ -354,8 +432,13 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
             ));
 
-    public static final RegistryObject<Item> nail =
+    public static final RegistryObject<Item> NAILS =
             ITEMS.register("nail",() -> new Item(
+                    new Item.Properties().stacksTo(64)
+                            .rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> GLORIOUS_CHARM =
+            ITEMS.register("glorious_charm",() -> new Item(
                     new Item.Properties().stacksTo(64)
                             .rarity(Rarity.COMMON)));
 
@@ -443,6 +526,9 @@ public class DawnDayItems {
 
     public static final RegistryObject<Item> golden_halberd =
             ITEMS.register("golden_halberd",() -> new halbeardItem(Tiers.GOLD));
+
+    public static final RegistryObject<Item> STONE_HALBERD =
+            ITEMS.register("stone_halberd",() -> new halbeardItem(Tiers.STONE));
 
     public static final RegistryObject<Item> iron_halberd =
             ITEMS.register("iron_halberd",() -> new halbeardItem(Tiers.IRON));
