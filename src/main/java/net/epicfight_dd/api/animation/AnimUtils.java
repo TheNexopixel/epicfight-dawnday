@@ -99,11 +99,10 @@ public class AnimUtils {
 
                         if (!entity.level().isClientSide) {
 
-                            // Alte Effekte entfernen
+
                             entity.removeEffect(MobEffects.LEVITATION);
                             entity.removeEffect(MobEffects.SLOW_FALLING);
 
-                            // EINMAL Levitation anwenden
                             entity.addEffect(
                                     new MobEffectInstance(
                                             MobEffects.LEVITATION,

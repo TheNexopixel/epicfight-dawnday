@@ -356,6 +356,23 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
             ));
 
+    public static final RegistryObject<Item> BLOOD_KNIFE =
+            ITEMS.register("blood_knife",() ->  new DawnDayTooltips(Tiers.NETHERITE,1,-1.85f,
+                    new Item.Properties().stacksTo(1)
+                            .rarity(Rarity.RARE)
+                            .defaultDurability(2000),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_headline",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_knife",
+                            ChatFormatting.GRAY)
+            ));
+
     public static final RegistryObject<Item> iron_knife =
             ITEMS.register("iron_knife",() -> new SwordItem(Tiers.IRON,1,-2.2f,
                     new Item.Properties().stacksTo(1)

@@ -7,7 +7,9 @@ import com.tacz.guns.init.ModDamageTypes;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -15,16 +17,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
+import org.joml.Vector3f;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty;
-import yesman.epicfight.api.animation.types.ActionAnimation;
-import yesman.epicfight.api.animation.types.KnockdownAnimation;
-import yesman.epicfight.api.animation.types.LongHitAnimation;
+import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.utils.TimePairList;
 import yesman.epicfight.api.utils.math.Vec3f;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
+import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypes;
 
@@ -80,6 +82,7 @@ public class QoLMiscAnimations {
 
 
     public static AnimationManager.AnimationAccessor<ActionAnimation> WIPE_MOUTH;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> AIR_DASH;
 
 
 
@@ -1186,10 +1189,220 @@ public class QoLMiscAnimations {
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE,false)
         );
-        // Just Animations I have done some time ago. I wanted to see how they look like ingame
-        WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.02f,0.2f,ac,Armatures.BIPED)
+        WIPE_MOUTH = builder.nextAccessor("biped/living/wipemouth", ac -> new ActionAnimation(0.12f,0.2f,ac,Armatures.BIPED)
                 .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION,true)
                 .addEvents(AnimationEvent.InTimeEvent.create(0.15f,Animations.ReusableSources.PLAY_SOUND, AnimationEvent.Side.CLIENT).params(DawnDaySounds.soft_wipe.get()))
+        );
+
+        AIR_DASH = builder.nextAccessor("biped/skill/air_dash", ac -> new StaticAnimation(0.02f,false,ac,Armatures.BIPED)
+                .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL,true)
+                .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0f,1f))
+                .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE,false)
+                .addEvents(
+
+                        AnimationEvent.InTimeEvent.create(
+                                0.05F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    Vec3 look = entity.getLookAngle();
+                                    Vec3 forward = new Vec3(look.x, 0.0D, look.z);
+
+                                    if (forward.lengthSqr() < 1.0E-6D) {
+                                        forward = new Vec3(0.0D, 0.0D, 1.0D);
+                                    } else {
+                                        forward = forward.normalize();
+                                    }
+
+
+                                    double radius = 0.9D;
+                                    double centerY = entity.getY() + 1.0D;
+                                    int particleCount = 64;
+
+                                    DustParticleOptions whiteDust =
+                                            new DustParticleOptions(
+                                                    new Vector3f(1.0F, 1.0F, 1.0F),
+                                                    0.8F
+                                            );
+
+                                    for (int i = 0; i < particleCount; i++) {
+                                        double angle =
+                                                (Math.PI * 2.0D * i) / particleCount;
+
+                                        double horizontalOffset =
+                                                Math.cos(angle) * radius;
+
+                                        double verticalOffset =
+                                                Math.sin(angle) * radius;
+
+                                        double x = entity.getX()
+                                                - forward.z * horizontalOffset;
+
+                                        double y = centerY + verticalOffset;
+
+                                        double z = entity.getZ()
+                                                + forward.x * horizontalOffset;
+
+                                        entity.level().addParticle(
+                                                whiteDust,
+                                                x, y, z,
+                                                0.0D, 0.0D, 0.0D
+                                        );
+                                    }
+                                },
+                                AnimationEvent.Side.CLIENT
+                        )
+                )
+                .addEvents(
+
+                        AnimationEvent.InTimeEvent.create(
+                                0.17F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    Vec3 look = entity.getLookAngle();
+                                    Vec3 forward = new Vec3(look.x, 0.0D, look.z);
+
+                                    if (forward.lengthSqr() < 1.0E-6D) {
+                                        forward = new Vec3(0.0D, 0.0D, 1.0D);
+                                    } else {
+                                        forward = forward.normalize();
+                                    }
+
+
+                                    double radius = 1.6D;
+                                    double centerY = entity.getY() + 1.0D;
+                                    int particleCount = 32;
+
+                                    DustParticleOptions whiteDust =
+                                            new DustParticleOptions(
+                                                    new Vector3f(1.0F, 1.0F, 1.0F),
+                                                    0.8F
+                                            );
+
+                                    for (int i = 0; i < particleCount; i++) {
+                                        double angle =
+                                                (Math.PI * 2.0D * i) / particleCount;
+
+                                        double horizontalOffset =
+                                                Math.cos(angle) * radius;
+
+                                        double verticalOffset =
+                                                Math.sin(angle) * radius;
+
+                                        double x = entity.getX()
+                                                - forward.z * horizontalOffset;
+
+                                        double y = centerY + verticalOffset;
+
+                                        double z = entity.getZ()
+                                                + forward.x * horizontalOffset;
+
+                                        entity.level().addParticle(
+                                                whiteDust,
+                                                x, y, z,
+                                                0.0D, 0.0D, 0.0D
+                                        );
+                                    }
+                                },
+                                AnimationEvent.Side.CLIENT
+                        )
+
+                )
+                .addEvents(
+
+                        AnimationEvent.InTimeEvent.create(
+                                        0.3F,
+                                        (entityPatch, animation, params) -> {
+                                            var entity = entityPatch.getOriginal();
+
+                                            Vec3 look = entity.getLookAngle();
+                                            Vec3 forward = new Vec3(look.x, 0.0D, look.z);
+
+                                            if (forward.lengthSqr() < 1.0E-6D) {
+                                                forward = new Vec3(0.0D, 0.0D, 1.0D);
+                                            } else {
+                                                forward = forward.normalize();
+                                            }
+
+
+                                            double radius = 1.7D;
+                                            double centerY = entity.getY() + 1.0D;
+                                            int particleCount = 64;
+
+                                            DustParticleOptions whiteDust =
+                                                    new DustParticleOptions(
+                                                            new Vector3f(1.0F, 1.0F, 1.0F),
+                                                            0.8F
+                                                    );
+
+                                            for (int i = 0; i < particleCount; i++) {
+                                                double angle =
+                                                        (Math.PI * 2.0D * i) / particleCount;
+
+                                                double horizontalOffset =
+                                                        Math.cos(angle) * radius;
+
+                                                double verticalOffset =
+                                                        Math.sin(angle) * radius;
+
+                                                double x = entity.getX()
+                                                        - forward.z * horizontalOffset;
+
+                                                double y = centerY + verticalOffset;
+
+                                                double z = entity.getZ()
+                                                        + forward.x * horizontalOffset;
+
+                                                entity.level().addParticle(
+                                                        whiteDust,
+                                                        x, y, z,
+                                                        0.0D, 0.0D, 0.0D
+                                                );
+                                            }
+                                        },
+                                        AnimationEvent.Side.CLIENT
+                                ))
+                .addEvents(
+
+                        AnimationEvent.InTimeEvent.create(
+                                0.08F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    entity.level().playSound(
+                                            null,
+                                            entity.blockPosition(),
+                                            EpicFightSounds.EMERGENCY_ESCAPE.get(),
+                                            SoundSource.PLAYERS,
+                                            1.0F,
+                                            1.0F
+                                    );
+                                },
+                                AnimationEvent.Side.SERVER
+                        )
+                )
+                .addEvents(
+
+                        AnimationEvent.InTimeEvent.create(
+                                0.04F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    entity.level().addParticle(
+                                            EpicFightParticles.WHITE_AFTERIMAGE.get(),
+                                            entity.getX(),
+                                            entity.getY(),
+                                            entity.getZ(),
+                                            Double.longBitsToDouble(entity.getId()),
+                                            0.0D,
+                                            0.0D
+                                    );
+                                },
+                                AnimationEvent.Side.CLIENT
+                        )
+                )
+
         );
 
 

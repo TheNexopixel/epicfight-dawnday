@@ -7,6 +7,8 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import java.util.Set;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
+import net.epicfight_dd.skill.mover.AirDashSkill;
+import net.epicfight_dd.skill.passive.RapidRetreatSkill;
 import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
@@ -35,6 +37,8 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill BEAST_EYE;
+    public static Skill AIR_DASH;
+    public static Skill RAPID_RETREAT;
     public static Skill GLORIA_MAXIMA;
     public static Skill GENTLE_NUDGE;
     public static Skill BLOOD_DANCE;
@@ -420,6 +424,16 @@ public class DawnDaySkills {
                 PassiveSkill.createPassiveBuilder()
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.PASSIVE));
+
+        RAPID_RETREAT = modRegistry.build("rapid_retreat", RapidRetreatSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.PASSIVE));
+
+        AIR_DASH = modRegistry.build("air_dash", AirDashSkill::new,
+                PassiveSkill.createMoverBuilder()
+                        .setResource(Skill.Resource.STAMINA)
+                        .setCategory(SkillCategories.MOVER));
 
     }
 

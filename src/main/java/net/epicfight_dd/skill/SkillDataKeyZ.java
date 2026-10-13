@@ -1,6 +1,7 @@
 package net.epicfight_dd.skill;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.skill.passive.RapidRetreatSkill;
 import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.minecraft.resources.ResourceLocation;
@@ -15,12 +16,6 @@ public class SkillDataKeyZ {
 
     private SkillDataKeyZ(){}
 
- /*
-ヽ(｀Д´)ﾉ
-ヽ(｀Д´)ﾉ
-ヽ(｀Д´)ﾉ
-ヽ(｀Д´)ﾉ
-  */
 
     public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID,"skill_data_keys"), Epicfight_dd.MODID);
 
@@ -32,6 +27,31 @@ public class SkillDataKeyZ {
                     PacketBufferCodec.INTEGER,
                     0, Riposte.class )
             );
+    public static final RegistryObject<SkillDataKey<Boolean>> RAPID_RETREAT_ACTIVE =
+            DATA_KEYS.register("rapid_retreat_active", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.BOOLEAN,
+                            false,
+                            RapidRetreatSkill.class
+                    )
+            );
+    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_COOLDOWN =
+            DATA_KEYS.register("rapid_retreat_cooldown", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            RapidRetreatSkill.class
+                    )
+            );
+    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_DURATION =
+            DATA_KEYS.register("rapid_retreat_duration", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            RapidRetreatSkill.class
+                    )
+            );
+
 /*
     public static final RegistryObject<SkillDataKey<Float>> IRON_WILL_DAMAGE =
             DATA_KEYS.register(

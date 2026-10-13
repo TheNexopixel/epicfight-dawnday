@@ -1,0 +1,8 @@
+{
+  "health_threshold": 0.3,
+  "speed_bonus": 0.7,
+  "damage_multiplier": 0.4,
+  "cooldown": 1200,
+  "equip_cooldown": 200,
+  "active_duration": 600
+}

@@ -27,7 +27,7 @@ public class RitusEvents {
         }
 
 
-        if (player.getMainHandItem().getItem() != DawnDayItems.NIGHT_RITUS_DAGGER.get()) {
+        if (player.getMainHandItem().getItem() != DawnDayItems.NIGHT_RITUS_DAGGER.get() || player.getMainHandItem().getItem() != DawnDayItems.NIGHTINGALE.get()) {
             return;
         }
         int moonPhase = player.level().getMoonPhase();
@@ -83,7 +83,11 @@ public class RitusEvents {
 
         if (player.getMainHandItem().getItem()
                 == DawnDayItems.BLOOD_RITUS_DAGGER.get() || player.getMainHandItem().getItem()
-                == DawnDayItems.POLEBLADE.get()) {
+                == DawnDayItems.POLEBLADE.get()
+
+                || player.getMainHandItem().getItem()
+                == DawnDayItems.BLOOD_KNIFE.get()
+        ) {
 
             if (entity != null) {
                 double max_health_bonus = entity.getMaxHealth() * 0.05;
@@ -159,7 +163,7 @@ public class RitusEvents {
 
 
         if (player.getMainHandItem().getItem()
-                == DawnDayItems.NIGHT_RITUS_DAGGER.get()) {
+                == DawnDayItems.NIGHT_RITUS_DAGGER.get() ||player.getMainHandItem().getItem() == DawnDayItems.NIGHTINGALE.get()) {
 
             PlayerPatch<?> playerPatch =
                     EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);

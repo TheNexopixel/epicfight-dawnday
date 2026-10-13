@@ -67,6 +67,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.iron_halberd.get());
                 output.accept(DawnDayItems.golden_halberd.get());
                 output.accept(DawnDayItems.STONE_HALBERD.get());
+                output.accept(DawnDayItems.BLOOD_KNIFE.get());
                 output.accept(DawnDayItems.netherite_knife.get());
                 output.accept(DawnDayItems.diamond_knife.get());
                 output.accept(DawnDayItems.iron_knife.get());
@@ -90,13 +91,20 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.NAILS.get());
                 output.accept(DawnDayItems.METAL_PLATE.get());
                 output.accept(DawnDayItems.RUSTED_METAL_PLATE.get());
+
+                ItemStack book_rapid_retreat = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.RAPID_RETREAT, book_rapid_retreat);
+                output.accept(book_rapid_retreat);
+                ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.RIPOSTE, book_iron_will);
+                output.accept(book_iron_will);
+                ItemStack book_air_dash = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.AIR_DASH, book_air_dash);
+                output.accept(book_air_dash);
                 ItemStack book_red = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.REDEMPTION, book_red);
                 output.accept(book_red);
 
-                ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
-                SkillBookItem.setContainingSkill(DawnDaySkills.RIPOSTE, book_iron_will);
-                output.accept(book_iron_will);
 
                 // Potions
 

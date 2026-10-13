@@ -270,6 +270,7 @@ public class RedemptionSkill extends PassiveSkill {
     public boolean shouldDraw(SkillContainer container) {
         return container.getStack() <= 0;
     }
+
     @Override
     public void setParams(CompoundTag parameters) {
         super.setParams(parameters);
@@ -286,16 +287,13 @@ public class RedemptionSkill extends PassiveSkill {
     ) {
         guiGraphics.blit(
                 this.getSkillTexture(),
-                (int)x,
-                (int)y,
+                (int) x,
+                (int) y,
                 24,
                 24,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1
+                0, 0,
+                1, 1,
+                1, 1
         );
 
         float resource = container.getResource(partialTick);
@@ -304,12 +302,16 @@ public class RedemptionSkill extends PassiveSkill {
                 (int)Math.ceil(
                         (1.0F - resource) * consumption
                 );
+        String text = String.valueOf(seconds);
+        int textWidth = gui.getFont().width(text);
 
         guiGraphics.drawString(
                 gui.getFont(),
+
+
                 String.valueOf(seconds),
-                x + 18,
-                y + 14,
+                (int) x + (24 - textWidth) / 2,
+                (int) y + 15,
                 16777215,
                 true
         );

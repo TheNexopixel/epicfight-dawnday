@@ -36,6 +36,12 @@ public class DDNetworkHandler {
                 .consumerMainThread(ServerBoundSkillResourceConsumePacket::handle)
                 .add();
 
+        INSTANCE.messageBuilder(AirDashPacket.class, id())
+                .encoder(AirDashPacket::encode)
+                .decoder(AirDashPacket::new)
+                .consumerMainThread(AirDashPacket::handle)
+                .add();
+
 
     }
 }
