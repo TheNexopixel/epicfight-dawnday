@@ -2,7 +2,6 @@ package net.dawn_day.world.item;
 
 import net.dawn_day.gameasset.animation.QoLMiscAnimations;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -10,17 +9,22 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import yesman.epicfight.skill.Skill;
+import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillSlot;
+import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SpecialDrinkItem extends PotionItem {
 
@@ -61,8 +65,21 @@ public class SpecialDrinkItem extends PotionItem {
         }
 
         LivingEntityPatch<?> patch = EpicFightCapabilities.getEntityPatch(entityLiving, LivingEntityPatch.class);
+
         if (patch != null) {
             patch.playAnimation(QoLMiscAnimations.WIPE_MOUTH, 0.0f);
+            if (patch instanceof PlayerPatch<?> playerPatch && !playerPatch.isLogicalClient()) {
+                skillSlotSet.forEach(skillSlot -> {
+                    SkillContainer container = playerPatch.getSkill(skillSlot);
+                    if (container != null &&
+                            container.getSkill() != null &&
+                            container.getSkill().getResourceType().equals(Skill.Resource.COOLDOWN)
+                    ) {
+                        float cooldown = container.getResource();
+                        container.setResource(cooldown / 2);
+                    }
+                });
+            }
         }
 
         if (player != null) {
@@ -75,4 +92,8 @@ public class SpecialDrinkItem extends PotionItem {
         entityLiving.gameEvent(GameEvent.DRINK);
         return stack.isEmpty() ? ItemStack.EMPTY : stack;
     }
+
+    /// A HashSet for other addon devs to append into during modConstructEvent
+    public static final Set<SkillSlot> skillSlotSet = new HashSet<>(Arrays.asList(SkillSlots.values()));
+
 }
