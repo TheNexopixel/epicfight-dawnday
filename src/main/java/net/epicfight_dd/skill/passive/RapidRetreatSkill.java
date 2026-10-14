@@ -1,7 +1,6 @@
 
 package net.epicfight_dd.skill.passive;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,12 +18,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.joml.Vector4f;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.client.gui.BattleModeGui;
@@ -49,7 +45,7 @@ public class RapidRetreatSkill extends PassiveSkill {
             UUID.fromString("91c22d12-8a1f-4c93-82f0-2b19ab2c8f41");
 
     private static final ResourceLocation OVERLAY_ID =
-            new ResourceLocation("epicfight_dd", "rapid_retreat_overlay");
+            ResourceLocation.fromNamespaceAndPath("epicfight_dd", "rapid_retreat_overlay");
 
     private static final Set<UUID> ACTIVE_PLAYERS =
             ConcurrentHashMap.newKeySet();
