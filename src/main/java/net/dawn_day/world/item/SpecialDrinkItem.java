@@ -69,20 +69,24 @@ public class SpecialDrinkItem extends PotionItem {
         if (patch != null) {
             patch.playAnimation(QoLMiscAnimations.WIPE_MOUTH, 0.0f);
 
-            if (patch instanceof PlayerPatch<?> playerPatch) {
+            if (patch instanceof PlayerPatch<?> playerPatch && !level.isClientSide) {
                 skillSlotSet.forEach(skillSlot -> {
                     SkillContainer container = playerPatch.getSkill(skillSlot);
-                    if (container != null &&
-                            container.getSkill() != null &&
-                            container.getSkill().getResourceType() == (Skill.Resource.COOLDOWN)
+                    Skill skill = container.getSkill();
 
-                    ) {
+                    if (skill == null
+                            || skill.getResourceType() != Skill.Resource.COOLDOWN
+                            || container.isActivated()
+                            || container.getStack() >= skill.getMaxStack()
+                            || container.getResource() >= container.getMaxResource()) {
+                        return;
+                    } {
 
                         float cooldown = container.getResource();
                         float max = container.getMaxResource();
 
                         if (cooldown < max) {
-                            container.setResource(cooldown * 2f);
+                            skill.setConsumptionSynchronize(container, cooldown * 2.0f);
                         }
                     }
                 });
