@@ -75,12 +75,18 @@ public class SpecialDrinkItem extends PotionItem {
             if (patch instanceof PlayerPatch<?> playerPatch && !playerPatch.isLogicalClient()) {
                 skillSlotSet.forEach(skillSlot -> {
                     SkillContainer container = playerPatch.getSkill(skillSlot);
-                    if (container != null &&
+                   if (container != null &&
                             container.getSkill() != null &&
-                            container.getSkill().getResourceType().equals(Skill.Resource.COOLDOWN)
+                            container.getSkill().getResourceType() == (Skill.Resource.COOLDOWN)
+
                     ) {
+                        
                         float cooldown = container.getResource();
-                        container.setResource(cooldown / 2);
+                        float max = container.getMaxResource();
+                        
+                        if (cooldown < max) {
+                            container.setResource(cooldown * 2f);
+                        }
                     }
                 });
             }
