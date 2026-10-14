@@ -6,7 +6,6 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
-    EVIL_TACHI,
     FLORETT,
     BAT,
     SICKLE,
