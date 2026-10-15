@@ -19,6 +19,7 @@ public class DawnDaySounds {
     public static final RegistryObject<SoundEvent> milady_light_sweep = registerSound("sfx.milady_extra_light");
     public static final RegistryObject<SoundEvent> battlestaff_swing = registerSound("sfx.battlestaff_swing");
     public static final RegistryObject<SoundEvent> guard_break = registerSound("sfx.guard_break");
+    public static final RegistryObject<SoundEvent> GLORIA_ULT_1 = registerSound("sfx.gloria_ult_1");
     public static final RegistryObject<SoundEvent> poise_break = registerSound("sfx.poise_break");
     public static final RegistryObject<SoundEvent> GUARD_COUNTER = registerSound("sfx.guard_counter");
     public static final RegistryObject<SoundEvent> REDEMPTION = registerSound("sfx.redemption");

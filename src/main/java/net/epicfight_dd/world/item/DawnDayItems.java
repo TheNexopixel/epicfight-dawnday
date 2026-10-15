@@ -664,26 +664,22 @@ public class DawnDayItems {
             "energydrink",
             () -> new SpecialDrinkItem(
                     new Item.Properties()
-                            .stacksTo(4).craftRemainder(Items.IRON_NUGGET),
+                            .stacksTo(4)
+                            .craftRemainder(Items.IRON_NUGGET),
 
                     new MobEffectInstance(EffectRegistry.ENDURANCE.get(),
                             1200,
-                            2
+                            1
                     ),
 
                     new MobEffectInstance(EffectRegistry.STAMNIA.get(),
-                            1000,
-                            0
+                            1200,
+                            1
                     ),
 
                     new MobEffectInstance(
-                            MobEffects.MOVEMENT_SPEED,
-                            1100,
-                            1
-                    ),
-                    new MobEffectInstance(
-                            MobEffects.DIG_SPEED,
-                            900,
+                            EffectRegistry.IMPACT.get(),
+                            1200,
                             0
                     )
             )

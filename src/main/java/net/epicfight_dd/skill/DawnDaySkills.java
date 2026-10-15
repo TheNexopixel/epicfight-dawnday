@@ -9,6 +9,7 @@ import java.util.Set;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.mover.AirDashSkill;
 import net.epicfight_dd.skill.passive.RapidRetreatSkill;
+import net.epicfight_dd.skill.passive.RestockingSkill;
 import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
@@ -39,6 +40,7 @@ public class DawnDaySkills {
     public static Skill BEAST_EYE;
     public static Skill AIR_DASH;
     public static Skill RAPID_RETREAT;
+    public static Skill RESTOCKING;
     public static Skill GLORIA_MAXIMA;
     public static Skill GENTLE_NUDGE;
     public static Skill BLOOD_DANCE;
@@ -434,6 +436,11 @@ public class DawnDaySkills {
                 PassiveSkill.createMoverBuilder()
                         .setResource(Skill.Resource.STAMINA)
                         .setCategory(SkillCategories.MOVER));
+
+        RESTOCKING = modRegistry.build("restocking", RestockingSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.PASSIVE));
 
     }
 

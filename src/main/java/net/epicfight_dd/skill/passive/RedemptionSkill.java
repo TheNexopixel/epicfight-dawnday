@@ -30,6 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// THIS CODE WAS MADE MOSTLY BY AI
+// gez. Nexo
+
 public class RedemptionSkill extends PassiveSkill {
     private static final UUID EVENT_UUID =
             UUID.fromString("8b6b6af0-d76d-11ee-a506-0242ac120002");

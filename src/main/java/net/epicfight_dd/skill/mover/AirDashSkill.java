@@ -92,6 +92,10 @@ public class AirDashSkill extends Skill {
                         return;
                     }
 
+                    if(player.isCreative()) {
+                        return;
+                    }
+
                     DashState state = getState(container);
 
                     boolean jumpPressed = isJumpPressed();

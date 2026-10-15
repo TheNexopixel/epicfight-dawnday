@@ -27,6 +27,9 @@ public class DawnDayCollider {
     public static final Collider HORUS_FANG_HUGE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"horus_fang_huge"),
             new MultiOBBCollider(3, 0.5D, 0.90D, 2.0D,
                     0.0D, -0.5D, -1.2D));
+    public static final Collider GLORIA_ULTIMATE = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"gloria_ult"),
+            new MultiOBBCollider(1, 10.5D, 4.0D, 10.5D, 0D, 1.5D, 0.0D));
+
 
 
     public static final Collider GRIMM = registerCollider(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID,"grimm"),new MultiOBBCollider(4, 0.5D, 0.50D, 1.0D, 0D, 0.0D, -1.0D));

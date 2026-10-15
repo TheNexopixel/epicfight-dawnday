@@ -2,6 +2,7 @@ package net.epicfight_dd.skill;
 
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.skill.passive.RapidRetreatSkill;
+import net.epicfight_dd.skill.passive.RestockingSkill;
 import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.minecraft.resources.ResourceLocation;
@@ -52,18 +53,6 @@ public class SkillDataKeyZ {
                     )
             );
 
-/*
-    public static final RegistryObject<SkillDataKey<Float>> IRON_WILL_DAMAGE =
-            DATA_KEYS.register(
-                    "iron_will_damage",
-                    () -> SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.FLOAT,
-                            0.0F,
-                            Riposte.class
-                    )
-            );
 
-
- */
 
 }

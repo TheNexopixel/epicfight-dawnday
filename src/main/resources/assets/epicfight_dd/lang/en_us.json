@@ -164,6 +164,9 @@
   "skill.epicfight_dd.tremedeous_retaliation":"Tremendous Retaliation",
   "skill.epicfight_dd.tremedeous_retaliation.tooltip":"\"And those who are prideful, and refuse to bow down, shall be laid low and made unto dust.\"\nYour attacks become stronger, you can't be stunned, and you regain 25% of your health.\n \"Revenge is a dish best served cold.\"",
 
+  "skill.epicfight_dd.restocking":"Restocking",
+  "skill.epicfight_dd.restocking.tooltip":"After 15 Seconds gain for Each Kill one Innate Stack extra. Playerkills will regenerate all Stacks if there is more than one",
+
   "skill.epicfight_dd.air_dash":"Air Dash",
   "skill.epicfight_dd.air_dash.tooltip":"Allows you to perform a dash in midair by pressing the jump button again after jumping. The dash consumes stamina.\nThe stamina regeneration time is reduced by the Endurance effect.",
 

@@ -27,6 +27,9 @@ public class Riposte extends PassiveSkill {
     private static final UUID EVENT_UUID =
             UUID.fromString("a5d42df5-5dd5-46ec-92fb-4b4d0cfd1c42");
 
+    // THIS CODE WAS MADE MOSTLY BY AI
+    // gez. Nexo
+
     public Riposte(SkillBuilder<? extends PassiveSkill> builder) {
         super(builder);
     }

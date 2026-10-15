@@ -11,14 +11,18 @@ import yesman.epicfight.api.animation.types.DynamicAnimation;
 import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 import java.util.Map;
 import java.util.Objects;
 
 public class GloriaMaximaSkill extends WeaponInnateSkill {
+
+
 
     private final Map<AnimationManager.AnimationAccessor<? extends StaticAnimation>, AnimationManager.AnimationAccessor<? extends AttackAnimation>> comboAnimation = Maps.newHashMap();
 
@@ -35,18 +39,54 @@ public class GloriaMaximaSkill extends WeaponInnateSkill {
     }
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
-        AssetAccessor<? extends DynamicAnimation> animation = Objects.requireNonNull(container.getExecutor().getAnimator().getPlayerFor(null)).getAnimation();
+        PlayerPatch<?> player = container.getServerExecutor();
 
+        AssetAccessor<? extends DynamicAnimation> animation =
+                Objects.requireNonNull(
+                        player.getAnimator().getPlayerFor(null)
+                ).getAnimation();
+
+        if (player.getOriginal().isShiftKeyDown()
+                && (player.getOriginal().isCreative()
+                || container.getStack() >= 4)) {
+
+            player.playAnimationSynchronized(
+                    DawnDayAnimations.GLORIA_SHOCKWAVE,
+                    0.0F
+            );
+
+            if (!player.getOriginal().isCreative()) {
+                Skill.setSkillStackSynchronize(container,0);
+            }
+
+            return;
+        }
         if (this.comboAnimation.containsKey(animation)) {
-            container.getExecutor().playAnimationSynchronized(this.comboAnimation.get(animation), 0.0F);
+            player.playAnimationSynchronized(
+                    this.comboAnimation.get(animation),
+                    0.0F
+            );
+
             super.executeOnServer(container, args);
         }
     }
     @Override
     public boolean checkExecuteCondition(SkillContainer container) {
-        EntityState playerState = container.getExecutor().getEntityState();
+        PlayerPatch<?> player = container.getExecutor();
 
-        return this.comboAnimation.containsKey(Objects.requireNonNull(container.getExecutor().getAnimator().getPlayerFor(null)).getAnimation()) && playerState.canUseSkill() && playerState.inaction();
+        AssetAccessor<? extends DynamicAnimation> animation =
+                Objects.requireNonNull(
+                        player.getAnimator().getPlayerFor(null)
+                ).getAnimation();
+
+        if (player.getOriginal().isShiftKeyDown()
+                && (player.getOriginal().isCreative()
+                || container.getStack() >= 4)) {
+            return player.getEntityState().canUseSkill();
+        }
+        return this.comboAnimation.containsKey(animation)
+                && player.getEntityState().canUseSkill()
+                && player.getEntityState().inaction();
     }
     @Override
     public WeaponInnateSkill registerPropertiesToAnimation() {
@@ -77,6 +117,14 @@ public class GloriaMaximaSkill extends WeaponInnateSkill {
         this.comboAnimation.put(
                 DawnDayAnimations.GLORIA_AIRSLASH,
                 DawnDayAnimations.GLORIA_AIRSLASH_SKILL
+        );
+        this.comboAnimation.put(
+                DawnDayAnimations.GLORIA_SKILL2,
+                DawnDayAnimations.GLORIA_SKILL2_B
+        );
+        this.comboAnimation.put(
+                DawnDayAnimations.GLORIA_SKILL3,
+                DawnDayAnimations.GLORIA_SKILL3_B
         );
 
 

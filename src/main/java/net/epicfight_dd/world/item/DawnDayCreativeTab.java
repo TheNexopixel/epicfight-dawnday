@@ -98,6 +98,9 @@ public class DawnDayCreativeTab {
                 ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.RIPOSTE, book_iron_will);
                 output.accept(book_iron_will);
+                ItemStack boock_restocking = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.RESTOCKING, boock_restocking);
+                output.accept(boock_restocking);
                 ItemStack book_air_dash = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.AIR_DASH, book_air_dash);
                 output.accept(book_air_dash);
