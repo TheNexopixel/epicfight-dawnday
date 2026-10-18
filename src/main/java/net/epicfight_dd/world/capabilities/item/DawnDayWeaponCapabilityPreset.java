@@ -11,15 +11,12 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.ColliderPreset;
-import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.particle.HitParticleType;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -984,7 +981,7 @@ public class DawnDayWeaponCapabilityPreset {
 
     public static final Function<Item, CapabilityItem.Builder> SCYTHE = (item) ->
             WeaponCapability.builder()
-                    .category(DawnDayWeaponCategories.SCYTHE)
+                    .category(DawnDayWeaponCategories.GREAT_SCYTHE)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(DawnDayCollider.SCYTHE)
                     .swingSound(DawnDaySounds.SCYTHE_SWING_HEAVY.get())

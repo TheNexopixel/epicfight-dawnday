@@ -116,9 +116,9 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
-                    DawnDayWeaponCategories.SCYTHE,
+                    DawnDayWeaponCategories.GREAT_SCYTHE,
                     (i, p) -> Animations.SPEAR_GUARD_HIT
-            ).addGuardBreakMotion(DawnDayWeaponCategories.SCYTHE,
+            ).addGuardBreakMotion(DawnDayWeaponCategories.GREAT_SCYTHE,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
@@ -211,9 +211,9 @@ public class DefaultEpicFightSkillCompat {
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
-                    DawnDayWeaponCategories.SCYTHE,
+                    DawnDayWeaponCategories.GREAT_SCYTHE,
                     (i, p) -> Animations.SPEAR_GUARD_HIT
-            ).addGuardBreakMotion(DawnDayWeaponCategories.SCYTHE,
+            ).addGuardBreakMotion(DawnDayWeaponCategories.GREAT_SCYTHE,
                     (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
 
             builder.addGuardMotion(
@@ -314,7 +314,7 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(DawnDayWeaponCategories.HORUS_FANG, new ItemStack(DawnDayItems.HORUS_FANG.get()));
         icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
         icon.registerCategory(DawnDayWeaponCategories.MORNINGSTAR, new ItemStack(DawnDayItems.GRIMM.get()));
-        icon.registerCategory(DawnDayWeaponCategories.SCYTHE, new ItemStack(DawnDayItems.SCYTHE.get()));
+        icon.registerCategory(DawnDayWeaponCategories.GREAT_SCYTHE, new ItemStack(DawnDayItems.SCYTHE.get()));
         icon.registerCategory(DawnDayWeaponCategories.BAT, new ItemStack(DawnDayItems.spiked_bat.get()));
         icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
         icon.registerCategory(DawnDayWeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));

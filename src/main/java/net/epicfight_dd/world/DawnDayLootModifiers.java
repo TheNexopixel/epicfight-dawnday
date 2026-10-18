@@ -58,6 +58,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.35f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
@@ -280,6 +281,7 @@ public class DawnDayLootModifiers {
 
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
                         .name("netherite_messer")
                         .build();
@@ -379,6 +381,7 @@ public class DawnDayLootModifiers {
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.2f))
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.REVENANT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))

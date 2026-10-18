@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.Objects;
 
-import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import reascer.wom.gameasset.WOMSkills;
 import yesman.epicfight.client.gui.BattleModeGui;
 import yesman.epicfight.network.EntityPairingPacketTypes;
 import yesman.epicfight.network.EpicFightNetworkManager;
@@ -29,9 +29,6 @@ import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 
-
-// THIS CODE WAS MADE MOSTLY BY AI
-// gez. Nexo
 
 public class RestockingSkill extends PassiveSkill {
     private static final UUID EVENT_UUID =
@@ -66,23 +63,6 @@ public class RestockingSkill extends PassiveSkill {
                         return;
                     }
 
-                    cooldowns.put(killer, DEFAULT_COOLDOWN_TICKS);
-
-                    SPEntityPairingPacket pairingPacket = new SPEntityPairingPacket(
-                            killer.getId(),
-                            EntityPairingPacketTypes.FLASH_WHITE
-                    );
-
-                    pairingPacket.getBuffer().writeInt(9);
-                    pairingPacket.getBuffer().writeInt(15);
-                    pairingPacket.getBuffer().writeInt(1);
-                    pairingPacket.getBuffer().writeBoolean(true);
-
-                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(
-                            pairingPacket,
-                            container.getServerExecutor().getOriginal()
-                    );
-
                     var capability = patch.getAdvancedHoldingItemCapability(
                             InteractionHand.MAIN_HAND
                     );
@@ -98,46 +78,103 @@ public class RestockingSkill extends PassiveSkill {
                         return;
                     }
 
-                    player.level().playSound(
-                            null,
-                            player.getX(),
-                            player.getY(),
-                            player.getZ(),
-                            SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
-                            player.getSoundSource(),
-                            3.5F,
-                            2.0F
-                    );
-
                     SkillContainer innateContainer =
                             patch.getSkillCapability()
                                     .getSkillContainer(innateSkill);
 
-                    if (innateContainer == null || innateContainer.isFull()) {
+                    if (innateContainer == null) {
                         return;
                     }
 
-                    int stacksToAdd;
+                    boolean restored = false;
 
-                    if (event.getKilledEntity() instanceof Player) {
-                        stacksToAdd = innateContainer.getSkill().getMaxStack()
-                                - innateContainer.getStack();
+                    if (isWomResourceSkill(innateSkill)) {
+
+                        float currentResource = innateContainer.getResource();
+                        float maxResource = innateContainer.getMaxResource();
+
+                        if (currentResource < maxResource) {
+                            float amountToRestore =
+                                    innateSkill.getConsumption();
+
+                            float newResource = Math.min(
+                                    currentResource + amountToRestore,
+                                    maxResource
+                            );
+
+                            if (newResource > currentResource) {
+                                innateContainer.setResource(newResource);
+                                restored = true;
+                            }
+                        }
                     } else {
-                        stacksToAdd = 1;
+
+                        if (innateContainer.isFull()) {
+                            return;
+                        }
+
+                        int maxStacks =
+                                innateContainer.getSkill().getMaxStack();
+
+                        int stacksToAdd;
+
+                        if (event.getKilledEntity() instanceof Player) {
+                            stacksToAdd =
+                                    maxStacks - innateContainer.getStack();
+                        } else {
+                            stacksToAdd = 1;
+                        }
+
+                        if (stacksToAdd <= 0) {
+                            return;
+                        }
+
+                        int newStack = Math.min(
+                                innateContainer.getStack() + stacksToAdd,
+                                maxStacks
+                        );
+
+                        Skill.setSkillStackSynchronize(
+                                innateContainer,
+                                newStack
+                        );
+
+                        restored = true;
                     }
 
-                    if (stacksToAdd <= 0) {
+
+                    if (!restored) {
                         return;
                     }
-
-                    int newStack = Math.min(
-                            innateContainer.getStack() + stacksToAdd,
-                            innateContainer.getSkill().getMaxStack()
-                    );
-
-                    Skill.setSkillStackSynchronize(innateContainer, newStack);
 
                     cooldowns.put(killer, DEFAULT_COOLDOWN_TICKS);
+
+                    killer.level().playSound(
+                            null,
+                            killer.getX(),
+                            killer.getY(),
+                            killer.getZ(),
+                            SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
+                            killer.getSoundSource(),
+                            3.5F,
+                            2.0F
+                    );
+
+                    SPEntityPairingPacket pairingPacket =
+                            new SPEntityPairingPacket(
+                                    killer.getId(),
+                                    EntityPairingPacketTypes.FLASH_WHITE
+                            );
+
+                    pairingPacket.getBuffer().writeInt(9);
+                    pairingPacket.getBuffer().writeInt(15);
+                    pairingPacket.getBuffer().writeInt(1);
+                    pairingPacket.getBuffer().writeBoolean(true);
+
+                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(
+                            pairingPacket,
+                            container.getServerExecutor().getOriginal()
+                    );
                 }
         );
     }
@@ -155,6 +192,7 @@ public class RestockingSkill extends PassiveSkill {
 
         cooldowns.remove(player);
     }
+
     @Override
     public void updateContainer(SkillContainer container) {
         super.updateContainer(container);
@@ -207,10 +245,10 @@ public class RestockingSkill extends PassiveSkill {
 
         if (remaining > 0) {
             int seconds = (int) Math.ceil(remaining / 20.0);
-
             String text = String.valueOf(seconds);
 
             int textWidth = gui.getFont().width(text);
+
             guiGraphics.drawString(
                     gui.getFont(),
                     text,
@@ -230,5 +268,28 @@ public class RestockingSkill extends PassiveSkill {
         ));
 
         return list;
+    }
+    private boolean isWomResourceSkill(Skill skill) {
+        if (skill == null) {
+            return false;
+        }
+
+        try {
+            Class<?> womSkills = Class.forName(
+                    "reascer.wom.gameasset.WOMSkills"
+            );
+
+            Object trueWrath = womSkills.getField("TRUE_BERSERK").get(null);
+            Object demonicAscension =
+                    womSkills.getField("DEMONIC_ASCENSION").get(null);
+
+            return skill == trueWrath || skill == demonicAscension;
+
+        } catch (ClassNotFoundException
+                 | NoSuchFieldException
+                 | IllegalAccessException
+                 | LinkageError e) {
+            return false;
+        }
     }
 }

@@ -427,7 +427,7 @@ public class DawnDayAnimations {
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO3;
     public static AnimationAccessor<BasicAttackAnimation> SAW_AUTO4;
 
-   // SCYTHE
+   // GREAT_SCYTHE
 
     public static AnimationAccessor<StaticAnimation> SCYTHE_IDLE;
     public static AnimationAccessor<BasicAttackAnimation> SCYTHE_AUTO1;
@@ -4366,7 +4366,6 @@ public class DawnDayAnimations {
 
         KNIFE_ONEHAND_AUTO5 = builder.nextAccessor("biped/combat/knife_onehand_auto5", (accessor) ->
                 new BasicAttackAnimation(0.12F, 0.1F, 0.35F, 0.5F, 0.7F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
                         //   .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.23f))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.5F)

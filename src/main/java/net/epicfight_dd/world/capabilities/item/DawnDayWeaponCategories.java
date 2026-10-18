@@ -11,7 +11,7 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     HORUS_FANG,
     POLEBLADE,
     BAT,
-    SCYTHE,
+    GREAT_SCYTHE,
     MORNINGSTAR,
     FLORETT,
     RITUS_DAGGER,

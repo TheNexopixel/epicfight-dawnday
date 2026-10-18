@@ -2,13 +2,10 @@ package net.epicfight_dd.skill.weapon_innate;
 
 import com.google.common.collect.Maps;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
-import net.epicfight_dd.gameasset.animation.WoMCompatAnimations;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.fml.ModList;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.DynamicAnimation;
-import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
 import yesman.epicfight.skill.Skill;
