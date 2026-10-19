@@ -125,7 +125,6 @@ repositories {
 
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1")!!)
     implementation("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.3.7-beta.1")
     jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:[0.3.7-beta.1,)")
@@ -202,9 +201,5 @@ get() = named<Jar>("jar")
 
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
-}
-
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform()
 }
 
