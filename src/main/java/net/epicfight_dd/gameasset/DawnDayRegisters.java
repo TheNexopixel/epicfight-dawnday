@@ -1,6 +1,7 @@
 package net.epicfight_dd.gameasset;
 
 import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.epicfight_dd.world.item.DawnDayCreativeTab;
@@ -14,6 +15,7 @@ public class DawnDayRegisters {
    public static List<DeferredRegister<?>> REGISTERS =
             List.of(
                     DawnDaySounds.SOUNDS,
+                    DawnDayAttributes.ATTRIBUTES,
                     DawnDayItems.ITEMS,
                     DawnDayCreativeTab.CREATIVE_MODE_TABS,
                     SkillDataKeyZ.DATA_KEYS,

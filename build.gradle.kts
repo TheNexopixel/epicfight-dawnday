@@ -39,7 +39,7 @@ java {
 
 legacyForge {
     version = ("$minecraft_version-$forge_version")
-    //accessTransformers.from(file("src/main/resources/META-INF/accesstransformer.cfg"))
+    accessTransformers.from(file("src/main/resources/META-INF/accesstransformer.cfg"))
 
     parchment {
         mappingsVersion.set(parchment_version)
@@ -56,12 +56,12 @@ legacyForge {
         create("clientProduction") {
             client()
             systemProperty("net.minecraftforge.gradle.GradleStart.srg.srg-mcp", "false")
-            devLogin.set(true)
+            devLogin.set(false)
         }
 
         create("client") {
             client()
-            devLogin.set(true)
+            devLogin.set(false)
             systemProperty("forge.logging.markers", "REGISTRIES")
             systemProperty("forge.logging.console.level", "debug")
             systemProperty("forge.enabledGameTestNamespaces", mod_id)
@@ -125,6 +125,7 @@ repositories {
 
 
 dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1")!!)
     implementation("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.3.7-beta.1")
     jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:[0.3.7-beta.1,)")
@@ -201,5 +202,9 @@ get() = named<Jar>("jar")
 
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 

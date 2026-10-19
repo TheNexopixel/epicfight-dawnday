@@ -95,6 +95,9 @@ public class DawnDayCreativeTab {
                 ItemStack book_rapid_retreat = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.RAPID_RETREAT, book_rapid_retreat);
                 output.accept(book_rapid_retreat);
+                ItemStack book_unstoppable = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.UNSTOPPABLE, book_unstoppable);
+                output.accept(book_unstoppable);
                 ItemStack book_iron_will = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.RIPOSTE, book_iron_will);
                 output.accept(book_iron_will);
