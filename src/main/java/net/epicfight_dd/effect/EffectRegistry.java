@@ -14,6 +14,9 @@ public class EffectRegistry {
 
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Epicfight_dd.MODID);
 
+    public static final RegistryObject<MobEffect> UNSTOPPABLE_BARRIER =
+            EFFECTS.register("unstoppable_barrier", () -> new FortifiedEffect(MobEffectCategory.BENEFICIAL, 0xD8B85A));
+
     public static final RegistryObject<MobEffect> ENDURANCE =
             EFFECTS.register("endurance",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xffe100)
                     .addAttributeModifier(EpicFightAttributes.STAMINA_REGEN.get(), "3f7c9c7e-8c4d-4c4a-a2d7-5c6b9f2a1e8d", 0.33, AttributeModifier.Operation.ADDITION)

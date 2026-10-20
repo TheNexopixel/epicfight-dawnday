@@ -329,5 +329,9 @@
   "tooltip.epicfight_dd.horus_fang":"This weapon was used primarily by the Horus Watchers, who ruled the desert long ago.",
   "tooltip.epicfight_dd.revenant":"Buried deep within the catacombs now lies what was once forged in brilliant light. Yet after all these years of oblivion, this weapon is still fit for use.",
   "tooltip.epicfight_dd.gloria":"As great and mighty as it was, one day it was swallowed up by the maw of hell and abandoned by all the gods, only this relic remained...",
-  "tooltip.epicfight_dd.blood_knife":"These knives were used in the past by the Blood Cult. Because of their light weight and the properties of the blade, these knives were very popular. This popularity reached such a point that the gemstones from which the blade is made no longer exist today."
+  "tooltip.epicfight_dd.blood_knife":"These knives were used in the past by the Blood Cult. Because of their light weight and the properties of the blade, these knives were very popular. This popularity reached such a point that the gemstones from which the blade is made no longer exist today.",
+  "attribute.name.epicfight_dd.healing": "Incoming Healing",
+  "effect.epicfight_dd.unstoppable_barrier": "Barrier",
+  "skill.epicfight_dd.unstoppable": "Unstoppable",
+  "skill.epicfight_dd.unstoppable.tooltip": "Each kill, you get 1 stack of unstoppable. Capping at three. Player kill gives 6 stacks. Getting armor points increase the cap to max of 13 stacks. Each hit taken removes 1 stack. Each stack reduces the player incoming healing by 3%. 1-3 stacks gives you stun resistance. 4-6 stacks gives you 50% of damage reduction. 7-12 stacks gives you stamina interruption resistance. 13 stacks gives you a barrier, that absorbs 1 hit with a 10 sec. cooldown."
 }
