@@ -39,7 +39,7 @@ java {
 
 legacyForge {
     version = ("$minecraft_version-$forge_version")
-    //accessTransformers.from(file("src/main/resources/META-INF/accesstransformer.cfg"))
+    accessTransformers.from(file("src/main/resources/META-INF/accesstransformer.cfg"))
 
     parchment {
         mappingsVersion.set(parchment_version)
