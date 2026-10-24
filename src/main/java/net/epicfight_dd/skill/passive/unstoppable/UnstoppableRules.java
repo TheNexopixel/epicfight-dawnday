@@ -4,6 +4,7 @@ public final class UnstoppableRules {
     public static final int BASE_CAP = 3;
     public static final int MAX_CAP = 13;
     public static final int BARRIER_COOLDOWN = 200;
+    public static final int REGENERATION_INTERVAL = 1200;
 
     private UnstoppableRules() {
     }
@@ -37,19 +38,6 @@ public final class UnstoppableRules {
 
     public static boolean barrierReady(int stacks, int cooldown) {
         return stacks >= MAX_CAP && cooldown <= 0;
-    }
-
-    public static boolean attackCanHurt(float damage, int invulnerableTicks, float lastDamage, boolean bypassesCooldown) {
-        return damage > 0 && (bypassesCooldown || invulnerableTicks <= 10 || damage > lastDamage);
-    }
-
-    public static float difficultyDamage(float damage, int difficulty) {
-        return switch (difficulty) {
-            case 0 -> 0;
-            case 1 -> Math.min(damage / 2 + 1, damage);
-            case 3 -> damage * 1.5F;
-            default -> damage;
-        };
     }
 
     public static Hit hit(int stacks, int cooldown, float damage, boolean bypassesInvulnerability) {

@@ -4,11 +4,12 @@ import net.epicfight_dd.Epicfight_dd;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.NetworkDirection;
 
 
 
 public class DDNetworkHandler {
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "2";
 
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
             ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "main"),
@@ -40,6 +41,12 @@ public class DDNetworkHandler {
                 .encoder(AirDashPacket::encode)
                 .decoder(AirDashPacket::new)
                 .consumerMainThread(AirDashPacket::handle)
+                .add();
+
+        INSTANCE.messageBuilder(UnstoppableVisualPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(UnstoppableVisualPacket::encode)
+                .decoder(UnstoppableVisualPacket::new)
+                .consumerMainThread(UnstoppableVisualPacket::handle)
                 .add();
 
 

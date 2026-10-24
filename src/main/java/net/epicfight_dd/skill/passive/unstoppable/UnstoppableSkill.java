@@ -3,6 +3,7 @@ package net.epicfight_dd.skill.passive.unstoppable;
 import java.util.UUID;
 import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,6 +33,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         super.onInitiate(container);
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             sync(container, SkillDataKeyZ.UNSTOPPABLE_STACKS.get(), 0);
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remainingCooldown(player));
             refresh(container);
         }
@@ -40,6 +42,7 @@ public final class UnstoppableSkill extends PassiveSkill {
     @Override
     public void onRemoved(SkillContainer container) {
         if (!container.getExecutor().getOriginal().level().isClientSide) {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             clearEffects(container.getExecutor().getOriginal());
         }
         super.onRemoved(container);
@@ -48,6 +51,7 @@ public final class UnstoppableSkill extends PassiveSkill {
     @Override
     public void onReset(SkillContainer container) {
         if (container.getExecutor().getOriginal() instanceof ServerPlayer) {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             setStacks(container, 0);
         }
         super.onReset(container);
@@ -70,9 +74,25 @@ public final class UnstoppableSkill extends PassiveSkill {
             container.getDataManager().setDataSync(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remaining);
         }
         if (container.isDisabled() || !player.isAlive()) {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             setStacks(container, 0);
         } else {
             refresh(container);
+            regenerate(container);
+        }
+    }
+
+    private static void regenerate(SkillContainer container) {
+        int current = stacks(container);
+        int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
+        int elapsed = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get());
+        if (current >= cap) {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+        } else if (elapsed + 1 >= UnstoppableRules.REGENERATION_INTERVAL) {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            setStacks(container, current + 1);
+        } else {
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), elapsed + 1);
         }
     }
 
@@ -126,8 +146,12 @@ public final class UnstoppableSkill extends PassiveSkill {
                 && UnstoppableRules.barrierReady(stacks, cooldown(container));
         if (ready && !player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.addEffect(new MobEffectInstance(EffectRegistry.UNSTOPPABLE_BARRIER.get(), -1, 0, false, false, true));
+            if (player instanceof ServerPlayer serverPlayer)
+                UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_START, stacks);
         } else if (!ready && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+            if (player instanceof ServerPlayer serverPlayer)
+                UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, stacks);
         }
     }
 
@@ -136,7 +160,11 @@ public final class UnstoppableSkill extends PassiveSkill {
         if (healing != null) {
             healing.removeModifier(HEALING_MODIFIER);
         }
-        player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+        if (player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
+            player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+            if (player instanceof ServerPlayer serverPlayer)
+                UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, 0);
+        }
     }
 
     private static int remainingCooldown(ServerPlayer player) {
@@ -145,8 +173,13 @@ public final class UnstoppableSkill extends PassiveSkill {
     }
 
     private static void sync(SkillContainer container, SkillDataKey<Integer> key, int value) {
-        if (container.getDataManager().getDataValue(key) != value) {
+        int previous = container.getDataManager().getDataValue(key);
+        if (previous != value) {
             container.getDataManager().setDataSync(key, value);
+            if (key == SkillDataKeyZ.UNSTOPPABLE_STACKS.get() && !container.isDisabled()
+                    && container.getExecutor().getOriginal() instanceof ServerPlayer player && player.isAlive())
+                UnstoppableVisualPacket.send(player, value > previous ? UnstoppableVisualPacket.GAIN : UnstoppableVisualPacket.LOSS,
+                        Math.max(previous, value));
         }
     }
 

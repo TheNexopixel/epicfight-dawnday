@@ -3,17 +3,18 @@ package net.epicfight_dd.skill.passive.unstoppable;
 import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
@@ -44,18 +45,9 @@ public final class UnstoppableEvents {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void barrier(LivingAttackEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !player.isAlive()
-                || player.isInvulnerableTo(event.getSource()) || player.getAbilities().invulnerable
-                || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)
-                || (event.getSource().is(DamageTypeTags.IS_FIRE) && player.hasEffect(MobEffects.FIRE_RESISTANCE))) {
-            return;
-        }
-        float damage = event.getSource().scalesWithDifficulty()
-                ? UnstoppableRules.difficultyDamage(event.getAmount(), player.level().getDifficulty().getId())
-                : event.getAmount();
-        if (!UnstoppableRules.attackCanHurt(damage, player.invulnerableTime, player.lastHurt,
-                event.getSource().is(DamageTypeTags.BYPASSES_COOLDOWN))) {
+    public static void barrier(LivingHurtEvent event) {
+        if (event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player) || !player.isAlive()
+                || !(event.getAmount() > 0) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return;
         }
         var container = container(player);
@@ -63,6 +55,7 @@ public final class UnstoppableEvents {
             UnstoppableSkill.refresh(container);
             if (UnstoppableRules.barrierReady(UnstoppableSkill.stacks(container), UnstoppableSkill.cooldown(container))) {
                 event.setCanceled(true);
+                event.setAmount(0);
                 UnstoppableSkill.startBarrierCooldown(container);
                 UnstoppableSkill.refresh(container);
             }
@@ -71,7 +64,7 @@ public final class UnstoppableEvents {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void hurt(LivingHurtEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || !(event.getAmount() > 0)) {
+        if (event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player) || !(event.getAmount() > 0)) {
             return;
         }
         var container = container(player);
@@ -82,7 +75,8 @@ public final class UnstoppableEvents {
 
     private static void applyHit(LivingHurtEvent event, SkillContainer container) {
         UnstoppableSkill.refresh(container);
-        var hit = UnstoppableRules.hit(UnstoppableSkill.stacks(container), UnstoppableSkill.cooldown(container),
+        int current = UnstoppableSkill.stacks(container);
+        var hit = UnstoppableRules.hit(current, UnstoppableSkill.cooldown(container),
                 event.getAmount(), event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY));
         if (hit.absorbed()) {
             UnstoppableSkill.startBarrierCooldown(container);
@@ -98,7 +92,13 @@ public final class UnstoppableEvents {
                 patch.setStaminaRegenAwaitTicks(0);
             }
         }
-        UnstoppableSkill.setStacks(container, hit.stacks());
+        int remaining = hit.stacks();
+        if (remaining < current && container.getServerExecutor().getSkillContainerFor(EpicFightSkills.ADAPTIVE_SKIN)
+                .filter(value -> !value.isDisabled()).isPresent()
+                && container.getServerExecutor().getOriginal().getRandom().nextInt(3) == 0) {
+            remaining = current;
+        }
+        UnstoppableSkill.setStacks(container, remaining);
     }
 
     @SubscribeEvent
@@ -113,6 +113,19 @@ public final class UnstoppableEvents {
         if (event.getEntity() instanceof ServerPlayer player && container(player) == null) {
             UnstoppableSkill.clearEffects(player);
         }
+    }
+
+    @SubscribeEvent
+    public static void tracking(PlayerEvent.StartTracking event) {
+        if (event.getEntity() instanceof ServerPlayer observer && event.getTarget() instanceof ServerPlayer player
+                && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get()))
+            UnstoppableVisualPacket.barrierFor(observer, player);
+    }
+
+    @SubscribeEvent
+    public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get()))
+            UnstoppableVisualPacket.barrierFor(player, player);
     }
 
     private static SkillContainer container(ServerPlayer player) {

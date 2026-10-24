@@ -30,6 +30,9 @@ public class SkillDataKeyZ {
     public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_COOLDOWN =
             DATA_KEYS.register("unstoppable_cooldown", () -> SkillDataKey.createSkillDataKey(
                     PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
+    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_REGENERATION =
+            DATA_KEYS.register("unstoppable_regeneration", () -> SkillDataKey.createSkillDataKey(
+                    PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
 
     public static final RegistryObject<SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = DATA_KEYS.register("special_stance_active", () -> SkillDataKey.createSkillDataKey(PacketBufferCodec.BOOLEAN, false,true, WingStanceSkill.class));
 
