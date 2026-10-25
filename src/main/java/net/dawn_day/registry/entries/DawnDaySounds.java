@@ -18,10 +18,11 @@ public final class DawnDaySounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> MILADY_LIGHT_SWEEP = registerSound("sfx.milady_extra_light");
     public static final DeferredHolder<SoundEvent, SoundEvent> BATTLE_STAFF_SWING = registerSound("sfx.battlestaff_swing");
     public static final DeferredHolder<SoundEvent, SoundEvent> GUARD_BREAK = registerSound("sfx.guard_break");
-    public static final DeferredHolder<SoundEvent, SoundEvent> POISE_BREAK = registerSound("sfx.poise_break");;
+    public static final DeferredHolder<SoundEvent, SoundEvent> POISE_BREAK = registerSound("sfx.poise_break");
     public static final DeferredHolder<SoundEvent, SoundEvent> SOFT_WIPE = registerSound("sfx.soft_wipe");
     public static final DeferredHolder<SoundEvent, SoundEvent> CRITICAL_HIT = registerSound("sfx.critical_hit");
     public static final DeferredHolder<SoundEvent, SoundEvent> GUARD_COUNTER = registerSound("sfx.guard_counter");
+    public static final DeferredHolder<SoundEvent,SoundEvent> Light_Punch = registerSound("sfx.light_punch");
     public static final DeferredHolder<SoundEvent, SoundEvent> PULL_OUT = registerSound("sfx.pull_out");
     public static final DeferredHolder<SoundEvent, SoundEvent> KILLED1 = registerSound("sfx.killed1");
     public static final DeferredHolder<SoundEvent, SoundEvent> KILLED2 = registerSound("sfx.killed2");
