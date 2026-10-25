@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.dawn_day.client.input.DawnDayKeyMappings;
 import net.dawn_day.events.ModBusEvent;
 import net.dawn_day.registry.DawnDayRegistry;
+import net.dawn_day.skill.skill_compats.CombatEvoCompat;
 import net.dawn_day.skill.skill_compats.EpicFightSkillCompat;
 import net.dawn_day.skill.skill_compats.NightfallCompat;
 import net.dawn_day.skill.skill_compats.WoMCompat;
@@ -25,6 +26,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.shelmarow.combat_evolution.CombatEvolution;
 import org.slf4j.Logger;
 import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.compat.ICompatModule;
@@ -58,6 +60,10 @@ public class EpicFightDawnDay {
             ICompatModule.loadCompatModule(bus, WoMCompat.class);
 
             bus.addListener(WoMCompat::buildSkillEvent);
+        }
+
+        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
+            ICompatModule.loadCompatModule(bus, CombatEvoCompat.class);
         }
 
     if (EpicFightSharedConstants.isPhysicalClient()) {
