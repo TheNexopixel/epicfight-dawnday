@@ -2,8 +2,10 @@ package net.dawn_day.gameasset.animation;
 
 
 
+import net.dawn_day.gameasset.animation.optional.DawnDayExecAnims;
 import net.dawn_day.gameasset.animation.optional.WoMCompatAnimations;
 import net.neoforged.fml.ModList;
+import net.shelmarow.combat_evolution.CombatEvolution;
 import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.api.animation.AnimationManager;
 
@@ -17,9 +19,11 @@ public class AnimationBuildNexus {
         QoLMiscAnimations.animBuild(builder);
         WingStanceAnims.build(builder);
 
-//        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
-//            DawnDayExecAnims.build(builder);
-//        }
+        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
+            DawnDayExecAnims.build(builder);
+        }
+
+
         if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             WoMCompatAnimations.build(builder);
         }
