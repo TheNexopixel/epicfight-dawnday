@@ -25,7 +25,7 @@ public final class UnstoppableRules {
     }
 
     public static double healingPenalty(int stacks) {
-        return -0.03 * clamp(stacks, MAX_CAP);
+        return -0.07592307 * clamp(stacks, MAX_CAP);
     }
 
     public static boolean stunImmune(int stacks) {

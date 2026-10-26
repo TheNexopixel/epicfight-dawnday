@@ -50,7 +50,7 @@ public class WoMCompatAnimations {
     public static AnimationManager.AnimationAccessor<StaticAnimation> NIGHTINGALE_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> NIGHTINGALE_DFB_RELEASE;
 
-
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> TWINBLADE_COUNTER;
 
     // POLEBLADE
     public static AnimationManager.AnimationAccessor<StaticAnimation> POLEBLADE_BUSTER_WINDUP;
@@ -218,7 +218,16 @@ public class WoMCompatAnimations {
                         .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_SHARP.get())
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.7F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        TWINBLADE_COUNTER = builder.nextAccessor("biped/skill/twinblade_counter", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.11F, 0.14f, 0.29F, 0.40F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.NONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 

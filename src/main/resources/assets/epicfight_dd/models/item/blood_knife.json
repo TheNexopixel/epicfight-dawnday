@@ -15,6 +15,11 @@
 				"translation": [9.5, 8.0, 10.0],
 				"scale": [1.2, 1.2, 1.2]
 			},
+			"thirdperson_lefthand": {
+				"rotation": [0, 0, 0],
+				"translation": [-9.5, 8.0, 10.0],
+				"scale": [1.2, 1.2, 1.2]
+			},
 			"firstperson_righthand": {
 				"rotation": [-20, 0, 0],
 				"translation": [2.5, 1.25, -0.75]

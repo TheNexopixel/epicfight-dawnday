@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
@@ -98,6 +99,9 @@ public class SepukkuEffect extends MobEffect {
         if (impact != null) {
             impact.removeModifier(IMPACT_UUID);
         }
+        if (entity.getMainHandItem().getItem() == Items.MILK_BUCKET)
+            return;
+
 
         if (!entity.level().isClientSide() && entity.getServer() != null) {
             entity.getServer().execute(() ->

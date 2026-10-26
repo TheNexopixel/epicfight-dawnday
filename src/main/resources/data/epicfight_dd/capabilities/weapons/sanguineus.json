@@ -1,0 +1,12 @@
+{
+  "attributes":
+  {
+    "common":
+    {
+      "impact":0.7,
+      "armor_negation":15.0,
+      "max_strikes":8
+    }
+  },
+  "type":"epicfight_dd:twinblade"
+}

@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,22 +23,13 @@ public class DrainedEffect {
         if (!(entity instanceof ServerPlayer)) {
             return;
         }
+        if (entity.getMainHandItem().getItem() == Items.MILK_BUCKET)
+            return;
 
         if (event.getEffectInstance().getEffect()
                 == EffectRegistry.DRAINDED.get()) {
 
 
-
-        entity.level().playSound(
-                null,
-                entity.getX(),
-                entity.getY(),
-                entity.getZ(),
-                DawnDaySounds.DRAINED.get(),
-                SoundSource.PLAYERS,
-                1.5f,
-                1.2f
-        );
         if (!entity.level().isClientSide) {
 
             ServerLevel level = (ServerLevel) entity.level();

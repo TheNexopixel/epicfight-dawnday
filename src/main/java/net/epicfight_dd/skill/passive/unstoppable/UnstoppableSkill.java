@@ -7,6 +7,7 @@ import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -77,6 +78,7 @@ public final class UnstoppableSkill extends PassiveSkill {
             container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             setStacks(container, 0);
         } else {
+
             refresh(container);
             regenerate(container);
         }
@@ -84,6 +86,7 @@ public final class UnstoppableSkill extends PassiveSkill {
 
     private static void regenerate(SkillContainer container) {
         int current = stacks(container);
+        Player player = container.getExecutor().getOriginal();
         int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
         int elapsed = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get());
         if (current >= cap) {
@@ -91,6 +94,18 @@ public final class UnstoppableSkill extends PassiveSkill {
         } else if (elapsed + 1 >= UnstoppableRules.REGENERATION_INTERVAL) {
             container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             setStacks(container, current + 1);
+
+            player.level().playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.RESPAWN_ANCHOR_CHARGE,
+                    player.getSoundSource(),
+                    1.0F,
+                    1.06F
+            );
+
         } else {
             container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), elapsed + 1);
         }
@@ -126,7 +141,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         if (!container.isDisabled() && player.isAlive() && UnstoppableRules.stunImmune(stacks)) {
             var immunity = player.getEffect(EpicFightMobEffects.STUN_IMMUNITY.get());
             if (immunity == null || (!immunity.isInfiniteDuration() && immunity.getDuration() <= 1)) {
-                player.addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 2, 0, false, false, true));
+                player.addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 2, 0, false, false, false));
             }
         }
         var healing = player.getAttribute(DawnDayAttributes.HEALING.get());
@@ -148,6 +163,17 @@ public final class UnstoppableSkill extends PassiveSkill {
             player.addEffect(new MobEffectInstance(EffectRegistry.UNSTOPPABLE_BARRIER.get(), -1, 0, false, false, true));
             if (player instanceof ServerPlayer serverPlayer)
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_START, stacks);
+
+            player.level().playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
+                    player.getSoundSource(),
+                    2.5F,
+                    1.00F
+            );
         } else if (!ready && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
             if (player instanceof ServerPlayer serverPlayer)
@@ -162,6 +188,17 @@ public final class UnstoppableSkill extends PassiveSkill {
         }
         if (player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+
+            player.level().playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.CONDUIT_DEACTIVATE,
+                    player.getSoundSource(),
+                    2.5F,
+                    1.20F
+            );
             if (player instanceof ServerPlayer serverPlayer)
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, 0);
         }

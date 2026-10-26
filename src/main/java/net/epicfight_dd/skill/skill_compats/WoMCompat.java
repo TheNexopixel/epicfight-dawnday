@@ -80,7 +80,7 @@ public class WoMCompat implements ICompatModule {
         guardBreakMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
                 DawnDayAnimations.POLEBLADE_NEUTRALIZE);
         advancedGuardMotions.put(DawnDayWeaponCategories.POLEBLADE, (itemCap, playerpatch) ->
-                WoMCompatAnimations.POLEBLADE_COUNTER);
+                WoMCompatAnimations.TWINBLADE_COUNTER);
 
         guardMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
                 DawnDayAnimations.IRON_FIST_GUARD_HIT);

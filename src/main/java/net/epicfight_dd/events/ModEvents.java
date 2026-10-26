@@ -29,6 +29,35 @@ public class ModEvents {
                     new ItemStack(Items.POTION),
                     Potions.THICK);
 
+            // HEARTSTOP
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.REGENERATION)),
+                    Ingredient.of(DawnDayItems.ruby.get()),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.HEART_STOP.get()));
+
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.REGENERATION)),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.HEART_STOP_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.REGENERATION)),
+                    Ingredient.of(Items.REDSTONE),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.HEART_STOP_LONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.REGENERATION)),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.POTION),DawnDayItems.HEART_STOP_STRONG.get()));
+            BrewingRecipeRegistry.addRecipe(
+                    StrictNBTIngredient.of(
+                            PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Potions.REGENERATION)),
+                    Ingredient.of(Items.GLOWSTONE_DUST),
+                    PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.HEART_STOP_STRONG.get()));
+
             // ENDURANCE
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(awkwardPotion),

@@ -1,6 +1,7 @@
 package net.epicfight_dd.effect;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -20,6 +21,22 @@ public class EffectRegistry {
     public static final RegistryObject<MobEffect> ENDURANCE =
             EFFECTS.register("endurance",()-> new FortifiedEffect(MobEffectCategory.BENEFICIAL,0xffe100)
                     .addAttributeModifier(EpicFightAttributes.STAMINA_REGEN.get(), "3f7c9c7e-8c4d-4c4a-a2d7-5c6b9f2a1e8d", 0.33, AttributeModifier.Operation.ADDITION)
+            );
+
+    public static final RegistryObject<MobEffect> HEART_STOP =
+            EFFECTS.register("heartstop",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0x9c0034)
+                    .addAttributeModifier(DawnDayAttributes.HEALING.get(), "3f7c9c3e-8c4d-4c4a-a2d7-5c6b9f2a1e8d", -0.5, AttributeModifier.Operation.ADDITION)
+            );
+
+    public static final RegistryObject<MobEffect> BLOOD_LOSS =
+            EFFECTS.register("blood_loss",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0x9c0034)
+                    .addAttributeModifier(DawnDayAttributes.HEALING.get(), "3f7c9c3e-8c4d-4c4a-a2d1-5c6b9f2a1e8d", -0.01, AttributeModifier.Operation.ADDITION)
+            );
+
+    public static final RegistryObject<MobEffect> BRUISING =
+            EFFECTS.register("bruising",()-> new FortifiedEffect(MobEffectCategory.HARMFUL,0x9c0034)
+                    .addAttributeModifier(Attributes.ATTACK_SPEED, "3f7c9c3e-8c1d-4c4a-a2d7-5c6b9f2a1e8d", -0.15, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, "3f7c9c3e-8c1d-4c4a-a2d5-5c6b9f2a1e8d", -0.2, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
 
     public static final RegistryObject<MobEffect> EXHAUSTED =

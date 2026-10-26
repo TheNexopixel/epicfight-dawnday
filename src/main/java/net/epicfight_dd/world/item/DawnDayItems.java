@@ -53,6 +53,35 @@ public class DawnDayItems {
 
             ));
 
+    public static final RegistryObject<Item> SANGUINEUS =
+            ITEMS.register("sanguineus", () -> new DawnDayTooltips(
+                    Tiers.DIAMOND,
+                    2,
+                    -1.4F,
+                    new Item.Properties()
+                            .defaultDurability(1205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.sanguineus",
+                            ChatFormatting.GRAY)
+
+            ));
+
+    public static final RegistryObject<Item> TWINBLADE =
+            ITEMS.register("twinblade", () -> new DawnDayTooltips(
+                    Tiers.IRON,
+                    2,
+                    -1.4F,
+                    new Item.Properties()
+                            .defaultDurability(1205)
+                            .rarity(Rarity.COMMON),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.twinblade",
+                            ChatFormatting.GRAY)
+
+            ));
+
+
     public static final RegistryObject<Item> REVENANT =
             ITEMS.register("revenant", () -> new DawnDayTooltips(
                     Tiers.STONE,
@@ -555,6 +584,34 @@ public class DawnDayItems {
 
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(ForgeRegistries.POTIONS, Epicfight_dd.MODID);
+
+    public static final RegistryObject<Potion> BRUISING =
+            POTIONS.register("bruising", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.BRUISING.get(), 1600, 0)));
+
+    public static final RegistryObject<Potion> BRUISING_LONG =
+            POTIONS.register("bruising_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.BRUISING.get(), 3000, 0)));
+
+    public static final RegistryObject<Potion> BRUISING_STRONG =
+            POTIONS.register("bruising_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.BRUISING.get(), 800, 1)));
+
+    public static final RegistryObject<Potion> BRUISING_STRONGER =
+            POTIONS.register("bruising_stronger", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.BRUISING.get(), 500, 2)));
+
+    public static final RegistryObject<Potion> HEART_STOP =
+            POTIONS.register("heartstop", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.HEART_STOP.get(), 3600, 0)));
+
+    public static final RegistryObject<Potion> HEART_STOP_LONG =
+            POTIONS.register("heartstop_long", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.HEART_STOP.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> HEART_STOP_STRONG =
+            POTIONS.register("heartstop_strong", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.HEART_STOP.get(), 2400, 1)));
 
     public static final RegistryObject<Potion> EXHAUSTED =
             POTIONS.register("exhausted", () ->

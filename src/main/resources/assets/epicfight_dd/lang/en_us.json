@@ -114,6 +114,7 @@
   "skill.epicfight_dd.wild_strikes":"Wild Strikes",
   "skill.epicfight_dd.wild_strikes.tooltip":"Land a few quick attacks and finish off your opponent with the final strike",
   "effect.epicfight_dd.stamina":"Stamina",
+  "effect.epicfight_dd.heartstop":"Heartstop",
   "effect.epicfight_dd.impact":"Impact",
   "effect.epicfight_dd.stunarmor":"Stun Resistance",
   "effect.epicfight_dd.crumbling":"Crumbling",
@@ -177,6 +178,16 @@
   "skill.epicfight_dd.redemption.tooltip":"If your health falls below 3 Hearts, negative effects will be reflected back at the last attacker and you will be cleansed. You also become more resistant to damage and regain half your stamina.\n\nBut this skill will not protect you from death...",
   "skill.epicfight_dd.riposte":"Riposte",
   "skill.epicfight_dd.riposte.tooltip":"If you parry an attack, your next strike will deal %s%% more damage.",
+
+  "item.minecraft.potion.effect.heartstop":"Potion of Heartstop",
+  "item.minecraft.splash_potion.effect.heartstop":"Splash Potion of Heartstop",
+  "item.minecraft.lingering_potion.effect.heartstop":"Lingering Potion of Heartstop",
+  "item.minecraft.potion.effect.heartstop_long":"Potion of Heartstop",
+  "item.minecraft.splash_potion.effect.heartstop_long":"Splash Potion of Heartstop",
+  "item.minecraft.lingering_potion.effect.heartstop_long":"Lingering Potion of Heartstop",
+  "item.minecraft.potion.effect.heartstop_strong":"Potion of Heartstop",
+  "item.minecraft.splash_potion.effect.heartstop_strong":"Splash Potion of Heartstop",
+  "item.minecraft.lingering_potion.effect.heartstop_strong":"Lingering Potion of Heartstop",
 
 
   "item.minecraft.potion.effect.exhausted":"Potion of Exhausting",
@@ -265,6 +276,9 @@
   "item.minecraft.lingering_potion.effect.potion_of_longer_impact":"Lingering Potion of Longer Impact",
 
 
+  "item.minecraft.tipped_arrow.effect.heartstop": "Arrow of Heartstop",
+  "item.minecraft.tipped_arrow.effect.heartstop_long": "Arrow of Heartstop",
+  "item.minecraft.tipped_arrow.effect.heartstop_strong": "Arrow of Heartstop",
   "item.minecraft.tipped_arrow.effect.exhausted": "Arrow of Exhausting",
   "item.minecraft.tipped_arrow.effect.exhausted_long": "Arrow of Exhausting",
   "item.minecraft.tipped_arrow.effect.exhausted_strong": "Arrow of Exhausting",

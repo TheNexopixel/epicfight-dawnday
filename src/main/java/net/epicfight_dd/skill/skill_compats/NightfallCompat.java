@@ -48,6 +48,12 @@ public class NightfallCompat implements ICompatModule {
                             (i, p) -> DawnDayAnimations.FLORETT_DUAL_GUARD_HIT
                     ).addGuardBreakMotion(DawnDayWeaponCategories.FLORETT,
                             (i, p) -> DawnDayAnimations.FLORETT_DUAL_NEUTRALIZED)
+                    .addGuardMotion(
+                            DawnDayWeaponCategories.IRON_FIST,
+                            (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_HIT
+                    ).addGuardBreakMotion(DawnDayWeaponCategories.IRON_FIST,
+                            (i, p) -> DawnDayAnimations.IRON_FIST_GUARD_BREAK)
+
 
                     .addGuardMotion(
                             DawnDayWeaponCategories.CLAWS,
@@ -68,6 +74,10 @@ public class NightfallCompat implements ICompatModule {
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.SICKLE, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
+                    .addAdvancedGuardMotion(DawnDayWeaponCategories.IRON_FIST, ((capabilityItem, pp) ->
+                            List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))
+
 
                     .addAdvancedGuardMotion(DawnDayWeaponCategories.POLEBLADE, ((capabilityItem, pp) ->
                             List.of(EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT1, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT2, EFNSkillAnimations.EFN_GUARD_ACTIVE_HIT3)))

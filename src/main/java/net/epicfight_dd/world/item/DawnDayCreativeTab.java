@@ -42,6 +42,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.HOOKCLAWS.get());
                 output.accept(DawnDayItems.NIGHTINGALE.get());
                 output.accept(DawnDayItems.GRIMM.get());
+                output.accept(DawnDayItems.TWINBLADE.get());
                 output.accept(DawnDayItems.NETHERITE_SICKLE.get());
                 output.accept(DawnDayItems.DIAMOND_SICKLE.get());
                 output.accept(DawnDayItems.IRON_SICKLE.get());
@@ -139,6 +140,9 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_STRONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED_LONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.HEART_STOP.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.HEART_STOP_LONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.HEART_STOP_STRONG.get()));
                 /*
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.EXHAUSTED_STRONG.get()));

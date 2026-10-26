@@ -662,8 +662,9 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO2,
                             DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO3,
                             DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO4,
-                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO2,
-                            DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1)
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO5,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_DASH,
+                            DawnDayAnimations.BLOOD_RITUS_DAGGER_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
@@ -940,7 +941,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.PIERCING_STRIKE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.SUPREME_LIGHTNING)
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
                             DawnDayAnimations.NIGHTINGALE_AUTO1,
                             DawnDayAnimations.NIGHTINGALE_AUTO2,
@@ -1071,10 +1072,35 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> TWINBLADE = (item) ->
+            WeaponCapability.builder()
+                    .category(DawnDayWeaponCategories.POLEBLADE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.POLEBLADE)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.TREMEDEOUS_RETALIATION)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.TWINBLADE_AUTO1,
+                            DawnDayAnimations.TWINBLADE_AUTO2,
+                            DawnDayAnimations.TWINBLADE_AUTO3,
+                            DawnDayAnimations.TWINBLADE_AUTO4,
+                            DawnDayAnimations.TWINBLADE_AUTO5,
+                            DawnDayAnimations.TWINBLADE_DASH,
+                            DawnDayAnimations.TWINBLADE_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.TWINBLADE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.TWINBLADE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.HORUS_GUARD);
+
 
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "twinblade"), TWINBLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "revenant"), REVENANT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "horus_fang"), HORUS_FANG);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nightingale"), NIGHTINGALE);

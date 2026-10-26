@@ -39,6 +39,7 @@ import yesman.epicfight.world.damagesource.StunType;
 public class DawnDaySkills {
 
     public static Skill BEAST_EYE;
+    public static Skill SUPREME_LIGHTNING;
     public static Skill AIR_DASH;
     public static Skill RAPID_RETREAT;
     public static Skill UNSTOPPABLE;
@@ -192,7 +193,21 @@ public class DawnDaySkills {
         BLOOD_DANCE = blooddance;
 
  */
+        WeaponInnateSkill SUPREMELIGHTNING = modRegistry.build("supreme_lightning",SupremeLightning::new,SupremeLightning.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.SUPREME_LIGHTNING)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        SUPREMELIGHTNING.newProperty()
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(12.5F))
 
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(50))
+                .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
+        SUPREME_LIGHTNING = SUPREMELIGHTNING;
 
 
         WeaponInnateSkill incivi = modRegistry.build("incisura_vitrea",SimpleWeaponInnateSkill::new,SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
@@ -423,6 +438,7 @@ public class DawnDaySkills {
         GLORIA_MAXIMA = modRegistry.build("gloria_maxima", GloriaMaximaSkill::new,
                 WeaponInnateSkill.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE));
+
 
         RIPOSTE = modRegistry.build("riposte", Riposte::new,
                 PassiveSkill.createPassiveBuilder()
