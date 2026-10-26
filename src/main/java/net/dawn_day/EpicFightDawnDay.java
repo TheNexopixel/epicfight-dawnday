@@ -42,34 +42,35 @@ public class EpicFightDawnDay {
 
     public static final String MOD_ID = "epicfight_dd";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static ResourceLocation identifier(String name)
-    {
+
+    public static ResourceLocation identifier(String name) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
+
     public EpicFightDawnDay(IEventBus bus, ModContainer modContainer) {
         bus.addListener(ModBusEvent::registerAnimation);
         bus.addListener(this::addPackFindersEvent);
 
-        if(ModList.get().isLoaded(EFN.MODID)){
+        if (ModList.get().isLoaded(EFN.MODID)) {
             ICompatModule.loadCompatModule(bus, NightfallCompat.class);
         }
 
         ICompatModule.loadCompatModule(bus, EpicFightSkillCompat.class);
 
-        if(ModList.get().isLoaded(WeaponsOfMinecraft.MODID)){
+        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             ICompatModule.loadCompatModule(bus, WoMCompat.class);
 
             bus.addListener(WoMCompat::buildSkillEvent);
         }
 
-        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)){
+        if (ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
             ICompatModule.loadCompatModule(bus, CombatEvoCompat.class);
         }
 
-    if (EpicFightSharedConstants.isPhysicalClient()) {
-         bus.addListener(DawnDayKeyMappings::registerKeys);
-    }
-        
+        if (EpicFightSharedConstants.isPhysicalClient()) {
+            bus.addListener(DawnDayKeyMappings::registerKeys);
+        }
+
         DawnDayRegistry.REGISTERS.forEach(deferredRegister -> deferredRegister.register(bus));
         WeaponCategory.ENUM_MANAGER.registerEnumCls(EpicFightDawnDay.MOD_ID, DawnDayWeaponCategories.class);
         modContainer.registerConfig(
@@ -78,7 +79,7 @@ public class EpicFightDawnDay {
         );
         bus.addListener(this::commonSetup);
     }
-    
+
     private void commonSetup(final FMLCommonSetupEvent event) {
     }
 
@@ -98,6 +99,7 @@ public class EpicFightDawnDay {
         }
 
     }
+
     private void addPack(AddPackFindersEvent event, Path WEAPON3D, PackLocationInfo dd3d) {
         Pack.ResourcesSupplier dd3ds = new PathPackResources.PathResourcesSupplier(WEAPON3D);
         Pack DawnDay3DWeaponPack = Pack.readMetaAndCreate(dd3d, dd3ds, PackType.CLIENT_RESOURCES, new PackSelectionConfig(false, Pack.Position.TOP, false));
