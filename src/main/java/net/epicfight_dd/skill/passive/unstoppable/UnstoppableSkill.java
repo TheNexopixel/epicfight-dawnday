@@ -3,6 +3,7 @@ package net.epicfight_dd.skill.passive.unstoppable;
 import java.util.UUID;
 import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.gameasset.SkillSoundEffects;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
@@ -86,7 +87,6 @@ public final class UnstoppableSkill extends PassiveSkill {
 
     private static void regenerate(SkillContainer container) {
         int current = stacks(container);
-        Player player = container.getExecutor().getOriginal();
         int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
         int elapsed = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get());
         if (current >= cap) {
@@ -94,17 +94,6 @@ public final class UnstoppableSkill extends PassiveSkill {
         } else if (elapsed + 1 >= UnstoppableRules.REGENERATION_INTERVAL) {
             container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
             setStacks(container, current + 1);
-
-            player.level().playSound(
-                    null,
-                    player.getX(),
-                    player.getY(),
-                    player.getZ(),
-                    SoundEvents.RESPAWN_ANCHOR_CHARGE,
-                    player.getSoundSource(),
-                    1.0F,
-                    1.06F
-            );
 
         } else {
             container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), elapsed + 1);
@@ -176,8 +165,10 @@ public final class UnstoppableSkill extends PassiveSkill {
             );
         } else if (!ready && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
-            if (player instanceof ServerPlayer serverPlayer)
+            if (player instanceof ServerPlayer serverPlayer) {
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, stacks);
+                SkillSoundEffects.unstoppableBarrierStop(serverPlayer);
+            }
         }
     }
 
@@ -188,19 +179,10 @@ public final class UnstoppableSkill extends PassiveSkill {
         }
         if (player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
             player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
-
-            player.level().playSound(
-                    null,
-                    player.getX(),
-                    player.getY(),
-                    player.getZ(),
-                    SoundEvents.CONDUIT_DEACTIVATE,
-                    player.getSoundSource(),
-                    2.5F,
-                    1.20F
-            );
-            if (player instanceof ServerPlayer serverPlayer)
+            if (player instanceof ServerPlayer serverPlayer) {
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, 0);
+                SkillSoundEffects.unstoppableBarrierStop(serverPlayer);
+            }
         }
     }
 
@@ -214,9 +196,11 @@ public final class UnstoppableSkill extends PassiveSkill {
         if (previous != value) {
             container.getDataManager().setDataSync(key, value);
             if (key == SkillDataKeyZ.UNSTOPPABLE_STACKS.get() && !container.isDisabled()
-                    && container.getExecutor().getOriginal() instanceof ServerPlayer player && player.isAlive())
+                    && container.getExecutor().getOriginal() instanceof ServerPlayer player && player.isAlive()) {
                 UnstoppableVisualPacket.send(player, value > previous ? UnstoppableVisualPacket.GAIN : UnstoppableVisualPacket.LOSS,
                         Math.max(previous, value));
+                SkillSoundEffects.unstoppableStack(player, value > previous);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import net.epicfight_dd.skill.passive.RestockingSkill;
 import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.passive.unstoppable.UnstoppableSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
+import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,6 +21,16 @@ public class SkillDataKeyZ {
 
 
     public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID,"skill_data_keys"), Epicfight_dd.MODID);
+
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_TIER =
+            DATA_KEYS.register("heated_steps_tier", () -> SkillDataKey.createSkillDataKey(
+                    PacketBufferCodec.INTEGER, 0, true, HeatedStepsSkill.class));
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT =
+            DATA_KEYS.register("heated_steps_result", () -> SkillDataKey.createSkillDataKey(
+                    PacketBufferCodec.INTEGER, -1, HeatedStepsSkill.class));
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT_UNTIL =
+            DATA_KEYS.register("heated_steps_result_until", () -> SkillDataKey.createSkillDataKey(
+                    PacketBufferCodec.INTEGER, 0, HeatedStepsSkill.class));
 
     public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_STACKS =
             DATA_KEYS.register("unstoppable_stacks", () -> SkillDataKey.createSkillDataKey(

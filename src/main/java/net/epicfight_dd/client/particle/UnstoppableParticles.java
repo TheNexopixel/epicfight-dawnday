@@ -25,9 +25,11 @@ import org.joml.Vector3f;
 public final class UnstoppableParticles {
     private static final int MAX_CLOUDS = 512;
     private static final int MAX_BARRIERS = 64;
+    private static final int MAX_FRAGMENTS = 256;
     private static final DustParticleOptions DUST = new DustParticleOptions(new Vector3f(1.0F, .84F, .42F), .7F);
     private static final ArrayDeque<Cloud> CLOUDS = new ArrayDeque<>();
     private static final Map<Integer, Barrier> BARRIERS = new HashMap<>();
+    private static final ArrayDeque<Fragment> FRAGMENTS = new ArrayDeque<>();
     private static ClientLevel level;
 
     private UnstoppableParticles() { }
@@ -65,6 +67,31 @@ public final class UnstoppableParticles {
         }
     }
 
+    private static final class Fragment {
+        final Particle particle;
+        final double x, y, z, dx, dy, dz;
+        int age;
+        float scale = 1;
+
+        Fragment(Particle particle, double x, double y, double z, double dx, double dy, double dz) {
+            this.particle = particle;
+            this.x = x; this.y = y; this.z = z;
+            this.dx = dx; this.dy = dy; this.dz = dz;
+        }
+
+        boolean tick() {
+            if (!particle.isAlive() || ++age >= 12) { particle.remove(); return false; }
+            double progress = age / 12.0;
+            double distance = 1 - (1 - progress) * (1 - progress);
+            particle.setParticleSpeed(0, 0, 0);
+            particle.setPos(x + dx * distance, y + dy * distance, z + dz * distance);
+            float nextScale = (float)(1 - progress);
+            particle.scale(nextScale / scale);
+            scale = nextScale;
+            return true;
+        }
+    }
+
     private static final class Barrier {
         final UUID playerId;
         Particle[] particles;
@@ -81,6 +108,31 @@ public final class UnstoppableParticles {
         void clearParticles() {
             for (int i = 0; i < particles.length; i++) {
                 if (particles[i] != null) { particles[i].remove(); particles[i] = null; }
+            }
+        }
+
+        void dissipate(int entityId) {
+            Entity entity = level.getEntity(entityId);
+            if (!(entity instanceof Player player) || !player.getUUID().equals(playerId)
+                    || !player.isAlive() || player.isInvisible() || !nearby(player)) return;
+            double radius = player.getBbWidth() * .85;
+            double offset = Math.sin(age * .075) * .18;
+            double yaw = Math.toRadians(player.yBodyRot);
+            int count = density(16, 8);
+            for (int ring = 0; ring < 2; ring++) {
+                double direction = ring == 0 ? 1 : -1;
+                double y = player.getY() + player.getBbHeight() * (.58 + direction * offset);
+                for (int point = 0; point < count; point++) {
+                    double angle = Math.PI * 2 * (point + ring * .5) / count + yaw + direction * age * .04;
+                    double cos = Math.cos(angle), sin = Math.sin(angle);
+                    double x = player.getX() + cos * radius, z = player.getZ() + sin * radius;
+                    Particle particle = Minecraft.getInstance().particleEngine.createParticle(DUST, x, y, z, 0, 0, 0);
+                    if (particle == null) continue;
+                    particle.setParticleSpeed(0, 0, 0);
+                    particle.setLifetime(12);
+                    while (FRAGMENTS.size() >= MAX_FRAGMENTS) FRAGMENTS.removeFirst().particle.remove();
+                    FRAGMENTS.addLast(new Fragment(particle, x, y, z, cos * .8, direction * .2, sin * .8));
+                }
             }
         }
 
@@ -128,7 +180,11 @@ public final class UnstoppableParticles {
         useLevel(current);
         if (packet.kind() == UnstoppableVisualPacket.BARRIER_STOP) {
             var old = BARRIERS.get(packet.entityId());
-            if (old != null && old.playerId.equals(packet.playerId())) { old.clearParticles(); BARRIERS.remove(packet.entityId()); }
+            if (old != null && old.playerId.equals(packet.playerId())) {
+                old.dissipate(packet.entityId());
+                old.clearParticles();
+                BARRIERS.remove(packet.entityId());
+            }
             return;
         }
         if (packet.kind() == UnstoppableVisualPacket.BARRIER_START) {
@@ -184,6 +240,8 @@ public final class UnstoppableParticles {
         CLOUDS.clear();
         for (var barrier : BARRIERS.values()) barrier.clearParticles();
         BARRIERS.clear();
+        for (var fragment : FRAGMENTS) fragment.particle.remove();
+        FRAGMENTS.clear();
     }
 
     @SubscribeEvent
@@ -193,6 +251,7 @@ public final class UnstoppableParticles {
         useLevel(minecraft.level);
         if (level == null || minecraft.isPaused()) return;
         CLOUDS.removeIf(cloud -> !cloud.tick());
+        FRAGMENTS.removeIf(fragment -> !fragment.tick());
         var iterator = BARRIERS.entrySet().iterator();
         while (iterator.hasNext()) {
             var entry = iterator.next();
