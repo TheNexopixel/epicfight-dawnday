@@ -1,0 +1,9 @@
+{
+  "consumption": 4.0,
+  "trail_duration": 60,
+  "trail_radius": 0.75,
+  "trail_damage": 2.0,
+  "damage_interval": 10,
+  "burn_duration": 140,
+  "burn_chance": 0.25
+}

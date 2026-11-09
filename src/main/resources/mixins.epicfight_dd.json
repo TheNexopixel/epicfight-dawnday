@@ -5,13 +5,14 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "HeatedStepsMovementMixin",
     "DreadfulBusterSkillRequirementMixin",
     "DreadFullBusterMixin",
     "EpicFightExtraMixin",
     "PlayerPatchMixin",
     "TimeTravelMixin"
   ],
-  "client": [],
+  "client": ["HeatedStepsInputMixin", "HeatedStepsHudMixin"],
   "injectors": {
     "defaultRequire": 1
   }

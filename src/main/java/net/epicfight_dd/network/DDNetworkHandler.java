@@ -9,7 +9,7 @@ import net.minecraftforge.network.NetworkDirection;
 
 
 public class DDNetworkHandler {
-    private static final String PROTOCOL_VERSION = "2";
+    private static final String PROTOCOL_VERSION = "3";
 
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
             ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "main"),
@@ -47,6 +47,12 @@ public class DDNetworkHandler {
                 .encoder(UnstoppableVisualPacket::encode)
                 .decoder(UnstoppableVisualPacket::new)
                 .consumerMainThread(UnstoppableVisualPacket::handle)
+                .add();
+
+        INSTANCE.messageBuilder(HeatedStepsBurstPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(HeatedStepsBurstPacket::encode)
+                .decoder(HeatedStepsBurstPacket::new)
+                .consumerMainThread(HeatedStepsBurstPacket::handle)
                 .add();
 
 

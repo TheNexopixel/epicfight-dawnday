@@ -8,6 +8,7 @@ import java.util.Set;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.mover.AirDashSkill;
+import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
 import net.epicfight_dd.skill.passive.RapidRetreatSkill;
 import net.epicfight_dd.skill.passive.RestockingSkill;
 import net.epicfight_dd.skill.passive.Riposte;
@@ -25,6 +26,8 @@ import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.dodge.DodgeSkill;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
@@ -41,6 +44,7 @@ public class DawnDaySkills {
     public static Skill BEAST_EYE;
     public static Skill SUPREME_LIGHTNING;
     public static Skill AIR_DASH;
+    public static Skill HEATED_STEPS;
     public static Skill RAPID_RETREAT;
     public static Skill UNSTOPPABLE;
     public static Skill RESTOCKING;
@@ -458,6 +462,10 @@ public class DawnDaySkills {
                 PassiveSkill.createMoverBuilder()
                         .setResource(Skill.Resource.STAMINA)
                         .setCategory(SkillCategories.MOVER));
+
+        HEATED_STEPS = modRegistry.build("heated_steps", HeatedStepsSkill::new,
+                DodgeSkill.createDodgeBuilder()
+                        .setAnimations(Animations.BIPED_ROLL_FORWARD, Animations.BIPED_ROLL_BACKWARD));
 
         RESTOCKING = modRegistry.build("restocking", RestockingSkill::new,
                 PassiveSkill.createPassiveBuilder()
