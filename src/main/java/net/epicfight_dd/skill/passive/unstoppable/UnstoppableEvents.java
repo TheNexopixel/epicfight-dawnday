@@ -6,7 +6,9 @@ import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -29,10 +31,21 @@ public final class UnstoppableEvents {
         if (event.getSource().getEntity() instanceof ServerPlayer killer && event.getEntity() != killer) {
             var container = container(killer);
             if (container != null && killer.isAlive()) {
+                Player player = container.getExecutor().getOriginal();
                 UnstoppableSkill.refresh(container);
                 int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
                 UnstoppableSkill.setStacks(container, UnstoppableRules.kill(UnstoppableSkill.stacks(container), cap,
                         event.getEntity() instanceof Player));
+                player.level().playSound(
+                        null,
+                        player.getX(),
+                        player.getY(),
+                        player.getZ(),
+                        SoundEvents.END_PORTAL_FRAME_FILL,
+                        player.getSoundSource(),
+                        1.0F,
+                        1.20F
+                );
             }
         }
         if (event.getEntity() instanceof ServerPlayer victim) {

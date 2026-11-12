@@ -1,34 +1,16 @@
 {
     "trail_effects": [
       {
-        "start_time": 0.1,
-        "end_time": 1.13,
-        "lifetime": 6,
+        "start_time": 0.25,
+        "end_time": 0.35,
         "joint": "Tool_L",
         "item_skin_hand": "off_hand"
       },
       {
         "start_time": 0.1,
-        "end_time": 1.15,
-        "lifetime": 6,
+        "end_time": 0.7,
         "joint": "Tool_R",
         "item_skin_hand": "main_hand"
-      },
-      {
-        "start_time": 1.0,
-        "end_time": 1.35,
-        "lifetime": 9,
-        "end_pos": [0.0, 0.0, -2.7],
-        "joint": "Tool_R",
-        "item_skin_hand": "main_hand"
-      },
-      {
-        "start_time": 1.0,
-        "end_time": 1.35,
-        "lifetime": 9,
-        "end_pos": [0.0, 0.0, -2.7],
-        "joint": "Tool_L",
-        "item_skin_hand": "off_hand"
       }
     ]
 }

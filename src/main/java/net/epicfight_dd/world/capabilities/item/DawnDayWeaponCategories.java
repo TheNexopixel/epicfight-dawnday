@@ -1,8 +1,7 @@
 package net.epicfight_dd.world.capabilities.item;
 
-import net.minecraft.world.item.Item;
-import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
+
 
 public enum DawnDayWeaponCategories implements WeaponCategory {
     LIGHT_GREATSWORD,
@@ -28,9 +27,6 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     @Override
     public int universalOrdinal() {
         return this.id;
-    }
-    public CapabilityItem.Builder apply(Item item) {
-        return WeaponCategoryMapper.apply(item,this);
     }
 
 }

@@ -15,17 +15,16 @@ import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.damagesource.StunType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class AnimUtils {
 
-    /// useful for in game testing acquired data
     public static float getAnimTimeFromTickTime(int ticks) {
         return (float) ticks / 20;
     }
 
-    /// assumes animation to be at 60 frames per second
     public static float getAnimTimeFromFrame(int frame) {
         return (float) frame / 60;
     }
@@ -51,72 +50,37 @@ public class AnimUtils {
     }
 
     public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>>
-    LaunchEnemyAirSlash(
-            float stunTime,
-            int levitationLevel,
-            int levitationTicks,
-            float startTime) {
+    LaunchEnemyAirSlash(float stunTime, int levitationLevel, int levitationTicks, float startTime) {
 
         return AnimationEvent.InTimeEvent.create(
                 startTime,
-                (livingEntityPatch, assetAccessor, animationParameters) -> {
+                (patch, accessor, params) -> {
+                    if (!patch.isLastAttackSuccess()) return;
 
-                    if (!livingEntityPatch.isLastAttackSuccess()) {
-                        return;
-                    }
+                    List<LivingEntity> hit = patch.getCurrentlyActuallyHitEntities();
+                    if (hit == null || hit.isEmpty()) return;
 
-                    List<LivingEntity> targets =
-                            livingEntityPatch.getCurrentlyActuallyHitEntities();
+                    LivingEntity self = patch.getOriginal();
 
-                    if (targets == null || targets.isEmpty()) {
-                        return;
-                    }
+                    for (LivingEntity target : new ArrayList<>(hit)) {
+                        if (target == null || target == self || !target.isAlive()) continue;
 
-                    for (LivingEntity entity : targets) {
-
-                        if (entity == null || !entity.isAlive()) {
-                            continue;
-                        }
+                        double kbRes = target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+                        if (kbRes >= 1.0D) continue;
+                        float scale = (float) (1.0D - kbRes);
 
                         LivingEntityPatch<?> targetPatch =
-                                EpicFightCapabilities.getEntityPatch(
-                                        entity,
-                                        LivingEntityPatch.class
-                                );
-
-                        if (targetPatch == null) {
-                            continue;
+                                EpicFightCapabilities.getEntityPatch(target, LivingEntityPatch.class);
+                        if (targetPatch != null) {
+                            targetPatch.applyStun(StunType.HOLD, stunTime * scale);
                         }
 
-                        float kbRes =
-                                (float) entity.getAttributeValue(
-                                        Attributes.KNOCKBACK_RESISTANCE);
-
-                        targetPatch.applyStun(
-                                StunType.HOLD,
-                                stunTime * (1.0F - kbRes)
-                        );
-
-                        if (!entity.level().isClientSide) {
-
-
-                            entity.removeEffect(MobEffects.LEVITATION);
-                            entity.removeEffect(MobEffects.SLOW_FALLING);
-
-                            entity.addEffect(
-                                    new MobEffectInstance(
-                                            MobEffects.LEVITATION,
-                                            levitationTicks,
-                                            levitationLevel,
-                                            true,
-                                            false,
-                                            false
-                                    )
-                            );
-
-                        }
+                        int ticks = Math.max(1, Math.round(levitationTicks * scale));
+                        target.removeEffect(MobEffects.LEVITATION);
+                        target.addEffect(
+                                new MobEffectInstance(MobEffects.LEVITATION, ticks, levitationLevel, true, false, false),
+                                self);
                     }
-
                 },
                 AnimationEvent.Side.SERVER
         );

@@ -188,7 +188,7 @@ public class ModEvents {
                             PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CURSED.get())),
                     Ingredient.of(Items.GLOWSTONE_DUST),
                     PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION),DawnDayItems.CURSED_STRONG.get()));
-            // SWEEPING
+            // ACCELERATION
             BrewingRecipeRegistry.addRecipe(
                     StrictNBTIngredient.of(
                             PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.MUNDANE)),

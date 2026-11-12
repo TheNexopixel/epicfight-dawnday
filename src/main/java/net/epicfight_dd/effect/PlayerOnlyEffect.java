@@ -7,9 +7,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class FortifiedEffect extends MobEffect {
+public class PlayerOnlyEffect extends MobEffect {
 
-    protected FortifiedEffect(MobEffectCategory pCategory, int pColor) {
+    protected PlayerOnlyEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 

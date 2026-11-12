@@ -7,6 +7,8 @@ import net.epicfight_dd.skill.passive.Riposte;
 import net.epicfight_dd.skill.passive.unstoppable.UnstoppableSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
+import net.epicfight_dd.skill.weapon_innate.AnnullationSkill;
+import net.epicfight_dd.skill.weapon_passive.CrescendoSkill;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -53,6 +55,48 @@ public class SkillDataKeyZ {
                     PacketBufferCodec.INTEGER,
                     0, Riposte.class )
             );
+    public static final RegistryObject<SkillDataKey<Float>> IRON_WILL_DAMAGE =
+            DATA_KEYS.register("iron_will_damage", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.FLOAT,
+                            0.0F,
+                            Riposte.class
+                    )
+            );
+    public static final RegistryObject<SkillDataKey<Integer>> RESTOCKING_COOLDOWN =
+            DATA_KEYS.register("restocking_cooldown", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            RestockingSkill.class
+                    )
+            );
+
+    public static final RegistryObject<SkillDataKey<Integer>> CRESCENDO_DAMAGE =
+            DATA_KEYS.register("crescendo_damage", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            CrescendoSkill.class
+                    )
+            );
+    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_TICKS =
+            DATA_KEYS.register("annullation_ticks", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            AnnullationSkill.class
+                    )
+            );
+    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_COOLDOWN =
+            DATA_KEYS.register("annullation_cooldown", () ->
+                    SkillDataKey.createSkillDataKey(
+                            PacketBufferCodec.INTEGER,
+                            0,
+                            AnnullationSkill.class
+                    )
+            );
+
     public static final RegistryObject<SkillDataKey<Boolean>> RAPID_RETREAT_ACTIVE =
             DATA_KEYS.register("rapid_retreat_active", () ->
                     SkillDataKey.createSkillDataKey(

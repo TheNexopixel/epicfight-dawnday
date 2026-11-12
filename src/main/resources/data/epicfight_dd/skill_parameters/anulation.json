@@ -1,0 +1,6 @@
+{
+  "duration_ticks": 300,
+  "consumption" : 120,
+  "cooldown_ticks": 2400,
+  "max_stacks" : 1
+}

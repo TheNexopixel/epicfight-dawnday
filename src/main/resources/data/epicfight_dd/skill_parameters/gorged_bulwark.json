@@ -1,0 +1,12 @@
+{
+  "consumption": 15,
+  "hunger_per_damage": 1.0,
+  "saturated_multiplier": 0.5,
+  "saturation_cost": 0.5,
+  "max_hunger_fraction": 0.5,
+  "heal_per_food": 0.25,
+  "healing_reduction": 0.5,
+  "absorb_per_food": 0.5,
+  "absorption_max": 10.0,
+  "absorption_duration": 600
+}

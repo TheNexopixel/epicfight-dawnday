@@ -27,38 +27,48 @@ import java.util.Set;
 
 public class WoMCompatAnimations {
 
-    // GRIMM
     public static AnimationManager.AnimationAccessor<StaticAnimation> GRIMM_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> GRIMM_DFB_RELEASE;
-
-
-    // HALBERD
-
     public static AnimationManager.AnimationAccessor<StaticAnimation> HALBERD_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> HALBERD_DFB_RELEASE;
-
-    // HOOKCLAWS
     public static AnimationManager.AnimationAccessor<StaticAnimation> HOOKCLAWS_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> HOOKCLAWS_DFB_RELEASE;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> HOOKCLAWS_COUNTER;
-
-    // IRON FIST
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> IRON_FIST_GUARD_COUNTER;
-
-    // NIGHTINGALE
-
     public static AnimationManager.AnimationAccessor<StaticAnimation> NIGHTINGALE_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> NIGHTINGALE_DFB_RELEASE;
-
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> TWINBLADE_COUNTER;
-
-    // POLEBLADE
     public static AnimationManager.AnimationAccessor<StaticAnimation> POLEBLADE_BUSTER_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> POLEBLADE_BUSTER_RELEASE;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> POLEBLADE_COUNTER;
+    public static AnimationManager.AnimationAccessor<StaticAnimation> GLORIA_DFB_WINDUP;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> GLORIA_DFB_RELEASE;
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
+
+        GLORIA_DFB_WINDUP = builder.nextAccessor("biped/skill/gloria_dfb_windup", ac ->
+                new StaticAnimation(1.2F, false, ac, biped)
+                        .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
+                        .addConditionalState(0, EntityState.UPDATE_LIVING_MOTION, false)
+                        .addConditionalState(1, EntityState.UPDATE_LIVING_MOTION, true)
+                        .newTimePair(0.0F, Float.MAX_VALUE).addStateRemoveOld(EntityState.CAN_SWITCH_HAND_ITEM, false)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
+        );
+
+        GLORIA_DFB_RELEASE = builder.nextAccessor("biped/skill/gloria_dfb_release", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.05F, 0.25F, 0.5F, 0.650F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.4F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER, EpicFightDamageTypeTags.IS_MAGIC, DamageTypeTags.BYPASSES_RESISTANCE, WOMDamageType.BLACKOUT))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addState(EntityState.TURNING_LOCKED, true)
+                        .addState(EntityState.LOCKON_ROTATE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
         GRIMM_DFB_WINDUP = builder.nextAccessor("biped/skill/grimm_dfb_windup", ac ->
                 new StaticAnimation(1.2F, false, ac, biped)

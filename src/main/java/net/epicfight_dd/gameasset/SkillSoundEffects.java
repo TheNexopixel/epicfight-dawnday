@@ -33,7 +33,7 @@ public final class SkillSoundEffects {
             new Layer(SoundEvents.AMETHYST_BLOCK_CHIME, .25F, 1.55F)
     };
     private static final Layer[] STACK_LOSS = {
-            new Layer(SoundEvents.CONDUIT_DEACTIVATE, .55F, 1.35F),
+            new Layer(SoundEvents.ENDER_EYE_DEATH, .55F, 1.35F),
             new Layer(SoundEvents.PLAYER_ATTACK_SWEEP, .2F, .75F)
     };
     private static final Layer[] BARRIER_STOP = {

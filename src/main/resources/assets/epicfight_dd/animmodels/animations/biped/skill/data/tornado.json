@@ -1,0 +1,115 @@
+{
+    "trail_effects": [
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 0.0, 7.0],
+        "begin_pos": [0.0, 0.0, 5.0],
+        "end_time": 2.0,
+        "joint": "Head",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 0.0, -7.0],
+        "begin_pos": [0.0, 0.0, -5.0],
+        "end_time": 2.0,
+        "joint": "Head",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 0.0, 7.0],
+        "begin_pos": [0.0, 0.0, 6.0],
+        "end_time": 2.0,
+        "joint": "Root",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 0.0, -7.0],
+        "begin_pos": [0.0, 0.0, -6.0],
+        "end_time": 2.0,
+        "joint": "Root",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 3.0, 0.0],
+        "begin_pos": [0.0, 0.0, 0.0],
+        "end_time": 2.0,
+        "joint": "Knee_R",
+        "item_skin_hand": "main_hand"
+      },
+
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 5.0, 0.0],
+        "begin_pos": [0.0, 0.0, 0.0],
+        "end_time": 1.9,
+        "joint": "Torso",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, 0.0, 5.0],
+        "begin_pos": [0.0, 0.0, -5.0],
+        "end_time": 1.9,
+        "joint": "Torso",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, -0.0, -5.0],
+        "begin_pos": [0.0, 0.0, 5.0],
+        "end_time": 1.9,
+        "joint": "Torso",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, -5.0, 0.0],
+        "begin_pos": [0.0, 0.0, 0.0],
+        "end_time": 1.9,
+        "joint": "Torso",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_pos": [0.0, -3.0, 0.0],
+        "begin_pos": [0.0, 0.0, 0.0],
+        "end_time": 1.9,
+        "joint": "Knee_L",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_time": 1.5,
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "start_time": 0.4,
+        "end_time": 1.5,
+        "joint": "Tool_L",
+        "item_skin_hand": "off_hand"
+      },
+      {
+        "end_pos": [0.0, 0.0, -15.55],
+        "begin_pos": [0.0, 0.0, -7.50],
+        "start_time": 1.8,
+        "end_time": 1.9,
+        "lifetime": 30,
+        "joint": "Tool_R",
+        "item_skin_hand": "main_hand"
+      },
+      {
+        "end_pos": [0.0, 0.0, -15.55],
+        "begin_pos": [0.0, 0.0, -7.50],
+        "start_time": 1.8,
+        "end_time": 1.9,
+        "lifetime": 30,
+        "joint": "Tool_L",
+        "item_skin_hand": "off_hand"
+      }
+    ]
+}

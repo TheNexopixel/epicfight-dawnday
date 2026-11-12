@@ -200,6 +200,7 @@ public class DawnDayWeaponCapabilityPreset {
     public static final Function<Item, CapabilityItem.Builder> POLEBLADE = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.POLEBLADE)
+                    .passiveSkill(DawnDaySkills.BLOOD_RITUAL_PASSIVE)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(DawnDayCollider.POLEBLADE)
                     .swingSound(EpicFightSounds.WHOOSH.get())
@@ -215,7 +216,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.POLEBLADE_AIRSLASH
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.POLEBLADE_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.TWINBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.POLEBLADE_GUARD);
 
@@ -478,6 +479,7 @@ public class DawnDayWeaponCapabilityPreset {
 
     public static final Function<Item, CapabilityItem.Builder> KNIFE_BLOOD = (item) ->
             WeaponCapability.builder()
+                    .passiveSkill(DawnDaySkills.BLOOD_LOSS_PASSIVE)
                     .category(CapabilityItem.WeaponCategories.DAGGER)
                     .styleProvider((pp) ->
                             pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == CapabilityItem.WeaponCategories.DAGGER ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
@@ -487,7 +489,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SHARP_STABS)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SEPUKKU)
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             DawnDayAnimations.KNIFE_ONEHAND_AUTO1,
@@ -621,6 +623,7 @@ public class DawnDayWeaponCapabilityPreset {
 
     public static final Function<Item, CapabilityItem.Builder> BONECUTTING_SAW = (item) ->
             WeaponCapability.builder()
+                    .passiveSkill(DawnDaySkills.BLOOD_LOSS_PASSIVE)
                     .category(CapabilityItem.WeaponCategories.GREATSWORD)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(DawnDayCollider.BAT_LONGER)
@@ -646,6 +649,7 @@ public class DawnDayWeaponCapabilityPreset {
     public static final Function<Item, CapabilityItem.Builder> BLOOD_RITUS_DAGGER = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.RITUS_DAGGER)
+                    .passiveSkill(DawnDaySkills.BLOOD_RITUAL_PASSIVE)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(DawnDayCollider.KNIFE)
                     .styleProvider((pp) ->
@@ -656,7 +660,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SEPUKKU)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.TORNADO)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO1,
                             DawnDayAnimations.BLOOD_RITUS_DAGGER_AUTO2,
@@ -670,6 +674,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO4,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
 
@@ -677,7 +682,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.BLOOD_RITUS_DAGGER_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.BLOOD_RITUS_DAGGER_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.RITUS_DAGGER_DUAL_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.SICKLE_ONEHAND_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
@@ -685,6 +690,7 @@ public class DawnDayWeaponCapabilityPreset {
     public static final Function<Item, CapabilityItem.Builder> NIGHT_RITUS_DAGGER = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.RITUS_DAGGER)
+                    .passiveSkill(DawnDaySkills.NIGHT_RITUAL_PASSIVE)
                     .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
                     .collider(DawnDayCollider.KNIFE)
                     .styleProvider((pp) ->
@@ -695,7 +701,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.SEPUKKU)
-                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.WHIRLWIND)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.TORNADO)
                     .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
                             DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO1,
                             DawnDayAnimations.NIGHT_RITUS_DAGGER_AUTO2,
@@ -708,6 +714,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO1,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO2,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO3,
+                            DawnDayAnimations.RITUS_DAGGER_DUAL_AUTO4,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_DASH,
                             DawnDayAnimations.RITUS_DAGGER_DUAL_AIRSLASH)
 
@@ -718,7 +725,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, Animations.BIPED_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, DawnDayAnimations.RITUS_DAGGER_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.RITUS_DAGGER_DUAL_IDLE)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.RITUS_DAGGER_DUAL_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.SICKLE_ONEHAND_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> ECLIPSE = (item) ->
@@ -753,7 +760,7 @@ public class DawnDayWeaponCapabilityPreset {
                             pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == DawnDayWeaponCategories.IRON_FIST ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .weaponCombinationPredicator((entityPatch) -> EpicFightCapabilities.getItemStackCapability(entityPatch.getOriginal().getOffhandItem()).getWeaponCategory() == DawnDayWeaponCategories.IRON_FIST)
-                    .collider(DawnDayCollider.IRON_FIST)
+                    .collider(DawnDayCollider.GLORIA)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
@@ -898,6 +905,7 @@ public class DawnDayWeaponCapabilityPreset {
     public static final Function<Item, CapabilityItem.Builder> HOOKCLAWS = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.CLAWS)
+                    .passiveSkill(DawnDaySkills.BLOOD_LOSS_PASSIVE)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .styleProvider((pp) -> pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory()
                             == DawnDayWeaponCategories.CLAWS ? CapabilityItem.Styles.TWO_HAND : CapabilityItem.Styles.ONE_HAND)
@@ -936,6 +944,7 @@ public class DawnDayWeaponCapabilityPreset {
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SPEAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .passiveSkill(DawnDaySkills.NIGHT_RITUAL_PASSIVE)
                     .collider(DawnDayCollider.NIGHTINGALE)
                    .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitParticle(EpicFightParticles.HIT_BLADE.get())
@@ -1030,7 +1039,7 @@ public class DawnDayWeaponCapabilityPreset {
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.IRON_FIST)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(DawnDayCollider.IRON_FIST)
+                    .collider(DawnDayCollider.GLORIA)
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT.get())
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
@@ -1075,6 +1084,7 @@ public class DawnDayWeaponCapabilityPreset {
     public static final Function<Item, CapabilityItem.Builder> TWINBLADE = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.POLEBLADE)
+                    .passiveSkill(DawnDaySkills.BLOOD_LOSS_PASSIVE)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(DawnDayCollider.POLEBLADE)
                     .swingSound(EpicFightSounds.WHOOSH.get())
@@ -1094,12 +1104,37 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.TWINBLADE_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.TWINBLADE_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.HORUS_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.POLEBLADE_GUARD);
+
+    public static final Function<Item, CapabilityItem.Builder> CRESCENDO = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.SWORD)
+                    .passiveSkill(DawnDaySkills.CRESCENDO_PASSIVE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.ONE_HAND)
+                    .collider(DawnDayCollider.LIGHT_GREATSWORD)
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> DawnDaySkills.ANNULATION)
+                    .newStyleCombo(CapabilityItem.Styles.ONE_HAND,
+                            DawnDayAnimations.CRESCENDO_AUTO1,
+                            DawnDayAnimations.CRESCENDO_AUTO2,
+                            DawnDayAnimations.CRESCENDO_AUTO3,
+                            DawnDayAnimations.CRESCENDO_AUTO4,
+                            DawnDayAnimations.CRESCENDO_DASH,
+                            DawnDayAnimations.GRIMM_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.IDLE, DawnDayAnimations.CRESCENDO_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.WALK, DawnDayAnimations.VITR_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.ONE_HAND, LivingMotions.BLOCK, Animations.SWORD_GUARD);
 
 
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "crescendo"), CRESCENDO);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "twinblade"), TWINBLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "revenant"), REVENANT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "horus_fang"), HORUS_FANG);

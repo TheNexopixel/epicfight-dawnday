@@ -4,7 +4,6 @@ import net.epicfight_dd.Epicfight_dd;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.registries.DeferredRegister;
@@ -39,6 +38,25 @@ public class DawnDayItems {
                             ChatFormatting.GRAY)
 
             ));
+    public static final RegistryObject<Item> CRESCENDO =
+            ITEMS.register("crescendo", () -> new DawnDayTooltips(
+                    Tiers.NETHERITE,
+                    -4,
+                    -2.3F,
+                    new Item.Properties()
+                            .rarity(Rarity.EPIC),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.weapon_passive",
+                            ChatFormatting.WHITE,
+                            ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.crescendo_passive",
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.crescendo",
+                            ChatFormatting.GRAY)
+
+            ));
     public static final RegistryObject<Item> HORUS_FANG =
             ITEMS.register("horus_fang", () -> new DawnDayTooltips(
                     Tiers.IRON,
@@ -63,7 +81,13 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
                             "tooltip.epicfight_dd.sanguineus",
-                            ChatFormatting.GRAY)
+                            ChatFormatting.GRAY),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.weapon_passive",
+                            ChatFormatting.WHITE,ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_loss_passive",
+                            ChatFormatting.WHITE)
 
             ));
 
@@ -77,7 +101,13 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
                             "tooltip.epicfight_dd.twinblade",
-                            ChatFormatting.GRAY)
+                            ChatFormatting.GRAY),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.weapon_passive",
+                            ChatFormatting.WHITE,ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_loss_passive",
+                            ChatFormatting.WHITE)
 
             ));
 
@@ -120,7 +150,13 @@ public class DawnDayItems {
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
                             "tooltip.epicfight_dd.hookclaws",
-                            ChatFormatting.GRAY)
+                            ChatFormatting.GRAY),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.weapon_passive",
+                            ChatFormatting.WHITE,ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.blood_loss_passive",
+                            ChatFormatting.WHITE)
 
             ));
     public static final RegistryObject<Item> GRIMM =
@@ -159,7 +195,13 @@ public class DawnDayItems {
                             .rarity(Rarity.RARE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.nightingale",
-                            ChatFormatting.GRAY)
+                            ChatFormatting.GRAY),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.weapon_passive",
+                            ChatFormatting.WHITE,ChatFormatting.BOLD),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.night_ritus_dagger_passive",
+                            ChatFormatting.WHITE)
 
             ));
     public static final RegistryObject<Item> IUDEX_HALBERD =
@@ -344,12 +386,6 @@ public class DawnDayItems {
                             "tooltip.epicfight_dd.saber",
                             ChatFormatting.GRAY)));
 
-    public static final RegistryObject<Item> steelaxe =
-            ITEMS.register("steelaxe",() -> new WeaponItem(Tiers.NETHERITE,4,-2.7f,
-                    new Item.Properties().stacksTo(1)
-                            .rarity(Rarity.RARE)
-                            .defaultDurability(2500)){});
-
     public static final RegistryObject<Item> NIGHT_RITUS_DAGGER =
             ITEMS.register("night_ritus_dagger",() -> new DawnDayTooltips(Tiers.DIAMOND,1,-2.0f,
                     new Item.Properties().stacksTo(1)
@@ -386,7 +422,7 @@ public class DawnDayItems {
             ));
 
     public static final RegistryObject<Item> BLOOD_KNIFE =
-            ITEMS.register("blood_knife",() ->  new DawnDayTooltips(Tiers.NETHERITE,1,-1.85f,
+            ITEMS.register("blood_knife",() ->  new DawnDayTooltips(Tiers.NETHERITE,2,-1.85f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.RARE)
                             .defaultDurability(2000),
@@ -395,7 +431,7 @@ public class DawnDayItems {
                             ChatFormatting.WHITE,
                             ChatFormatting.BOLD),
                     new TooltipLine(
-                            "tooltip.epicfight_dd.blood_ritus_dagger_passive",
+                            "tooltip.epicfight_dd.blood_loss_passive",
                             ChatFormatting.WHITE),
                     new TooltipLine(
                             "tooltip.epicfight_dd.blood_knife",
@@ -421,7 +457,7 @@ public class DawnDayItems {
                             .defaultDurability(1360)));
 
     public static final RegistryObject<Item> netherite_knife =
-            ITEMS.register("netherite_knife",() -> new SwordItem(Tiers.NETHERITE,2,-1.9f,
+            ITEMS.register("netherite_knife",() -> new SwordItem(Tiers.NETHERITE,1,-1.9f,
                     new Item.Properties().stacksTo(1)
                             .rarity(Rarity.COMMON)
                             .defaultDurability(2360)));
@@ -674,12 +710,12 @@ public class DawnDayItems {
                     new Potion(new MobEffectInstance(EffectRegistry.STAMNIA.get(), 3600, 0)));
 
     public static final RegistryObject<Potion> powerpotion =
-            POTIONS.register("potion_of_power", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.POTION_OF_POWER.get(), 1200, 0)));
+            POTIONS.register("might", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.MIGHT.get(), 1200, 0)));
 
     public static final RegistryObject<Potion> SWEEPING =
-            POTIONS.register("sweeping", () ->
-                    new Potion(new MobEffectInstance(EffectRegistry.SWEEPING.get(), 1300, 0)));
+            POTIONS.register("acceleration", () ->
+                    new Potion(new MobEffectInstance(EffectRegistry.ACCELERATION.get(), 1300, 0)));
 
     public static final RegistryObject<Potion> impactpotion_strong =
             POTIONS.register("potion_of_stronger_impact", () ->

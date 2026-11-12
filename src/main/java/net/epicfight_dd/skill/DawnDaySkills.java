@@ -7,15 +7,19 @@ import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import java.util.Set;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
-import net.epicfight_dd.skill.mover.AirDashSkill;
+import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
-import net.epicfight_dd.skill.passive.RapidRetreatSkill;
-import net.epicfight_dd.skill.passive.RestockingSkill;
-import net.epicfight_dd.skill.passive.Riposte;
+import net.epicfight_dd.skill.identity.GorgedBulwarkSkill;
+import net.epicfight_dd.skill.identity.RedemptionSkill;
+import net.epicfight_dd.skill.mover.AirDashSkill;
+import net.epicfight_dd.skill.passive.*;
 import net.epicfight_dd.skill.passive.unstoppable.UnstoppableSkill;
-import net.epicfight_dd.skill.passive.RedemptionSkill;
 import net.epicfight_dd.skill.stances.WingStanceSkill;
 import net.epicfight_dd.skill.weapon_innate.*;
+import net.epicfight_dd.skill.weapon_passive.BloodLossPassive;
+import net.epicfight_dd.skill.weapon_passive.BloodRitualDaggerPassive;
+import net.epicfight_dd.skill.weapon_passive.CrescendoSkill;
+import net.epicfight_dd.skill.weapon_passive.NightRitualDaggerPassive;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -41,13 +45,40 @@ import yesman.epicfight.world.damagesource.StunType;
 )
 public class DawnDaySkills {
 
-    public static Skill BEAST_EYE;
-    public static Skill SUPREME_LIGHTNING;
+
+
+    // IDENTITY
+
+    public static Skill REDEMPTION;
+    public static Skill GORGED_BULWARK;
+
+    // MOVER
+
     public static Skill AIR_DASH;
     public static Skill HEATED_STEPS;
+
+    // PASSIVE
+
+    public static Skill RIPOSTE;
+    public static Skill FINAL_STRENGTH;
+    public static Skill OUTLASTING;
+    public static Skill DIVINE_PUNISHMENT;
     public static Skill RAPID_RETREAT;
     public static Skill UNSTOPPABLE;
     public static Skill RESTOCKING;
+
+    // WEAPON PASSIVE
+
+    public static Skill BLOOD_LOSS_PASSIVE;
+    public static Skill CRESCENDO_PASSIVE;
+    public static Skill NIGHT_RITUAL_PASSIVE;
+    public static Skill BLOOD_RITUAL_PASSIVE;
+
+    // WEAPON INNATE
+
+    public static Skill BEAST_EYE;
+    public static Skill ANNULATION;
+    public static Skill SUPREME_LIGHTNING;
     public static Skill GLORIA_MAXIMA;
     public static Skill GENTLE_NUDGE;
     public static Skill BLOOD_DANCE;
@@ -56,13 +87,13 @@ public class DawnDaySkills {
     public static Skill FURIOUS_CUT;
     public static Skill GREATER_HARVEST;
     public static Skill SHARP_STABS;
+    public static Skill TORNADO;
     public static Skill WINGSTANCE;
     public static Skill TREMEDEOUS_RETALIATION;
     public static Skill SKULL_RUPTURE;
     public static Skill HEAD_KNOCKER;
     public static Skill QUICK_RUSH;
     public static Skill QUICK_STEP;
-    public static Skill RIPOSTE;
     public static Skill WHIRLWIND;
     public static Skill IMPAILING_THRUST;
     public static Skill SPINNING_SHADOW;
@@ -75,12 +106,36 @@ public class DawnDaySkills {
     public static Skill SEPUKKU;
     public static Skill PIERCING_STRIKE;
     public static Skill POWERFUL_KICK;
-    public static Skill REDEMPTION;
+
 
 
     @SubscribeEvent
     public static void buildSkillEvent(SkillBuildEvent build){
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
+
+
+
+
+        DIVINE_PUNISHMENT = modRegistry.build("divine_punishment", DivinePunishmentSkill::new,
+                    PassiveSkill.createPassiveBuilder()
+                            .setCategory(SkillCategories.PASSIVE));
+        CRESCENDO_PASSIVE = modRegistry.build("crescendo_passive", CrescendoSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.WEAPON_PASSIVE));
+        ANNULATION = modRegistry.build("annulation", AnnullationSkill::new,
+                WeaponInnateSkill.createWeaponInnateBuilder()
+                        .setResource(Skill.Resource.COOLDOWN)
+                        .setCategory(SkillCategories.WEAPON_INNATE));
+        OUTLASTING = modRegistry.build("outlasting", OutlastingSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.PASSIVE));
+        FINAL_STRENGTH = modRegistry.build("final_strength", FinalStrengthSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.PASSIVE));
+        GORGED_BULWARK = modRegistry.build("gorged_bulwark", GorgedBulwarkSkill::new,
+                PassiveSkill.createPassiveBuilder().setCategory(SkillCategories.IDENTITY)
+                        .setResource(Skill.Resource.COOLDOWN));
+
 
         WeaponInnateSkill headknock = modRegistry.build("head_knocker", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.HEAD_KNOCKER)
@@ -115,6 +170,19 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
         ;
         SHARP_STABS = sharpstabs;
+
+        WeaponInnateSkill tornado = modRegistry.build("tornado", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.TORNADO)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        tornado.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
+        ;
+        TORNADO = tornado;
 
         WeaponInnateSkill greaterharvest = modRegistry.build("greater_harvest", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.GREATER_HARVEST)
@@ -201,7 +269,7 @@ public class DawnDaySkills {
                 .setAnimations(DawnDayAnimations.SUPREME_LIGHTNING)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         SUPREMELIGHTNING.newProperty()
-                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(12.5F))
+                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(7.5F))
 
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(50))
@@ -465,12 +533,24 @@ public class DawnDaySkills {
 
         HEATED_STEPS = modRegistry.build("heated_steps", HeatedStepsSkill::new,
                 DodgeSkill.createDodgeBuilder()
-                        .setAnimations(Animations.BIPED_ROLL_FORWARD, Animations.BIPED_ROLL_BACKWARD));
+                        .setAnimations(Animations.BIPED_ROLL_FORWARD, QoLMiscAnimations.HEATED_STEP_BACKWARD));
 
         RESTOCKING = modRegistry.build("restocking", RestockingSkill::new,
                 PassiveSkill.createPassiveBuilder()
                         .setResource(Skill.Resource.COOLDOWN)
                         .setCategory(SkillCategories.PASSIVE));
+
+        NIGHT_RITUAL_PASSIVE = modRegistry.build("night_ritual_passive", NightRitualDaggerPassive::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.WEAPON_PASSIVE));
+
+        BLOOD_LOSS_PASSIVE = modRegistry.build("blood_loss_passive", BloodLossPassive::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.WEAPON_PASSIVE));
+
+        BLOOD_RITUAL_PASSIVE = modRegistry.build("blood_ritual_passive", BloodRitualDaggerPassive::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.WEAPON_PASSIVE));
 
     }
 

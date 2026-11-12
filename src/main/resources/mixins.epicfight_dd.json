@@ -10,6 +10,7 @@
     "DreadFullBusterMixin",
     "EpicFightExtraMixin",
     "PlayerPatchMixin",
+    "GorgedBulwarkMixin",
     "TimeTravelMixin"
   ],
   "client": ["HeatedStepsInputMixin", "HeatedStepsHudMixin"],

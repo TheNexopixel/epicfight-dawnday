@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  D",
+    " S ",
+    "D  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "epicfight_dd:metal_plate"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:twinblade",
+    "count": 1
+  }
+}
+

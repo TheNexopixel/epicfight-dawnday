@@ -1,11 +1,18 @@
 package net.epicfight_dd.skill.skill_compats;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+
+import com.mojang.logging.LogUtils;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.gameasset.animation.WoMCompatAnimations;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.RegisterEvent;
+import org.slf4j.Logger;
 import reascer.wom.gameasset.WOMSkills;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.gameasset.Animations;
@@ -15,131 +22,108 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiFunction;
-
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class WoMCompat implements ICompatModule {
-    public static void registerGuard(Event event) {
-    }
+    private static final Logger LOGGER = LogUtils.getLogger();
+
+    private static boolean registered = false;
 
     @Override
-    public void onModEventBus(IEventBus iEventBus) {
-    }
-    @Override
-    public void onForgeEventBus(IEventBus iEventBus) {
-    }
-    @Override
-    public void onModEventBusClient(IEventBus iEventBus) {
-    }
-    @Override
-    public void onForgeEventBusClient(IEventBus iEventBus) {
-    }
+    public void onModEventBus(IEventBus bus) {}
 
-    public static boolean regGuarded = false;
+    @Override
+    public void onForgeEventBus(IEventBus bus) {}
+
+    @Override
+    public void onModEventBusClient(IEventBus bus) {}
+
+    @Override
+    public void onForgeEventBusClient(IEventBus bus) {}
 
     public static void buildSkillEvent(RegisterEvent event) {
-        if (EpicFightSkills.GUARD == null) {
-            return;
-        }
-        if (regGuarded) {
-            return;
-        }
+        if (registered) return;
+        if (EpicFightSkills.GUARD == null) return;
+        if (WOMSkills.COUNTER_ATTACK == null
+                || WOMSkills.VENGEFUL_PARRY == null
+                || WOMSkills.PERFECT_BULWARK == null) return;
+
         try {
             regGuard();
-        } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.info("[epicfight_dd] WoM guard motions registered");
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            LOGGER.error("[epicfight_dd] Failed to register WoM guard motions", e);
         }
-        regGuarded = true;
+        registered = true;
     }
 
-    public static void regGuard() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException {
-        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardMotions = new HashMap<>();
-        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreakMotions = new HashMap<>();
-        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advancedGuardMotions = new HashMap<>();
+    private static void regGuard() throws ReflectiveOperationException {
+        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guard = new HashMap<>();
+        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreak = new HashMap<>();
+        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advanced = new HashMap<>();
 
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.RITUS_DAGGER,
+                () -> DawnDayAnimations.RITUS_DAGGER_GUARD_HIT,
+                () -> DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED,
+                () -> DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
 
-        guardMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (item, player) ->
-                DawnDayAnimations.RITUS_DAGGER_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (item, player) ->
-                DawnDayAnimations.RITUS_DAGGER_NEUTRALIZED);
-        advancedGuardMotions.put(DawnDayWeaponCategories.RITUS_DAGGER, (itemCap, playerpatch) ->
-                DawnDayAnimations.RITUS_DAGGER_DUAL_DASH);
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.HORUS_FANG,
+                () -> DawnDayAnimations.HORUS_GUARD_HIT,
+                () -> DawnDayAnimations.POLEBLADE_NEUTRALIZE,
+                () -> DawnDayAnimations.NIGHTINGALE_AUTO1);
 
-        guardMotions.put(DawnDayWeaponCategories.HORUS_FANG, (item, player) ->
-                DawnDayAnimations.HORUS_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.HORUS_FANG, (item, player) ->
-                DawnDayAnimations.POLEBLADE_NEUTRALIZE);
-        advancedGuardMotions.put(DawnDayWeaponCategories.HORUS_FANG, (itemCap, playerpatch) ->
-                DawnDayAnimations.NIGHTINGALE_AUTO1);
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.POLEBLADE,
+                () -> DawnDayAnimations.POLEBLADE_GUARD_HIT,
+                () -> DawnDayAnimations.POLEBLADE_NEUTRALIZE,
+                () -> WoMCompatAnimations.TWINBLADE_COUNTER);
 
-        guardMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
-                DawnDayAnimations.POLEBLADE_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.POLEBLADE, (item, player) ->
-                DawnDayAnimations.POLEBLADE_NEUTRALIZE);
-        advancedGuardMotions.put(DawnDayWeaponCategories.POLEBLADE, (itemCap, playerpatch) ->
-                WoMCompatAnimations.TWINBLADE_COUNTER);
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.IRON_FIST,
+                () -> DawnDayAnimations.IRON_FIST_GUARD_HIT,
+                () -> DawnDayAnimations.IRON_FIST_GUARD_BREAK,
+                () -> WoMCompatAnimations.IRON_FIST_GUARD_COUNTER);
 
-        guardMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
-                DawnDayAnimations.IRON_FIST_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.IRON_FIST, (item, player) ->
-                DawnDayAnimations.IRON_FIST_GUARD_BREAK);
-        advancedGuardMotions.put(DawnDayWeaponCategories.IRON_FIST, (itemCap, playerpatch) ->
-                WoMCompatAnimations.IRON_FIST_GUARD_COUNTER);
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.CLAWS,
+                () -> DawnDayAnimations.HOOKCLAWS_GUARD_HIT,
+                () -> DawnDayAnimations.HOOKCLAWS_NEUTRALIZE,
+                () -> WoMCompatAnimations.HOOKCLAWS_COUNTER);
 
-        guardMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
-                DawnDayAnimations.HOOKCLAWS_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.CLAWS, (item, player) ->
-                DawnDayAnimations.HOOKCLAWS_NEUTRALIZE);
-        advancedGuardMotions.put(DawnDayWeaponCategories.CLAWS, (itemCap, playerpatch) ->
-                WoMCompatAnimations.HOOKCLAWS_COUNTER);
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.SICKLE,
+                () -> Animations.SWORD_GUARD_HIT,
+                () -> Animations.BIPED_COMMON_NEUTRALIZED,
+                () -> DawnDayAnimations.SICKLE_ONEHAND_AUTO1);
 
-        guardMotions.put(DawnDayWeaponCategories.SICKLE, (item, player) ->
-                Animations.SWORD_GUARD_HIT);
-        guardBreakMotions.put(DawnDayWeaponCategories.SICKLE, (item, player) ->
-                Animations.BIPED_COMMON_NEUTRALIZED);
-        advancedGuardMotions.put(DawnDayWeaponCategories.SICKLE, (itemCap, playerpatch) ->
-                DawnDayAnimations.SICKLE_ONEHAND_AUTO1);
-        Field temp;
-        Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> target;
-        temp = GuardSkill.class.getDeclaredField("guardMotions");
-        temp.setAccessible(true);
-        target = (Map) temp.get(WOMSkills.COUNTER_ATTACK);
-        for (WeaponCategory weaponCapability : guardMotions.keySet()) {
-            target.put(weaponCapability, guardMotions.get(weaponCapability));
+        putInto("guardMotions", guard,
+                WOMSkills.COUNTER_ATTACK, WOMSkills.VENGEFUL_PARRY, WOMSkills.PERFECT_BULWARK);
+        putInto("guardBreakMotions", guardBreak,
+                WOMSkills.COUNTER_ATTACK, WOMSkills.VENGEFUL_PARRY, WOMSkills.PERFECT_BULWARK);
+        putInto("advancedGuardMotions", advanced,
+                WOMSkills.COUNTER_ATTACK);
+    }
+
+    private static void entry(
+            Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guard,
+            Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> guardBreak,
+            Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> advanced,
+            WeaponCategory category,
+            Supplier<?> guardHit,
+            Supplier<?> breakMotion,
+            Supplier<?> advancedMotion) {
+        guard.put(category, (item, player) -> guardHit.get());
+        guardBreak.put(category, (item, player) -> breakMotion.get());
+        advanced.put(category, (item, player) -> advancedMotion.get());
+    }
+
+    private static void putInto(String fieldName,
+                                Map<WeaponCategory, BiFunction<CapabilityItem, PlayerPatch<?>, ?>> source,
+                                Object... skills) throws ReflectiveOperationException {
+        Field field = GuardSkill.class.getDeclaredField(fieldName);
+        field.setAccessible(true);
+
+        for (Object skill : skills) {
+            Map target = (Map) field.get(skill);
+            if (target == null) {
+                throw new IllegalStateException(fieldName + " is null for " + skill);
+            }
+            target.putAll(source);
         }
-        target = (Map) temp.get(WOMSkills.VENGEFUL_PARRY);
-        for (WeaponCategory weaponCapability : guardMotions.keySet()) {
-            target.put(weaponCapability, guardMotions.get(weaponCapability));
-        }
-        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
-        for (WeaponCategory weaponCapability : guardMotions.keySet()) {
-            target.put(weaponCapability, guardMotions.get(weaponCapability));
-        }
-
-        temp = GuardSkill.class.getDeclaredField("guardBreakMotions");
-        temp.setAccessible(true);
-        target = (Map) temp.get(WOMSkills.COUNTER_ATTACK);
-        for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
-            target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
-        }
-        target = (Map) temp.get(WOMSkills.VENGEFUL_PARRY);
-        for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
-            target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
-        }
-        target = (Map) temp.get(WOMSkills.PERFECT_BULWARK);
-        for (WeaponCategory weaponCapability : guardBreakMotions.keySet()) {
-            target.put(weaponCapability, guardBreakMotions.get(weaponCapability));
-        }
-
-        temp = GuardSkill.class.getDeclaredField("advancedGuardMotions");
-        temp.setAccessible(true);
-        target = (Map) temp.get(WOMSkills.COUNTER_ATTACK);
-        for (WeaponCategory weaponCapability : advancedGuardMotions.keySet()) {
-            target.put(weaponCapability, advancedGuardMotions.get(weaponCapability));
-        }
-
     }
 }

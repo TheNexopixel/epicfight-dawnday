@@ -26,6 +26,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.bonecutting_saw.get());
                 output.accept(DawnDayItems.POLEBLADE.get());
                 output.accept(DawnDayItems.VITREUS.get());
+                output.accept(DawnDayItems.CRESCENDO.get());
              //   output.accept(DawnDayItems.ECLIPSE.get());
                 output.accept(DawnDayItems.IRON_FIST.get());
                 output.accept(DawnDayItems.GLORIA.get());
@@ -93,6 +94,21 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.METAL_PLATE.get());
                 output.accept(DawnDayItems.RUSTED_METAL_PLATE.get());
 
+                ItemStack book_heated_steps = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.HEATED_STEPS, book_heated_steps);
+                output.accept(book_heated_steps);
+                ItemStack book_divine_punishment = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.DIVINE_PUNISHMENT, book_divine_punishment);
+                output.accept(book_divine_punishment);
+
+                ItemStack book_final_strength = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.FINAL_STRENGTH, book_final_strength);
+                output.accept(book_final_strength);
+
+                ItemStack book_outlasting = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.OUTLASTING, book_outlasting);
+                output.accept(book_outlasting);
+
                 ItemStack book_rapid_retreat = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.RAPID_RETREAT, book_rapid_retreat);
                 output.accept(book_rapid_retreat);
@@ -108,6 +124,9 @@ public class DawnDayCreativeTab {
                 ItemStack book_air_dash = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.AIR_DASH, book_air_dash);
                 output.accept(book_air_dash);
+                ItemStack book_gorged_bulwark = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.GORGED_BULWARK, book_gorged_bulwark);
+                output.accept(book_gorged_bulwark);
                 ItemStack book_red = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.REDEMPTION, book_red);
                 output.accept(book_red);

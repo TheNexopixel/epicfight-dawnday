@@ -28,7 +28,6 @@ public class  CombatEvoCompat implements ICompatModule {
               });
 
 
-
       event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
               ExecutionTypeManager.TACHI_TYPE);
 
@@ -70,6 +69,12 @@ public class  CombatEvoCompat implements ICompatModule {
 
       event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.IRON_FIST);
+
+      event.registerExecutionByItem(DawnDayItems.BLOOD_KNIFE.getId(), CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.ONEHANDED_RITUAL_DAGGER);
+
+      event.registerExecutionByItem(DawnDayItems.BLOOD_KNIFE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
 
       event.registerExecutionByItem(DawnDayItems.IRON_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);

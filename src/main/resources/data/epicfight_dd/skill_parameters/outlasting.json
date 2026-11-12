@@ -1,0 +1,21 @@
+{
+  "health_threshold": 0.5,
+  "consumption_multiplier": 0.5,
+  "overlay_alpha": 0.18,
+  "attribute_modifiers": [
+    {
+      "attribute": "epicfight:staminar",
+      "name": "outlasting_skill_stat",
+      "uuid": "5d2f8a41-7b3c-4e96-a1d0-9c6e3b8f2a74",
+      "operation": "addition",
+      "amount": 5.0
+    },
+    {
+      "attribute": "epicfight:stamina_regen",
+      "name": "outlasting_skill_stat",
+      "uuid": "c47e91b0-3a5d-4f28-8e6b-1d90a7c3e5f2",
+      "operation": "addition",
+      "amount": 0.2
+    }
+  ]
+}

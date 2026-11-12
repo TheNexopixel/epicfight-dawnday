@@ -59,6 +59,8 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_RITUS_DAGGER.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.SANGUINEUS.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.WAR_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
@@ -79,7 +81,6 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_FLORETT.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.steelaxe.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.HORUS_FANG.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
@@ -99,6 +100,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.1f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.GLORIOUS_CHARM.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMBER.get()))
                         .name("ocean_modifierf")
                         .build();
 
@@ -114,6 +116,7 @@ public class DawnDayLootModifiers {
                                 LootItemRandomChanceCondition.randomChance(0.2f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.GLORIOUS_CHARM.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMBER.get()))
                         .name("ocean_modifiera")
                         .build();
 
@@ -130,6 +133,7 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMBER.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
@@ -151,6 +155,7 @@ public class DawnDayLootModifiers {
 
                                 LootItem.lootTableItem(DawnDayItems.NAILS.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,5f))))
                         .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,2f))))
+                        .add(LootItem.lootTableItem(DawnDayItems.WAR_SICKLE.get()))
                         .name("nail")
                         .build();
 
@@ -184,6 +189,7 @@ public class DawnDayLootModifiers {
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.CITRINE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.AMBER.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.MALACHITE.get()))
@@ -300,6 +306,7 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.REVENANT.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.spiked_bat.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
@@ -351,6 +358,37 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.CITRINE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .name("end_city_additon")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/stronghold_corridor"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.1352f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.CRESCENDO.get()))
+                        .name("stronghold_corridor_add")
+                        .build();
+
+                event.getTable().addPool(pool);
+            }
+            if (event.getName().equals(
+                    new ResourceLocation(
+                            "minecraft",
+                            "chests/stronghold_libary"))) {
+
+                LootPool pool = LootPool.lootPool()
+                        .when(
+                                LootItemRandomChanceCondition.randomChance(0.1352f)
+                        )
+                        .add(LootItem.lootTableItem(DawnDayItems.CRESCENDO.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
+                        .name("stronghold_libary_add")
                         .build();
 
                 event.getTable().addPool(pool);

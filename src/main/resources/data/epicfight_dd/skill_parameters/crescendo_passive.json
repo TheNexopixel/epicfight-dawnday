@@ -1,0 +1,11 @@
+{
+  "base_damage": 1.0,
+  "damage_increasement": 0.5,
+  "max_damage": 275.0,
+  "expire_ticks": 60,
+  "sharpness_reduction": 0.2,
+  "sharpness_bonus": 0.5,
+  "sweeping_bonus": 0.1,
+  "decay_factor": 0.98,
+  "min_step_factor": 0.0
+}

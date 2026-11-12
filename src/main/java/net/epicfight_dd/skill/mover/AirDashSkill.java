@@ -27,7 +27,8 @@ import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 
-// THIS CODE WAS MADE MOSTLY BY AI gez. Nexo
+// THIS CODE WAS MADE MOSTLY BY AI
+// gez. Nexo
 
 public class AirDashSkill extends Skill {
     private static final UUID EVENT_UUID =

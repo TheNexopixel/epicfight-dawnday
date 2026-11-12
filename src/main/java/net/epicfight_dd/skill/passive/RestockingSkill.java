@@ -1,23 +1,19 @@
-
 package net.epicfight_dd.skill.passive;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.UUID;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.Objects;
 
+import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-import reascer.wom.gameasset.WOMSkills;
 import yesman.epicfight.client.gui.BattleModeGui;
 import yesman.epicfight.network.EntityPairingPacketTypes;
 import yesman.epicfight.network.EpicFightNetworkManager;
@@ -29,192 +25,117 @@ import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 
-
 public class RestockingSkill extends PassiveSkill {
-    private static final UUID EVENT_UUID =
-            UUID.fromString("a8161186-b902-11ed-afa1-0242ac120002");
+    private static final UUID EVENT_UUID = UUID.fromString("a8161186-b902-11ed-afa1-0242ac120002");
 
-    private static final int DEFAULT_COOLDOWN_TICKS = 300;
-
-    private final Map<Player, Integer> cooldowns = new WeakHashMap<>();
+    private static final Field[] WOM_RESOURCE_FIELDS = resolveWomFields();
 
     public RestockingSkill(SkillBuilder<? extends PassiveSkill> builder) {
         super(builder);
         this.consumption = 15.0F;
     }
 
+    private static Field[] resolveWomFields() {
+        try {
+            Class<?> womSkills = Class.forName("reascer.wom.gameasset.WOMSkills");
+            return new Field[] {
+                    womSkills.getField("TRUE_BERSERK"),
+                    womSkills.getField("DEMONIC_ASCENSION")
+            };
+        } catch (ReflectiveOperationException | LinkageError e) {
+            return new Field[0];
+        }
+    }
+
+    private static boolean isWomResourceSkill(Skill skill) {
+        for (Field field : WOM_RESOURCE_FIELDS) {
+            try {
+                if (field.get(null) == skill) return true;
+            } catch (IllegalAccessException ignored) {
+            }
+        }
+        return false;
+    }
+
+    private static int cooldown(SkillContainer container) {
+        return container.getDataManager().getDataValue(SkillDataKeyZ.RESTOCKING_COOLDOWN.get());
+    }
+
     @Override
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
 
-        PlayerPatch<?> playerPatch = container.getExecutor();
-        Player player = playerPatch.getOriginal();
-
-        cooldowns.putIfAbsent(player, 0);
-
-        playerPatch.getEventListener().addEventListener(
+        container.getExecutor().getEventListener().addEventListener(
                 EventType.PLAYER_KILLED_EVENT,
                 EVENT_UUID,
                 event -> {
+                    if (container.getExecutor().isLogicalClient() || cooldown(container) > 0) return;
+
                     PlayerPatch<?> patch = container.getExecutor();
-                    Player killer = patch.getOriginal();
+                    var capability = patch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND);
+                    var heldItem = patch.getValidItemInHand(InteractionHand.MAIN_HAND);
 
-                    if (cooldowns.getOrDefault(killer, 0) > 0) {
-                        return;
-                    }
+                    Skill innateSkill = capability.getInnateSkill(patch, heldItem);
+                    if (innateSkill == null) return;
 
-                    var capability = patch.getAdvancedHoldingItemCapability(
-                            InteractionHand.MAIN_HAND
-                    );
-
-                    var heldItem = patch.getValidItemInHand(
-                            InteractionHand.MAIN_HAND
-                    );
-
-                    Skill innateSkill =
-                            capability.getInnateSkill(patch, heldItem);
-
-                    if (innateSkill == null) {
-                        return;
-                    }
-
-                    SkillContainer innateContainer =
-                            patch.getSkillCapability()
-                                    .getSkillContainer(innateSkill);
-
-                    if (innateContainer == null) {
-                        return;
-                    }
-
-                    boolean restored = false;
+                    SkillContainer innate = patch.getSkillCapability().getSkillContainer(innateSkill);
+                    if (innate == null) return;
 
                     if (isWomResourceSkill(innateSkill)) {
-
-                        float currentResource = innateContainer.getResource();
-                        float maxResource = innateContainer.getMaxResource();
-
-                        if (currentResource < maxResource) {
-                            float amountToRestore =
-                                    innateSkill.getConsumption();
-
-                            float newResource = Math.min(
-                                    currentResource + amountToRestore,
-                                    maxResource
-                            );
-
-                            if (newResource > currentResource) {
-                                innateContainer.setResource(newResource);
-                                restored = true;
-                            }
-                        }
+                        float current = innate.getResource();
+                        float max = innate.getMaxResource();
+                        if (current >= max) return;
+                        innate.setResource(Math.min(current + innateSkill.getConsumption(), max));
                     } else {
-
-                        if (innateContainer.isFull()) {
-                            return;
-                        }
-
-                        int maxStacks =
-                                innateContainer.getSkill().getMaxStack();
-
-                        int stacksToAdd;
-
-                        if (event.getKilledEntity() instanceof Player) {
-                            stacksToAdd =
-                                    maxStacks - innateContainer.getStack();
-                        } else {
-                            stacksToAdd = 1;
-                        }
-
-                        if (stacksToAdd <= 0) {
-                            return;
-                        }
-
-                        int newStack = Math.min(
-                                innateContainer.getStack() + stacksToAdd,
-                                maxStacks
-                        );
-
-                        Skill.setSkillStackSynchronize(
-                                innateContainer,
-                                newStack
-                        );
-
-                        restored = true;
+                        if (innate.isFull()) return;
+                        int max = innate.getSkill().getMaxStack();
+                        int target = event.getKilledEntity() instanceof Player
+                                ? max
+                                : Math.min(innate.getStack() + 1, max);
+                        Skill.setSkillStackSynchronize(innate, target);
                     }
 
+                    ServerPlayer killer = container.getServerExecutor().getOriginal();
 
-                    if (!restored) {
-                        return;
-                    }
-
-                    cooldowns.put(killer, DEFAULT_COOLDOWN_TICKS);
-
-                    killer.level().playSound(
-                            null,
-                            killer.getX(),
-                            killer.getY(),
-                            killer.getZ(),
-                            SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
-                            killer.getSoundSource(),
-                            3.5F,
-                            2.0F
+                    container.getDataManager().setDataSync(
+                            SkillDataKeyZ.RESTOCKING_COOLDOWN.get(),
+                            Math.round(this.consumption * 20.0F)
                     );
 
-                    SPEntityPairingPacket pairingPacket =
-                            new SPEntityPairingPacket(
-                                    killer.getId(),
-                                    EntityPairingPacketTypes.FLASH_WHITE
-                            );
+                    killer.level().playSound(null, killer.getX(), killer.getY(), killer.getZ(),
+                            SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, killer.getSoundSource(), 3.5F, 2.0F);
 
-                    pairingPacket.getBuffer().writeInt(9);
-                    pairingPacket.getBuffer().writeInt(15);
-                    pairingPacket.getBuffer().writeInt(1);
-                    pairingPacket.getBuffer().writeBoolean(true);
+                    SPEntityPairingPacket packet =
+                            new SPEntityPairingPacket(killer.getId(), EntityPairingPacketTypes.FLASH_WHITE);
+                    packet.getBuffer().writeInt(9);
+                    packet.getBuffer().writeInt(15);
+                    packet.getBuffer().writeInt(1);
+                    packet.getBuffer().writeBoolean(true);
 
-                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(
-                            pairingPacket,
-                            container.getServerExecutor().getOriginal()
-                    );
+                    EpicFightNetworkManager.sendToAllPlayerTrackingThisEntityWithSelf(packet, killer);
                 }
         );
     }
 
     @Override
     public void onRemoved(SkillContainer container) {
+        container.getExecutor().getEventListener().removeListener(EventType.PLAYER_KILLED_EVENT, EVENT_UUID);
+        container.getDataManager().setData(SkillDataKeyZ.RESTOCKING_COOLDOWN.get(), 0);
         super.onRemoved(container);
-
-        Player player = container.getExecutor().getOriginal();
-
-        container.getExecutor().getEventListener().removeListener(
-                EventType.PLAYER_KILLED_EVENT,
-                EVENT_UUID
-        );
-
-        cooldowns.remove(player);
     }
 
     @Override
     public void updateContainer(SkillContainer container) {
         super.updateContainer(container);
-
-        Player player = container.getExecutor().getOriginal();
-        int remaining = cooldowns.getOrDefault(player, 0);
-
+        int remaining = cooldown(container);
         if (remaining > 0) {
-            cooldowns.put(player, remaining - 1);
+            container.getDataManager().setData(SkillDataKeyZ.RESTOCKING_COOLDOWN.get(), remaining - 1);
         }
-    }
-
-    @Override
-    public boolean shouldDraw(SkillContainer container) {
-        Player player = container.getExecutor().getOriginal();
-        return cooldowns.getOrDefault(player, 0) > 0;
     }
 
     @Override
     public void setParams(CompoundTag parameters) {
         super.setParams(parameters);
-
         if (parameters.contains("consumption")) {
             this.consumption = parameters.getFloat("consumption");
         }
@@ -222,74 +143,28 @@ public class RestockingSkill extends PassiveSkill {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void drawOnGui(
-            BattleModeGui gui,
-            SkillContainer container,
-            GuiGraphics guiGraphics,
-            float x,
-            float y,
-            float partialTick) {
+    public boolean shouldDraw(SkillContainer container) {
+        return cooldown(container) > 0;
+    }
 
-        guiGraphics.blit(
-                this.getSkillTexture(),
-                (int) x,
-                (int) y,
-                24, 24,
-                0, 0,
-                1, 1,
-                1, 1
-        );
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void drawOnGui(BattleModeGui gui, SkillContainer container, GuiGraphics graphics,
+                          float x, float y, float partialTick) {
+        graphics.blit(this.getSkillTexture(), (int) x, (int) y, 24, 24, 0, 0, 1, 1, 1, 1);
 
-        Player player = container.getExecutor().getOriginal();
-        int remaining = cooldowns.getOrDefault(player, 0);
-
+        int remaining = cooldown(container);
         if (remaining > 0) {
-            int seconds = (int) Math.ceil(remaining / 20.0);
-            String text = String.valueOf(seconds);
-
-            int textWidth = gui.getFont().width(text);
-
-            guiGraphics.drawString(
-                    gui.getFont(),
-                    text,
-                    (int) x + (24 - textWidth) / 2,
-                    (int) y + 15,
-                    16777215,
-                    true
-            );
+            String text = String.valueOf((remaining + 19) / 20);
+            graphics.drawString(gui.getFont(), text,
+                    (int) x + (24 - gui.getFont().width(text)) / 2, (int) y + 15, 0xFFFFFF, true);
         }
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public List<Object> getTooltipArgsOfScreen(List<Object> list) {
-        list.add(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(
-                this.consumption
-        ));
-
+        list.add(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(this.consumption));
         return list;
-    }
-    private boolean isWomResourceSkill(Skill skill) {
-        if (skill == null) {
-            return false;
-        }
-
-        try {
-            Class<?> womSkills = Class.forName(
-                    "reascer.wom.gameasset.WOMSkills"
-            );
-
-            Object trueWrath = womSkills.getField("TRUE_BERSERK").get(null);
-            Object demonicAscension =
-                    womSkills.getField("DEMONIC_ASCENSION").get(null);
-
-            return skill == trueWrath || skill == demonicAscension;
-
-        } catch (ClassNotFoundException
-                 | NoSuchFieldException
-                 | IllegalAccessException
-                 | LinkageError e) {
-            return false;
-        }
     }
 }

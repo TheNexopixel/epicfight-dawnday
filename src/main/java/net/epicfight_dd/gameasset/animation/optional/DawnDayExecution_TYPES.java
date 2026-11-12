@@ -40,6 +40,16 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.IRON_FIST_EXECUTED,
             new Vec3(0.4, 0.0F, 0.0F), 0.0F, 115
     );
+    public static final Type KNIFE_DUAL = new Type(
+            DawnDayExecAnims.KNIFE_EXECUTE,
+            DawnDayExecAnims.KNIFE_EXECUTED,
+            new Vec3(2.95, 0.0F, 0.0F), 0.0F, 205
+    );
+    public static final Type LIGHT_GREATSWORD = new Type(
+            DawnDayExecAnims.LIGHT_GREATSWORD_EXECUTE,
+            DawnDayExecAnims.LIGHT_GREATSWORD_EXECUTED,
+            new Vec3(1.5, 0.0F, 0.0F), 0.0F, 205
+    );
     public static final Type DUAL_RITUAL_DAGGER = new Type(
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTE,
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTED,
