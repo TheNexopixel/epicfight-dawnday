@@ -30,6 +30,11 @@ public class DawnDayConfig {
                     .comment("Sepukku impact bonus(Default: 0.6)")
                     .defineInRange("sepukku_impact", 0.6D, -100D, 100D);
 
+    public static final ForgeConfigSpec.BooleanValue OVERRIDE_DEFAULT_EXECUTIONS =
+            BUILDER
+                    .comment("This Option overrides the Executions for Dual Dagger and Onehand Sword (Default: true)")
+                    .define("override_default_executions", true);
+
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
 }

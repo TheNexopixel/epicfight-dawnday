@@ -146,10 +146,12 @@ dependencies {
     modRuntimeOnly("curse.maven:architectury-api-419699:5137938")
     modRuntimeOnly("curse.maven:embeddium-908741:5681725")
     modRuntimeOnly("curse.maven:jei-238222:9394360")
+    modRuntimeOnly("curse.maven:epic-fight-dual-tachi-moveset-1802704:9671332")
     modRuntimeOnly ("curse.maven:configured-457570:5180900")
+    modRuntimeOnly("curse.maven:epic-fight-dual-tachi-moveset-1802704:9593467")
     modRuntimeOnly("curse.maven:just-enough-resources-jer-240630:5057220")
     modRuntimeOnly("curse.maven:appleskin-248787:4770828")
-    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:9514784")
+    modRuntimeOnly("curse.maven:epic-fight-weapons-of-miracles-expansion-wom-plus-1587633:9670069")
     modRuntimeOnly("curse.maven:ferritecore-429235:4810975")
     modRuntimeOnly("curse.maven:canary-665658:5089991")
 

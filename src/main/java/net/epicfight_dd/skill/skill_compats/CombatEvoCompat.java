@@ -1,5 +1,6 @@
 package net.epicfight_dd.skill.skill_compats;
 
+import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.gameasset.animation.optional.DawnDayExecution_TYPES;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
@@ -29,10 +30,24 @@ public class  CombatEvoCompat implements ICompatModule {
 
 
       event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.ONE_HAND,
-              ExecutionTypeManager.TACHI_TYPE);
+              DawnDayExecution_TYPES.LIGHT_GREATSWORD);
+
 
       event.registerExecutionByCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);
+
+        if (DawnDayConfig.OVERRIDE_DEFAULT_EXECUTIONS.get().equals(true)){
+      event.registerExecutionByCategory(CapabilityItem.WeaponCategories.SWORD, CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.LIGHT_GREATSWORD);
+      event.registerExecutionByCategory(CapabilityItem.WeaponCategories.DAGGER, CapabilityItem.Styles.TWO_HAND,
+                    DawnDayExecution_TYPES.KNIFE_DUAL);
+
+      }
+      event.registerExecutionByCategory(DawnDayWeaponCategories.CLAWS, CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.HOOKCLAWS);
+
+      event.registerExecutionByCategory(DawnDayWeaponCategories.POLEBLADE, CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.POLEBLADE);
 
       event.registerExecutionByItem(DawnDayItems.diamond_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
@@ -49,23 +64,12 @@ public class  CombatEvoCompat implements ICompatModule {
       event.registerExecutionByItem(DawnDayItems.wooden_battlestaff.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.BATTLESTAFF);
 
-      event.registerExecutionByItem(DawnDayItems.HOOKCLAWS.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.IRON_FIST);
-
-      event.registerExecutionByItem(DawnDayItems.POLEBLADE.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.POLEBLADE);
 
       event.registerExecutionByItem(DawnDayItems.NIGHTINGALE.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.POLEBLADE);
 
-      event.registerExecutionByItem(DawnDayItems.iron_knife.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
-      event.registerExecutionByItem(DawnDayItems.golden_knife.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
-      event.registerExecutionByItem(DawnDayItems.diamond_knife.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
-      event.registerExecutionByItem(DawnDayItems.netherite_knife.getId(), CapabilityItem.Styles.TWO_HAND,
-              DawnDayExecution_TYPES.DUAL_RITUAL_DAGGER);
+      event.registerExecutionByItem(DawnDayItems.CRESCENDO.getId(), CapabilityItem.Styles.ONE_HAND,
+              DawnDayExecution_TYPES.LIGHT_GREATSWORD);
 
       event.registerExecutionByItem(DawnDayItems.IRON_FIST.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.IRON_FIST);
@@ -75,6 +79,23 @@ public class  CombatEvoCompat implements ICompatModule {
 
       event.registerExecutionByItem(DawnDayItems.BLOOD_KNIFE.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.KNIFE_DUAL);
+
+      event.registerExecutionByItem(DawnDayItems.STONE_KNIFE.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
+
+      event.registerExecutionByItem(DawnDayItems.iron_knife.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
+
+      event.registerExecutionByItem(DawnDayItems.golden_knife.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
+
+      event.registerExecutionByItem(DawnDayItems.diamond_knife.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
+      event.registerExecutionByItem(DawnDayItems.netherite_knife.getId(), CapabilityItem.Styles.TWO_HAND,
+              DawnDayExecution_TYPES.KNIFE_DUAL);
+
+
+
 
       event.registerExecutionByItem(DawnDayItems.IRON_FLORETT.getId(), CapabilityItem.Styles.TWO_HAND,
               DawnDayExecution_TYPES.MILADY_DUAL);

@@ -80,7 +80,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         super(builder);
     }
 
-    // ---------- Lifecycle ----------
 
     @Override
     public void onInitiate(SkillContainer container) {
@@ -126,7 +125,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         forget(event.getEntity().getUUID());
     }
 
-    // ---------- Parameter ----------
 
     @Override
     public void setParams(CompoundTag p) {
@@ -147,7 +145,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         return tag.contains(key) ? tag.getFloat(key) : fallback;
     }
 
-    // ---------- Heilrate (HEALING-Attribut) ----------
 
     private static void applyHealingModifier(ServerPlayer player) {
         AttributeInstance healing = player.getAttribute(DawnDayAttributes.HEALING.get());
@@ -161,7 +158,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         if (healing != null) healing.removeModifier(HEALING_MODIFIER);
     }
 
-    // ---------- Schaden -> Hunger ----------
 
     private static final int MAX_FOOD = 20;
 
@@ -226,7 +222,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
                 Math.min(Math.max(1, loss), 6), 0.3D, 0.1D, 0.3D, 0.05D);
     }
 
-    // ---------- Gift: kein Herzschaden ----------
 
     @SubscribeEvent
     public static void onAttack(LivingAttackEvent event) {
@@ -240,8 +235,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
             event.setCanceled(true);
         }
     }
-
-    // ---------- Essen heilt, Überschuss gibt Absorption ----------
 
     @SubscribeEvent
     public static void onEat(LivingEntityUseItemEvent.Finish event) {
@@ -269,7 +262,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         }
     }
 
-    // ---------- Effekte pro Tick ----------
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -277,7 +269,7 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         UUID id = player.getUUID();
         if (!ACTIVE.contains(id)) return;
 
-        applyHealingModifier(player); // Absicherung (Respawn, andere Skills)
+        applyHealingModifier(player);
 
         FoodData food = player.getFoodData();
 
@@ -336,8 +328,6 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         player.level().playSound(null, player.blockPosition(),
                 SoundEvents.RAVAGER_STUNNED, SoundSource.PLAYERS, 1.2F, 1.0F);
     }
-
-    // ---------- HUD ----------
 
     @OnlyIn(Dist.CLIENT)
     @Override

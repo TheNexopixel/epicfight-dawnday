@@ -77,6 +77,7 @@ public class DawnDaySkills {
     // WEAPON INNATE
 
     public static Skill BEAST_EYE;
+    public static Skill BOLD_CONFIDENCE;
     public static Skill ANNULATION;
     public static Skill SUPREME_LIGHTNING;
     public static Skill GLORIA_MAXIMA;
@@ -170,6 +171,17 @@ public class DawnDaySkills {
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.UNBLOCKALBE))
         ;
         SHARP_STABS = sharpstabs;
+
+        WeaponInnateSkill boldConfidence = modRegistry.build("bold_confidence", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                .setAnimations(DawnDayAnimations.BOLD_CONFIDENCE)
+                .setCategory(SkillCategories.WEAPON_INNATE));
+        boldConfidence.newProperty()
+
+                .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(1.0F))
+                .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT
+                        .create())).addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+        ;
+        BOLD_CONFIDENCE = boldConfidence;
 
         WeaponInnateSkill tornado = modRegistry.build("tornado", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(DawnDayAnimations.TORNADO)

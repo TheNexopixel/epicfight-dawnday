@@ -14,6 +14,7 @@ import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.skill.identity.MeteorSlamSkill;
 import yesman.epicfight.skill.passive.SwordmasterSkill;
 
 import java.util.List;
@@ -166,6 +167,13 @@ public class DefaultEpicFightSkillCompat {
 
         }
 
+    }
+    @SubscribeEvent
+    public static void onMeteorSlamSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<MeteorSlamSkill.Builder> event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","meteor_slam"))) {
+            MeteorSlamSkill.Builder builder = event.getSkillBuilder();
+            builder.addSlamMotion(DawnDayWeaponCategories.MORNINGSTAR,  (item, player) -> Animations.METEOR_SLAM);
+        }
     }
 
     @SubscribeEvent

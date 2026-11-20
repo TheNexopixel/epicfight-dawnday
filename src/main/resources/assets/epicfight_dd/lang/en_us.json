@@ -1,4 +1,5 @@
 {
+  "attribute.name.epicfight_dd.healing": "Incoming Healing",
   "creativetab.dawn_day_tab" : "Epic Fight Dawn Day",
   "painting.epicfight_dd.cultist.title": "Blood Ritus Cultist",
   "painting.epicfight_dd.cultist.author": "Nexo",
@@ -33,6 +34,7 @@
   "epicfight.weapon_category.ritus_dagger":"Ritual Daggers",
   "epicfight.weapon_category.florett":"Florett",
   "epicfight.weapon_category.claws":"Claws",
+  "epicfight.weapon_category.morningstar":"Morningstars",
   "epicfight.weapon_category.poleblade":"Poleblade",
   "epicfight.weapon_category.sickle":"Sickles",
   "epicfight.weapon_category.bat":"Bats",
@@ -145,6 +147,8 @@
   "skill.epicfight_dd.gorged_bulwark.tooltip": "Damage drains your hunger bar instead of your health. While saturated, you take half hunger damage, decreases saturation. With an empty hunger bar, you lose health.\n\nYou can always eat, and Hunger is pure poison for you. Food heals you directly, and overeating grants up to 5 temporary absorption hearts. Natural regeneration is reduced by 50%.",
   "skill.epicfight_dd.outlasting": "Outlasting",
   "skill.epicfight_dd.outlasting.tooltip": "While below 50% of your maximum health, all stamina consumption is halved and the stamina regeneration time is reduced.",
+  "skill.epicfight_dd.heated_steps": "Heated Step",
+  "skill.epicfight_dd.heated_steps.tooltip": "Chargable dodge, that errupts fire when used.",
 
   "item.epicfight_dd.stone_knife": "Stone Knife",
   "item.epicfight_dd.diamond_knife": "Diamond Knife",
@@ -164,6 +168,8 @@
  "effect.epicfight_dd.stamina":"Stamina",
   "effect.epicfight_dd.heartstop":"Heartstop",
   "effect.epicfight_dd.impact":"Impact",
+  "effect.epicfight_dd.bruising":"Bruising",
+  "effect.epicfight_dd.unstoppable_barrier": "Barrier",
   "effect.epicfight_dd.stunarmor":"Stun Resistance",
   "effect.epicfight_dd.crumbling":"Crumbling",
   "effect.epicfight_dd.exhausted":"Exhausted",
@@ -209,6 +215,19 @@
   "item.minecraft.potion.effect.heartstop_strong":"Potion of Heartstop",
   "item.minecraft.splash_potion.effect.heartstop_strong":"Splash Potion of Heartstop",
   "item.minecraft.lingering_potion.effect.heartstop_strong":"Lingering Potion of Heartstop",
+
+  "item.minecraft.potion.effect.bruising":"Potion of Bruising",
+  "item.minecraft.splash_potion.effect.bruising":"Splash Potion of Bruising",
+  "item.minecraft.lingering_potion.effect.bruising":"Lingering Potion of Bruising",
+  "item.minecraft.potion.effect.bruising_strong":"Potion of Bruising",
+  "item.minecraft.splash_potion.effect.bruising_strong":"Splash Potion of Bruising",
+  "item.minecraft.lingering_potion.effect.bruising_strong":"Lingering Potion of Bruising",
+  "item.minecraft.potion.effect.bruising_stronger":"Potion of Bruising",
+  "item.minecraft.splash_potion.effect.bruising_stronger":"Splash Potion of Bruising",
+  "item.minecraft.lingering_potion.effect.bruising_stronger":"Lingering Potion of Bruising",
+  "item.minecraft.potion.effect.bruising_long":"Potion of Bruising",
+  "item.minecraft.splash_potion.effect.bruising_long":"Splash Potion of Bruising",
+  "item.minecraft.lingering_potion.effect.bruising_long":"Lingering Potion of Bruising",
 
 
   "item.minecraft.potion.effect.exhausted":"Potion of Exhausting",
@@ -327,6 +346,29 @@
   "item.minecraft.tipped_arrow.effect.staminaregen_potion_strong": "Arrow of Endurance",
   "item.minecraft.tipped_arrow.effect.might": "Arrow of UNLIMITED POWWWAAAAHHHHRRRR",
 
+  "subtitles.epicfight_dd.milady_slash": "Slash",
+  "subtitles.epicfight_dd.light_punch": "Light Punch",
+  "subtitles.epicfight_dd.scythe_swing": "Scythe Swing",
+  "subtitles.epicfight_dd.scythe_swing_heavy": "Heavy Scythe Swing",
+  "subtitles.epicfight_dd.grab_mob": "Picked a Mob Up",
+  "subtitles.epicfight_dd.milady_heavy_slash": "Heavy Slash",
+  "subtitles.epicfight_dd.gloria_ult_1": "Gloria Ultimate",
+  "subtitles.epicfight_dd.beast_eye": "Beast Eye Active",
+  "subtitles.epicfight_dd.guard_counter": "Guard Counter",
+  "subtitles.epicfight_dd.redemption": "Redemption Activated",
+  "subtitles.epicfight_dd.killed": "Something Died",
+  "subtitles.epicfight_dd.drained": "Seppuku has worn off",
+  "subtitles.epicfight_dd.cursed": "A curse lies upon you",
+  "subtitles.epicfight_dd.milady_dual_slash": "Slash",
+  "subtitles.epicfight_dd.milady_extra_light": "Light Slash",
+  "subtitles.epicfight_dd.critical_hit": "Critical Hit",
+  "subtitles.epicfight_dd.pull_out": "Weapon Pulled Out",
+  "subtitles.epicfight_dd.piercing_fang": "Piercing Fang Activated",
+  "subtitles.epicfight_dd.battlestaff_swing": "Battlestaff Swing",
+  "subtitles.epicfight_dd.poise_break": "Entity Poise Break",
+  "subtitles.epicfight_dd.guard_break": "Entity Guard Break",
+  "subtitles.epicfight_dd.soft_wipe": "Soft Wipe",
+
 
   "tooltip.epicfight_dd.night_ritus_dagger_headline": "Weapon Passive:",
   "tooltip.epicfight_dd.weapon_passive": "Weapon Passive:",
@@ -369,10 +411,6 @@
   "tooltip.epicfight_dd.gloria":"As great and mighty as it was, one day it was swallowed up by the maw of hell and abandoned by all the gods, only this relic remained...",
   "tooltip.epicfight_dd.blood_knife":"These knives were used in the past by the Blood Cult. Because of their light weight and the properties of the blade, these knives were very popular. This popularity reached such a point that the gemstones from which the blade is made no longer exist today.",
   "tooltip.epicfight_dd.sanguineus":"A unique variation of the double-edged sword, made from a giant ruby that glows so purplely that some might think it were drenched in blood.",
-  "tooltip.epicfight_dd.twinblade":"A very elegant and lightweight weapon, though it also requires precision and agility.",
+  "tooltip.epicfight_dd.twinblade":"A very elegant and lightweight weapon, though it also requires precision and agility."
 
-  "attribute.name.epicfight_dd.healing": "Incoming Healing",
-  "effect.epicfight_dd.unstoppable_barrier": "Barrier",
- "skill.epicfight_dd.heated_steps": "Heated Step",
-  "skill.epicfight_dd.heated_steps.tooltip": "Chargable dodge, that errupts fire when used."
 }

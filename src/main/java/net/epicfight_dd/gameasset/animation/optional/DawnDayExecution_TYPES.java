@@ -28,6 +28,11 @@ public class DawnDayExecution_TYPES {
             DawnDayExecAnims.BATTLESTAFF_EXECUTED,
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 80
     );
+    public static final Type HOOKCLAWS = new Type(
+            DawnDayExecAnims.HOOKCLAWS_EXECUTE,
+            DawnDayExecAnims.HOOKCLAWS_EXECUTED,
+            new Vec3(6.4, 0.0F, 0.0F), 0.0F, 180
+    );
 
 
     public static final Type MILADY_DUAL = new Type(
@@ -43,12 +48,12 @@ public class DawnDayExecution_TYPES {
     public static final Type KNIFE_DUAL = new Type(
             DawnDayExecAnims.KNIFE_EXECUTE,
             DawnDayExecAnims.KNIFE_EXECUTED,
-            new Vec3(2.95, 0.0F, 0.0F), 0.0F, 205
+            new Vec3(2.95, 0.0F, 0.0F), 0.0F, 215
     );
     public static final Type LIGHT_GREATSWORD = new Type(
             DawnDayExecAnims.LIGHT_GREATSWORD_EXECUTE,
             DawnDayExecAnims.LIGHT_GREATSWORD_EXECUTED,
-            new Vec3(1.5, 0.0F, 0.0F), 0.0F, 205
+            new Vec3(2.0, 0.0F, 0.0F), 0.0F, 132
     );
     public static final Type DUAL_RITUAL_DAGGER = new Type(
             DawnDayExecAnims.RITUS_DAGGER_DUAL_EXECUTE,

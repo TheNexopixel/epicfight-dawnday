@@ -1,232 +1,157 @@
 {
-  "sfx.milady_slash":
-  {
-    "category":"master",
-    "subtitle":"sfx.slash",
-    "sounds":[{"name":"epicfight_dd:sfx/milady_slash", "stream":false},{"name":"epicfight_dd:sfx/milady_light_slash", "stream":false}]
+  "sfx.milady_slash": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.milady_slash",
+    "sounds": [
+      {"name": "epicfight_dd:sfx/milady_slash", "stream": false},
+      {"name": "epicfight_dd:sfx/milady_light_slash", "stream": false}
+    ]
   },
   "sfx.light_punch": {
     "category": "entity",
-    "subtitle": "sfx.light_punch",
-    "sounds" : [
-      {
-      "name": "epicfight_dd:sfx/lightpunch1",
-      "stream" : false
-    },
-      {
-        "name": "epicfight_dd:sfx/lightpunch2",
-        "stream" : false
-      },
-      {
-        "name": "epicfight_dd:sfx/lightpunch3",
-        "stream" : false
-      },
-      {
-        "name": "epicfight_dd:sfx/lightpunch4",
-        "stream" : false
-      },
-      {
-        "name": "epicfight_dd:sfx/lightpunch5",
-        "stream" : false
-      },
-      {
-        "name": "epicfight_dd:sfx/lightpunch6",
-        "stream" : false
-      }
-
+    "subtitle": "subtitles.epicfight_dd.light_punch",
+    "sounds": [
+      {"name": "epicfight_dd:sfx/lightpunch1", "stream": false},
+      {"name": "epicfight_dd:sfx/lightpunch2", "stream": false},
+      {"name": "epicfight_dd:sfx/lightpunch3", "stream": false},
+      {"name": "epicfight_dd:sfx/lightpunch4", "stream": false},
+      {"name": "epicfight_dd:sfx/lightpunch5", "stream": false},
+      {"name": "epicfight_dd:sfx/lightpunch6", "stream": false}
     ]
   },
   "sfx.scythe_swing": {
     "category": "player",
-    "subtitle": "sfx.Scythe Swing Light",
-    "sounds" : [
-      {
-        "name": "epicfight_dd:sfx/scythe_swing_2",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_swing_3",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_swing_4",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_swing_5",
-        "stream": false
-      }
+    "subtitle": "subtitles.epicfight_dd.scythe_swing",
+    "sounds": [
+      {"name": "epicfight_dd:sfx/scythe_swing_2", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_swing_3", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_swing_4", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_swing_5", "stream": false}
     ]
-      },
+  },
   "sfx.scythe_swing_heavy": {
     "category": "player",
-    "subtitle": "sfx.Scythe Swing",
-    "sounds" : [
-      {
-        "name": "epicfight_dd:sfx/scythe_big_whoosh_1",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_big_whoosh_2",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_big_whoosh_3",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_big_whoosh_4",
-        "stream": false
-      },
-      {
-        "name": "epicfight_dd:sfx/scythe_big_whoosh_5",
-        "stream": false
-      }
+    "subtitle": "subtitles.epicfight_dd.scythe_swing_heavy",
+    "sounds": [
+      {"name": "epicfight_dd:sfx/scythe_big_whoosh_1", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_big_whoosh_2", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_big_whoosh_3", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_big_whoosh_4", "stream": false},
+      {"name": "epicfight_dd:sfx/scythe_big_whoosh_5", "stream": false}
     ]
   },
-  "sfx.milady_heavy_slash":
-  {
-    "category":"player",
-    "subtitle":"sfx.heavy_slash",
-    "sounds":[{"name":"epicfight_dd:sfx/milady_heavy_slash", "stream":false}]
+  "sfx.grab_mob": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.grab_mob",
+    "sounds": [{"name": "epicfight_dd:sfx/grab_mob", "stream": false}]
   },
-  "sfx.gloria_ult_1":
-  {
-    "category":"player",
-    "subtitle":"Gloria Ultimate",
-    "sounds":[{"name":"epicfight_dd:sfx/gloria_ult_1", "stream":false}]
+  "sfx.milady_heavy_slash": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.milady_heavy_slash",
+    "sounds": [{"name": "epicfight_dd:sfx/milady_heavy_slash", "stream": false}]
   },
-  "sfx.beast_eye_1":
-  {
-    "category":"player",
-    "subtitle":"Beast Eye Active",
-    "sounds":[{"name":"epicfight_dd:sfx/beast_eye_1", "stream":false}]
+  "sfx.gloria_ult_1": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.gloria_ult_1",
+    "sounds": [{"name": "epicfight_dd:sfx/gloria_ult_1", "stream": false}]
   },
-  "sfx.beast_eye_2":
-  {
-    "category":"player",
-    "subtitle":"Beast Eye Active",
-    "sounds":[{"name":"epicfight_dd:sfx/beast_eye_2", "stream":false}]
+  "sfx.beast_eye_1": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.beast_eye",
+    "sounds": [{"name": "epicfight_dd:sfx/beast_eye_1", "stream": false}]
   },
-  "sfx.guard_counter":
-  {
-    "category":"player",
-    "subtitle":"sfx.guard_counter",
-    "sounds":[{"name":"epicfight_dd:sfx/guard_counter", "stream":false}]
+  "sfx.beast_eye_2": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.beast_eye",
+    "sounds": [{"name": "epicfight_dd:sfx/beast_eye_2", "stream": false}]
   },
-  "sfx.redemption":
-  {
-    "category":"player",
-    "subtitle":"Redemption Activate",
-    "sounds":[
-      {"name":"epicfight_dd:sfx/redemption_1", "stream":false},
-      {"name":"epicfight_dd:sfx/redemption_2", "stream":false},
-      {"name":"epicfight_dd:sfx/redemption_3", "stream":false}
+  "sfx.guard_counter": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.guard_counter",
+    "sounds": [{"name": "epicfight_dd:sfx/guard_counter", "stream": false}]
+  },
+  "sfx.redemption": {
+    "category": "player",
+    "subtitle": "subtitles.epicfight_dd.redemption",
+    "sounds": [
+      {"name": "epicfight_dd:sfx/redemption_1", "stream": false},
+      {"name": "epicfight_dd:sfx/redemption_2", "stream": false},
+      {"name": "epicfight_dd:sfx/redemption_3", "stream": false}
     ]
   },
-  "sfx.killed1":
-  {
-    "category":"entity",
-    "subtitle":"Something Died",
-    "sounds":[{"name":"epicfight_dd:sfx/killed1", "stream":false}]
+  "sfx.killed1": {
+    "category": "entity",
+    "subtitle": "subtitles.epicfight_dd.killed",
+    "sounds": [{"name": "epicfight_dd:sfx/killed1", "stream": false}]
   },
-  "sfx.killed2":
-  {
-    "category":"entity",
-    "subtitle":"Something Died",
-    "sounds":[{"name":"epicfight_dd:sfx/killed2", "stream":false}]
+  "sfx.killed2": {
+    "category": "entity",
+    "subtitle": "subtitles.epicfight_dd.killed",
+    "sounds": [{"name": "epicfight_dd:sfx/killed2", "stream": false}]
   },
-  "sfx.killed3":
-  {
-    "category":"entity",
-    "subtitle":"Something Died",
-    "sounds":[{"name":"epicfight_dd:sfx/killed3", "stream":false}]
+  "sfx.killed3": {
+    "category": "entity",
+    "subtitle": "subtitles.epicfight_dd.killed",
+    "sounds": [{"name": "epicfight_dd:sfx/killed3", "stream": false}]
   },
-  "sfx.drained":
-  {
-    "category":"master",
-    "subtitle":"Sepukku has worn off",
-    "sounds":[{"name":"epicfight_dd:sfx/drained", "stream":false}]
+  "sfx.drained": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.drained",
+    "sounds": [{"name": "epicfight_dd:sfx/drained", "stream": false}]
   },
-  "sfx.cursed_1":
-{
-  "category":"master",
-  "subtitle":"A curse lies upon you",
-  "sounds":[{"name":"epicfight_dd:sfx/cursed_1", "stream":false}]
-},
-  "sfx.cursed_2":
-  {
-    "category":"master",
-    "subtitle":"A curse lies upon you",
-    "sounds":[{"name":"epicfight_dd:sfx/cursed_2", "stream":false}]
+  "sfx.cursed_1": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.cursed",
+    "sounds": [{"name": "epicfight_dd:sfx/cursed_1", "stream": false}]
+  },
+  "sfx.cursed_2": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.cursed",
+    "sounds": [{"name": "epicfight_dd:sfx/cursed_2", "stream": false}]
   },
   "sfx.milady_dual_slash": {
     "category": "master",
-    "subtitle": "sfx.dual_slash",
-    "sounds": [
-      {
-        "name": "epicfight_dd:sfx/milady_dual_slash",
-        "stream": false
-      }
-    ]
+    "subtitle": "subtitles.epicfight_dd.milady_dual_slash",
+    "sounds": [{"name": "epicfight_dd:sfx/milady_dual_slash", "stream": false}]
   },
-
-    "sfx.milady_extra_light":
-    {
-      "category":"master",
-      "subtitle":"sfx.light_sweep",
-      "sounds":[{"name":"epicfight_dd:sfx/milady_extra_light", "stream":false}]
+  "sfx.milady_extra_light": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.milady_extra_light",
+    "sounds": [{"name": "epicfight_dd:sfx/milady_extra_light", "stream": false}]
   },
-
-  "sfx.critical_hit":
-  {
-    "category":"master",
-    "subtitle":"Critical Hit",
-    "sounds":[{"name":"epicfight_dd:sfx/critical_hit", "stream":false}]
+  "sfx.critical_hit": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.critical_hit",
+    "sounds": [{"name": "epicfight_dd:sfx/critical_hit", "stream": false}]
   },
-
-  "sfx.pull_out":
-  {
-    "category":"master",
-    "subtitle":"Weapon Pulled Out",
-    "sounds":[{"name":"epicfight_dd:sfx/pull_out", "stream":false}]
+  "sfx.pull_out": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.pull_out",
+    "sounds": [{"name": "epicfight_dd:sfx/pull_out", "stream": false}]
   },
-  "sfx.piercing_fang":
-  {
-    "category":"master",
-    "subtitle":"sfx.piercing_fang",
-    "sounds":[{"name":"epicfight_dd:sfx/piercing_fang", "stream":false}]
+  "sfx.piercing_fang": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.piercing_fang",
+    "sounds": [{"name": "epicfight_dd:sfx/piercing_fang", "stream": false}]
   },
-  "sfx.battlestaff_swing":
-  {
-    "category":"master",
-    "subtitle":"sfx.battlestaff_swing",
-    "sounds":[{"name":"epicfight_dd:sfx/battlestaff_swing", "stream":false}]
+  "sfx.battlestaff_swing": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.battlestaff_swing",
+    "sounds": [{"name": "epicfight_dd:sfx/battlestaff_swing", "stream": false}]
   },
-  "sfx.poise_break":
-  {
-    "category":"master",
-    "subtitle":"sfx.poise_break",
-    "sounds":[{"name":"epicfight_dd:sfx/poise_break", "stream":false}]
+  "sfx.poise_break": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.poise_break",
+    "sounds": [{"name": "epicfight_dd:sfx/poise_break", "stream": false}]
   },
-  "sfx.guard_break":
-  {
-    "category":"master",
-    "subtitle":"sfx.guard_break",
-    "sounds":[{"name":"epicfight_dd:sfx/guard_break", "stream":false}]
+  "sfx.guard_break": {
+    "category": "master",
+    "subtitle": "subtitles.epicfight_dd.guard_break",
+    "sounds": [{"name": "epicfight_dd:sfx/guard_break", "stream": false}]
   },
-  "sfx.skeleton_banging":
-  {
-    "category":"entity",
-    "subtitle":"RAAHHHHHH",
-    "sounds":[{"name":"epicfight_dd:sfx/skeleton_banging", "stream":false}]
-  },
-  "sfx.soft_wipe":
-  {
-    "category":"entity",
-    "subtitle":"sfx.soft_wipe",
-    "sounds":[{"name":"epicfight_dd:sfx/soft_wipe", "stream":false}]
+  "sfx.soft_wipe": {
+    "category": "entity",
+    "subtitle": "subtitles.epicfight_dd.soft_wipe",
+    "sounds": [{"name": "epicfight_dd:sfx/soft_wipe", "stream": false}]
   }
-
-
 }

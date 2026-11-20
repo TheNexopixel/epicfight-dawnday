@@ -71,10 +71,20 @@ public class WoMCompat implements ICompatModule {
                 () -> DawnDayAnimations.POLEBLADE_NEUTRALIZE,
                 () -> DawnDayAnimations.NIGHTINGALE_AUTO1);
 
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.LIGHT_GREATSWORD,
+                () -> Animations.SWORD_GUARD_HIT,
+                () -> Animations.BIPED_COMMON_NEUTRALIZED,
+                () -> DawnDayAnimations.NIGHTINGALE_AUTO3);
+
         entry(guard, guardBreak, advanced, DawnDayWeaponCategories.POLEBLADE,
                 () -> DawnDayAnimations.POLEBLADE_GUARD_HIT,
                 () -> DawnDayAnimations.POLEBLADE_NEUTRALIZE,
                 () -> WoMCompatAnimations.TWINBLADE_COUNTER);
+
+        entry(guard, guardBreak, advanced, DawnDayWeaponCategories.MORNINGSTAR,
+                () -> Animations.GREATSWORD_GUARD_HIT,
+                () -> Animations.GREATSWORD_GUARD_BREAK,
+                () -> WoMCompatAnimations.GRIMM_DFB_RELEASE);
 
         entry(guard, guardBreak, advanced, DawnDayWeaponCategories.IRON_FIST,
                 () -> DawnDayAnimations.IRON_FIST_GUARD_HIT,

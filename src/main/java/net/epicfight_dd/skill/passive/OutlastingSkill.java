@@ -1,5 +1,6 @@
 package net.epicfight_dd.skill.passive;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Vector4f;
+import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.passive.PassiveSkill;
@@ -77,15 +79,21 @@ public class OutlastingSkill extends PassiveSkill {
         PlayerPatch<?> patch = container.getExecutor();
         UUID id = player.getUUID();
 
+        float current = patch.getStamina();
+
+        if (counterAttackActive(patch)) {
+            LAST_STAMINA.put(id, current);
+            return;
+        }
+
         if (!patch.getEntityState().inaction()) {
             int wait = patch.getStaminaRegenAwaitTicks();
             if (wait > 0) {
                 patch.setStaminaRegenAwaitTicks(Math.max(0, wait - this.regenWaitExtraTicks));
             }
         }
-        float current = patch.getStamina();
-        Float last = LAST_STAMINA.get(id);
 
+        Float last = LAST_STAMINA.get(id);
         if (last != null && current < last && belowThreshold(player)) {
             float refund = (last - current) * (1.0F - this.consumptionMultiplier);
             current = Math.min(patch.getMaxStamina(), current + refund);
@@ -94,6 +102,7 @@ public class OutlastingSkill extends PassiveSkill {
 
         LAST_STAMINA.put(id, current);
     }
+
 
     @OnlyIn(Dist.CLIENT)
     @Override
@@ -117,5 +126,25 @@ public class OutlastingSkill extends PassiveSkill {
                     }
                 });
 
+    }
+    private static final Field COUNTER_ATTACK_FIELD = resolveCounterAttack();
+
+    private static Field resolveCounterAttack() {
+        try {
+            return Class.forName("reascer.wom.gameasset.WOMSkills").getField("COUNTER_ATTACK");
+        } catch (ReflectiveOperationException | LinkageError e) {
+            return null;
+        }
+    }
+
+    private static boolean counterAttackActive(PlayerPatch<?> patch) {
+        if (COUNTER_ATTACK_FIELD == null) return false;
+        try {
+            if (!(COUNTER_ATTACK_FIELD.get(null) instanceof Skill counter)) return false;
+            SkillContainer guard = patch.getSkill(counter);
+            return guard != null && guard.isActivated();
+        } catch (IllegalAccessException e) {
+            return false;
+        }
     }
 }

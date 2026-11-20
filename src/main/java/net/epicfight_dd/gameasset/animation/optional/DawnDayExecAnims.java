@@ -10,6 +10,7 @@ import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionAtta
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionHitAnimation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -67,6 +68,9 @@ public class DawnDayExecAnims {
     public static AnimationAccessor<ExecutionAttackAnimation> LG_SW_EXECUTE;
     public static AnimationAccessor<ExecutionHitAnimation> LG_SW_EXECUTED;
 
+    public static AnimationAccessor<ExecutionAttackAnimation> HOOKCLAWS_EXECUTE;
+    public static AnimationAccessor<ExecutionHitAnimation> HOOKCLAWS_EXECUTED;
+
     public static AnimationAccessor<ExecutionAttackAnimation> LIGHT_GREATSWORD_EXECUTE;
     public static AnimationAccessor<ExecutionHitAnimation> LIGHT_GREATSWORD_EXECUTED;
 
@@ -81,7 +85,7 @@ public class DawnDayExecAnims {
     private static final MultiCollider<OBBCollider> COLLIDER =
             new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
     private static final MultiCollider<OBBCollider> COLLIDER_BIG =
-            new MultiOBBCollider(3, 4.25F, 1.5F, 3.5F, 0.0F, 1.5F, -2.5F);
+            new MultiOBBCollider(3, 4.25F, 1.5F, 4.5F, 0.0F, 1.5F, -2.5F);
     private static final MultiCollider<OBBCollider> COLLIDER_FRONT =
             new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, 1.5F);
 
@@ -125,11 +129,63 @@ public class DawnDayExecAnims {
                                 .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(70F))
                                 .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.6F)),
-                        finisher(DawnDayCollider.TORNADO, 8.21F, 11.6F, 11.7F)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.01F))
+                        finisher(DawnDayCollider.TORNADO, 8.21F, 10.2F, 10.3F)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F))
+                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0))
                                 .addProperty(AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
                                 .addProperty(AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addEvents(AnimationEvent.InTimeEvent.create(4.4f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                DawnDaySounds.GRAB_MOB.get(),
+                                                SoundSource.PLAYERS,
+                                                3.8F,
+                                                1.0F
+                                        )
+                                , AnimationEvent.Side.SERVER))
+                        .addEvents(AnimationEvent.InTimeEvent.create(5.28f, (e, s, p) ->
+                                                e.getOriginal().level().playSound(
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
+                                                        SoundEvents.ARMOR_EQUIP_GENERIC,
+                                                        SoundSource.PLAYERS,
+                                                        3.8F,
+                                                        0.0F
+                                                )
+                                        , AnimationEvent.Side.SERVER))
+                        .addEvents(AnimationEvent.InTimeEvent.create(6.6f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                SoundEvents.ARMOR_EQUIP_LEATHER,
+                                                SoundSource.PLAYERS,
+                                                3.8F,
+                                                0.0F
+                                        )
+                                , AnimationEvent.Side.SERVER))
+                        .addEvents(AnimationEvent.InTimeEvent.create(9.51f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                SoundEvents.ARMOR_EQUIP_LEATHER,
+                                                SoundSource.PLAYERS,
+                                                3.8F,
+                                                0.0F
+                                        )
+                                , AnimationEvent.Side.SERVER))
+                        .addEvents(AnimationEvent.InTimeEvent.create(9.93f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                EpicFightSounds.WHOOSH.get(),
+                                                SoundSource.PLAYERS,
+                                                1.8F,
+                                                1.0F
+                                        )
+                                , AnimationEvent.Side.SERVER))
+        );
 
         IRON_FIST_EXECUTE = builder.nextAccessor("biped/execution/iron_fist_execute", ac ->
                 execution(ac,
@@ -277,13 +333,153 @@ public class DawnDayExecAnims {
                 execution(ac,
                         hit(COLLIDER, 0.0F, 0.73F, 0.8F, 1.5F)
                                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.77F)),
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.97F)),
                         hit(COLLIDER, 1.5F, 3.41F, 3.5F, 3.6F)
                                 .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
-                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.99F)),
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(3.49F)),
                         finisher(DawnDayCollider.TORNADO, 3.7F, 4.5F, 4.6F)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,SoundEvents.EMPTY)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,SoundEvents.EMPTY)
+                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0))
                                 .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F)))
-                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true));
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addEvents(AnimationEvent.InTimeEvent.create(2.65f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                DawnDaySounds.GRAB_MOB.get(),
+                                                SoundSource.PLAYERS,
+                                                3.8F,
+                                                1.0F
+                                        )
+                                , AnimationEvent.Side.SERVER)));
+
+        HOOKCLAWS_EXECUTED = executedAt(builder, "biped/execution/hookclaws_executed", 0.0F, SPEED_NORMAL);
+
+        HOOKCLAWS_EXECUTE = builder.nextAccessor("biped/execution/hookclaws_execute", ac ->
+                execution(ac,
+                        hit(COLLIDER_BIG, 0.0F, 0.81F, 0.85F, 0.9F)
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,EpicFightSounds.WHOOSH_BIG.get())
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,EpicFightSounds.BLUNT_HIT_HARD.get())
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F)),
+
+                        hit(COLLIDER_BIG, 0.9F, 1.85F, 1.9F, 1.9F)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.3F)),
+                        hit(COLLIDER_BIG, 1.9F, 2.7F, 2.75F, 2.8F)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.5F)),
+
+                        hit(COLLIDER_BIG, 1.9F, 4.28F, 4.3F, 4.3F)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.52F)),
+                        hit(COLLIDER_BIG, 4.3F, 4.58F, 4.6F, 4.6F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 4.6F, 4.9F, 5.0F, 5.0F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.0F, 5.0F, 5.03F, 5.03F)
+                          //      .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.1F)),
+                        hit(COLLIDER_BIG, 5.13F, 5.13F, 5.17F, 5.17F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.17F, 5.25F, 5.28F, 5.28F)
+                          //      .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.28F, 5.36F, 5.4F, 5.4F)
+                         //       .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.5F)),
+                        hit(COLLIDER_BIG, 5.4F, 5.48F, 5.5F, 5.5F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.5F, 5.58F, 5.6F, 5.6F)
+                          //      .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.6F, 5.66F, 5.7F, 5.7F)
+                             //   .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.7F, 5.73F, 5.75F, 5.75F)
+                          //      .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F)),
+                        hit(COLLIDER_BIG, 5.75F, 5.8F, 5.85F, 5.85F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.85F, 5.88F, 5.92F, 5.92F)
+                          //      .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.92F, 5.93F, 5.95F, 5.95F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 5.95F, 6.01F, 6.05F, 6.05F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 6.05F, 6.06F, 6.08F, 6.08F)
+                             //   .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F)),
+                        hit(COLLIDER_BIG, 6.08F, 6.13F, 6.15F, 6.15F)
+                           //     .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+                        hit(COLLIDER_BIG, 6.15F, 6.21F, 6.25F, 6.25F)
+                             //   .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLADE_RUSH_FINISHER.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.EVISCERATE)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F)),
+
+                        hit(COLLIDER_BIG, 6.15F, 6.41F, 6.5F, 6.5F)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND, EpicFightSounds.EVISCERATE.get())
+                                .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.2F)),
+
+
+                        finisher(DawnDayCollider.TORNADO, 6.5F, 7.61F, 7.7F)
+                                .addProperty(AttackPhaseProperty.SWING_SOUND,SoundEvents.EMPTY)
+                                .addProperty(AttackPhaseProperty.HIT_SOUND,SoundEvents.EMPTY)
+                                .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0))
+                                .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F)))
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(1.05f, (e, s, p) ->
+                                        e.getOriginal().level().playSound(
+                                                null,
+                                                e.getOriginal().blockPosition(),
+                                                SoundEvents.ARMOR_EQUIP_GENERIC,
+                                                SoundSource.PLAYERS,
+                                                3.8F,
+                                                0.0F
+                                        )
+                                , AnimationEvent.Side.SERVER),
+                                AnimationEvent.InTimeEvent.create(0.9f, (e, s, p) ->
+                                                e.getOriginal().level().playSound(
+                                                        null,
+                                                        e.getOriginal().blockPosition(),
+                                                        SoundEvents.ARMOR_EQUIP_GENERIC,
+                                                        SoundSource.PLAYERS,
+                                                        3.8F,
+                                                        0.0F
+                                                )
+                                        , AnimationEvent.Side.SERVER)
+                        ));
     }
 
     private static Joint root() {

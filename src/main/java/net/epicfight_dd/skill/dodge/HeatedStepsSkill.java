@@ -2,6 +2,8 @@ package net.epicfight_dd.skill.dodge;
 
 import java.util.UUID;
 import net.epicfight_dd.gameasset.SkillSoundEffects;
+import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
+import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.nbt.CompoundTag;
@@ -219,7 +221,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
 
     public static boolean rolling(LivingEntityPatch<?> patch) {
         var animation = patch.getAnimator().getPlayerFor(null).getAnimation().get().getRealAnimation();
-        return animation == Animations.BIPED_ROLL_FORWARD || animation == Animations.BIPED_ROLL_BACKWARD;
+        return animation == Animations.BIPED_ROLL_FORWARD || animation == QoLMiscAnimations.HEATED_STEP_BACKWARD;
     }
 
     public static float distanceScale(LivingEntityPatch<?> patch) {
@@ -232,6 +234,4 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     @Override public int getMinChargingTicks() { return -1; }
     @Override public int getMaxChargingTicks() { return Integer.MAX_VALUE; }
     @Override public int getAllowedMaxChargingTicks() { return Integer.MAX_VALUE - 1; }
-    @Override @OnlyIn(Dist.CLIENT)
-    public ResourceLocation getSkillTexture() { return EpicFightSkills.ROLL.getSkillTexture(); }
 }

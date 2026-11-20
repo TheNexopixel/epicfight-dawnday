@@ -35,8 +35,8 @@ public class EffectRegistry {
 
     public static final RegistryObject<MobEffect> BRUISING =
             EFFECTS.register("bruising",()-> new net.epicfight_dd.effect.MobEffect(MobEffectCategory.HARMFUL,0x9c0034)
-                    .addAttributeModifier(Attributes.ATTACK_SPEED, "3f7c9c3e-8c1d-4c4a-a2d7-5c6b9f2a1e8d", -0.05, AttributeModifier.Operation.ADDITION)
-                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, "3f7c9c3e-8c1d-4c4a-a2d5-5c6b9f2a1e8d", -0.003, AttributeModifier.Operation.ADDITION)
+                    .addAttributeModifier(Attributes.ATTACK_SPEED, "3f7c9c3e-8c1d-4c4a-a2d7-5c6b9f2a1e8d", -0.15, AttributeModifier.Operation.ADDITION)
+                    .addAttributeModifier(Attributes.MOVEMENT_SPEED, "3f7c9c3e-8c1d-4c4a-a2d5-5c6b9f2a1e8d", -0.015, AttributeModifier.Operation.ADDITION)
             );
 
     public static final RegistryObject<MobEffect> EXHAUSTED =
