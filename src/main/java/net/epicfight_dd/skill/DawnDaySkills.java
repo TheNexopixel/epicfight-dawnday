@@ -59,6 +59,7 @@ public class DawnDaySkills {
 
     // PASSIVE
 
+    public static Skill CORTISOL;
     public static Skill RIPOSTE;
     public static Skill FINAL_STRENGTH;
     public static Skill OUTLASTING;
@@ -120,6 +121,11 @@ public class DawnDaySkills {
         DIVINE_PUNISHMENT = modRegistry.build("divine_punishment", DivinePunishmentSkill::new,
                     PassiveSkill.createPassiveBuilder()
                             .setCategory(SkillCategories.PASSIVE));
+
+        CORTISOL = modRegistry.build("cortisol", CortisolSkill::new,
+                PassiveSkill.createPassiveBuilder()
+                        .setCategory(SkillCategories.PASSIVE));
+
         CRESCENDO_PASSIVE = modRegistry.build("crescendo_passive", CrescendoSkill::new,
                 PassiveSkill.createPassiveBuilder()
                         .setCategory(SkillCategories.WEAPON_PASSIVE));

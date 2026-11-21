@@ -127,7 +127,8 @@
   "skill.epicfight_dd.final_strength.tooltip": "“You can’t fight with an empty stomach! Or maybe you can?”\n\nSaturation drains %2$sx as fast. While your hunger bar is completely empty, you deal %1$s%% more damage and gain permanent Resistance.",
   "skill.epicfight_dd.annulation": "Annulation",
   "skill.epicfight_dd.annulation.tooltip": "For 15 seconds, all incoming damage is reduced to 0.",
-
+  "skill.epicfight_dd.bold_confidence": "Bold Confidence",
+  "skill.epicfight_dd.bold_confidence.tooltip": "Increases Attack Speed and Resistance after a Rapid Attack",
 
   "skill.epicfight_dd.restocking":"Restocking",
   "skill.epicfight_dd.restocking.tooltip":"After 15 Seconds gain for Each Kill one Innate Stack extra. Player kill will regenerate all Stacks if there is more than one",
@@ -149,6 +150,8 @@
   "skill.epicfight_dd.outlasting.tooltip": "While below 50% of your maximum health, all stamina consumption is halved and the stamina regeneration time is reduced.",
   "skill.epicfight_dd.heated_steps": "Heated Step",
   "skill.epicfight_dd.heated_steps.tooltip": "Chargable dodge, that errupts fire when used.",
+  "skill.epicfight_dd.cortisol": "Cortisol",
+  "skill.epicfight_dd.cortisol.tooltip": "Every hit you take raises your stress level by %1$s%% to a maximum of %2$s%%. Increased Stress Level will increase your attack power, but it will make you more vulnerable. After %3$s seconds without taking damage, your stress level decreases.",
 
   "item.epicfight_dd.stone_knife": "Stone Knife",
   "item.epicfight_dd.diamond_knife": "Diamond Knife",

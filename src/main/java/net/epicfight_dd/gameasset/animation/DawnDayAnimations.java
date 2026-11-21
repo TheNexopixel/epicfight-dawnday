@@ -3769,7 +3769,7 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         NIGHTINGALE_DASH_NEW = builder.nextAccessor("biped/combat/nightingale_dash_new", (accessor) ->
-                new DashAttackAnimation(0.12F, 0.2F, 0.74F, 0.87F, 1.2F, null, biped.get().toolR, accessor, biped)
+                new DashAttackAnimation(0.12F, 0.2F, 0.67F, 0.84F, 1.2F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.7F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));

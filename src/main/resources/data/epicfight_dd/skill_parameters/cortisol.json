@@ -1,0 +1,8 @@
+{
+  "stress_per_hit": 2.0,
+  "max_stress": 100.0,
+  "decay_delay_ticks": 300,
+  "decay_per_second": 4.0,
+  "sync_interval": 2,
+  "overlay_alpha": 0.25
+}

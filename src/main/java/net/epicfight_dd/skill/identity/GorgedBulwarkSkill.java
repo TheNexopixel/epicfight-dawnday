@@ -53,13 +53,13 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
         static volatile float saturationCost = 0.5F;
         static volatile float maxHungerFraction = 0.5F;
         static volatile float healPerFood = 0.25F;
-        static volatile float healingReduction = 0.5F; // 0.5 = 50 % weniger Heilrate (positiv angeben!)
+        static volatile float healingReduction = 0.5F;
         static volatile float absorbPerFood = 0.5F;
         static volatile float absorptionMax = 10.0F;
         static volatile int absorptionDuration = 600;
     }
 
-    private static final float ABSORPTION_DECAY_PER_TICK = 0.05F; // 1 HP pro Sekunde
+    private static final float ABSORPTION_DECAY_PER_TICK = 0.05F;
     private static final UUID HEALING_MODIFIER = UUID.fromString("3b7e2d4a-5c1f-4e8b-9a60-2f4d8c1e7b95");
 
     private record FoodSnapshot(int food, float saturation) {}

@@ -1,6 +1,7 @@
 package net.epicfight_dd.skill;
 
 import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.skill.passive.CortisolSkill;
 import net.epicfight_dd.skill.passive.RapidRetreatSkill;
 import net.epicfight_dd.skill.passive.RestockingSkill;
 import net.epicfight_dd.skill.passive.Riposte;
@@ -48,6 +49,14 @@ public class SkillDataKeyZ {
                     PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
 
     public static final RegistryObject<SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = DATA_KEYS.register("special_stance_active", () -> SkillDataKey.createSkillDataKey(PacketBufferCodec.BOOLEAN, false,true, WingStanceSkill.class));
+
+    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_STRESS =
+            DATA_KEYS.register("cortisol_stress", () ->
+                    SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, CortisolSkill.class));
+
+    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_IDLE =
+            DATA_KEYS.register("cortisol_idle", () ->
+                    SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, CortisolSkill.class));
 
     public static final RegistryObject<SkillDataKey<Integer>> IRON_WILL_STACKS =
             DATA_KEYS.register( "iron_will_stacks", ()

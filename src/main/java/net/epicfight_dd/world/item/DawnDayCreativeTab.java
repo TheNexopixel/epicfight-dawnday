@@ -97,6 +97,9 @@ public class DawnDayCreativeTab {
                 ItemStack book_heated_steps = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.HEATED_STEPS, book_heated_steps);
                 output.accept(book_heated_steps);
+                ItemStack book_cortisol = new ItemStack(EpicFightItems.SKILLBOOK.get());
+                SkillBookItem.setContainingSkill(DawnDaySkills.CORTISOL, book_cortisol);
+                output.accept(book_cortisol);
                 ItemStack book_divine_punishment = new ItemStack(EpicFightItems.SKILLBOOK.get());
                 SkillBookItem.setContainingSkill(DawnDaySkills.DIVINE_PUNISHMENT, book_divine_punishment);
                 output.accept(book_divine_punishment);
