@@ -298,7 +298,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO3_REFINED,
                             DawnDayAnimations.BATTLESTAFF_AUTO4_REFINED,
                             DawnDayAnimations.POLEBLADE_DASH,
-                            DawnDayAnimations.TWINBLADE_AIRSLASH
+                            DawnDayAnimations.WARSICKLE_AUTO3
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
@@ -322,7 +322,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO3_REFINED,
                             DawnDayAnimations.BATTLESTAFF_AUTO4_REFINED,
                             DawnDayAnimations.POLEBLADE_DASH,
-                            DawnDayAnimations.TWINBLADE_AIRSLASH
+                            DawnDayAnimations.WARSICKLE_AUTO3
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.POLEBLADE_WALK)
@@ -346,7 +346,7 @@ public class DawnDayWeaponCapabilityPreset {
                             DawnDayAnimations.BATTLESTAFF_AUTO3_REFINED,
                             DawnDayAnimations.BATTLESTAFF_AUTO4_REFINED,
                             DawnDayAnimations.POLEBLADE_DASH,
-                            DawnDayAnimations.TWINBLADE_AIRSLASH
+                            DawnDayAnimations.WARSICKLE_AUTO3
                     )
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.BATTLESTAFF_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, DawnDayAnimations.TWINBLADE_WALK)

@@ -118,10 +118,10 @@ public final class HeatedStepsTrail {
             if (tier >= 4) {
                 HeatedStepsBurstPacket.send(owner, burst.position);
                 state.level.sendParticles(ParticleTypes.LAVA, burst.position.x, burst.position.y, burst.position.z,
-                        12, .65, .15, .65, 0);
+                        32, .65, .15, .65, 0);
             } else if (tier == 0) {
                 state.level.sendParticles(ParticleTypes.SMOKE, burst.position.x, burst.position.y, burst.position.z,
-                        10, .5, .12, .5, .025);
+                        20, .5, .12, .5, .025);
             }
         }
         state.parameters = parameters;

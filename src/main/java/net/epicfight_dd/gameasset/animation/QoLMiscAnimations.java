@@ -40,6 +40,7 @@ public class QoLMiscAnimations {
     public static AnimationAccessor<ActionAnimation> FALL_DEATH_MOB, SHOT_DEAD_MOB, DEATH_MOB_MAGIC, DEATH_MOB_WITHER;
     public static AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
     public static AnimationAccessor<DodgeAnimation> HEATED_STEP_BACKWARD;
+    public static AnimationAccessor<DodgeAnimation> HEATED_STEP_FORWARD;
 
     public static AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
     public static AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN, BREAKDOWN;
@@ -228,6 +229,11 @@ public class QoLMiscAnimations {
         FALL_DEATH_MOB = death(builder, "death_fall_mob", 0.5F);
 
         HEATED_STEP_BACKWARD = builder.nextAccessor("biped/skill/heatstep_backward", ac ->
+                new DodgeAnimation(0.12F, 0.9f,ac,0.9f,1.0f, Armatures.BIPED)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 0.7F))
+        );
+        HEATED_STEP_FORWARD = builder.nextAccessor("biped/skill/heatstep_forward", ac ->
                 new DodgeAnimation(0.12F, 0.9f,ac,0.9f,1.0f, Armatures.BIPED)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 0.7F))

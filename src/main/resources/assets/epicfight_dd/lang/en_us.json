@@ -143,7 +143,7 @@
   "skill.epicfight_dd.unstoppable": "Unstoppable",
   "skill.epicfight_dd.unstoppable.tooltip": "Each kill grants one stack of Unstoppable. Armor increases the maximum to up to 13 stacks. Each hit taken consumes one stack.\n\nStacks reduce healing received by 7% and grant additional bonuses based on the number of stacks:\n\n-Stun Resistance (1–3)\n-50% Damage Reduction (4–6)\n-Stamina Interruption Resistance (7–12)\n\nAnd for 13 a shield that absorbs one hit (10-sec cooldown).",
   "skill.epicfight_dd.divine_punishment": "Divine Punishment",
-  "skill.epicfight_dd.divine_punishment.tooltip": "\"...And those who are prideful and refuse to bow down shall be laid low and made unto dust.\"\n\nDeal 10% more damage to undead and receive 20% less damage from undead mob attacks.",
+  "skill.epicfight_dd.divine_punishment.tooltip": "\"...And those who are prideful and refuse to bow down shall be laid low and made unto dust.\"\n\nDeal 10% more damage to undead and receive 20% less damage from undead mob attacks.\n Small chance to inflict 70% more Damage",
   "skill.epicfight_dd.gorged_bulwark": "Gorged Bulwark",
   "skill.epicfight_dd.gorged_bulwark.tooltip": "Damage drains your hunger bar instead of your health. While saturated, you take half hunger damage, decreases saturation. With an empty hunger bar, you lose health.\n\nYou can always eat, and Hunger is pure poison for you. Food heals you directly, and overeating grants up to 5 temporary absorption hearts. Natural regeneration is reduced by 50%.",
   "skill.epicfight_dd.outlasting": "Outlasting",
@@ -151,7 +151,7 @@
   "skill.epicfight_dd.heated_steps": "Heated Step",
   "skill.epicfight_dd.heated_steps.tooltip": "Chargable dodge, that errupts fire when used.",
   "skill.epicfight_dd.cortisol": "Cortisol",
-  "skill.epicfight_dd.cortisol.tooltip": "Every hit you take raises your stress level by %1$s%% to a maximum of %2$s%%. Increased Stress Level will increase your attack power, but it will make you more vulnerable. After %3$s seconds without taking damage, your stress level decreases.",
+  "skill.epicfight_dd.cortisol.tooltip": "Every hit you take raises your stress level by %1$s%% to a maximum of %2$s%%.\n\nIncreased Stress Level will increase your attack power, but it will make you more vulnerable.\nAfter %3$s seconds without taking damage, your stress level decreases.",
 
   "item.epicfight_dd.stone_knife": "Stone Knife",
   "item.epicfight_dd.diamond_knife": "Diamond Knife",

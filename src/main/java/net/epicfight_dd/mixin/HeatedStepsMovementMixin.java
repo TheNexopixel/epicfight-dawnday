@@ -1,5 +1,6 @@
 package net.epicfight_dd.mixin;
 
+import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -36,7 +37,7 @@ public abstract class HeatedStepsMovementMixin {
     private void epicfight_dd_heatedStepsDistance(LivingEntityPatch<?> patch,
             AssetAccessor<? extends DynamicAnimation> animation, CallbackInfoReturnable<Vec3> result) {
         Object self = this;
-        if (self != Animations.BIPED_ROLL_FORWARD.get()
+        if (self != QoLMiscAnimations.HEATED_STEP_FORWARD.get()
                 && self != net.epicfight_dd.gameasset.animation.QoLMiscAnimations.HEATED_STEP_BACKWARD.get()) return;
         float scale = HeatedStepsSkill.distanceScale(patch);
         if (scale == 1) return;

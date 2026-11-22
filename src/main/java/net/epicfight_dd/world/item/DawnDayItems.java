@@ -80,14 +80,14 @@ public class DawnDayItems {
                             .defaultDurability(1205)
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
-                            "tooltip.epicfight_dd.sanguineus",
-                            ChatFormatting.GRAY),
-                    new TooltipLine(
                             "tooltip.epicfight_dd.weapon_passive",
                             ChatFormatting.WHITE,ChatFormatting.BOLD),
                     new TooltipLine(
                             "tooltip.epicfight_dd.blood_loss_passive",
-                            ChatFormatting.WHITE)
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.sanguineus",
+                            ChatFormatting.GRAY)
 
             ));
 
@@ -100,14 +100,14 @@ public class DawnDayItems {
                             .defaultDurability(1205)
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
-                            "tooltip.epicfight_dd.twinblade",
-                            ChatFormatting.GRAY),
-                    new TooltipLine(
                             "tooltip.epicfight_dd.weapon_passive",
                             ChatFormatting.WHITE,ChatFormatting.BOLD),
                     new TooltipLine(
                             "tooltip.epicfight_dd.blood_loss_passive",
-                            ChatFormatting.WHITE)
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.twinblade",
+                            ChatFormatting.GRAY)
 
             ));
 
@@ -149,14 +149,14 @@ public class DawnDayItems {
                             .defaultDurability(1205)
                             .rarity(Rarity.COMMON),
                     new TooltipLine(
-                            "tooltip.epicfight_dd.hookclaws",
-                            ChatFormatting.GRAY),
-                    new TooltipLine(
                             "tooltip.epicfight_dd.weapon_passive",
                             ChatFormatting.WHITE,ChatFormatting.BOLD),
                     new TooltipLine(
                             "tooltip.epicfight_dd.blood_loss_passive",
-                            ChatFormatting.WHITE)
+                            ChatFormatting.WHITE),
+                    new TooltipLine(
+                            "tooltip.epicfight_dd.hookclaws",
+                            ChatFormatting.GRAY)
 
             ));
     public static final RegistryObject<Item> GRIMM =

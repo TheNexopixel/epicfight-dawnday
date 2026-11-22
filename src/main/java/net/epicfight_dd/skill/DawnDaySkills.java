@@ -551,7 +551,7 @@ public class DawnDaySkills {
 
         HEATED_STEPS = modRegistry.build("heated_steps", HeatedStepsSkill::new,
                 DodgeSkill.createDodgeBuilder()
-                        .setAnimations(Animations.BIPED_ROLL_FORWARD, QoLMiscAnimations.HEATED_STEP_BACKWARD));
+                        .setAnimations(QoLMiscAnimations.HEATED_STEP_FORWARD, QoLMiscAnimations.HEATED_STEP_BACKWARD));
 
         RESTOCKING = modRegistry.build("restocking", RestockingSkill::new,
                 PassiveSkill.createPassiveBuilder()

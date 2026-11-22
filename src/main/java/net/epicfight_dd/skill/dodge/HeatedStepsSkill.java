@@ -295,7 +295,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
 
     public static boolean rolling(LivingEntityPatch<?> patch) {
         var animation = patch.getAnimator().getPlayerFor(null).getAnimation().get().getRealAnimation();
-        return animation == Animations.BIPED_ROLL_FORWARD || animation == QoLMiscAnimations.HEATED_STEP_BACKWARD;
+        return animation == QoLMiscAnimations.HEATED_STEP_FORWARD || animation == QoLMiscAnimations.HEATED_STEP_BACKWARD;
     }
 
     public static float distanceScale(LivingEntityPatch<?> patch) {

@@ -52,7 +52,6 @@ public class RedemptionSkill extends PassiveSkill {
         return 1.0F;
     }
 
-    // ---------- Lifecycle ----------
 
     @Override
     public void onInitiate(SkillContainer container) {
@@ -77,8 +76,6 @@ public class RedemptionSkill extends PassiveSkill {
         container.getExecutor().getEventListener().removeListener(EventType.TAKE_DAMAGE_EVENT_HURT, EVENT_UUID);
     }
 
-    // ---------- Parameter ----------
-
     @Override
     public void setParams(CompoundTag parameters) {
         super.setParams(parameters);
@@ -87,7 +84,6 @@ public class RedemptionSkill extends PassiveSkill {
         this.staminaFraction = parameters.contains("stamina_fraction") ? parameters.getFloat("stamina_fraction") : 0.5F;
     }
 
-    // ---------- Effekt ----------
 
     private void activateRedemption(SkillContainer container, PlayerPatch<?> patch,
                                     ServerPlayer player, DamageSource source) {
@@ -116,7 +112,6 @@ public class RedemptionSkill extends PassiveSkill {
 
         }
 
-        // Buffs
         player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 400, 2));
         player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 150, 1));
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 350, 1));
