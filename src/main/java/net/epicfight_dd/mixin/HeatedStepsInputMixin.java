@@ -26,6 +26,7 @@ public abstract class HeatedStepsInputMixin {
         callback.cancel();
         if (playerPatch.isHoldingSkill(skill)) return;
         ControlEngine engine = (ControlEngine)(Object)this;
+        if (skill.sendEmergencyDodge(container, engine)) return;
         if (container.sendCastRequest(playerPatch, engine).shouldReserveKey())
             reserveKey(SkillSlots.DODGE, EpicFightKeyMappings.DODGE);
     }

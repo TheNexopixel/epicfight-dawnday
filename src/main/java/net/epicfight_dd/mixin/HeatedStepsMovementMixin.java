@@ -36,7 +36,8 @@ public abstract class HeatedStepsMovementMixin {
     private void epicfight_dd_heatedStepsDistance(LivingEntityPatch<?> patch,
             AssetAccessor<? extends DynamicAnimation> animation, CallbackInfoReturnable<Vec3> result) {
         Object self = this;
-        if (self != Animations.BIPED_ROLL_FORWARD.get() && self != Animations.BIPED_ROLL_BACKWARD.get()) return;
+        if (self != Animations.BIPED_ROLL_FORWARD.get()
+                && self != net.epicfight_dd.gameasset.animation.QoLMiscAnimations.HEATED_STEP_BACKWARD.get()) return;
         float scale = HeatedStepsSkill.distanceScale(patch);
         if (scale == 1) return;
         Vec3 move = result.getReturnValue();

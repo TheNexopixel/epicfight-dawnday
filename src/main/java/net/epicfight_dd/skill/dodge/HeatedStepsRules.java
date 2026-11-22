@@ -2,7 +2,7 @@ package net.epicfight_dd.skill.dodge;
 
 public final class HeatedStepsRules {
     public static final int TAP_TICKS = 4;
-    public static final int PERIOD = 40;
+    public static final int PERIOD = 30;
     public static final int RESULT_TICKS = 8;
     public static final int BURN_TICKS = 140;
     public static final int BURST_TICKS = 6;

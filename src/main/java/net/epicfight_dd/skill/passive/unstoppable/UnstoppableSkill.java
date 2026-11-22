@@ -33,9 +33,10 @@ public final class UnstoppableSkill extends PassiveSkill {
     @Override
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
+        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             sync(container, SkillDataKeyZ.UNSTOPPABLE_STACKS.get(), 0);
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
             sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remainingCooldown(player));
             refresh(container);
         }
@@ -43,8 +44,9 @@ public final class UnstoppableSkill extends PassiveSkill {
 
     @Override
     public void onRemoved(SkillContainer container) {
+        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (!container.getExecutor().getOriginal().level().isClientSide) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
             clearEffects(container.getExecutor().getOriginal());
         }
         super.onRemoved(container);
@@ -52,8 +54,9 @@ public final class UnstoppableSkill extends PassiveSkill {
 
     @Override
     public void onReset(SkillContainer container) {
+        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (container.getExecutor().getOriginal() instanceof ServerPlayer) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
             setStacks(container, 0);
         }
         super.onReset(container);
@@ -76,27 +79,47 @@ public final class UnstoppableSkill extends PassiveSkill {
             container.getDataManager().setDataSync(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remaining);
         }
         if (container.isDisabled() || !player.isAlive()) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
             setStacks(container, 0);
         } else {
 
             refresh(container);
             regenerate(container);
         }
+        barrierAmbient(container, player);
+    }
+
+    private static void barrierAmbient(SkillContainer container, ServerPlayer player) {
+        int delay = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get());
+        if (container.isDisabled() || !player.isAlive() || !player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
+            delay = 0;
+        } else if (delay <= 0) {
+            delay = SkillSoundEffects.barrierAmbientDelay();
+        } else if (delay == 1) {
+            SkillSoundEffects.unstoppableBarrierAmbient(player);
+            delay = SkillSoundEffects.barrierAmbientDelay();
+        } else {
+            delay--;
+        }
+        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), delay);
     }
 
     private static void regenerate(SkillContainer container) {
         int current = stacks(container);
         int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
-        int elapsed = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get());
+        var data = container.getDataManager();
+        var regeneration = SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get();
         if (current >= cap) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
-        } else if (elapsed + 1 >= UnstoppableRules.REGENERATION_INTERVAL) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0);
+            data.setData(regeneration, 0D);
+            return;
+        }
+        double healing = container.getExecutor().getOriginal().getAttributeValue(DawnDayAttributes.HEALING.get());
+        double progress = data.getDataValue(regeneration) + UnstoppableRules.regenerationRate(healing);
+        if (progress >= UnstoppableRules.REGENERATION_INTERVAL) {
+            data.setData(regeneration, 0D);
             setStacks(container, current + 1);
-
         } else {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), elapsed + 1);
+            data.setData(regeneration, progress);
         }
     }
 
