@@ -3,11 +3,10 @@ package net.epicfight_dd.mixin;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.ForgeEventFactory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import yesman.epicfight.api.animation.types.ActionAnimation;
 import yesman.epicfight.api.animation.types.DynamicAnimation;
@@ -18,19 +17,18 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 @Mixin(value = ActionAnimation.class, remap = false)
 public abstract class HeatedStepsMovementMixin {
-    @Redirect(method = "begin", at = @At(value = "INVOKE", target =
-            "Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;cancelItemUse()V"), remap = false)
-    private void epicfight_dd_heatedStepsKeepCharge(LivingEntityPatch<?> patch) {
+    @Inject(method = "begin", at = @At("HEAD"))
+    private void epicfight_dd_heatedStepsBeginCharge(LivingEntityPatch<?> patch, CallbackInfo ci) {
         if ((Object)this == Animations.BIPED_DEMOLITION_LEAP_CHARGING.get()
                 && patch instanceof PlayerPatch<?> player && player.getHoldingSkill() instanceof HeatedStepsSkill) {
-            var entity = patch.getOriginal();
-            if (entity.isUsingItem()) {
-                entity.stopUsingItem();
-                ForgeEventFactory.onUseItemStop(entity, entity.getUseItem(), entity.getUseItemRemainingTicks());
-            }
-            return;
+            HeatedStepsSkill.keepHoldingOnItemCancel(player);
         }
-        patch.cancelItemUse();
+    }
+
+    @Inject(method = "begin", at = @At(value = "INVOKE", target =
+            "Lyesman/epicfight/api/animation/types/MainFrameAnimation;begin(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;)V"))
+    private void epicfight_dd_heatedStepsAfterItemCancel(LivingEntityPatch<?> patch, CallbackInfo ci) {
+        HeatedStepsSkill.consumeKeepHoldingOnItemCancel(patch);
     }
 
     @Inject(method = "getCoordVector", at = @At("RETURN"), cancellable = true, remap = false)
