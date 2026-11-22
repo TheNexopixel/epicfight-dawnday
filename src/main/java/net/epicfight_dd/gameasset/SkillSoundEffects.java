@@ -1,6 +1,7 @@
 package net.epicfight_dd.gameasset;
 
 import java.util.concurrent.ThreadLocalRandom;
+import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -60,6 +61,14 @@ public final class SkillSoundEffects {
 
     public static void unstoppableBarrierStop(ServerPlayer player) {
         playWorld(player, BARRIER_STOP);
+    }
+
+    public static void unstoppableBarrierAmbient(ServerPlayer player) {
+        UnstoppableVisualPacket.send(player, UnstoppableVisualPacket.BARRIER_AMBIENT, 13);
+    }
+
+    public static int barrierAmbientDelay() {
+        return ThreadLocalRandom.current().nextInt(200, 321);
     }
 
     private static void playWorld(ServerPlayer player, Layer[] layers) {

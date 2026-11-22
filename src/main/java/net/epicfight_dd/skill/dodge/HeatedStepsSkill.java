@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -28,9 +29,12 @@ import yesman.epicfight.skill.modules.ChargeableSkill;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
+import yesman.epicfight.world.entity.eventlistener.SkillCastEvent;
+import yesman.epicfight.world.effect.EpicFightMobEffects;
 
 public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkill {
     private static final UUID INPUT = UUID.fromString("fa0f0692-9c54-41f5-b987-24e89f8c72c7");
+    private static final UUID CONSUMPTION = UUID.fromString("851ea495-89f7-4513-a0d2-1e97ace4164f");
     public record TrailParameters(int duration, double radius, float damage, int interval, int burnTicks, float burnChance) { }
     private TrailParameters trail = new TrailParameters(60, .75, 2, 10, 140, .25F);
 
@@ -54,12 +58,60 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     @Override
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
+        container.getExecutor().getEventListener().addEventListener(EventType.SKILL_CONSUME_EVENT, CONSUMPTION, event -> {
+            var patch = event.getPlayerPatch();
+            var arguments = event.getArguments();
+            if (event.getSkill() != this || event.getResourceType() != Resource.STAMINA) return;
+            if (!patch.isHoldingSkill(this) && arguments != null && arguments.readableBytes() < 8) {
+                event.setAmount(0);
+                return;
+            }
+            if (arguments == null || arguments.readableBytes() < 12 || !patch.isHoldingSkill(this)) return;
+            int requested = arguments.getInt(arguments.readerIndex() + 8);
+            int ticks = HeatedStepsRules.validatedTicks(requested, patch.getSkillChargingTicks());
+            if (HeatedStepsRules.tier(ticks) == 4) event.setAmount(event.getAmount() * .5F);
+        });
         container.getExecutor().getEventListener().addEventListener(EventType.MOVEMENT_INPUT_EVENT, INPUT, event -> {
             var patch = event.getPlayerPatch();
             if (patch.isHoldingSkill(this) && patch.getSkillChargingTicks() >= HeatedStepsRules.TAP_TICKS)
                 InputManager.setInputState(event.getInputState().withLeftImpulse(0).withForwardImpulse(0)
                         .withUp(false).withDown(false).withLeft(false).withRight(false).withJumping(false));
         });
+    }
+
+    @Override
+    public boolean resourcePredicate(PlayerPatch<?> patch, SkillCastEvent event) {
+        var arguments = event.getArguments();
+        if (isEmergencyRequest(arguments)) {
+            return canEmergencyDodge(patch) && validDirection(arguments) && super.resourcePredicate(patch, event);
+        }
+        if (!patch.isHoldingSkill(this) && canEmergencyDodge(patch)) return false;
+        return patch.hasStamina(getDefaultConsumptionAmount(patch));
+    }
+
+    private boolean canEmergencyDodge(PlayerPatch<?> patch) {
+        return !patch.getOriginal().isCreative() && validPlayer(patch) && patch.isEpicFightMode()
+                && (patch.getEntityState().hurt() || getConsumption() > patch.getStamina())
+                && patch.getSkillContainerFor(EpicFightSkills.EMERGENCY_ESCAPE)
+                .filter(escape -> !escape.isDisabled() && escape.getStack() > 0).isPresent();
+    }
+
+    private boolean validDirection(FriendlyByteBuf buffer) {
+        int index = buffer.readerIndex();
+        int animation = buffer.getInt(index);
+        return animation >= 0 && animation < animations.length && Float.isFinite(buffer.getFloat(index + 4));
+    }
+
+    public static boolean isEmergencyRequest(FriendlyByteBuf buffer) {
+        return buffer != null && buffer.readableBytes() == 8;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public boolean sendEmergencyDodge(SkillContainer container, ControlEngine engine) {
+        if (!canEmergencyDodge(container.getExecutor())) return false;
+        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+        engine.addPacketToSend(super.getExecutionPacket(container, null));
+        return true;
     }
 
     @Override @OnlyIn(Dist.CLIENT)
@@ -96,6 +148,16 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
         if (ticks == HeatedStepsRules.TAP_TICKS)
             patch.playAnimationSynchronized(Animations.BIPED_DEMOLITION_LEAP_CHARGING, 0);
         if (ticks >= HeatedStepsRules.TAP_TICKS) {
+            if (!patch.getOriginal().isCreative()
+                    && (!patch.consumeForSkill(this, Resource.STAMINA, patch.getModifiedStaminaConsume(.05F))
+                    || patch.getStamina() <= 0)) {
+                cancelOnServer(container, null);
+                return;
+            }
+            patch.resetActionTick();
+            var immunity = patch.getOriginal().getEffect(EpicFightMobEffects.STUN_IMMUNITY.get());
+            if (immunity == null || !immunity.isInfiniteDuration() && immunity.getDuration() <= 1)
+                patch.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 2, 0, false, false, false));
             Vec3 velocity = patch.getOriginal().getDeltaMovement();
             patch.getOriginal().setDeltaMovement(0, velocity.y, 0);
         }
@@ -113,6 +175,10 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     @Override
     public void executeOnServer(SkillContainer container, FriendlyByteBuf buffer) {
         var patch = container.getServerExecutor();
+        if (isEmergencyRequest(buffer) && !patch.isHoldingSkill(this)) {
+            if (!patch.getOriginal().isCreative() && validDirection(buffer)) performDodge(container, buffer, 0);
+            return;
+        }
         if (buffer.readableBytes() < 12 || !patch.isHoldingSkill(this)) return;
         int animation = buffer.getInt(buffer.readerIndex());
         float yaw = buffer.getFloat(buffer.readerIndex() + 4);
@@ -126,14 +192,21 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
             return;
         }
         int ticks = HeatedStepsRules.validatedTicks(requested, elapsed);
+        if (!patch.getOriginal().isCreative() && !patch.consumeForSkill(this, Resource.STAMINA, buffer)) {
+            cancelOnServer(container, null);
+            return;
+        }
         container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT.get(), ticks);
-        int tier = HeatedStepsRules.tier(ticks);
+        performDodge(container, buffer, HeatedStepsRules.tier(ticks));
+    }
+
+    private void performDodge(SkillContainer container, FriendlyByteBuf buffer, int tier) {
         container.getDataManager().setDataSync(SkillDataKeyZ.HEATED_STEPS_TIER.get(), tier);
         super.executeOnServer(container, buffer);
         TrailParameters active = tier >= 3
                 ? new TrailParameters(90, trail.radius() * 1.5, trail.damage(), trail.interval(), trail.burnTicks(), trail.burnChance()) : trail;
         HeatedStepsTrail.begin(container, active, tier);
-        SkillSoundEffects.heatedStep(patch.getOriginal(), tier);
+        SkillSoundEffects.heatedStep(container.getServerExecutor().getOriginal(), tier);
     }
 
     @Override
@@ -187,6 +260,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     @Override
     public void onRemoved(SkillContainer container) {
         container.getExecutor().getEventListener().removeListener(EventType.MOVEMENT_INPUT_EVENT, INPUT);
+        container.getExecutor().getEventListener().removeListener(EventType.SKILL_CONSUME_EVENT, CONSUMPTION);
         clear(container);
         super.onRemoved(container);
     }

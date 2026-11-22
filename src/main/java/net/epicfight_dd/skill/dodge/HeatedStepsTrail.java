@@ -11,9 +11,12 @@ import net.epicfight_dd.network.HeatedStepsBurstPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
@@ -25,6 +28,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -35,11 +39,25 @@ import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.damagesource.StunType;
+import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 
 @Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
 public final class HeatedStepsTrail {
     private static final int MAX_POINTS = 128;
     private static final double SPACING = .35;
+    private static final ThreadLocal<LivingEntity> FIRE_DAMAGE_TARGET = new ThreadLocal<>();
+    private static final class FireDamageSource extends DamageSource {
+        FireDamageSource(ServerPlayer owner) {
+            super(owner.serverLevel().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+                    .getHolderOrThrow(DamageTypes.IN_FIRE), owner);
+        }
+
+        @Override
+        public boolean is(TagKey<DamageType> tag) {
+            return tag.equals(DamageTypeTags.BYPASSES_SHIELD) || tag.equals(DamageTypeTags.NO_IMPACT)
+                    || tag.equals(EpicFightDamageTypeTags.UNBLOCKALBE) || super.is(tag);
+        }
+    }
     private record Point(Vec3 position, long until, HeatedStepsSkill.TrailParameters parameters) { }
     private static final class Burst {
         final Vec3 position;
@@ -62,13 +80,28 @@ public final class HeatedStepsTrail {
         State(ServerPlayer owner) {
             this.owner = owner;
             this.level = owner.serverLevel();
-            this.damage = new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-                    .getHolderOrThrow(DamageTypes.IN_FIRE), owner);
+            this.damage = new FireDamageSource(owner);
         }
     }
     private static final Map<UUID, State> STATES = new HashMap<>();
 
     private HeatedStepsTrail() { }
+
+    private static boolean hurt(State state, LivingEntity target, float amount) {
+        LivingEntity previous = FIRE_DAMAGE_TARGET.get();
+        FIRE_DAMAGE_TARGET.set(target);
+        try {
+            return target.hurt(state.damage, amount);
+        } finally {
+            if (previous == null) FIRE_DAMAGE_TARGET.remove();
+            else FIRE_DAMAGE_TARGET.set(previous);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void knockback(LivingKnockBackEvent event) {
+        if (FIRE_DAMAGE_TARGET.get() == event.getEntity()) event.setCanceled(true);
+    }
 
     public static void begin(SkillContainer container, HeatedStepsSkill.TrailParameters parameters, int tier) {
         ServerPlayer owner = container.getServerExecutor().getOriginal();
@@ -82,7 +115,14 @@ public final class HeatedStepsTrail {
             if (state.bursts.size() >= 4) state.bursts.remove(0);
             Burst burst = new Burst(owner.position().add(0, .05, 0), state.level.getGameTime(), tier);
             state.bursts.add(burst);
-            if (tier >= 4) HeatedStepsBurstPacket.send(owner, burst.position);
+            if (tier >= 4) {
+                HeatedStepsBurstPacket.send(owner, burst.position);
+                state.level.sendParticles(ParticleTypes.LAVA, burst.position.x, burst.position.y, burst.position.z,
+                        12, .65, .15, .65, 0);
+            } else if (tier == 0) {
+                state.level.sendParticles(ParticleTypes.SMOKE, burst.position.x, burst.position.y, burst.position.z,
+                        10, .5, .12, .5, .025);
+            }
         }
         state.parameters = parameters;
         state.previous = owner.position();
@@ -94,8 +134,7 @@ public final class HeatedStepsTrail {
         if (!(container.getExecutor().getOriginal() instanceof ServerPlayer owner)) return;
         State state = STATES.get(owner.getUUID());
         if (state == null || state.container != container || !state.tracing) return;
-        var animation = container.getExecutor().getAnimator().getPlayerFor(null).getAnimation().get().getRealAnimation();
-        if (animation != Animations.BIPED_ROLL_FORWARD && animation != Animations.BIPED_ROLL_BACKWARD) {
+        if (!HeatedStepsSkill.rolling(container.getExecutor())) {
             state.tracing = false;
             return;
         }
@@ -172,7 +211,7 @@ public final class HeatedStepsTrail {
                     if (dx * dx + dz * dz > radius * radius || state.level.clip(new ClipContext(point.position.add(0, .12, 0),
                             box.getCenter(), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, state.owner)).getType() != HitResult.Type.MISS) continue;
                     struck.add(target.getUUID());
-                    if (target.hurt(state.damage, point.parameters.damage()) && point.parameters.burnTicks() > 0
+                    if (hurt(state, target, point.parameters.damage()) && point.parameters.burnTicks() > 0
                             && state.owner.getRandom().nextFloat() < point.parameters.burnChance())
                         target.setSecondsOnFire(Math.max(1, (point.parameters.burnTicks() + 19) / 20));
                 }
@@ -213,7 +252,7 @@ public final class HeatedStepsTrail {
                     ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, state.owner)).getType() != HitResult.Type.MISS) continue;
             hit.add(target.getUUID());
             target.setSecondsOnFire(HeatedStepsRules.BURN_TICKS / 20);
-            if (ring == 0 && burst.tier >= 4 && target.hurt(state.damage, 4)) {
+            if (ring == 0 && burst.tier >= 4 && hurt(state, target, 4)) {
                 LivingEntityPatch<?> patch = EpicFightCapabilities.getEntityPatch(target, LivingEntityPatch.class);
                 if (patch != null && target.isAlive()) patch.applyStun(StunType.KNOCKDOWN, 1);
             }

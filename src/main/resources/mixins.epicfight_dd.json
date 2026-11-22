@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "HeatedStepsMovementMixin",
+    "HeatedStepsEmergencyEscapeMixin",
     "DreadfulBusterSkillRequirementMixin",
     "DreadFullBusterMixin",
     "EpicFightExtraMixin",

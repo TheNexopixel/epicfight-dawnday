@@ -3,6 +3,7 @@ package net.epicfight_dd.network;
 import java.util.UUID;
 import java.util.function.Supplier;
 import net.epicfight_dd.client.particle.UnstoppableParticles;
+import net.epicfight_dd.client.sound.UnstoppableBarrierSound;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,6 +16,7 @@ public record UnstoppableVisualPacket(int entityId, UUID playerId, int kind, int
     public static final int LOSS = 1;
     public static final int BARRIER_START = 2;
     public static final int BARRIER_STOP = 3;
+    public static final int BARRIER_AMBIENT = 4;
 
     public UnstoppableVisualPacket(FriendlyByteBuf buffer) {
         this(buffer.readVarInt(), buffer.readUUID(), buffer.readUnsignedByte(), buffer.readUnsignedByte());
@@ -28,7 +30,10 @@ public record UnstoppableVisualPacket(int entityId, UUID playerId, int kind, int
     }
 
     public void handle(Supplier<NetworkEvent.Context> context) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> UnstoppableParticles.accept(this));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            if (kind == BARRIER_AMBIENT) UnstoppableBarrierSound.play(this);
+            else UnstoppableParticles.accept(this);
+        });
         context.get().setPacketHandled(true);
     }
 

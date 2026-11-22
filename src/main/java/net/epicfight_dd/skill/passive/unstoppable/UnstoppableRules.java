@@ -28,6 +28,11 @@ public final class UnstoppableRules {
         return -0.07592307 * clamp(stacks, MAX_CAP);
     }
 
+    public static double regenerationRate(double healing) {
+        double scale = Double.isFinite(healing) ? Math.max(0, Math.min(1, healing)) : 0;
+        return 2 / (2 - scale);
+    }
+
     public static boolean stunImmune(int stacks) {
         return stacks > 0;
     }
