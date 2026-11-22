@@ -35,6 +35,7 @@ import yesman.epicfight.world.effect.EpicFightMobEffects;
 public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkill {
     private static final UUID INPUT = UUID.fromString("fa0f0692-9c54-41f5-b987-24e89f8c72c7");
     private static final UUID CONSUMPTION = UUID.fromString("851ea495-89f7-4513-a0d2-1e97ace4164f");
+    private static final ThreadLocal<PlayerPatch<?>> KEEP_HOLDING_ON_ITEM_CANCEL = new ThreadLocal<>();
     public record TrailParameters(int duration, double radius, float damage, int interval, int burnTicks, float burnChance) { }
     private TrailParameters trail = new TrailParameters(60, .75, 2, 10, 140, .25F);
 
@@ -42,6 +43,16 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     private static DodgeSkill.Builder held(DodgeSkill.Builder builder) {
         builder.setActivateType(ActivateType.HELD);
         return builder;
+    }
+
+    public static void keepHoldingOnItemCancel(PlayerPatch<?> player) {
+        KEEP_HOLDING_ON_ITEM_CANCEL.set(player);
+    }
+
+    public static boolean consumeKeepHoldingOnItemCancel(LivingEntityPatch<?> patch) {
+        if (KEEP_HOLDING_ON_ITEM_CANCEL.get() != patch) return false;
+        KEEP_HOLDING_ON_ITEM_CANCEL.remove();
+        return true;
     }
 
     @Override
