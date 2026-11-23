@@ -4,6 +4,8 @@ import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
 import net.epicfight_dd.client.particle.DeathParticles;
 import net.epicfight_dd.gameasset.DawnDaySounds;
+import net.epicfight_dd.gameasset.animation.types.HeatedStepsChargeAnimation;
+import net.epicfight_dd.gameasset.animation.types.HeatedStepsDodgeAnimation;
 import net.epicfight_dd.gameasset.animation.types.SelectiveAnimationProxy;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.sounds.SoundSource;
@@ -39,8 +41,8 @@ public class QoLMiscAnimations {
             DEATH_MOB_GENERIC13, DEATH_MOB_GENERIC14;
     public static AnimationAccessor<ActionAnimation> FALL_DEATH_MOB, SHOT_DEAD_MOB, DEATH_MOB_MAGIC, DEATH_MOB_WITHER;
     public static AnimationAccessor<SelectiveAnimationProxy> EXPRESSIVE_DEATH;
-    public static AnimationAccessor<DodgeAnimation> HEATED_STEP_BACKWARD;
-    public static AnimationAccessor<DodgeAnimation> HEATED_STEP_FORWARD;
+    public static AnimationAccessor<ActionAnimation> HEATED_STEP_CHARGING;
+    public static AnimationAccessor<DodgeAnimation> HEATED_STEP_FORWARD, HEATED_STEP_BACKWARD;
 
     public static AnimationAccessor<LongHitAnimation> BATTLE$TAFF_PARRIED;
     public static AnimationAccessor<KnockdownAnimation> DAWNDAY_KNOCKDOWN, BREAKDOWN;
@@ -228,13 +230,14 @@ public class QoLMiscAnimations {
         FALL_DEATH = death(builder, "death_fall", 0.5F);
         FALL_DEATH_MOB = death(builder, "death_fall_mob", 0.5F);
 
+        HEATED_STEP_CHARGING = builder.nextAccessor("biped/skill/heatstep_charging", HeatedStepsChargeAnimation::new);
         HEATED_STEP_BACKWARD = builder.nextAccessor("biped/skill/heatstep_backward", ac ->
-                new DodgeAnimation(0.12F, 0.9f,ac,0.9f,1.0f, Armatures.BIPED)
+                new HeatedStepsDodgeAnimation(0.12F, 0.9F, ac, 0.9F, 1.0F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 0.7F))
         );
         HEATED_STEP_FORWARD = builder.nextAccessor("biped/skill/heatstep_forward", ac ->
-                new DodgeAnimation(0.12F, 0.9f,ac,0.9f,1.0f, Armatures.BIPED)
+                new HeatedStepsDodgeAnimation(0.12F, 0.9F, ac, 0.9F, 1.0F)
                         .addProperty(AnimationProperty.AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.1F, 0.7F))
         );

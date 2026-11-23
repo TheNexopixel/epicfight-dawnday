@@ -8,7 +8,6 @@ import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -64,14 +63,11 @@ public final class UnstoppableEvents {
             return;
         }
         var container = container(player);
-        if (container != null) {
-            UnstoppableSkill.refresh(container);
-            if (UnstoppableRules.barrierReady(UnstoppableSkill.stacks(container), UnstoppableSkill.cooldown(container))) {
-                event.setCanceled(true);
-                event.setAmount(0);
-                UnstoppableSkill.startBarrierCooldown(container);
-                UnstoppableSkill.refresh(container);
-            }
+        if (container != null && UnstoppableRules.barrierReady(
+                UnstoppableSkill.cappedStacks(container), UnstoppableSkill.remainingCooldown(player))) {
+            event.setCanceled(true);
+            event.setAmount(0);
+            ((UnstoppableSkill) container.getSkill()).startBarrierCooldown(container);
         }
     }
 
@@ -87,25 +83,16 @@ public final class UnstoppableEvents {
     }
 
     private static void applyHit(LivingHurtEvent event, SkillContainer container) {
-        UnstoppableSkill.refresh(container);
-        int current = UnstoppableSkill.stacks(container);
-        var hit = UnstoppableRules.hit(current, UnstoppableSkill.cooldown(container),
-                event.getAmount(), event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY));
-        if (hit.absorbed()) {
-            UnstoppableSkill.startBarrierCooldown(container);
-            event.setCanceled(true);
-            event.setAmount(0);
-            UnstoppableSkill.refresh(container);
-            return;
-        }
-        event.setAmount(hit.damage());
-        if (hit.uninterruptedStamina()) {
+        int current = UnstoppableSkill.cappedStacks(container);
+        event.setAmount(event.getAmount() * UnstoppableRules.damageMultiplier(current,
+                event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)));
+        if (UnstoppableRules.uninterruptedStamina(current)) {
             var patch = container.getServerExecutor();
             if (patch.getStaminaRegenAwaitTicks() > 0 && patch.getStamina() < patch.getMaxStamina()) {
                 patch.setStaminaRegenAwaitTicks(0);
             }
         }
-        int remaining = hit.stacks();
+        int remaining = Math.max(0, current - 1);
         if (remaining < current && container.getServerExecutor().getSkillContainerFor(EpicFightSkills.ADAPTIVE_SKIN)
                 .filter(value -> !value.isDisabled()).isPresent()
                 && container.getServerExecutor().getOriginal().getRandom().nextInt(3) == 0) {

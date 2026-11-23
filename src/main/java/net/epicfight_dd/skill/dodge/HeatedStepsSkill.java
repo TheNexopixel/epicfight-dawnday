@@ -2,7 +2,6 @@ package net.epicfight_dd.skill.dodge;
 
 import java.util.UUID;
 import net.epicfight_dd.gameasset.SkillSoundEffects;
-import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.KeyMapping;
@@ -35,7 +34,6 @@ import yesman.epicfight.world.effect.EpicFightMobEffects;
 public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkill {
     private static final UUID INPUT = UUID.fromString("fa0f0692-9c54-41f5-b987-24e89f8c72c7");
     private static final UUID CONSUMPTION = UUID.fromString("851ea495-89f7-4513-a0d2-1e97ace4164f");
-    private static final ThreadLocal<PlayerPatch<?>> KEEP_HOLDING_ON_ITEM_CANCEL = new ThreadLocal<>();
     public record TrailParameters(int duration, double radius, float damage, int interval, int burnTicks, float burnChance) { }
     private TrailParameters trail = new TrailParameters(60, .75, 2, 10, 140, .25F);
 
@@ -43,16 +41,6 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     private static DodgeSkill.Builder held(DodgeSkill.Builder builder) {
         builder.setActivateType(ActivateType.HELD);
         return builder;
-    }
-
-    public static void keepHoldingOnItemCancel(PlayerPatch<?> player) {
-        KEEP_HOLDING_ON_ITEM_CANCEL.set(player);
-    }
-
-    public static boolean consumeKeepHoldingOnItemCancel(LivingEntityPatch<?> patch) {
-        if (KEEP_HOLDING_ON_ITEM_CANCEL.get() != patch) return false;
-        KEEP_HOLDING_ON_ITEM_CANCEL.remove();
-        return true;
     }
 
     @Override
@@ -157,7 +145,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
             return;
         }
         if (ticks == HeatedStepsRules.TAP_TICKS)
-            patch.playAnimationSynchronized(Animations.BIPED_DEMOLITION_LEAP_CHARGING, 0);
+            patch.playAnimationSynchronized(QoLMiscAnimations.HEATED_STEP_CHARGING, 0);
         if (ticks >= HeatedStepsRules.TAP_TICKS) {
             if (!patch.getOriginal().isCreative()
                     && (!patch.consumeForSkill(this, Resource.STAMINA, patch.getModifiedStaminaConsume(.05F))
@@ -301,7 +289,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
 
     private static boolean charging(LivingEntityPatch<?> patch) {
         return patch.getAnimator().getPlayerFor(null).getAnimation().get().getRealAnimation()
-                == Animations.BIPED_DEMOLITION_LEAP_CHARGING;
+                == QoLMiscAnimations.HEATED_STEP_CHARGING;
     }
 
     public static boolean rolling(LivingEntityPatch<?> patch) {

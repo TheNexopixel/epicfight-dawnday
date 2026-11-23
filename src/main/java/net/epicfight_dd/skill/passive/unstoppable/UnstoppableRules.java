@@ -3,8 +3,6 @@ package net.epicfight_dd.skill.passive.unstoppable;
 public final class UnstoppableRules {
     public static final int BASE_CAP = 3;
     public static final int MAX_CAP = 13;
-    public static final int BARRIER_COOLDOWN = 200;
-    public static final int REGENERATION_INTERVAL = 1200;
 
     private UnstoppableRules() {
     }
@@ -45,17 +43,7 @@ public final class UnstoppableRules {
         return stacks >= MAX_CAP && cooldown <= 0;
     }
 
-    public static Hit hit(int stacks, int cooldown, float damage, boolean bypassesInvulnerability) {
-        int current = clamp(stacks, MAX_CAP);
-        if (!(damage > 0)) {
-            return new Hit(current, Math.max(0, cooldown), damage, false, false);
-        }
-        boolean absorbed = !bypassesInvulnerability && barrierReady(current, cooldown);
-        float multiplier = !bypassesInvulnerability && current >= 4 ? 0.5F : 1.0F;
-        return new Hit(absorbed ? current : Math.max(0, current - 1), absorbed ? BARRIER_COOLDOWN : Math.max(0, cooldown),
-                absorbed ? 0 : damage * multiplier, absorbed, !absorbed && uninterruptedStamina(current));
-    }
-
-    public record Hit(int stacks, int cooldown, float damage, boolean absorbed, boolean uninterruptedStamina) {
+    public static float damageMultiplier(int stacks, boolean bypassesInvulnerability) {
+        return !bypassesInvulnerability && stacks >= 4 ? 0.5F : 1.0F;
     }
 }

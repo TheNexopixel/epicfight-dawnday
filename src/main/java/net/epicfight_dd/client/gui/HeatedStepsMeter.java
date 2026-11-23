@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGuiEvent;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +24,8 @@ public final class HeatedStepsMeter {
     private static final ResourceLocation METER = texture("charge_bar");
     private static final ResourceLocation TRIGGER = texture("charge_bar_trigger");
     private static final ResourceLocation SELECTED = texture("charge_bar_trigger_activated");
+    private static final ResourceLocation EPIC_FIGHT_CHARGING_BAR =
+            ResourceLocation.fromNamespaceAndPath("epicfight", "charging_bar");
     private HeatedStepsMeter() { }
 
     @SubscribeEvent
@@ -39,6 +42,15 @@ public final class HeatedStepsMeter {
         patch.resetHolding();
         ClientEngine.getInstance().controlEngine.releaseAllServedKeys();
         container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+    }
+
+    @SubscribeEvent
+    public static void hideEpicFightChargingBar(RenderGuiOverlayEvent.Pre event) {
+        if (!EPIC_FIGHT_CHARGING_BAR.equals(event.getOverlay().id())) return;
+        var player = Minecraft.getInstance().player;
+        if (player == null) return;
+        var patch = EpicFightCapabilities.getLocalPlayerPatch(player);
+        if (patch != null && patch.getHoldingSkill() instanceof HeatedStepsSkill) event.setCanceled(true);
     }
 
     @SubscribeEvent

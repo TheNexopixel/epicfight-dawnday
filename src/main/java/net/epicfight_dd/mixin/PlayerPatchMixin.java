@@ -2,7 +2,7 @@ package net.epicfight_dd.mixin;
 
 
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
-import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
+import net.epicfight_dd.gameasset.animation.types.HeatedStepsChargeAnimation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,7 +21,7 @@ public abstract class PlayerPatchMixin {
     @Inject(method = "cancelItemUse", at = @At(value = "INVOKE", target =
             "Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;resetHolding()V"), cancellable = true)
     private void epicfight_dd_heatedStepsKeepCharge(CallbackInfo ci) {
-        if (HeatedStepsSkill.consumeKeepHoldingOnItemCancel((PlayerPatch<?>)(Object)this)) ci.cancel();
+        if (HeatedStepsChargeAnimation.consumeKeepHolding((PlayerPatch<?>)(Object)this)) ci.cancel();
     }
 
     @Inject(method = "initAnimator", at = @At("TAIL"), remap = false)
