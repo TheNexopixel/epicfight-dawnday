@@ -7,6 +7,8 @@ import net.epicfight_dd.gameasset.SkillSoundEffects;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,9 +27,26 @@ import yesman.epicfight.world.effect.EpicFightMobEffects;
 public final class UnstoppableSkill extends PassiveSkill {
     private static final UUID HEALING_MODIFIER = UUID.fromString("c81c493c-5864-4279-b8fa-6486b904b2da");
     private static final String BARRIER_UNTIL = "epicfight_dd.unstoppable.barrier_until";
+    private static final int DEFAULT_BARRIER_COOLDOWN = 200;
+    private static final int DEFAULT_REGENERATION_INTERVAL = 1200;
+    private int barrierCooldownTicks = DEFAULT_BARRIER_COOLDOWN;
+    private int regenerationIntervalTicks = DEFAULT_REGENERATION_INTERVAL;
 
     public UnstoppableSkill(SkillBuilder<? extends PassiveSkill> builder) {
         super(builder);
+    }
+
+    @Override
+    public void setParams(CompoundTag parameters) {
+        super.setParams(parameters);
+        barrierCooldownTicks = positiveTicks(parameters, "barrier_cooldown_ticks", DEFAULT_BARRIER_COOLDOWN);
+        regenerationIntervalTicks = positiveTicks(parameters, "regeneration_interval_ticks", DEFAULT_REGENERATION_INTERVAL);
+    }
+
+    private static int positiveTicks(CompoundTag parameters, String key, int fallback) {
+        if (!parameters.contains(key, Tag.TAG_ANY_NUMERIC)) return fallback;
+        double ticks = parameters.getDouble(key);
+        return ticks >= 1 && ticks <= Integer.MAX_VALUE ? (int) ticks : fallback;
     }
 
     @Override
@@ -104,7 +123,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), delay);
     }
 
-    private static void regenerate(SkillContainer container) {
+    private void regenerate(SkillContainer container) {
         int current = stacks(container);
         int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
         var data = container.getDataManager();
@@ -115,7 +134,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         }
         double healing = container.getExecutor().getOriginal().getAttributeValue(DawnDayAttributes.HEALING.get());
         double progress = data.getDataValue(regeneration) + UnstoppableRules.regenerationRate(healing);
-        if (progress >= UnstoppableRules.REGENERATION_INTERVAL) {
+        if (progress >= regenerationIntervalTicks) {
             data.setData(regeneration, 0D);
             setStacks(container, current + 1);
         } else {
@@ -131,6 +150,11 @@ public final class UnstoppableSkill extends PassiveSkill {
         return container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get());
     }
 
+    static int cappedStacks(SkillContainer container) {
+        return UnstoppableRules.clamp(stacks(container),
+                UnstoppableRules.cap(container.getExecutor().getOriginal().getAttributeValue(Attributes.ARMOR)));
+    }
+
     public static void setStacks(SkillContainer container, int stacks) {
         Player player = container.getExecutor().getOriginal();
         int cap = UnstoppableRules.cap(player.getAttributeValue(Attributes.ARMOR));
@@ -138,10 +162,11 @@ public final class UnstoppableSkill extends PassiveSkill {
         refresh(container);
     }
 
-    public static void startBarrierCooldown(SkillContainer container) {
+    void startBarrierCooldown(SkillContainer container) {
         Player player = container.getExecutor().getOriginal();
-        player.getPersistentData().putLong(BARRIER_UNTIL, player.level().getGameTime() + UnstoppableRules.BARRIER_COOLDOWN);
-        sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), UnstoppableRules.BARRIER_COOLDOWN);
+        player.getPersistentData().putLong(BARRIER_UNTIL, player.level().getGameTime() + barrierCooldownTicks);
+        sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), barrierCooldownTicks);
+        refresh(container);
     }
 
     public static void refresh(SkillContainer container) {
@@ -209,9 +234,9 @@ public final class UnstoppableSkill extends PassiveSkill {
         }
     }
 
-    private static int remainingCooldown(ServerPlayer player) {
+    static int remainingCooldown(ServerPlayer player) {
         long remaining = player.getPersistentData().getLong(BARRIER_UNTIL) - player.level().getGameTime();
-        return (int) Math.max(0, Math.min(UnstoppableRules.BARRIER_COOLDOWN, remaining));
+        return (int) Math.max(0, Math.min(Integer.MAX_VALUE, remaining));
     }
 
     private static void sync(SkillContainer container, SkillDataKey<Integer> key, int value) {
@@ -247,7 +272,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         int color = UnstoppableRules.barrierReady(stacks, cooldown(container)) ? 0xFFD86A : 0xFFFFFF;
         graphics.drawString(gui.getFont(), text, (int) x + (24 - gui.getFont().width(text)) / 2, (int) y + 15, color, true);
         if (cooldown(container) > 0) {
-            String seconds = Integer.toString((cooldown(container) + 19) / 20);
+            String seconds = Long.toString((cooldown(container) + 19L) / 20);
             graphics.drawString(gui.getFont(), seconds, (int) x + (24 - gui.getFont().width(seconds)) / 2,
                     (int) y + 3, 0xD0D0D0, true);
         }
