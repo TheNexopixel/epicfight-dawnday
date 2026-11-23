@@ -3089,7 +3089,7 @@ public class DawnDayAnimations {
 
                 )
 
-                        .addProperty(AttackAnimationProperty.PLAY_SPEED_MODIFIER,Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED,1.95f)
                         .addProperty(AttackAnimationProperty.MOVE_VERTICAL, true)
                         .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.2f,3f))
                         .addEvents(StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
