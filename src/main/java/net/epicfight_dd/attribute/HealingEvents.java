@@ -1,12 +1,12 @@
 package net.epicfight_dd.attribute;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class HealingEvents {
     private HealingEvents() {
     }

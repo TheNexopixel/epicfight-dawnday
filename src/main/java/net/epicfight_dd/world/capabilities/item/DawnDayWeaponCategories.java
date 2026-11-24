@@ -16,13 +16,11 @@ public enum DawnDayWeaponCategories implements WeaponCategory {
     RITUS_DAGGER,
     IRON_FIST;
 
-        final int id;
+    final int id;
 
     DawnDayWeaponCategories() {
         this.id = WeaponCategory.ENUM_MANAGER.assign(this);
     }
-
-
 
     @Override
     public int universalOrdinal() {

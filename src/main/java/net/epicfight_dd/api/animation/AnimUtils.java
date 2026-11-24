@@ -49,8 +49,7 @@ public class AnimUtils {
         );
     }
 
-    public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>>
-    LaunchEnemyAirSlash(float stunTime, int levitationLevel, int levitationTicks, float startTime) {
+    public static AnimationEvent.InTimeEvent<AnimationEvent.Event<?, ?, ?, ?, ?, ?, ?, ?, ?, ?>> launchEnemyAirSlash(float stunTime, int levitationLevel, int levitationTicks, float startTime) {
 
         return AnimationEvent.InTimeEvent.create(
                 startTime,

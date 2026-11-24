@@ -1,6 +1,6 @@
 package net.epicfight_dd.network;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
@@ -12,7 +12,7 @@ public class DDNetworkHandler {
     private static final String PROTOCOL_VERSION = "3";
 
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
-            ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "main"),
+            ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "main"),
             () -> PROTOCOL_VERSION,
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals
@@ -20,36 +20,36 @@ public class DDNetworkHandler {
 
     private static int packetId = 0;
 
-    private static int id() {
+    private static int incrementID() {
         return packetId++;
     }
 
     public static void register() {
-        INSTANCE.messageBuilder(ChangeLivingModifierPacket.class, id())
+        INSTANCE.messageBuilder(ChangeLivingModifierPacket.class, incrementID())
                 .encoder(ChangeLivingModifierPacket::encode)
                 .decoder(ChangeLivingModifierPacket::new)
                 .consumerMainThread(ChangeLivingModifierPacket::handle)
                 .add();
 
-        INSTANCE.messageBuilder(ServerBoundSkillResourceConsumePacket.class, id())
+        INSTANCE.messageBuilder(ServerBoundSkillResourceConsumePacket.class, incrementID())
                 .encoder(ServerBoundSkillResourceConsumePacket::encode)
                 .decoder(ServerBoundSkillResourceConsumePacket::new)
                 .consumerMainThread(ServerBoundSkillResourceConsumePacket::handle)
                 .add();
 
-        INSTANCE.messageBuilder(AirDashPacket.class, id())
+        INSTANCE.messageBuilder(AirDashPacket.class, incrementID())
                 .encoder(AirDashPacket::encode)
                 .decoder(AirDashPacket::new)
                 .consumerMainThread(AirDashPacket::handle)
                 .add();
 
-        INSTANCE.messageBuilder(UnstoppableVisualPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+        INSTANCE.messageBuilder(UnstoppableVisualPacket.class, incrementID(), NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(UnstoppableVisualPacket::encode)
                 .decoder(UnstoppableVisualPacket::new)
                 .consumerMainThread(UnstoppableVisualPacket::handle)
                 .add();
 
-        INSTANCE.messageBuilder(HeatedStepsBurstPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+        INSTANCE.messageBuilder(HeatedStepsBurstPacket.class, incrementID(), NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(HeatedStepsBurstPacket::encode)
                 .decoder(HeatedStepsBurstPacket::new)
                 .consumerMainThread(HeatedStepsBurstPacket::handle)

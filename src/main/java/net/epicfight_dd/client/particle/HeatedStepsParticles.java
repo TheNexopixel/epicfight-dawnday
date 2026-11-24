@@ -1,7 +1,7 @@
 package net.epicfight_dd.client.particle;
 
 import java.util.ArrayDeque;
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.network.HeatedStepsBurstPacket;
 import net.epicfight_dd.skill.dodge.HeatedStepsRules;
 import net.minecraft.client.Minecraft;
@@ -16,7 +16,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, value = Dist.CLIENT)
 public final class HeatedStepsParticles {
     private static final int MAX_BURSTS = 16;
     private static final ArrayDeque<Burst> BURSTS = new ArrayDeque<>();

@@ -1,6 +1,6 @@
 package net.epicfight_dd.mixin;
 
-import net.epicfight_dd.DawnDayServerConfig;
+import net.epicfight_dd.config.DawnDayConfigs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ public class TimeTravelMixin {
     private void epicfight_dd_removePriorSkill(
             CallbackInfoReturnable<Skill> cir) {
 
-        if (DawnDayServerConfig.REMOVE_WOM_TIME_TRAVEL_REQUIREMENT.get()) {
+        if (DawnDayConfigs.Server.REMOVE_WOM_TIME_TRAVEL_REQUIREMENT.get()) {
             cir.setReturnValue(null);
         }
     }

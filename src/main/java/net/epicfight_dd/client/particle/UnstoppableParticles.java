@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ParticleStatus;
@@ -21,7 +21,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.joml.Vector3f;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, value = Dist.CLIENT)
 public final class UnstoppableParticles {
     private static final int MAX_CLOUDS = 512;
     private static final int MAX_BARRIERS = 64;

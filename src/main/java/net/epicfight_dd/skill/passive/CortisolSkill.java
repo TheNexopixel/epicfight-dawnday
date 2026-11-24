@@ -3,7 +3,7 @@ package net.epicfight_dd.skill.passive;
 import java.util.List;
 import java.util.UUID;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
@@ -29,11 +29,11 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 // CODE MADE BY AI (gez. Nexo)
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public class CortisolSkill extends PassiveSkill {
     private static final UUID EVENT_UUID = UUID.fromString("2f8b6d41-9a37-4c15-b0e2-7d5a3c18f946");
     private static final ResourceLocation OVERLAY_ID =
-            ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "cortisol_overlay");
+            ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "cortisol_overlay");
     private static final int SCALE = 100;
 
     private float stressPerHit = 2.0F;

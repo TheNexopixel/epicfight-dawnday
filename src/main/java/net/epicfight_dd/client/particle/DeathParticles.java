@@ -1,7 +1,7 @@
 package net.epicfight_dd.client.particle;
 
-import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.api.animation.JointTrack;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
@@ -37,7 +37,7 @@ public final class DeathParticles {
             new Vector3f(1.0F, 0.82F, 0.45F), new Vector3f(0.5F, 0.5F, 0.5F), 0.6F);
 
     public static void tick(LivingEntity entity) {
-        if (!DawnDayConfig.ENABLE_DEATH_PARTICLES.get()) return;
+        if (!DawnDayConfigs.Common.ENABLE_DEATH_PARTICLES.get()) return;
 
         boolean mob = entity instanceof Mob;
         if (entity.tickCount % (mob ? 2 : 1) != 0) return;

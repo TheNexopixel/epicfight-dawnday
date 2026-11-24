@@ -6,7 +6,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.client.particle.ParticleRegistry;
 import net.minecraft.client.gui.GuiGraphics;
@@ -44,7 +44,7 @@ import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 // Code generated with AI (gez. Nexo)
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class GorgedBulwarkSkill extends PassiveSkill {
 
     private static final class Params {

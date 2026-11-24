@@ -2,7 +2,7 @@ package net.epicfight_dd.world;
 
 import java.util.List;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -17,37 +17,37 @@ import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.data.loot.function.SetSkillFunction;
 import yesman.epicfight.world.item.EpicFightItems;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class DawnDaySkillBookLootModifiers {
     private DawnDaySkillBookLootModifiers() {}
 
     private static final String[] COMMON = {
-            Epicfight_dd.MODID + ":riposte",
-            Epicfight_dd.MODID + ":outlasting",
-            Epicfight_dd.MODID + ":rapid_retreat",
-            Epicfight_dd.MODID + ":cortisol",
-            Epicfight_dd.MODID + ":restocking",
-            Epicfight_dd.MODID + ":air_dash"
+            EpicFightDawnDay.MODID + ":riposte",
+            EpicFightDawnDay.MODID + ":outlasting",
+            EpicFightDawnDay.MODID + ":rapid_retreat",
+            EpicFightDawnDay.MODID + ":cortisol",
+            EpicFightDawnDay.MODID + ":restocking",
+            EpicFightDawnDay.MODID + ":air_dash"
     };
 
     private static final String[] HOGLIN = {
-            Epicfight_dd.MODID + ":gorged_bulwark",
-            Epicfight_dd.MODID + ":final_strength"
+            EpicFightDawnDay.MODID + ":gorged_bulwark",
+            EpicFightDawnDay.MODID + ":final_strength"
     };
     private static final String[] RIPOSTE = {
-            Epicfight_dd.MODID + ":riposte"
+            EpicFightDawnDay.MODID + ":riposte"
     };
     private static final String[] ENDER_DRAGON = {
-            Epicfight_dd.MODID + ":redemption"
+            EpicFightDawnDay.MODID + ":redemption"
     };
     private static final String[] RAVAGER = {
-            Epicfight_dd.MODID + ":unstoppable"
+            EpicFightDawnDay.MODID + ":unstoppable"
     };
     private static final String[] DIVINE_PUNISHMENT = {
-            Epicfight_dd.MODID + ":divine_punishment"
+            EpicFightDawnDay.MODID + ":divine_punishment"
     };
     private static final String[] HEATED_STEP = {
-            Epicfight_dd.MODID + ":heated_step"
+            EpicFightDawnDay.MODID + ":heated_step"
     };
 
     private record ChestEntry(ResourceLocation table, float minRolls, float maxRolls, float chance, String[] skills) {}

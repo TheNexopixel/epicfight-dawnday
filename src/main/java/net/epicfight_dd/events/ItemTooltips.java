@@ -1,6 +1,6 @@
 package net.epicfight_dd.events;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(
-        modid = Epicfight_dd.MODID,
+        modid = EpicFightDawnDay.MODID,
         bus = Mod.EventBusSubscriber.Bus.FORGE
 )
 public class ItemTooltips {
@@ -48,7 +48,7 @@ public class ItemTooltips {
             );
 
         }
-        if (stack.is(DawnDayItems.wooden_battlestaff.get())) {
+        if (stack.is(DawnDayItems.WOODEN_BATTLESTAFF.get())) {
             event.getToolTip().add(
                     Component.translatable("tooltip.epicfight_dd.big_stick")
                             .withStyle(ChatFormatting.GRAY)
@@ -62,7 +62,7 @@ public class ItemTooltips {
             );
 
         }
-        if (stack.is(DawnDayItems.ruby.get())) {
+        if (stack.is(DawnDayItems.RUBY.get())) {
             event.getToolTip().add(
                     Component.translatable("tooltip.epicfight_dd.ruby")
                             .withStyle(ChatFormatting.GRAY)

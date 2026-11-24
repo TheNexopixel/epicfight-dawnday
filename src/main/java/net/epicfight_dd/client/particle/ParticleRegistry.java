@@ -1,6 +1,8 @@
 package net.epicfight_dd.client.particle;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -11,8 +13,15 @@ public final class ParticleRegistry {
     private ParticleRegistry() {}
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES =
-            DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Epicfight_dd.MODID);
+            DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, EpicFightDawnDay.MODID);
 
-    public static final RegistryObject<SimpleParticleType> HUNGER_INDICATOR =
-            PARTICLES.register("hunger_indicator", () -> new SimpleParticleType(false));
+    private static RegistryObject<ParticleType<?>> register(String name, ParticleType<?> type) {
+        return PARTICLES.register(name, () -> type);
+    }
+
+    private static RegistryObject<SimpleParticleType> registerSimple(String name, SimpleParticleType type) {
+        return PARTICLES.register(name, () -> type);
+    }
+
+    public static final RegistryObject<SimpleParticleType> HUNGER_INDICATOR = registerSimple("hunger_indicator", new SimpleParticleType(false));
 }

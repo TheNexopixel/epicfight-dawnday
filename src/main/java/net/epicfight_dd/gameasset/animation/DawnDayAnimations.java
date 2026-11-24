@@ -53,7 +53,7 @@ import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.effect.EpicFightMobEffects;
 
-import java.util.*;;
+import java.util.*;
 
 import static net.epicfight_dd.api.animation.JointTrack.getJointWithTranslation;
 
@@ -1894,7 +1894,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.FIXED_MOVE_DISTANCE,false)
                         .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.4f,1.9f))
                         .addEvents(
-                                AnimUtils.LaunchEnemyAirSlash(1.0F, 6,16,0.4f))
+                                AnimUtils.launchEnemyAirSlash(1.0F, 6,16,0.4f))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         HORUS_AUTO2 = builder.nextAccessor("biped/combat/horus_auto2", (accessor) ->
@@ -2234,7 +2234,7 @@ public class DawnDayAnimations {
                         .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.25f,1.1f))
                         .addProperty(AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
                         .addEvents(
-                                AnimUtils.LaunchEnemyAirSlash(2.0F, 10,5,0.45f))
+                                AnimUtils.launchEnemyAirSlash(2.0F, 10,5,0.45f))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         BLOOD_DANCE_3B = builder.nextAccessor("biped/skill/blood_dance_3b", (accessor) ->

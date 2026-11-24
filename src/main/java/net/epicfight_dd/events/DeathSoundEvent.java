@@ -1,6 +1,6 @@
 package net.epicfight_dd.events;
 
-import net.epicfight_dd.DawnDayConfig;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -18,7 +18,7 @@ public class DeathSoundEvent {
 
         if (!entity.level().isClientSide) {
 
-            if (DawnDayConfig.ENABLE_DEATH_SOUND.get().equals(true)) {
+            if (DawnDayConfigs.Common.ENABLE_DEATH_SOUND.get().equals(true)) {
 
                 int random = entity.level().random.nextInt(3);
 

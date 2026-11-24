@@ -1,7 +1,6 @@
 package net.epicfight_dd.effect;
 
-import net.epicfight_dd.DawnDayConfig;
-import net.epicfight_dd.DawnDayServerConfig;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -59,7 +58,7 @@ public class SepukkuEffect extends MobEffect {
                     new AttributeModifier(
                             ATTACK_DAMAGE_UUID,
                             "Sepukku Attack Damage",
-                            DawnDayConfig.SEPUKKU_ATTACK_DAMAGE.get(),
+                            DawnDayConfigs.Common.SEPUKKU_ATTACK_DAMAGE.get(),
                             AttributeModifier.Operation.MULTIPLY_BASE
                     )
             );
@@ -74,7 +73,7 @@ public class SepukkuEffect extends MobEffect {
                     new AttributeModifier(
                             IMPACT_UUID,
                             "Sepukku Impact",
-                            DawnDayConfig.SEPUKKU_IMPACT.get(),
+                            DawnDayConfigs.Common.SEPUKKU_IMPACT.get(),
                             AttributeModifier.Operation.ADDITION
                     )
             );

@@ -2,8 +2,8 @@ package net.epicfight_dd.gameasset.animation;
 
 import com.tacz.guns.GunMod;
 import com.tacz.guns.init.ModDamageTypes;
-import net.epicfight_dd.DawnDayConfig;
 import net.epicfight_dd.client.particle.DeathParticles;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.gameasset.animation.types.HeatedStepsChargeAnimation;
 import net.epicfight_dd.gameasset.animation.types.HeatedStepsDodgeAnimation;
@@ -118,7 +118,7 @@ public class QoLMiscAnimations {
         if (source == null) return D_DEFAULT;
 
         boolean mob = entity instanceof Mob;
-        if (!mob && !DawnDayConfig.ENABLE_PLAYER_DEATH_ANIMATIONS.get()) return D_DEFAULT;
+        if (!mob && !DawnDayConfigs.Common.ENABLE_PLAYER_DEATH_ANIMATIONS.get()) return D_DEFAULT;
 
         if (source.is(DamageTypes.WITHER)) return mob ? D_WITHER_MOB : D_WITHER;
         if (isFall(source)) return mob ? D_FALL_MOB : D_FALL;

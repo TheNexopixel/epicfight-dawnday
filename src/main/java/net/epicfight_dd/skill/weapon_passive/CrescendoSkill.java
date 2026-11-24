@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +28,7 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 // CODE MADE BY AI (gez. Nexo)
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class CrescendoSkill extends PassiveSkill {
 
     private static final class Params {

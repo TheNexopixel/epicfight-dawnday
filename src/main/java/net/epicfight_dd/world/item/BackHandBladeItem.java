@@ -11,9 +11,9 @@ import yesman.epicfight.world.item.WeaponItem;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class backhand_blade_item extends WeaponItem
+public class BackHandBladeItem extends WeaponItem
 {
-    public backhand_blade_item(Tier materialIn) {
+    public BackHandBladeItem(Tier materialIn) {
         super(materialIn, 3, -1.5F, new Properties().stacksTo(1));
 
     }
