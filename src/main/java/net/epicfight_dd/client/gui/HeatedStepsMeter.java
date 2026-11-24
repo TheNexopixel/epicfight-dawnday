@@ -1,7 +1,7 @@
 package net.epicfight_dd.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.skill.dodge.HeatedStepsRules;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
@@ -19,7 +19,7 @@ import yesman.epicfight.network.client.CPSkillRequest;
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, value = Dist.CLIENT)
 public final class HeatedStepsMeter {
     private static final ResourceLocation METER = texture("charge_bar");
     private static final ResourceLocation TRIGGER = texture("charge_bar_trigger");
@@ -82,6 +82,6 @@ public final class HeatedStepsMeter {
     }
 
     private static ResourceLocation texture(String name) {
-        return ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "textures/gui/" + name + ".png");
+        return ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "textures/gui/" + name + ".png");
     }
 }

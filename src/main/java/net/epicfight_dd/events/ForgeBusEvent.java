@@ -1,8 +1,7 @@
 package net.epicfight_dd.events;
 
-import net.epicfight_dd.DawnDayConfig;
-import net.epicfight_dd.Epicfight_dd;
-import net.epicfight_dd.api.animation.AnimUtils;
+import net.epicfight_dd.EpicFightDawnDay;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.epicfight_dd.effect.EffectRegistry;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.DawnDaySkills;
@@ -27,7 +26,7 @@ import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID,bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID,bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ForgeBusEvent {
 
     @SubscribeEvent
@@ -45,7 +44,7 @@ public class ForgeBusEvent {
     public static void giveDeathAnimationToMob(LivingDeathEvent event){
         LivingEntity entity = event.getEntity();
         //This works somehow, but why do I feel so uneasy
-        if(!DawnDayConfig.ENABLE_CUSTOM_MOB_DEATH_ANIM.get() || !(entity instanceof Mob)){
+        if(!DawnDayConfigs.Common.ENABLE_CUSTOM_MOB_DEATH_ANIM.get() || !(entity instanceof Mob)){
             return;
         }
 

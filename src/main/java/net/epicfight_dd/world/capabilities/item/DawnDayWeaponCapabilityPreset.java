@@ -1,6 +1,6 @@
 package net.epicfight_dd.world.capabilities.item;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.gameasset.animation.*;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.DawnDaySkills;
@@ -28,7 +28,7 @@ import java.util.function.Function;
 
 
 @SuppressWarnings({"removal", "deprecation"})
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DawnDayWeaponCapabilityPreset {
 
 
@@ -103,7 +103,7 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, WingStanceAnims.WINGSTANCE_RUN)
             .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_GUARD);
 
-@SuppressWarnings("deprecation")
+    @SuppressWarnings("deprecation")
     public static final Function<Item, CapabilityItem.Builder> LIGHT_GREATSWORD = (item) ->
             WeaponCapability.builder()
                     .category(DawnDayWeaponCategories.LIGHT_GREATSWORD)
@@ -1134,40 +1134,40 @@ public class DawnDayWeaponCapabilityPreset {
 
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "milady"), MILADY);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "crescendo"), CRESCENDO);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "twinblade"), TWINBLADE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "revenant"), REVENANT);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "horus_fang"), HORUS_FANG);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nightingale"), NIGHTINGALE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "vitreus"), VITREUS);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "gloria"), GLORIA);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "saber"), SABER);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "scythe"), SCYTHE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "grimm"), GRIMM);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "hookclaws"), HOOKCLAWS);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "pole_blade"), POLEBLADE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "florett"), FLORETT);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "night_ritus_dagger"), NIGHT_RITUS_DAGGER);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "messer"), MESSER);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "iron_fist"), IRON_FIST);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "eclipse"), ECLIPSE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "bonecutting_saw"), BONECUTTING_SAW);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "nailbat"), BAT);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "iudex_halberd"), IUDEX_HALBERD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "knife"), KNIFE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "knife_blood"), KNIFE_BLOOD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "steelaxe"), STEEL_AXE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "herb_sickle"), HERB_SICKLE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "war_sickle"), WAR_SICKLE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "halberd"), HALBERD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff"), BATTLE_STAFF);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff_amethist"), BATTLE_STAFF_AMETHIST);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff_netherite"), BATTLE_STAFF_NETHERITE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "battlestaff_wood"), BATTLE_STAFF_WOOD);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "backhand_blade"), BACKHAND_BLADE);
-        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(Epicfight_dd.MODID, "light_greatsword"), LIGHT_GREATSWORD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "crescendo"), CRESCENDO);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "twinblade"), TWINBLADE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "revenant"), REVENANT);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "horus_fang"), HORUS_FANG);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "nightingale"), NIGHTINGALE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "vitreus"), VITREUS);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "gloria"), GLORIA);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "saber"), SABER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "scythe"), SCYTHE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "grimm"), GRIMM);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "hookclaws"), HOOKCLAWS);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "pole_blade"), POLEBLADE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "florett"), FLORETT);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "blood_ritus_dagger"), BLOOD_RITUS_DAGGER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "night_ritus_dagger"), NIGHT_RITUS_DAGGER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "messer"), MESSER);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "iron_fist"), IRON_FIST);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "eclipse"), ECLIPSE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "bonecutting_saw"), BONECUTTING_SAW);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "nailbat"), BAT);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "iudex_halberd"), IUDEX_HALBERD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "knife"), KNIFE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "knife_blood"), KNIFE_BLOOD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "steelaxe"), STEEL_AXE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "herb_sickle"), HERB_SICKLE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "war_sickle"), WAR_SICKLE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "halberd"), HALBERD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "battlestaff"), BATTLE_STAFF);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "battlestaff_amethist"), BATTLE_STAFF_AMETHIST);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "battlestaff_netherite"), BATTLE_STAFF_NETHERITE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "battlestaff_wood"), BATTLE_STAFF_WOOD);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "backhand_blade"), BACKHAND_BLADE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "light_greatsword"), LIGHT_GREATSWORD);
     }
 
 

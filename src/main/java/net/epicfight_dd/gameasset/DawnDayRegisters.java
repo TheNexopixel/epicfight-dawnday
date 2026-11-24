@@ -1,29 +1,42 @@
 package net.epicfight_dd.gameasset;
 
+import net.epicfight_dd.EpicFightDawnDay;
+import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.client.particle.ParticleRegistry;
 import net.epicfight_dd.effect.EffectRegistry;
-import net.epicfight_dd.attribute.DawnDayAttributes;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.epicfight_dd.world.item.DawnDayCreativeTab;
 import net.epicfight_dd.world.item.DawnDayItems;
-import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.eventbus.api.IEventBus;
 
-import java.util.List;
+import java.util.function.Consumer;
 
-public class DawnDayRegisters {
+public enum DawnDayRegisters {
+    SOUNDS(DawnDaySounds.SOUNDS::register),
+    ATTRIBUTES(DawnDayAttributes.ATTRIBUTES::register),
+    ITEMS(DawnDayItems.ITEMS::register),
+    CREATIVE_TABS(DawnDayCreativeTab.CREATIVE_MODE_TABS::register),
+    SKILL_DATA_KEYS(SkillDataKeyZ.DATA_KEYS::register),
+    PARTICLES(ParticleRegistry.PARTICLES::register),
+    EFFECTS(EffectRegistry.EFFECTS::register),
+    POTIONS(DawnDayItems.POTIONS::register),
+    PAINTINGS(DawnDayPaintings.PAINTING_VARIANTS::register);
 
-   public static List<DeferredRegister<?>> REGISTERS =
-            List.of(
-                    DawnDaySounds.SOUNDS,
-                    DawnDayAttributes.ATTRIBUTES,
-                    DawnDayItems.ITEMS,
-                    DawnDayCreativeTab.CREATIVE_MODE_TABS,
-                    SkillDataKeyZ.DATA_KEYS,
-                    ParticleRegistry.PARTICLES,
-                    EffectRegistry.EFFECTS,
-                    DawnDayItems.POTIONS,
-                    DawnDayPaintings.PAINTING_VARIANTS
-            );
+    private final Consumer<IEventBus> registrar;
 
+    DawnDayRegisters(Consumer<IEventBus> registrar) {
+        this.registrar = registrar;
+    }
+
+    public void register(IEventBus modBus) {
+        this.registrar.accept(modBus);
+    }
+
+    public static void registerAll(IEventBus modBus) {
+        for (DawnDayRegisters registry : values()) {
+            EpicFightDawnDay.LOGGER.debug("Registered {}", registry);
+            registry.register(modBus);
+        }
+    }
 }

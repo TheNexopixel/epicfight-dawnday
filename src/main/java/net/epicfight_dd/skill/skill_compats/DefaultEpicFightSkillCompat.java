@@ -1,6 +1,6 @@
 package net.epicfight_dd.skill.skill_compats;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.epicfight_dd.world.item.DawnDayItems;
@@ -19,7 +19,7 @@ import yesman.epicfight.skill.passive.SwordmasterSkill;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DefaultEpicFightSkillCompat {
 
 
@@ -315,7 +315,7 @@ public class DefaultEpicFightSkillCompat {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
-        icon.registerCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.iron_light_greatsword.get()));
+        icon.registerCategory(DawnDayWeaponCategories.LIGHT_GREATSWORD, new ItemStack(DawnDayItems.IRON_LIGHT_GREATSWORD.get()));
         icon.registerCategory(DawnDayWeaponCategories.RITUS_DAGGER, new ItemStack(DawnDayItems.BLOOD_RITUS_DAGGER.get()));
         icon.registerCategory(DawnDayWeaponCategories.FLORETT, new ItemStack(DawnDayItems.IRON_FLORETT.get()));
         icon.registerCategory(DawnDayWeaponCategories.SICKLE, new ItemStack(DawnDayItems.IRON_SICKLE.get()));
@@ -323,7 +323,7 @@ public class DefaultEpicFightSkillCompat {
         icon.registerCategory(DawnDayWeaponCategories.POLEBLADE, new ItemStack(DawnDayItems.POLEBLADE.get()));
         icon.registerCategory(DawnDayWeaponCategories.MORNINGSTAR, new ItemStack(DawnDayItems.GRIMM.get()));
         icon.registerCategory(DawnDayWeaponCategories.GREAT_SCYTHE, new ItemStack(DawnDayItems.SCYTHE.get()));
-        icon.registerCategory(DawnDayWeaponCategories.BAT, new ItemStack(DawnDayItems.spiked_bat.get()));
+        icon.registerCategory(DawnDayWeaponCategories.BAT, new ItemStack(DawnDayItems.SPIKED_BAT.get()));
         icon.registerCategory(DawnDayWeaponCategories.CLAWS, new ItemStack(DawnDayItems.HOOKCLAWS.get()));
         icon.registerCategory(DawnDayWeaponCategories.IRON_FIST, new ItemStack(DawnDayItems.IRON_FIST.get()));
 

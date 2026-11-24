@@ -1,15 +1,10 @@
 package net.epicfight_dd.world;
 
-import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.epicfight_dd.world.item.DawnDayItems;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.event.LootTableLoadEvent;
@@ -39,7 +34,7 @@ public class DawnDayLootModifiers {
                                         DawnDayItems.NIGHT_RITUS_DAGGER.get()
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUBY.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.NIGHTINGALE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
@@ -61,10 +56,10 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.SANGUINEUS.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.WAR_SICKLE.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BONECUTTING_SAW.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.POLEBLADE_BLADE_PART.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUBY.get()))
                         .name("blood_ritus_dagger")
                         .build();
 
@@ -84,7 +79,7 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.HORUS_FANG.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUBY.get()))
                         .name("blood_ritus_dagger")
                         .build();
 
@@ -136,7 +131,7 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.AMBER.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.PERIDOT.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUBY.get()))
                         .name("blood_ritus_dagger")
                         .build();
 
@@ -210,7 +205,7 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                                DawnDayItems.netherite_halberd.get()
+                                                DawnDayItems.NETHERITE_HALBERD.get()
 
                                         )
                         )
@@ -231,16 +226,16 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.milady.get()
+                                        DawnDayItems.MILADY.get()
 
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_light_greatsword.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_LIGHT_GREATSWORD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_MESSER.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IUDEX_HALBERD.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.diamond_halberd.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.bonecutting_saw.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.DIAMOND_HALBERD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BONECUTTING_SAW.get()))
                         .name("milady")
                         .build();
 
@@ -258,12 +253,12 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.netherite_battlestaff.get()
+                                        DawnDayItems.NETHERITE_BATTLESTAFF.get()
 
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
                         .name("netherite_battlestaff")
                         .build();
 
@@ -281,14 +276,14 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.netherite_messer.get()
+                                        DawnDayItems.NETHERITE_MESSER.get()
 
                                 )
 
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_KNIFE.get()))
                         .name("netherite_messer")
                         .build();
 
@@ -306,15 +301,15 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.REVENANT.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.spiked_bat.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.SPIKED_BAT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,3f))))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FLORETT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.HOOKCLAWS.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_battlestaff.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_light_greatsword.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_LIGHT_GREATSWORD.get()))
                         .name("iron_sickle")
                         .build();
 
@@ -332,11 +327,11 @@ public class DawnDayLootModifiers {
                         .add(
 
                                 LootItem.lootTableItem(
-                                        DawnDayItems.saber.get()
+                                        DawnDayItems.SABER.get()
 
                                 )
                         )
-                        .add(LootItem.lootTableItem(DawnDayItems.ruby.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUBY.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .name("saber")
                         .build();
@@ -378,7 +373,7 @@ public class DawnDayLootModifiers {
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/stronghold_libary"))) {
 
@@ -401,17 +396,17 @@ public class DawnDayLootModifiers {
                 LootPool pool = LootPool.lootPool()
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.2f))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_messer.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_battlestaff.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_knife.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.golden_light_greatsword.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_MESSER.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_KNIFE.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_LIGHT_GREATSWORD.get()))
                         .name("golden_messer")
                         .build();
 
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/jungle_temple"))) {
 
@@ -430,14 +425,14 @@ public class DawnDayLootModifiers {
                 event.getTable().addPool(pool);
             }
             if (event.getName().equals(
-                    new ResourceLocation(
+                    ResourceLocation.fromNamespaceAndPath(
                             "minecraft",
                             "chests/abandoned_mineshaft"))) {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
                                 LootItemRandomChanceCondition.randomChance(0.3f))
-                        .add(LootItem.lootTableItem(DawnDayItems.backhand_blade.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.BACKHAND_BLADE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.REVENANT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.TANZANITE.get()))
@@ -446,11 +441,11 @@ public class DawnDayLootModifiers {
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.AMETHYST_BATTLESTAFF.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.JADE.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_knife.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,3f))))
                         .add(LootItem.lootTableItem(DawnDayItems.RUSTED_METAL_PLATE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1f,2f))))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_halberd.get()))
-                        .add(LootItem.lootTableItem(DawnDayItems.iron_messer.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_HALBERD.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.IRON_MESSER.get()))
                         .name("backhand_blade")
                         .build();
 

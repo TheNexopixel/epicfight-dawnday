@@ -1,7 +1,7 @@
 package net.epicfight_dd.skill;
 
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.gameasset.animation.DawnDayAnimations;
 
 import java.util.Set;
@@ -31,7 +31,6 @@ import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
 import yesman.epicfight.skill.dodge.DodgeSkill;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
@@ -40,7 +39,7 @@ import yesman.epicfight.world.damagesource.ExtraDamageInstance;
 import yesman.epicfight.world.damagesource.StunType;
 
 @EventBusSubscriber(
-        modid = Epicfight_dd.MODID,
+        modid = EpicFightDawnDay.MODID,
         bus = Bus.MOD
 )
 public class DawnDaySkills {
@@ -113,7 +112,7 @@ public class DawnDaySkills {
 
     @SubscribeEvent
     public static void buildSkillEvent(SkillBuildEvent build){
-        SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(Epicfight_dd.MODID);
+        SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(EpicFightDawnDay.MODID);
 
 
 

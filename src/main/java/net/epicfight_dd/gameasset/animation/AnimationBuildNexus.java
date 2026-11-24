@@ -20,10 +20,10 @@ public class AnimationBuildNexus {
 
         WingStanceAnims.build(builder);
 
-        if(ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
+        if (ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
             DawnDayExecAnims.build(builder);
         }
-        if(ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
+        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
             WoMCompatAnimations.build(builder);
         }
     }

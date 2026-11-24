@@ -1,14 +1,13 @@
 package net.epicfight_dd;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 
-import com.hm.efn.EFN;
+import net.epicfight_dd.compat.DawnDayCompats;
+import net.epicfight_dd.config.DawnDayConfigs;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.skill.SkillDataKeyZ;
-import net.epicfight_dd.skill.skill_compats.CombatEvoCompat;
-import net.epicfight_dd.skill.skill_compats.NightfallCompat;
-import net.epicfight_dd.skill.skill_compats.WoMCompat;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
@@ -16,47 +15,49 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.moddiscovery.ModFile;
 import net.minecraftforge.resource.PathPackResources;
-import net.shelmarow.combat_evolution.CombatEvolution;
-import reascer.wom.main.WeaponsOfMinecraft;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import yesman.epicfight.compat.ICompatModule;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
-@Mod(Epicfight_dd.MODID)
-public class Epicfight_dd {
+@Mod(EpicFightDawnDay.MODID)
+public class EpicFightDawnDay {
     public static final String MODID = "epicfight_dd";
+    public static final Logger LOGGER = LogManager.getLogger("EpicFightDawnDay");
 
-    public Epicfight_dd(FMLJavaModLoadingContext context) {
+    public EpicFightDawnDay(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
 
-        DawnDayRegisters.REGISTERS.forEach(register -> register.register(bus));
-        SkillDataKeyZ.DATA_KEYS.register(bus);
+        DawnDayConfigs.register(ModLoadingContext.get());
+        DawnDayRegisters.registerAll(bus);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, DawnDayWeaponCategories.class);
 
         bus.addListener(this::addPackFindersEvent);
         bus.addListener(this::commonSetup);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DawnDayConfig.SPEC);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, DawnDayServerConfig.SPEC);
+        this.loadCompatibilityModules(context);
+    }
 
-        if (ModList.get().isLoaded(CombatEvolution.MOD_ID)) {
-            ICompatModule.loadCompatModule(context, CombatEvoCompat.class);
+    private void loadCompatibilityModules(FMLJavaModLoadingContext context) {
+        for (Class<? extends ICompatModule> compatCls : this.getDawnDawCompatModules()) {
+            ICompatModule.loadCompatModule(context, compatCls);
         }
-        if (ModList.get().isLoaded(WeaponsOfMinecraft.MODID)) {
-            ICompatModule.loadCompatModule(context, WoMCompat.class);
-            bus.addListener(WoMCompat::buildSkillEvent);
-        }
-        if (ModList.get().isLoaded(EFN.MODID)) {
-            ICompatModule.loadCompatModule(context, NightfallCompat.class);
-        }
+    }
+
+    private Class<? extends ICompatModule>[] getDawnDawCompatModules() {
+        return Arrays.stream(DawnDayCompats.values())
+                .filter(compatModule -> ModList.get().isLoaded(compatModule.getModId()))
+                .map(DawnDayCompats::getModuleClass)
+                .<Class<? extends ICompatModule>>toArray(Class[]::new);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

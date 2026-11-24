@@ -5,7 +5,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.SkillDataKeyZ;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.ParticleTypes;
@@ -37,7 +37,7 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 // CODE WRITTEN BY AI (gez. Nexo)
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public class AnnullationSkill extends WeaponInnateSkill {
     private static final String COOLDOWN_UNTIL = "epicfight_dd.annullation.cooldown_until";
 

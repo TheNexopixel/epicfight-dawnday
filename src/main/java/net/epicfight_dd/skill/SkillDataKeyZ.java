@@ -1,6 +1,6 @@
 package net.epicfight_dd.skill;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.passive.CortisolSkill;
 import net.epicfight_dd.skill.passive.RapidRetreatSkill;
 import net.epicfight_dd.skill.passive.RestockingSkill;
@@ -17,123 +17,55 @@ import yesman.epicfight.api.utils.PacketBufferCodec;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.skill.SkillDataKey;
 
-
 public class SkillDataKeyZ {
 
-    private SkillDataKeyZ(){}
+    private SkillDataKeyZ() {}
 
+    public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID, "skill_data_keys"), EpicFightDawnDay.MODID);
 
-    public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID,"skill_data_keys"), Epicfight_dd.MODID);
+    private static <T> RegistryObject<SkillDataKey<T>> register(String name, PacketBufferCodec<T> codec, T defaultValue, boolean syncToTrackingPlayers, Class<?>... skillClasses) {
+        return DATA_KEYS.register(name, () -> SkillDataKey.createSkillDataKey(codec, defaultValue, syncToTrackingPlayers, skillClasses));
+    }
 
-    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_TIER =
-            DATA_KEYS.register("heated_steps_tier", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 0, true, HeatedStepsSkill.class));
-    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT =
-            DATA_KEYS.register("heated_steps_result", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, -1, HeatedStepsSkill.class));
-    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT_UNTIL =
-            DATA_KEYS.register("heated_steps_result_until", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 0, HeatedStepsSkill.class));
+    private static <T> RegistryObject<SkillDataKey<T>> register(String name, PacketBufferCodec<T> codec, T defaultValue, Class<?>... skillClasses) {
+        return register(name, codec, defaultValue, false, skillClasses);
+    }
 
-    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_STACKS =
-            DATA_KEYS.register("unstoppable_stacks", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
-    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_CAP =
-            DATA_KEYS.register("unstoppable_cap", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 3, UnstoppableSkill.class));
-    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_COOLDOWN =
-            DATA_KEYS.register("unstoppable_cooldown", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
-    public static final RegistryObject<SkillDataKey<Double>> UNSTOPPABLE_REGENERATION =
-            DATA_KEYS.register("unstoppable_regeneration", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.DOUBLE, 0D, UnstoppableSkill.class));
-    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_AMBIENT_DELAY =
-            DATA_KEYS.register("unstoppable_ambient_delay", () -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class));
+    // Heated Steps
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_TIER = register("heated_steps_tier", PacketBufferCodec.INTEGER, 0, true, HeatedStepsSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT = register("heated_steps_result", PacketBufferCodec.INTEGER, -1, HeatedStepsSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> HEATED_STEPS_RESULT_UNTIL = register("heated_steps_result_until", PacketBufferCodec.INTEGER, 0, HeatedStepsSkill.class);
 
-    public static final RegistryObject<SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = DATA_KEYS.register("special_stance_active", () -> SkillDataKey.createSkillDataKey(PacketBufferCodec.BOOLEAN, false,true, WingStanceSkill.class));
+    // Unstoppable
+    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_STACKS = register("unstoppable_stacks", PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_CAP = register("unstoppable_cap", PacketBufferCodec.INTEGER, 3, UnstoppableSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_COOLDOWN = register("unstoppable_cooldown", PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class);
+    public static final RegistryObject<SkillDataKey<Double>> UNSTOPPABLE_REGENERATION = register("unstoppable_regeneration", PacketBufferCodec.DOUBLE, 0D, UnstoppableSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> UNSTOPPABLE_AMBIENT_DELAY = register("unstoppable_ambient_delay", PacketBufferCodec.INTEGER, 0, UnstoppableSkill.class);
 
-    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_STRESS =
-            DATA_KEYS.register("cortisol_stress", () ->
-                    SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, CortisolSkill.class));
+    // Wing Stance
+    public static final RegistryObject<SkillDataKey<Boolean>> SPECIAL_STANCE_ACTIVATE = register("special_stance_active", PacketBufferCodec.BOOLEAN, false, true, WingStanceSkill.class);
 
-    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_IDLE =
-            DATA_KEYS.register("cortisol_idle", () ->
-                    SkillDataKey.createSkillDataKey(PacketBufferCodec.INTEGER, 0, CortisolSkill.class));
+    // Cortisol
+    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_STRESS = register("cortisol_stress", PacketBufferCodec.INTEGER, 0, CortisolSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> CORTISOL_IDLE = register("cortisol_idle", PacketBufferCodec.INTEGER, 0, CortisolSkill.class);
 
-    public static final RegistryObject<SkillDataKey<Integer>> IRON_WILL_STACKS =
-            DATA_KEYS.register( "iron_will_stacks", ()
-                    -> SkillDataKey.createSkillDataKey(
-                    PacketBufferCodec.INTEGER,
-                    0, Riposte.class )
-            );
-    public static final RegistryObject<SkillDataKey<Float>> IRON_WILL_DAMAGE =
-            DATA_KEYS.register("iron_will_damage", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.FLOAT,
-                            0.0F,
-                            Riposte.class
-                    )
-            );
-    public static final RegistryObject<SkillDataKey<Integer>> RESTOCKING_COOLDOWN =
-            DATA_KEYS.register("restocking_cooldown", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            RestockingSkill.class
-                    )
-            );
+    // Iron Will (Riposte)
+    public static final RegistryObject<SkillDataKey<Integer>> IRON_WILL_STACKS = register("iron_will_stacks", PacketBufferCodec.INTEGER, 0, Riposte.class);
+    public static final RegistryObject<SkillDataKey<Float>> IRON_WILL_DAMAGE = register("iron_will_damage", PacketBufferCodec.FLOAT, 0.0F, Riposte.class);
 
-    public static final RegistryObject<SkillDataKey<Integer>> CRESCENDO_DAMAGE =
-            DATA_KEYS.register("crescendo_damage", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            CrescendoSkill.class
-                    )
-            );
-    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_TICKS =
-            DATA_KEYS.register("annullation_ticks", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            AnnullationSkill.class
-                    )
-            );
-    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_COOLDOWN =
-            DATA_KEYS.register("annullation_cooldown", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            AnnullationSkill.class
-                    )
-            );
+    // Restocking
+    public static final RegistryObject<SkillDataKey<Integer>> RESTOCKING_COOLDOWN = register("restocking_cooldown", PacketBufferCodec.INTEGER, 0, RestockingSkill.class);
 
-    public static final RegistryObject<SkillDataKey<Boolean>> RAPID_RETREAT_ACTIVE =
-            DATA_KEYS.register("rapid_retreat_active", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.BOOLEAN,
-                            false,
-                            RapidRetreatSkill.class
-                    )
-            );
-    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_COOLDOWN =
-            DATA_KEYS.register("rapid_retreat_cooldown", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            RapidRetreatSkill.class
-                    )
-            );
-    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_DURATION =
-            DATA_KEYS.register("rapid_retreat_duration", () ->
-                    SkillDataKey.createSkillDataKey(
-                            PacketBufferCodec.INTEGER,
-                            0,
-                            RapidRetreatSkill.class
-                    )
-            );
+    // Crescendo
+    public static final RegistryObject<SkillDataKey<Integer>> CRESCENDO_DAMAGE = register("crescendo_damage", PacketBufferCodec.INTEGER, 0, CrescendoSkill.class);
 
+    // Annullation
+    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_TICKS = register("annullation_ticks", PacketBufferCodec.INTEGER, 0, AnnullationSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> ANNULLATION_COOLDOWN = register("annullation_cooldown", PacketBufferCodec.INTEGER, 0, AnnullationSkill.class);
 
-
+    // Rapid Retreat
+    public static final RegistryObject<SkillDataKey<Boolean>> RAPID_RETREAT_ACTIVE = register("rapid_retreat_active", PacketBufferCodec.BOOLEAN, false, RapidRetreatSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_COOLDOWN = register("rapid_retreat_cooldown", PacketBufferCodec.INTEGER, 0, RapidRetreatSkill.class);
+    public static final RegistryObject<SkillDataKey<Integer>> RAPID_RETREAT_DURATION = register("rapid_retreat_duration", PacketBufferCodec.INTEGER, 0, RapidRetreatSkill.class);
 }

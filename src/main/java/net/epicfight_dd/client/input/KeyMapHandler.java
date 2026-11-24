@@ -1,7 +1,7 @@
 package net.epicfight_dd.client.input;
 
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.network.ChangeLivingModifierPacket;
 import net.epicfight_dd.network.DDNetworkHandler;
@@ -24,7 +24,7 @@ import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerP
 import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 
-@Mod.EventBusSubscriber(modid = Epicfight_dd.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class KeyMapHandler {
 
     @SubscribeEvent
@@ -39,7 +39,7 @@ public class KeyMapHandler {
                     AnimationPlayer animationPlayer = localPlayerPatch.getAnimator().getPlayerFor(null);
 
                     ItemStack offhand = localPlayerPatch.getValidItemInHand(InteractionHand.OFF_HAND);
-                    boolean isHoldingMiladyOffhand = offhand == DawnDayItems.milady.get().getDefaultInstance();
+                    boolean isHoldingMiladyOffhand = offhand == DawnDayItems.MILADY.get().getDefaultInstance();
 
 
                     if (    animationPlayer != null

@@ -1,14 +1,14 @@
 
 package net.epicfight_dd.skill.mover;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(
-        modid = Epicfight_dd.MODID,
+        modid = EpicFightDawnDay.MODID,
         bus = Mod.EventBusSubscriber.Bus.FORGE
 )
 public class AirDashServerEvents {

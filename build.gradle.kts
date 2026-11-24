@@ -37,6 +37,10 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
+mcSafeResources {
+    namespace.set(mod_id)
+}
+
 legacyForge {
     version = ("$minecraft_version-$forge_version")
     accessTransformers.from(file("src/main/resources/META-INF/accesstransformer.cfg"))

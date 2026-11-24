@@ -1,6 +1,6 @@
 package net.epicfight_dd.world.item;
 
-import net.epicfight_dd.Epicfight_dd;
+import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -16,14 +16,14 @@ import yesman.epicfight.world.item.SkillBookItem;
 public class DawnDayCreativeTab {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Epicfight_dd.MODID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EpicFightDawnDay.MODID);
 
     public static final RegistryObject<CreativeModeTab> DAWN_DAY_TAB = CREATIVE_MODE_TABS.register("epicfight_dd_tab", () -> CreativeModeTab.builder().icon(() ->
-                    new ItemStack(DawnDayItems.milady.get()))
+                    new ItemStack(DawnDayItems.MILADY.get()))
             .title(Component.translatable("creativetab.dawn_day_tab"))
             .displayItems((itemDisplayParameters, output) -> {
-                output.accept(DawnDayItems.milady.get());
-                output.accept(DawnDayItems.bonecutting_saw.get());
+                output.accept(DawnDayItems.MILADY.get());
+                output.accept(DawnDayItems.BONECUTTING_SAW.get());
                 output.accept(DawnDayItems.POLEBLADE.get());
                 output.accept(DawnDayItems.VITREUS.get());
                 output.accept(DawnDayItems.CRESCENDO.get());
@@ -34,12 +34,12 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.IUDEX_HALBERD.get());
                 output.accept(DawnDayItems.BLOOD_RITUS_DAGGER.get());
                 output.accept(DawnDayItems.NIGHT_RITUS_DAGGER.get());
-                output.accept(DawnDayItems.saber.get());
-                output.accept(DawnDayItems.backhand_blade.get());
+                output.accept(DawnDayItems.SABER.get());
+                output.accept(DawnDayItems.BACKHAND_BLADE.get());
                 output.accept(DawnDayItems.HORUS_FANG.get());
                 output.accept(DawnDayItems.WAR_SICKLE.get());
-                output.accept(DawnDayItems.spiked_bat.get());
-                output.accept(DawnDayItems.bat.get());
+                output.accept(DawnDayItems.SPIKED_BAT.get());
+                output.accept(DawnDayItems.BAT.get());
                 output.accept(DawnDayItems.HOOKCLAWS.get());
                 output.accept(DawnDayItems.NIGHTINGALE.get());
                 output.accept(DawnDayItems.GRIMM.get());
@@ -54,36 +54,36 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.IRON_FLORETT.get());
                 output.accept(DawnDayItems.GOLDEN_FLORETT.get());
                 output.accept(DawnDayItems.STONE_FLORETT.get());
-                output.accept(DawnDayItems.netherite_messer.get());
-                output.accept(DawnDayItems.diamond_messer.get());
-                output.accept(DawnDayItems.iron_messer.get());
-                output.accept(DawnDayItems.golden_messer.get());
+                output.accept(DawnDayItems.NETHERITE_MESSER.get());
+                output.accept(DawnDayItems.DIAMOND_MESSER.get());
+                output.accept(DawnDayItems.IRON_MESSER.get());
+                output.accept(DawnDayItems.GOLDEN_MESSER.get());
                 output.accept(DawnDayItems.STONE_MESSER.get());
-                output.accept(DawnDayItems.netherite_light_greatsword.get());
-                output.accept(DawnDayItems.diamond_light_greatsword.get());
-                output.accept(DawnDayItems.iron_light_greatsword.get());
-                output.accept(DawnDayItems.golden_light_greatsword.get());
+                output.accept(DawnDayItems.NETHERITE_LIGHT_GREATSWORD.get());
+                output.accept(DawnDayItems.DIAMOND_LIGHT_GREATSWORD.get());
+                output.accept(DawnDayItems.IRON_LIGHT_GREATSWORD.get());
+                output.accept(DawnDayItems.GOLDEN_LIGHT_GREATSWORD.get());
                 output.accept(DawnDayItems.STONE_LIGHT_GREATSWORD.get());
-                output.accept(DawnDayItems.netherite_halberd.get());
-                output.accept(DawnDayItems.diamond_halberd.get());
-                output.accept(DawnDayItems.iron_halberd.get());
-                output.accept(DawnDayItems.golden_halberd.get());
+                output.accept(DawnDayItems.NETHERITE_HALBERD.get());
+                output.accept(DawnDayItems.DIAMOND_HALBERD.get());
+                output.accept(DawnDayItems.IRON_HALBERD.get());
+                output.accept(DawnDayItems.GOLDEN_HALBERD.get());
                 output.accept(DawnDayItems.STONE_HALBERD.get());
                 output.accept(DawnDayItems.BLOOD_KNIFE.get());
-                output.accept(DawnDayItems.netherite_knife.get());
-                output.accept(DawnDayItems.diamond_knife.get());
-                output.accept(DawnDayItems.iron_knife.get());
-                output.accept(DawnDayItems.golden_knife.get());
+                output.accept(DawnDayItems.NETHERITE_KNIFE.get());
+                output.accept(DawnDayItems.DIAMOND_KNIFE.get());
+                output.accept(DawnDayItems.IRON_KNIFE.get());
+                output.accept(DawnDayItems.GOLDEN_KNIFE.get());
                 output.accept(DawnDayItems.STONE_KNIFE.get());
-                output.accept(DawnDayItems.netherite_battlestaff.get());
+                output.accept(DawnDayItems.NETHERITE_BATTLESTAFF.get());
                 output.accept(DawnDayItems.AMETHYST_BATTLESTAFF.get());
-                output.accept(DawnDayItems.diamond_battlestaff.get());
-                output.accept(DawnDayItems.iron_battlestaff.get());
-                output.accept(DawnDayItems.golden_battlestaff.get());
+                output.accept(DawnDayItems.DIAMOND_BATTLESTAFF.get());
+                output.accept(DawnDayItems.IRON_BATTLESTAFF.get());
+                output.accept(DawnDayItems.GOLDEN_BATTLESTAFF.get());
                 output.accept(DawnDayItems.STONE_BATTLESTAFF.get());
-                output.accept(DawnDayItems.wooden_battlestaff.get());
+                output.accept(DawnDayItems.WOODEN_BATTLESTAFF.get());
                 output.accept(DawnDayItems.REVENANT.get());
-                output.accept(DawnDayItems.ruby.get());
+                output.accept(DawnDayItems.RUBY.get());
                 output.accept(DawnDayItems.AMBER.get());
                 output.accept(DawnDayItems.CITRINE.get());
                 output.accept(DawnDayItems.PERIDOT.get());
@@ -145,16 +145,16 @@ public class DawnDayCreativeTab {
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_STRONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STUNARMOR_LONG.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.staminaregen_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.maxstamina.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.maxstamina_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.maxstamina_long.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.powerpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion_strong.get()));
-                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.impactpotion_long.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STAMINAREGEN.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STAMINAREGEN_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.STAMINAREGEN_LONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.MAXSTAMINA.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.MAXSTAMINA_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.MAXSTAMINA_LONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.POWERPOTION.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.IMPACTPOTION.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.IMPACTPOTION_STRONG.get()));
+                output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.IMPACTPOTION_LONG.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.POTION), DawnDayItems.SWEEPING.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING.get()));
                 output.accept(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), DawnDayItems.CRUMBLING_STRONG.get()));
