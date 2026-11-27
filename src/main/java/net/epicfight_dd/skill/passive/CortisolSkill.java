@@ -59,11 +59,23 @@ public class CortisolSkill extends PassiveSkill {
     }
 
     private static int stress(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_STRESS.get());
+        if (SkillDataKeyZ.CORTISOL_STRESS.isPresent()) {
+            int stressLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_STRESS.get());
+            EpicFightDawnDay.LOGGER.debug("Stress level is: {}", stressLevel);
+            return stressLevel;
+        } else {
+            throw new NullPointerException("Cortisol stress is null in CortisolSkill#stress");
+        }
     }
 
     private static int idle(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_IDLE.get());
+        if (SkillDataKeyZ.CORTISOL_IDLE.isPresent()) {
+            int idleLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_IDLE.get());
+            EpicFightDawnDay.LOGGER.debug("Idle level is: {}", idleLevel);
+            return idleLevel;
+        } else {
+            throw new NullPointerException("Cortisol idle is null in CortisolSkill#idle");
+        }
     }
 
     private static float ratio(SkillContainer container) {

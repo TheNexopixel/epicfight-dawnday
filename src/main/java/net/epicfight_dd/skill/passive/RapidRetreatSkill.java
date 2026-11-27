@@ -50,7 +50,8 @@ public class RapidRetreatSkill extends PassiveSkill {
     }
 
     private static boolean isActive(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get());
+        Boolean value = container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get());
+        return value != null && value;
     }
 
     private static int cooldown(SkillContainer container) {

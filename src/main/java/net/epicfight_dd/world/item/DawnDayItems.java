@@ -71,6 +71,10 @@ public class DawnDayItems {
             tip("poleblade_text1", GRAY),
             tip("poleblade_text2", GRAY));
 
+    public static final RegistryObject<Item> RUSTY_LUMBERJACK_AXE = registerTooltip("rusty_axe", Tiers.IRON, 2, -2.3F,
+            () -> new Item.Properties().rarity(Rarity.COMMON),
+            tip("rusty_axe", GRAY));
+
     public static final RegistryObject<Item> CRESCENDO = registerTooltip("crescendo", Tiers.NETHERITE, -4, -2.3F,
             () -> new Item.Properties().rarity(Rarity.EPIC),
             tip("weapon_passive", WHITE, BOLD),
