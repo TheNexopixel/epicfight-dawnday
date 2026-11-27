@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.UUID;
 
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -60,7 +60,7 @@ public class RestockingSkill extends PassiveSkill {
     }
 
     private static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.RESTOCKING_COOLDOWN.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RESTOCKING_COOLDOWN.get());
     }
 
     @Override
@@ -100,7 +100,7 @@ public class RestockingSkill extends PassiveSkill {
                     ServerPlayer killer = container.getServerExecutor().getOriginal();
 
                     container.getDataManager().setDataSync(
-                            SkillDataKeyZ.RESTOCKING_COOLDOWN.get(),
+                            DawnDaySkillDataKeys.RESTOCKING_COOLDOWN.get(),
                             Math.round(this.consumption * 20.0F)
                     );
 
@@ -122,7 +122,7 @@ public class RestockingSkill extends PassiveSkill {
     @Override
     public void onRemoved(SkillContainer container) {
         container.getExecutor().getEventListener().removeListener(EventType.PLAYER_KILLED_EVENT, EVENT_UUID);
-        container.getDataManager().setData(SkillDataKeyZ.RESTOCKING_COOLDOWN.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.RESTOCKING_COOLDOWN.get(), 0);
         super.onRemoved(container);
     }
 
@@ -131,7 +131,7 @@ public class RestockingSkill extends PassiveSkill {
         super.updateContainer(container);
         int remaining = cooldown(container);
         if (remaining > 0) {
-            container.getDataManager().setData(SkillDataKeyZ.RESTOCKING_COOLDOWN.get(), remaining - 1);
+            container.getDataManager().setData(DawnDaySkillDataKeys.RESTOCKING_COOLDOWN.get(), remaining - 1);
         }
     }
 

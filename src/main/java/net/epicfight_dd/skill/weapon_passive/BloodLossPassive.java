@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.UUID;
 
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 
 import org.joml.Vector3f;
 import yesman.epicfight.api.animation.AnimationPlayer;
@@ -81,14 +80,14 @@ public class BloodLossPassive extends PassiveSkill {
                     }
 
                     MobEffectInstance bloodLoss =
-                            target.getEffect(EffectRegistry.BLOOD_LOSS.get());
+                            target.getEffect(DawnDayEffects.BLOOD_LOSS.get());
 
                     if (isLastComboAnimation(playerPatch, capability)) {
                         if (bloodLoss != null) {
                             int stacks = bloodLoss.getAmplifier() + 1;
 
 
-                            float damagePerStack = player.hasEffect(EffectRegistry.SEPUKKU.get())
+                            float damagePerStack = player.hasEffect(DawnDayEffects.SEPUKKU.get())
                                     ? 0.07F
                                     : DAMAGE_PER_STACK;
 
@@ -103,7 +102,7 @@ public class BloodLossPassive extends PassiveSkill {
                             event.getDamageSource().attachDamageModifier(
                                     ValueModifier.multiplier(damageMultiplier));
 
-                            target.removeEffect(EffectRegistry.BLOOD_LOSS.get());
+                            target.removeEffect(DawnDayEffects.BLOOD_LOSS.get());
 
                             spawnBloodParticles(target, stacks);
 
@@ -145,7 +144,7 @@ public class BloodLossPassive extends PassiveSkill {
                     }
 
                     target.addEffect(new MobEffectInstance(
-                            EffectRegistry.BLOOD_LOSS.get(),
+                            DawnDayEffects.BLOOD_LOSS.get(),
                             duration,
                             amplifier));
 

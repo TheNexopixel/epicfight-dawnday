@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.attribute.DawnDayAttributes;
-import net.epicfight_dd.client.particle.ParticleRegistry;
+import net.epicfight_dd.client.particle.DawnDayParticles;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -217,7 +217,7 @@ public final class GorgedBulwarkSkill extends PassiveSkill {
 
     private static void hungerHitFeedback(ServerPlayer player, int loss) {
         if (!(player.level() instanceof ServerLevel level)) return;
-        level.sendParticles(ParticleRegistry.HUNGER_INDICATOR.get(),
+        level.sendParticles(DawnDayParticles.HUNGER_INDICATOR.get(),
                 player.getX(), player.getY() + player.getBbHeight() * 0.6D, player.getZ(),
                 Math.min(Math.max(1, loss), 6), 0.3D, 0.1D, 0.3D, 0.05D);
     }

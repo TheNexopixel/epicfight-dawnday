@@ -17,11 +17,12 @@ import yesman.epicfight.api.utils.PacketBufferCodec;
 import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.skill.SkillDataKey;
 
-public class SkillDataKeyZ {
+public class DawnDaySkillDataKeys {
 
-    private SkillDataKeyZ() {}
+    private DawnDaySkillDataKeys() {}
 
     public static final DeferredRegister<SkillDataKey<?>> DATA_KEYS = DeferredRegister.create(ResourceLocation.fromNamespaceAndPath(EpicFightMod.MODID, "skill_data_keys"), EpicFightDawnDay.MODID);
+
 
     private static <T> RegistryObject<SkillDataKey<T>> register(String name, PacketBufferCodec<T> codec, T defaultValue, boolean syncToTrackingPlayers, Class<?>... skillClasses) {
         return DATA_KEYS.register(name, () -> SkillDataKey.createSkillDataKey(codec, defaultValue, syncToTrackingPlayers, skillClasses));

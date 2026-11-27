@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import net.epicfight_dd.EpicFightDawnDay;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -48,14 +48,14 @@ public class CortisolSkill extends PassiveSkill {
     }
 
     @Override
-    public void setParams(CompoundTag p) {
-        super.setParams(p);
-        this.stressPerHit = p.contains("stress_per_hit") ? p.getFloat("stress_per_hit") : 2.0F;
-        this.maxStress = p.contains("max_stress") ? p.getFloat("max_stress") : 100.0F;
-        this.decayDelayTicks = p.contains("decay_delay_ticks") ? p.getInt("decay_delay_ticks") : 300;
-        this.decayPerSecond = p.contains("decay_per_second") ? p.getFloat("decay_per_second") : 4.0F;
-        this.syncInterval = Math.max(1, p.contains("sync_interval") ? p.getInt("sync_interval") : 2);
-        this.overlayAlpha = p.contains("overlay_alpha") ? p.getFloat("overlay_alpha") : 0.25F;
+    public void setParams(CompoundTag tag) {
+        super.setParams(tag);
+        this.stressPerHit = tag.contains("stress_per_hit") ? tag.getFloat("stress_per_hit") : 2.0F;
+        this.maxStress = tag.contains("max_stress") ? tag.getFloat("max_stress") : 100.0F;
+        this.decayDelayTicks = tag.contains("decay_delay_ticks") ? tag.getInt("decay_delay_ticks") : 300;
+        this.decayPerSecond = tag.contains("decay_per_second") ? tag.getFloat("decay_per_second") : 4.0F;
+        this.syncInterval = Math.max(1, tag.contains("sync_interval") ? tag.getInt("sync_interval") : 2);
+        this.overlayAlpha = tag.contains("overlay_alpha") ? tag.getFloat("overlay_alpha") : 0.25F;
     }
 
     private static int stress(SkillContainer container) {
@@ -96,8 +96,8 @@ public class CortisolSkill extends PassiveSkill {
                 event -> event.attachValueModifier(ValueModifier.multiplier(1.0F + ratio(container))));
 
         if (!container.getExecutor().isLogicalClient()) {
-            container.getDataManager().setData(SkillDataKeyZ.CORTISOL_STRESS.get(), 0);
-            container.getDataManager().setData(SkillDataKeyZ.CORTISOL_IDLE.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
         }
     }
 
@@ -107,8 +107,8 @@ public class CortisolSkill extends PassiveSkill {
                 PlayerEventListener.EventType.MODIFY_DAMAGE_EVENT, EVENT_UUID);
 
         if (!container.getExecutor().isLogicalClient()) {
-            container.getDataManager().setData(SkillDataKeyZ.CORTISOL_STRESS.get(), 0);
-            container.getDataManager().setData(SkillDataKeyZ.CORTISOL_IDLE.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
         }
         super.onRemoved(container);
     }
@@ -122,7 +122,7 @@ public class CortisolSkill extends PassiveSkill {
         if (current <= 0) return;
 
         int idle = idle(container) + 1;
-        container.getDataManager().setData(SkillDataKeyZ.CORTISOL_IDLE.get(), idle);
+        container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), idle);
         if (idle < this.decayDelayTicks) return;
 
         int step = Math.max(1, Math.round(this.decayPerSecond * SCALE / 20.0F));
@@ -130,9 +130,9 @@ public class CortisolSkill extends PassiveSkill {
 
         ServerPlayer player = container.getServerExecutor().getOriginal();
         if (next == 0 || player.tickCount % this.syncInterval == 0) {
-            container.getDataManager().setDataSync(SkillDataKeyZ.CORTISOL_STRESS.get(), next);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         } else {
-            container.getDataManager().setData(SkillDataKeyZ.CORTISOL_STRESS.get(), next);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         }
     }
 
@@ -143,8 +143,8 @@ public class CortisolSkill extends PassiveSkill {
         int gain = Math.round(this.stressPerHit * SCALE);
         int next = Math.min(this.maxScaled(), current + gain);
 
-        container.getDataManager().setDataSync(SkillDataKeyZ.CORTISOL_STRESS.get(), next);
-        container.getDataManager().setData(SkillDataKeyZ.CORTISOL_IDLE.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
+        container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
     }
 
     @SubscribeEvent(priority = EventPriority.NORMAL)

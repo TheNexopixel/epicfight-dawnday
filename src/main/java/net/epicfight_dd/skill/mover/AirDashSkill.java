@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.network.AirDashPacket;
 import net.epicfight_dd.network.DDNetworkHandler;
@@ -207,7 +207,7 @@ public class AirDashSkill extends Skill {
                 playerPatch.getStamina() - staminaCost
         );
 
-        if (player.hasEffect(EffectRegistry.ENDURANCE.get())){
+        if (player.hasEffect(DawnDayEffects.ENDURANCE.get())){
             playerPatch.setStaminaRegenAwaitTicks(15);
         } else{
             playerPatch.setStaminaRegenAwaitTicks(40);

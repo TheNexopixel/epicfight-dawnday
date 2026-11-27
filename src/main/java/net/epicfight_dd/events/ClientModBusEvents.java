@@ -2,7 +2,7 @@ package net.epicfight_dd.events;
 
 import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.client.particle.HungerIndicatorParticle;
-import net.epicfight_dd.client.particle.ParticleRegistry;
+import net.epicfight_dd.client.particle.DawnDayParticles;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +15,7 @@ public class ClientModBusEvents {
     public static final class ClientParticles {
         @SubscribeEvent
         public static void register(RegisterParticleProvidersEvent event) {
-            event.registerSpriteSet(ParticleRegistry.HUNGER_INDICATOR.get(), HungerIndicatorParticle.Provider::new);
+            event.registerSpriteSet(DawnDayParticles.HUNGER_INDICATOR.get(), HungerIndicatorParticle.Provider::new);
         }
     }
 }

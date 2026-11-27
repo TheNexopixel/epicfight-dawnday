@@ -1,7 +1,7 @@
 package net.epicfight_dd.world.item;
 
 import net.epicfight_dd.EpicFightDawnDay;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -248,49 +248,49 @@ public class DawnDayItems {
 
     // ------------------------------------------------------------ potions
 
-    public static final RegistryObject<Potion> BRUISING = registerPotion("bruising", EffectRegistry.BRUISING, 1600, 0);
-    public static final RegistryObject<Potion> BRUISING_LONG = registerPotion("bruising_long", EffectRegistry.BRUISING, 3000, 0);
-    public static final RegistryObject<Potion> BRUISING_STRONG = registerPotion("bruising_strong", EffectRegistry.BRUISING, 800, 1);
-    public static final RegistryObject<Potion> BRUISING_STRONGER = registerPotion("bruising_stronger", EffectRegistry.BRUISING, 500, 2);
+    public static final RegistryObject<Potion> BRUISING = registerPotion("bruising", DawnDayEffects.BRUISING, 1600, 0);
+    public static final RegistryObject<Potion> BRUISING_LONG = registerPotion("bruising_long", DawnDayEffects.BRUISING, 3000, 0);
+    public static final RegistryObject<Potion> BRUISING_STRONG = registerPotion("bruising_strong", DawnDayEffects.BRUISING, 800, 1);
+    public static final RegistryObject<Potion> BRUISING_STRONGER = registerPotion("bruising_stronger", DawnDayEffects.BRUISING, 500, 2);
 
-    public static final RegistryObject<Potion> HEART_STOP = registerPotion("heartstop", EffectRegistry.HEART_STOP, 3600, 0);
-    public static final RegistryObject<Potion> HEART_STOP_LONG = registerPotion("heartstop_long", EffectRegistry.HEART_STOP, 9600, 0);
-    public static final RegistryObject<Potion> HEART_STOP_STRONG = registerPotion("heartstop_strong", EffectRegistry.HEART_STOP, 2400, 1);
+    public static final RegistryObject<Potion> HEART_STOP = registerPotion("heartstop", DawnDayEffects.HEART_STOP, 3600, 0);
+    public static final RegistryObject<Potion> HEART_STOP_LONG = registerPotion("heartstop_long", DawnDayEffects.HEART_STOP, 9600, 0);
+    public static final RegistryObject<Potion> HEART_STOP_STRONG = registerPotion("heartstop_strong", DawnDayEffects.HEART_STOP, 2400, 1);
 
-    public static final RegistryObject<Potion> EXHAUSTED = registerPotion("exhausted", EffectRegistry.EXHAUSTED, 3600, 0);
-    public static final RegistryObject<Potion> EXHAUSTED_LONG = registerPotion("exhausted_long", EffectRegistry.EXHAUSTED, 9600, 0);
-    public static final RegistryObject<Potion> EXHAUSTED_STRONG = registerPotion("exhausted_strong", EffectRegistry.EXHAUSTED, 2400, 1);
+    public static final RegistryObject<Potion> EXHAUSTED = registerPotion("exhausted", DawnDayEffects.EXHAUSTED, 3600, 0);
+    public static final RegistryObject<Potion> EXHAUSTED_LONG = registerPotion("exhausted_long", DawnDayEffects.EXHAUSTED, 9600, 0);
+    public static final RegistryObject<Potion> EXHAUSTED_STRONG = registerPotion("exhausted_strong", DawnDayEffects.EXHAUSTED, 2400, 1);
 
-    public static final RegistryObject<Potion> STUNARMOR = registerPotion("stun_armor", EffectRegistry.STUNARMOR, 4000, 0);
-    public static final RegistryObject<Potion> STUNARMOR_LONG = registerPotion("stun_armor_long", EffectRegistry.STUNARMOR, 10400, 0);
-    public static final RegistryObject<Potion> STUNARMOR_STRONG = registerPotion("stun_armor_strong", EffectRegistry.STUNARMOR, 2100, 1);
+    public static final RegistryObject<Potion> STUNARMOR = registerPotion("stun_armor", DawnDayEffects.STUNARMOR, 4000, 0);
+    public static final RegistryObject<Potion> STUNARMOR_LONG = registerPotion("stun_armor_long", DawnDayEffects.STUNARMOR, 10400, 0);
+    public static final RegistryObject<Potion> STUNARMOR_STRONG = registerPotion("stun_armor_strong", DawnDayEffects.STUNARMOR, 2100, 1);
 
-    public static final RegistryObject<Potion> FORTIFIED = registerPotion("fortified", EffectRegistry.FORTIFIED, 3600, 0);
-    public static final RegistryObject<Potion> FORTIFIED_LONG = registerPotion("fortified_long", EffectRegistry.FORTIFIED, 9600, 0);
-    public static final RegistryObject<Potion> FORTIFIED_STRONG = registerPotion("fortified_strong", EffectRegistry.FORTIFIED, 1800, 1);
+    public static final RegistryObject<Potion> FORTIFIED = registerPotion("fortified", DawnDayEffects.FORTIFIED, 3600, 0);
+    public static final RegistryObject<Potion> FORTIFIED_LONG = registerPotion("fortified_long", DawnDayEffects.FORTIFIED, 9600, 0);
+    public static final RegistryObject<Potion> FORTIFIED_STRONG = registerPotion("fortified_strong", DawnDayEffects.FORTIFIED, 1800, 1);
 
-    public static final RegistryObject<Potion> STAMINAREGEN = registerPotion("staminaregen_potion", EffectRegistry.ENDURANCE, 3600, 0);
-    public static final RegistryObject<Potion> STAMINAREGEN_STRONG = registerPotion("staminaregen_potion_strong", EffectRegistry.ENDURANCE, 1700, 1);
-    public static final RegistryObject<Potion> STAMINAREGEN_LONG = registerPotion("staminaregen_potion_long", EffectRegistry.ENDURANCE, 9600, 0);
+    public static final RegistryObject<Potion> STAMINAREGEN = registerPotion("staminaregen_potion", DawnDayEffects.ENDURANCE, 3600, 0);
+    public static final RegistryObject<Potion> STAMINAREGEN_STRONG = registerPotion("staminaregen_potion_strong", DawnDayEffects.ENDURANCE, 1700, 1);
+    public static final RegistryObject<Potion> STAMINAREGEN_LONG = registerPotion("staminaregen_potion_long", DawnDayEffects.ENDURANCE, 9600, 0);
 
-    public static final RegistryObject<Potion> MAXSTAMINA_LONG = registerPotion("stamina_potion_long", EffectRegistry.STAMNIA, 9600, 0);
-    public static final RegistryObject<Potion> MAXSTAMINA_STRONG = registerPotion("stamina_potion_strong", EffectRegistry.STAMNIA, 1700, 1);
-    public static final RegistryObject<Potion> MAXSTAMINA = registerPotion("stamina_potion", EffectRegistry.STAMNIA, 3600, 0);
+    public static final RegistryObject<Potion> MAXSTAMINA_LONG = registerPotion("stamina_potion_long", DawnDayEffects.STAMNIA, 9600, 0);
+    public static final RegistryObject<Potion> MAXSTAMINA_STRONG = registerPotion("stamina_potion_strong", DawnDayEffects.STAMNIA, 1700, 1);
+    public static final RegistryObject<Potion> MAXSTAMINA = registerPotion("stamina_potion", DawnDayEffects.STAMNIA, 3600, 0);
 
-    public static final RegistryObject<Potion> POWERPOTION = registerPotion("might", EffectRegistry.MIGHT, 1200, 0);
-    public static final RegistryObject<Potion> SWEEPING = registerPotion("acceleration", EffectRegistry.ACCELERATION, 1300, 0);
+    public static final RegistryObject<Potion> POWERPOTION = registerPotion("might", DawnDayEffects.MIGHT, 1200, 0);
+    public static final RegistryObject<Potion> SWEEPING = registerPotion("acceleration", DawnDayEffects.ACCELERATION, 1300, 0);
 
-    public static final RegistryObject<Potion> IMPACTPOTION_STRONG = registerPotion("potion_of_stronger_impact", EffectRegistry.IMPACT, 1700, 1);
-    public static final RegistryObject<Potion> IMPACTPOTION_LONG = registerPotion("potion_of_longer_impact", EffectRegistry.IMPACT, 9600, 0);
-    public static final RegistryObject<Potion> IMPACTPOTION = registerPotion("potion_of_impact", EffectRegistry.IMPACT, 3600, 0);
+    public static final RegistryObject<Potion> IMPACTPOTION_STRONG = registerPotion("potion_of_stronger_impact", DawnDayEffects.IMPACT, 1700, 1);
+    public static final RegistryObject<Potion> IMPACTPOTION_LONG = registerPotion("potion_of_longer_impact", DawnDayEffects.IMPACT, 9600, 0);
+    public static final RegistryObject<Potion> IMPACTPOTION = registerPotion("potion_of_impact", DawnDayEffects.IMPACT, 3600, 0);
 
-    public static final RegistryObject<Potion> CRUMBLING = registerPotion("crumbling", EffectRegistry.CRUMBLING, 3600, 0);
-    public static final RegistryObject<Potion> CRUMBLING_LONG = registerPotion("crumbling_long", EffectRegistry.CRUMBLING, 6666, 0);
-    public static final RegistryObject<Potion> CRUMBLING_STRONG = registerPotion("crumbling_strong", EffectRegistry.CRUMBLING, 2100, 1);
+    public static final RegistryObject<Potion> CRUMBLING = registerPotion("crumbling", DawnDayEffects.CRUMBLING, 3600, 0);
+    public static final RegistryObject<Potion> CRUMBLING_LONG = registerPotion("crumbling_long", DawnDayEffects.CRUMBLING, 6666, 0);
+    public static final RegistryObject<Potion> CRUMBLING_STRONG = registerPotion("crumbling_strong", DawnDayEffects.CRUMBLING, 2100, 1);
 
-    public static final RegistryObject<Potion> CURSED = registerPotion("cursed", EffectRegistry.CURSED, 2960, 0);
-    public static final RegistryObject<Potion> CURSED_LONG = registerPotion("cursed_long", EffectRegistry.CURSED, 6666, 0);
-    public static final RegistryObject<Potion> CURSED_STRONG = registerPotion("cursed_strong", EffectRegistry.CURSED, 1929, 1);
+    public static final RegistryObject<Potion> CURSED = registerPotion("cursed", DawnDayEffects.CURSED, 2960, 0);
+    public static final RegistryObject<Potion> CURSED_LONG = registerPotion("cursed_long", DawnDayEffects.CURSED, 6666, 0);
+    public static final RegistryObject<Potion> CURSED_STRONG = registerPotion("cursed_strong", DawnDayEffects.CURSED, 1929, 1);
 
     // ------------------------------------------------------------ misc
 
@@ -298,7 +298,7 @@ public class DawnDayItems {
             new Item.Properties()
                     .stacksTo(4)
                     .craftRemainder(Items.IRON_NUGGET),
-            new MobEffectInstance(EffectRegistry.ENDURANCE.get(), 1200, 1),
-            new MobEffectInstance(EffectRegistry.STAMNIA.get(), 1200, 1),
-            new MobEffectInstance(EffectRegistry.IMPACT.get(), 1200, 0)));
+            new MobEffectInstance(DawnDayEffects.ENDURANCE.get(), 1200, 1),
+            new MobEffectInstance(DawnDayEffects.STAMNIA.get(), 1200, 1),
+            new MobEffectInstance(DawnDayEffects.IMPACT.get(), 1200, 0)));
 }

@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.world.item.DawnDayItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -14,8 +14,6 @@ import org.joml.Vector3f;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.effect.MobEffectInstance;
-
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
@@ -109,17 +107,17 @@ public class NightRitualDaggerPassive extends PassiveSkill {
                     float staminaBonus = 0.0F;
 
                     if (event.getKilledEntity() instanceof Player) {
-                        staminaBonus += player.hasEffect(EffectRegistry.SEPUKKU.get())
+                        staminaBonus += player.hasEffect(DawnDayEffects.SEPUKKU.get())
                                 ? maxStamina
                                 : maxStamina / 2.0F;
                     }
 
                     if (level.isNight()) {
-                        staminaBonus += player.hasEffect(EffectRegistry.SEPUKKU.get())
+                        staminaBonus += player.hasEffect(DawnDayEffects.SEPUKKU.get())
                                 ? 6.0F
                                 : 3.0F;
                     } else {
-                        staminaBonus += player.hasEffect(EffectRegistry.SEPUKKU.get())
+                        staminaBonus += player.hasEffect(DawnDayEffects.SEPUKKU.get())
                                 ? 0.0F
                                 : 1.5F;
                     }

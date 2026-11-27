@@ -105,7 +105,7 @@ public class SepukkuEffect extends MobEffect {
         if (!entity.level().isClientSide() && entity.getServer() != null) {
             entity.getServer().execute(() ->
                     entity.addEffect(new MobEffectInstance(
-                            EffectRegistry.DRAINDED.get(),
+                            DawnDayEffects.DRAINDED.get(),
                             350,
                             0
                     ))

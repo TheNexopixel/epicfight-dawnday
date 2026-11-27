@@ -3,11 +3,10 @@ package net.epicfight_dd.skill.dodge;
 import java.util.UUID;
 import net.epicfight_dd.gameasset.SkillSoundEffects;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.phys.Vec3;
@@ -108,7 +107,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     @OnlyIn(Dist.CLIENT)
     public boolean sendEmergencyDodge(SkillContainer container, ControlEngine engine) {
         if (!canEmergencyDodge(container.getExecutor())) return false;
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get(), 0);
         engine.addPacketToSend(super.getExecutionPacket(container, null));
         return true;
     }
@@ -124,8 +123,8 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
 
     @Override
     public void startHolding(SkillContainer container) {
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT.get(), -1);
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT.get(), -1);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get(), 0);
     }
 
     @Override
@@ -195,12 +194,12 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
             cancelOnServer(container, null);
             return;
         }
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT.get(), ticks);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT.get(), ticks);
         performDodge(container, buffer, HeatedStepsRules.tier(ticks));
     }
 
     private void performDodge(SkillContainer container, FriendlyByteBuf buffer, int tier) {
-        container.getDataManager().setDataSync(SkillDataKeyZ.HEATED_STEPS_TIER.get(), tier);
+        container.getDataManager().setDataSync(DawnDaySkillDataKeys.HEATED_STEPS_TIER.get(), tier);
         super.executeOnServer(container, buffer);
         TrailParameters active = tier >= 3
                 ? new TrailParameters(90, trail.radius() * 1.5, trail.damage(), trail.interval(), trail.burnTicks(), trail.burnChance()) : trail;
@@ -210,7 +209,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
 
     @Override
     public void onStopHolding(SkillContainer container, SPSkillExecutionFeedback feedback) {
-        feedback.getBuffer().writeInt(container.getDataManager().getDataValue(SkillDataKeyZ.HEATED_STEPS_RESULT.get()));
+        feedback.getBuffer().writeInt(container.getDataManager().getDataValue(DawnDaySkillDataKeys.HEATED_STEPS_RESULT.get()));
     }
 
     @Override @OnlyIn(Dist.CLIENT)
@@ -221,8 +220,8 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
     }
 
     private static void freeze(SkillContainer container, int ticks) {
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT.get(), ticks);
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(),
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT.get(), ticks);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get(),
                 container.getExecutor().getOriginal().tickCount + HeatedStepsRules.RESULT_TICKS);
     }
 
@@ -243,7 +242,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
             container.getExecutor().resetHolding();
             ClientEngine.getInstance().controlEngine.releaseAllServedKeys();
         }
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get(), 0);
     }
 
     @Override
@@ -251,8 +250,8 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
         super.updateContainer(container);
         if (!container.getExecutor().isLogicalClient()) {
             HeatedStepsTrail.follow(container);
-            if (!rolling(container.getExecutor()) && container.getDataManager().getDataValue(SkillDataKeyZ.HEATED_STEPS_TIER.get()) != 0)
-                container.getDataManager().setDataSync(SkillDataKeyZ.HEATED_STEPS_TIER.get(), 0);
+            if (!rolling(container.getExecutor()) && container.getDataManager().getDataValue(DawnDaySkillDataKeys.HEATED_STEPS_TIER.get()) != 0)
+                container.getDataManager().setDataSync(DawnDaySkillDataKeys.HEATED_STEPS_TIER.get(), 0);
         }
     }
 
@@ -301,7 +300,7 @@ public final class HeatedStepsSkill extends DodgeSkill implements ChargeableSkil
         if (!(patch instanceof PlayerPatch<?> player)) return 1;
         var container = player.getSkill(SkillSlots.DODGE);
         if (container == null || !(container.getSkill() instanceof HeatedStepsSkill)) return 1;
-        return HeatedStepsRules.distance(container.getDataManager().getDataValue(SkillDataKeyZ.HEATED_STEPS_TIER.get()));
+        return HeatedStepsRules.distance(container.getDataManager().getDataValue(DawnDaySkillDataKeys.HEATED_STEPS_TIER.get()));
     }
 
     @Override public int getMinChargingTicks() { return -1; }

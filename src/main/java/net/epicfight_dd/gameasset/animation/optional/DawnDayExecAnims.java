@@ -3,7 +3,7 @@ package net.epicfight_dd.gameasset.animation.optional;
 import java.util.Set;
 
 import net.epicfight_dd.api.animation.AnimUtils;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.gameasset.animation.DawnDayCollider;
 import net.epicfight_dd.gameasset.animation.optional.type.SelectiveExecutionAttackProxy;
@@ -303,7 +303,7 @@ public class DawnDayExecAnims {
                                 .addProperty(AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL))
                         .addEvents(AnimationEvent.InTimeEvent.create(2.35F, (e, s, p) -> {
                             LivingEntity entity = e.getOriginal();
-                            entity.addEffect(new MobEffectInstance(EffectRegistry.SEPUKKU.get(), 300, 0, false, false, true));
+                            entity.addEffect(new MobEffectInstance(DawnDayEffects.SEPUKKU.get(), 300, 0, false, false, true));
                         }, AnimationEvent.Side.SERVER)));
 
         RITUS_DAGGER_EXECUTED = executed(builder, "biped/execution/ritus_dagger_executed", 0.1F);

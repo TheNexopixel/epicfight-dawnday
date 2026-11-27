@@ -2,9 +2,9 @@ package net.epicfight_dd.gameasset;
 
 import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.attribute.DawnDayAttributes;
-import net.epicfight_dd.client.particle.ParticleRegistry;
-import net.epicfight_dd.effect.EffectRegistry;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.client.particle.DawnDayParticles;
+import net.epicfight_dd.effect.DawnDayEffects;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.epicfight_dd.world.entity.decoration.DawnDayPaintings;
 import net.epicfight_dd.world.item.DawnDayCreativeTab;
 import net.epicfight_dd.world.item.DawnDayItems;
@@ -17,9 +17,9 @@ public enum DawnDayRegisters {
     ATTRIBUTES(DawnDayAttributes.ATTRIBUTES::register),
     ITEMS(DawnDayItems.ITEMS::register),
     CREATIVE_TABS(DawnDayCreativeTab.CREATIVE_MODE_TABS::register),
-    SKILL_DATA_KEYS(SkillDataKeyZ.DATA_KEYS::register),
-    PARTICLES(ParticleRegistry.PARTICLES::register),
-    EFFECTS(EffectRegistry.EFFECTS::register),
+    SKILL_DATA_KEYS(DawnDaySkillDataKeys.DATA_KEYS::register),
+    PARTICLES(DawnDayParticles.PARTICLES::register),
+    EFFECTS(DawnDayEffects.EFFECTS::register),
     POTIONS(DawnDayItems.POTIONS::register),
     PAINTINGS(DawnDayPaintings.PAINTING_VARIANTS::register);
 
@@ -34,7 +34,7 @@ public enum DawnDayRegisters {
     }
 
     public static void registerAll(IEventBus modBus) {
-        for (DawnDayRegisters registry : values()) {
+        for (DawnDayRegisters registry : DawnDayRegisters.values()) {
             EpicFightDawnDay.LOGGER.debug("Registered {}", registry);
             registry.register(modBus);
         }

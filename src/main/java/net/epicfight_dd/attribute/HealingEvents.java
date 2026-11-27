@@ -1,6 +1,7 @@
 package net.epicfight_dd.attribute;
 
 import net.epicfight_dd.EpicFightDawnDay;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -8,15 +9,14 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class HealingEvents {
-    private HealingEvents() {
-    }
+    private HealingEvents() {}
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void heal(LivingHealEvent event) {
         if (event.getEntity().level().isClientSide || !(event.getAmount() > 0)) {
             return;
         }
-        var attribute = event.getEntity().getAttribute(DawnDayAttributes.HEALING.get());
+        AttributeInstance attribute = event.getEntity().getAttribute(DawnDayAttributes.HEALING.get());
         if (attribute == null) {
             return;
         }
