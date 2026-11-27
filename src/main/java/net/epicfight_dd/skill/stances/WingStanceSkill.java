@@ -3,7 +3,7 @@ package net.epicfight_dd.skill.stances;
 import net.epicfight_dd.gameasset.animation.WingStanceAnims;
 import net.epicfight_dd.network.DDNetworkHandler;
 import net.epicfight_dd.network.ServerBoundSkillResourceConsumePacket;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.skill.*;
@@ -43,8 +43,8 @@ public class WingStanceSkill extends Skill {
             boolean canActivate = innateStackCount >= 1 || container.getExecutor().getOriginal().isCreative();
             boolean isInWingStance = false;
 
-            if (data_manager != null && data_manager.hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get())) {
-                isInWingStance = data_manager.getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get());
+            if (data_manager != null && data_manager.hasData(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE.get())) {
+                isInWingStance = data_manager.getDataValue(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE.get());
             }
 
             if (!isInWingStance) return;

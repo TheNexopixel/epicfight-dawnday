@@ -5,7 +5,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.epicfight_dd.EpicFightDawnDay;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -111,7 +111,7 @@ public final class CrescendoSkill extends PassiveSkill {
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             CONTAINERS.put(player.getUUID(), container);
             BUILDS.put(player.getUUID(), new Build());
-            container.getDataManager().setDataSync(SkillDataKeyZ.CRESCENDO_DAMAGE.get(), 0);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
         }
     }
 
@@ -122,7 +122,7 @@ public final class CrescendoSkill extends PassiveSkill {
 
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             forget(player.getUUID());
-            container.getDataManager().setDataSync(SkillDataKeyZ.CRESCENDO_DAMAGE.get(), 0);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
         }
         super.onRemoved(container);
     }
@@ -171,7 +171,7 @@ public final class CrescendoSkill extends PassiveSkill {
         build.lastHit = player.level().getGameTime();
         build.damage = Math.min(max, current + step(player));
 
-        container.getDataManager().setDataSync(SkillDataKeyZ.CRESCENDO_DAMAGE.get(), tenths(build.damage));
+        container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), tenths(build.damage));
     }
 
     private static int tenths(float damage) {
@@ -198,16 +198,16 @@ public final class CrescendoSkill extends PassiveSkill {
 
         int shown = tenths(build.damage);
         boolean finished = build.damage <= base;
-        int current = container.getDataManager().getDataValue(SkillDataKeyZ.CRESCENDO_DAMAGE.get());
+        int current = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get());
 
         if (shown != current && (finished || player.tickCount % 2 == 0)) {
-            container.getDataManager().setDataSync(SkillDataKeyZ.CRESCENDO_DAMAGE.get(), shown);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), shown);
         }
     }
 
 
     private static float shownDamage(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.CRESCENDO_DAMAGE.get()) / 10.0F;
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get()) / 10.0F;
     }
 
     @OnlyIn(Dist.CLIENT)

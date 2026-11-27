@@ -2,10 +2,10 @@ package net.epicfight_dd.skill.passive.unstoppable;
 
 import java.util.UUID;
 import net.epicfight_dd.attribute.DawnDayAttributes;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.SkillSoundEffects;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -52,20 +52,20 @@ public final class UnstoppableSkill extends PassiveSkill {
     @Override
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
-        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
-            sync(container, SkillDataKeyZ.UNSTOPPABLE_STACKS.get(), 0);
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
-            sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remainingCooldown(player));
+            sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_REGENERATION.get(), 0D);
+            sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get(), remainingCooldown(player));
             refresh(container);
         }
     }
 
     @Override
     public void onRemoved(SkillContainer container) {
-        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (!container.getExecutor().getOriginal().level().isClientSide) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
+            container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_REGENERATION.get(), 0D);
             clearEffects(container.getExecutor().getOriginal());
         }
         super.onRemoved(container);
@@ -73,9 +73,9 @@ public final class UnstoppableSkill extends PassiveSkill {
 
     @Override
     public void onReset(SkillContainer container) {
-        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_AMBIENT_DELAY.get(), 0);
         if (container.getExecutor().getOriginal() instanceof ServerPlayer) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
+            container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_REGENERATION.get(), 0D);
             setStacks(container, 0);
         }
         super.onReset(container);
@@ -87,18 +87,18 @@ public final class UnstoppableSkill extends PassiveSkill {
         int cooldown = cooldown(container);
         if (container.getExecutor().isLogicalClient()) {
             if (cooldown > 0) {
-                container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), cooldown - 1);
+                container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get(), cooldown - 1);
             }
             return;
         }
         ServerPlayer player = container.getServerExecutor().getOriginal();
         int remaining = remainingCooldown(player);
-        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remaining);
+        container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get(), remaining);
         if (remaining != cooldown && remaining % 20 == 0) {
-            container.getDataManager().setDataSync(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), remaining);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get(), remaining);
         }
         if (container.isDisabled() || !player.isAlive()) {
-            container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get(), 0D);
+            container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_REGENERATION.get(), 0D);
             setStacks(container, 0);
         } else {
 
@@ -109,8 +109,8 @@ public final class UnstoppableSkill extends PassiveSkill {
     }
 
     private static void barrierAmbient(SkillContainer container, ServerPlayer player) {
-        int delay = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get());
-        if (container.isDisabled() || !player.isAlive() || !player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
+        int delay = container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_AMBIENT_DELAY.get());
+        if (container.isDisabled() || !player.isAlive() || !player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get())) {
             delay = 0;
         } else if (delay <= 0) {
             delay = SkillSoundEffects.barrierAmbientDelay();
@@ -120,14 +120,14 @@ public final class UnstoppableSkill extends PassiveSkill {
         } else {
             delay--;
         }
-        container.getDataManager().setData(SkillDataKeyZ.UNSTOPPABLE_AMBIENT_DELAY.get(), delay);
+        container.getDataManager().setData(DawnDaySkillDataKeys.UNSTOPPABLE_AMBIENT_DELAY.get(), delay);
     }
 
     private void regenerate(SkillContainer container) {
         int current = stacks(container);
-        int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
+        int cap = container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_CAP.get());
         var data = container.getDataManager();
-        var regeneration = SkillDataKeyZ.UNSTOPPABLE_REGENERATION.get();
+        var regeneration = DawnDaySkillDataKeys.UNSTOPPABLE_REGENERATION.get();
         if (current >= cap) {
             data.setData(regeneration, 0D);
             return;
@@ -143,11 +143,11 @@ public final class UnstoppableSkill extends PassiveSkill {
     }
 
     public static int stacks(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_STACKS.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get());
     }
 
     public static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get());
     }
 
     static int cappedStacks(SkillContainer container) {
@@ -158,14 +158,14 @@ public final class UnstoppableSkill extends PassiveSkill {
     public static void setStacks(SkillContainer container, int stacks) {
         Player player = container.getExecutor().getOriginal();
         int cap = UnstoppableRules.cap(player.getAttributeValue(Attributes.ARMOR));
-        sync(container, SkillDataKeyZ.UNSTOPPABLE_STACKS.get(), UnstoppableRules.clamp(stacks, cap));
+        sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get(), UnstoppableRules.clamp(stacks, cap));
         refresh(container);
     }
 
     void startBarrierCooldown(SkillContainer container) {
         Player player = container.getExecutor().getOriginal();
         player.getPersistentData().putLong(BARRIER_UNTIL, player.level().getGameTime() + barrierCooldownTicks);
-        sync(container, SkillDataKeyZ.UNSTOPPABLE_COOLDOWN.get(), barrierCooldownTicks);
+        sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_COOLDOWN.get(), barrierCooldownTicks);
         refresh(container);
     }
 
@@ -173,8 +173,8 @@ public final class UnstoppableSkill extends PassiveSkill {
         Player player = container.getExecutor().getOriginal();
         int cap = UnstoppableRules.cap(player.getAttributeValue(Attributes.ARMOR));
         int stacks = UnstoppableRules.clamp(stacks(container), cap);
-        sync(container, SkillDataKeyZ.UNSTOPPABLE_CAP.get(), cap);
-        sync(container, SkillDataKeyZ.UNSTOPPABLE_STACKS.get(), stacks);
+        sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_CAP.get(), cap);
+        sync(container, DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get(), stacks);
         if (!container.isDisabled() && player.isAlive() && UnstoppableRules.stunImmune(stacks)) {
             var immunity = player.getEffect(EpicFightMobEffects.STUN_IMMUNITY.get());
             if (immunity == null || (!immunity.isInfiniteDuration() && immunity.getDuration() <= 1)) {
@@ -196,8 +196,8 @@ public final class UnstoppableSkill extends PassiveSkill {
         }
         boolean ready = !container.isDisabled() && player.isAlive()
                 && UnstoppableRules.barrierReady(stacks, cooldown(container));
-        if (ready && !player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
-            player.addEffect(new MobEffectInstance(EffectRegistry.UNSTOPPABLE_BARRIER.get(), -1, 0, false, false, true));
+        if (ready && !player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get())) {
+            player.addEffect(new MobEffectInstance(DawnDayEffects.UNSTOPPABLE_BARRIER.get(), -1, 0, false, false, true));
             if (player instanceof ServerPlayer serverPlayer)
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_START, stacks);
 
@@ -211,8 +211,8 @@ public final class UnstoppableSkill extends PassiveSkill {
                     2.5F,
                     1.00F
             );
-        } else if (!ready && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
-            player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+        } else if (!ready && player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get())) {
+            player.removeEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get());
             if (player instanceof ServerPlayer serverPlayer) {
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, stacks);
                 SkillSoundEffects.unstoppableBarrierStop(serverPlayer);
@@ -225,8 +225,8 @@ public final class UnstoppableSkill extends PassiveSkill {
         if (healing != null) {
             healing.removeModifier(HEALING_MODIFIER);
         }
-        if (player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
-            player.removeEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get());
+        if (player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get())) {
+            player.removeEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get());
             if (player instanceof ServerPlayer serverPlayer) {
                 UnstoppableVisualPacket.send(serverPlayer, UnstoppableVisualPacket.BARRIER_STOP, 0);
                 SkillSoundEffects.unstoppableBarrierStop(serverPlayer);
@@ -243,7 +243,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         int previous = container.getDataManager().getDataValue(key);
         if (previous != value) {
             container.getDataManager().setDataSync(key, value);
-            if (key == SkillDataKeyZ.UNSTOPPABLE_STACKS.get() && !container.isDisabled()
+            if (key == DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get() && !container.isDisabled()
                     && container.getExecutor().getOriginal() instanceof ServerPlayer player && player.isAlive()) {
                 UnstoppableVisualPacket.send(player, value > previous ? UnstoppableVisualPacket.GAIN : UnstoppableVisualPacket.LOSS,
                         Math.max(previous, value));
@@ -267,7 +267,7 @@ public final class UnstoppableSkill extends PassiveSkill {
         pose.translate(0, gui.getSlidingProgression(), 0);
         graphics.blit(getSkillTexture(), (int) x, (int) y, 24, 24, 0, 0, 1, 1, 1, 1);
         int stacks = stacks(container);
-        int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
+        int cap = container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_CAP.get());
         String text = stacks + "/" + cap;
         int color = UnstoppableRules.barrierReady(stacks, cooldown(container)) ? 0xFFD86A : 0xFFFFFF;
         graphics.drawString(gui.getFont(), text, (int) x + (24 - gui.getFont().width(text)) / 2, (int) y + 15, color, true);

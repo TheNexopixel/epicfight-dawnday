@@ -3,11 +3,13 @@ package net.epicfight_dd;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import net.epicfight_dd.compat.DawnDayCompats;
+import net.epicfight_dd.compat.DawnDayCompatibilities;
 import net.epicfight_dd.config.DawnDayConfigs;
 import net.epicfight_dd.gameasset.DawnDayRegisters;
 import net.epicfight_dd.network.DDNetworkHandler;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.passive.CortisolSkill;
+import net.epicfight_dd.skill.passive.unstoppable.UnstoppableEvents;
+import net.epicfight_dd.skill.passive.unstoppable.UnstoppableSkill;
 import net.epicfight_dd.world.capabilities.item.DawnDayWeaponCategories;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
@@ -15,9 +17,7 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -36,7 +36,7 @@ public class EpicFightDawnDay {
     public EpicFightDawnDay(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
 
-        DawnDayConfigs.register(ModLoadingContext.get());
+        DawnDayConfigs.register(context);
         DawnDayRegisters.registerAll(bus);
 
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MODID, DawnDayWeaponCategories.class);
@@ -54,9 +54,9 @@ public class EpicFightDawnDay {
     }
 
     private Class<? extends ICompatModule>[] getDawnDawCompatModules() {
-        return Arrays.stream(DawnDayCompats.values())
+        return Arrays.stream(DawnDayCompatibilities.values())
                 .filter(compatModule -> ModList.get().isLoaded(compatModule.getModId()))
-                .map(DawnDayCompats::getModuleClass)
+                .map(DawnDayCompatibilities::getModuleClass)
                 .<Class<? extends ICompatModule>>toArray(Class[]::new);
     }
 

@@ -4,7 +4,7 @@ import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.gameasset.animation.*;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.epicfight_dd.skill.DawnDaySkills;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -39,8 +39,8 @@ public class DawnDayWeaponCapabilityPreset {
                     {
                         if (pp.getHoldingItemCapability(InteractionHand.OFF_HAND).getWeaponCategory() == DawnDayWeaponCategories.LIGHT_GREATSWORD) {
                             return CapabilityItem.Styles.TWO_HAND;
-                        } else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) &&
-                                playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()))) {
+                        } else if (pp instanceof PlayerPatch<?> playerpatch && (playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().hasData(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE.get()) &&
+                                playerpatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE.get()))) {
                             return CapabilityItem.Styles.OCHS;
                         } else {
                             return CapabilityItem.Styles.ONE_HAND;

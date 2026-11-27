@@ -14,7 +14,7 @@ import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
 import java.util.function.Supplier;
 
-public class EffectRegistry {
+public class DawnDayEffects {
 
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, EpicFightDawnDay.MODID);
 

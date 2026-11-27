@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.epicfight_dd.EpicFightDawnDay;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -58,27 +58,27 @@ public class AnnullationSkill extends WeaponInnateSkill {
     }
 
     private static int remaining(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.ANNULLATION_TICKS.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_TICKS.get());
     }
 
     private static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.ANNULLATION_COOLDOWN.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_COOLDOWN.get());
     }
 
 
     private static void storeTimer(SkillContainer container, int value, boolean sync) {
         if (sync) {
-            container.getDataManager().setDataSync(SkillDataKeyZ.ANNULLATION_TICKS.get(), value);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.ANNULLATION_TICKS.get(), value);
         } else {
-            container.getDataManager().setData(SkillDataKeyZ.ANNULLATION_TICKS.get(), value);
+            container.getDataManager().setData(DawnDaySkillDataKeys.ANNULLATION_TICKS.get(), value);
         }
     }
 
     private static void storeCooldown(SkillContainer container, int value, boolean sync) {
         if (sync) {
-            container.getDataManager().setDataSync(SkillDataKeyZ.ANNULLATION_COOLDOWN.get(), value);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.ANNULLATION_COOLDOWN.get(), value);
         } else {
-            container.getDataManager().setData(SkillDataKeyZ.ANNULLATION_COOLDOWN.get(), value);
+            container.getDataManager().setData(DawnDaySkillDataKeys.ANNULLATION_COOLDOWN.get(), value);
         }
     }
 

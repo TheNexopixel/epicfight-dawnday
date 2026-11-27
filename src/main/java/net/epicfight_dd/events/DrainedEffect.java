@@ -1,6 +1,6 @@
 package net.epicfight_dd.events;
 
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -27,7 +27,7 @@ public class DrainedEffect {
             return;
 
         if (event.getEffectInstance().getEffect()
-                == EffectRegistry.DRAINDED.get()) {
+                == DawnDayEffects.DRAINDED.get()) {
 
 
         if (!entity.level().isClientSide) {
@@ -57,7 +57,7 @@ public class DrainedEffect {
         }
     }
         if (event.getEffectInstance().getEffect()
-                == EffectRegistry.CURSED.get()) {
+                == DawnDayEffects.CURSED.get()) {
 
             int random = entity.level().random.nextInt(2);
             SoundEvent  sound;

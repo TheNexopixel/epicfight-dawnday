@@ -1,7 +1,7 @@
 package net.epicfight_dd.client.sound;
 
 import java.util.concurrent.ThreadLocalRandom;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.EntityBoundSoundInstance;
@@ -23,14 +23,14 @@ public final class UnstoppableBarrierSound extends EntityBoundSoundInstance {
         if (minecraft.level == null) return;
         var entity = minecraft.level.getEntity(packet.entityId());
         if (entity instanceof Player player && player.getUUID().equals(packet.playerId())
-                && player.isAlive() && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get()))
+                && player.isAlive() && player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get()))
             minecraft.getSoundManager().play(new UnstoppableBarrierSound(player));
     }
 
     @Override
     public void tick() {
         if (Minecraft.getInstance().level != player.level() || !player.isAlive()
-                || !player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get())) {
+                || !player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get())) {
             stop();
             return;
         }

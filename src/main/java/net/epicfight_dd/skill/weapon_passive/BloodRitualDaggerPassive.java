@@ -2,14 +2,12 @@ package net.epicfight_dd.skill.weapon_passive;
 
 import java.util.UUID;
 
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionHand;
 
 import org.joml.Vector3f;
@@ -57,7 +55,7 @@ public class BloodRitualDaggerPassive extends PassiveSkill {
 
                     Player player = playerPatch.getOriginal();
 
-                    if (player.hasEffect(EffectRegistry.SEPUKKU.get())) {
+                    if (player.hasEffect(DawnDayEffects.SEPUKKU.get())) {
                         event.attachValueModifier(ValueModifier.adder(2.0F));
                     }
                 }
@@ -85,8 +83,8 @@ public class BloodRitualDaggerPassive extends PassiveSkill {
                     }
 
                     double maxHealthBonus = victim.getMaxHealth() * 0.05D;
-                    boolean sepukku = player.hasEffect(EffectRegistry.SEPUKKU.get());
-                    boolean drained = player.hasEffect(EffectRegistry.DRAINDED.get());
+                    boolean sepukku = player.hasEffect(DawnDayEffects.SEPUKKU.get());
+                    boolean drained = player.hasEffect(DawnDayEffects.DRAINDED.get());
 
                     float healing = 0.0F;
 
@@ -118,7 +116,7 @@ public class BloodRitualDaggerPassive extends PassiveSkill {
                                 0.01D
                         );
 
-                        player.removeEffect(EffectRegistry.DRAINDED.get());
+                        player.removeEffect(DawnDayEffects.DRAINDED.get());
                     }
 
                     level.sendParticles(

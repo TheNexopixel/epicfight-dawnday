@@ -2,7 +2,7 @@ package net.epicfight_dd.events;
 
 import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.config.DawnDayConfigs;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.animation.QoLMiscAnimations;
 import net.epicfight_dd.skill.DawnDaySkills;
 import net.minecraft.server.level.ServerPlayer;
@@ -60,7 +60,7 @@ public class ForgeBusEvent {
 
     @SubscribeEvent
     public static void onEquipMentChange(LivingEquipmentChangeEvent event){
-        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(EffectRegistry.SEPUKKU.get())){
+        if(event.getSlot().equals(EquipmentSlot.MAINHAND) && event.getEntity().hasEffect(DawnDayEffects.SEPUKKU.get())){
             LivingEntity target = event.getEntity();
             if(target instanceof ServerPlayer player){
                 ServerPlayerPatch playerPatch = EpicFightCapabilities.getServerPlayerPatch(player);
@@ -68,7 +68,7 @@ public class ForgeBusEvent {
                     if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
                             && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
                             .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), DawnDaySkills.SEPUKKU)) {
-                        target.removeEffect(EffectRegistry.SEPUKKU.get());
+                        target.removeEffect(DawnDayEffects.SEPUKKU.get());
                     }
                 }
             }

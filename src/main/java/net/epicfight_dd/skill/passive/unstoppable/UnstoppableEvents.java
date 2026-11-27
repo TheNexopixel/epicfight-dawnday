@@ -2,8 +2,8 @@ package net.epicfight_dd.skill.passive.unstoppable;
 
 import net.epicfight_dd.EpicFightDawnDay;
 import net.epicfight_dd.skill.DawnDaySkills;
-import net.epicfight_dd.skill.SkillDataKeyZ;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.network.UnstoppableVisualPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -32,7 +32,7 @@ public final class UnstoppableEvents {
             if (container != null && killer.isAlive()) {
                 Player player = container.getExecutor().getOriginal();
                 UnstoppableSkill.refresh(container);
-                int cap = container.getDataManager().getDataValue(SkillDataKeyZ.UNSTOPPABLE_CAP.get());
+                int cap = container.getDataManager().getDataValue(DawnDaySkillDataKeys.UNSTOPPABLE_CAP.get());
                 UnstoppableSkill.setStacks(container, UnstoppableRules.kill(UnstoppableSkill.stacks(container), cap,
                         event.getEntity() instanceof Player));
                 player.level().playSound(
@@ -118,13 +118,13 @@ public final class UnstoppableEvents {
     @SubscribeEvent
     public static void tracking(PlayerEvent.StartTracking event) {
         if (event.getEntity() instanceof ServerPlayer observer && event.getTarget() instanceof ServerPlayer player
-                && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get()))
+                && player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get()))
             UnstoppableVisualPacket.barrierFor(observer, player);
     }
 
     @SubscribeEvent
     public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && player.hasEffect(EffectRegistry.UNSTOPPABLE_BARRIER.get()))
+        if (event.getEntity() instanceof ServerPlayer player && player.hasEffect(DawnDayEffects.UNSTOPPABLE_BARRIER.get()))
             UnstoppableVisualPacket.barrierFor(player, player);
     }
 
@@ -134,7 +134,7 @@ public final class UnstoppableEvents {
         }
         var patch = EpicFightCapabilities.getEntityPatch(player, ServerPlayerPatch.class);
         return patch == null ? null : patch.getSkillContainerFor(DawnDaySkills.UNSTOPPABLE)
-                .filter(value -> !value.isDisabled() && value.getDataManager().hasData(SkillDataKeyZ.UNSTOPPABLE_STACKS.get()))
+                .filter(value -> !value.isDisabled() && value.getDataManager().hasData(DawnDaySkillDataKeys.UNSTOPPABLE_STACKS.get()))
                 .orElse(null);
     }
 }

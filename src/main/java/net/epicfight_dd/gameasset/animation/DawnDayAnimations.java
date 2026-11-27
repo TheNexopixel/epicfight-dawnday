@@ -2,7 +2,7 @@ package net.epicfight_dd.gameasset.animation;
 
 import net.epicfight_dd.api.animation.AnimUtils;
 import net.epicfight_dd.api.animation.JointTrack;
-import net.epicfight_dd.effect.EffectRegistry;
+import net.epicfight_dd.effect.DawnDayEffects;
 import net.epicfight_dd.gameasset.DawnDaySounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -3379,7 +3379,7 @@ public class DawnDayAnimations {
 
                                             entity.addEffect(
                                                     new MobEffectInstance(
-                                                            EffectRegistry.MIGHT.get(),
+                                                            DawnDayEffects.MIGHT.get(),
                                                             600, 0, false, false, true
                                                     )
                                             );
@@ -3426,8 +3426,8 @@ public class DawnDayAnimations {
                                             float damage =
                                                     1.5f + maxHealth * 0.3F;
 
-                                            if (entitypatch.getOriginal().hasEffect(EffectRegistry.DRAINDED.get()) ||
-                                                    entitypatch.getOriginal().hasEffect(EffectRegistry.SEPUKKU.get())) {
+                                            if (entitypatch.getOriginal().hasEffect(DawnDayEffects.DRAINDED.get()) ||
+                                                    entitypatch.getOriginal().hasEffect(DawnDayEffects.SEPUKKU.get())) {
 
 
                                                 damage = 3 + maxHealth * 0.6F;
@@ -3531,7 +3531,7 @@ public class DawnDayAnimations {
 
                                             entity.addEffect(
                                                     new MobEffectInstance(
-                                                            EffectRegistry.SEPUKKU.get(),
+                                                            DawnDayEffects.SEPUKKU.get(),
                                                             600, 0, false, false, true
                                                     )
                                             );
@@ -4340,7 +4340,7 @@ public class DawnDayAnimations {
 
                                             entity.addEffect(
                                                     new MobEffectInstance(
-                                                            EffectRegistry.ACCELERATION.get(),
+                                                            DawnDayEffects.ACCELERATION.get(),
                                                             750, 0, false, false, true
                                                     )
                                             );

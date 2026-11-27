@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -39,12 +39,12 @@ public class Riposte extends PassiveSkill {
 
 
     private static boolean isCharged(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.IRON_WILL_STACKS.get()) > 0;
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.IRON_WILL_STACKS.get()) > 0;
     }
 
     private static void setCharge(SkillContainer container, int stacks, float storedDamage) {
-        container.getDataManager().setDataSync(SkillDataKeyZ.IRON_WILL_STACKS.get(), stacks);
-        container.getDataManager().setDataSync(SkillDataKeyZ.IRON_WILL_DAMAGE.get(), storedDamage);
+        container.getDataManager().setDataSync(DawnDaySkillDataKeys.IRON_WILL_STACKS.get(), stacks);
+        container.getDataManager().setDataSync(DawnDaySkillDataKeys.IRON_WILL_DAMAGE.get(), storedDamage);
     }
 
 
@@ -78,7 +78,7 @@ public class Riposte extends PassiveSkill {
 
             Player player = container.getExecutor().getOriginal();
             LivingEntity target = event.getTarget();
-            float stored = container.getDataManager().getDataValue(SkillDataKeyZ.IRON_WILL_DAMAGE.get());
+            float stored = container.getDataManager().getDataValue(DawnDaySkillDataKeys.IRON_WILL_DAMAGE.get());
 
             setCharge(container, 0, 0.0F);
             Skill.setSkillStackSynchronize(container, 0);

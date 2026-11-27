@@ -1,7 +1,7 @@
 package net.epicfight_dd.skill.weapon_innate;
 
 import net.epicfight_dd.skill.DawnDaySkills;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +32,7 @@ public class FuriousCutSkill extends SimpleWeaponInnateSkill {
         if(localPlayerPatch != null &&
                 !localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).isEmpty() &&
                 localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).hasSkill(DawnDaySkills.WINGSTANCE) &&
-                localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(SkillDataKeyZ.SPECIAL_STANCE_ACTIVATE.get()) == true)
+                localPlayerPatch.getSkill(SkillSlots.WEAPON_PASSIVE).getDataManager().getDataValue(DawnDaySkillDataKeys.SPECIAL_STANCE_ACTIVATE.get()) == true)
         {
             return ResourceLocation.fromNamespaceAndPath(this.getRegistryName().getNamespace(), String.format("textures/gui/skills/%s/%s.png", this.category.toString().toLowerCase(Locale.ROOT), this.getRegistryName().getPath() + "_special"));
         }

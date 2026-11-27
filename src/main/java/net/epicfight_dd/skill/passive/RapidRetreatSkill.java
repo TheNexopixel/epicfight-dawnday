@@ -3,7 +3,7 @@ package net.epicfight_dd.skill.passive;
 import java.util.UUID;
 
 import net.epicfight_dd.gameasset.DawnDaySounds;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -50,15 +50,15 @@ public class RapidRetreatSkill extends PassiveSkill {
     }
 
     private static boolean isActive(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_ACTIVE.get());
     }
 
     private static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_COOLDOWN.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get());
     }
 
     private static int duration(SkillContainer container) {
-        return container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_DURATION.get());
+        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get());
     }
 
     private static <T> void store(SkillContainer container, SkillDataKey<T> key, T value, boolean sync) {
@@ -100,7 +100,7 @@ public class RapidRetreatSkill extends PassiveSkill {
         );
 
         if (!container.getExecutor().isLogicalClient()) {
-            store(container, SkillDataKeyZ.RAPID_RETREAT_COOLDOWN.get(), this.equipCooldownTicks, false);
+            store(container, DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get(), this.equipCooldownTicks, false);
         }
     }
 
@@ -113,7 +113,7 @@ public class RapidRetreatSkill extends PassiveSkill {
 
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             removeSpeed(player);
-            store(container, SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get(), false, player.connection != null);
+            store(container, DawnDaySkillDataKeys.RAPID_RETREAT_ACTIVE.get(), false, player.connection != null);
         }
     }
 
@@ -135,7 +135,7 @@ public class RapidRetreatSkill extends PassiveSkill {
                 end(container, player);
             } else {
                 applySpeed(player);
-                store(container, SkillDataKeyZ.RAPID_RETREAT_DURATION.get(), remaining, secondMark);
+                store(container, DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get(), remaining, secondMark);
             }
             return;
         }
@@ -143,7 +143,7 @@ public class RapidRetreatSkill extends PassiveSkill {
         int cooldown = cooldown(container);
         if (cooldown > 0) {
             cooldown--;
-            store(container, SkillDataKeyZ.RAPID_RETREAT_COOLDOWN.get(), cooldown, cooldown == 0 || secondMark);
+            store(container, DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get(), cooldown, cooldown == 0 || secondMark);
             return;
         }
 
@@ -156,12 +156,12 @@ public class RapidRetreatSkill extends PassiveSkill {
         if (isActive(container)) {
             int remaining = duration(container);
             if (remaining > 0) {
-                store(container, SkillDataKeyZ.RAPID_RETREAT_DURATION.get(), remaining - 1, false);
+                store(container, DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get(), remaining - 1, false);
             }
         } else {
             int remaining = cooldown(container);
             if (remaining > 0) {
-                store(container, SkillDataKeyZ.RAPID_RETREAT_COOLDOWN.get(), remaining - 1, false);
+                store(container, DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get(), remaining - 1, false);
             }
         }
     }
@@ -173,8 +173,8 @@ public class RapidRetreatSkill extends PassiveSkill {
     }
 
     private void start(SkillContainer container, ServerPlayer player) {
-        store(container, SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get(), true, true);
-        store(container, SkillDataKeyZ.RAPID_RETREAT_DURATION.get(), this.activeDurationTicks, true);
+        store(container, DawnDaySkillDataKeys.RAPID_RETREAT_ACTIVE.get(), true, true);
+        store(container, DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get(), this.activeDurationTicks, true);
 
         player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 0, true, false, false));
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 1, true, false, false));
@@ -185,9 +185,9 @@ public class RapidRetreatSkill extends PassiveSkill {
     }
 
     private void end(SkillContainer container, ServerPlayer player) {
-        store(container, SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get(), false, true);
-        store(container, SkillDataKeyZ.RAPID_RETREAT_DURATION.get(), 0, true);
-        store(container, SkillDataKeyZ.RAPID_RETREAT_COOLDOWN.get(), this.cooldownTicks, true);
+        store(container, DawnDaySkillDataKeys.RAPID_RETREAT_ACTIVE.get(), false, true);
+        store(container, DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get(), 0, true);
+        store(container, DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get(), this.cooldownTicks, true);
 
         removeSpeed(player);
 

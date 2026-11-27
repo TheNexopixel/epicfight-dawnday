@@ -2,9 +2,10 @@ package net.epicfight_dd.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.epicfight_dd.EpicFightDawnDay;
-import net.epicfight_dd.skill.SkillDataKeyZ;
+import net.epicfight_dd.skill.DawnDaySkillDataKeys;
 import net.epicfight_dd.skill.dodge.HeatedStepsRules;
 import net.epicfight_dd.skill.dodge.HeatedStepsSkill;
+import net.epicfight_dd.skill.passive.unstoppable.UnstoppableEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +15,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.client.ClientEngine;
+import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.network.client.CPSkillRequest;
 import yesman.epicfight.skill.SkillSlots;
@@ -24,9 +26,8 @@ public final class HeatedStepsMeter {
     private static final ResourceLocation METER = texture("charge_bar");
     private static final ResourceLocation TRIGGER = texture("charge_bar_trigger");
     private static final ResourceLocation SELECTED = texture("charge_bar_trigger_activated");
-    private static final ResourceLocation EPIC_FIGHT_CHARGING_BAR =
-            ResourceLocation.fromNamespaceAndPath("epicfight", "charging_bar");
-    private HeatedStepsMeter() { }
+    private static final ResourceLocation EPIC_FIGHT_CHARGING_BAR = EpicFightMod.identifier("charging_bar");
+    private HeatedStepsMeter() {}
 
     @SubscribeEvent
     public static void tick(TickEvent.ClientTickEvent event) {
@@ -41,7 +42,7 @@ public final class HeatedStepsMeter {
         EpicFightNetworkManager.sendToServer(new CPSkillRequest(SkillSlots.DODGE, CPSkillRequest.WorkType.CANCEL));
         patch.resetHolding();
         ClientEngine.getInstance().controlEngine.releaseAllServedKeys();
-        container.getDataManager().setData(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get(), 0);
+        container.getDataManager().setData(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get(), 0);
     }
 
     @SubscribeEvent
@@ -63,9 +64,9 @@ public final class HeatedStepsMeter {
         if (!(container.getSkill() instanceof HeatedStepsSkill skill)) return;
         boolean holding = patch.isHoldingSkill(skill);
         float ticks = holding ? patch.getSkillChargingTicks(event.getPartialTick())
-                : container.getDataManager().getDataValue(SkillDataKeyZ.HEATED_STEPS_RESULT.get());
+                : container.getDataManager().getDataValue(DawnDaySkillDataKeys.HEATED_STEPS_RESULT.get());
         if (ticks < HeatedStepsRules.TAP_TICKS || !holding && mc.player.tickCount
-                >= container.getDataManager().getDataValue(SkillDataKeyZ.HEATED_STEPS_RESULT_UNTIL.get())) return;
+                >= container.getDataManager().getDataValue(DawnDaySkillDataKeys.HEATED_STEPS_RESULT_UNTIL.get())) return;
         var graphics = event.getGuiGraphics();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();

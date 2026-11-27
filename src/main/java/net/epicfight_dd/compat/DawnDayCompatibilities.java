@@ -8,7 +8,7 @@ import net.shelmarow.combat_evolution.CombatEvolution;
 import reascer.wom.main.WeaponsOfMinecraft;
 import yesman.epicfight.compat.ICompatModule;
 
-public enum DawnDayCompats {
+public enum DawnDayCompatibilities {
     WOM(WoMCompat.class, WeaponsOfMinecraft.MODID),
     NIGHT_FALL(NightfallCompat.class, EFN.MODID),
     COMBAT_EVO(CombatEvoCompat.class, CombatEvolution.MOD_ID);
@@ -16,7 +16,7 @@ public enum DawnDayCompats {
     private final Class<? extends ICompatModule> moduleCls;
     private final String modId;
 
-    DawnDayCompats(Class<? extends ICompatModule> moduleCls, String modId) {
+    DawnDayCompatibilities(Class<? extends ICompatModule> moduleCls, String modId) {
         this.moduleCls = moduleCls;
         this.modId = modId;
     }
