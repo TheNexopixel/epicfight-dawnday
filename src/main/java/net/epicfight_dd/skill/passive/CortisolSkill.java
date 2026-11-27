@@ -59,8 +59,8 @@ public class CortisolSkill extends PassiveSkill {
     }
 
     private static int stress(SkillContainer container) {
-        if (DawnDaySkillDataKeys.CORTISOL_STRESS.isPresent()) {
-            int stressLevel = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CORTISOL_STRESS.get());
+        if (SkillDataKeyZ.CORTISOL_STRESS.isPresent()) {
+            int stressLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_STRESS.get());
             EpicFightDawnDay.LOGGER.debug("Stress level is: {}", stressLevel);
             return stressLevel;
         } else {
@@ -69,8 +69,8 @@ public class CortisolSkill extends PassiveSkill {
     }
 
     private static int idle(SkillContainer container) {
-        if (DawnDaySkillDataKeys.CORTISOL_IDLE.isPresent()) {
-            int idleLevel = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CORTISOL_IDLE.get());
+        if (SkillDataKeyZ.CORTISOL_IDLE.isPresent()) {
+            int idleLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_IDLE.get());
             EpicFightDawnDay.LOGGER.debug("Idle level is: {}", idleLevel);
             return idleLevel;
         } else {

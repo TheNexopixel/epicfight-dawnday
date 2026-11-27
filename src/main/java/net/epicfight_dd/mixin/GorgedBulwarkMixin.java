@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
+
 public abstract class GorgedBulwarkMixin {
     @Inject(method = "canEat", at = @At("HEAD"), cancellable = true)
     private void epicfight_dd$eatAnytime(boolean alwaysEdible, CallbackInfoReturnable<Boolean> cir) {
