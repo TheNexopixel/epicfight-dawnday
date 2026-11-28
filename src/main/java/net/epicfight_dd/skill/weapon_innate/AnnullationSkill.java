@@ -42,10 +42,21 @@ public class AnnullationSkill extends WeaponInnateSkill {
     private static final String COOLDOWN_UNTIL = "epicfight_dd.annullation.cooldown_until";
 
     private static final Map<UUID, SkillContainer> CONTAINERS = new ConcurrentHashMap<>();
+    private static final Map<UUID, Long> LAST_REACTION = new ConcurrentHashMap<>();
+
     private static final UUID CONSUME_EVENT_UUID = UUID.fromString("b8e41f27-3c6a-4d95-a0e2-7f19c5d84a36");
+    private static final UUID ATTACK_EVENT_UUID = UUID.fromString("6a2d9c41-8e17-4b53-a0f6-3c5e7d1b9a82");
+
     private static final int PARTICLE_COUNT = 120;
     private static final double MIN_RADIUS = 1.5D;
     private static final double MAX_RADIUS = 3.5D;
+
+    private static final double SHIELD_RADIUS = 1.2D;
+    private static final int SHIELD_INTERVAL_TICKS = 3;
+    private static final int SHIELD_PARTICLES = 5;
+    private static final int HIT_PARTICLES = 24;
+    private static final double HIT_SPEED = 0.25D;
+    private static final int REACTION_COOLDOWN_TICKS = 5;
 
     private static final int TEXT_OFFSET_X = 12;
     private static final int TEXT_OFFSET_Y = 15;
@@ -58,13 +69,14 @@ public class AnnullationSkill extends WeaponInnateSkill {
     }
 
     private static int remaining(SkillContainer container) {
-        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_TICKS.get());
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_TICKS.get());
+        return value == null ? 0 : value;
     }
 
     private static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_COOLDOWN.get());
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.ANNULLATION_COOLDOWN.get());
+        return value == null ? 0 : value;
     }
-
 
     private static void storeTimer(SkillContainer container, int value, boolean sync) {
         if (sync) {
@@ -96,7 +108,6 @@ public class AnnullationSkill extends WeaponInnateSkill {
         player.getPersistentData().putLong(COOLDOWN_UNTIL, player.level().getGameTime() + cooldownTicks);
     }
 
-
     @Override
     public void setParams(CompoundTag p) {
         super.setParams(p);
@@ -108,7 +119,9 @@ public class AnnullationSkill extends WeaponInnateSkill {
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
 
-        container.getExecutor().getEventListener().addEventListener(
+        PlayerEventListener listener = container.getExecutor().getEventListener();
+
+        listener.addEventListener(
                 PlayerEventListener.EventType.SKILL_CONSUME_EVENT,
                 CONSUME_EVENT_UUID,
                 event -> {
@@ -117,24 +130,39 @@ public class AnnullationSkill extends WeaponInnateSkill {
                     }
                 });
 
+        listener.addEventListener(
+                PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK,
+                ATTACK_EVENT_UUID,
+                event -> {
+                    if (remaining(container) <= 0) return;
+                    if (event.getDamageSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return;
+
+                    event.setCanceled(true);
+                    if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
+                        react(player);
+                    }
+                });
+
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             CONTAINERS.put(player.getUUID(), container);
-            storeTimer(container, 0, true);
-            storeCooldown(container, remainingCooldown(player), true);
+            storeTimer(container, 0, false);
+            storeCooldown(container, remainingCooldown(player), false);
         }
     }
 
     @Override
     public void onRemoved(SkillContainer container) {
-        container.getExecutor().getEventListener().removeListener(
-                PlayerEventListener.EventType.SKILL_CONSUME_EVENT, CONSUME_EVENT_UUID);
+        PlayerEventListener listener = container.getExecutor().getEventListener();
+        listener.removeListener(PlayerEventListener.EventType.SKILL_CONSUME_EVENT, CONSUME_EVENT_UUID);
+        listener.removeListener(PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_ATTACK, ATTACK_EVENT_UUID);
 
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
             if (remaining(container) > 0) {
                 writeCooldown(player);
             }
             CONTAINERS.remove(player.getUUID());
-            storeTimer(container, 0, true);
+            LAST_REACTION.remove(player.getUUID());
+            storeTimer(container, 0, player.connection != null);
         }
         super.onRemoved(container);
     }
@@ -145,6 +173,7 @@ public class AnnullationSkill extends WeaponInnateSkill {
             writeCooldown(player);
         }
         CONTAINERS.remove(event.getEntity().getUUID());
+        LAST_REACTION.remove(event.getEntity().getUUID());
     }
 
     @SubscribeEvent
@@ -213,6 +242,43 @@ public class AnnullationSkill extends WeaponInnateSkill {
         }
     }
 
+    private static void spawnShield(ServerPlayer player, int count, double outwardSpeed) {
+        if (!(player.level() instanceof ServerLevel level)) return;
+
+        RandomSource random = player.getRandom();
+        double cx = player.getX();
+        double cy = player.getY() + player.getBbHeight() * 0.5D;
+        double cz = player.getZ();
+
+        for (int i = 0; i < count; i++) {
+            double theta = random.nextDouble() * Math.PI * 2.0D;
+            double cosPhi = 2.0D * random.nextDouble() - 1.0D;
+            double sinPhi = Math.sqrt(1.0D - cosPhi * cosPhi);
+
+            double ux = sinPhi * Math.cos(theta);
+            double uy = cosPhi;
+            double uz = sinPhi * Math.sin(theta);
+
+            level.sendParticles(ParticleTypes.ELECTRIC_SPARK,
+                    cx + ux * SHIELD_RADIUS, cy + uy * SHIELD_RADIUS * 0.9D, cz + uz * SHIELD_RADIUS,
+                    0, ux, uy, uz, outwardSpeed);
+        }
+    }
+
+    private static void react(ServerPlayer player) {
+        long now = player.level().getGameTime();
+        Long last = LAST_REACTION.get(player.getUUID());
+        if (last != null && now - last < REACTION_COOLDOWN_TICKS) return;
+        LAST_REACTION.put(player.getUUID(), now);
+
+        spawnShield(player, HIT_PARTICLES, HIT_SPEED);
+
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 1.2F, 1.6F);
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 0.25F, 2.0F);
+    }
+
     private static void endEffect(SkillContainer container, ServerPlayer player, boolean playSound) {
         storeTimer(container, 0, true);
         writeCooldown(player);
@@ -223,7 +289,6 @@ public class AnnullationSkill extends WeaponInnateSkill {
                     SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 1.2F, 0.7F);
         }
     }
-
 
     @Override
     public void updateContainer(SkillContainer container) {
@@ -248,6 +313,10 @@ public class AnnullationSkill extends WeaponInnateSkill {
             if (!player.isAlive()) {
                 endEffect(container, player, false);
             } else {
+                if (player.tickCount % SHIELD_INTERVAL_TICKS == 0) {
+                    spawnShield(player, SHIELD_PARTICLES, 0.0D);
+                }
+
                 left--;
                 if (left <= 0) {
                     endEffect(container, player, true);
@@ -256,12 +325,12 @@ public class AnnullationSkill extends WeaponInnateSkill {
                 }
             }
         }
+
         int cd = remainingCooldown(player);
         int shown = cooldown(container);
         boolean changed = (cd == 0) != (shown == 0);
         storeCooldown(container, cd, changed || player.tickCount % 20 == 0);
     }
-
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onAttack(LivingAttackEvent event) {
@@ -269,8 +338,8 @@ public class AnnullationSkill extends WeaponInnateSkill {
         if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return;
 
         event.setCanceled(true);
+        react(player);
     }
-
 
     @OnlyIn(Dist.CLIENT)
     @Override

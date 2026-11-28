@@ -1016,39 +1016,54 @@ public class DawnDayAnimations {
         HOOKCLAWS_NEUTRALIZE = builder.nextAccessor("biped/living/hookclaws_neutralize", ac ->
                 new LongHitAnimation(0.12F, ac, biped)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().playSound(DawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                                (e, s, p) -> {
+                                    LivingEntity entity = e.getOriginal();
+                                    entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                            DawnDaySounds.guard_break.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                }, AnimationEvent.Side.SERVER
                         ))
         );
 
         FLORETT_DUAL_NEUTRALIZED = builder.nextAccessor("biped/living/florett_dual_neutralized", ac ->
                 new LongHitAnimation(0.12F, ac, biped)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().playSound(DawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                                (e, s, p) -> {
+                                    LivingEntity entity = e.getOriginal();
+                                    entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                            DawnDaySounds.guard_break.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                }, AnimationEvent.Side.SERVER
                         ))
         );
         POLEBLADE_NEUTRALIZE = builder.nextAccessor("biped/living/poleblade_neutralize", ac ->
                 new LongHitAnimation(0.12F, ac, biped)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().playSound(DawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                                (e, s, p) -> {
+                                    LivingEntity entity = e.getOriginal();
+                                    entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                            DawnDaySounds.guard_break.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                }, AnimationEvent.Side.SERVER
                         ))
         );
 
         RITUS_DAGGER_NEUTRALIZED = builder.nextAccessor("biped/living/ritus_dagger_neutralized", ac ->
                 new LongHitAnimation(0.12F, ac, biped)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().playSound(DawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                                (e, s, p) -> {
+                                    LivingEntity entity = e.getOriginal();
+                                    entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                            DawnDaySounds.guard_break.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                }, AnimationEvent.Side.SERVER
                         ))
         );
 
         IRON_FIST_GUARD_BREAK = builder.nextAccessor("biped/living/iron_fist_guard_break", ac ->
                 new LongHitAnimation(0.12F, ac, biped)
                         .addEvents(AnimationProperty.StaticAnimationProperty.ON_BEGIN_EVENTS, AnimationEvent.SimpleEvent.create(
-                                (e, s, p) ->
-                                        e.getOriginal().playSound(DawnDaySounds.guard_break.get(),100,1), AnimationEvent.Side.CLIENT
+                                (e, s, p) -> {
+                                    LivingEntity entity = e.getOriginal();
+                                    entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                            DawnDaySounds.guard_break.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                                }, AnimationEvent.Side.SERVER
                         ))
         );
 
@@ -1961,6 +1976,12 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.6F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(2.0F, -3.0F, -2.0F), Armatures.BIPED.get().toolR, 1.4D, 1.4F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_ATTACK2 = builder.nextAccessor("biped/combat/rusty_axe_attack2", (accessor) ->
@@ -1968,6 +1989,12 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.82F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(-1.0F, -0.0F, -2.0F), Armatures.BIPED.get().toolR, 1.4D, 1.4F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_ATTACK3 = builder.nextAccessor("biped/combat/rusty_axe_attack3", (accessor) ->
@@ -1975,6 +2002,12 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.7F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(1.0F, -0.0F, -2.0F), Armatures.BIPED.get().toolR, 1.4D, 1.4F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_ATTACK4 = builder.nextAccessor("biped/combat/rusty_axe_attack4", (accessor) ->
@@ -1982,6 +2015,12 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.7F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(2.0F, -0.0F, -2.0F), Armatures.BIPED.get().rootJoint, 1.4D, 1.4F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_DASH = builder.nextAccessor("biped/combat/rusty_axe_dash", (accessor) ->
@@ -1989,14 +2028,26 @@ public class DawnDayAnimations {
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        1.03F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(-1.0F, -0.0F, -2.0F), Armatures.BIPED.get().toolR, 1.4D, 1.4F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_AIRSLASH = builder.nextAccessor("biped/combat/rusty_axe_airslash", (accessor) ->
                 new AirSlashAnimation(0.12F, 0.7F, 1.0F, 1.2F, null, biped.get().toolR, accessor, biped)
-                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(2.5F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
                         .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.1f,0.8f))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(
+                                        0.85F,
+                                        Animations.ReusableSources.FRACTURE_GROUND_SIMPLE,
+                                        AnimationEvent.Side.CLIENT
+                                ).params(new Vec3f(3.0F, -3.0F, -6.0F), Armatures.BIPED.get().rootJoint, 2.0D, 2.5F))
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
 

@@ -15,7 +15,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import org.joml.Vector4f;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.client.gui.BattleModeGui;
@@ -29,7 +28,6 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 // CODE MADE BY AI (gez. Nexo)
 
-@Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public class CortisolSkill extends PassiveSkill {
     private static final UUID EVENT_UUID = UUID.fromString("2f8b6d41-9a37-4c15-b0e2-7d5a3c18f946");
     private static final ResourceLocation OVERLAY_ID =
@@ -80,10 +78,28 @@ public class CortisolSkill extends PassiveSkill {
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
 
-        container.getExecutor().getEventListener().addEventListener(
+
+
+        PlayerEventListener listener = container.getExecutor().getEventListener();
+
+        listener.addEventListener(
                 PlayerEventListener.EventType.MODIFY_DAMAGE_EVENT,
                 EVENT_UUID,
                 event -> event.attachValueModifier(ValueModifier.multiplier(1.0F + ratio(container))));
+
+        listener.addEventListener(
+                PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_HURT,
+                EVENT_UUID,
+                event -> {
+                    if (event.getDamage() <= 0.0F) return;
+
+                    int current = stress(container);
+                    event.attachValueModifier(ValueModifier.multiplier(1.0F + current / (float) (100 * SCALE)));
+
+                    int next = Math.min(this.maxScaled(), current + Math.round(this.stressPerHit * SCALE));
+                    container.getDataManager().setDataSync(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
+                    container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
+                });
 
         if (!container.getExecutor().isLogicalClient()) {
             container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), 0);
@@ -100,6 +116,8 @@ public class CortisolSkill extends PassiveSkill {
             container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), 0);
             container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
         }
+        container.getExecutor().getEventListener().removeListener(
+                PlayerEventListener.EventType.TAKE_DAMAGE_EVENT_HURT, EVENT_UUID);
         super.onRemoved(container);
     }
 
@@ -124,31 +142,6 @@ public class CortisolSkill extends PassiveSkill {
         } else {
             container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         }
-    }
-
-    private void handleHurt(SkillContainer container, LivingHurtEvent event) {
-        int current = stress(container);
-        event.setAmount(event.getAmount() * (1.0F + current / (float) (100 * SCALE)));
-
-        int gain = Math.round(this.stressPerHit * SCALE);
-        int next = Math.min(this.maxScaled(), current + gain);
-
-        container.getDataManager().setDataSync(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
-        container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
-    }
-
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void onLivingHurt(LivingHurtEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer player) || event.getAmount() <= 0.0F) return;
-
-        PlayerPatch<?> patch = EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
-        if (patch == null) return;
-
-        patch.getSkillCapability().listSkillContainers().forEach(container -> {
-            if (container.getSkill() instanceof CortisolSkill skill) {
-                skill.handleHurt(container, event);
-            }
-        });
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -23,6 +23,8 @@ import yesman.epicfight.world.capabilities.entitypatch.EntityDecorations;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
+// CODE MADE BY AI
+
 public class OutlastingSkill extends PassiveSkill {
     private static final ResourceLocation OVERLAY_ID =
             ResourceLocation.fromNamespaceAndPath("epicfight_dd", "outlasting_overlay");

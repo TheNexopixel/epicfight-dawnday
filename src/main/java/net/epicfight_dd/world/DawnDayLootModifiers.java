@@ -282,6 +282,7 @@ public class DawnDayLootModifiers {
 
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_BATTLESTAFF.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUSTY_LUMBERJACK_AXE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.BLOOD_KNIFE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GOLDEN_KNIFE.get()))
                         .name("netherite_messer")
@@ -296,10 +297,11 @@ public class DawnDayLootModifiers {
 
                 LootPool pool = LootPool.lootPool()
                         .when(
-                                LootItemRandomChanceCondition.randomChance(0.35f)
+                                LootItemRandomChanceCondition.randomChance(0.45f)
                         )
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_SICKLE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.IRON_FIST.get()))
+                        .add(LootItem.lootTableItem(DawnDayItems.RUSTY_LUMBERJACK_AXE.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.REVENANT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.SPIKED_BAT.get()))
                         .add(LootItem.lootTableItem(DawnDayItems.GRIMM.get()))

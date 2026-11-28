@@ -14,9 +14,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.utils.math.ValueModifier;
@@ -30,6 +28,9 @@ import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 
 @Mod.EventBusSubscriber(modid = EpicFightDawnDay.MODID)
 public final class CrescendoSkill extends PassiveSkill {
+
+    private static final UUID DEAL_UUID = UUID.fromString("3d7f1b92-6a48-4c05-9e3b-1f8a2c5d7e60");
+
 
     private static final class Params {
         static volatile float baseDamage = 1.0F;
@@ -65,7 +66,6 @@ public final class CrescendoSkill extends PassiveSkill {
         return Math.min(maxDamage(player), Math.max(value, startDamage(player)));
     }
 
-    private static final Map<UUID, SkillContainer> CONTAINERS = new ConcurrentHashMap<>();
     private static final Map<UUID, Build> BUILDS = new ConcurrentHashMap<>();
 
     public CrescendoSkill(SkillBuilder<? extends PassiveSkill> builder) {
@@ -77,6 +77,7 @@ public final class CrescendoSkill extends PassiveSkill {
         int level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SWEEPING_EDGE, player.getMainHandItem());
         return Math.min(level, MAX_SWEEPING_LEVELS);
     }
+
 
     private static int sharpnessLevel(Player player) {
         int level = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SHARPNESS, player.getMainHandItem());
@@ -103,32 +104,56 @@ public final class CrescendoSkill extends PassiveSkill {
     public void onInitiate(SkillContainer container) {
         super.onInitiate(container);
 
-        container.getExecutor().getEventListener().addEventListener(
+        PlayerEventListener listener = container.getExecutor().getEventListener();
+
+        listener.addEventListener(
                 PlayerEventListener.EventType.MODIFY_DAMAGE_EVENT,
                 EVENT_UUID,
                 event -> event.attachValueModifier(ValueModifier.setter(currentValue(container))));
 
+        listener.addEventListener(
+                PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_DAMAGE,
+                DEAL_UUID,
+                event -> {
+                    if (!(container.getExecutor().getOriginal() instanceof ServerPlayer player)) return;
+                    if (event.getTarget() == player) return;
+                    if (event.getDamageSource().getDirectEntity() != player) return;
+
+                    Build build = BUILDS.get(player.getUUID());
+                    if (build == null) return;
+
+                    float max = maxDamage(player);
+                    float current = Math.min(max, Math.max(build.damage, startDamage(player)));
+
+                    build.lastHit = player.level().getGameTime();
+                    build.damage = Math.min(max, current + step(player));
+
+                    container.getDataManager().setDataSync(
+                            DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), tenths(build.damage));
+                });
+
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
-            CONTAINERS.put(player.getUUID(), container);
             BUILDS.put(player.getUUID(), new Build());
-            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
+            container.getDataManager().setData(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
         }
     }
 
     @Override
     public void onRemoved(SkillContainer container) {
-        container.getExecutor().getEventListener().removeListener(
-                PlayerEventListener.EventType.MODIFY_DAMAGE_EVENT, EVENT_UUID);
+        PlayerEventListener listener = container.getExecutor().getEventListener();
+        listener.removeListener(PlayerEventListener.EventType.MODIFY_DAMAGE_EVENT, EVENT_UUID);
+        listener.removeListener(PlayerEventListener.EventType.DEAL_DAMAGE_EVENT_DAMAGE, DEAL_UUID);
 
         if (container.getExecutor().getOriginal() instanceof ServerPlayer player) {
-            forget(player.getUUID());
-            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
+            BUILDS.remove(player.getUUID());
+            if (player.connection != null) {
+                container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), 0);
+            }
         }
         super.onRemoved(container);
     }
 
     private static void forget(UUID id) {
-        CONTAINERS.remove(id);
         BUILDS.remove(id);
     }
 
@@ -154,25 +179,6 @@ public final class CrescendoSkill extends PassiveSkill {
     }
 
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void onLivingHurt(LivingHurtEvent event) {
-        if (!(event.getSource().getEntity() instanceof ServerPlayer player)) return;
-        if (event.getSource().getDirectEntity() != player) return; // nur Nahkampf
-
-        Build build = BUILDS.get(player.getUUID());
-        SkillContainer container = CONTAINERS.get(player.getUUID());
-        if (build == null || container == null) return;
-
-        if (event.getEntity() == player) return;
-
-        float max = maxDamage(player);
-        float current = Math.min(max, Math.max(build.damage, startDamage(player)));
-
-        build.lastHit = player.level().getGameTime();
-        build.damage = Math.min(max, current + step(player));
-
-        container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), tenths(build.damage));
-    }
 
     private static int tenths(float damage) {
         return Math.round(damage * 10.0F);
@@ -198,7 +204,8 @@ public final class CrescendoSkill extends PassiveSkill {
 
         int shown = tenths(build.damage);
         boolean finished = build.damage <= base;
-        int current = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get());
+        Integer stored = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get());
+        int current = stored == null ? 0 : stored;
 
         if (shown != current && (finished || player.tickCount % 2 == 0)) {
             container.getDataManager().setDataSync(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get(), shown);
@@ -207,7 +214,8 @@ public final class CrescendoSkill extends PassiveSkill {
 
 
     private static float shownDamage(SkillContainer container) {
-        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get()) / 10.0F;
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CRESCENDO_DAMAGE.get());
+        return value == null ? 0.0F : value / 10.0F;
     }
 
     @OnlyIn(Dist.CLIENT)
