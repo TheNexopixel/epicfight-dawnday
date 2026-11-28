@@ -1107,6 +1107,29 @@ public class DawnDayWeaponCapabilityPreset {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, DawnDayAnimations.SICKLE_ONEHAND_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, DawnDayAnimations.POLEBLADE_GUARD);
 
+    public static final Function<Item, CapabilityItem.Builder> RUSTY_AXE = (item) ->
+            WeaponCapability.builder()
+                    .category(CapabilityItem.WeaponCategories.AXE)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(DawnDayCollider.RUSTY_AXE)
+                    .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                    .hitParticle(EpicFightParticles.HIT_BLADE.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> DawnDaySkills.TREMEDEOUS_RETALIATION)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            DawnDayAnimations.RUSTY_AXE_ATTACK1,
+                            DawnDayAnimations.RUSTY_AXE_ATTACK2,
+                            DawnDayAnimations.RUSTY_AXE_ATTACK3,
+                            DawnDayAnimations.RUSTY_AXE_ATTACK4,
+                            DawnDayAnimations.RUSTY_AXE_DASH,
+                            DawnDayAnimations.RUSTY_AXE_AIRSLASH
+                    )
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, DawnDayAnimations.RUSTY_AXE_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, Animations.BIPED_WALK_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, Animations.BIPED_RUN_GREATSWORD)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.GREATSWORD_GUARD);
+
     public static final Function<Item, CapabilityItem.Builder> CRESCENDO = (item) ->
             WeaponCapability.builder()
                     .category(CapabilityItem.WeaponCategories.SWORD)
@@ -1135,6 +1158,7 @@ public class DawnDayWeaponCapabilityPreset {
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "milady"), MILADY);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "rusty_axe"), RUSTY_AXE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "crescendo"), CRESCENDO);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "twinblade"), TWINBLADE);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID, "revenant"), REVENANT);

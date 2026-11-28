@@ -50,16 +50,18 @@ public class RapidRetreatSkill extends PassiveSkill {
     }
 
     private static boolean isActive(SkillContainer container) {
-        Boolean value = container.getDataManager().getDataValue(SkillDataKeyZ.RAPID_RETREAT_ACTIVE.get());
+        Boolean value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_ACTIVE.get());
         return value != null && value;
     }
 
     private static int cooldown(SkillContainer container) {
-        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get());
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_COOLDOWN.get());
+        return value == null ? 0 : value;
     }
 
     private static int duration(SkillContainer container) {
-        return container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get());
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.RAPID_RETREAT_DURATION.get());
+        return value == null ? 0 : value;
     }
 
     private static <T> void store(SkillContainer container, SkillDataKey<T> key, T value, boolean sync) {
@@ -241,10 +243,11 @@ public class RapidRetreatSkill extends PassiveSkill {
                 .addDecorationOverlay(OVERLAY_ID, new EntityDecorations.DecorationOverlay() {
                     @Override
                     public Vector4f color(float partialTick) {
-                        if (!isActive(container) || player.getMaxHealth() <= 0.0F) {
+                        Player current = container.getExecutor().getOriginal();
+                        if (!isActive(container) || current.getMaxHealth() <= 0.0F) {
                             return color.set(0.3F, 0.7F, 0.4F, 0.0F);
                         }
-                        float healthRatio = player.getHealth() / player.getMaxHealth();
+                        float healthRatio = current.getHealth() / current.getMaxHealth();
                         float alpha = Mth.clampedLerp(0.0F, 0.25F, 1.0F - healthRatio);
                         return color.set(0.3F, 0.7F, 0.4F, alpha);
                     }

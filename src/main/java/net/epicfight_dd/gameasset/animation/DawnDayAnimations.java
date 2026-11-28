@@ -1957,16 +1957,45 @@ public class DawnDayAnimations {
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_ATTACK1 = builder.nextAccessor("biped/combat/rusty_axe_attack1", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.72F, 0.95F, 1.05F, null, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.21F, 0.55F, 0.7F, 0.8F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.LONG)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         RUSTY_AXE_ATTACK2 = builder.nextAccessor("biped/combat/rusty_axe_attack2", (accessor) ->
-                new BasicAttackAnimation(0.12F, 0.21F, 0.62F, 0.75F, 0.95F, null, biped.get().toolR, accessor, biped)
+                new BasicAttackAnimation(0.12F, 0.21F, 0.7F, 0.9F, 1.0F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
                         .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        RUSTY_AXE_ATTACK3 = builder.nextAccessor("biped/combat/rusty_axe_attack3", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.65F, 0.79F, 0.95F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        RUSTY_AXE_ATTACK4 = builder.nextAccessor("biped/combat/rusty_axe_attack4", (accessor) ->
+                new BasicAttackAnimation(0.12F, 0.21F, 0.67F, 0.8F, 0.95F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        RUSTY_AXE_DASH = builder.nextAccessor("biped/combat/rusty_axe_dash", (accessor) ->
+                new DashAttackAnimation(0.12F, 0.21F, 0.98F, 1.1F, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
+                        .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        RUSTY_AXE_AIRSLASH = builder.nextAccessor("biped/combat/rusty_axe_airslash", (accessor) ->
+                new AirSlashAnimation(0.12F, 0.7F, 1.0F, 1.2F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.1F))
+                        .addProperty(AttackPhaseProperty.STUN_TYPE,StunType.HOLD)
+                        .addProperty(AttackAnimationProperty.NO_GRAVITY_TIME,TimePairList.create(0.1f,0.8f))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
 

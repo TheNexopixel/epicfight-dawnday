@@ -83,6 +83,7 @@ public class DawnDayCreativeTab {
                 output.accept(DawnDayItems.STONE_BATTLESTAFF.get());
                 output.accept(DawnDayItems.WOODEN_BATTLESTAFF.get());
                 output.accept(DawnDayItems.REVENANT.get());
+                output.accept(DawnDayItems.RUSTY_LUMBERJACK_AXE.get());
                 output.accept(DawnDayItems.RUBY.get());
                 output.accept(DawnDayItems.AMBER.get());
                 output.accept(DawnDayItems.CITRINE.get());

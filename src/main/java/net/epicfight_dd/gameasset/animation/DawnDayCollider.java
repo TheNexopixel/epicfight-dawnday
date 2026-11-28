@@ -33,6 +33,8 @@ public class DawnDayCollider {
     public static final Collider GLORIA = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID,"gloria"),new MultiOBBCollider(5, 0.6D, 0.8D, 0.6D, 0.0D, -0.5D, -0.25D));
     public static final Collider TORNADO = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID,"tornado"),
             new MultiOBBCollider(1, 3.0D, 2.2D, 8.0D, 0D, 1.5D, -2.0D));
+    public static final Collider RUSTY_AXE = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID,"rusty_axe"),
+            new MultiOBBCollider(4, 0.6D, 0.6D, 1.4D, 0D, 0.0D, -1.2D));
 
 
     public static final Collider GRIMM = registerCollider(ResourceLocation.fromNamespaceAndPath(EpicFightDawnDay.MODID,"grimm"),new MultiOBBCollider(4, 0.5D, 0.50D, 1.0D, 0D, 0.0D, -1.0D));

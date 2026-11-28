@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " RI",
+    " SR",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "R": {
+      "item": "epicfight_dd:rusted_metal_plate"
+    },
+    "I": {
+      "tag": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "epicfight_dd:rusty_axe",
+    "count": 1
+  }
+}
+

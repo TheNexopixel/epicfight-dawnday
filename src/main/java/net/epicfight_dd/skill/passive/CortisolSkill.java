@@ -59,23 +59,13 @@ public class CortisolSkill extends PassiveSkill {
     }
 
     private static int stress(SkillContainer container) {
-        if (SkillDataKeyZ.CORTISOL_STRESS.isPresent()) {
-            int stressLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_STRESS.get());
-            EpicFightDawnDay.LOGGER.debug("Stress level is: {}", stressLevel);
-            return stressLevel;
-        } else {
-            throw new NullPointerException("Cortisol stress is null in CortisolSkill#stress");
-        }
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CORTISOL_STRESS.get());
+        return value == null ? 0 : value;
     }
 
     private static int idle(SkillContainer container) {
-        if (SkillDataKeyZ.CORTISOL_IDLE.isPresent()) {
-            int idleLevel = container.getDataManager().getDataValue(SkillDataKeyZ.CORTISOL_IDLE.get());
-            EpicFightDawnDay.LOGGER.debug("Idle level is: {}", idleLevel);
-            return idleLevel;
-        } else {
-            throw new NullPointerException("Cortisol idle is null in CortisolSkill#idle");
-        }
+        Integer value = container.getDataManager().getDataValue(DawnDaySkillDataKeys.CORTISOL_IDLE.get());
+        return value == null ? 0 : value;
     }
 
     private static float ratio(SkillContainer container) {
@@ -130,7 +120,7 @@ public class CortisolSkill extends PassiveSkill {
 
         ServerPlayer player = container.getServerExecutor().getOriginal();
         if (next == 0 || player.tickCount % this.syncInterval == 0) {
-            container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
+            container.getDataManager().setDataSync(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         } else {
             container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         }
@@ -143,7 +133,7 @@ public class CortisolSkill extends PassiveSkill {
         int gain = Math.round(this.stressPerHit * SCALE);
         int next = Math.min(this.maxScaled(), current + gain);
 
-        container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
+        container.getDataManager().setDataSync(DawnDaySkillDataKeys.CORTISOL_STRESS.get(), next);
         container.getDataManager().setData(DawnDaySkillDataKeys.CORTISOL_IDLE.get(), 0);
     }
 
